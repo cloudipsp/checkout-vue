@@ -1,7 +1,7 @@
 <template>
-  <div class="checkout-header">
+  <div class="f-header">
     <div class="pull-right">
-      <select class="form-control">
+      <select class="form-control input-sm">
         <option value="ru">Русский</option>
         <option value="en">English</option>
         <option value="uk">Українською</option>
@@ -17,7 +17,6 @@
 
 <script>
   export default {
-    name: 'checkout-header',
     data () {
       return {}
     }
@@ -25,7 +24,7 @@
 </script>
 
 <style lang="less">
-  .checkout-header {
+  .f-header {
     height: 64px;
     padding: 16px;
   }

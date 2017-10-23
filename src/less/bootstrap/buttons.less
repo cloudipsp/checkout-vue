@@ -1,0 +1,44 @@
+.btn {
+  text-transform: uppercase;
+  .button-size(14px; @padding-base-horizontal; @font-size-base; @line-height-base; 4px);
+  transition: box-shadow ease-in-out .15s;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      outline: none;
+    }
+  }
+
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    opacity: 1;
+    box-shadow: none;
+    border: 1px solid #DCDCDC;
+    background-color: #E4E4E4;
+    color: #ADADAD;
+  }
+}
+
+.btn-default{
+  box-shadow: 0 4px 8px 0 rgba(186,186,186,0.4);
+  &:hover{
+    box-shadow: 0 1px 2px 0 rgba(186,186,186,0.4);
+  }
+}
+.btn-success {
+  box-shadow: 0 4px 8px 0 rgba(98,186,70,0.4);
+  &:hover{
+    box-shadow: 0 1px 2px 0 rgba(98,186,70,0.4);
+  }
+}

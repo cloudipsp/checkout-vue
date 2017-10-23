@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="container">
+      <checkout-header></checkout-header>
+      <div class="container-fluid">
+        <router-view/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import CheckoutHeader from './components/checkout-header'
+
+  export default {
+    data () {
+      return {}
+    },
+    components: {
+      CheckoutHeader
+    }
+  }
 </script>
 
 <style lang="less">
-  @import './less/index.less';
+  @import './less/style.less';
 </style>

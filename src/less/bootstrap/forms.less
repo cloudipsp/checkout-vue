@@ -1,0 +1,19 @@
+label {
+  color: #707D8A;
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 2px;
+}
+.form-control {
+  box-shadow: @input-shadow;
+
+  &:focus {
+    outline: 0;
+    border-color: #62BA46;
+    box-shadow: @input-shadow;
+  }
+}
+
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @input-border-radius-small);
+}
