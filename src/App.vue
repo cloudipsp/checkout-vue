@@ -1,27 +1,45 @@
 <template>
   <div id="app">
-    <div class="container">
+    <div class="f-container" :class="{'f-min': min}">
       <checkout-header></checkout-header>
-      <div class="container-fluid">
-        <router-view/>
-      </div>
+      <router-view :on-set-min="setMin"></router-view>
     </div>
   </div>
 </template>
 
 <script>
-  import CheckoutHeader from './components/checkout-header'
+  import CheckoutHeader from '@/components/checkout-header'
 
   export default {
     data () {
-      return {}
+      return {
+        min: true
+      }
     },
     components: {
       CheckoutHeader
+    },
+    methods: {
+      setMin: function (min) {
+        this.min = min
+      }
     }
   }
 </script>
 
 <style lang="less">
   @import './less/style.less';
+
+  .f-container{
+    @media (min-width: @screen-sm-min) {
+
+    }
+    @media (min-width: @screen-md-min) {
+      .f-min&{
+        width: 668px;
+      }
+      margin: auto;
+      width: 902px;
+    }
+  }
 </style>

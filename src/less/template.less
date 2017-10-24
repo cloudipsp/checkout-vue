@@ -1,0 +1,147 @@
+.f-title{
+  height: 66px;
+  line-height: 34px;
+  opacity: 0.8;
+  color: #3D3D3D;
+  font-size: 16px;
+  font-weight: bold;
+}
+.f-title2{
+  color: #9AA4B8;
+  text-align: center;
+}
+.f-title3{
+  color: #3D3D3D;
+  font-size: 16px;
+  text-align: center;
+}
+.f-block{
+  padding: 15px 8px;
+}
+.f-block-sm{
+  width: 260px;
+  margin: auto;
+
+  @media (min-width: @screen-sm-min) {
+    width: 290px;
+  }
+  @media (min-width: @screen-md-min) {
+    width: 260px;
+  }
+}
+.f-block-hr{
+  border-bottom: 2px solid rgba(61,61,61,0.06);
+}
+.f-ps{
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 10px 20px 5px;
+  width: 60px;
+  vertical-align: top;
+  text-align: center;
+
+  .f-icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: 70% 70%;
+    display: block;
+
+    &:after{
+      content: '';
+      width: 15px;
+      height: 9px;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      border: 3px solid #dcdcdc;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      transform: rotate(-45deg);
+      transition: border ease-in-out .15s;
+    }
+  }
+
+  &:hover,
+  &.active{
+    .f-icon {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &.active{
+    .f-icon {
+      &:after{
+        border-color: #62BA46;
+      }
+    }
+  }
+}
+.f-ps-1,
+.f-ps-2,
+.f-ps-3{
+  .f-ps{
+    width: 110px;
+    .f-icon{
+      height: 110px;
+      width: 110px;
+    }
+  }
+}
+.f-ps-4,
+.f-ps-5,
+.f-ps-6,
+.f-ps-7,
+.f-ps-8{
+  .f-ps{
+    width: 80px;
+    .f-icon{
+      height: 80px;
+      width: 80px;
+    }
+  }
+}
+
+.f-loading {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.7;
+
+}
+
+.f-loading-i {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  z-index: 101;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+
+  background-image: url(../assets/loading.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  animation: rotate 3s linear infinite;
+
+}
+
+@keyframes rotate {
+  0% {
+    transform-origin: center center;
+    transform: rotate3d(0, 0, 1, -360deg);
+  }
+  100% {
+    transform-origin: center center;
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}

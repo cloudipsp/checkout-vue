@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="pull-right">
-      <select class="form-control input-sm">
+      <select class="form-control input-sm hidden-xs">
         <option value="ru">Русский</option>
         <option value="en">English</option>
         <option value="uk">Українською</option>
@@ -24,13 +24,23 @@
 </script>
 
 <style lang="less">
+  @import '../less/style.less';
+
   .f-header {
-    height: 64px;
-    padding: 16px;
+    padding: 15px 23px;
+
+    @media (min-width: @screen-sm-min) {
+      padding: 15px;
+    }
   }
   .logo {
-    height: 32px;
+    height: 20px;
     width: 137px;
-    background: url(../assets/logo.svg) no-repeat 50% 50%;
+    background: url(../assets/logo.svg) no-repeat 0 50%;
+    background-size: contain;
+
+    @media (min-width: @screen-sm-min) {
+      height: 32px;
+    }
   }
 </style>

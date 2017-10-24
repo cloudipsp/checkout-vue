@@ -7,10 +7,10 @@
           <input type="text" class="form-control" id="x6">
         </div>
         <div class="form-group">
-          <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!valid">Продолжить</button>
+          <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!options.valid">Продолжить</button>
         </div>
         <div class="form-group">
-          <button @click="onBack('card')" type="button" class="btn btn-default btn-block" >Отменить</button>
+          <router-link :to="{ name: 'method', params: { method: 'card' }}" type="button" class="btn btn-default btn-block" >Отменить</router-link>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
 
 <script>
   export default {
-    props: ['valid', 'onSubmit', 'onBack'],
+    props: ['options', 'onSubmit'],
     data () {
       return {}
     }

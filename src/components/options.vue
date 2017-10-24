@@ -10,8 +10,6 @@
         ref="textarea"
         class="form-control"
         @input="updateValue($event.target.value)"
-        cols="30"
-        rows="30"
       ></textarea>
     </div>
   </div>
@@ -56,5 +54,11 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 1000;
+
+  textarea{
+    height: 500px;
+    width: 320px;
+  }
 }
 </style>

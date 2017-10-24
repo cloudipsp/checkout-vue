@@ -1,0 +1,38 @@
+.f-icon{
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+.f-icon{
+  .bg(paypal);
+  .bg(qiwi);
+  .bg(webmoney);
+  .bg(yamoney);
+
+  &.yamoney{
+    background-size: contain;
+  }
+
+  .bg(p24);
+  .bg(platba24);
+  .bg(raiffeisen);
+
+  .bg(liqpay);
+
+  .bg(security);
+
+  &.security{
+    @media (max-width: @screen-sm-max) {
+      opacity: .3;
+      background-size: 80%;
+    }
+  }
+}
+.f-icon-block{
+  display: block;
+  width: 100%;
+  background-size: contain;
+}
