@@ -10,10 +10,8 @@
           :class="[item]"
           v-for="item in methods"
           :key="item"
-          @click="console.log(1)"
           :to="{ name: 'method', params: { method: item }}"
-
-          router-link-active
+          @click.native="onChangeMethod()"
         >
           {{ config[item].name }}
         </router-link>
@@ -26,6 +24,7 @@
         :key="item.system"
         :class="item.system"
         :to="{ name: 'method', params: { method: item.method, system: item.system }}"
+        @click.native="onChangeMethod()"
       ></router-link>
     </div>
   </div>
@@ -34,7 +33,7 @@
 <script>
   // TODO import config icon f-fast-access
   export default {
-    props: ['methods', 'fast'],
+    props: ['methods', 'fast', 'onChangeMethod'],
     data () {
       return {
         config: {
@@ -126,7 +125,7 @@
       outline: none;
     }
 
-    &.router-link-active{
+    &.active{
       color: #62BA46;
       background-color: #FFFFFF;
       box-shadow: 0 0 16px 0 rgba(90,136,215,0.16);

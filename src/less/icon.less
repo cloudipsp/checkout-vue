@@ -2,8 +2,8 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 70% 70%;
-  height: 50px;
-  width: 50px;
+  height: 42px;
+  width: 42px;
   display: inline-block;
 }
 .f-icon{
@@ -12,10 +12,6 @@
   .bg(webmoney);
   .bg(yamoney);
 
-  &.yamoney{
-    background-size: contain;
-  }
-
   .bg(p24);
   .bg(platba24);
   .bg(raiffeisen);
@@ -23,7 +19,11 @@
   .bg(liqpay);
 
   .bg(security);
+  .bg(card-empty);
 
+  &.yamoney{
+    background-size: contain;
+  }
   &.security{
     @media (max-width: @screen-sm-max) {
       opacity: .3;
@@ -34,5 +34,9 @@
 .f-icon-block{
   display: block;
   width: 100%;
+  background-size: contain;
+}
+
+.f-icon-contain {
   background-size: contain;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="f-app">
     <div class="f-container" :class="{'f-min': min}">
       <checkout-header></checkout-header>
       <router-view :on-set-min="setMin"></router-view>
@@ -30,7 +30,12 @@
 <style lang="less">
   @import './less/style.less';
 
+  .f-app{
+    height: 100%;
+  }
+
   .f-container{
+    height: 100%;
     @media (min-width: @screen-sm-min) {
 
     }

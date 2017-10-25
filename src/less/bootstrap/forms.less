@@ -17,3 +17,12 @@ label {
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @input-border-radius-small);
 }
+
+.form-control-feedback {
+  right: 9px;
+}
+.has-feedback label {
+  & ~ .form-control-feedback {
+    top: 22px;
+  }
+}

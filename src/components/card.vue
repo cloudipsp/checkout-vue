@@ -5,9 +5,11 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="x6">Номер карты</label>
-          <div class="input-group">
+          <input type="text" class="form-control" id="x6">
+          <span class="form-control-feedback f-icon f-icon-contain card-empty"></span>
+          <div v-if="false" class="input-group">
             <input type="text" class="form-control" id="x6">
             <span class="input-group-addon"><i class="glyphicon glyphicon-triangle-bottom"></i></span>
           </div>

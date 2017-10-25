@@ -1,15 +1,17 @@
 <template>
   <div class="f-wrapper">
-    <div class="f-mobile-menu visible-xs">
-      <button class="btn btn-default btn-sm" @click="show = !show"><i class="glyphicon glyphicon-th-large"></i> Другие способы</button>
+    <div v-if="!isMin" class="f-mobile-menu visible-xs">
+      <button class="btn btn-default btn-sm" @click="show = !show"><i class="glyphicon glyphicon-th-large"></i>
+        Другие способы
+      </button>
     </div>
-    <div class="f-info">
+    <div class="f-info" ref="info">
       <info :info="options.info"></info>
     </div>
-    <div class="f-methods" :class="{open : show}">
-      <methods :methods="options.methods" :fast="fast"></methods>
+    <div v-if="!isMin" class="f-methods" :class="{open : show}">
+      <methods :methods="options.methods" :fast="fast" :on-change-method="changeMethod"></methods>
     </div>
-    <div class="f-center">
+    <div class="f-center" ref="center">
       <fields v-if="options.fields"></fields>
       <router-view :options="options" :on-submit="submit"></router-view>
       <div v-if="loading">
@@ -58,8 +60,12 @@
         show: false
       }
     },
-    created: function () {
-      this.setMin(this.options.methods)
+    mounted: function () {
+      this.firstResize()
+      window.addEventListener('resize', this.resize)
+    },
+    beforeDestroy: function () {
+      window.removeEventListener('resize', this.resize)
     },
     computed: {
       fast: function () {
@@ -75,6 +81,11 @@
           }, this)
         }, this)
         return fast
+      },
+      isMin: function () {
+        let result = this.options.methods.length === 1 && this.options.methods[0] === 'card'
+        this.onSetMin(result)
+        return result
       }
     },
     components: {
@@ -82,14 +93,6 @@
       Methods,
       Fields,
       Verify
-    },
-    watch: {
-      '$route' (to, from) {
-        this.show = false
-      },
-      'options.methods': function (val) {
-        this.setMin(val)
-      }
     },
     methods: {
       min: function () {
@@ -106,7 +109,8 @@
             currency: 'UAH'
           }
         }
-        this.$router.push({name: 'method', params: { method: 'card' }})
+        this.$router.push({name: 'method', params: {method: 'card'}})
+        this.firstResize()
       },
       submit: function () {
         if (!this.loading) {
@@ -117,8 +121,28 @@
           }, 3000)
         }
       },
-      setMin: function (val, oldVal) {
-        this.onSetMin(val.length === 1 && val[0] === 'card')
+      changeMethod: function () {
+        this.show = false
+      },
+      resize () {
+        let width = document.body.clientWidth
+
+        this.$refs.center.style.height = 'auto'
+        let wraperH = this.$el.offsetHeight
+        let centerH = this.$refs.center.offsetHeight
+        let infoH = this.$refs.info.offsetHeight
+
+        if (width >= 992) {
+          this.$refs.center.style.height = centerH < wraperH ? wraperH + 'px' : 'auto'
+        } else if (width >= 768) {
+          this.$refs.center.style.height = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
+        }
+      },
+      firstResize: function () {
+        let self = this
+        setTimeout(function () {
+          self.resize()
+        })
       }
     }
   }
@@ -131,37 +155,38 @@
   @f-md-width: 26%;
   @f-min-width: 35%;
 
-  .f-wrapper{
+  .f-wrapper {
     background-color: #FCFEFF;
     &:extend(.clearfix all);
 
     @media (min-width: @screen-sm-min) {
-
+      height: calc(~'100% - 62px');
     }
     @media (min-width: @screen-md-min) {
+      height: auto;
       border: 1px solid #E0E8EF;
       border-radius: 8px;
-      box-shadow: 0 16px 16px 0 rgba(0,0,0,0.04);
+      box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
     }
   }
-  .f-mobile-menu{
-    .f-min &{
-      display: none!important;
-    }
+
+  .f-mobile-menu {
     position: absolute;
     top: 8px;
     right: 23px;
 
   }
+
   .f-info,
   .f-methods,
-  .f-center{
+  .f-center {
     position: relative;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
   }
-  .f-info{ // col-md-3 col-md-push-9
+
+  .f-info { // col-md-3 col-md-push-9
     color: #A9A9A9;
 
     border-top: 2px solid #EAF1F6;
@@ -173,14 +198,14 @@
       box-shadow: inset 0 -10px 40px -8px rgba(72, 133, 149, 0.24);
     }
     @media (min-width: @screen-md-min) {
-      .f-min &{
+      .f-min & {
         width: @f-min-width;
         left: 100% - @f-min-width;
       }
+
       float: left;
       width: @f-md-width; // col-md-3
       left: 100% - @f-md-width; // col-md-push-9
-
       border: none;
       box-shadow: none;
     }
@@ -191,25 +216,23 @@
       }
     }
   }
-  .f-methods{ // col-sm-4 col-md-3 col-md-pull-3
-    .f-min &{
-      display: none;
-    }
+
+  .f-methods { // col-sm-4 col-md-3 col-md-pull-3
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 100;
-    background: #fff;
+    background-color: #fff;
     padding: 0;
     overflow-y: auto;
 
-    transition: transform .3s cubic-bezier(.25,.8,.25,1);
-    transform: translate3d(-100%,0,0);
+    transition: transform .3s cubic-bezier(.25, .8, .25, 1);
+    transform: translate3d(-100%, 0, 0);
 
-    &.open{
-      transform: translate3d(0,0,0);
+    &.open {
+      transform: translate3d(0, 0, 0);
     }
 
     @media (min-width: @screen-sm-min) {
@@ -218,10 +241,10 @@
       right: auto;
       bottom: auto;
       left: auto;
-      background: inherit;
+      background: none;
       padding-left: 15px;
       padding-right: 15px;
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
 
       float: left;
       width: @f-sm-width; // col-sm-4
@@ -237,27 +260,33 @@
       }
     }
   }
+
   .f-center { // col-sm-8 col-md-6 col-md-pull-3
+    .f-min & {
+
+    }
     background: #fff;
 
     @media (min-width: @screen-sm-min) {
-      .f-min &{
+      .f-min & {
         width: 100%;
+        border-left: none;
       }
+
       float: left;
       width: 100% - @f-sm-width; // col-sm-8
-
-      border-left: 2px solid rgba(61,61,61,0.06);
+      border-left: 2px solid rgba(61, 61, 61, 0.06);
     }
     @media (min-width: @screen-md-min) {
-      .f-min &{
+      .f-min & {
         width: 100% - @f-min-width;
-        right: @f-min-width
+        right: @f-min-width;
+        border-radius: 8px 0 0 8px;
       }
+
       width: 100% - @f-md-width*2; // col-md-6
       right: @f-md-width; // col-md-pull-3
-
-      border-right: 2px solid rgba(61,61,61,0.06);
+      border-right: 2px solid rgba(61, 61, 61, 0.06);
     }
   }
 </style>
