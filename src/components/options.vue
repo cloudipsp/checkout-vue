@@ -1,7 +1,7 @@
 <template>
   <div class="f-options">
     <div>
-      <button class="btn btn-default" @click="toggle()">{{ btnText }}</button>
+      <button class="btn btn-default btn-sm" @click="toggle()">{{ btnText }}</button>
       <slot></slot>
     </div>
     <div v-show="show">
@@ -9,6 +9,7 @@
       <textarea
         ref="textarea"
         class="form-control"
+        value="value"
         @input="updateValue($event.target.value)"
       ></textarea>
     </div>
@@ -25,8 +26,13 @@ export default {
       show: false
     }
   },
+  watch: {
+    value: function () {
+      this.setValue()
+    }
+  },
   mounted: function () {
-    this.$refs.textarea.value = JSON.stringify(this.value, null, 2)
+    this.setValue()
   },
   computed: {
     btnText: function () {
@@ -44,6 +50,9 @@ export default {
       } catch (e) {
         this.error = true
       }
+    },
+    setValue: function () {
+      this.$refs.textarea.value = JSON.stringify(this.value, null, 2)
     }
   }
 }

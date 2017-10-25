@@ -20,7 +20,8 @@
       </div>
     </div>
     <options v-model="options">
-      <button class="btn btn-default" @click="min()">min</button>
+      <button class="btn btn-default btn-sm" @click="min()">min</button>
+      <button class="btn btn-default btn-sm" @click="max()">max</button>
     </options>
   </div>
 </template>
@@ -31,33 +32,54 @@
   import Fields from './payment-fields'
   import Verify from './verify'
 
+  let maxOptions = {
+    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+    ibank: ['p24', 'platba24', 'raiffeisen'],
+    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+    cash: ['liqpay'],
+    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+    fields: true,
+    regular: true,
+    offer: true,
+    valid: false,
+    info: {
+      title: 'Назначение платежа',
+      desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+      link: 'https://fondy.eu',
+      amount: 500,
+      full_amount: 510,
+      commision: 10,
+      currency: 'UAH'
+    }
+  }
+
+  let minOptions = {
+    methods: ['card'],
+    fast: [],
+    cardIcons: ['mastercard', 'visa'],
+    valid: false,
+    info: {
+      title: 'Назначение платежа',
+      desc: 'Благотворительная помощь',
+      amount: 500,
+      full_amount: 500,
+      currency: 'UAH'
+    }
+  }
+
   export default {
     props: ['onSetMin'],
     data () {
       return {
-        options: {
-          methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-          ibank: ['p24', 'platba24', 'raiffeisen'],
-          emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-          cash: ['liqpay'],
-          fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-          cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-          fields: true,
-          regular: true,
-          offer: true,
-          valid: false,
-          info: {
-            title: 'Назначение платежа',
-            desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-            link: 'https://fondy.eu',
-            amount: 500,
-            full_amount: 510,
-            commision: 10,
-            currency: 'UAH'
-          }
-        },
+        options: maxOptions,
         loading: false,
         show: false
+      }
+    },
+    watch: {
+      options: function () {
+        this.firstResize()
       }
     },
     mounted: function () {
@@ -96,21 +118,11 @@
     },
     methods: {
       min: function () {
-        this.options = {
-          methods: ['card'],
-          fast: [],
-          cardIcons: ['mastercard', 'visa'],
-          valid: false,
-          info: {
-            title: 'Назначение платежа',
-            desc: 'Благотворительная помощь',
-            amount: 500,
-            full_amount: 500,
-            currency: 'UAH'
-          }
-        }
+        this.options = minOptions
         this.$router.push({name: 'method', params: {method: 'card'}})
-        this.firstResize()
+      },
+      max: function () {
+        this.options = maxOptions
       },
       submit: function () {
         if (!this.loading) {
