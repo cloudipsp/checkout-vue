@@ -1,12 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
 import payment from '@/components/payment'
 import PaymentMethod from '@/components/payment-method'
 import Verify from '@/components/verify'
 
-Vue.use(Router)
-
-export default new Router({
+export default {
   linkActiveClass: 'active',
   routes: [
     {
@@ -33,4 +29,4 @@ export default new Router({
       ]
     }
   ]
-})
+}

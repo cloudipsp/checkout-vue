@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import Options from '@/components/options'
   import Info from './info'
   import Methods from './methods'
   import Fields from './payment-fields'
@@ -78,12 +79,16 @@
       }
     },
     watch: {
-      options: function () {
-        this.firstResize()
-      }
+      options: {
+        handler: function () {
+          this.firstResize()
+        },
+        deep: true,
+        immediate: true
+      },
+      '$route': 'firstResize'
     },
     mounted: function () {
-      this.firstResize()
       window.addEventListener('resize', this.resize)
     },
     beforeDestroy: function () {
@@ -111,6 +116,7 @@
       }
     },
     components: {
+      Options,
       Info,
       Methods,
       Fields,
@@ -139,15 +145,15 @@
       resize () {
         let width = document.body.clientWidth
 
-        this.$refs.center.style.height = 'auto'
+        this.$refs.center.style.minHeight = 'auto'
         let wraperH = this.$el.offsetHeight
         let centerH = this.$refs.center.offsetHeight
         let infoH = this.$refs.info.offsetHeight
 
         if (width >= 992) {
-          this.$refs.center.style.height = centerH < wraperH ? wraperH + 'px' : 'auto'
+          this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
         } else if (width >= 768) {
-          this.$refs.center.style.height = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
+          this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
         }
       },
       firstResize: function () {

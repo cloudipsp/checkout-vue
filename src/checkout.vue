@@ -1,9 +1,7 @@
 <template>
-  <div class="f-app">
-    <div class="f-container" :class="{'f-min': min}">
-      <checkout-header></checkout-header>
-      <router-view :on-set-min="setMin"></router-view>
-    </div>
+  <div class="f-container" :class="{'f-min': min}">
+    <checkout-header></checkout-header>
+    <router-view :on-set-min="setMin"></router-view>
   </div>
 </template>
 
@@ -11,6 +9,7 @@
   import CheckoutHeader from '@/components/checkout-header'
 
   export default {
+    name: 'f-checkout',
     data () {
       return {
         min: true
@@ -29,10 +28,6 @@
 
 <style lang="less">
   @import './less/style.less';
-
-  .f-app{
-    height: 100%;
-  }
 
   .f-container{
     height: 100%;

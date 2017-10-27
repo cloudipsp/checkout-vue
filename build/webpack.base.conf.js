@@ -10,7 +10,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    checkout: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -57,7 +57,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000,
+              // limit: 10000,
               name: utils.assetsPath('img/[name].[hash:7].[ext]')
             }
           },
