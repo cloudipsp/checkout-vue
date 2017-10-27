@@ -20,11 +20,34 @@
   <link href=/checkout.css rel=stylesheet><script type=text/javascript src=/checkout.js></script></head>
   <body>
     <div id=app>
-      <f-checkout></f-checkout>
+      <f-checkout :options=options></f-checkout>
     </div>
     <script>
       new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+          options: {
+            methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+            ibank: ['p24', 'platba24', 'raiffeisen'],
+            emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+            cash: ['liqpay'],
+            fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+            cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+            fields: true,
+            regular: true,
+            offer: true,
+            valid: false,
+            info: {
+              title: 'Назначение платежа',
+              desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+              link: 'https://fondy.eu',
+              amount: 500,
+              full_amount: 510,
+              commision: 10,
+              currency: 'UAH'
+            }
+          }
+        }
       })
     </script>
   </body>

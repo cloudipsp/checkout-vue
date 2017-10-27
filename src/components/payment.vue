@@ -70,10 +70,10 @@
   }
 
   export default {
-    props: ['onSetMin'],
+    props: ['options2', 'onSetMin'],
     data () {
       return {
-        options: maxOptions,
+        options: this.options2,
         loading: false,
         show: false
       }

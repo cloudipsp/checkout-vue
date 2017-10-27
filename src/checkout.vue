@@ -1,7 +1,7 @@
 <template>
   <div class="f-container" :class="{'f-min': min}">
     <checkout-header></checkout-header>
-    <router-view :on-set-min="setMin"></router-view>
+    <router-view :options2="options" :on-set-min="setMin"></router-view>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 
   export default {
     name: 'f-checkout',
+    props: ['options'],
     data () {
       return {
         min: true
