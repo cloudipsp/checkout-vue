@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

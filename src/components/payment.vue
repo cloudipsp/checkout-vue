@@ -19,6 +19,7 @@
         <div class="f-loading-i"></div>
       </div>
     </div>
+    {{ errors }}
     <options v-model="options">
       <button class="btn btn-default btn-sm" @click="min()">min</button>
       <button class="btn btn-default btn-sm" @click="max()">max</button>
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+  import bus from '@/bus'
   import Options from '@/components/options'
   import Info from './info'
   import Methods from './methods'
@@ -75,7 +77,8 @@
       return {
         options: this.options2,
         loading: false,
-        show: false
+        show: false,
+        form: {}
       }
     },
     watch: {
@@ -87,6 +90,18 @@
         immediate: true
       },
       '$route': 'firstResize'
+    },
+    created () {
+      bus.$on('errors-changed', (errors, name, model) => {
+        if (name) {
+          this.form[name] = model
+        }
+        console.log(errors, model)
+        this.errors.clear()
+        errors.forEach((e) => {
+          this.errors.add(e.field, e.msg, e.rule, e.scope)
+        })
+      })
     },
     mounted: function () {
       window.addEventListener('resize', this.resize)
@@ -131,13 +146,20 @@
         this.options = maxOptions
       },
       submit: function () {
-        if (!this.loading) {
-          this.loading = true
-          setTimeout(() => {
-            this.$router.push({name: 'verify'})
-            this.loading = false
-          }, 3000)
-        }
+        this.errors.clear()
+        bus.$emit('validate')
+        console.log('form', this.form)
+
+        this.$nextTick(function () {
+          console.log(!this.errors.items.length)
+          if (!this.errors.items.length && !this.loading) {
+            this.loading = true
+            setTimeout(() => {
+              this.$router.push({name: 'verify'})
+              this.loading = false
+            }, 3000)
+          }
+        })
       },
       changeMethod: function () {
         this.show = false

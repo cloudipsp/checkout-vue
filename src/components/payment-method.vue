@@ -9,7 +9,7 @@
     <offer v-if="options.offer"></offer>
     <div class="f-block">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" class="btn btn-success btn-block f-submit" :disabled="!options.valid">
+        <button @click="onSubmit()" type="button" class="btn btn-success btn-block f-submit">
           Оплатить {{options.info.full_amount}} {{options.info.currency}}
         </button>
         <div class="hidden-md hidden-lg">

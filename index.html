@@ -22,6 +22,41 @@
     <div id="app">
       <f-checkout :options="options"></f-checkout>
     </div>
+    <script type="text/x-vue-template" id="f-fields">
+      <div class="f-fields">
+        <div class="f-block f-block-hr">
+          <div class="form-group" :class="{'has-error': errors.has('field_1') }">
+            <label for="field_1">Фио</label>
+            <input name="field_1" v-validate="'required'" v-model="model.field_1" type="text" class="form-control" id="field_1">
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-6">
+              <label for="x4">Email</label>
+              <input type="text" class="form-control" id="x4">
+            </div>
+            <div class="form-group col-xs-6">
+              <label for="x5">Телефон</label>
+              <input type="text" class="form-control" id="x5">
+            </div>
+          </div>
+        </div>
+        <div class="f-block f-block-hr">
+          <div class="f-block-sm">
+            <div class="form-group">
+              <label for="x1">Сума к оплате</label>
+              <input type="text" class="form-control" id="x1">
+            </div>
+            <div class="form-group">
+              <label for="x2">Номер договора</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="x2">
+                <span class="input-group-addon">UAH</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <script>
       new Vue({
         el: '#app',
