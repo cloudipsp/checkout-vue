@@ -2,12 +2,12 @@
   <div class="f-verify">
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="form-group">
-          <label for="x6">Проверочный код</label>
-          <input type="text" class="form-control" id="x6">
+        <div class="form-group" :class="{'has-error': errors.has('verification_code')}">
+          <label for="verification_code">Проверочный код</label>
+          <input name="verification_code" v-validate="'required|digits:4'" type="text" class="form-control" id="verification_code">
         </div>
         <div class="form-group">
-          <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!options.valid">Продолжить</button>
+          <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!valid">Продолжить</button>
         </div>
         <div class="form-group">
           <router-link :to="{ name: 'method', params: { method: 'card' }}" type="button" class="btn btn-default btn-block" >Отменить</router-link>
@@ -19,7 +19,8 @@
 
 <script>
   export default {
-    props: ['options', 'onSubmit'],
+    inject: ['$validator'],
+    props: ['options', 'onSubmit', 'form', 'valid'],
     data () {
       return {}
     }

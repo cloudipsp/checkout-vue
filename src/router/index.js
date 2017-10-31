@@ -16,15 +16,15 @@ export default {
       component: payment,
       children: [
         {
+          path: 'card/verify',
+          name: 'verify',
+          component: Verify
+        },
+        {
           path: ':method(card|emoney|ibank|cash|sepa)/:system?',
           name: 'method',
           component: PaymentMethod,
           props: true
-        },
-        {
-          path: 'card/verify',
-          name: 'verify',
-          component: Verify
         }
       ]
     }

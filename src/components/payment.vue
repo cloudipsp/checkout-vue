@@ -12,64 +12,21 @@
       <methods :methods="options.methods" :fast="fast" :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <fields v-if="options.fields"></fields>
-      <router-view :options="options" :on-submit="submit"></router-view>
+      <fields v-if="options.fields" :form="form"></fields>
+      <router-view :options="options" :on-submit="submit" :form="form" :valid="!this.errors.items.length"></router-view>
       <div v-if="loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
     </div>
-    {{ errors }}
-    <options v-model="options">
-      <button class="btn btn-default btn-sm" @click="min()">min</button>
-      <button class="btn btn-default btn-sm" @click="max()">max</button>
-    </options>
   </div>
 </template>
 
 <script>
-  import bus from '@/bus'
-  import Options from '@/components/options'
   import Info from './info'
   import Methods from './methods'
   import Fields from './payment-fields'
   import Verify from './verify'
-
-  let maxOptions = {
-    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-    ibank: ['p24', 'platba24', 'raiffeisen'],
-    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-    cash: ['liqpay'],
-    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-    fields: true,
-    regular: true,
-    offer: true,
-    valid: false,
-    info: {
-      title: 'Назначение платежа',
-      desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-      link: 'https://fondy.eu',
-      amount: 500,
-      full_amount: 510,
-      commision: 10,
-      currency: 'UAH'
-    }
-  }
-
-  let minOptions = {
-    methods: ['card'],
-    fast: [],
-    cardIcons: ['mastercard', 'visa'],
-    valid: false,
-    info: {
-      title: 'Назначение платежа',
-      desc: 'Благотворительная помощь',
-      amount: 500,
-      full_amount: 500,
-      currency: 'UAH'
-    }
-  }
 
   export default {
     props: ['options2', 'onSetMin'],
@@ -78,7 +35,9 @@
         options: this.options2,
         loading: false,
         show: false,
-        form: {}
+        form: {
+          recurring_data: {}
+        }
       }
     },
     watch: {
@@ -90,18 +49,6 @@
         immediate: true
       },
       '$route': 'firstResize'
-    },
-    created () {
-      bus.$on('errors-changed', (errors, name, model) => {
-        if (name) {
-          this.form[name] = model
-        }
-        console.log(errors, model)
-        this.errors.clear()
-        errors.forEach((e) => {
-          this.errors.add(e.field, e.msg, e.rule, e.scope)
-        })
-      })
     },
     mounted: function () {
       window.addEventListener('resize', this.resize)
@@ -131,33 +78,28 @@
       }
     },
     components: {
-      Options,
       Info,
       Methods,
       Fields,
       Verify
     },
+    $_veeValidate: {
+      validator: 'new'
+    },
     methods: {
-      min: function () {
-        this.options = minOptions
-        this.$router.push({name: 'method', params: {method: 'card'}})
-      },
-      max: function () {
-        this.options = maxOptions
-      },
       submit: function () {
-        this.errors.clear()
-        bus.$emit('validate')
+        this.$validator.validateAll()
+        console.log('errors', this.errors.items)
         console.log('form', this.form)
+//      this.errors.clear()
 
         this.$nextTick(function () {
-          console.log(!this.errors.items.length)
           if (!this.errors.items.length && !this.loading) {
             this.loading = true
             setTimeout(() => {
               this.$router.push({name: 'verify'})
               this.loading = false
-            }, 3000)
+            }, 1000)
           }
         })
       },

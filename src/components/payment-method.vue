@@ -4,12 +4,13 @@
       :is="method"
       :icons="options[method + 'Icons']"
       :payment-systems="options[method]"
+      :form="form"
     ></component>
-    <regular v-if="options.regular && method === 'card'"></regular>
+    <regular v-if="options.regular && method === 'card'" :form="form.recurring_data"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" class="btn btn-success btn-block f-submit">
+        <button @click="onSubmit()" type="button" class="btn btn-success btn-block f-submit" :disabled="!valid">
           Оплатить {{options.info.full_amount}} {{options.info.currency}}
         </button>
         <div class="hidden-md hidden-lg">
@@ -30,7 +31,7 @@
   import Offer from './offer'
 
   export default {
-    props: ['method', 'options', 'onSubmit'],
+    props: ['method', 'options', 'onSubmit', 'form', 'valid'],
     data () {
       return {}
     },

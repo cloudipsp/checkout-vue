@@ -25,63 +25,82 @@
     <script type="text/x-vue-template" id="f-fields">
       <div class="f-fields">
         <div class="f-block f-block-hr">
-          <div class="form-group" :class="{'has-error': errors.has('field_1') }">
+          <div class="form-group" :class="{'has-error': errors.has('field_1')}">
             <label for="field_1">Фио</label>
-            <input name="field_1" v-validate="'required'" v-model="model.field_1" type="text" class="form-control" id="field_1">
+            <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
+            <div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>
           </div>
           <div class="row">
-            <div class="form-group col-xs-6">
+            <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
               <label for="x4">Email</label>
-              <input type="text" class="form-control" id="x4">
+              <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email" type="text" class="form-control" id="x4">
+              <div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>
             </div>
-            <div class="form-group col-xs-6">
+            <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
               <label for="x5">Телефон</label>
-              <input type="text" class="form-control" id="x5">
+              <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон" type="text" class="form-control" id="x5">
+              <div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>
             </div>
           </div>
         </div>
         <div class="f-block f-block-hr">
           <div class="f-block-sm">
-            <div class="form-group">
+            <div class="form-group" :class="{'has-error': errors.has('field_4')}">
               <label for="x1">Сума к оплате</label>
-              <input type="text" class="form-control" id="x1">
-            </div>
-            <div class="form-group">
-              <label for="x2">Номер договора</label>
               <div class="input-group">
-                <input type="text" class="form-control" id="x2">
+                <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4" data-vv-as="Сума к оплате" type="text" class="form-control" id="x1">
+                <div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>
                 <span class="input-group-addon">UAH</span>
               </div>
+            </div>
+            <div class="form-group" :class="{'has-error': errors.has('field_5')}">
+              <label for="x2">Номер договора</label>
+              <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5" data-vv-as="Номер договора" type="text" class="form-control" id="x2">
+              <div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>
             </div>
           </div>
         </div>
       </div>
     </script>
     <script>
+      var maxOptions = {
+        methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+        ibank: ['p24', 'platba24', 'raiffeisen'],
+        emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+        cash: ['liqpay'],
+        fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+        cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+        fields: true,
+        regular: true,
+        offer: true,
+        info: {
+          title: 'Назначение платежа',
+          desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+          link: 'https://fondy.eu',
+          amount: 500,
+          full_amount: 510,
+          commision: 10,
+          currency: 'UAH'
+        }
+      }
+
+      var minOptions = {
+        methods: ['card'],
+        fast: [],
+        cardIcons: ['mastercard', 'visa'],
+        info: {
+          title: 'Назначение платежа',
+          desc: 'Благотворительная помощь',
+          amount: 500,
+          full_amount: 500,
+          currency: 'UAH'
+        }
+      }
+
       new Vue({
         el: '#app',
         data: {
-          options: {
-            methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-            ibank: ['p24', 'platba24', 'raiffeisen'],
-            emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-            cash: ['liqpay'],
-            fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-            cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-            fields: true,
-            regular: true,
-            offer: true,
-            valid: false,
-            info: {
-              title: 'Назначение платежа',
-              desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-              link: 'https://fondy.eu',
-              amount: 500,
-              full_amount: 510,
-              commision: 10,
-              currency: 'UAH'
-            }
-          }
+          options: maxOptions
         }
       })
     </script>

@@ -142,3 +142,18 @@
     transform: rotate3d(0, 0, 1, 0deg);
   }
 }
+
+.f-error {
+  position: absolute;
+  font-size: 10px;
+  color: #a94442;
+  top: 100%;
+  width: 100%;
+  display: none;
+}
+.form-control:focus ~ .f-error{
+  display: block;
+}
+.f-checkbox:focus ~ .f-error{
+  display: block;
+}

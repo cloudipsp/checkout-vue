@@ -1,14 +1,10 @@
 <script>
-  import ValidateChild from './validate-child'
-
   export default {
-    name: 'fields',
+    props: ['form'],
     template: '#f-fields',
-    mixins: [ValidateChild],
+    inject: ['$validator'],
     data () {
-      return {
-        model: {}
-      }
+      return {}
     }
   }
 </script>
