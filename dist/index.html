@@ -27,18 +27,18 @@
         <div class="f-block f-block-hr">
           <div class="form-group" :class="{'has-error': errors.has('field_1')}">
             <label for="field_1">Фио</label>
-            <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
+            <input name="field_1" v-validate="'required|custom|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
             <div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>
           </div>
           <div class="row">
             <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
-              <label for="x4">Email</label>
-              <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email" type="text" class="form-control" id="x4">
+              <label for="field_2">Email</label>
+              <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email" type="text" class="form-control" id="field_2">
               <div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>
             </div>
             <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
-              <label for="x5">Телефон</label>
-              <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон" type="text" class="form-control" id="x5">
+              <label for="field_3">Телефон</label>
+              <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон" type="text" class="form-control" id="field_3">
               <div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>
             </div>
           </div>
@@ -46,16 +46,16 @@
         <div class="f-block f-block-hr">
           <div class="f-block-sm">
             <div class="form-group" :class="{'has-error': errors.has('field_4')}">
-              <label for="x1">Сума к оплате</label>
+              <label for="field_4">Сума к оплате</label>
               <div class="input-group">
-                <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4" data-vv-as="Сума к оплате" type="text" class="form-control" id="x1">
+                <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4" data-vv-as="Сума к оплате" type="text" class="form-control" id="field_4">
                 <div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>
                 <span class="input-group-addon">UAH</span>
               </div>
             </div>
             <div class="form-group" :class="{'has-error': errors.has('field_5')}">
-              <label for="x2">Номер договора</label>
-              <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5" data-vv-as="Номер договора" type="text" class="form-control" id="x2">
+              <label for="field_5">Номер договора</label>
+              <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5" data-vv-as="Номер договора" type="text" class="form-control" id="field_5">
               <div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>
             </div>
           </div>

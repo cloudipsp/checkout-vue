@@ -75,7 +75,7 @@
     },
     methods: {
       imagePath: function (id) {
-        return require('../assets/' + id + '.svg')
+        return require('../assets/img/' + id + '.svg')
       }
     }
   }

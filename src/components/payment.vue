@@ -89,7 +89,9 @@
     methods: {
       submit: function () {
         this.$validator.validateAll()
+        this.autoFocus()
         console.log('errors', this.errors.items)
+        console.log('fields', this.fields)
         console.log('form', this.form)
 //      this.errors.clear()
 
@@ -102,6 +104,11 @@
             }, 1000)
           }
         })
+      },
+      autoFocus: function () {
+        let $firstErrorField = this.$el.querySelector('[data-vv-id=' + this.$validator.errors.items[0].id + ']')
+        $firstErrorField.scrollIntoView()
+        $firstErrorField.focus()
       },
       changeMethod: function () {
         this.show = false
