@@ -11,7 +11,7 @@
       }
       body {
         height: 100%;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
       }
       #app{
         height: 100%;
@@ -27,19 +27,25 @@
         <div class="f-block f-block-hr">
           <div class="form-group" :class="{'has-error': errors.has('field_1')}">
             <label for="field_1">Фио</label>
-            <input name="field_1" v-validate="'required|custom|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
-            <div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>
+            <tooltip :text="errors.first('field_1')" :enable="errors.has('field_1')">
+            <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
+            <!--<div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>-->
+            </tooltip>
           </div>
           <div class="row">
             <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
               <label for="field_2">Email</label>
+              <tooltip :text="errors.first('field_2')" :enable="errors.has('field_2')" placement="bottom">
               <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email" type="text" class="form-control" id="field_2">
-              <div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>
+              <!--<div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>-->
+              </tooltip>
             </div>
             <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
               <label for="field_3">Телефон</label>
+              <tooltip :text="errors.first('field_3')" :enable="errors.has('field_3')">
               <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон" type="text" class="form-control" id="field_3">
-              <div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>
+              <!--<div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>-->
+              </tooltip>
             </div>
           </div>
         </div>
@@ -48,15 +54,19 @@
             <div class="form-group" :class="{'has-error': errors.has('field_4')}">
               <label for="field_4">Сума к оплате</label>
               <div class="input-group">
+                <tooltip :text="errors.first('field_4')" :enable="errors.has('field_4')">
                 <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4" data-vv-as="Сума к оплате" type="text" class="form-control" id="field_4">
-                <div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>
+                <!--<div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>-->
+                </tooltip>
                 <span class="input-group-addon">UAH</span>
               </div>
             </div>
             <div class="form-group" :class="{'has-error': errors.has('field_5')}">
               <label for="field_5">Номер договора</label>
+              <tooltip :text="errors.first('field_5')" :enable="errors.has('field_5')">
               <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5" data-vv-as="Номер договора" type="text" class="form-control" id="field_5">
-              <div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>
+              <!--<div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>-->
+              </tooltip>
             </div>
           </div>
         </div>

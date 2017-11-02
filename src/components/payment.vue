@@ -18,6 +18,12 @@
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
+      <popover :title="errorTitle" trigger="manual" v-model="error">
+        <div class="f-center-error"></div>
+        <div slot="popover">
+          {{ errorMessage }}
+        </div>
+      </popover>
     </div>
   </div>
 </template>
@@ -37,7 +43,12 @@
         show: false,
         form: {
           recurring_data: {}
-        }
+        },
+        error: false,
+        errorFlag: false,
+        errorTitle: 'Ошибка #2013',
+        errorMessage: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана. Маленький ручеек Даль жур.',
+        timeoutId: 0
       }
     },
     watch: {
@@ -98,17 +109,24 @@
         this.$nextTick(function () {
           if (!this.errors.items.length && !this.loading) {
             this.loading = true
+            this.error = false
             setTimeout(() => {
-              this.$router.push({name: 'verify'})
+              if (Math.random() >= 0.5) {
+                this.error = true
+              } else {
+                this.$router.push({name: 'verify'})
+              }
               this.loading = false
             }, 1000)
           }
         })
       },
       autoFocus: function () {
-        let $firstErrorField = this.$el.querySelector('[data-vv-id=' + this.$validator.errors.items[0].id + ']')
-        $firstErrorField.scrollIntoView()
-        $firstErrorField.focus()
+        if (this.errors.items.length) {
+          let $firstErrorField = this.$el.querySelector('[data-vv-id=' + this.$validator.errors.items[0].id + ']')
+          $firstErrorField.scrollIntoView()
+          $firstErrorField.focus()
+        }
       },
       changeMethod: function () {
         this.show = false
@@ -123,14 +141,29 @@
 
         if (width >= 992) {
           this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
-        } else if (width >= 768) {
+        } else if (width >= 768 && !this.isMin) {
           this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
         }
+
+        this.resizeError()
+      },
+      resizeError: function () {
+        if (this.error) {
+          this.errorFlag = this.error
+        }
+        this.error = false
+        if (this.timeoutId > 0) {
+          clearTimeout(this.timeoutId)
+          this.timeoutId = 0
+        }
+        this.timeoutId = setTimeout(() => {
+          this.error = this.errorFlag
+          this.errorFlag = false
+        }, 150)
       },
       firstResize: function () {
-        let self = this
-        setTimeout(function () {
-          self.resize()
+        setTimeout(() => {
+          this.resize()
         })
       }
     }
@@ -149,6 +182,9 @@
     &:extend(.clearfix all);
 
     @media (min-width: @screen-sm-min) {
+      .f-min & {
+        height: auto;
+      }
       height: calc(~'100% - 62px');
     }
     @media (min-width: @screen-md-min) {
@@ -164,6 +200,15 @@
     top: 8px;
     right: 23px;
 
+  }
+
+  .f-center-error{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    bottom: 0;
+    left: 30px;
+    z-index: -1;
   }
 
   .f-info,

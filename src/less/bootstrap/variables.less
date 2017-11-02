@@ -524,10 +524,10 @@
 @tooltip-color:               #fff;
 //** Tooltip background color
 @tooltip-bg:                  #000;
-@tooltip-opacity:             .9;
+@tooltip-opacity:             1;
 
 //** Tooltip arrow width
-@tooltip-arrow-width:         5px;
+@tooltip-arrow-width:         6px;
 //** Tooltip arrow color
 @tooltip-arrow-color:         @tooltip-bg;
 
@@ -537,26 +537,26 @@
 //##
 
 //** Popover body background color
-@popover-bg:                          #fff;
+@popover-bg:                          #FEF8F8;
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
-@popover-border-color:                rgba(0,0,0,.2);
+@popover-border-color:                #F5E6E4;
 //** Popover fallback border color
 @popover-fallback-border-color:       #ccc;
 
 //** Popover title background color
-@popover-title-bg:                    darken(@popover-bg, 3%);
+@popover-title-bg:                    @popover-bg;
 
 //** Popover arrow width
-@popover-arrow-width:                 10px;
+@popover-arrow-width:                 12px;
 //** Popover arrow color
 @popover-arrow-color:                 @popover-bg;
 
 //** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
 //** Popover outer arrow color
-@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
+@popover-arrow-outer-color:           @popover-border-color;
 //** Popover outer arrow fallback color
 @popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
 

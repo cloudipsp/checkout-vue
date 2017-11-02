@@ -1,0 +1,57 @@
+[data-theme="error"]{
+  .tooltip-arrow {
+    width: @tooltip-arrow-width * 2;
+    height: @tooltip-arrow-width * 2;
+    background: #D6696D;
+    transform: rotate(45deg);
+  }
+  &.tooltip {
+    &.top .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-top: none;
+      border-left: none;
+    }
+    &.top-left .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-top: none;
+      border-left: none;
+    }
+    &.top-right .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-top: none;
+      border-left: none;
+    }
+    &.right .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-top: none;
+      border-right: none;
+    }
+    &.left .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-bottom: none;
+      border-left: none;
+    }
+    &.bottom .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-bottom: none;
+      border-right: none;
+    }
+    &.bottom-left .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-bottom: none;
+      border-right: none;
+    }
+    &.bottom-right .tooltip-arrow {
+      border: 1px solid #B05D60;
+      border-bottom: none;
+      border-right: none;
+    }
+  }
+  .tooltip-inner {
+    background-color: #D6696D;
+    border: 1px solid #B05D60;
+  }
+}
+.tooltip-inner {
+  text-align: left;
+}
