@@ -11,7 +11,7 @@
       }
       body {
         height: 100%;
-        /*overflow-y: scroll;*/
+        overflow-y: scroll;
       }
       #app{
         height: 100%;
@@ -81,7 +81,10 @@
         fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
         cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
         fields: true,
-        regular: true,
+        regular: {
+          show: true,
+          open: true
+        },
         offer: true,
         info: {
           title: 'Назначение платежа',

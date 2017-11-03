@@ -132,15 +132,22 @@
         this.show = false
       },
       resize () {
-        let width = document.body.clientWidth
-
+        let $container = document.querySelector('.f-container')
         this.$refs.center.style.minHeight = 'auto'
+        $container.style.paddingTop = '0'
+
+        let width = window.innerWidth
+        let height = document.documentElement.clientHeight
         let wraperH = this.$el.offsetHeight
         let centerH = this.$refs.center.offsetHeight
         let infoH = this.$refs.info.offsetHeight
+        let containerH = $container.offsetHeight
 
         if (width >= 992) {
           this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
+          if (containerH < height) {
+            $container.style.paddingTop = (height - containerH) / 2 + 'px'
+          }
         } else if (width >= 768 && !this.isMin) {
           this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
         }
@@ -203,12 +210,27 @@
   }
 
   .f-center-error{
+    .f-min & {
+      width: 260px;
+      margin: auto;
+    }
     position: absolute;
     top: 0;
     right: 30px;
     bottom: 0;
     left: 30px;
     z-index: -1;
+
+    @media (min-width: @screen-sm-min) {
+      .f-min & {
+        width: 290px;
+      }
+    }
+    @media (min-width: @screen-md-min) {
+      .f-min & {
+        width: auto;
+      }
+    }
   }
 
   .f-info,

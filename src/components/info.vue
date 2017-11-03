@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="f-block f-block-hr f-title hidden-xs hidden-sm">Даные платежа</div>
+    <div class="f-block-hr f-title hidden-xs hidden-sm">Даные платежа</div>
     <div class="f-block f-block-hr">
       <h5 class="f-block-title">{{ info.title }}</h5>
       <p>{{ info.desc }}</p>

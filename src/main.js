@@ -6,33 +6,14 @@ import { TheMask } from 'vue-the-mask'
 import ru from 'vee-validate/dist/locale/ru'
 import router from './router'
 import checkout from './checkout'
-// import utils from 'uiv/src/utils/domUtils'
 
 const install = function (Vue, Router, VeeValidate, TheMask) {
   Vue.config.productionTip = false
   Vue.use(Router)
   Validator.localize('ru', ru)
-  // Validator.extend('custom', {
-  //   getMessage: field => '',
-  //   validate: value => {
-  //     return false
-  //   }
-  // })
   Vue.use(VeeValidate, {
     locale: 'ru',
     inject: false
-    // dictionary: {
-    //   ru: {
-    //     messages: {
-    //       required: function (n) {
-    //         return 'Поле ' + n + ' обязательно для заполнения.'
-    //       },
-    //       custom: function (n) {
-    //         return 'custom'
-    //       }
-    //     }
-    //   }
-    // }
   })
   checkout.router = new Router(router)
   Vue.component(checkout.name, checkout)
@@ -93,15 +74,6 @@ const install = function (Vue, Router, VeeValidate, TheMask) {
           this.hide()
         }
       }
-      // text (v) {
-        // if (!v) {
-        //   this.hide()
-        // }
-        // console.log(1, this.triggerEl.matches(':hover, :focus'))
-        // if (v && this.triggerEl.matches(':hover, :focus')) {
-        //   utils.setTooltipPosition(tooltip, this.triggerEl, this.placement, this.autoPlacement, this.appendTo)
-        // }
-      // }
     }
   })
   Vue.component('Popover', {

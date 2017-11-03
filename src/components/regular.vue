@@ -3,12 +3,12 @@
     <div class="f-block">
       <div class="f-block-sm">
         <div class="text-center">
-          <input type="checkbox" v-model="checked" class="f-checkbox-swipe" id="f-regular-swipe" />
+          <input type="checkbox" v-model="options.open" class="f-checkbox-swipe" id="f-regular-swipe" />
           <label for="f-regular-swipe">Регулярный платеж</label>
         </div>
       </div>
     </div>
-    <div class="f-block" v-if="checked">
+    <div class="f-block" v-if="options.open">
       <div class="f-block-sm">
         <div class="form-group">
           <label for="f-regular-every">Периодичность</label>
@@ -86,12 +86,10 @@
 
 <script>
   export default {
-    props: ['form'],
+    props: ['form', 'options'],
     inject: ['$validator'],
     data () {
-      return {
-        checked: false
-      }
+      return {}
     }
   }
 </script>

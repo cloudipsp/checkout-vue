@@ -6,7 +6,7 @@
       :payment-systems="options[method]"
       :form="form"
     ></component>
-    <regular v-if="options.regular && method === 'card'" :form="form.recurring_data"></regular>
+    <regular v-if="options.regular && options.regular.show && method === 'card'" :options="options.regular" :form="form.recurring_data"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block">
       <div class="f-block-sm">

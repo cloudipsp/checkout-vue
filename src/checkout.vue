@@ -41,6 +41,7 @@
       }
       margin: auto;
       width: 902px;
+      height: auto;
     }
   }
 </style>

@@ -20,9 +20,18 @@ label {
 
 .form-control-feedback {
   right: 9px;
+  pointer-events: auto;
 }
 .has-feedback label {
   & ~ .form-control-feedback {
+    top: 22px;
+  }
+}
+.has-feedback {
+  .form-control {
+    padding-right: 42px;
+  }
+  .form-control-feedback {
     top: 22px;
   }
 }

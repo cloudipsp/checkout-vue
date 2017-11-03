@@ -1,8 +1,8 @@
 <template>
   <div class="f-block-hr">
-    <div class="f-block f-block-hr f-title hidden-xs">Методы оплаты</div>
+    <div class="f-block-hr f-title hidden-xs">Методы оплаты</div>
     <div class="f-block f-title3 visible-xs">Выберите способ оплаты</div>
-    <div class="f-menu">
+    <div class="f-menu f-block-hr">
       <transition-group>
         <router-link
           class="f-item"
@@ -17,9 +17,11 @@
         </router-link>
       </transition-group>
     </div>
-    <div class="f-fast-access">
+    <div class="f-block-hr f-title hidden-xs">Быстрый доступ к методам оплаты:</div>
+    <div class="f-block f-fast-access">
       <router-link
         class="f-icon"
+        v-if="item.system !== $route.params.system"
         v-for="item in fast"
         :key="item.system"
         :class="item.system"
@@ -108,13 +110,14 @@
     }
 
     &:first-child{
-
       @media (min-width: @screen-sm-min) {
         margin-top: -2px;
         position: relative;
       }
-      @media (min-width: @screen-md-min) {
-
+    }
+    &:last-child{
+      @media (min-width: @screen-sm-min) {
+        margin-bottom: -2px;
       }
     }
 
