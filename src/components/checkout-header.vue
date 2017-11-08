@@ -11,7 +11,7 @@
         <option value="sk">Slovenský</option>
       </select>
     </div>
-    <div class="logo"></div>
+    <div class="f-logo"></div>
   </div>
 </template>
 
@@ -22,25 +22,3 @@
     }
   }
 </script>
-
-<style lang="less">
-  @import '../less/style.less';
-
-  .f-header {
-    padding: 15px 23px;
-
-    @media (min-width: @screen-sm-min) {
-      padding: 15px;
-    }
-  }
-  .logo {
-    height: 20px;
-    width: 137px;
-    background: url(../assets/logo.svg) no-repeat 0 50%;
-    background-size: contain;
-
-    @media (min-width: @screen-sm-min) {
-      height: 32px;
-    }
-  }
-</style>

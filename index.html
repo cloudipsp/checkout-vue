@@ -13,65 +13,70 @@
         height: 100%;
         overflow-y: scroll;
       }
-      #app{
+      #app {
         height: 100%;
       }
     </style>
   </head>
   <body>
-    <div id="app">
-      <f-checkout :options="options"></f-checkout>
+<div id="app">
+  <f-checkout :options="options"></f-checkout>
+</div>
+<script type="text/x-vue-template" id="f-fields">
+<div class="f-fields">
+  <div class="f-block f-block-hr">
+    <div class="form-group" :class="{'has-error': errors.has('field_1')}">
+      <label for="field_1">Фио</label>
+      <tooltip :text="errors.first('field_1')" :enable="errors.has('field_1')">
+        <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text"
+               class="form-control" id="field_1">
+        <!--<div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>-->
+      </tooltip>
     </div>
-    <script type="text/x-vue-template" id="f-fields">
-      <div class="f-fields">
-        <div class="f-block f-block-hr">
-          <div class="form-group" :class="{'has-error': errors.has('field_1')}">
-            <label for="field_1">Фио</label>
-            <tooltip :text="errors.first('field_1')" :enable="errors.has('field_1')">
-            <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text" class="form-control" id="field_1">
-            <!--<div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>-->
-            </tooltip>
-          </div>
-          <div class="row">
-            <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
-              <label for="field_2">Email</label>
-              <tooltip :text="errors.first('field_2')" :enable="errors.has('field_2')" placement="bottom">
-              <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email" type="text" class="form-control" id="field_2">
-              <!--<div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>-->
-              </tooltip>
-            </div>
-            <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
-              <label for="field_3">Телефон</label>
-              <tooltip :text="errors.first('field_3')" :enable="errors.has('field_3')">
-              <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон" type="text" class="form-control" id="field_3">
-              <!--<div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>-->
-              </tooltip>
-            </div>
-          </div>
-        </div>
-        <div class="f-block f-block-hr">
-          <div class="f-block-sm">
-            <div class="form-group" :class="{'has-error': errors.has('field_4')}">
-              <label for="field_4">Сума к оплате</label>
-              <div class="input-group">
-                <tooltip :text="errors.first('field_4')" :enable="errors.has('field_4')">
-                <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4" data-vv-as="Сума к оплате" type="text" class="form-control" id="field_4">
-                <!--<div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>-->
-                </tooltip>
-                <span class="input-group-addon">UAH</span>
-              </div>
-            </div>
-            <div class="form-group" :class="{'has-error': errors.has('field_5')}">
-              <label for="field_5">Номер договора</label>
-              <tooltip :text="errors.first('field_5')" :enable="errors.has('field_5')">
-              <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5" data-vv-as="Номер договора" type="text" class="form-control" id="field_5">
-              <!--<div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>-->
-              </tooltip>
-            </div>
-          </div>
+    <div class="row">
+      <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
+        <label for="field_2">Email</label>
+        <tooltip :text="errors.first('field_2')" :enable="errors.has('field_2')" placement="bottom">
+          <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email"
+                 type="text" class="form-control" id="field_2">
+          <!--<div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>-->
+        </tooltip>
+      </div>
+      <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
+        <label for="field_3">Телефон</label>
+        <tooltip :text="errors.first('field_3')" :enable="errors.has('field_3')">
+          <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон"
+                 type="text" class="form-control" id="field_3">
+          <!--<div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>-->
+        </tooltip>
+      </div>
+    </div>
+  </div>
+  <div class="f-block f-block-hr">
+    <div class="f-block-sm">
+      <div class="form-group" :class="{'has-error': errors.has('field_4')}">
+        <label for="field_4">Сума к оплате</label>
+        <div class="input-group">
+          <tooltip :text="errors.first('field_4')" :enable="errors.has('field_4')">
+            <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4"
+                   data-vv-as="Сума к оплате" type="text" class="form-control" id="field_4">
+            <!--<div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>-->
+          </tooltip>
+          <span class="input-group-addon">UAH</span>
         </div>
       </div>
-    </script>
+      <div class="form-group" :class="{'has-error': errors.has('field_5')}">
+        <label for="field_5">Номер договора</label>
+        <tooltip :text="errors.first('field_5')" :enable="errors.has('field_5')">
+          <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5"
+                 data-vv-as="Номер договора" type="text" class="form-control" id="field_5">
+          <!--<div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>-->
+        </tooltip>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
     <script>
       var maxOptions = {
         methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
@@ -86,27 +91,24 @@
           open: true
         },
         offer: true,
-        info: {
-          title: 'Назначение платежа',
-          desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-          link: 'https://fondy.eu',
-          amount: 500,
-          full_amount: 510,
+        title: 'Назначение платежа',
+        link: 'https://fondy.eu',
+        params: {
+          merchant_id: '1396424',
+          verification_type: 'code',
+          required_rectoken: 'y',
+          verification: 'y',
+          currency: 'UAH',
+          amount: '500',
           commision: 10,
-          currency: 'UAH'
+          order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+          response_url: 'https://www.fondy.eu'
         }
       }
 
       var minOptions = {
-        methods: ['card'],
-        fast: [],
-        cardIcons: ['mastercard', 'visa'],
-        info: {
-          title: 'Назначение платежа',
-          desc: 'Благотворительная помощь',
-          amount: 500,
-          full_amount: 500,
-          currency: 'UAH'
+        params: {
+          merchant_id: '1396424'
         }
       }
 

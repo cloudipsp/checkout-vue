@@ -10,14 +10,15 @@
           <tooltip :text="errors.first('card_number')" :enable="errors.has('card_number')">
           <the-mask
             name="card_number"
-            v-validate="'required|credit_card'"
+            v-validate="validCardNumber"
             v-model="form.card_number"
             data-vv-as="Номер карты"
             type="tel"
             class="form-control"
             id="f-card_number"
-            :mask="['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']"
+            :mask="maskCardNumber"
             maxlength="23"
+            @blur.native="$validator.validate('card_number')"
           ></the-mask>
           <!--<div v-if="errors.has('card_number')" class="f-error">{{ errors.first('card_number') }}</div>-->
           </tooltip>
@@ -34,23 +35,19 @@
               <tooltip :text="errors.first('expiry_date')" :enable="errors.has('expiry_date')" placement="bottom">
                 <the-mask
                   name="expiry_date"
-                  v-validate="'required|date_format:MM/YY|after:after_field_target,true'"
+                  v-validate="validExpiryDate"
                   v-model="form.expiry_date"
                   data-vv-as="Действительна до"
                   type="text"
                   class="form-control"
                   id="f-expiry_date"
                   placeholder="MM/YY"
-                  mask="##/##"
+                  :mask="maskExpiryDate"
                   :masked="true"
+                  @blur.native="$validator.validate('expiry_date')"
                 ></the-mask>
                 <!--<div v-if="errors.has('expiry_date')" class="f-error">{{ errors.first('expiry_date') }}</div>-->
               </tooltip>
-              <input
-                name="after_field_target"
-                :data-vv-as="getMinExpiry"
-                type="hidden"
-                value="11/17">
             </div>
           </div>
           <div class="col-xs-5">
@@ -59,7 +56,7 @@
               <tooltip :text="errors.first('cvv2')" :enable="errors.has('cvv2')">
                 <input
                   name="cvv2"
-                  v-validate="'required|digits:3'"
+                  v-validate="validCvv"
                   v-model="form.cvv2"
                   data-vv-as="CVV"
                   type="tel"
@@ -81,15 +78,32 @@
 </template>
 
 <script>
+//  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
   export default {
     inject: ['$validator'],
     props: ['icons', 'form'],
     data () {
-      return {}
+      return {
+        maskExpiryDate: '##/##',
+        maskCardNumber: '#### #### #### ####',
+        validCvv: 'required|digits:3'
+      }
     },
     computed: {
-      getMinExpiry: function () {
-        return '10/17'
+      validExpiryDate: function () {
+        let date = new Date()
+        let year = String(date.getFullYear()).slice(-2)
+        let month = ('0' + (date.getMonth() + 1)).slice(-2)
+        return 'required|date_format:MM/YY|after:' + month + '/' + year + ',true'
+      },
+      validCardNumber: function () {
+        console.log(this.form.card_number)
+        return {
+          rules: {
+            required: true,
+            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666/.test(this.form.card_number)
+          }
+        }
       }
     },
     methods: {
@@ -99,9 +113,3 @@
     }
   }
 </script>
-
-<style lang="less">
-  .f-card-icon{
-    margin: 0 3px;
-  }
-</style>

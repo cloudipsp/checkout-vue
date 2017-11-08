@@ -21,17 +21,21 @@
   export default {
     props: ['paymentSystems'],
     created: function () {
-      this.setPaymentSystem(this.$route.params.system || this.paymentSystems[0])
+      this.setPaymentSystem(this.getId())
     },
     methods: {
       setPaymentSystem: function (id) {
         this.active = id
-        this.$router.push({name: 'method', params: { system: id }})
+        this.$router.push({name: 'payment-method', params: { system: id }})
+      },
+      getId: function () {
+        let system = this.$route.params.system
+        return this.paymentSystems.indexOf(system) > 0 ? system : this.paymentSystems[0]
       }
     },
     watch: {
       '$route' (to, from) {
-        this.active = to.params.system
+        this.setPaymentSystem(this.getId())
       }
     }
   }

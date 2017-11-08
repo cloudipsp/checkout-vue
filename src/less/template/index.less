@@ -1,3 +1,14 @@
+@import 'mixins.less';
+@import "checkbox.less";
+@import "icon.less";
+@import "card.less";
+@import "header.less";
+@import "info.less";
+@import "methods.less";
+@import "offer.less";
+@import "payment.less";
+@import "checkout.less";
+
 .f-title{
   line-height: 20px;
   opacity: 0.8;
@@ -125,7 +136,7 @@
   margin-top: -20px;
   margin-left: -20px;
 
-  background-image: url(../assets/loading.svg);
+  background-image: url(../../assets/loading.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   animation: rotate 3s linear infinite;
@@ -156,4 +167,11 @@
 }
 .f-checkbox:focus ~ .f-error{
   display: block;
+}
+
+.f-submit{
+  @media (max-width: @screen-xs-max) {
+    font-size: 18px;
+    padding: 20px 15px;
+  }
 }

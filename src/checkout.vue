@@ -1,7 +1,7 @@
 <template>
   <div class="f-container" :class="{'f-min': min}">
     <checkout-header></checkout-header>
-    <router-view :options2="options" :on-set-min="setMin"></router-view>
+    <router-view :options="defaultOptions" :on-set-min="setMin"></router-view>
   </div>
 </template>
 
@@ -13,8 +13,28 @@
     props: ['options'],
     data () {
       return {
-        min: true
+        min: true,
+        defaultOptions: {
+          methods: ['card'],
+          ibank: [],
+          emoney: [],
+          cash: [],
+          fast: [],
+          cardIcons: ['mastercard', 'visa'],
+          title: 'Test payment'
+        },
+        params: {
+          commision: 0,
+          currency: 'UAH',
+          amount: '1',
+          recurring_data: {}
+        }
       }
+    },
+    created: function () {
+      Object.assign(this.defaultOptions, this.options)
+      this.defaultOptions.params = {}
+      Object.assign(this.defaultOptions.params, this.params, this.options.params)
     },
     components: {
       CheckoutHeader
@@ -29,19 +49,4 @@
 
 <style lang="less">
   @import './less/style.less';
-
-  .f-container{
-    height: 100%;
-    @media (min-width: @screen-sm-min) {
-
-    }
-    @media (min-width: @screen-md-min) {
-      .f-min&{
-        width: 668px;
-      }
-      margin: auto;
-      width: 902px;
-      height: auto;
-    }
-  }
 </style>

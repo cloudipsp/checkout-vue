@@ -7,11 +7,11 @@
       :form="form"
     ></component>
     <regular v-if="options.regular && options.regular.show && method === 'card'" :options="options.regular" :form="form.recurring_data"></regular>
-    <offer v-if="options.offer"></offer>
+    <offer v-if="options.offer" :form="form"></offer>
     <div class="f-block">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" class="btn btn-success btn-block f-submit" :disabled="!valid">
-          Оплатить {{options.info.full_amount}} {{options.info.currency}}
+          Оплатить {{full_amount}} {{form.currency}}
         </button>
         <div class="hidden-md hidden-lg">
           <i class="f-icon f-icon-block security"></i>
@@ -35,6 +35,11 @@
     data () {
       return {}
     },
+    computed: {
+      full_amount: function () {
+        return parseInt(this.form.amount) + parseInt(this.form.commision)
+      }
+    },
     components: {
       Card,
       Emoney,
@@ -47,14 +52,3 @@
     methods: {}
   }
 </script>
-
-<style lang="less">
-  @import '../less/style.less';
-
-  .f-submit{
-    @media (max-width: @screen-xs-max) {
-      font-size: 18px;
-      padding: 20px 15px;
-    }
-  }
-</style>

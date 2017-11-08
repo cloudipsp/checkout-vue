@@ -7,8 +7,8 @@
           <tooltip :text="errors.first('verification_code')" :enable="errors.has('verification_code')">
           <input
             name="verification_code"
-            v-validate="'required|digits:4'"
-            v-model="form.verification_code"
+            v-validate="{ rules: { required: true, digits: /EURT/.test(form.code) ? false : '4'} }"
+            v-model="form.code"
             data-vv-as="Проверочный код"
             type="tel"
             class="form-control"
@@ -21,7 +21,7 @@
           <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!valid">Продолжить</button>
         </div>
         <div class="form-group">
-          <router-link :to="{ name: 'method', params: { method: 'card' }}" type="button" class="btn btn-default btn-block" >Отменить</router-link>
+          <router-link :to="{ name: 'payment-method', params: { method: 'card' }}" type="button" class="btn btn-default btn-block" >Отменить</router-link>
         </div>
       </div>
     </div>
@@ -36,11 +36,7 @@
       return {}
     },
     created: function () {
-      this.form.verification_code = ''
+      this.form.code = ''
     }
   }
 </script>
-
-<style lang="less">
-
-</style>

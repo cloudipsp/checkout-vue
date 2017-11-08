@@ -1,3 +1,13 @@
+// TODO вынести зависимости с index / две зборки с либами и без
+// TODO import config icon f-fast-access
+// TODO create store
+// TODO delete bootstrap
+// TODO directive/component params
+// TODO разделить респонс дизайн
+// TODO запросы
+// TODO мультиязычность
+// TODO свайп
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import VeeValidate, { Validator } from 'vee-validate'
@@ -13,7 +23,14 @@ const install = function (Vue, Router, VeeValidate, TheMask) {
   Validator.localize('ru', ru)
   Vue.use(VeeValidate, {
     locale: 'ru',
-    inject: false
+    inject: false,
+    dictionary: {
+      ru: {
+        messages: {
+          credit_card: (field) => `Поле ${field} должно быть действительным номером карты`
+        }
+      }
+    }
   })
   checkout.router = new Router(router)
   Vue.component(checkout.name, checkout)

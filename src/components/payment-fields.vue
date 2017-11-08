@@ -8,9 +8,3 @@
     }
   }
 </script>
-
-<style lang="less">
-  .payment-fields{
-
-  }
-</style>
