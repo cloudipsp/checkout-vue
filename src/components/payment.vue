@@ -9,11 +9,11 @@
       <info :options="options"></info>
     </div>
     <div v-if="!isMin" class="f-methods" :class="{open : show}">
-      <methods :methods="options.methods" :fast="fast" :on-change-method="changeMethod"></methods>
+      <methods :methods="options.methods" :fast="options.fast" :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
       <fields v-if="options.fields" :form="form"></fields>
-      <router-view :options="options" :on-submit="submit" :form="form" :valid="!this.errors.items.length" :order="order"></router-view>
+      <router-view :options="options" :on-submit="submit" :form="form" :valid="!this.errors.items.length" :order="order" :cards="cards"></router-view>
       <div v-if="loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -33,7 +33,7 @@
   import Methods from './methods'
   import Fields from './payment-fields'
   import Verify from './verify'
-  import $checkout from 'ipsp-js-sdk/dist/checkout'
+  import { sendRequest } from '@/helpers'
 
   export default {
     props: ['options', 'onSetMin'],
@@ -47,7 +47,8 @@
           buffer: false
         },
         timeoutId: 0,
-        order: {}
+        order: {},
+        cards: []
       }
     },
     watch: {
@@ -61,6 +62,25 @@
       '$route': 'firstResize'
     },
     created: function () {
+      let self = this
+      sendRequest('api.checkout.cards', 'get', {}).then(
+        function (model) {
+//          self.cards = Object.values(model.data)
+          self.cards = [{
+            card_number: '4444 55XX XXXX 6666',
+            expiry_date: '11 / 17',
+            email: 'asd@asd.asd',
+            hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
+          },
+          {
+            card_number: '4444 55XX XXXX 1111',
+            expiry_date: '11 / 19',
+            email: 'test@asd.asd',
+            hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
+          }]
+
+        },
+        function (model) {})
       Object.assign(this.form, this.options.params)
       if (!this.$route.params.method) {
         this.$router.push({name: 'payment-method', params: {method: this.options.methods[0]}})
@@ -73,20 +93,6 @@
       window.removeEventListener('resize', this.resize)
     },
     computed: {
-      fast: function () {
-        let fast = []
-        this.options.fast.forEach(function (system) {
-          ['emoney', 'ibank', 'cash'].forEach(function (method) {
-            if (this.options[method].indexOf(system) > -1) {
-              fast.push({
-                method: method,
-                system: system
-              })
-            }
-          }, this)
-        }, this)
-        return fast
-      },
       isMin: function () {
         let result = this.options.methods.length === 1 && this.options.methods[0] === 'card'
         this.onSetMin(result)
@@ -116,28 +122,23 @@
           this.form.payment_system = this.$route.params.system || this.$route.params.method
           this.form.token = this.$route.params.token
           let self = this
-          $checkout('Api').scope(function () {
-            this.request('api.checkout.form', 'request', self.form)
-              .done(function (model) {
-                self.loading = false
-                console.log('done', model)
-                model.sendResponse()
-                if (model.needVerifyCode()) {
-//                  self.form.token =  model.attr('order.token')
-                  self.$router.push({name: 'verify', params: {system: 'verify', token: model.attr('order.token')}})
-                } else if (!model.submitToMerchant()) {
-                  self.order = model.attr('order.order_data')
-                  self.$router.push({name: 'success'})
-                }
-              })
-              .fail(function (model) {
-                console.log('fail', model)
-                self.loading = false
-                self.error.flag = true
-                self.error.code = String(model.data.error.code)
-                self.error.message = model.data.error.message
-              })
-          })
+          sendRequest('api.checkout.form', 'request', self.form).finally(function () {
+            self.loading = false
+          }).then(
+            function (model) {
+              model.sendResponse()
+              if (model.needVerifyCode()) {
+                self.$router.push({name: 'verify', params: {system: 'verify', token: model.attr('order.token')}})
+              } else if (!model.submitToMerchant()) {
+                self.order = model.attr('order.order_data')
+                self.$router.push({name: 'success'})
+              }
+            },
+            function (model) {
+              self.error.flag = true
+              self.error.code = String(model.data.error.code)
+              self.error.message = model.data.error.message
+            })
         }
       },
       autoFocus: function () {

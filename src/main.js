@@ -11,7 +11,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VeeValidate, { Validator } from 'vee-validate'
-import { Tooltip, Popover } from 'uiv'
+import { Tooltip, Popover, Dropdown } from 'uiv'
 import { TheMask } from 'vue-the-mask'
 import ru from 'vee-validate/dist/locale/ru'
 import router from './router'
@@ -106,6 +106,7 @@ const install = function (Vue, Router, VeeValidate, TheMask) {
       }
     }
   })
+  Vue.component('Dropdown', Dropdown)
   Vue.component('the-mask', TheMask)
 }
 

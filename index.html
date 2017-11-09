@@ -77,6 +77,22 @@
   </div>
 </div>
 </script>
+<!--<script type="text/x-vue-template" id="f-fields">-->
+  <!--<div class="f-fields">-->
+    <!--<div class="f-block f-block-hr">-->
+      <!--<div class="f-block-sm">-->
+        <!--<div class="form-group" :class="{'has-error': errors.has('email')}">-->
+          <!--<label for="email">Email</label>-->
+          <!--<tooltip :text="errors.first('email')" :enable="errors.has('email')">-->
+            <!--<input name="email" v-validate="'required|email'" v-model="form.email"-->
+                   <!--data-vv-as="Номер договора" type="text" class="form-control" id="email">-->
+            <!--&lt;!&ndash;<div v-if="errors.has('email')" class="f-error">{{ errors.first('email') }}</div>&ndash;&gt;-->
+          <!--</tooltip>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</script>-->
     <script>
       var maxOptions = {
         methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
@@ -107,15 +123,13 @@
       }
 
       var minOptions = {
-        params: {
-          merchant_id: '1396424'
-        }
+//        fields: true
       }
 
       new Vue({
         el: '#app',
         data: {
-          options: maxOptions
+          options: minOptions
         }
       })
     </script>

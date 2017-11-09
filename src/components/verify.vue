@@ -18,10 +18,10 @@
           </tooltip>
         </div>
         <div class="form-group">
-          <button @click="onSubmit()" type="button" class="btn btn-success btn-block" :disabled="!valid">Продолжить</button>
+          <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block" :disabled="!valid">Продолжить</button>
         </div>
         <div class="form-group">
-          <router-link :to="{ name: 'payment-method', params: { method: 'card' }}" type="button" class="btn btn-default btn-block" >Отменить</router-link>
+          <router-link :to="{ name: 'payment-method', params: { method: 'card' }}" type="button" class="btn btn-default btn-lg btn-block" >Отменить</router-link>
         </div>
       </div>
     </div>

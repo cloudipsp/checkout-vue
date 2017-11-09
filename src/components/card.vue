@@ -7,26 +7,31 @@
       <div class="f-block-sm">
         <div class="form-group has-feedback" :class="{'has-error': errors.has('card_number')}">
           <label for="f-card_number">Номер карты</label>
-          <tooltip :text="errors.first('card_number')" :enable="errors.has('card_number')">
-          <the-mask
-            name="card_number"
-            v-validate="validCardNumber"
-            v-model="form.card_number"
-            data-vv-as="Номер карты"
-            type="tel"
-            class="form-control"
-            id="f-card_number"
-            :mask="maskCardNumber"
-            maxlength="23"
-            @blur.native="$validator.validate('card_number')"
-          ></the-mask>
-          <!--<div v-if="errors.has('card_number')" class="f-error">{{ errors.first('card_number') }}</div>-->
-          </tooltip>
-          <span class="form-control-feedback f-icon f-icon-contain card-empty"></span>
-          <!--<div v-if="false" class="input-group">-->
-            <!--<input type="text" class="form-control" id="x6">-->
-            <!--<span class="input-group-addon"><i class="glyphicon glyphicon-triangle-bottom"></i></span>-->
-          <!--</div>-->
+          <div :class="{'input-group': cards.length}">
+            <tooltip :text="errors.first('card_number')" :enable="errors.has('card_number')">
+              <the-mask
+                name="card_number"
+                v-validate="validCardNumber"
+                :value="card_number"
+                @input="inputCardNumber"
+                data-vv-as="Номер карты"
+                type="text"
+                class="form-control"
+                id="f-card_number"
+                :mask="maskCardNumber"
+                maxlength="23"
+                @blur.native="$validator.validate('card_number')"
+              ></the-mask>
+              <!--<div v-if="errors.has('card_number')" class="f-error">{{ errors.first('card_number') }}</div>-->
+            </tooltip>
+            <span v-if="!cards.length" class="form-control-feedback f-icon f-icon-contain card-empty"></span>
+            <dropdown menu-right v-if="cards.length" class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+              <template slot="dropdown">
+                <li v-for="card in cards"><a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a></li>
+              </template>
+            </dropdown>
+          </div>
         </div>
         <div class="row">
           <div class="col-xs-7">
@@ -81,12 +86,13 @@
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
   export default {
     inject: ['$validator'],
-    props: ['icons', 'form'],
+    props: ['icons', 'form', 'cards'],
     data () {
       return {
         maskExpiryDate: '##/##',
-        maskCardNumber: '#### #### #### ####',
-        validCvv: 'required|digits:3'
+        maskCardNumber: '#### ##XX XXXX ####',
+        validCvv: 'required|digits:3',
+        card_number: ''
       }
     },
     computed: {
@@ -97,11 +103,10 @@
         return 'required|date_format:MM/YY|after:' + month + '/' + year + ',true'
       },
       validCardNumber: function () {
-        console.log(this.form.card_number)
         return {
           rules: {
             required: true,
-            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666/.test(this.form.card_number)
+            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666|XXXXXX/.test(this.card_number)
           }
         }
       }
@@ -109,6 +114,17 @@
     methods: {
       imagePath: function (id) {
         return require('../assets/img/' + id + '.svg')
+      },
+      setCardNumber: function (card) {
+        this.card_number = card.card_number.replace(/ /g, '')
+        this.form.expiry_date = card.expiry_date.replace(/ /g, '')
+        this.form.hash = card.hash
+        this.form.email = card.email
+        this.form.cvv2 = ''
+      },
+      inputCardNumber: function (value) {
+        this.card_number = value
+        this.form.card_number = value
       }
     }
   }
