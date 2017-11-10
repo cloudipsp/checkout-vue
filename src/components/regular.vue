@@ -85,11 +85,15 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
-    props: ['form', 'options'],
+    props: ['options'],
     inject: ['$validator'],
     data () {
-      return {}
+      return {
+        form: store.state.form.recurring_data
+      }
     }
   }
 </script>

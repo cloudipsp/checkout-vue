@@ -29,11 +29,15 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
     inject: ['$validator'],
-    props: ['options', 'onSubmit', 'form', 'valid'],
+    props: ['options', 'onSubmit', 'valid'],
     data () {
-      return {}
+      return {
+        form: store.state.form
+      }
     },
     created: function () {
       this.form.code = ''

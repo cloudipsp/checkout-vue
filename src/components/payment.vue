@@ -12,8 +12,8 @@
       <methods :methods="options.methods" :fast="options.fast" :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <fields v-if="options.fields" :form="form"></fields>
-      <router-view :options="options" :on-submit="submit" :form="form" :valid="!this.errors.items.length" :order="order" :cards="cards"></router-view>
+      <fields v-if="options.fields"></fields>
+      <router-view :options="options" :on-submit="submit" :valid="!this.errors.items.length" :order="order" :cards="cards"></router-view>
       <div v-if="loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -34,6 +34,7 @@
   import Fields from './payment-fields'
   import Verify from './verify'
   import { sendRequest } from '@/helpers'
+  import store from '@/store'
 
   export default {
     props: ['options', 'onSetMin'],
@@ -41,11 +42,8 @@
       return {
         loading: false,
         show: false,
-        form: {},
-        error: {
-          flag: false,
-          buffer: false
-        },
+        form: store.state.form,
+        error: store.state.error,
         timeoutId: 0,
         order: {},
         cards: []
@@ -63,25 +61,35 @@
     },
     created: function () {
       let self = this
+      Object.assign(this.form, this.options.params)
+
       sendRequest('api.checkout.cards', 'get', {}).then(
         function (model) {
-//          self.cards = Object.values(model.data)
-          self.cards = [{
-            card_number: '4444 55XX XXXX 6666',
-            expiry_date: '11 / 17',
-            email: 'asd@asd.asd',
-            hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
-          },
-          {
-            card_number: '4444 55XX XXXX 1111',
-            expiry_date: '11 / 19',
-            email: 'test@asd.asd',
-            hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
-          }]
-
-        },
-        function (model) {})
-      Object.assign(this.form, this.options.params)
+          self.cards = Object.values(model.data)
+//          self.cards = [{
+//            card_number: '4444 55XX XXXX 6666',
+//            expiry_date: '11 / 17',
+//            email: 'asd@asd.asd',
+//            hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
+//          },
+//          {
+//            card_number: '4444 55XX XXXX 1111',
+//            expiry_date: '11 / 19',
+//            email: 'test@asd.asd',
+//            hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
+//          }]
+        }, function () {})
+      sendRequest('api.checkout', 'app', self.form).then(
+        function (model) {
+          self.form.fee = model.data.info.client_fee || 0
+//          self.form.fee = 0.05
+          if (self.form.fee) {
+            return sendRequest('api.checkout.fee', 'get', self.form).then(
+              function (model) {
+                self.form.amount_with_fee = model.data.amount_with_fee
+              }, function () {})
+          }
+        }, function () {})
       if (!this.$route.params.method) {
         this.$router.push({name: 'payment-method', params: {method: this.options.methods[0]}})
       }
@@ -133,12 +141,7 @@
                 self.order = model.attr('order.order_data')
                 self.$router.push({name: 'success'})
               }
-            },
-            function (model) {
-              self.error.flag = true
-              self.error.code = String(model.data.error.code)
-              self.error.message = model.data.error.message
-            })
+            }, function () {})
         }
       },
       autoFocus: function () {

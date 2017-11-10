@@ -7,6 +7,7 @@
 // TODO запросы
 // TODO мультиязычность
 // TODO свайп
+// TODO кешировать запросы
 
 import Vue from 'vue'
 import Router from 'vue-router'

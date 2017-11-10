@@ -4,15 +4,14 @@
       :is="method"
       :icons="options[method + 'Icons']"
       :payment-systems="options[method]"
-      :form="form"
       :cards="cards"
     ></component>
-    <regular v-if="options.regular && options.regular.show && method === 'card'" :options="options.regular" :form="form.recurring_data"></regular>
-    <offer v-if="options.offer" :form="form"></offer>
+    <regular v-if="options.regular && options.regular.show && method === 'card'" :options="options.regular"></regular>
+    <offer v-if="options.offer"></offer>
     <div class="f-block">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block f-submit" :disabled="!valid">
-          Оплатить {{full_amount}} {{form.currency}}
+          Оплатить <span v-if="full_amount">{{full_amount}} {{form.currency}}</span>
         </button>
         <div class="hidden-md hidden-lg">
           <i class="f-icon f-icon-block security"></i>
@@ -30,15 +29,21 @@
   import Sepa from '@/components/sepa'
   import Regular from './regular'
   import Offer from './offer'
+  import store from '@/store'
 
   export default {
-    props: ['method', 'options', 'onSubmit', 'form', 'valid', 'cards'],
+    props: ['method', 'options', 'onSubmit', 'valid', 'cards'],
     data () {
-      return {}
+      return {
+        form: store.state.form
+      }
     },
     computed: {
       full_amount: function () {
-        return parseInt(this.form.amount) + parseInt(this.form.commision)
+        if (!this.form.amount) {
+          return false
+        }
+        return this.form.amount_with_fee || this.form.amount
       }
     },
     components: {

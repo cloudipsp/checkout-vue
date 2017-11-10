@@ -9,11 +9,14 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
     inject: ['$validator'],
-    props: ['form'],
     data () {
-      return {}
+      return {
+        form: store.state.form
+      }
     }
   }
 </script>

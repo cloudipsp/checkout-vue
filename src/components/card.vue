@@ -12,8 +12,7 @@
               <the-mask
                 name="card_number"
                 v-validate="validCardNumber"
-                :value="card_number"
-                @input="inputCardNumber"
+                v-model="form.card_number"
                 data-vv-as="Номер карты"
                 type="text"
                 class="form-control"
@@ -84,15 +83,18 @@
 
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
+  import store from '@/store'
+  import { sendRequest } from '@/helpers'
+
   export default {
     inject: ['$validator'],
-    props: ['icons', 'form', 'cards'],
+    props: ['icons', 'cards'],
     data () {
       return {
+        form: store.state.form,
         maskExpiryDate: '##/##',
         maskCardNumber: '#### ##XX XXXX ####',
-        validCvv: 'required|digits:3',
-        card_number: ''
+        validCvv: 'required|digits:3'
       }
     },
     computed: {
@@ -106,8 +108,26 @@
         return {
           rules: {
             required: true,
-            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666|XXXXXX/.test(this.card_number)
+            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666|XXXXXX/.test(this.form.card_number)
           }
+        }
+      }
+    },
+    watch: {
+      'form.card_number': function (newVal, oldVal) {
+        let newFirst = newVal && newVal[0]
+        let oldFirst = oldVal && oldVal[0]
+        let newBin = newVal && newVal.slice(0, 6)
+        let oldBin = oldVal && oldVal.slice(0, 6)
+        if (newFirst && newFirst !== oldFirst) {
+          sendRequest('api.checkout.card_type_fee', 'get', { first_card_digit: 4 }).then(
+            function (model) {},
+            function (model) {})
+        }
+        if (newBin.length === 6 && newBin !== oldBin) {
+          sendRequest('api.checkout.card_bin', 'get', { card_bin: newBin }).then(
+            function (model) {},
+            function (model) {})
         }
       }
     },
@@ -116,15 +136,20 @@
         return require('../assets/img/' + id + '.svg')
       },
       setCardNumber: function (card) {
-        this.card_number = card.card_number.replace(/ /g, '')
+//        this.$set(this.form, 'card_number', card.card_number.replace(/ /g, ''))
+//        this.$set(this.form, 'expiry_date', card.expiry_date.replace(/ /g, ''))
+//        this.$set(this.form, 'email', card.email)
+        this.form.card_number = card.card_number.replace(/ /g, '')
         this.form.expiry_date = card.expiry_date.replace(/ /g, '')
-        this.form.hash = card.hash
         this.form.email = card.email
+        this.form.hash = card.hash
         this.form.cvv2 = ''
-      },
-      inputCardNumber: function (value) {
-        this.card_number = value
-        this.form.card_number = value
+//        this.$nextTick(function () {
+//          this.$validator.validate('expiry_date')
+//          if (this.$validator.flags.email) {
+//            this.$validator.validate('email')
+//          }
+//        })
       }
     }
   }

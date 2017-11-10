@@ -23,20 +23,11 @@
           cardIcons: ['mastercard', 'visa'],
           title: 'Test payment'
         },
-        defaultParams: {
-          merchant_id: '1396424',
-          commision: 0,
-          currency: 'UAH',
-          amount: '1',
-          recurring_data: {}
-        },
         validOptions: {}
       }
     },
     created: function () {
       Object.assign(this.validOptions, this.defaultOptions, this.options)
-      this.validOptions.params = {}
-      Object.assign(this.validOptions.params, this.defaultParams, this.options.params)
       this.validOptions.fast = this.fast()
     },
     components: {

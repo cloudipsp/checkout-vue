@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "ipsp-js-sdk": "github:cloudipsp/ipsp-js-sdk",
+    "ipsp-js-sdk": "^1.0.7",
     "uiv": "^0.12.3",
     "vee-validate": "^2.0.0-rc.21",
     "vue": "^2.5.3",

@@ -22,8 +22,8 @@
 <div id=app>
   <f-checkout :options=options></f-checkout>
 </div>
-<script type=text/x-vue-template id=f-fields>
-<div class="f-fields">
+<script type=text/x-vue-template id=f-fields2>
+<div>
   <div class="f-block f-block-hr">
     <div class="form-group" :class="{'has-error': errors.has('field_1')}">
       <label for="field_1">Фио</label>
@@ -77,6 +77,31 @@
   </div>
 </div>
 </script>
+<script type=text/x-vue-template id=f-fields>
+  <div>
+    <div class="f-block f-block-hr">
+      <div class="f-block-sm">
+        <div class="form-group" :class="{'has-error': errors.has('email')}">
+          <label for="email">Email</label>
+          <tooltip :text="errors.first('email')" :enable="errors.has('email')">
+            <input name="email" v-validate="'required|email'" v-model="form.email"
+                   data-vv-as="Номер договора" type="text" class="form-control" id="email">
+          </tooltip>
+        </div>
+        <div class="form-group" :class="{'has-error': errors.has('amount')}">
+          <label for="amount">Сума к оплате</label>
+          <div class="input-group">
+            <tooltip :text="errors.first('amount')" :enable="errors.has('amount')">
+              <input name="amount" v-validate="'required|decimal:2'" v-model="form.amount"
+                     data-vv-as="Сума к оплате" type="text" class="form-control" id="amount">
+            </tooltip>
+            <span class="input-group-addon">UAH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
     <script>
       var maxOptions = {
         methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
@@ -100,13 +125,15 @@
           verification: 'y',
           currency: 'UAH',
           amount: '500',
-          commision: 10,
+          fee: 10,
           order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
           response_url: 'https://www.fondy.eu'
         }
       }
 
-      var minOptions = {}
+      var minOptions = {
+//        fields: true
+      }
 
       new Vue({
         el: '#app',
