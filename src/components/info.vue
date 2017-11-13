@@ -7,8 +7,8 @@
       <p v-if="options.link"><a :href="options.link" target="_blank">{{ options.link }}</a></p>
     </div>
     <div v-if="form.fee" class="f-block f-block-hr hidden-xs hidden-sm">
-      <div>Сумма платежа: {{form.amount}} {{form.currency}}</div>
-      <div>Комиссия: <span v-if="getFee">{{getFee}} {{form.currency}}</span> <span v-if="form.fee">({{ form.fee }} %)</span></div>
+      <div>Сумма платежа: {{ minAmount }} {{form.currency}}</div>
+      <div>Комиссия: <span v-if="minFee">{{minFee}} {{form.currency}}</span> <span v-if="fee">({{ fee }})</span></div>
     </div>
     <div class="hidden-xs hidden-sm">
       <i class="f-icon f-icon-block security"></i>
@@ -27,11 +27,21 @@
       }
     },
     computed: {
-      getFee: function () {
-        if (!this.form.amount) {
+      minFee: function () {
+        let amount = parseInt(this.form.amount)
+        let amountWithFee = parseInt(this.form.amount_with_fee)
+        if (!amount) {
           return false
         }
-        return this.form.amount_with_fee ? (parseFloat(this.form.amount_with_fee) - parseFloat(this.form.amount)).toFixed(2) : false
+        return amountWithFee ? (amountWithFee - amount) / 100 : false
+      },
+      minAmount: function () {
+        let amount = parseInt(this.form.amount)
+        return amount / 100
+      },
+      fee: function () {
+        let current = Number(this.form.fee)
+        return current ? parseFloat(String(current * 100)).toFixed(2).concat('%') : 0
       }
     }
   }

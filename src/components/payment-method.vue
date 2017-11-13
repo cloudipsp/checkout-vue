@@ -1,5 +1,6 @@
 <template>
   <div>
+    <fields v-if="options.fields"></fields>
     <component
       :is="method"
       :icons="options[method + 'Icons']"
@@ -11,7 +12,7 @@
     <div class="f-block">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block f-submit" :disabled="!valid">
-          Оплатить <span v-if="full_amount">{{full_amount}} {{form.currency}}</span>
+          Оплатить <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>
         </button>
         <div class="hidden-md hidden-lg">
           <i class="f-icon f-icon-block security"></i>
@@ -30,6 +31,7 @@
   import Regular from './regular'
   import Offer from './offer'
   import store from '@/store'
+  import Fields from './payment-fields'
 
   export default {
     props: ['method', 'options', 'onSubmit', 'valid', 'cards'],
@@ -39,11 +41,13 @@
       }
     },
     computed: {
-      full_amount: function () {
-        if (!this.form.amount) {
+      fullAmount: function () {
+        let amount = parseInt(this.form.amount)
+        let amountWithFee = parseInt(this.form.amount_with_fee)
+        if (!amount) {
           return false
         }
-        return this.form.amount_with_fee || this.form.amount
+        return (amountWithFee || amount) / 100
       }
     },
     components: {
@@ -53,7 +57,8 @@
       Cash,
       Sepa,
       Regular,
-      Offer
+      Offer,
+      Fields
     },
     methods: {}
   }

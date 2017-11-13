@@ -10,15 +10,26 @@
         form: store.state.form
       }
     },
-    watch: {
-      'form.amount': function (v) {
-        let self = this
-        if (v && this.form.fee) {
-          sendRequest('api.checkout.fee', 'get', self.form).then(
-            function (model) {
-              self.form.amount_with_fee = model.data.amount_with_fee
-            },
-            function (model) {})
+    computed: {
+      amount: {
+        get: function () {
+          let amount = parseInt(this.form.amount)
+          return amount ? amount / 100 : ''
+        },
+        set: function (v) {
+          if (v.slice(-1) === '.') {
+            return false
+          }
+          this.form.amount = Math.round(parseFloat(v).toFixed(2) * 100) || 0
+          this.$validator.validate('amount', v)
+          let self = this
+          if (v && this.form.fee) {
+            sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
+              function (model) {
+                self.form.amount_with_fee = parseInt(model.data.amount_with_fee)
+              },
+              function (model) {})
+          }
         }
       }
     }

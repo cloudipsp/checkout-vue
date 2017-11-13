@@ -120,12 +120,12 @@
         let newBin = newVal && newVal.slice(0, 6)
         let oldBin = oldVal && oldVal.slice(0, 6)
         if (newFirst && newFirst !== oldFirst) {
-          sendRequest('api.checkout.card_type_fee', 'get', { first_card_digit: 4 }).then(
+          sendRequest('api.checkout.card_type_fee', 'get', { first_card_digit: newFirst }, String(newFirst)).then(
             function (model) {},
             function (model) {})
         }
         if (newBin.length === 6 && newBin !== oldBin) {
-          sendRequest('api.checkout.card_bin', 'get', { card_bin: newBin }).then(
+          sendRequest('api.checkout.card_bin', 'get', { card_bin: newBin }, String(newBin)).then(
             function (model) {},
             function (model) {})
         }

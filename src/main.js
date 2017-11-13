@@ -1,13 +1,11 @@
 // TODO вынести зависимости с index / две зборки с либами и без
 // TODO import config icon f-fast-access
-// TODO create store
 // TODO delete bootstrap
 // TODO directive/component params
 // TODO разделить респонс дизайн
-// TODO запросы
 // TODO мультиязычность
 // TODO свайп
-// TODO кешировать запросы
+// TODO decimal amount
 
 import Vue from 'vue'
 import Router from 'vue-router'

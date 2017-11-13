@@ -12,7 +12,6 @@
       <methods :methods="options.methods" :fast="options.fast" :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <fields v-if="options.fields"></fields>
       <router-view :options="options" :on-submit="submit" :valid="!this.errors.items.length" :order="order" :cards="cards"></router-view>
       <div v-if="loading">
         <div class="f-loading"></div>
@@ -31,7 +30,6 @@
 <script>
   import Info from './info'
   import Methods from './methods'
-  import Fields from './payment-fields'
   import Verify from './verify'
   import { sendRequest } from '@/helpers'
   import store from '@/store'
@@ -62,6 +60,9 @@
     created: function () {
       let self = this
       Object.assign(this.form, this.options.params)
+      if (!parseInt(this.form.amount)) {
+        this.form.amount = 0
+      }
 
       sendRequest('api.checkout.cards', 'get', {}).then(
         function (model) {
@@ -79,14 +80,24 @@
 //            hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
 //          }]
         }, function () {})
-      sendRequest('api.checkout', 'app', self.form).then(
+      sendRequest('api.checkout.info', 'get', self.form).then(
         function (model) {
-          self.form.fee = model.data.info.client_fee || 0
-//          self.form.fee = 0.05
+          let info = model.data
+          let order = model.data.order_data
+          if (order) {
+            self.form.amount = order.amount
+            self.form.currency = order.currency
+            self.form.merchant_id = order.merchant_id
+            self.form.fee = info.order.fee || 0
+          } else {
+            self.form.fee = info.client_fee || 0
+          }
+
+//          self.form.fee = 0.055
           if (self.form.fee) {
-            return sendRequest('api.checkout.fee', 'get', self.form).then(
+            return sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
               function (model) {
-                self.form.amount_with_fee = model.data.amount_with_fee
+                self.form.amount_with_fee = parseInt(model.data.amount_with_fee)
               }, function () {})
           }
         }, function () {})
@@ -110,7 +121,6 @@
     components: {
       Info,
       Methods,
-      Fields,
       Verify
     },
     $_veeValidate: {

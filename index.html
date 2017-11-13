@@ -92,7 +92,7 @@
           <label for="amount">Сума к оплате</label>
           <div class="input-group">
             <tooltip :text="errors.first('amount')" :enable="errors.has('amount')">
-              <input name="amount" v-validate="'required|decimal:2'" v-model="form.amount"
+              <input name="amount" v-validate="'required|decimal:2'" v-model="amount" data-vv-validate-on="blur"
                      data-vv-as="Сума к оплате" type="text" class="form-control" id="amount">
             </tooltip>
             <span class="input-group-addon">UAH</span>
@@ -124,15 +124,21 @@
           required_rectoken: 'y',
           verification: 'y',
           currency: 'UAH',
-          amount: '500',
-          fee: 10,
+          amount: 500,
+          fee: 0.03,
           order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
           response_url: 'https://www.fondy.eu'
         }
       }
 
       var minOptions = {
-//        fields: true
+        fields: true,
+        params: {
+          verification_type: 'code',
+          required_rectoken: 'y',
+          verification: 'y',
+          token: 'ee847c0deb7e564580c56b042489d08384885f4f'
+        }
       }
 
       new Vue({

@@ -3,15 +3,16 @@ export default {
     form: {
       // merchant_id: '1396424', // prod
       merchant_id: '900024', // dev
+      amount: 100,
       fee: 0,
+      amount_with_fee: 0,
       currency: 'UAH',
-      amount: '1',
       recurring_data: {},
       card_number: '',
       expiry_date: '',
       cvv2: '',
       email: '',
-      amount_with_fee: 0
+      code: ''
     },
     error: {
       flag: false,
