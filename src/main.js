@@ -15,6 +15,8 @@ import { TheMask } from 'vue-the-mask'
 import ru from 'vee-validate/dist/locale/ru'
 import router from './router'
 import checkout from './checkout'
+import InputAmount from '@/components/input-amount'
+import InputText from '@/components/input-text'
 
 const install = function (Vue, Router, VeeValidate, TheMask) {
   Vue.config.productionTip = false
@@ -107,6 +109,8 @@ const install = function (Vue, Router, VeeValidate, TheMask) {
   })
   Vue.component('Dropdown', Dropdown)
   Vue.component('the-mask', TheMask)
+  Vue.component('inputAmount', InputAmount)
+  Vue.component('inputText', InputText)
 }
 
 if (typeof window !== 'undefined') {

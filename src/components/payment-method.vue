@@ -7,7 +7,7 @@
       :payment-systems="options[method]"
       :cards="cards"
     ></component>
-    <regular v-if="options.regular && options.regular.show && method === 'card'" :options="options.regular"></regular>
+    <regular v-if="options.regular && options.regular.insert && method === 'card'" :options="options.regular"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block">
       <div class="f-block-sm">

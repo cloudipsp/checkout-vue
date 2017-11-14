@@ -1,5 +1,5 @@
 <template>
-  <div class="f-regular">
+  <div class="f-regular" :style="{ display: options.hide ? 'none' : 'block' }">
     <div class="f-block">
       <div class="f-block-sm">
         <div class="text-center">
@@ -46,24 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group" :class="{'has-error': errors.has('f-regular-amount')}">
-          <label for="f-regular-amount">Сумма к оплате</label>
-          <div class="input-group">
-            <tooltip :text="errors.first('f-regular-amount')" :enable="errors.has('f-regular-amount')">
-            <input
-              name="f-regular-amount"
-              v-validate="'required|decimal:2'"
-              v-model="form.amount"
-              data-vv-as="Сумма к оплате"
-              type="tel"
-              class="form-control"
-              id="f-regular-amount"
-            >
-            <!--<div v-if="errors.has('f-regular-amount')" class="f-error">{{ errors.first('f-regular-amount') }}</div>-->
-            </tooltip>
-            <span class="input-group-addon">UAH</span>
-          </div>
-        </div>
+        <input-amount class="form-group" name="f-regular-amount" field="amount" label="Сума к оплате" :form="form"></input-amount>
         <div class="form-group" :class="{'has-error': errors.has('f-regular-start-time')}">
           <label for="f-regular-start-time">Начать с</label>
           <tooltip :text="errors.first('f-regular-start-time')" :enable="errors.has('f-regular-start-time')">

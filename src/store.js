@@ -7,7 +7,11 @@ export default {
       fee: 0,
       amount_with_fee: 0,
       currency: 'UAH',
-      recurring_data: {},
+      recurring_data: {
+        every: 1,
+        period: 'month',
+        amount: 100
+      },
       card_number: '',
       expiry_date: '',
       cvv2: '',

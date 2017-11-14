@@ -62,6 +62,7 @@
       Object.assign(this.form, this.options.params)
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
+        this.form.recurring_data.amount = 0
       }
 
       sendRequest('api.checkout.cards', 'get', {}).then(
@@ -86,6 +87,7 @@
           let order = model.data.order_data
           if (order) {
             self.form.amount = order.amount
+            self.form.recurring_data.amount = order.amount
             self.form.currency = order.currency
             self.form.merchant_id = order.merchant_id
             self.form.fee = info.order.fee || 0

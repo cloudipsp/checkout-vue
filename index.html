@@ -22,83 +22,28 @@
 <div id="app">
   <f-checkout :options="options"></f-checkout>
 </div>
-<script type="text/x-vue-template" id="f-fields2">
+<script type="text/x-vue-template" id="f-fields1">
 <div>
   <div class="f-block f-block-hr">
-    <div class="form-group" :class="{'has-error': errors.has('field_1')}">
-      <label for="field_1">Фио</label>
-      <tooltip :text="errors.first('field_1')" :enable="errors.has('field_1')">
-        <input name="field_1" v-validate="'required|alpha'" v-model="form.field_1" data-vv-as="Фио" type="text"
-               class="form-control" id="field_1">
-        <!--<div v-if="errors.has('field_1')" class="f-error">{{ errors.first('field_1') }}</div>-->
-      </tooltip>
-    </div>
+    <input-text class="form-group" name="field_1" field="field_1" label="Фио" :form="form" validate="required|alpha"></input-text>
     <div class="row">
-      <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_2')}">
-        <label for="field_2">Email</label>
-        <tooltip :text="errors.first('field_2')" :enable="errors.has('field_2')" placement="bottom">
-          <input name="field_2" v-validate="'required|email'" v-model="form.field_2" data-vv-as="Email"
-                 type="text" class="form-control" id="field_2">
-          <!--<div v-if="errors.has('field_2')" class="f-error">{{ errors.first('field_2') }}</div>-->
-        </tooltip>
-      </div>
-      <div class="form-group col-xs-6" :class="{'has-error': errors.has('field_3')}">
-        <label for="field_3">Телефон</label>
-        <tooltip :text="errors.first('field_3')" :enable="errors.has('field_3')">
-          <input name="field_3" v-validate="'required|numeric'" v-model="form.field_3" data-vv-as="Телефон"
-                 type="text" class="form-control" id="field_3">
-          <!--<div v-if="errors.has('field_3')" class="f-error">{{ errors.first('field_3') }}</div>-->
-        </tooltip>
-      </div>
+      <input-text class="form-group col-xs-6" name="email" field="email" label="Email" :form="form" validate="required|email"></input-text>
+      <input-text class="form-group col-xs-6" name="field_3" field="field_3" label="Телефон" :form="form" validate="required|numeric"></input-text>
     </div>
   </div>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <div class="form-group" :class="{'has-error': errors.has('field_4')}">
-        <label for="field_4">Сума к оплате</label>
-        <div class="input-group">
-          <tooltip :text="errors.first('field_4')" :enable="errors.has('field_4')">
-            <input name="field_4" v-validate="'required|decimal:2'" v-model="form.field_4"
-                   data-vv-as="Сума к оплате" type="text" class="form-control" id="field_4">
-            <!--<div v-if="errors.has('field_4')" class="f-error">{{ errors.first('field_4') }}</div>-->
-          </tooltip>
-          <span class="input-group-addon">UAH</span>
-        </div>
-      </div>
-      <div class="form-group" :class="{'has-error': errors.has('field_5')}">
-        <label for="field_5">Номер договора</label>
-        <tooltip :text="errors.first('field_5')" :enable="errors.has('field_5')">
-          <input name="field_5" v-validate="'required|alpha_num'" v-model="form.field_5"
-                 data-vv-as="Номер договора" type="text" class="form-control" id="field_5">
-          <!--<div v-if="errors.has('field_5')" class="f-error">{{ errors.first('field_5') }}</div>-->
-        </tooltip>
-      </div>
+      <input-amount class="form-group" name="amount" field="amount" label="Сума к оплате" :form="form" :on-input="onInput"></input-amount>
+      <input-text class="form-group" name="field_5" field="field_5" label="Номер договора" :form="form" validate="required|alpha_num"></input-text>
     </div>
   </div>
 </div>
 </script>
 <script type="text/x-vue-template" id="f-fields">
-  <div>
-    <div class="f-block f-block-hr">
-      <div class="f-block-sm">
-        <div class="form-group" :class="{'has-error': errors.has('email')}">
-          <label for="email">Email</label>
-          <tooltip :text="errors.first('email')" :enable="errors.has('email')">
-            <input name="email" v-validate="'required|email'" v-model="form.email"
-                   data-vv-as="Номер договора" type="text" class="form-control" id="email">
-          </tooltip>
-        </div>
-        <div class="form-group" :class="{'has-error': errors.has('amount')}">
-          <label for="amount">Сума к оплате</label>
-          <div class="input-group">
-            <tooltip :text="errors.first('amount')" :enable="errors.has('amount')">
-              <input name="amount" v-validate="'required|decimal:2'" v-model="amount" data-vv-validate-on="blur"
-                     data-vv-as="Сума к оплате" type="text" class="form-control" id="amount">
-            </tooltip>
-            <span class="input-group-addon">UAH</span>
-          </div>
-        </div>
-      </div>
+  <div class="f-block f-block-hr">
+    <div class="f-block-sm">
+      <input-text class="form-group" name="email" field="email" label="Email" :form="form" validate="required|email"></input-text>
+      <input-amount class="form-group" name="amount" field="amount" label="Сума к оплате" :form="form" :on-input="onInput"></input-amount>
     </div>
   </div>
 </script>
@@ -112,8 +57,9 @@
         cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
         fields: true,
         regular: {
-          show: true,
-          open: true
+          insert: true,
+          open: true,
+          hide: false
         },
         offer: true,
         title: 'Назначение платежа',
@@ -127,24 +73,35 @@
           amount: 500,
           fee: 0.03,
           order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-          response_url: 'https://www.fondy.eu'
+          response_url: 'https://www.fondy.eu',
+          token: 'ee847c0deb7e564580c56b042489d08384885f4f'
         }
       }
 
       var minOptions = {
         fields: true,
+        regular: {
+          insert: true,
+          open: true,
+          hide: false
+        },
         params: {
           verification_type: 'code',
           required_rectoken: 'y',
           verification: 'y',
-          token: 'ee847c0deb7e564580c56b042489d08384885f4f'
+          token: 'ee847c0deb7e564580c56b042489d08384885f4f',
+          recurring_data: {
+            every: 2,
+            period: 'month',
+            amount: 100
+          }
         }
       }
 
       new Vue({
         el: '#app',
         data: {
-          options: maxOptions
+          options: minOptions
         }
       })
     </script>
