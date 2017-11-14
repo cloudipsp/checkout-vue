@@ -30,6 +30,7 @@
       }
     },
     created: function () {
+      console.log('test')
       Object.assign(this.validOptions, this.defaultOptions, this.options)
       this.validOptions.fast = this.fast()
     },
