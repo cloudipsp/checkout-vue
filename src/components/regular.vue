@@ -77,6 +77,79 @@
       return {
         form: store.state.form.recurring_data
       }
+    },
+    created: function () {
+      this.form.end_time = this.recurringEndTime()
+      this.form.start_time = this.recurringStartTime()
+    },
+    watch: {
+      'form.period': function () {
+        this.form.start_time = this.getFuturePeriod(this.form.period, this.form.every)
+      },
+      'form.every': function () {
+        this.form.start_time = this.getFuturePeriod(this.form.period, this.form.every)
+      }
+    },
+    methods: {
+      getDate: function (date) {
+        date.setHours(0)
+        date.setMinutes(0)
+        date.setSeconds(0)
+        date.setMilliseconds(0)
+        return date
+      },
+      getDateFormat: function (d) {
+        return d.getFullYear() + '-' + (('0' + (d.getMonth() + 1)).slice(-2)) + '-' + (('0' + d.getDate()).slice(-2))
+      },
+      recurringTime: function (field) {
+        let date = this.form[field] || new Date()
+        let value = this.getDate(new Date(date))
+        let now = this.getDate(new Date())
+        if (now > value) value = now
+        return this.getDateFormat(value)
+      },
+      recurringStartTime: function () {
+        if (this.form.start_time) {
+          return this.recurringTime('start_time')
+        } else {
+          return this.getFuturePeriod(this.form.period, this.form.every)
+        }
+      },
+      recurringEndTime: function () {
+        if (this.form.end_time) {
+          return this.recurringTime('end_time')
+        } else {
+          return this.getDefaultEndDate()
+        }
+      },
+      getFuturePeriod: function (period, every) {
+        let d = new Date()
+        switch (period) {
+          case 'day':
+            d.setDate(d.getDate() + (1 * every))
+            break
+          case 'week':
+            d.setDate(d.getDate() + (7 * every))
+            break
+          case 'month':
+            d.setMonth(d.getMonth() + (1 * every))
+            break
+          case 'year':
+            d.setFullYear(d.getFullYear() + (1 * every))
+            break
+        }
+        return this.getDateFormat(d)
+      },
+      getDefaultEndDate: function () {
+        let d = new Date()
+        d.setFullYear(d.getFullYear() + 5)
+        return this.getDateFormat(d)
+      }
+//      recurringDefaultPeriod: function () {
+//        let every = this.attr('recurring.every') || '1'
+//        let period = this.attr('recurring.period') || 'month'
+//        return [every, period].join(',')
+//      }
     }
   }
 </script>

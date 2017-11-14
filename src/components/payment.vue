@@ -60,9 +60,14 @@
     created: function () {
       let self = this
       Object.assign(this.form, this.options.params)
+      Object.assign(this.form.recurring_data, this.options.recurring_data)
+
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
         this.form.recurring_data.amount = 0
+      }
+      if (this.options.regular.insert) {
+        this.form.recurring = 'y'
       }
 
       sendRequest('api.checkout.cards', 'get', {}).then(

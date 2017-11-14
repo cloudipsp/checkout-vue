@@ -8,8 +8,10 @@ export default {
       amount_with_fee: 0,
       currency: 'UAH',
       recurring_data: {
-        every: 1,
         period: 'month',
+        every: 1,
+        start_time: '',
+        end_time: '',
         amount: 100
       },
       card_number: '',

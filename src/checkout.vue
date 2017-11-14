@@ -21,7 +21,10 @@
           cash: [],
           fast: [],
           cardIcons: ['mastercard', 'visa'],
-          title: 'Test payment'
+          title: 'Test payment',
+          regular: {
+            insert: false
+          }
         },
         validOptions: {}
       }
