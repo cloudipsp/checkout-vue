@@ -13,28 +13,32 @@
         height: 100%;
         overflow-y: scroll;
       }
-      #app {
-        height: 100%;
-      }
     </style>
   </head>
   <body>
+  <button class="btn btn-success" id="submit">submit 1</button>
+  <button class="btn btn-default" id="go-ibank">go ibank</button>
+  <button class="btn btn-default" id="go-card">go card</button>
 <div id="app">
+  <button class="btn btn-success" @click="submit()" :disabled="!!errors.items.length">submit 2</button>
+  <button class="btn btn-default" @click="location('ibank')">go ibank</button>
+  <button class="btn btn-default" @click="location('card')">go card</button>
   <f-checkout :options="options"></f-checkout>
 </div>
+
 <script type="text/x-vue-template" id="f-fields1">
 <div>
   <div class="f-block f-block-hr">
-    <input-text class="form-group" name="field_1" field="field_1" label="Фио" :form="form" validate="required|alpha"></input-text>
+    <input-text name="field_1" label="Фио" validate="required|alpha"></input-text>
     <div class="row">
-      <input-text class="form-group col-xs-6" name="email" field="email" label="Email" :form="form" validate="required|email"></input-text>
-      <input-text class="form-group col-xs-6" name="field_3" field="field_3" label="Телефон" :form="form" validate="required|numeric"></input-text>
+      <input-text class="col-xs-6" name="email" label="Email" validate="required|email"></input-text>
+      <input-text class="col-xs-6" name="field_3" label="Телефон" validate="required|numeric"></input-text>
     </div>
   </div>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <input-amount class="form-group" name="amount" field="amount" label="Сума к оплате" :form="form" :on-input="onInput"></input-amount>
-      <input-text class="form-group" name="field_5" field="field_5" label="Номер договора" :form="form" validate="required|alpha_num"></input-text>
+      <input-amount name="amount" label="Сума к оплате" :on-input="onInput"></input-amount>
+      <input-text name="field_5" label="Номер договора" validate="required|alpha_num"></input-text>
     </div>
   </div>
 </div>
@@ -42,77 +46,100 @@
 <script type="text/x-vue-template" id="f-fields">
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <input-text class="form-group" name="email" field="email" label="Email" :form="form" validate="required|email"></input-text>
-      <input-amount class="form-group" name="amount" field="amount" label="Сума к оплате" :form="form" :on-input="onInput"></input-amount>
+      <input-text name="email" label="Email" validate="required|email"></input-text>
+      <input-amount name="amount" label="Сума к оплате" :on-input="onInput"></input-amount>
     </div>
   </div>
 </script>
-    <script>
-      var maxOptions = {
-        methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-        ibank: ['p24', 'platba24', 'raiffeisen'],
-        emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-        cash: ['liqpay'],
-        fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-        cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-        fields: true,
-        regular: {
-          insert: true,
-          open: true,
-          hide: false
-        },
-        recurring_data: {
-          every: 2,
-          period: 'month',
-          amount: 100,
-          end_time: '2020-11-14',
-          start_time: '2018-11-11'
-        },
-        offer: true,
-        title: 'Назначение платежа',
-        link: 'https://fondy.eu',
-        params: {
-          merchant_id: '900024',
-          verification_type: 'code',
-          required_rectoken: 'y',
-          verification: 'y',
-          currency: 'UAH',
-          amount: 500,
-          fee: 0.03,
-          order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-          response_url: 'https://www.fondy.eu',
-          token: 'ee847c0deb7e564580c56b042489d08384885f4f'
-        }
-      }
+<script>
+  var maxOptions = {
+    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+    ibank: ['p24', 'platba24', 'raiffeisen'],
+    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+    cash: ['liqpay'],
+    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+    fields: true,
+    regular: {
+      insert: true,
+      open: true,
+      hide: false
+    },
+    recurring_data: {
+      every: 2,
+      period: 'month',
+      amount: 100,
+      end_time: '2020-11-14',
+      start_time: '2018-11-11'
+    },
+    offer: true,
+    title: 'Назначение платежа',
+    link: 'https://fondy.eu',
+    params: {
+      merchant_id: '900024',
+      verification_type: 'code',
+      required_rectoken: 'y',
+      verification: 'y',
+      currency: 'UAH',
+      amount: 500,
+      fee: 0.03,
+      order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+      response_url: 'https://www.fondy.eu',
+      token: 'ee847c0deb7e564580c56b042489d08384885f4f'
+    },
+    fullScreen: false
+  }
 
-      var minOptions = {
-        fields: true,
-        regular: {
-          insert: true,
-          open: true,
-          hide: false
-        },
-        recurring_data: {
-          every: 2,
-          period: 'month',
-          amount: 100,
-          end_time: '2020-11-14',
-          start_time: '2018-11-11'
-        },
-        params: {
-          verification_type: 'code',
-          required_rectoken: 'y',
-          verification: 'y',
-          token: '38d3490b1081d47f9690f6b0e392c59ae47e4176'
-        }
-      }
+  var minOptions = {
+//    fields: true,
+//    regular: {
+//      insert: true,
+//      open: true,
+//      hide: false
+//    },
+//    recurring_data: {
+//      every: 2,
+//      period: 'month',
+//      amount: 100,
+//      end_time: '2020-11-14',
+//      start_time: '2018-11-11'
+//    },
+    params: {
+      verification_type: 'code',
+      required_rectoken: 'y',
+      verification: 'y',
+      token: '38d3490b1081d47f9690f6b0e392c59ae47e4176'
+    }
+  }
 
-      new Vue({
-        el: '#app',
-        data: {
-          options: minOptions
-        }
-      })
-    </script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      options: maxOptions
+    },
+    $_veeValidate: {
+      validator: 'new'
+    },
+    methods: {
+      submit: function () {
+        this.$emit('submit')
+      },
+      location: function (method, system) {
+        this.$emit('location', method, system)
+      }
+    }
+  })
+
+  document.getElementById('submit').addEventListener('click', function () {
+    app.submit()
+//    this.disabled = app.errors.items.length
+  })
+  document.getElementById('go-card').addEventListener('click', function () {
+    app.location('card')
+  })
+  document.getElementById('go-ibank').addEventListener('click', function () {
+    app.location('ibank')
+  })
+</script>
   </body>
 </html>

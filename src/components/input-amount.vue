@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'has-error': errors.has(name)}">
+  <div :class="['form-group', {'has-error': errors.has(name)}]">
     <label v-if="label" :for="name">{{ label }}</label>
     <div class="input-group">
       <tooltip :text="errors.first(name)" :enable="errors.has(name)">
@@ -27,23 +27,25 @@
     props: ['form', 'name', 'onInput', 'field', 'label'],
     data () {
       return {
-        state: store.state
+        state: store.state,
+        field_: this.field || this.name,
+        form_: this.form || store.state.form
       }
     },
     computed: {
       amount: {
         get: function () {
-          let amount = parseInt(this.form[this.field])
+          let amount = parseInt(this.form_[this.field_])
           return amount ? amount / 100 : ''
         },
         set: function (v) {
           if (v.slice(-1) === '.') {
             return false
           }
-          this.form[this.field] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
+          this.form_[this.field_] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
           this.$validator.validate(this.name, v)
           if (this.onInput) {
-            this.onInput(v, this.field)
+            this.onInput(v, this.field_)
           }
         }
       }

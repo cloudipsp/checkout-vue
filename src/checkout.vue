@@ -33,6 +33,12 @@
       console.log('test')
       Object.assign(this.validOptions, this.defaultOptions, this.options)
       this.validOptions.fast = this.fast()
+
+      setTimeout(() => {
+        if (this.validOptions.fullScreen) {
+          this.$root.$el.style.height = '100%'
+        }
+      })
     },
     components: {
       CheckoutHeader

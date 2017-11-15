@@ -23,7 +23,6 @@
                 class="form-control"
                 id="f-regular-every"
               >
-              <!--<div v-if="errors.has('f-regular-every')" class="f-error">{{ errors.first('f-regular-every') }}</div>-->
               </tooltip>
             </div>
             <div class="col-xs-6" :class="{'has-error': errors.has('f-regular-period')}">
@@ -41,7 +40,6 @@
                 <option value="month">Месяц</option>
                 <option value="year">Год</option>
               </select>
-              <!--<div v-if="errors.has('f-regular-period')" class="f-error">{{ errors.first('f-regular-period') }}</div>-->
               </tooltip>
             </div>
           </div>
@@ -59,7 +57,6 @@
             class="form-control"
             id="f-regular-start-time"
           >
-          <!--<div v-if="errors.has('f-regular-start-time')" class="f-error">{{ errors.first('f-regular-start-time') }}</div>-->
           </tooltip>
         </div>
       </div>

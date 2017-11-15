@@ -35,6 +35,7 @@
   import store from '@/store'
 
   export default {
+    inject: ['$validator'],
     props: ['options', 'onSetMin'],
     data () {
       return {
@@ -58,6 +59,14 @@
       '$route': 'firstResize'
     },
     created: function () {
+      this.$root.$on('submit', () => {
+        this.submit()
+      })
+      this.$root.$on('location', (method, system) => {
+        if (method) {
+          this.$router.push({name: 'payment-method', params: {method: method, system: system}})
+        }
+      })
       let self = this
       Object.assign(this.form, this.options.params)
       Object.assign(this.form.recurring_data, this.options.recurring_data)
@@ -130,9 +139,9 @@
       Methods,
       Verify
     },
-    $_veeValidate: {
-      validator: 'new'
-    },
+//    $_veeValidate: {
+//      validator: 'new'
+//    },
     methods: {
       submit: function () {
         this.$validator.validateAll()
@@ -185,7 +194,7 @@
 
         if (width >= 992) {
           this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
-          if (containerH < height) {
+          if (this.options.fullScreen && containerH < height) {
             $container.style.paddingTop = (height - containerH) / 2 + 'px'
           }
         } else if (width >= 768 && !this.isMin) {

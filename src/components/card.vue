@@ -21,7 +21,6 @@
                 maxlength="23"
                 @blur.native="$validator.validate('card_number')"
               ></the-mask>
-              <!--<div v-if="errors.has('card_number')" class="f-error">{{ errors.first('card_number') }}</div>-->
             </tooltip>
             <span v-if="!cards.length" class="form-control-feedback f-icon f-icon-contain card-empty"></span>
             <dropdown menu-right v-if="cards.length" class="input-group-btn">
@@ -50,7 +49,6 @@
                   :masked="true"
                   @blur.native="$validator.validate('expiry_date')"
                 ></the-mask>
-                <!--<div v-if="errors.has('expiry_date')" class="f-error">{{ errors.first('expiry_date') }}</div>-->
               </tooltip>
             </div>
           </div>
@@ -68,7 +66,6 @@
                   id="f-cvv2"
                   maxlength="3"
                 >
-                <!--<div v-if="errors.has('cvv2')" class="f-error">{{ errors.first('cvv2') }}</div>-->
               </tooltip>
               <tooltip text="3 цифры с оборотноой стороны карты" trigger="hover" theme="">
               <span class="form-control-feedback f-icon  question"></span>
@@ -136,20 +133,11 @@
         return require('../assets/img/' + id + '.svg')
       },
       setCardNumber: function (card) {
-//        this.$set(this.form, 'card_number', card.card_number.replace(/ /g, ''))
-//        this.$set(this.form, 'expiry_date', card.expiry_date.replace(/ /g, ''))
-//        this.$set(this.form, 'email', card.email)
         this.form.card_number = card.card_number.replace(/ /g, '')
         this.form.expiry_date = card.expiry_date.replace(/ /g, '')
         this.form.email = card.email
         this.form.hash = card.hash
         this.form.cvv2 = ''
-//        this.$nextTick(function () {
-//          this.$validator.validate('expiry_date')
-//          if (this.$validator.flags.email) {
-//            this.$validator.validate('email')
-//          }
-//        })
       }
     }
   }

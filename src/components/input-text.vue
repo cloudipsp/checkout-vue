@@ -1,11 +1,11 @@
 <template>
-  <div :class="{'has-error': errors.has(name)}">
+  <div :class="['form-group', {'has-error': errors.has(name)}]">
     <label v-if="label" :for="name">{{ label }}</label>
     <tooltip :text="errors.first(name)" :enable="errors.has(name)">
       <input
         :name="name"
         v-validate="validate"
-        v-model="form[field]"
+        v-model="form_[field_]"
         :data-vv-as="label"
         type="text"
         class="form-control"
@@ -17,11 +17,16 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
     inject: ['$validator'],
     props: ['form', 'name', 'field', 'label', 'validate'],
     data () {
-      return {}
+      return {
+        field_: this.field || this.name,
+        form_: this.form || store.state.form
+      }
     }
   }
 </script>

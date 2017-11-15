@@ -4,7 +4,6 @@
 
   export default {
     template: '#f-fields',
-    inject: ['$validator'],
     data () {
       return {
         form: store.state.form

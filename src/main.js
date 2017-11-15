@@ -5,7 +5,6 @@
 // TODO разделить респонс дизайн
 // TODO мультиязычность
 // TODO свайп
-// TODO decimal amount
 
 import Vue from 'vue'
 import Router from 'vue-router'
