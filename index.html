@@ -16,9 +16,9 @@
     </style>
   </head>
   <body>
-  <button class="btn btn-success" id="submit">submit 1</button>
-  <button class="btn btn-default" id="go-ibank">go ibank</button>
-  <button class="btn btn-default" id="go-card">go card</button>
+<button class="btn btn-success" id="submit">submit 1</button>
+<button class="btn btn-default" id="go-ibank">go ibank</button>
+<button class="btn btn-default" id="go-card">go card</button>
 <div id="app">
   <button class="btn btn-success" @click="submit()" :disabled="!!errors.items.length">submit 2</button>
   <button class="btn btn-default" @click="location('ibank')">go ibank</button>
@@ -87,7 +87,8 @@
       response_url: 'https://www.fondy.eu',
       token: 'ee847c0deb7e564580c56b042489d08384885f4f'
     },
-    fullScreen: false
+    fullScreen: false,
+    button: false
   }
 
   var minOptions = {
@@ -112,23 +113,7 @@
     }
   }
 
-  var app = new Vue({
-    el: '#app',
-    data: {
-      options: maxOptions
-    },
-    $_veeValidate: {
-      validator: 'new'
-    },
-    methods: {
-      submit: function () {
-        this.$emit('submit')
-      },
-      location: function (method, system) {
-        this.$emit('location', method, system)
-      }
-    }
-  })
+  var app = fondy('#app', maxOptions)
 
   document.getElementById('submit').addEventListener('click', function () {
     app.submit()

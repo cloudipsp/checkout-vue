@@ -9,7 +9,7 @@
     ></component>
     <regular v-if="options.regular && options.regular.insert && method === 'card'" :options="options.regular"></regular>
     <offer v-if="options.offer"></offer>
-    <div class="f-block">
+    <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block f-submit" :disabled="!valid">
           Оплатить <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>

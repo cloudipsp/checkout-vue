@@ -24,7 +24,8 @@
           title: 'Test payment',
           regular: {
             insert: false
-          }
+          },
+          button: true
         },
         validOptions: {}
       }

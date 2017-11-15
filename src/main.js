@@ -113,9 +113,29 @@ const install = function (Vue, Router, VeeValidate, TheMask) {
 }
 
 if (typeof window !== 'undefined') {
-  window.Vue = Vue
-  window.Router = Router
-  window.VeeValidate = VeeValidate
-  window.TheMask = TheMask
-  install(window.Vue, window.Router, window.VeeValidate, window.TheMask)
+  // window.Vue = Vue
+  // window.Router = Router
+  // window.VeeValidate = VeeValidate
+  // window.TheMask = TheMask
+  // install(window.Vue, window.Router, window.VeeValidate, window.TheMask)
+  install(Vue, Router, VeeValidate, TheMask)
+  window.fondy = function (el, options) {
+    return new Vue({
+      el: el,
+      data: {
+        options: options
+      },
+      $_veeValidate: {
+        validator: 'new'
+      },
+      methods: {
+        submit: function () {
+          this.$emit('submit')
+        },
+        location: function (method, system) {
+          this.$emit('location', method, system)
+        }
+      }
+    })
+  }
 }
