@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout-vue</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        overflow-y: scroll;
+      }
+    </style>
+    <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js></script>
+    <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vee-validate/2.0.0-rc.21/vee-validate.min.js></script>
+    <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vee-validate/2.0.0-rc.21/locale/ru.js></script>
+    <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js></script>
+    <script type=text/javascript src=https://cdn.jsdelivr.net/npm/vue-the-mask@0.11.1/dist/vue-the-mask.min.js></script>
+  </head>
+  <body>
+
+<div id="app">
+  <f-checkout :options="options"></f-checkout>
+</div>
+
+<script>
+  fondy('#app', {})
+</script>
+  </body>
+</html>

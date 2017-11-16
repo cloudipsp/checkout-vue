@@ -1,18 +1,18 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu visible-xs">
-      <button class="btn btn-default btn-sm" @click="show = !show"><i class="glyphicon glyphicon-th-large"></i>
+      <button class="btn btn-default btn-sm" @click="show = !show">
         Другие способы
       </button>
     </div>
     <div class="f-info" ref="info">
-      <info :options="options"></info>
+      <info></info>
     </div>
     <div v-if="!isMin" class="f-methods" :class="{open : show}">
-      <methods :methods="options.methods" :fast="options.fast" :on-change-method="changeMethod"></methods>
+      <methods :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <router-view :options="options" :on-submit="submit" :valid="!this.errors.items.length" :order="order" :cards="cards"></router-view>
+      <router-view :on-submit="submit" :valid="!errors.items.length" :order="order" :cards="cards"></router-view>
       <div v-if="loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -28,19 +28,20 @@
 </template>
 
 <script>
-  import Info from './info'
-  import Methods from './methods'
-  import Verify from './verify'
+  import Info from '@/components/info'
+  import Methods from '@/components/methods'
+  import Verify from '@/components/verify'
   import { sendRequest } from '@/helpers'
   import store from '@/store'
 
   export default {
     inject: ['$validator'],
-    props: ['options', 'onSetMin'],
+    props: ['onSetMin'],
     data () {
       return {
         loading: false,
         show: false,
+        options: store.state.options,
         form: store.state.form,
         error: store.state.error,
         timeoutId: 0,
@@ -63,14 +64,9 @@
         this.submit()
       })
       this.$root.$on('location', (method, system) => {
-        if (method) {
-          this.$router.push({name: 'payment-method', params: {method: method, system: system}})
-        }
+        this.$router.push({name: 'payment-method', params: {method: method, system: system}})
       })
       let self = this
-      Object.assign(this.form, this.options.params)
-      Object.assign(this.form.recurring_data, this.options.recurring_data)
-
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
         this.form.recurring_data.amount = 0
@@ -139,9 +135,6 @@
       Methods,
       Verify
     },
-//    $_veeValidate: {
-//      validator: 'new'
-//    },
     methods: {
       submit: function () {
         this.$validator.validateAll()

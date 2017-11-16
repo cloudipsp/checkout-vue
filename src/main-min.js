@@ -1,16 +1,3 @@
-// TODO import config icon f-fast-access
-// TODO delete bootstrap
-// TODO directive/component params
-// TODO разделить респонс дизайн
-// TODO мультиязычность
-// TODO свайп
-
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import VeeValidate, { Validator } from 'vee-validate'
-import ru from 'vee-validate/dist/locale/ru'
-import { TheMask } from 'vue-the-mask'
-
 import { Tooltip, Popover, Dropdown } from 'uiv'
 import router from '@/router'
 import checkout from '@/checkout'
@@ -130,7 +117,6 @@ const install = function (Vue, VueRouter, VeeValidate, TheMask) {
   }
 }
 
-if (typeof window !== 'undefined') {
-  Validator.localize('ru', ru)
-  install(Vue, VueRouter, VeeValidate, TheMask)
+if ((typeof window !== 'undefined') && window.Vue && window.VueRouter && window.VeeValidate && window.VueTheMask) {
+  install(window.Vue, window.VueRouter, window.VeeValidate, window.VueTheMask.TheMask)
 }

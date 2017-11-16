@@ -8,7 +8,7 @@
           class="f-item"
           v-if="item in config"
           :class="[item]"
-          v-for="item in methods"
+          v-for="item in options.methods"
           :key="item"
           :to="{ name: 'payment-method', params: { method: item }}"
           @click.native="onChangeMethod()"
@@ -22,7 +22,7 @@
       <router-link
         class="f-icon"
         v-if="item.system !== $route.params.system"
-        v-for="item in fast"
+        v-for="item in options.fast"
         :key="item.system"
         :class="item.system"
         :to="{ name: 'payment-method', params: { method: item.method, system: item.system }}"
@@ -33,10 +33,13 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
-    props: ['methods', 'fast', 'onChangeMethod'],
+    props: ['onChangeMethod'],
     data () {
       return {
+        options: store.state.options,
         config: {
           card: {
             name: 'Оплата картой'

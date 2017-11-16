@@ -33,9 +33,10 @@
 
   export default {
     inject: ['$validator'],
-    props: ['options', 'onSubmit', 'valid'],
+    props: ['onSubmit', 'valid'],
     data () {
       return {
+        options: store.state.options,
         form: store.state.form
       }
     },

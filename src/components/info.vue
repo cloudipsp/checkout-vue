@@ -20,9 +20,9 @@
   import store from '@/store'
 
   export default {
-    props: ['options'],
     data () {
       return {
+        options: store.state.options,
         form: store.state.form
       }
     },

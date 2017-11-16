@@ -1,42 +1,27 @@
 <template>
   <div class="f-container" :class="{'f-min': min}">
     <checkout-header></checkout-header>
-    <router-view :options="validOptions" :on-set-min="setMin"></router-view>
+    <router-view :on-set-min="setMin"></router-view>
   </div>
 </template>
 
 <script>
   import CheckoutHeader from '@/components/checkout-header'
+  import store from '@/store'
 
   export default {
     name: 'f-checkout',
     props: ['options'],
     data () {
       return {
-        min: true,
-        defaultOptions: {
-          methods: ['card'],
-          ibank: [],
-          emoney: [],
-          cash: [],
-          fast: [],
-          cardIcons: ['mastercard', 'visa'],
-          title: 'Test payment',
-          regular: {
-            insert: false
-          },
-          button: true
-        },
-        validOptions: {}
+        min: true
       }
     },
     created: function () {
-      console.log('test')
-      Object.assign(this.validOptions, this.defaultOptions, this.options)
-      this.validOptions.fast = this.fast()
+      store.setOptions(this.options)
 
       setTimeout(() => {
-        if (this.validOptions.fullScreen) {
+        if (this.options.fullScreen) {
           this.$root.$el.style.height = '100%'
         }
       })
@@ -47,20 +32,6 @@
     methods: {
       setMin: function (min) {
         this.min = min
-      },
-      fast: function () {
-        let fast = []
-        this.validOptions.fast.forEach(function (system) {
-          ['emoney', 'ibank', 'cash'].forEach(function (method) {
-            if (this.validOptions[method].indexOf(system) > -1) {
-              fast.push({
-                method: method,
-                system: system
-              })
-            }
-          }, this)
-        }, this)
-        return fast
       }
     }
   }

@@ -7,7 +7,7 @@
       :payment-systems="options[method]"
       :cards="cards"
     ></component>
-    <regular v-if="options.regular && options.regular.insert && method === 'card'" :options="options.regular"></regular>
+    <regular v-if="options.regular && options.regular.insert && method === 'card'"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
@@ -28,15 +28,16 @@
   import Ibank from '@/components/ibank'
   import Cash from '@/components/cash'
   import Sepa from '@/components/sepa'
-  import Regular from './regular'
-  import Offer from './offer'
+  import Regular from '@/components/regular'
+  import Offer from '@/components/offer'
   import store from '@/store'
-  import Fields from './payment-fields'
+  import Fields from '@/components/payment-fields'
 
   export default {
-    props: ['method', 'options', 'onSubmit', 'valid', 'cards'],
+    props: ['method', 'onSubmit', 'valid', 'cards'],
     data () {
       return {
+        options: store.state.options,
         form: store.state.form
       }
     },

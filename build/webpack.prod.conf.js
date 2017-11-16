@@ -22,6 +22,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
+  entry: config.build.entry,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('[name].js'), // 'js/[name].[chunkhash].js'
@@ -60,7 +61,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'index.html',
+      template: config.build.template,
       inject: 'head',
       minify: {
         removeComments: true,

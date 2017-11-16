@@ -68,10 +68,10 @@
   import store from '@/store'
 
   export default {
-    props: ['options'],
     inject: ['$validator'],
     data () {
       return {
+        options: store.state.options.regular,
         form: store.state.form.recurring_data
       }
     },

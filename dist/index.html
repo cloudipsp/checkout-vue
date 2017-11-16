@@ -16,6 +16,7 @@
     </style>
   <link href=checkout.css rel=stylesheet><script type=text/javascript src=checkout.js></script></head>
   <body>
+
 <button class="btn btn-success" id=submit>submit 1</button>
 <button class="btn btn-default" id=go-ibank>go ibank</button>
 <button class="btn btn-default" id=go-card>go card</button>
@@ -26,13 +27,17 @@
   <f-checkout :options=options></f-checkout>
 </div>
 
-<script type=text/x-vue-template id=f-fields1>
+<script type=text/x-vue-template id=f-fields2>
 <div>
   <div class="f-block f-block-hr">
     <input-text name="field_1" label="Фио" validate="required|alpha"></input-text>
     <div class="row">
-      <input-text class="col-xs-6" name="email" label="Email" validate="required|email"></input-text>
-      <input-text class="col-xs-6" name="field_3" label="Телефон" validate="required|numeric"></input-text>
+      <div class="col-xs-6">
+        <input-text name="email" label="Email" validate="required|email"></input-text>
+      </div>
+      <div class="col-xs-6">
+        <input-text name="field_3" label="Телефон" validate="required|numeric"></input-text>
+      </div>
     </div>
   </div>
   <div class="f-block f-block-hr">
@@ -51,80 +56,82 @@
     </div>
   </div>
 </script>
+
 <script>
-  var maxOptions = {
-    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-    ibank: ['p24', 'platba24', 'raiffeisen'],
-    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-    cash: ['liqpay'],
-    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-    fields: true,
-    regular: {
-      insert: true,
-      open: true,
-      hide: false
-    },
-    recurring_data: {
-      every: 2,
-      period: 'month',
-      amount: 100,
-      end_time: '2020-11-14',
-      start_time: '2018-11-11'
-    },
-    offer: true,
-    title: 'Назначение платежа',
-    link: 'https://fondy.eu',
-    params: {
-      merchant_id: '900024',
-      verification_type: 'code',
-      required_rectoken: 'y',
-      verification: 'y',
-      currency: 'UAH',
-      amount: 500,
-      fee: 0.03,
-      order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
-      response_url: 'https://www.fondy.eu',
-      token: 'ee847c0deb7e564580c56b042489d08384885f4f'
-    },
-    fullScreen: false,
-    button: false
-  }
+var maxOptions = {
+  methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+  ibank: ['p24', 'platba24', 'raiffeisen'],
+  emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+  cash: ['liqpay'],
+  fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+  cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+  fields: true,
+  regular: {
+    insert: true,
+    open: true,
+    hide: false
+  },
+  recurring_data: {
+    every: 2,
+    period: 'month',
+    amount: 100,
+    end_time: '2020-11-14',
+    start_time: '2018-11-11'
+  },
+  offer: true,
+  title: 'Назначение платежа',
+  link: 'https://fondy.eu',
+  params: {
+    merchant_id: '900024',
+    verification_type: 'code',
+    required_rectoken: 'y',
+    verification: 'y',
+    currency: 'UAH',
+    amount: 500,
+    fee: 0.03,
+    order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+    response_url: 'https://www.fondy.eu',
+    token: 'ee847c0deb7e564580c56b042489d08384885f4f'
+  },
+  fullScreen: false,
+  button: false
+}
 
-  var minOptions = {
-//    fields: true,
-//    regular: {
-//      insert: true,
-//      open: true,
-//      hide: false
-//    },
-//    recurring_data: {
-//      every: 2,
-//      period: 'month',
-//      amount: 100,
-//      end_time: '2020-11-14',
-//      start_time: '2018-11-11'
-//    },
-    params: {
-      verification_type: 'code',
-      required_rectoken: 'y',
-      verification: 'y',
-      token: '38d3490b1081d47f9690f6b0e392c59ae47e4176'
-    }
-  }
+var minOptions = {
+//  fields: true,
+//  regular: {
+//    insert: true,
+//    open: true,
+//    hide: false
+//  },
+//  recurring_data: {
+//    every: 2,
+//    period: 'month',
+//    amount: 100,
+//    end_time: '2020-11-14',
+//    start_time: '2018-11-11'
+//  },
+  params: {
+    verification_type: 'code',
+    required_rectoken: 'y',
+    verification: 'y',
+    token: '38d3490b1081d47f9690f6b0e392c59ae47e4176'
+  },
+  fullScreen: false
+}
 
-  var app = fondy('#app', maxOptions)
+var app = fondy('#app', minOptions)
 
-  document.getElementById('submit').addEventListener('click', function () {
-    app.submit()
-//    this.disabled = app.errors.items.length
-  })
-  document.getElementById('go-card').addEventListener('click', function () {
-    app.location('card')
-  })
-  document.getElementById('go-ibank').addEventListener('click', function () {
-    app.location('ibank')
-  })
+document.getElementById('submit').addEventListener('click', function () {
+  app.submit()
+//  this.disabled = app.errors.items.length
+})
+document.getElementById('go-card').addEventListener('click', function () {
+  app.location('card')
+})
+document.getElementById('go-ibank').addEventListener('click', function () {
+  app.location('ibank')
+})
 </script>
   </body>
 </html>
