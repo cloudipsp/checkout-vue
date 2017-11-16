@@ -33,6 +33,7 @@
   import Verify from '@/components/verify'
   import { sendRequest } from '@/helpers'
   import store from '@/store'
+  import Popover from '@/components/popover'
 
   export default {
     inject: ['$validator'],
@@ -133,7 +134,8 @@
     components: {
       Info,
       Methods,
-      Verify
+      Verify,
+      Popover
     },
     methods: {
       submit: function () {

@@ -66,6 +66,8 @@
 
 <script>
   import store from '@/store'
+  import InputAmount from '@/components/input-amount'
+  import Tooltip from '@/components/tooltip'
 
   export default {
     inject: ['$validator'],
@@ -147,6 +149,10 @@
 //        let period = this.attr('recurring.period') || 'month'
 //        return [every, period].join(',')
 //      }
+    },
+    components: {
+      InputAmount,
+      Tooltip
     }
   }
 </script>

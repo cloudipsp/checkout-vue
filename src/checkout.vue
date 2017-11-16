@@ -8,6 +8,7 @@
 <script>
   import CheckoutHeader from '@/components/checkout-header'
   import store from '@/store'
+  import Tooltip from '@/components/tooltip'
 
   export default {
     name: 'f-checkout',
@@ -27,7 +28,8 @@
       })
     },
     components: {
-      CheckoutHeader
+      CheckoutHeader,
+      Tooltip
     },
     methods: {
       setMin: function (min) {

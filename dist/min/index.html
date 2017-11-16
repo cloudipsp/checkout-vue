@@ -27,7 +27,38 @@
 </div>
 
 <script>
-  fondy('#app', {})
+  Vue.use(VueRouter)
+  Vue.use(VueTheMask)
+  Vue.use(VeeValidate, {
+    locale: 'ru',
+    inject: false,
+    dictionary: {
+      ru: {
+        messages: {
+          credit_card: function (field) {
+            return 'Поле ' + field + ' должно быть действительным номером карты'
+          }
+        }
+      }
+    }
+  })
+  new Vue({
+    el: '#app',
+    data: {
+      options: {}
+    },
+    $_veeValidate: {
+      validator: 'new'
+    },
+    methods: {
+      submit: function () {
+        this.$emit('submit')
+      },
+      location: function (method, system) {
+        this.$emit('location', method, system)
+      }
+    }
+  })
 </script>
   </body>
 </html>

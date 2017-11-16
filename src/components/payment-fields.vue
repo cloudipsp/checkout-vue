@@ -1,6 +1,8 @@
 <script>
   import store from '@/store'
   import { sendRequest } from '@/helpers'
+  import InputText from '@/components/input-text'
+  import InputAmount from '@/components/input-amount'
 
   export default {
     template: '#f-fields',
@@ -20,6 +22,10 @@
             function (model) {})
         }
       }
+    },
+    components: {
+      InputText,
+      InputAmount
     }
   }
 </script>

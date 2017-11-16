@@ -9,6 +9,7 @@
 
 <script>
   import store from '@/store'
+  import Tooltip from '@/components/tooltip'
 
   export default {
     inject: ['$validator'],
@@ -16,6 +17,9 @@
       return {
         form: store.state.form
       }
+    },
+    components: {
+      Tooltip
     }
   }
 </script>

@@ -30,6 +30,7 @@
 
 <script>
   import store from '@/store'
+  import Tooltip from '@/components/tooltip'
 
   export default {
     inject: ['$validator'],
@@ -42,6 +43,9 @@
     },
     created: function () {
       this.form.code = ''
+    },
+    components: {
+      Tooltip
     }
   }
 </script>

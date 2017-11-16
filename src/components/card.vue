@@ -82,6 +82,8 @@
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
   import store from '@/store'
   import { sendRequest } from '@/helpers'
+  import Tooltip from '@/components/tooltip'
+  import Dropdown from '@/components/dropdown'
 
   export default {
     inject: ['$validator'],
@@ -139,6 +141,10 @@
         this.form.hash = card.hash
         this.form.cvv2 = ''
       }
+    },
+    components: {
+      Tooltip,
+      Dropdown
     }
   }
 </script>
