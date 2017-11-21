@@ -1,0 +1,26 @@
+* {
+  .box-sizing(border-box);
+}
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:focus {
+    .tab-focus();
+  }
+}
+
+img {
+  vertical-align: middle;
+}

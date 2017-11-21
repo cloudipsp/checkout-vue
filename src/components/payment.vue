@@ -1,6 +1,6 @@
 <template>
   <div class="f-wrapper">
-    <div v-if="!isMin" class="f-mobile-menu visible-xs">
+    <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
       <button class="btn btn-default btn-sm" @click="show = !show">
         Другие способы
       </button>
@@ -187,13 +187,15 @@
         let infoH = this.$refs.info.offsetHeight
         let containerH = $container.offsetHeight
 
-        if (width >= 992) {
-          this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
-          if (this.options.fullScreen && containerH < height) {
-            $container.style.paddingTop = (height - containerH) / 2 + 'px'
+        if (this.options.fullScreen) {
+          if (width >= 992) {
+            this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
+            if (containerH < height) {
+              $container.style.paddingTop = (height - containerH) / 2 + 'px'
+            }
+          } else if (width >= 768 && !this.isMin) {
+            this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
           }
-        } else if (width >= 768 && !this.isMin) {
-          this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
         }
 
         this.resizeError()

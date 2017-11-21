@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="f-block-hr f-title hidden-xs">Методы оплаты</div>
-    <div class="f-block f-title3 visible-xs">Выберите способ оплаты</div>
+    <div class="f-block-hr f-title f-hidden-mobile">Методы оплаты</div>
+    <div class="f-block f-title3 f-visible-mobile">Выберите способ оплаты</div>
     <div class="f-menu f-block-hr">
       <transition-group>
         <router-link
@@ -17,7 +17,7 @@
         </router-link>
       </transition-group>
     </div>
-    <div class="f-block-hr f-title hidden-xs">Быстрый доступ к методам оплаты:</div>
+    <div class="f-block-hr f-title f-hidden-mobile">Быстрый доступ к методам оплаты:</div>
     <div class="f-block f-fast-access">
       <router-link
         class="f-icon"

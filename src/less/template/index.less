@@ -9,6 +9,26 @@
 @import "payment.less";
 @import "checkout.less";
 
+.f-visible-mobile {
+  .responsive-visibility();
+}
+.f-visible-tablet {
+  .responsive-invisibility();
+}
+.f-visible-desktop {
+  .responsive-invisibility();
+}
+
+.f-hidden-mobile {
+  .responsive-invisibility();
+}
+.f-hidden-tablet {
+  .responsive-visibility();
+}
+.f-hidden-desktop {
+  .responsive-visibility();
+}
+
 .f-title{
   line-height: 20px;
   opacity: 0.8;
@@ -32,13 +52,6 @@
 .f-block-sm{
   width: 260px;
   margin: auto;
-
-  @media (min-width: @screen-sm-min) {
-    width: 290px;
-  }
-  @media (min-width: @screen-md-min) {
-    width: 260px;
-  }
 }
 .f-block-hr{
   border-bottom: 2px solid rgba(61,61,61,0.06);
@@ -170,8 +183,9 @@
 }
 
 .f-submit{
-  @media (max-width: @screen-xs-max) {
-    font-size: 18px;
-    padding: 20px 15px;
-  }
+  padding: 20px 15px;
+}
+
+.text-center {
+  text-align: center;
 }

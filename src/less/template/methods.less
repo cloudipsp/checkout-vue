@@ -1,11 +1,5 @@
 .f-menu{
   text-align: center;
-  @media (min-width: @screen-sm-min) {
-    text-align: left;
-  }
-  @media (min-width: @screen-md-min) {
-
-  }
 }
 .f-item{
   cursor: pointer;
@@ -28,34 +22,6 @@
   padding: 50px 0 0 0;
   background-position: 50% 20px;
 
-  @media (min-width: @screen-sm-min) {
-    height: auto;
-    width: auto;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    padding: 13px 15px 13px 62px;
-    margin: 0 -15px;
-    box-shadow: none;
-    background-position: 18px 50%;
-  }
-  @media (min-width: @screen-md-min) {
-
-  }
-
-  &:first-child{
-    @media (min-width: @screen-sm-min) {
-      margin-top: -2px;
-      position: relative;
-    }
-  }
-  &:last-child{
-    @media (min-width: @screen-sm-min) {
-      margin-bottom: -2px;
-    }
-  }
-
   &:hover,
   &:focus{
     text-decoration: none;
@@ -73,32 +39,8 @@
     .bg(ibank, ibank_a);
     .bg(cash, cash_a);
     .bg(sepa, sepa_a);
-
-    @media (min-width: @screen-sm-min) {
-      &:after{
-        content: '';
-        display: inline-block;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        border-width: 4px 0 4px 4px ;
-        border-left-color: #62BA46;
-        margin-left: 10px;
-      }
-    }
-    @media (min-width: @screen-md-min) {
-
-    }
   }
 }
 .f-fast-access{
   text-align: center;
-
-  @media (min-width: @screen-sm-min) {
-    text-align: left;
-  }
-  @media (min-width: @screen-md-min) {
-
-  }
 }

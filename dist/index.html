@@ -14,7 +14,7 @@
         overflow-y: scroll;
       }
     </style>
-  <link href=checkout.css rel=stylesheet><script type=text/javascript src=checkout.js></script></head>
+  <script type=text/javascript src=checkout.js></script></head>
   <body>
 
 <button class="btn btn-success" id=submit>submit 1</button>
@@ -94,7 +94,7 @@ var maxOptions = {
     token: 'ee847c0deb7e564580c56b042489d08384885f4f'
   },
   fullScreen: false,
-  button: false
+  button: true
 }
 
 var minOptions = {
@@ -120,7 +120,7 @@ var minOptions = {
   fullScreen: false
 }
 
-var app = fondy('#app', minOptions)
+var app = fondy('#app', maxOptions)
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()

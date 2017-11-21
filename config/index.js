@@ -39,11 +39,21 @@ const buildMin = {
   template: 'index-min.html',
   entry: { checkout: './src/main-min.js' }
 }
+const buildCss = {
+  env: require('./prod.env'),
+  assetsRoot: path.resolve(__dirname, '../dist/css'),
+  assetsSubDirectory: '',
+  productionSourceMap: false,
+  entry: { test: './src/less/test.less' }
+}
 
 let buildConfig = build
 let opts = process.argv.slice(2)
 if (opts.indexOf('--min') > -1) {
   buildConfig = buildMin
+} else
+if (opts.indexOf('--css') > -1) {
+  buildConfig = buildCss
 }
 
 module.exports = {

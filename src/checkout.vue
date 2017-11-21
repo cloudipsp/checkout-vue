@@ -21,11 +21,16 @@
     created: function () {
       store.setOptions(this.options)
 
-      setTimeout(() => {
-        if (this.options.fullScreen) {
+      if (store.state.options.fullScreen) {
+        require('./less/style.less')
+        require('./less/style-sm.less')
+        require('./less/style-md.less')
+        setTimeout(() => {
           this.$root.$el.style.height = '100%'
-        }
-      })
+        })
+      } else {
+        require('./less/style.less')
+      }
     },
     components: {
       CheckoutHeader,
@@ -38,7 +43,3 @@
     }
   }
 </script>
-
-<style lang="less">
-  @import './less/style.less';
-</style>

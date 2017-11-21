@@ -14,7 +14,7 @@
         <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block f-submit" :disabled="!valid">
           Оплатить <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>
         </button>
-        <div class="hidden-md hidden-lg">
+        <div class="f-hidden-desktop">
           <i class="f-icon f-icon-block security"></i>
         </div>
       </div>

@@ -1,0 +1,37 @@
+@import 'header-sm.less';
+@import 'methods-sm.less';
+@import 'payment-sm.less';
+
+.f-block-sm{
+  @media (min-width: @screen-sm-min) {
+    width: 290px;
+  }
+}
+
+.f-submit{
+  @media (min-width: @screen-sm-min) {
+    padding: 14px 16px;
+  }
+}
+
+.f-visible-mobile {
+  @media (min-width: @screen-sm-min) {
+    .responsive-invisibility();
+  }
+}
+.f-visible-tablet {
+  @media (min-width: @screen-sm-min) {
+    .responsive-visibility();
+  }
+}
+
+.f-hidden-mobile {
+  @media (min-width: @screen-sm-min) {
+    .responsive-visibility();
+  }
+}
+.f-hidden-tablet {
+  @media (min-width: @screen-sm-min) {
+    .responsive-invisibility();
+  }
+}

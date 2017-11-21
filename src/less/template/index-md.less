@@ -1,0 +1,32 @@
+@import 'checkout-md.less';
+@import 'icon-md.less';
+@import 'payment-md.less';
+
+.f-block-sm{
+  @media (min-width: @screen-md-min) {
+    width: 260px;
+  }
+}
+
+.f-visible-tablet {
+  @media (min-width: @screen-md-min) {
+    .responsive-invisibility();
+  }
+}
+.f-visible-desktop {
+  @media (min-width: @screen-md-min) {
+    .responsive-visibility();
+  }
+}
+
+.f-hidden-tablet {
+  @media (min-width: @screen-md-min) {
+    .responsive-visibility();
+  }
+}
+
+.f-hidden-desktop {
+  @media (min-width: @screen-md-min) {
+    .responsive-invisibility();
+  }
+}
