@@ -140,30 +140,32 @@
     methods: {
       submit: function () {
         this.$validator.validateAll()
-        this.autoFocus()
+        this.$nextTick(function () {
+          this.autoFocus()
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
-        console.log('form', this.form)
+          console.log('form', this.form)
 //      this.errors.clear()
-        if (!(!this.errors.items.length && !this.loading)) {} else {
-          this.loading = true
-          this.error.flag = false
-          this.form.payment_system = this.$route.params.system || this.$route.params.method
-          this.form.token = this.$route.params.token
-          let self = this
-          sendRequest('api.checkout.form', 'request', self.form).finally(function () {
-            self.loading = false
-          }).then(
-            function (model) {
-              model.sendResponse()
-              if (model.needVerifyCode()) {
-                self.$router.push({name: 'verify', params: {system: 'verify', token: model.attr('order.token')}})
-              } else if (!model.submitToMerchant()) {
-                self.order = model.attr('order.order_data')
-                self.$router.push({name: 'success'})
-              }
-            }, function () {})
-        }
+          if (!this.errors.items.length && !this.loading) {
+            this.loading = true
+            this.error.flag = false
+            this.form.payment_system = this.$route.params.system || this.$route.params.method
+            this.form.token = this.$route.params.token
+            let self = this
+            sendRequest('api.checkout.form', 'request', self.form).finally(function () {
+              self.loading = false
+            }).then(
+              function (model) {
+                model.sendResponse()
+                if (model.needVerifyCode()) {
+                  self.$router.push({name: 'verify', params: {system: 'verify', token: model.attr('order.token')}})
+                } else if (!model.submitToMerchant()) {
+                  self.order = model.attr('order.order_data')
+                  self.$router.push({name: 'success'})
+                }
+              }, function () {})
+          }
+        })
       },
       autoFocus: function () {
         if (this.errors.items.length) {

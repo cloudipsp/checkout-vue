@@ -15,15 +15,12 @@
 }
 
 .f-center-error{
-  .f-min & {
-    width: 260px;
-    margin: auto;
-  }
   position: absolute;
+  width: 280px;
+  left: 50%;
+  margin-left: -140px;
   top: 0;
-  right: 30px;
   bottom: 0;
-  left: 30px;
   z-index: -1;
 }
 
@@ -53,7 +50,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1070;
   background-color: #fff;
   padding: 0;
   overflow-y: auto;
@@ -63,6 +59,7 @@
 
   &.open {
     transform: translateX(0);
+    z-index: 1070;
   }
 
   .f-block-hr {
