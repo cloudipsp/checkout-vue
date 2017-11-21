@@ -21,9 +21,11 @@ const setError = function (model) {
     message = model.data.message
   }
   if (code || message) {
-    store.state.error.flag = true
     store.state.error.code = code
     store.state.error.message = message
+    setTimeout(() => {
+      store.state.error.flag = true
+    })
   }
 }
 
