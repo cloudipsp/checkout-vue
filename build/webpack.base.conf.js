@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: ['style-loader', 'css-loader', 'autoprefixer-loader', 'less-loader']
+        loader: ['style-loader', 'css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","not ie <= 8"]}', 'less-loader']
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -19,7 +19,7 @@ const webpackConfig =  {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'autoprefixer-loader', 'less-loader']
+          use: ['css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","not ie <= 8"]}', 'less-loader']
         })
       },
       {
