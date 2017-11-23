@@ -18,24 +18,27 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
     props: ['paymentSystems'],
+    data () {
+      return {
+        router: store.state.router
+      }
+    },
     created: function () {
-      this.setPaymentSystem(this.getId())
+      this.setPaymentSystem()
     },
     methods: {
-      setPaymentSystem: function (id) {
-        this.active = id
-        this.$router.push({name: 'payment-method', params: { system: id }})
-      },
-      getId: function () {
-        let system = this.$route.params.system
-        return this.paymentSystems.indexOf(system) > 0 ? system : this.paymentSystems[0]
+      setPaymentSystem: function (system) {
+        this.router.system = system || this.router.system || this.paymentSystems[0]
+        this.active = this.router.system
       }
     },
     watch: {
-      '$route' (to, from) {
-        this.setPaymentSystem(this.getId())
+      'router.system' (to, from) {
+        this.setPaymentSystem()
       }
     }
   }

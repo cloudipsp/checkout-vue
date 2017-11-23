@@ -39,6 +39,11 @@ export default {
       buffer: false,
       code: '',
       message: ''
+    },
+    router: {
+      page: undefined,
+      method: undefined,
+      system: undefined
     }
   },
   setOptions (options) {

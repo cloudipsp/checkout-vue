@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const increaseSpecificity = require('postcss-increase-specificity')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -21,6 +22,25 @@ const webpackConfig = merge(baseWebpackConfig, {
   //     extract: false
   //   })
   // },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader', 'css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","ie >= 9"]}',
+          // {
+          //   loader: 'postcss-loader',
+          //   options: {
+          //     plugins: () => [
+          //       increaseSpecificity({ repeat: 1, stackableRoot: '#app', overrideIds: false }),
+          //     ]
+          //   }
+          // },
+          'less-loader'
+        ]
+      }
+    ]
+  },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: config.build.entry,
   output: {

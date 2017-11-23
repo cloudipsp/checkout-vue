@@ -4,30 +4,28 @@
     <div class="f-block f-title3 f-visible-mobile">Выберите способ оплаты</div>
     <div class="f-menu f-block-hr">
       <transition-group>
-        <router-link
+        <div
           class="f-item"
           v-if="item in config"
-          :class="[item]"
+          :class="[item, {active: router.method === item}]"
           v-for="item in options.methods"
           :key="item"
-          :to="{ name: 'payment-method', params: { method: item }}"
-          @click.native="onChangeMethod()"
+          @click="changeMethod(item)"
         >
           {{ config[item].name }}
-        </router-link>
+        </div>
       </transition-group>
     </div>
     <div class="f-block-hr f-title f-hidden-mobile">Быстрый доступ к методам оплаты:</div>
     <div class="f-block f-fast-access">
-      <router-link
+      <div
         class="f-icon"
-        v-if="item.system !== $route.params.system"
+        v-if="item.system !== router.system"
         v-for="item in options.fast"
         :key="item.system"
         :class="item.system"
-        :to="{ name: 'payment-method', params: { method: item.method, system: item.system }}"
-        @click.native="onChangeMethod()"
-      ></router-link>
+        @click="changeMethod(item.method, item.system )"
+      ></div>
     </div>
   </div>
 </template>
@@ -40,6 +38,7 @@
     data () {
       return {
         options: store.state.options,
+        router: store.state.router,
         config: {
           card: {
             name: 'Оплата картой'
@@ -57,6 +56,15 @@
             name: 'Международные платежи'
           }
         }
+      }
+    },
+    methods: {
+      changeMethod: function (method, system) {
+//        console.log(method, system)
+        this.router.page = 'payment-method'
+        this.router.method = method
+        this.router.system = system
+        this.onChangeMethod()
       }
     }
   }

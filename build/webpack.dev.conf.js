@@ -6,6 +6,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const increaseSpecificity = require('postcss-increase-specificity')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -13,8 +14,27 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
+  // module: {
+  //   rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+  // },
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+    rules: [
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader', 'css-loader',
+          // {
+          //   loader: 'postcss-loader',
+          //   options: {
+          //     plugins: () => [
+          //       increaseSpecificity({ repeat: 1, stackableRoot: '#app', overrideIds: false })
+          //     ]
+          //   }
+          // },
+          'less-loader',
+        ]
+      }
+    ]
   },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',

@@ -1,7 +1,7 @@
 <template>
   <div class="f-container" :class="{'f-min': min}">
     <checkout-header></checkout-header>
-    <router-view :on-set-min="setMin"></router-view>
+    <payment :on-set-min="setMin"></payment>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
   import CheckoutHeader from '@/components/checkout-header'
   import store from '@/store'
   import Tooltip from '@/components/tooltip'
+  import Payment from '@/components/payment'
 
   export default {
     name: 'f-checkout',
@@ -34,7 +35,8 @@
     },
     components: {
       CheckoutHeader,
-      Tooltip
+      Tooltip,
+      Payment
     },
     methods: {
       setMin: function (min) {

@@ -21,7 +21,7 @@
           <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block" :disabled="!valid">Продолжить</button>
         </div>
         <div class="form-group">
-          <router-link :to="{ name: 'payment-method', params: { method: 'card' }}" type="button" class="btn btn-default btn-lg btn-block" >Отменить</router-link>
+          <button @click="back()" type="button" class="btn btn-default btn-lg btn-block" >Отменить</button>
         </div>
       </div>
     </div>
@@ -38,7 +38,8 @@
     data () {
       return {
         options: store.state.options,
-        form: store.state.form
+        form: store.state.form,
+        router: store.state.router
       }
     },
     created: function () {
@@ -46,6 +47,12 @@
     },
     components: {
       Tooltip
+    },
+    methods: {
+      back: function () {
+        this.router.page = 'payment-method'
+        this.router.method = 'card'
+      }
     }
   }
 </script>

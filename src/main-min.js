@@ -1,11 +1,9 @@
-import router from '@/router'
 import checkout from '@/checkout'
 
-const install = function (Vue, VueRouter) {
-  checkout.router = new VueRouter(router)
+const install = function (Vue) {
   Vue.component(checkout.name, checkout)
 }
 
-if ((typeof window !== 'undefined') && window.Vue && window.VueRouter && window.VeeValidate && window.VueTheMask) {
-  install(window.Vue, window.VueRouter)
+if ((typeof window !== 'undefined') && window.Vue && window.VeeValidate && window.VueTheMask) {
+  install(window.Vue)
 }

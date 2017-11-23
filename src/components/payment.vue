@@ -12,16 +12,13 @@
       <methods :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <router-view :on-submit="submit" :valid="!errors.items.length" :order="order" :cards="cards"></router-view>
+      <component :is="router.page" :method="router.method" :on-submit="submit" :valid="!errors.items.length" :order="order" :cards="cards"></component>
       <div v-if="loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
-      <popover :title="error.code" trigger="manual" v-model="error.flag">
+      <popover :title="error.code" :content="error.message" trigger="manual" v-model="error.flag" :append-to="'#app'">
         <div class="f-center-error"></div>
-        <div slot="popover">
-          {{ error.message }}
-        </div>
       </popover>
     </div>
   </div>
@@ -34,6 +31,8 @@
   import { sendRequest } from '@/helpers'
   import store from '@/store'
   import Popover from '@/components/popover'
+  import PaymentMethod from '@/components/payment-method'
+  import Success from '@/components/success'
 
   export default {
     inject: ['$validator'],
@@ -45,6 +44,7 @@
         options: store.state.options,
         form: store.state.form,
         error: store.state.error,
+        router: store.state.router,
         timeoutId: 0,
         order: {},
         cards: []
@@ -55,17 +55,23 @@
         handler: function () {
           this.firstResize()
         },
-        deep: true,
-        immediate: true
+        deep: true
       },
-      '$route': 'firstResize'
+      router: {
+        handler: function () {
+          this.firstResize()
+        },
+        deep: true
+      }
     },
     created: function () {
       this.$root.$on('submit', () => {
         this.submit()
       })
       this.$root.$on('location', (method, system) => {
-        this.$router.push({name: 'payment-method', params: {method: method, system: system}})
+        this.router.page = 'payment-method'
+        this.router.method = method
+        this.router.system = system
       })
       let self = this
       if (!parseInt(this.form.amount)) {
@@ -114,8 +120,9 @@
               }, function () {})
           }
         }, function () {})
-      if (!this.$route.params.method) {
-        this.$router.push({name: 'payment-method', params: {method: this.options.methods[0]}})
+      if (!this.router.method) {
+        this.router.page = 'payment-method'
+        this.router.method = this.options.methods[0]
       }
     },
     mounted: function () {
@@ -135,7 +142,9 @@
       Info,
       Methods,
       Verify,
-      Popover
+      Popover,
+      PaymentMethod,
+      Success
     },
     methods: {
       submit: function () {
@@ -149,8 +158,7 @@
           if (!this.errors.items.length && !this.loading) {
             this.loading = true
             this.error.flag = false
-            this.form.payment_system = this.$route.params.system || this.$route.params.method
-            this.form.token = this.$route.params.token
+            this.form.payment_system = this.router.system || this.router.method
             let self = this
             sendRequest('api.checkout.form', 'request', self.form).finally(function () {
               self.loading = false
@@ -158,10 +166,13 @@
               function (model) {
                 model.sendResponse()
                 if (model.needVerifyCode()) {
-                  self.$router.push({name: 'verify', params: {system: 'verify', token: model.attr('order.token')}})
+                  self.router.page = 'verify'
+                  self.router.method = 'card'
+                  self.router.system = 'verify'
+                  self.form.token = model.attr('order.token')
                 } else if (!model.submitToMerchant()) {
                   self.order = model.attr('order.order_data')
-                  self.$router.push({name: 'success'})
+                  self.router.page = 'success'
                 }
               }, function () {})
           }

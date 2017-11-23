@@ -48,10 +48,6 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /\.less$/,
-        loader: ['style-loader', 'css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","ie >= 9"]}', 'less-loader']
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
