@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select class="form-control input-sm f-hidden-mobile">
+      <select class="f-form-control f-input-sm f-hidden-mobile">
         <option value="ru">Русский</option>
         <option value="en">English</option>
         <option value="uk">Українською</option>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['form-group', {'has-error': errors.has(name)}]">
+  <div :class="['f-form-group', {'f-has-error': errors.has(name)}]">
     <label v-if="label" :for="name">{{ label }}</label>
     <tooltip :text="errors.first(name)" :enable="errors.has(name)">
       <input
@@ -8,7 +8,7 @@
         v-model="form_[field_]"
         :data-vv-as="label"
         type="text"
-        class="form-control"
+        class="f-form-control"
         :id="name"
       >
     </tooltip>

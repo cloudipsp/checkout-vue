@@ -23,14 +23,14 @@ module.exports = merge(baseWebpackConfig, {
         test: /\.less$/,
         use: [
           'style-loader', 'css-loader',
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     plugins: () => [
-          //       increaseSpecificity({ repeat: 1, stackableRoot: '#app', overrideIds: false })
-          //     ]
-          //   }
-          // },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false })
+              ]
+            }
+          },
           'less-loader',
         ]
       }

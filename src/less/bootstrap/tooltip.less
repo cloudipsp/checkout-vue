@@ -1,58 +1,132 @@
+.f-tooltip {
+  position: absolute;
+  z-index: @zindex-tooltip;
+  display: block;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  .reset-text();
+  font-size: @font-size-small;
+
+  .opacity(0);
+
+  &.in     { .opacity(@tooltip-opacity); }
+  &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
+  &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
+  &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
+  &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+}
+
+.f-tooltip-inner {
+  width: @tooltip-max-width;
+  color: @tooltip-color;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
+  text-align: left;
+  padding: 7px 16px;
+}
+
+.f-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
+.f-tooltip {
+  &.top .f-tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-left .f-tooltip-arrow {
+    bottom: 0;
+    right: @tooltip-arrow-width;
+    margin-bottom: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-right .f-tooltip-arrow {
+    bottom: 0;
+    left: @tooltip-arrow-width;
+    margin-bottom: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.right .f-tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-right-color: @tooltip-arrow-color;
+  }
+  &.left .f-tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-left-color: @tooltip-arrow-color;
+  }
+  &.bottom .f-tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-left .f-tooltip-arrow {
+    top: 0;
+    right: @tooltip-arrow-width;
+    margin-top: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-right .f-tooltip-arrow {
+    top: 0;
+    left: @tooltip-arrow-width;
+    margin-top: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+}
+
 [data-theme="error"]{
-  .tooltip-arrow {
+  .f-tooltip-inner {
+    background-color: #D6696D;
+    border: 1px solid #B05D60;
+  }
+  .f-tooltip-arrow {
     width: @tooltip-arrow-width * 2;
     height: @tooltip-arrow-width * 2;
     background: #D6696D;
     transform: rotate(45deg);
   }
-  &.tooltip {
-    &.top .tooltip-arrow {
+  &.f-tooltip {
+    &.top .f-tooltip-arrow,
+    &.top-left .f-tooltip-arrow,
+    &.top-right .f-tooltip-arrow {
       border: 1px solid #B05D60;
       border-top: none;
       border-left: none;
     }
-    &.top-left .tooltip-arrow {
-      border: 1px solid #B05D60;
-      border-top: none;
-      border-left: none;
-    }
-    &.top-right .tooltip-arrow {
-      border: 1px solid #B05D60;
-      border-top: none;
-      border-left: none;
-    }
-    &.right .tooltip-arrow {
+    &.right .f-tooltip-arrow {
       border: 1px solid #B05D60;
       border-top: none;
       border-right: none;
     }
-    &.left .tooltip-arrow {
+    &.left .f-tooltip-arrow {
       border: 1px solid #B05D60;
       border-bottom: none;
       border-left: none;
     }
-    &.bottom .tooltip-arrow {
-      border: 1px solid #B05D60;
-      border-bottom: none;
-      border-right: none;
-    }
-    &.bottom-left .tooltip-arrow {
-      border: 1px solid #B05D60;
-      border-bottom: none;
-      border-right: none;
-    }
-    &.bottom-right .tooltip-arrow {
+    &.bottom .f-tooltip-arrow,
+    &.bottom-left .f-tooltip-arrow,
+    &.bottom-right .f-tooltip-arrow {
       border: 1px solid #B05D60;
       border-bottom: none;
       border-right: none;
     }
   }
-  .tooltip-inner {
-    background-color: #D6696D;
-    border: 1px solid #B05D60;
-  }
-}
-.tooltip-inner {
-  text-align: left;
-  padding: 7px 16px;
 }

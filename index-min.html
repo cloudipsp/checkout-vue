@@ -4,14 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkout-vue</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
     <style>
       html {
         height: 100%;
       }
       body {
         height: 100%;
+        margin: 0;
         overflow-y: scroll;
+        font-family: 'Arial', sans-serif;
       }
     </style>
     <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js></script>
@@ -22,6 +23,10 @@
   <body>
 
 <div id="app">
+  <button class="btn btn-success" @click="submit()" :disabled="!!errors.items.length">submit 2</button>
+  <button class="btn btn-default" @click="location('ibank')">go ibank</button>
+  <button class="btn btn-default" @click="location('card')">go card</button>
+
   <f-checkout :options="options"></f-checkout>
 </div>
 
@@ -43,7 +48,9 @@
   new Vue({
     el: '#app',
     data: {
-      options: {}
+      options: {
+        fullScreen: false
+      }
     },
     $_veeValidate: {
       validator: 'new'

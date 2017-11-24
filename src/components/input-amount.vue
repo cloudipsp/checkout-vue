@@ -1,7 +1,7 @@
 <template>
-  <div :class="['form-group', {'has-error': errors.has(name)}]">
+  <div :class="['f-form-group', {'f-has-error': errors.has(name)}]">
     <label v-if="label" :for="name">{{ label }}</label>
-    <div class="input-group">
+    <div class="f-input-group">
       <tooltip :text="errors.first(name)" :enable="errors.has(name)">
         <input
           :name="name"
@@ -10,11 +10,11 @@
           data-vv-validate-on="blur"
           :data-vv-as="label"
           type="text"
-          class="form-control"
+          class="f-form-control"
           :id="name"
         >
       </tooltip>
-      <span class="input-group-addon">{{ state.form.currency }}</span>
+      <span class="f-input-group-addon">{{ state.form.currency }}</span>
     </div>
   </div>
 </template>

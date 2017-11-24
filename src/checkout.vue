@@ -1,7 +1,9 @@
 <template>
-  <div class="f-container" :class="{'f-min': min}">
-    <checkout-header></checkout-header>
-    <payment :on-set-min="setMin"></payment>
+  <div id="f" ref="f">
+    <div class="f-container" :class="{'f-min': min}">
+      <checkout-header></checkout-header>
+      <payment :on-set-min="setMin"></payment>
+    </div>
   </div>
 </template>
 
@@ -21,16 +23,13 @@
     },
     created: function () {
       store.setOptions(this.options)
-
+      require('./less/style.less')
       if (store.state.options.fullScreen) {
-        require('./less/style.less')
         require('./less/style-sm.less')
         require('./less/style-md.less')
         setTimeout(() => {
-          this.$root.$el.style.height = '100%'
+          this.$refs.f.style.height = '100%'
         })
-      } else {
-        require('./less/style.less')
       }
     },
     components: {

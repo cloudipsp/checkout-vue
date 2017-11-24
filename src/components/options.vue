@@ -1,14 +1,14 @@
 <template>
   <div class="f-options">
     <div>
-      <button class="btn btn-default btn-sm" @click="toggle()">{{ btnText }}</button>
+      <button class="f-btn f-btn-default f-btn-sm" @click="toggle()">{{ btnText }}</button>
       <slot></slot>
     </div>
     <div v-show="show">
       <div v-if="error" class="text-danger">json is not valid</div>
       <textarea
         ref="textarea"
-        class="form-control"
+        class="f-form-control"
         value="value"
         @input="updateValue($event.target.value)"
       ></textarea>

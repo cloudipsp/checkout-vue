@@ -1,5 +1,5 @@
 <script>
-  import PaymentSystems from '@/components/payment-systems'
+  import PaymentSystems from '@/mixins/payment-systems'
 
   export default {
     mixins: [PaymentSystems],

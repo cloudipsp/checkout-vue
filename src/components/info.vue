@@ -11,7 +11,7 @@
       <div>Комиссия: <span v-if="minFee">{{minFee}} {{form.currency}}</span> <span v-if="fee">({{ fee }})</span></div>
     </div>
     <div class="f-visible-desktop">
-      <i class="f-icon f-icon-block security"></i>
+      <i class="f-icon f-icon-block f-i-security"></i>
     </div>
   </div>
 </template>

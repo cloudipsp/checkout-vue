@@ -4,7 +4,6 @@
     <meta charset=utf-8>
     <meta name=viewport content="width=device-width,initial-scale=1">
     <title>checkout-vue</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=cyrillic" rel=stylesheet>
     <style>
       html {
         height: 100%;
@@ -13,31 +12,48 @@
         height: 100%;
         margin: 0;
         overflow-y: scroll;
-        font-family: 'Roboto', sans-serif;;
+        font-family: 'Arial', sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .col{
+        float: left;
+        width: 50%;
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
       }
     </style>
   <script type=text/javascript src=checkout.js></script></head>
   <body>
 
-<button class="btn btn-success" id=submit>submit 1</button>
-<button class="btn btn-default" id=go-ibank>go ibank</button>
-<button class="btn btn-default" id=go-card>go card</button>
-<div id=app>
-  <button class="btn btn-success" @click=submit() :disabled=!!errors.items.length>submit 2</button>
-  <button class="btn btn-default" @click="location('ibank')">go ibank</button>
-  <button class="btn btn-default" @click="location('card')">go card</button>
-  <f-checkout :options=options></f-checkout>
+<div>
+  <div>
+    <button id=submit>submit 1</button>
+    <button id=go-ibank>go ibank</button>
+    <button id=go-card>go card</button>
+  </div>
+  <div>
+    <div class=col>
+
+    </div>
+    <div class=col>
+      <div id=app></div>
+    </div>
+  </div>
 </div>
 
 <script type=text/x-vue-template id=f-fields2>
 <div>
   <div class="f-block f-block-hr">
     <input-text name="field_1" label="Фио" validate="required|alpha"></input-text>
-    <div class="row">
-      <div class="col-xs-6">
+    <div class="f-row">
+      <div class="f-col-xs-6">
         <input-text name="email" label="Email" validate="required|email"></input-text>
       </div>
-      <div class="col-xs-6">
+      <div class="f-col-xs-6">
         <input-text name="field_3" label="Телефон" validate="required|numeric"></input-text>
       </div>
     </div>
@@ -93,7 +109,7 @@ var maxOptions = {
     fee: 0.03,
     order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
     response_url: 'https://www.fondy.eu',
-    token: 'ee847c0deb7e564580c56b042489d08384885f4f'
+    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
   fullScreen: false,
   button: true
@@ -117,7 +133,7 @@ var minOptions = {
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-    token: '38d3490b1081d47f9690f6b0e392c59ae47e4176'
+    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
   fullScreen: false
 }

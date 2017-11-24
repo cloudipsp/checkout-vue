@@ -1,14 +1,14 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button class="btn btn-default btn-sm" @click="show = !show">
+      <button class="f-btn f-btn-default f-btn-sm" @click="show = !show">
         Другие способы
       </button>
     </div>
     <div class="f-info" ref="info">
       <info></info>
     </div>
-    <div v-if="!isMin" class="f-methods" :class="{open : show}">
+    <div v-if="!isMin" class="f-methods" :class="{'f-open' : show}">
       <methods :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
@@ -17,7 +17,7 @@
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
-      <popover :title="error.code" :content="error.message" trigger="manual" v-model="error.flag" :append-to="'#app'">
+      <popover :title="error.code" :content="error.message" trigger="manual" v-model="showError">
         <div class="f-center-error"></div>
       </popover>
     </div>
@@ -28,7 +28,7 @@
   import Info from '@/components/info'
   import Methods from '@/components/methods'
   import Verify from '@/components/verify'
-  import { sendRequest } from '@/helpers'
+  import { sendRequest } from '@/utils/helpers'
   import store from '@/store'
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
@@ -62,6 +62,9 @@
           this.firstResize()
         },
         deep: true
+      },
+      show: function (show) {
+        document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
       }
     },
     created: function () {
@@ -69,6 +72,7 @@
         this.submit()
       })
       this.$root.$on('location', (method, system) => {
+        this.show = false
         this.router.page = 'payment-method'
         this.router.method = method
         this.router.system = system
@@ -111,6 +115,7 @@
           } else {
             self.form.fee = info.client_fee || 0
           }
+          self.options.email = info.checkout_email_required
 
 //          self.form.fee = 0.055
           if (self.form.fee) {
@@ -136,6 +141,12 @@
         let result = this.options.methods.length === 1 && this.options.methods[0] === 'card'
         this.onSetMin(result)
         return result
+      },
+      showError: {
+        get: function () {
+          return this.error.flag && !this.show
+        },
+        set: function () {}
       }
     },
     components: {
@@ -180,7 +191,7 @@
       },
       autoFocus: function () {
         if (this.errors.items.length) {
-          let $firstErrorField = this.$el.querySelector('[data-vv-id=' + this.$validator.errors.items[0].id + ']')
+          let $firstErrorField = this.$el.querySelector('[data-vv-id="' + this.$validator.errors.items[0].id + '"]')
           $firstErrorField.scrollIntoView()
           $firstErrorField.focus()
         }

@@ -7,7 +7,7 @@
         <div
           class="f-item"
           v-if="item in config"
-          :class="[item, {active: router.method === item}]"
+          :class="['f-i-' + item, {active: router.method === item}]"
           v-for="item in options.methods"
           :key="item"
           @click="changeMethod(item)"
@@ -17,13 +17,14 @@
       </transition-group>
     </div>
     <div class="f-block-hr f-title f-hidden-mobile">Быстрый доступ к методам оплаты:</div>
+    <div class="f-block f-title3 f-visible-mobile">Быстрый доступ к методам оплаты:</div>
     <div class="f-block f-fast-access">
       <div
         class="f-icon"
         v-if="item.system !== router.system"
         v-for="item in options.fast"
         :key="item.system"
-        :class="item.system"
+        :class="'f-i-' + item.system"
         @click="changeMethod(item.method, item.system )"
       ></div>
     </div>

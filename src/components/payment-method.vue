@@ -11,11 +11,11 @@
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block f-submit" :disabled="!valid">
+        <button @click="onSubmit()" type="button" class="f-btn f-btn-success f-btn-lg f-btn-block f-submit" :disabled="!valid">
           Оплатить <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>
         </button>
         <div class="f-hidden-desktop">
-          <i class="f-icon f-icon-block security"></i>
+          <i class="f-icon f-icon-block f-i-security"></i>
         </div>
       </div>
     </div>

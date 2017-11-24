@@ -1,6 +1,6 @@
 <script>
   import store from '@/store'
-  import { sendRequest } from '@/helpers'
+  import { sendRequest } from '@/utils/helpers'
   import InputText from '@/components/input-text'
   import InputAmount from '@/components/input-amount'
 

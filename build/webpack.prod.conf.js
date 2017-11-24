@@ -28,14 +28,14 @@ const webpackConfig = merge(baseWebpackConfig, {
         test: /\.less$/,
         use: [
           'style-loader', 'css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","ie >= 9"]}',
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     plugins: () => [
-          //       increaseSpecificity({ repeat: 1, stackableRoot: '#app', overrideIds: false }),
-          //     ]
-          //   }
-          // },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
+              ]
+            }
+          },
           'less-loader'
         ]
       }

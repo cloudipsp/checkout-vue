@@ -12,7 +12,8 @@ export default {
         insert: false
       },
       button: true,
-      fullScreen: true
+      fullScreen: true,
+      email: false
     },
     form: {
       // merchant_id: '1396424', // prod

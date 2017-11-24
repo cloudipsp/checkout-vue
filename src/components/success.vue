@@ -2,7 +2,7 @@
   <div class="f-success">
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="form-group">
+        <div class="f-form-group">
           ok {{ order.order_id }}
 
         </div>

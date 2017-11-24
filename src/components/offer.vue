@@ -1,7 +1,15 @@
 <template>
-  <div class="f-offer" :class="{'has-error': errors.has('offer')}">
+  <div class="f-offer" :class="{'f-has-error': errors.has('offer')}">
     <tooltip :text="errors.first('offer')" :enable="errors.has('offer')" target="#f-offer">
-      <input name="offer" v-model="form.offer" v-validate="'required'" type="checkbox" class="f-checkbox" id="f-offer"/>
+      <input
+        name="offer"
+        v-model="form.offer"
+        v-validate="'required'"
+        data-vv-as="оферта"
+        type="checkbox"
+        class="f-checkbox"
+        id="f-offer"
+      />
       <label for="f-offer">Я согласен с <a href="">условиями оферты</a></label>
     </tooltip>
   </div>

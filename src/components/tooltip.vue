@@ -1,8 +1,14 @@
 <script>
-  import { Tooltip } from 'uiv'
+  import {TRIGGERS} from '@/utils/dom'
+  import Popup from '@/mixins/popup'
 
   export default {
-    extends: Tooltip,
+    mixins: [Popup],
+    data () {
+      return {
+        name: 'f-tooltip'
+      }
+    },
     render (h) {
       return h(
         this.tag,
@@ -10,7 +16,7 @@
           this.$slots.default,
           h('div',
             {
-              ref: 'tooltip',
+              ref: 'popup',
               attrs: {
                 role: 'tooltip',
                 'data-theme': this.theme
@@ -21,9 +27,9 @@
               }
             },
             [
-              h('div', {'class': 'tooltip-arrow'}),
+              h('div', {'class': 'f-tooltip-arrow'}),
               h('div', {
-                'class': 'tooltip-inner',
+                'class': 'f-tooltip-inner',
                 domProps: {innerHTML: this.text}
               })
             ]
@@ -36,13 +42,21 @@
         type: String,
         default: 'error'
       },
+      text: {
+        type: String,
+        default: ''
+      },
       trigger: {
         type: String,
-        default: 'focus'
+        default: TRIGGERS.FOCUS
       },
       placement: {
         type: String,
         default: 'right'
+      },
+      appendTo: {
+        type: String,
+        default: '#f'
       },
       transitionDuration: {
         type: Number,
@@ -50,13 +64,29 @@
       }
     },
     watch: {
+      text (value, oldValue) {
+        // reset position while text changed & is shown
+        // nextTick is required
+        if (value && value !== oldValue) {
+          this.$nextTick(() => {
+            if (this.isShown()) {
+              this.resetPosition()
+            }
+          })
+        }
+      },
       enable (v) {
-        if (v && this.handleAuto()) {
+        if (v && this.triggerEl.matches(':hover, :focus')) {
           this.show()
         }
         if (!v) {
           this.hide()
         }
+      }
+    },
+    methods: {
+      isNotEmpty () {
+        return this.text
       }
     }
   }

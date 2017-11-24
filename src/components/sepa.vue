@@ -3,7 +3,7 @@
     <div class="f-block f-title2">Надо какой–то текст</div>
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="form-group" :class="{'has-error': errors.has('sender_name')}">
+        <div class="f-form-group" :class="{'f-has-error': errors.has('sender_name')}">
           <label for="f-sender-name">Имя</label>
           <tooltip :text="errors.first('sender_name')" :enable="errors.has('sender_name')">
             <input
@@ -12,12 +12,12 @@
               v-model="form.sender_name"
               data-vv-as="Имя"
               type="text"
-              class="form-control"
+              class="f-form-control"
               id="f-sender-name"
             >
           </tooltip>
         </div>
-        <div class="form-group" :class="{'has-error': errors.has('sender_familyName')}">
+        <div class="f-form-group" :class="{'f-has-error': errors.has('sender_familyName')}">
           <label for="f-sender-family-name">Фамилия</label>
           <tooltip :text="errors.first('sender_familyName')" :enable="errors.has('sender_familyName')">
             <input
@@ -26,13 +26,13 @@
               v-model="form.sender_familyName"
               data-vv-as="Фамилия"
               type="text"
-              class="form-control"
+              class="f-form-control"
               id="f-sender-family-name"
             >
           </tooltip>
         </div>
-        <div class="row">
-          <div class="form-group col-xs-6" :class="{'has-error': errors.has('bic')}">
+        <div class="f-row">
+          <div class="f-form-group f-col-xs-6" :class="{'f-has-error': errors.has('bic')}">
             <label for="f-bic">BIC</label>
             <tooltip :text="errors.first('bic')" :enable="errors.has('bic')" placement="bottom">
               <input
@@ -41,12 +41,12 @@
                 v-model="form.bic"
                 data-vv-as="BIC"
                 type="text"
-                class="form-control"
+                class="f-form-control"
                 id="f-bic"
               >
             </tooltip>
           </div>
-          <div class="form-group col-xs-6" :class="{'has-error': errors.has('iban')}">
+          <div class="f-form-group f-col-xs-6" :class="{'f-has-error': errors.has('iban')}">
             <label for="f-iban">IBAN</label>
             <tooltip :text="errors.first('iban')" :enable="errors.has('iban')">
               <input
@@ -55,7 +55,7 @@
                 v-model="form.iban"
                 data-vv-as="IBAN"
                 type="text"
-                class="form-control"
+                class="f-form-control"
                 id="f-iban"
               >
             </tooltip>

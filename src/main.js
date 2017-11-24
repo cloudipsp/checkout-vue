@@ -1,5 +1,4 @@
 // TODO import config icon f-fast-access
-// TODO delete bootstrap
 // TODO directive/component params
 // TODO мультиязычность
 // TODO свайп
@@ -8,8 +7,7 @@ import Vue from 'vue'
 import VeeValidate, { Validator } from 'vee-validate'
 import ru from 'vee-validate/dist/locale/ru'
 import VueTheMask from 'vue-the-mask'
-
-import checkout from '@/checkout'
+import Checkout from '@/checkout'
 
 const install = function (Vue, VeeValidate, VueTheMask) {
   Vue.config.productionTip = false
@@ -25,13 +23,14 @@ const install = function (Vue, VeeValidate, VueTheMask) {
     }
   })
   Vue.use(VueTheMask)
-  Vue.component(checkout.name, checkout)
   window.fondy = function (el, options) {
     return new Vue({
       el: el,
       data: {
         options: options
       },
+      template: '<checkout :options="options"/>',
+      components: { Checkout },
       $_veeValidate: {
         validator: 'new'
       },

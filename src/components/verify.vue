@@ -2,7 +2,7 @@
   <div class="f-verify">
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="form-group" :class="{'has-error': errors.has('verification_code')}">
+        <div class="f-form-group" :class="{'f-has-error': errors.has('verification_code')}">
           <label for="verification_code">Проверочный код</label>
           <tooltip :text="errors.first('verification_code')" :enable="errors.has('verification_code')">
           <input
@@ -11,17 +11,17 @@
             v-model="form.code"
             data-vv-as="Проверочный код"
             type="tel"
-            class="form-control"
+            class="f-form-control"
             id="verification_code"
             maxlength="4"
           >
           </tooltip>
         </div>
-        <div class="form-group">
-          <button @click="onSubmit()" type="button" class="btn btn-success btn-lg btn-block" :disabled="!valid">Продолжить</button>
+        <div class="f-form-group">
+          <button @click="onSubmit()" type="button" class="f-btn f-btn-success f-btn-lg f-btn-block" :disabled="!valid">Продолжить</button>
         </div>
-        <div class="form-group">
-          <button @click="back()" type="button" class="btn btn-default btn-lg btn-block" >Отменить</button>
+        <div class="f-form-group">
+          <button @click="back()" type="button" class="f-btn f-btn-default f-btn-lg f-btn-block" >Отменить</button>
         </div>
       </div>
     </div>
