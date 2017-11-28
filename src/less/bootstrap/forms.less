@@ -141,19 +141,19 @@ input[type="checkbox"]:focus {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @input-border-radius-small);
 }
 
-.f-feedback {
-  // Enable absolute positioning
-  position: relative;
-
-  // Ensure icons don't overlap text
-  .f-form-control {
-    padding-right: 15px; // (@input-height-base * 1.25);
-  }
-}
+//.f-feedback {
+//  // Enable absolute positioning
+//  position: relative;
+//
+//  // Ensure icons don't overlap text
+//  .f-form-control {
+//    padding-right: 15px; // (@input-height-base * 1.25);
+//  }
+//}
 // Feedback icon (requires .glyphicon classes)
 .f-form-control-feedback {
   position: absolute;
-  top: 0;
+  top: 22px;
   right: 9px;
   z-index: 2; // Ensure icon is above input groups
   display: block;
@@ -168,8 +168,8 @@ input[type="checkbox"]:focus {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 
-.f-feedback {
-  .f-form-control-feedback {
-    top: 22px;
-  }
-}
+//.f-feedback {
+//  .f-form-control-feedback {
+//    top: 22px;
+//  }
+//}

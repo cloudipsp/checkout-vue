@@ -45,6 +45,7 @@
         form: store.state.form,
         error: store.state.error,
         router: store.state.router,
+        regular: store.state.regular,
         timeoutId: 0,
         order: {},
         cards: []
@@ -82,7 +83,7 @@
         this.form.amount = 0
         this.form.recurring_data.amount = 0
       }
-      if (this.options.regular.insert) {
+      if (this.regular.insert) {
         this.form.recurring = 'y'
       }
 

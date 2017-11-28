@@ -10,55 +10,16 @@
     </div>
     <div class="f-block" v-if="options.open">
       <div class="f-block-sm">
-        <div class="f-form-group">
-          <label for="f-regular-every">Периодичность</label>
-          <div class="f-row">
-            <div class="f-col-xs-6" :class="{'f-has-error': errors.has('f-regular-every')}">
-              <tooltip :text="errors.first('f-regular-every')" :enable="errors.has('f-regular-every')" placement="bottom">
-              <input
-                name="f-regular-every"
-                v-validate="'required|numeric'"
-                v-model="form.every"
-                type="tel"
-                class="f-form-control"
-                id="f-regular-every"
-              >
-              </tooltip>
-            </div>
-            <div class="f-col-xs-6" :class="{'f-has-error': errors.has('f-regular-period')}">
-              <tooltip :text="errors.first('f-regular-period')" :enable="errors.has('f-regular-period')">
-              <select
-                name="f-regular-period"
-                v-validate="'required'"
-                v-model="form.period"
-                class="f-form-control"
-                id="f-regular-period"
-              >
-                <option value="" selected="selected" disabled="disabled">---</option>
-                <option value="day">День</option>
-                <option value="week">Неделя</option>
-                <option value="month">Месяц</option>
-                <option value="year">Год</option>
-              </select>
-              </tooltip>
-            </div>
+        <div class="f-row">
+          <div class="f-col-xs-6">
+            <input-text name="regular-every" field="every" label="Периодичность" validate="required|numeric" placement="bottom" type="tel" :form="form"></input-text>
+          </div>
+          <div class="f-col-xs-6">
+            <input-select :options="options.period" name="regular-period" field="period" validate="required" :form="form"></input-select>
           </div>
         </div>
-        <input-amount class="f-form-group" name="f-regular-amount" field="amount" label="Сума к оплате" :form="form"></input-amount>
-        <div class="f-form-group" :class="{'f-has-error': errors.has('f-regular-start-time')}">
-          <label for="f-regular-start-time">Начать с</label>
-          <tooltip :text="errors.first('f-regular-start-time')" :enable="errors.has('f-regular-start-time')">
-          <input
-            name="f-regular-start-time"
-            v-validate="'required'"
-            v-model="form.start_time"
-            data-vv-as="Начать с"
-            type="date"
-            class="f-form-control"
-            id="f-regular-start-time"
-          >
-          </tooltip>
-        </div>
+        <input-amount name="regular-amount" field="amount" label="Сума к оплате" :form="form"></input-amount>
+        <input-text name="regular-start-time" field="start_time" label="Начать с" validate="required" type="date" :form="form"></input-text>
       </div>
     </div>
   </div>
@@ -67,13 +28,14 @@
 <script>
   import store from '@/store'
   import InputAmount from '@/components/input-amount'
-  import Tooltip from '@/components/tooltip'
+  import InputText from '@/components/input-text'
+  import InputSelect from '@/components/input-select'
 
   export default {
     inject: ['$validator'],
     data () {
       return {
-        options: store.state.options.regular,
+        options: store.state.regular,
         form: store.state.form.recurring_data
       }
     },
@@ -152,7 +114,8 @@
     },
     components: {
       InputAmount,
-      Tooltip
+      InputText,
+      InputSelect
     }
   }
 </script>

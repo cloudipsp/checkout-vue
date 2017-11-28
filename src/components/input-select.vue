@@ -1,20 +1,18 @@
 <template>
   <div :class="['f-form-group', {'f-has-error': errors.has(name_)}]">
-    <label v-if="label" :for="name_">{{ label }}</label>
+    <label :for="name_">{{ label || '&nbsp;'}}</label>
     <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement">
-      <input
+      <select
         :name="name_"
         v-validate="validate"
         v-model="form[field_]"
         :data-vv-as="label"
-        :type="type"
         class="f-form-control"
         :id="name_"
-        :maxlength="maxlength"
-        :placeholder="placeholder"
       >
+        <option v-for="item in options" :key="item.value" :value="item.value">{{item.text}}</option>
+      </select>
     </tooltip>
-    <slot></slot>
     <div v-if="false && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
   </div>
 </template>
@@ -26,13 +24,9 @@
     mixins: [Input],
     inject: ['$validator'],
     props: {
-      type: {
-        type: String,
-        default: function () {
-          return 'text'
-        }
-      },
-      maxlength: Number
+      options: {
+        type: Array
+      }
     },
     data () {
       return {}

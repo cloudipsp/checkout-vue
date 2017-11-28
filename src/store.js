@@ -1,3 +1,5 @@
+import css from '@/css'
+
 export default {
   state: {
     options: {
@@ -8,12 +10,23 @@ export default {
       fast: [],
       cardIcons: ['mastercard', 'visa'],
       title: 'Test payment',
-      regular: {
-        insert: false
-      },
       button: true,
       fullScreen: true,
-      email: false
+      email: false,
+      fields: false,
+      link: '',
+      offer: false
+    },
+    regular: {
+      insert: false,
+      open: false,
+      hide: false,
+      period: [
+        {value: 'day', text: 'День'},
+        {value: 'week', text: 'Неделя'},
+        {value: 'month', text: 'Месяц'},
+        {value: 'year', text: 'Год'}
+      ]
     },
     form: {
       // merchant_id: '1396424', // prod
@@ -45,14 +58,20 @@ export default {
       page: undefined,
       method: undefined,
       system: undefined
-    }
+    },
+    css: {}
   },
   setOptions (options) {
     Object.assign(this.state.options, options)
+    delete this.state.options.regular
+    delete this.state.options.params
+    delete this.state.options.recurring_data
+
+    Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params)
     Object.assign(this.state.form.recurring_data, options.recurring_data)
     this.state.options.fast = this.fast()
-    // console.log(this.state)
+    this.state.css = css[this.state.options.css] || css.default
   },
   fast: function () {
     let fast = []

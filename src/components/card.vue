@@ -5,7 +5,7 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="f-form-group f-feedback" :class="{'f-has-error': errors.has('card_number')}">
+        <div class="f-form-group" :class="{'f-has-error': errors.has('card_number')}">
           <label for="f-card_number">Номер карты</label>
           <div :class="{'f-input-group': cards.length}">
             <tooltip :text="errors.first('card_number')" :enable="errors.has('card_number')">
@@ -33,6 +33,7 @@
         </div>
         <div class="f-row">
           <div class="f-col-xs-7">
+            <!--<input-text name="expiry-date" field="expiry_date" label="Действительна до" :validate="validExpiryDate" :mask="maskExpiryDate" placeholder="MM/YY"></input-text>-->
             <div class="f-form-group" :class="{'f-has-error': errors.has('expiry_date')}">
               <label for="f-expiry_date">Действительна до</label>
               <tooltip :text="errors.first('expiry_date')" :enable="errors.has('expiry_date')" placement="bottom">
@@ -53,24 +54,11 @@
             </div>
           </div>
           <div class="f-col-xs-5">
-            <div class="f-form-group f-feedback" :class="{'f-has-error': errors.has('cvv2')}">
-              <label for="f-cvv2">CVV</label>
-              <tooltip :text="errors.first('cvv2')" :enable="errors.has('cvv2')">
-                <input
-                  name="cvv2"
-                  v-validate="validCvv"
-                  v-model="form.cvv2"
-                  data-vv-as="CVV"
-                  type="tel"
-                  class="f-form-control"
-                  id="f-cvv2"
-                  maxlength="3"
-                >
-              </tooltip>
+            <input-text name="cvv2" label="CVV" :validate="validCvv" type="tel" :maxlength="3">
               <tooltip text="3 цифры с оборотноой стороны карты" trigger="hover" theme="">
-              <span class="f-form-control-feedback f-icon  f-i-question"></span>
+                <span class="f-form-control-feedback f-icon  f-i-question"></span>
               </tooltip>
-            </div>
+            </input-text>
           </div>
         </div>
         <input-text v-if="options.email" name="email" label="Email" validate="required|email"></input-text>

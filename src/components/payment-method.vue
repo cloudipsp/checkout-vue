@@ -7,7 +7,7 @@
       :payment-systems="options[method]"
       :cards="cards"
     ></component>
-    <regular v-if="options.regular && options.regular.insert && method === 'card'"></regular>
+    <regular v-if="regular.insert && method === 'card'"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
@@ -38,6 +38,7 @@
     data () {
       return {
         options: store.state.options,
+        regular: store.state.regular,
         form: store.state.form
       }
     },
