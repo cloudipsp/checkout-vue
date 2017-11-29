@@ -1,21 +1,20 @@
 <template>
-  <div :class="['f-form-group', {'f-has-error': errors.has(name_)}]">
-    <label v-if="label" :for="name_">{{ label }}</label>
-    <div class="f-input-group">
-      <tooltip :text="errors.first(name_)" :enable="errors.has(name_)">
-        <input
-          :name="name_"
-          v-validate="'required|decimal:2'"
-          v-model="amount"
-          data-vv-validate-on="blur"
-          :data-vv-as="label"
-          type="text"
-          class="f-form-control"
-          :id="name_"
-        >
-      </tooltip>
-      <span class="f-input-group-addon">{{ state.form.currency }}</span>
+  <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
+    <label :class="[css.cl, errors.has(name_) ? css.le : '']" v-if="label" :for="name_">{{ label }}</label>
+    <div :class="css.ig">
+      <input
+        :name="name_"
+        v-validate="'required|decimal:2'"
+        v-model="amount"
+        data-vv-validate-on="blur"
+        :data-vv-as="label"
+        type="text"
+        :class="[css.fc, css.igi, errors.has(name_) ? css.ie : '']"
+        :id="name_"
+      >
+      <span :class="css.iga">{{ state.form.currency }}</span>
     </div>
+    <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :target="'#'+name_"></tooltip>
   </div>
 </template>
 
@@ -31,7 +30,8 @@
     },
     data () {
       return {
-        state: store.state
+        state: store.state,
+        css: store.state.css
       }
     },
     computed: {

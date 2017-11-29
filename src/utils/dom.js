@@ -214,7 +214,7 @@ export function setTooltipPosition (tooltip, trigger, placement, auto, appendToS
   if (auto) {
     // Try: right -> bottom -> left -> top
     // Cause the default placement is top
-    let placements = [PLACEMENTS.RIGHT, PLACEMENTS.BOTTOM, PLACEMENTS.LEFT, PLACEMENTS.TOP]
+    let placements = [PLACEMENTS.RIGHT, PLACEMENTS.BOTTOM, PLACEMENTS.LEFT, PLACEMENTS.TOP, 'onlyTop']
     // The class switch helper function
     const changePlacementClass = (placement) => {
       // console.log(placement)
@@ -226,6 +226,9 @@ export function setTooltipPosition (tooltip, trigger, placement, auto, appendToS
     // No need to adjust if the default placement fits
     if (!isAvailableAtPosition(trigger, tooltip, placement)) {
       for (let i = 0, l = placements.length; i < l; i++) {
+        if (placements[i] === 'onlyTop') {
+          placement = PLACEMENTS.TOP
+        }
         // Re-assign placement class
         changePlacementClass(placements[i])
         // Break if new placement fits

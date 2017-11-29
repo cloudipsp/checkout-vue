@@ -17,15 +17,22 @@
       * {
         box-sizing: border-box;
       }
-      .col{
-        float: left;
-        width: 50%;
+      .coll{
         position: relative;
         min-height: 1px;
         padding-left: 15px;
         padding-right: 15px;
       }
+      @media (min-width: 600px) {
+        .coll{
+          float: left;
+          width: 50%;
+        }
+      }
     </style>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">-->
   </head>
   <body>
 
@@ -36,10 +43,10 @@
     <button id="go-card">go card</button>
   </div>
   <div>
-    <div class="col">
+    <div class="coll">
       <div id="app"></div>
     </div>
-    <div class="col">
+    <div class="coll">
 
     </div>
   </div>
@@ -112,7 +119,8 @@ var maxOptions = {
     token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
   fullScreen: false,
-  button: true
+  button: true,
+//  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
 }
 
 var minOptions = {

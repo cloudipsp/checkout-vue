@@ -4,7 +4,7 @@
       <div class="f-block-sm">
         <div class="f-text-center">
           <input type="checkbox" v-model="options.open" class="f-checkbox-swipe" id="f-regular-swipe" />
-          <label for="f-regular-swipe">Регулярный платеж</label>
+          <label :class="[css.cl]" for="f-regular-swipe">Регулярный платеж</label>
         </div>
       </div>
     </div>
@@ -36,7 +36,8 @@
     data () {
       return {
         options: store.state.regular,
-        form: store.state.form.recurring_data
+        form: store.state.form.recurring_data,
+        css: store.state.css
       }
     },
     created: function () {

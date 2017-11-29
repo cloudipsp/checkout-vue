@@ -1,13 +1,13 @@
 <template>
-  <div :class="['f-form-group', {'f-has-error': errors.has(name_)}]">
-    <label :for="name_">{{ label || '&nbsp;'}}</label>
+  <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
+    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label || '&nbsp;'}}</label>
     <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement">
       <select
         :name="name_"
         v-validate="validate"
         v-model="form[field_]"
         :data-vv-as="label"
-        class="f-form-control"
+        :class="[css.fc, errors.has(name_) ? css.ie : '']"
         :id="name_"
       >
         <option v-for="item in options" :key="item.value" :value="item.value">{{item.text}}</option>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import store from '@/store'
   import Input from '@/mixins/input'
 
   export default {
@@ -29,7 +30,9 @@
       }
     },
     data () {
-      return {}
+      return {
+        css: store.state.css
+      }
     }
   }
 </script>

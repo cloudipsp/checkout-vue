@@ -5,59 +5,23 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <div class="f-form-group" :class="{'f-has-error': errors.has('card_number')}">
-          <label for="f-card_number">Номер карты</label>
-          <div :class="{'f-input-group': cards.length}">
-            <tooltip :text="errors.first('card_number')" :enable="errors.has('card_number')">
-              <the-mask
-                name="card_number"
-                v-validate="validCardNumber"
-                v-model="form.card_number"
-                data-vv-as="Номер карты"
-                type="text"
-                class="f-form-control"
-                id="f-card_number"
-                :mask="maskCardNumber"
-                maxlength="23"
-                @blur.native="$validator.validate('card_number')"
-              ></the-mask>
-            </tooltip>
-            <span v-if="!cards.length" class="f-form-control-feedback f-icon f-icon-contain f-i-card-empty"></span>
-            <dropdown menu-right v-if="cards.length" class="f-input-group-btn">
-              <button type="button" class="f-btn f-btn-default f-dropdown-toggle"><span class="f-caret"></span></button>
-              <template slot="dropdown">
-                <li v-for="card in cards"><a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a></li>
-              </template>
-            </dropdown>
-          </div>
-        </div>
+        <input-text name="card-number" field="card_number" label="Номер карты" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cards.length">
+          <span v-if="!cards.length" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
+          <dropdown slot="group" menu-right :class="[css.igb]">
+            <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
+            <template slot="dropdown">
+              <li v-for="card in cards"><a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a></li>
+            </template>
+          </dropdown>
+        </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <!--<input-text name="expiry-date" field="expiry_date" label="Действительна до" :validate="validExpiryDate" :mask="maskExpiryDate" placeholder="MM/YY"></input-text>-->
-            <div class="f-form-group" :class="{'f-has-error': errors.has('expiry_date')}">
-              <label for="f-expiry_date">Действительна до</label>
-              <tooltip :text="errors.first('expiry_date')" :enable="errors.has('expiry_date')" placement="bottom">
-                <the-mask
-                  name="expiry_date"
-                  v-validate="validExpiryDate"
-                  v-model="form.expiry_date"
-                  data-vv-as="Действительна до"
-                  type="text"
-                  class="f-form-control"
-                  id="f-expiry_date"
-                  placeholder="MM/YY"
-                  :mask="maskExpiryDate"
-                  :masked="true"
-                  @blur.native="$validator.validate('expiry_date')"
-                ></the-mask>
-              </tooltip>
-            </div>
+            <input-text name="expiry-date" field="expiry_date" label="Действительна до" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="bottom"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" label="CVV" :validate="validCvv" type="tel" :maxlength="3">
-              <tooltip text="3 цифры с оборотноой стороны карты" trigger="hover" theme="">
-                <span class="f-form-control-feedback f-icon  f-i-question"></span>
-              </tooltip>
+            <input-text name="cvv2" label="CVV" :validate="validCvv" type="password" :maxlength="3">
+              <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
+              <tooltip text="3 цифры с оборотноой стороны карты" trigger="hover" theme="" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>
@@ -82,6 +46,7 @@
       return {
         form: store.state.form,
         options: store.state.options,
+        css: store.state.css,
         maskExpiryDate: '##/##',
         maskCardNumber: '#### ##XX XXXX ####',
         validCvv: 'required|digits:3'

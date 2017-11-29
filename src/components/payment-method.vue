@@ -11,7 +11,7 @@
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" class="f-btn f-btn-success f-btn-lg f-btn-block f-submit" :disabled="!valid">
+        <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block', css.submit]" :disabled="!valid">
           Оплатить <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>
         </button>
         <div class="f-hidden-desktop">
@@ -39,7 +39,8 @@
       return {
         options: store.state.options,
         regular: store.state.regular,
-        form: store.state.form
+        form: store.state.form,
+        css: store.state.css
       }
     },
     computed: {

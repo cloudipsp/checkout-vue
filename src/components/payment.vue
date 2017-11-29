@@ -1,7 +1,7 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button class="f-btn f-btn-default f-btn-sm" @click="show = !show">
+      <button :class="[css.btn, css.bd, css.btnSm]" @click="show = !show">
         Другие способы
       </button>
     </div>
@@ -45,6 +45,7 @@
         form: store.state.form,
         error: store.state.error,
         router: store.state.router,
+        css: store.state.css,
         regular: store.state.regular,
         timeoutId: 0,
         order: {},

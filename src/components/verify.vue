@@ -4,10 +4,10 @@
       <div class="f-block-sm">
         <input-text name="verification-code" field="code" label="Проверочный код" :validate="validCode" type="tel" :maxlength="4"></input-text>
         <div class="f-form-group">
-          <button @click="onSubmit()" type="button" class="f-btn f-btn-success f-btn-lg f-btn-block" :disabled="!valid">Продолжить</button>
+          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="!valid">Продолжить</button>
         </div>
         <div class="f-form-group">
-          <button @click="back()" type="button" class="f-btn f-btn-default f-btn-lg f-btn-block" >Отменить</button>
+          <button @click="back()" type="button" :class="[css.btn, css.bd, css.btnLg, 'f-btn-block']">Отменить</button>
         </div>
       </div>
     </div>
@@ -24,7 +24,8 @@
     data () {
       return {
         form: store.state.form,
-        router: store.state.router
+        router: store.state.router,
+        css: store.state.css
       }
     },
     computed: {

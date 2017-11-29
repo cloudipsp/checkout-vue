@@ -8,6 +8,7 @@
   position: relative; // For dropdowns
   display: table;
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+  border-radius: @border-radius-base;
 
   // Undo padding and float of grid classes
   &[class*="col-"] {
@@ -100,8 +101,8 @@
 }
 
 // Reset rounded corners
-.f-input-group > .f-form-control:first-child,
-.f-input-group span:first-child .f-form-control,
+.f-input-group .f-form-control:first-child,
+//.f-input-group span:first-child .f-form-control,
 .f-input-group-addon:first-child,
 .f-input-group-btn:first-child > .f-btn,
 .f-input-group-btn:first-child > .btn-group > .f-btn,
@@ -113,8 +114,8 @@
 .f-input-group-addon:first-child {
   border-right: 0;
 }
-.f-input-group > .f-form-control:last-child,
-.f-input-group span:last-child .f-form-control,
+.f-input-group .f-form-control:last-child,
+//.f-input-group span:last-child .f-form-control,
 .f-input-group-addon:last-child,
 .f-input-group-btn:last-child > .btn,
 .f-input-group-btn:last-child > .btn-group > .btn,

@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select class="f-form-control f-input-sm f-hidden-mobile">
+      <select :class="[css.fc, 'f-input-sm', 'f-hidden-mobile']">
         <option value="ru">Русский</option>
         <option value="en">English</option>
         <option value="uk">Українською</option>
@@ -16,9 +16,13 @@
 </template>
 
 <script>
+  import store from '@/store'
+
   export default {
     data () {
-      return {}
+      return {
+        css: store.state.css
+      }
     }
   }
 </script>

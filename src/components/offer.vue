@@ -10,7 +10,7 @@
         class="f-checkbox"
         id="f-offer"
       />
-      <label for="f-offer">Я согласен с <a href="">условиями оферты</a></label>
+      <label :class="[css.cl]" for="f-offer">Я согласен с <a href="">условиями оферты</a></label>
     </tooltip>
   </div>
 </template>
@@ -23,7 +23,8 @@
     inject: ['$validator'],
     data () {
       return {
-        form: store.state.form
+        form: store.state.form,
+        css: store.state.css
       }
     },
     components: {

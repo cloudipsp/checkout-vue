@@ -1,10 +1,11 @@
-label {
+.f-control-label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   color: #707D8A;
   font-size: 12px;
   font-weight: normal;
   margin-bottom: 2px;
+  line-height: @line-height-base;
 }
 
 // Position radios and checkboxes better
@@ -141,20 +142,21 @@ input[type="checkbox"]:focus {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @input-border-radius-small);
 }
 
-//.f-feedback {
-//  // Enable absolute positioning
-//  position: relative;
+.f-has-feedback {
+  // Enable absolute positioning
+  position: relative;
 //
 //  // Ensure icons don't overlap text
 //  .f-form-control {
 //    padding-right: 15px; // (@input-height-base * 1.25);
 //  }
-//}
+}
 // Feedback icon (requires .glyphicon classes)
 .f-form-control-feedback {
   position: absolute;
-  top: 22px;
-  right: 9px;
+  //top: 0;
+  bottom: 0;
+  right: 0;
   z-index: 2; // Ensure icon is above input groups
   display: block;
   width: @input-height-base;
@@ -168,7 +170,7 @@ input[type="checkbox"]:focus {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 
-//.f-feedback {
+//.f-has-feedback {
 //  .f-form-control-feedback {
 //    top: 22px;
 //  }
