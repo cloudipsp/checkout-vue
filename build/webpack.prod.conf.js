@@ -53,7 +53,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     rules: [
       {
         test: /(style-sm|style-md)\.less$/,
-        use: ['style-loader', cssLoader, autoprefixerLoader, postcssLoader, 'less-loader']
+        use: ['style-loader', cssLoader, 'group-css-media-queries-loader', autoprefixerLoader, postcssLoader, 'less-loader']
       },
       {
         test: /^((?!style-sm|style-md).)*\.less$/,
