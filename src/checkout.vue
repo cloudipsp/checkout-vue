@@ -23,7 +23,7 @@
     },
     created: function () {
       store.setOptions(this.options, this.$i18n)
-      require('./less/style.less')
+//      require('./less/style.less')
       if (store.state.options.fullScreen) {
         require('./less/style-sm.less')
         require('./less/style-md.less')

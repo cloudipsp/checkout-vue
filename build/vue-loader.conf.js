@@ -8,7 +8,7 @@ module.exports = {
     sourceMap: isProduction
       ? config.build.productionSourceMap
       : config.dev.cssSourceMap,
-    extract: false //isProduction
+    extract: isProduction
   }),
   transformToRequire: {
     video: 'src',

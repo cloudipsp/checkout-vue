@@ -25,10 +25,8 @@ const build = {
   bundleAnalyzerReport: process.env.npm_config_report,
   template: 'index.html',
   entry: {
-    // 'checkout.js': './src/main.js',
-    // 'style.css': './src/less/style.less',
-  },
-  extract: false
+    'checkout.css': './src/less/style.less',
+  }
 }
 const buildMin = {
   env: require('./prod.env'),

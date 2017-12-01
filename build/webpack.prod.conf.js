@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const increaseSpecificity = require('postcss-increase-specificity')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -16,12 +17,52 @@ const env = process.env.NODE_ENV === 'testing'
 
 process.noDeprecation = true
 
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    minimize: true,
+    sourceMap: config.build.productionSourceMap
+  }
+}
+
+const autoprefixerLoader = {
+  loader: 'autoprefixer-loader',
+  options: {
+    browsers:['> 1%', 'last 2 versions', 'ie >= 9']
+  }
+}
+
+const postcssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    sourceMap: config.build.productionSourceMap,
+    plugins: () => [
+      increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
+    ]
+  }
+}
+
 const webpackConfig = merge(baseWebpackConfig, {
+  // module: {
+  //   rules: utils.styleLoaders({
+  //     sourceMap: config.build.productionSourceMap,
+  //     extract: true
+  //   })
+  // },
   module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: config.build.extract
-    })
+    rules: [
+      {
+        test: /(style-sm|style-md)\.less$/,
+        use: ['style-loader', cssLoader, autoprefixerLoader, postcssLoader, 'less-loader']
+      },
+      {
+        test: /^((?!style-sm|style-md).)*\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [cssLoader, postcssLoader, 'less-loader']
+        })
+      }
+    ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: config.build.entry,
@@ -73,7 +114,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      // excludeChunks: ['checkout.css']
     }),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),

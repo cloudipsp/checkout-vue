@@ -15,7 +15,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 module.exports = merge(baseWebpackConfig, {
   entry: {
-    'style.css': './src/less/style.less',
+    'checkout.css': './src/less/style.less',
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
