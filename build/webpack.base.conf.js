@@ -10,11 +10,11 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    checkout: './src/main.js'
+    'checkout.js': './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].js',
+    filename: '[name]',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -48,12 +48,26 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /(node_modules).*\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              // limit: 10000,
+              limit: 1,
+              name: utils.assetsPath('img/[name].[ext]')
+            }
+          },
+          'image-webpack-loader'
+        ]
+
+      },
+      {
+        test: /^((?!node_modules).)*\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              // limit: 100,
               name: utils.assetsPath('img/[name].[hash:7].[ext]')
             }
           },

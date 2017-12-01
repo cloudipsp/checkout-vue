@@ -2,12 +2,12 @@
   <div class="f-verify">
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text name="verification-code" field="code" label="Проверочный код" :validate="validCode" type="tel" :maxlength="4"></input-text>
+        <input-text name="code" :validate="validCode" type="tel" :maxlength="4"></input-text>
         <div class="f-form-group">
-          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="!valid">Продолжить</button>
+          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="!valid" v-t="'continue'"></button>
         </div>
         <div class="f-form-group">
-          <button @click="back()" type="button" :class="[css.btn, css.bd, css.btnLg, 'f-btn-block']">Отменить</button>
+          <button @click="back()" type="button" :class="[css.btn, css.bd, css.btnLg, 'f-btn-block']" v-t="'cancel'"></button>
         </div>
       </div>
     </div>

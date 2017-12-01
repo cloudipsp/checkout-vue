@@ -6,13 +6,15 @@
 import Vue from 'vue'
 import VeeValidate, { Validator } from 'vee-validate'
 import ru from 'vee-validate/dist/locale/ru'
-import VueTheMask from 'vue-the-mask'
 import Checkout from '@/checkout'
+import VueI18n from 'vue-i18n'
+import En from '@/locale/en'
+import Ru from '@/locale/ru'
 
-const install = function (Vue, VeeValidate, VueTheMask) {
+const install = function (Vue, VeeValidate, VueI18n, messages) {
   Vue.config.productionTip = false
+  Vue.use(VueI18n)
   Vue.use(VeeValidate, {
-    locale: 'ru',
     inject: false,
     dictionary: {
       ru: {
@@ -22,9 +24,14 @@ const install = function (Vue, VeeValidate, VueTheMask) {
       }
     }
   })
-  Vue.use(VueTheMask)
   window.fondy = function (el, options) {
     return new Vue({
+      i18n: new VueI18n({
+        locale: 'en',
+        fallbackLocale: 'en',
+        // silentTranslationWarn: true,
+        messages: messages
+      }),
       el: el,
       data: {
         options: options
@@ -48,5 +55,5 @@ const install = function (Vue, VeeValidate, VueTheMask) {
 
 if (typeof window !== 'undefined') {
   Validator.localize('ru', ru)
-  install(Vue, VeeValidate, VueTheMask)
+  install(Vue, VeeValidate, VueI18n, {en: En, ru: Ru})
 }

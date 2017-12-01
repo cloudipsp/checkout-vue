@@ -1,5 +1,6 @@
 import store from '@/store'
 import Tooltip from '@/components/tooltip'
+import {TheMask} from 'vue-the-mask'
 
 export default {
   props: {
@@ -11,10 +12,7 @@ export default {
     },
     name: {
       type: String,
-      required: true,
-      default: function () {
-        return 'f-' + this.name
-      }
+      required: true
     },
     field: String,
     label: String,
@@ -28,7 +26,13 @@ export default {
       field_: this.field || this.name
     }
   },
+  computed: {
+    label_: function () {
+      return this.$t(this.label || this.name)
+    }
+  },
   components: {
-    Tooltip
+    Tooltip,
+    TheMask
   }
 }

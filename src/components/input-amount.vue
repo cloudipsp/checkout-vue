@@ -1,13 +1,13 @@
 <template>
   <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" v-if="label" :for="name_">{{ label }}</label>
+    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label_ }}</label>
     <div :class="css.ig">
       <input
         :name="name_"
         v-validate="'required|decimal:2'"
         v-model="amount"
         data-vv-validate-on="blur"
-        :data-vv-as="label"
+        :data-vv-as="label_"
         type="text"
         :class="[css.fc, css.igi, errors.has(name_) ? css.ie : '']"
         :id="name_"

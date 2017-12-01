@@ -35,7 +35,7 @@
     
   <script type=text/javascript src=checkout.js></script></head>
   <body>
-
+  <div id=app></div>
 <div>
   <div>
     <button id=submit>submit 1</button>
@@ -44,7 +44,7 @@
   </div>
   <div>
     <div class=coll>
-      <div id=app></div>
+
     </div>
     <div class=coll>
 
@@ -76,8 +76,8 @@
 <script type=text/x-vue-template id=f-fields>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <input-text name="email" label="Email" validate="required|email"></input-text>
-      <input-amount name="amount" label="Сума к оплате" :on-input="onInput"></input-amount>
+      <input-text name="my_email" validate="required|email"></input-text>
+      <input-amount name="amount" label="my_amount" :on-input="onInput"></input-amount>
     </div>
   </div>
 </script>
@@ -94,7 +94,8 @@ var maxOptions = {
   regular: {
     insert: true,
     open: true,
-    hide: false
+    hide: false,
+    period: ['week', 'month', 'year']
   },
   recurring_data: {
     every: 2,
@@ -104,7 +105,7 @@ var maxOptions = {
     start_time: '2018-11-11'
   },
   offer: true,
-  title: 'Назначение платежа',
+  title: 'my_title',
   link: 'https://fondy.eu',
   params: {
     merchant_id: '900024',
@@ -114,12 +115,34 @@ var maxOptions = {
     currency: 'UAH',
     amount: 500,
     fee: 0.03,
-    order_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+    order_desc: 'my_desc',
     response_url: 'https://www.fondy.eu',
     token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
-  fullScreen: false,
+  fullScreen: true,
   button: true,
+  locale: 'en',
+  locales: ['ru', 'en', 'uk'],
+  messages: {
+    ru: {
+      my_amount: 'Сума к оплате',
+      my_email: 'Эл. адрес',
+      my_title: 'Назначение платежа',
+      my_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)'
+    },
+    en: {
+      my_amount: 'Sum to pay',
+      my_email: 'Email',
+      my_title: 'Purpose of payment',
+      my_desc: 'Charitable assistance (to a child or a department of hematology, or to a department of planned surgery with oncological beds of the Dnipropetrovsk regional children\'s clinical hospital)'
+    },
+    uk: {
+      my_amount: 'Сума до оплати',
+      my_email: 'електронна пошта',
+      my_title: 'Назначення платежа',
+      my_desc: 'Благодійна допомога (дитині або відділенню гематології, або відділенню планової хірургії з онкологічними ліжками дніпропетровської обласної дитячої клінічної лікарні)'
+    }
+  }
 //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
 }
 
@@ -138,12 +161,15 @@ var minOptions = {
 //    start_time: '2018-11-11'
 //  },
   params: {
+    merchant_id: 1000,
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
+//    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
-  fullScreen: false
+  fullScreen: true,
+  locale: 'en',
+  locales: ['ru', 'en', 'uk']
 }
 
 var app = fondy('#app', maxOptions)

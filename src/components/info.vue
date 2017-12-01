@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="f-block-hr f-title f-visible-desktop">Даные платежа</div>
+    <div class="f-block-hr f-title f-visible-desktop" v-t="'info'"></div>
     <div class="f-block f-block-hr">
-      <h5 class="f-block-title">{{ options.title }}</h5>
-      <p v-if="form.order_desc">{{ form.order_desc }}</p>
+      <h5 class="f-block-title" v-t="options.title"></h5>
+      <p v-if="form.order_desc" v-t="form.order_desc"></p>
       <p v-if="options.link"><a :href="options.link" target="_blank">{{ options.link }}</a></p>
     </div>
     <div v-if="form.fee" class="f-block f-block-hr f-visible-desktop">
-      <div>Сумма платежа: {{ minAmount }} {{form.currency}}</div>
-      <div>Комиссия: <span v-if="minFee">{{minFee}} {{form.currency}}</span> <span v-if="fee">({{ fee }})</span></div>
+      <div><span v-t="'amount'"></span> {{ minAmount }} {{ form.currency }}</div>
+      <div><span v-t="'fee'"></span> <span v-if="minFee">{{minFee}} {{ form.currency }}</span> <span v-if="fee">({{ fee }})</span></div>
     </div>
     <div class="f-visible-desktop">
       <i class="f-icon f-icon-block f-i-security"></i>

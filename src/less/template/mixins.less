@@ -1,5 +1,5 @@
-.bg(@name, @bg: @name){
+.bg(@name, @bg: @name, @url: '../../assets/'){
   &.f-i-@{name}{
-    background-image: url('../../assets/@{bg}.svg');
+    background-image: url('@{url}@{bg}.svg');
   }
 }

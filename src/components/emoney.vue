@@ -5,9 +5,6 @@
     mixins: [PaymentSystems],
     data () {
       return {
-        name: 'f-emoney',
-        title: 'Выебрите платежный сервис из списка:',
-        active: '',
         config: {
           paypal: {
             icon: 'paypal',

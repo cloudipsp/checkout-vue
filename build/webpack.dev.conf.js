@@ -14,27 +14,11 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
-  // module: {
-  //   rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
-  // },
+  entry: {
+    'style.css': './src/less/style.less',
+  },
   module: {
-    rules: [
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader', 'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false })
-              ]
-            }
-          },
-          'less-loader',
-        ]
-      }
-    ]
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
   },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',

@@ -5,12 +5,12 @@
         name="offer"
         v-model="form.offer"
         v-validate="'required'"
-        data-vv-as="оферта"
+        :data-vv-as="$t('offer')"
         type="checkbox"
         class="f-checkbox"
         id="f-offer"
       />
-      <label :class="[css.cl]" for="f-offer">Я согласен с <a href="">условиями оферты</a></label>
+      <label :class="[css.cl]" for="f-offer" v-html="$t('offer_t')"></label>
     </tooltip>
   </div>
 </template>

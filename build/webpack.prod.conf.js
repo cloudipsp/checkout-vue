@@ -9,45 +9,27 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const increaseSpecificity = require('postcss-increase-specificity')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
+process.noDeprecation = true
+
 const webpackConfig = merge(baseWebpackConfig, {
-  // module: {
-  //   rules: utils.styleLoaders({
-  //     sourceMap: config.build.productionSourceMap,
-  //     extract: false
-  //   })
-  // },
   module: {
-    rules: [
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader', 'css-loader', 'autoprefixer-loader?{browsers:["> 1%","last 2 versions","ie >= 9"]}',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
-              ]
-            }
-          },
-          'less-loader'
-        ]
-      }
-    ]
+    rules: utils.styleLoaders({
+      sourceMap: config.build.productionSourceMap,
+      extract: config.build.extract
+    })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: config.build.entry,
-  output: {
-    path: config.build.assetsRoot,
-    filename: utils.assetsPath('[name].js'), // 'js/[name].[chunkhash].js'
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
-  },
+  // output: {
+  //   path: config.build.assetsRoot,
+  //   filename: utils.assetsPath('[name].js'), // 'js/[name].[chunkhash].js'
+  //   chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+  // },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
@@ -62,7 +44,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('[name].css') // 'css/[name].[contenthash].css'
+      filename: utils.assetsPath('[name]') // 'css/[name].[contenthash].css'
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.

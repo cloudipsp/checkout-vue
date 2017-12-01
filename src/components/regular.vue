@@ -4,7 +4,7 @@
       <div class="f-block-sm">
         <div class="f-text-center">
           <input type="checkbox" v-model="options.open" class="f-checkbox-swipe" id="f-regular-swipe" />
-          <label :class="[css.cl]" for="f-regular-swipe">Регулярный платеж</label>
+          <label :class="[css.cl]" for="f-regular-swipe" v-t="'regular'"></label>
         </div>
       </div>
     </div>
@@ -12,14 +12,14 @@
       <div class="f-block-sm">
         <div class="f-row">
           <div class="f-col-xs-6">
-            <input-text name="regular-every" field="every" label="Периодичность" validate="required|numeric" placement="bottom" type="tel" :form="form"></input-text>
+            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" :form="form"></input-text>
           </div>
           <div class="f-col-xs-6">
-            <input-select :options="options.period" name="regular-period" field="period" validate="required" :form="form"></input-select>
+            <input-select :options="options.period" name="regular_period" field="period" validate="required" :form="form"></input-select>
           </div>
         </div>
-        <input-amount name="regular-amount" field="amount" label="Сума к оплате" :form="form"></input-amount>
-        <input-text name="regular-start-time" field="start_time" label="Начать с" validate="required" type="date" :form="form"></input-text>
+        <input-amount name="regular_amount" field="amount" :form="form"></input-amount>
+        <input-text name="regular_start_time" field="start_time" validate="required" type="date" :form="form"></input-text>
       </div>
     </div>
   </div>

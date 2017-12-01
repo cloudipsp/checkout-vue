@@ -24,7 +24,11 @@ const build = {
   // Set to `true` or `false` to always turn it on or off
   bundleAnalyzerReport: process.env.npm_config_report,
   template: 'index.html',
-  entry: { checkout: './src/main.js' }
+  entry: {
+    // 'checkout.js': './src/main.js',
+    // 'style.css': './src/less/style.less',
+  },
+  extract: false
 }
 const buildMin = {
   env: require('./prod.env'),
@@ -37,7 +41,7 @@ const buildMin = {
   productionGzipExtensions: ['js', 'css'],
   bundleAnalyzerReport: process.env.npm_config_report,
   template: 'index-min.html',
-  entry: { checkout: './src/main-min.js' }
+  entry: {}
 }
 const buildCss = {
   env: require('./prod.env'),

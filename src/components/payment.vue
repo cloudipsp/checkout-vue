@@ -1,9 +1,7 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button :class="[css.btn, css.bd, css.btnSm]" @click="show = !show">
-        Другие способы
-      </button>
+      <button :class="[css.btn, css.bd, css.btnSm]" @click="show = !show" v-t="'other'"></button>
     </div>
     <div class="f-info" ref="info">
       <info></info>
@@ -53,12 +51,8 @@
       }
     },
     watch: {
-      options: {
-        handler: function () {
-          this.firstResize()
-        },
-        deep: true
-      },
+      'regular.open': 'firstResize',
+      'options.email': 'firstResize',
       router: {
         handler: function () {
           this.firstResize()

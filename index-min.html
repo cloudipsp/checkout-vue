@@ -18,7 +18,7 @@
     <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js></script>
     <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vee-validate/2.0.0-rc.21/vee-validate.min.js></script>
     <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vee-validate/2.0.0-rc.21/locale/ru.js></script>
-    <script type=text/javascript src=https://cdn.jsdelivr.net/npm/vue-the-mask@0.11.1/dist/vue-the-mask.min.js></script>
+    <script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/vue-i18n/7.3.2/vue-i18n.min.js></script>
   </head>
   <body>
 
@@ -31,9 +31,8 @@
 </div>
 
 <script>
-  Vue.use(VueTheMask)
+  Vue.use(VueI18n)
   Vue.use(VeeValidate, {
-    locale: 'ru',
     inject: false,
     dictionary: {
       ru: {
@@ -46,6 +45,15 @@
     }
   })
   new Vue({
+    i18n: new VueI18n({
+      locale: 'en',
+      fallbackLocale: 'en',
+      silentTranslationWarn: true,
+//      messages: {
+//        en: En,
+//        ru: Ru
+//      }
+    }),
     el: '#app',
     data: {
       options: {

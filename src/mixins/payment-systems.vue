@@ -1,6 +1,6 @@
 <template>
-  <div :class="name">
-    <div class="f-block f-title2">{{title}}</div>
+  <div :class="['f-' + router.method]">
+    <div class="f-block f-title2" v-t="router.method + '_t'"></div>
     <div class="f-block f-text-center" :class="'f-ps-' + paymentSystems.length">
       <div
         class="f-ps"
@@ -24,7 +24,8 @@
     props: ['paymentSystems'],
     data () {
       return {
-        router: store.state.router
+        router: store.state.router,
+        active: ''
       }
     },
     created: function () {

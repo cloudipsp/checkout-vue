@@ -5,7 +5,7 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text name="card-number" field="card_number" label="Номер карты" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cards.length">
+        <input-text name="card_number" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cards.length">
           <span v-if="!cards.length" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
           <dropdown slot="group" menu-right :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
@@ -16,12 +16,12 @@
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <input-text name="expiry-date" field="expiry_date" label="Действительна до" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="bottom"></input-text>
+            <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="bottom"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" label="CVV" :validate="validCvv" type="password" :maxlength="3">
+            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="3">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
-              <tooltip text="3 цифры с оборотноой стороны карты" trigger="hover" theme="" target=".f-i-question"></tooltip>
+              <tooltip :text="$t('cvv_question')" trigger="hover" theme="" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>

@@ -1,12 +1,12 @@
 <template>
   <div :class="['f-form-group', errors.has(name_) ? css.he : '', hasDefaultSlot ? css.hf : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" v-if="label" :for="name_">{{ label }}</label>
+    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label_ }}</label>
     <div v-if="group && mask" :class="[css.ig]">
       <the-mask
         :name="name_"
         v-validate="validate"
         v-model="form[field_]"
-        :data-vv-as="label"
+        :data-vv-as="label_"
         :type="type"
         :class="[css.fc, errors.has(name_) ? css.ie : '']"
         :id="name_"
@@ -24,7 +24,7 @@
       :name="name_"
       v-validate="validate"
       v-model="form[field_]"
-      :data-vv-as="label"
+      :data-vv-as="label_"
       :type="type"
       :class="[css.fc, errors.has(name_) ? css.ie : '']"
       :id="name_"
@@ -40,7 +40,7 @@
       :name="name_"
       v-validate="validate"
       v-model="form[field_]"
-      :data-vv-as="label"
+      :data-vv-as="label_"
       :type="type"
       :class="[css.fc, errors.has(name_) ? css.ie : '']"
       :id="name_"

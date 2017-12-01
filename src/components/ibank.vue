@@ -5,9 +5,6 @@
     mixins: [PaymentSystems],
     data () {
       return {
-        name: 'f-ibank',
-        title: 'Выберите ваш банк:',
-        active: '',
         config: {
           p24: {
             icon: 'p24',

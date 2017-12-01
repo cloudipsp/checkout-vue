@@ -1,4 +1,5 @@
 import css from '@/css'
+import { getCookie } from '@/utils/helpers'
 
 export default {
   state: {
@@ -15,18 +16,16 @@ export default {
       email: false,
       fields: false,
       link: '',
-      offer: false
+      offer: false,
+      locales: [],
+      locale: 'en',
+      messages: {}
     },
     regular: {
       insert: false,
       open: false,
       hide: false,
-      period: [
-        {value: 'day', text: 'День'},
-        {value: 'week', text: 'Неделя'},
-        {value: 'month', text: 'Месяц'},
-        {value: 'year', text: 'Год'}
-      ]
+      period: ['day', 'week', 'month', 'year']
     },
     form: {
       // merchant_id: '1396424', // prod
@@ -61,7 +60,19 @@ export default {
     },
     css: {}
   },
-  setOptions (options) {
+  config: {
+    locales: {
+      ru: 'Русский',
+      en: 'English',
+      uk: 'Українською',
+      lv: 'Latviešu',
+      fr: 'Français',
+      cs: 'Čeština',
+      sk: 'Slovenský'
+    },
+    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa']
+  },
+  setOptions (options, $i18n) {
     Object.assign(this.state.options, options)
     delete this.state.options.regular
     delete this.state.options.params
@@ -70,10 +81,13 @@ export default {
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params)
     Object.assign(this.state.form.recurring_data, options.recurring_data)
-    this.state.options.fast = this.fast()
-    this.state.css = css[this.state.options.css] || css.default
+    this.validFast()
+    this.validCss()
+    this.validLocales($i18n)
+    this.validLocale()
+    this.validMethods()
   },
-  fast: function () {
+  validFast: function () {
     let fast = []
     this.state.options.fast.forEach(function (system) {
       ['emoney', 'ibank', 'cash'].forEach(function (method) {
@@ -85,6 +99,36 @@ export default {
         }
       }, this)
     }, this)
-    return fast
+    this.state.options.fast = fast
+  },
+  validCss: function () {
+    this.state.css = css[this.state.options.css] || css.default
+  },
+  validLocales: function ($i18n) {
+    let result = []
+    this.state.options.locales.forEach(function (locale) {
+      if (locale in this.config.locales) {
+        result.push(locale)
+        $i18n.mergeLocaleMessage(locale, this.state.options.messages[locale])
+      }
+    }, this)
+    this.state.options.locales = result
+  },
+  validLocale: function () {
+    let locale = getCookie('lang') || this.state.options.locale
+    let locales = this.state.options.locales
+    if (locales.length && locales.indexOf(locale) < 0) {
+      locale = locales[0]
+    }
+    this.state.options.locale = locale
+  },
+  validMethods: function () {
+    let result = []
+    this.state.options.methods.forEach(function (method) {
+      if (this.config.methods.indexOf(method) > -1) {
+        result.push(method)
+      }
+    }, this)
+    this.state.options.methods = result
   }
 }

@@ -2,6 +2,7 @@
 const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const increaseSpecificity = require('postcss-increase-specificity')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -21,9 +22,30 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  const autoprefixerLoader =  {
+    loader: 'autoprefixer-loader',
+    options: {
+      browsers:['> 1%', 'last 2 versions', 'ie >= 9']
+    }
+  }
+
+  const postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: options.sourceMap,
+      plugins: () => [
+        increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
+      ]
+    }
+  }
+
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = [cssLoader]
+    let loaders = [cssLoader, postcssLoader]
+    if (process.env.NODE_ENV === 'production') {
+      loaders = [cssLoader, autoprefixerLoader, postcssLoader]
+    }
+
     if (loader) {
       loaders.push({
         loader: loader + '-loader',

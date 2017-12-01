@@ -1,16 +1,16 @@
 <template>
   <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label || '&nbsp;'}}</label>
+    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_" v-html="label_"></label>
     <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement">
       <select
         :name="name_"
         v-validate="validate"
         v-model="form[field_]"
-        :data-vv-as="label"
+        :data-vv-as="label_"
         :class="[css.fc, errors.has(name_) ? css.ie : '']"
         :id="name_"
       >
-        <option v-for="item in options" :key="item.value" :value="item.value">{{item.text}}</option>
+        <option v-for="item in options" :key="item" :value="item" v-t="item"></option>
       </select>
     </tooltip>
     <div v-if="false && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>

@@ -3,8 +3,7 @@
     <div class="f-block">
       <div class="f-block-sm">
         <div class="f-form-group">
-          ok {{ order.order_id }}
-
+          <span v-t="'success'"></span> {{ order.order_id }}
         </div>
       </div>
     </div>
