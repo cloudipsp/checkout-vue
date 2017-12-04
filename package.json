@@ -15,6 +15,14 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixaDev/checkout-vue.git"
+  },
+  "unpkg": "dist/checkout.js",
   "dependencies": {
     "axios": "^0.17.1",
     "fondy-icons": "^1.0.1",
