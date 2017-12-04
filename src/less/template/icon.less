@@ -1,4 +1,4 @@
-@cdn: '~fondy-icons/src/';
+@cdn: '~fondy-icons/dist/svg/';
 
 .f-icon{
   background-position: 50% 50%;
@@ -7,16 +7,16 @@
   display: inline-block;
 }
 .f-icon{
-  .bg(paypal, paypal, @cdn);
-  .bg(qiwi, qiwi, @cdn);
+  .bg(paypal, 'min/paypal', @cdn);
+  .bg(qiwi, 'min/qiwi', @cdn);
   .bg(webmoney, webmoney, @cdn);
   .bg(yamoney, yamoney, @cdn);
 
-  .bg(p24, privat24, @cdn);
+  .bg(p24, 'min/p24', @cdn);
   .bg(platba24, platba24, @cdn);
   .bg(raiffeisen, raiffeisen, @cdn);
 
-  .bg(liqpay, liqpay, @cdn);
+  .bg(liqpay, 'min/liqpay', @cdn);
 
   .bg(security);
   .bg(card-empty);

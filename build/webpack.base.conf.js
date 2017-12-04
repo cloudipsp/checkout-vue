@@ -54,7 +54,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1,
-              name: utils.assetsPath('img/[name].[ext]')
+              name: utils.assetsPath('i/[name].[ext]')
             }
           },
           'image-webpack-loader'
@@ -68,7 +68,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               // limit: 100,
-              name: utils.assetsPath('img/[name].[hash:7].[ext]')
+              name: utils.assetsPath('i/[name].[hash:7].[ext]')
             }
           },
           'image-webpack-loader'
