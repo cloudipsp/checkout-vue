@@ -27,13 +27,14 @@
     watch: {
       'options.lang': {
         handler: function (lang) {
+          let self = this
           loadLanguageAsync(lang).then(function () {
+            self.$validator.localize(lang)
           })
           setCookie('lang', lang, {
             path: '/',
             expires: 3600
           })
-          this.$validator.localize(lang)
           this.form.lang = lang
         },
         immediate: true
