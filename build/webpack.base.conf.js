@@ -18,7 +18,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath,
-    chunkFilename: 'l/[id].js',
+    chunkFilename: 'i18n/[name].js',
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -55,7 +55,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1,
-              name: utils.assetsPath('i/[name].[ext]')
+              name: utils.assetsPath('img/[name].[ext]')
             }
           },
           'image-webpack-loader'
@@ -69,7 +69,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               // limit: 100,
-              name: utils.assetsPath('i/[name].[hash:7].[ext]')
+              name: utils.assetsPath('img/[name].[hash:7].[ext]')
             }
           },
           'image-webpack-loader'
