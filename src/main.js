@@ -1,37 +1,18 @@
 // TODO import config icon f-fast-access
 // TODO directive/component params
-// TODO мультиязычность
 // TODO свайп
 
 import Vue from 'vue'
-import VeeValidate, { Validator } from 'vee-validate'
-import ru from 'vee-validate/dist/locale/ru'
+import VeeValidate from 'vee-validate'
 import Checkout from '@/checkout'
-import VueI18n from 'vue-i18n'
-import En from '@/locale/en'
-import Ru from '@/locale/ru'
+import { i18n } from '@/i18n'
 
-const install = function (Vue, VeeValidate, VueI18n, messages) {
+const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
-  Vue.use(VueI18n)
-  Vue.use(VeeValidate, {
-    inject: false,
-    dictionary: {
-      ru: {
-        messages: {
-          credit_card: (field) => `Поле ${field} должно быть действительным номером карты`
-        }
-      }
-    }
-  })
+  Vue.use(VeeValidate, { inject: false })
   window.fondy = function (el, options) {
     return new Vue({
-      i18n: new VueI18n({
-        locale: 'en',
-        fallbackLocale: 'en',
-        // silentTranslationWarn: true,
-        messages: messages
-      }),
+      i18n,
       el: el,
       data: {
         options: options
@@ -54,6 +35,5 @@ const install = function (Vue, VeeValidate, VueI18n, messages) {
 }
 
 if (typeof window !== 'undefined') {
-  Validator.localize('ru', ru)
-  install(Vue, VeeValidate, VueI18n, {en: En, ru: Ru})
+  install(Vue, VeeValidate)
 }

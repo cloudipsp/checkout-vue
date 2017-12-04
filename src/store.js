@@ -83,9 +83,10 @@ export default {
     Object.assign(this.state.form.recurring_data, options.recurring_data)
     this.validFast()
     this.validCss()
-    this.validLocales($i18n)
+    this.validLocales()
     this.validLocale()
     this.validMethods()
+    $i18n.mergeLocaleMessage('en', this.state.options.messages['en'])
   },
   validFast: function () {
     let fast = []
@@ -104,23 +105,22 @@ export default {
   validCss: function () {
     this.state.css = css[this.state.options.css] || css.default
   },
-  validLocales: function ($i18n) {
+  validLocales: function () {
     let result = []
-    this.state.options.locales.forEach(function (locale) {
-      if (locale in this.config.locales) {
-        result.push(locale)
-        $i18n.mergeLocaleMessage(locale, this.state.options.messages[locale])
+    this.state.options.locales.forEach(function (lang) {
+      if (lang in this.config.locales) {
+        result.push(lang)
       }
     }, this)
     this.state.options.locales = result
   },
   validLocale: function () {
-    let locale = getCookie('lang') || this.state.options.locale
+    let lang = getCookie('lang') || this.state.options.lang
     let locales = this.state.options.locales
-    if (locales.length && locales.indexOf(locale) < 0) {
-      locale = locales[0]
+    if (locales.length && locales.indexOf(lang) < 0) {
+      lang = locales[0]
     }
-    this.state.options.locale = locale
+    this.state.options.lang = lang
   },
   validMethods: function () {
     let result = []

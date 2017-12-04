@@ -25,7 +25,7 @@
             </input-text>
           </div>
         </div>
-        <input-text v-if="options.email" name="email" label="Email" validate="required|email"></input-text>
+        <input-text v-if="options.email" name="email" validate="required|email"></input-text>
       </div>
     </div>
   </div>

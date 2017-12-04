@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "fondy-icons": "^1.0.1",
     "ipsp-js-sdk": "^1.0.7",
     "vee-validate": "^2.0.0-rc.25",
