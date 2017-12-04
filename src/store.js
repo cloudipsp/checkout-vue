@@ -18,7 +18,7 @@ export default {
       link: '',
       offer: false,
       locales: [],
-      locale: 'en',
+      lang: 'en',
       messages: {}
     },
     regular: {
