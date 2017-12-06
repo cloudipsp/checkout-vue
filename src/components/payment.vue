@@ -1,7 +1,7 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button :class="[css.btn, css.bd, css.btnSm]" @click="show = !show" v-t="'other'"></button>
+      <button type="button" :class="[css.btn, css.bd, css.btnSm]" @click="show = !show" v-t="'other'"></button>
     </div>
     <div class="f-info" ref="info">
       <info></info>
@@ -87,7 +87,7 @@
           self.cards = Object.values(model.data)
 //          self.cards = [{
 //            card_number: '4444 55XX XXXX 6666',
-//            expiry_date: '11 / 17',
+//            expiry_date: '12 / 17',
 //            email: 'asd@asd.asd',
 //            hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
 //          },

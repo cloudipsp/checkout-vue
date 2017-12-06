@@ -63,24 +63,15 @@
         default: 0
       }
     },
+    computed: {
+      allContent () {
+        return this.text
+      }
+    },
     watch: {
-      text (value, oldValue) {
-        // reset position while text changed & is shown
-        // nextTick is required
-        if (value && value !== oldValue) {
-          this.$nextTick(() => {
-            if (this.isShown()) {
-              this.resetPosition()
-            }
-          })
-        }
-      },
       enable (v) {
         if (v && this.triggerEl.matches(':hover, :focus')) {
           this.show()
-        }
-        if (!v) {
-          this.hide()
         }
       }
     },

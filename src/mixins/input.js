@@ -31,6 +31,12 @@ export default {
       return this.$t(this.label || this.name)
     }
   },
+  // methods: {
+  //   onEnter: function () {
+  //     this.$root.$emit('submit')
+  //     @keyup.enter="onEnter"
+  //   }
+  // },
   components: {
     Tooltip,
     TheMask

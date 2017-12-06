@@ -1,6 +1,7 @@
-// TODO import config icon f-fast-access
 // TODO directive/component params
 // TODO свайп
+// TODO config fields payment systems
+// TODO input group card tooltip
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'

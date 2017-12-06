@@ -84,13 +84,25 @@
 
 <script>
 var maxOptions = {
-  methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-  ibank: ['p24', 'platba24', 'raiffeisen'],
-  emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-  cash: ['liqpay'],
-  fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-  cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-  fields: true,
+  options: {
+    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+    ibank: ['p24', 'platba24', 'raiffeisen'],
+    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+    cash: ['liqpay'],
+    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
+    fields: true,
+    offer: true,
+    title: 'my_title',
+    link: 'https://fondy.eu',
+    fullScreen: true,
+    button: true,
+    lang: 'ru',
+    locales: ['ru', 'en', 'uk'],
+    email: true,
+    digitsCvv: 4
+    //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
+  },
   regular: {
     insert: true,
     open: true,
@@ -104,11 +116,8 @@ var maxOptions = {
     end_time: '2020-11-14',
     start_time: '2018-11-11'
   },
-  offer: true,
-  title: 'my_title',
-  link: 'https://fondy.eu',
   params: {
-    merchant_id: '900024',
+    merchant_id: '1000', // 900024
     verification_type: 'code',
     required_rectoken: 'y',
     verification: 'y',
@@ -119,18 +128,19 @@ var maxOptions = {
     response_url: 'https://www.fondy.eu',
     token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
   },
-  fullScreen: true,
-  button: true,
-  lang: 'en',
-  locales: ['ru', 'en', 'uk'],
   messages: {
     ru: {
+      validate: {
+        credit_card: function (field) { return 'edit Поле ' + field + ' должно быть действительным номером карты' }
+      },
+      card_number: 'edit Номер карты',
       my_amount: 'Сума к оплате',
       my_email: 'Эл. адрес',
       my_title: 'Назначение платежа',
       my_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)'
     },
     en: {
+      card_number: 'edit Card number',
       my_amount: 'Sum to pay',
       my_email: 'Email',
       my_title: 'Purpose of payment',
@@ -143,11 +153,15 @@ var maxOptions = {
       my_desc: 'Благодійна допомога (дитині або відділенню гематології, або відділенню планової хірургії з онкологічними ліжками дніпропетровської обласної дитячої клінічної лікарні)'
     }
   }
-//  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
 }
 
 var minOptions = {
-//  fields: true,
+  options: {
+//    fields: true,
+    fullScreen: true,
+//    lang: 'en',
+//    locales: ['ru', 'en', 'uk']
+  },
 //  regular: {
 //    insert: true,
 //    open: true,
@@ -166,10 +180,7 @@ var minOptions = {
 //    required_rectoken: 'y',
 //    verification: 'y',
 //    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
-  },
-  fullScreen: true,
-  lang: 'en',
-  locales: ['ru', 'en', 'uk']
+  }
 }
 
 var app = fondy('#app', maxOptions)

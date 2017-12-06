@@ -3,10 +3,10 @@
     <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_" v-html="label_"></label>
     <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement">
       <select
-        :name="name_"
         v-validate="validate"
         v-model="form[field_]"
         :data-vv-as="label_"
+        :data-vv-name="name_"
         :class="[css.fc, errors.has(name_) ? css.ie : '']"
         :id="name_"
       >

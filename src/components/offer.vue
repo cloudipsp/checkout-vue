@@ -2,10 +2,10 @@
   <div class="f-offer" :class="{'f-has-error': errors.has('offer')}">
     <tooltip :text="errors.first('offer')" :enable="errors.has('offer')" target="#f-offer">
       <input
-        name="offer"
         v-model="form.offer"
         v-validate="'required'"
         :data-vv-as="$t('offer')"
+        data-vv-name="offer"
         type="checkbox"
         class="f-checkbox"
         id="f-offer"

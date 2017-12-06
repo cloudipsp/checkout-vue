@@ -27,9 +27,14 @@ export function loadLanguageAsync (lang) {
   if (i18n.locale !== lang) {
     if (loadedLanguages.indexOf(lang) < 0) {
       return import(/* webpackChunkName: "[request]" */ `@/lang/${lang}`).then(msgs => {
+        let validate = {}
+
         i18n.setLocaleMessage(lang, msgs.default)
-        i18n.mergeLocaleMessage(lang, store.state.options.messages[lang])
-        Validator.localize(lang, { messages: msgs.default.validate })
+        i18n.mergeLocaleMessage(lang, store.state.messages[lang])
+
+        Object.assign(validate, msgs.default.validate, store.state.messages[lang].validate)
+        Validator.localize(lang, { messages: validate })
+
         loadedLanguages.push(lang)
         return setI18nLanguage(lang)
       })

@@ -36,33 +36,33 @@ export function getViewportSize () {
   return {width, height}
 }
 
-let scrollbarWidth = null
-let savedScreenSize = null
+// let scrollbarWidth = null
+// let savedScreenSize = null
 
-export function getScrollbarWidth (recalculate = false) {
-  let screenSize = getViewportSize()
-  // return directly when already calculated & not force recalculate & screen size not changed
-  if (scrollbarWidth !== null && !recalculate &&
-    screenSize.height === savedScreenSize.height && screenSize.width === savedScreenSize.width) {
-    return scrollbarWidth
-  }
-  if (document.readyState === 'loading') {
-    return null
-  }
-  const div1 = document.createElement('div')
-  const div2 = document.createElement('div')
-  div1.style.width = div2.style.width = div1.style.height = div2.style.height = '100px'
-  div1.style.overflow = 'scroll'
-  div2.style.overflow = 'hidden'
-  document.body.appendChild(div1)
-  document.body.appendChild(div2)
-  scrollbarWidth = Math.abs(div1.scrollHeight - div2.scrollHeight)
-  document.body.removeChild(div1)
-  document.body.removeChild(div2)
-  // save new screen size
-  savedScreenSize = screenSize
-  return scrollbarWidth
-}
+// export function getScrollbarWidth (recalculate = false) {
+//   let screenSize = getViewportSize()
+//   // return directly when already calculated & not force recalculate & screen size not changed
+//   if (scrollbarWidth !== null && !recalculate &&
+//     screenSize.height === savedScreenSize.height && screenSize.width === savedScreenSize.width) {
+//     return scrollbarWidth
+//   }
+//   if (document.readyState === 'loading') {
+//     return null
+//   }
+//   const div1 = document.createElement('div')
+//   const div2 = document.createElement('div')
+//   div1.style.width = div2.style.width = div1.style.height = div2.style.height = '100px'
+//   div1.style.overflow = 'scroll'
+//   div2.style.overflow = 'hidden'
+//   document.body.appendChild(div1)
+//   document.body.appendChild(div2)
+//   scrollbarWidth = Math.abs(div1.scrollHeight - div2.scrollHeight)
+//   document.body.removeChild(div1)
+//   document.body.removeChild(div2)
+//   // save new screen size
+//   savedScreenSize = screenSize
+//   return scrollbarWidth
+// }
 
 export function on (element, event, handler) {
   element.addEventListener(event, handler)
@@ -260,16 +260,16 @@ export function setTooltipPosition (tooltip, trigger, placement, auto, appendToS
   }
 }
 
-export function hasScrollbar (el) {
-  return el.scrollHeight > el.clientHeight
-}
+// export function hasScrollbar (el) {
+//   return el.scrollHeight > el.clientHeight
+// }
 
-export function toggleBodyOverflow (enable) {
-  if (enable) {
-    document.body.style.paddingRight = null
-  } else {
-    if (hasScrollbar(document.documentElement)) {
-      document.body.style.paddingRight = `${getScrollbarWidth()}px`
-    }
-  }
-}
+// export function toggleBodyOverflow (enable) {
+//   if (enable) {
+//     document.body.style.paddingRight = null
+//   } else {
+//     if (hasScrollbar(document.documentElement)) {
+//       document.body.style.paddingRight = `${getScrollbarWidth()}px`
+//     }
+//   }
+// }

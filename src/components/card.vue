@@ -16,12 +16,12 @@
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="bottom"></input-text>
+            <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="3">
+            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="options.digitsCvv">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
-              <tooltip :text="$t('cvv_question')" trigger="hover" theme="" target=".f-i-question"></tooltip>
+              <tooltip :text="$t('cvv_question', [options.digitsCvv])" trigger="hover" theme="" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>
@@ -48,8 +48,7 @@
         options: store.state.options,
         css: store.state.css,
         maskExpiryDate: '##/##',
-        maskCardNumber: '#### ##XX XXXX ####',
-        validCvv: 'required|digits:3'
+        maskCardNumber: '#### ##XX XXXX ####'
       }
     },
     computed: {
@@ -63,13 +62,18 @@
         return {
           rules: {
             required: true,
-            credit_card: !/4444555566661111|4444111166665555|4444555511116666|4444111155556666|XXXXXX/.test(this.form.card_number)
+            credit_card: !/\d{6}XXXXXX\d{4}/.test(this.form.card_number)
           }
         }
+      },
+      validCvv: function () {
+        return 'required|digits:' + this.options.digitsCvv
       }
     },
     watch: {
       'form.card_number': function (newVal, oldVal) {
+        newVal = newVal.replace(/ /g, '')
+        oldVal = oldVal.replace(/ /g, '')
         let newFirst = newVal && newVal[0]
         let oldFirst = oldVal && oldVal[0]
         let newBin = newVal && newVal.slice(0, 6)

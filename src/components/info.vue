@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="f-block-hr f-title f-visible-desktop" v-t="'info'"></div>
-    <div class="f-block f-block-hr">
-      <h5 class="f-block-title" v-t="options.title"></h5>
+    <div v-if="options.title || form.order_desc || options.link" class="f-block f-block-hr">
+      <h5 v-if="options.title" class="f-block-title" v-t="options.title"></h5>
       <p v-if="form.order_desc" v-t="form.order_desc"></p>
       <p v-if="options.link"><a :href="options.link" target="_blank">{{ options.link }}</a></p>
     </div>

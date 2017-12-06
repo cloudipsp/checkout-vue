@@ -1,4 +1,7 @@
-import css from '@/css'
+import configCss from '@/config/css'
+import configLocales from '@/config/locales'
+import configMethods from '@/config/methods'
+import configPaymentSystems from '@/config/payment-systems'
 import { getCookie } from '@/utils/helpers'
 
 export default {
@@ -10,7 +13,7 @@ export default {
       cash: [],
       fast: [],
       cardIcons: ['mastercard', 'visa'],
-      title: 'Test payment',
+      title: '',
       button: true,
       fullScreen: true,
       email: false,
@@ -19,7 +22,8 @@ export default {
       offer: false,
       locales: [],
       lang: 'en',
-      messages: {}
+      messages: {},
+      digitsCvv: 3
     },
     regular: {
       insert: false,
@@ -45,7 +49,10 @@ export default {
       expiry_date: '',
       cvv2: '',
       email: '',
-      code: ''
+      code: '',
+      order_desc: '',
+      offer: false,
+      token: ''
     },
     error: {
       flag: false,
@@ -54,44 +61,30 @@ export default {
       message: ''
     },
     router: {
-      page: undefined,
+      page: undefined, // payment-method verify success
       method: undefined,
       system: undefined
     },
-    css: {}
-  },
-  config: {
-    locales: {
-      ru: 'Русский',
-      en: 'English',
-      uk: 'Українською',
-      lv: 'Latviešu',
-      fr: 'Français',
-      cs: 'Čeština',
-      sk: 'Slovenský'
-    },
-    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa']
+    css: {},
+    messages: {}
   },
   setOptions (options, $i18n) {
-    Object.assign(this.state.options, options)
-    delete this.state.options.regular
-    delete this.state.options.params
-    delete this.state.options.recurring_data
-
+    Object.assign(this.state.options, options.options)
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params)
     Object.assign(this.state.form.recurring_data, options.recurring_data)
+    Object.assign(this.state.messages, options.messages)
     this.validFast()
     this.validCss()
     this.validLocales()
     this.validLocale()
     this.validMethods()
-    $i18n.mergeLocaleMessage('en', this.state.options.messages['en'])
+    $i18n.mergeLocaleMessage('en', this.state.messages['en'])
   },
   validFast: function () {
     let fast = []
     this.state.options.fast.forEach(function (system) {
-      ['emoney', 'ibank', 'cash'].forEach(function (method) {
+      Object.keys(configPaymentSystems).forEach(function (method) {
         if (this.state.options[method].indexOf(system) > -1) {
           fast.push({
             method: method,
@@ -103,29 +96,39 @@ export default {
     this.state.options.fast = fast
   },
   validCss: function () {
-    this.state.css = css[this.state.options.css] || css.default
+    this.state.css = configCss[this.state.options.css] || configCss.default
   },
   validLocales: function () {
     let result = []
     this.state.options.locales.forEach(function (lang) {
-      if (lang in this.config.locales) {
+      if (lang in configLocales) {
         result.push(lang)
       }
     }, this)
     this.state.options.locales = result
   },
   validLocale: function () {
-    let lang = getCookie('lang') || this.state.options.lang
+    let lang
     let locales = this.state.options.locales
-    if (locales.length && locales.indexOf(lang) < 0) {
-      lang = locales[0]
+    if (this.state.options.fullScreen) {
+      lang = getCookie('lang') || this.state.options.lang
+    } else {
+      lang = this.state.options.lang || getCookie('lang')
+    }
+    if (locales.length) {
+      if (locales.indexOf(lang) < 0) {
+        lang = locales[0]
+      }
+    } else
+    if (!(lang in configLocales)) {
+      lang = 'en'
     }
     this.state.options.lang = lang
   },
   validMethods: function () {
     let result = []
     this.state.options.methods.forEach(function (method) {
-      if (this.config.methods.indexOf(method) > -1) {
+      if (configMethods.indexOf(method) > -1) {
         result.push(method)
       }
     }, this)

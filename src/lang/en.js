@@ -4,7 +4,7 @@ export default {
   card_number: 'Card number',
   expiry_date: 'Expiry date',
   cvv2: 'CVV',
-  cvv_question: '3 digits on the back of the card',
+  cvv_question: '{0} digits on the back of the card',
   email: 'Email',
 
   regular: 'Regular payment',

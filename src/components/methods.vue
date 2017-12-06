@@ -23,7 +23,7 @@
         v-if="item.system !== router.system"
         v-for="item in options.fast"
         :key="item.system"
-        :class="'f-i-' + item.system"
+        :class="'f-i-' + configPaymentSystems[item.method][item.system].icon"
         @click="changeMethod(item.method, item.system )"
       ></div>
     </div>
@@ -32,13 +32,15 @@
 
 <script>
   import store from '@/store'
+  import configPaymentSystems from '@/config/payment-systems'
 
   export default {
     props: ['onChangeMethod'],
     data () {
       return {
         options: store.state.options,
-        router: store.state.router
+        router: store.state.router,
+        configPaymentSystems: configPaymentSystems
       }
     },
     methods: {

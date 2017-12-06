@@ -4,7 +4,7 @@ export default {
   card_number: 'Номер карты',
   expiry_date: 'Действительна до',
   cvv2: 'CVV',
-  cvv_question: '3 цифры с оборотноой стороны карты',
+  cvv_question: '{0} цифры с оборотноой стороны карты',
   email: 'Email',
 
   regular: 'Регулярный платеж',
