@@ -19,9 +19,9 @@
             <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="options.digitsCvv">
+            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="digitsCvv">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
-              <tooltip :text="$t('cvv_question', [options.digitsCvv])" trigger="hover" theme="" target=".f-i-question"></tooltip>
+              <tooltip :text="$t('cvv_question', [digitsCvv])" trigger="hover" theme="" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>
@@ -44,6 +44,7 @@
     props: ['icons', 'cards'],
     data () {
       return {
+        state: store.state,
         form: store.state.form,
         options: store.state.options,
         css: store.state.css,
@@ -67,7 +68,10 @@
         }
       },
       validCvv: function () {
-        return 'required|digits:' + this.options.digitsCvv
+        return 'required|digits:' + this.digitsCvv
+      },
+      digitsCvv: function () {
+        return this.form.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
       }
     },
     watch: {

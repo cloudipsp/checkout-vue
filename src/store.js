@@ -22,8 +22,7 @@ export default {
       offer: false,
       locales: [],
       lang: 'en',
-      messages: {},
-      digitsCvv: 3
+      messages: {}
     },
     regular: {
       insert: false,
@@ -73,7 +72,7 @@ export default {
     Object.assign(this.state.options, options.options)
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params)
-    Object.assign(this.state.form.recurring_data, options.recurring_data)
+    Object.assign(this.state.form.recurring_data, options.recurring)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
     this.validFast()
