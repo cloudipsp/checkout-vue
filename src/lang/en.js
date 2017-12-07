@@ -1,4 +1,4 @@
-export default {
+export const messages = {
 
   card: 'Payment by card',
   card_number: 'Card number',
@@ -47,4 +47,8 @@ export default {
   cancel: 'Cancel',
   code: 'Verification code',
   pay: 'Pay now'
+}
+
+export const validate = {
+
 }

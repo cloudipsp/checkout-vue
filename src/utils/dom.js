@@ -241,22 +241,21 @@ export function setTooltipPosition (tooltip, trigger, placement, auto, appendToS
     }
   }
   // fix left and top for tooltip
+  // fix left and top for tooltip
   let rect = trigger.getBoundingClientRect()
-  let rect2 = container.getBoundingClientRect()
-  // console.log(rect.top, rect2.top)
   let tooltipRect = tooltip.getBoundingClientRect()
   if (placement === PLACEMENTS.BOTTOM) {
-    tooltip.style.top = containerScrollTop + rect.top - rect2.top + rect.height + 'px'
-    tooltip.style.left = containerScrollLeft + rect.left - rect2.left + rect.width / 2 - tooltipRect.width / 2 + 'px'
+    tooltip.style.top = containerScrollTop + rect.top + rect.height + 'px'
+    tooltip.style.left = containerScrollLeft + rect.left + rect.width / 2 - tooltipRect.width / 2 + 'px'
   } else if (placement === PLACEMENTS.LEFT) {
-    tooltip.style.top = containerScrollTop + rect.top - rect2.top + rect.height / 2 - tooltipRect.height / 2 + 'px'
-    tooltip.style.left = containerScrollLeft + rect.left - rect2.left - tooltipRect.width + 'px'
+    tooltip.style.top = containerScrollTop + rect.top + rect.height / 2 - tooltipRect.height / 2 + 'px'
+    tooltip.style.left = containerScrollLeft + rect.left - tooltipRect.width + 'px'
   } else if (placement === PLACEMENTS.RIGHT) {
-    tooltip.style.top = containerScrollTop + rect.top - rect2.top + rect.height / 2 - tooltipRect.height / 2 + 'px'
-    tooltip.style.left = containerScrollLeft + rect.left - rect2.left + rect.width + 'px'
+    tooltip.style.top = containerScrollTop + rect.top + rect.height / 2 - tooltipRect.height / 2 + 'px'
+    tooltip.style.left = containerScrollLeft + rect.left + rect.width + 'px'
   } else {
-    tooltip.style.top = containerScrollTop + rect.top - rect2.top - tooltipRect.height + 'px'
-    tooltip.style.left = containerScrollLeft + rect.left - rect2.left + rect.width / 2 - tooltipRect.width / 2 + 'px'
+    tooltip.style.top = containerScrollTop + rect.top - tooltipRect.height + 'px'
+    tooltip.style.left = containerScrollLeft + rect.left + rect.width / 2 - tooltipRect.width / 2 + 'px'
   }
 }
 

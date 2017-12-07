@@ -17,6 +17,7 @@
         :masked="masked"
         @blur.native="$validator.validate(name_)"
       ></the-mask>
+      <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
       <slot name="group"></slot>
     </div>
     <the-mask
@@ -49,7 +50,7 @@
     >
     <slot></slot>
     <div v-if="false && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
-    <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+    <tooltip v-if="!group" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
 </template>
 

@@ -2,7 +2,7 @@
 const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const increaseSpecificity = require('postcss-increase-specificity')
+const increaseSpecificity = require('./postcss-increase-specificity')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'

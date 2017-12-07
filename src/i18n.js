@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import en from '@/lang/en'
+import * as en from '@/lang/en'
 import store from '@/store'
 import { Validator } from 'vee-validate'
 
@@ -11,7 +11,7 @@ export const i18n = new VueI18n({
   fallbackLocale: 'en',
   silentTranslationWarn: true,
   messages: {
-    en: en
+    en: en.messages
   }
 })
 
@@ -28,11 +28,11 @@ export function loadLanguageAsync (lang) {
     if (loadedLanguages.indexOf(lang) < 0) {
       return import(/* webpackChunkName: "[request]" */ `@/lang/${lang}`).then(msgs => {
         let validate = {}
+        let messages = {}
+        Object.assign(validate, Validator.dictionary.container['en'].messages, msgs.validate, store.state.validate[lang])
+        Object.assign(messages, msgs.messages, store.state.messages[lang])
 
-        i18n.setLocaleMessage(lang, msgs.default)
-        i18n.mergeLocaleMessage(lang, store.state.messages[lang])
-
-        Object.assign(validate, msgs.default.validate, store.state.messages[lang].validate)
+        i18n.setLocaleMessage(lang, messages)
         Validator.localize(lang, { messages: validate })
 
         loadedLanguages.push(lang)

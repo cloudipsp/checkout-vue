@@ -130,9 +130,6 @@ var maxOptions = {
   },
   messages: {
     ru: {
-      validate: {
-        credit_card: function (field) { return 'edit Поле ' + field + ' должно быть действительным номером карты' }
-      },
       card_number: 'edit Номер карты',
       my_amount: 'Сума к оплате',
       my_email: 'Эл. адрес',
@@ -151,6 +148,14 @@ var maxOptions = {
       my_email: 'електронна пошта',
       my_title: 'Назначення платежа',
       my_desc: 'Благодійна допомога (дитині або відділенню гематології, або відділенню планової хірургії з онкологічними ліжками дніпропетровської обласної дитячої клінічної лікарні)'
+    }
+  },
+  validate: {
+    ru: {
+      credit_card: function (field) { return 'edit Поле ' + field + ' должно быть действительным номером карты' }
+    },
+    uk: {
+      credit_card: function (field) { return 'edit Поле ' + field + ' має бути дійсним номером карти' }
     }
   }
 }

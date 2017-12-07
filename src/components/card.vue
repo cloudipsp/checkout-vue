@@ -7,7 +7,7 @@
       <div class="f-block-sm">
         <input-text name="card_number" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cards.length">
           <span v-if="!cards.length" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
-          <dropdown slot="group" menu-right :class="[css.igb]">
+          <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
             <template slot="dropdown">
               <li v-for="card in cards"><a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a></li>

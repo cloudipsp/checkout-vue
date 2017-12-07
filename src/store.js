@@ -66,7 +66,8 @@ export default {
       system: undefined
     },
     css: {},
-    messages: {}
+    messages: {},
+    validate: {}
   },
   setOptions (options, $i18n) {
     Object.assign(this.state.options, options.options)
@@ -74,6 +75,7 @@ export default {
     Object.assign(this.state.form, options.params)
     Object.assign(this.state.form.recurring_data, options.recurring_data)
     Object.assign(this.state.messages, options.messages)
+    Object.assign(this.state.validate, options.validate)
     this.validFast()
     this.validCss()
     this.validLocales()
