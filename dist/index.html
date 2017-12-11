@@ -97,7 +97,6 @@ var maxOptions = {
     link: 'https://fondy.eu',
     fullScreen: true,
     button: true,
-    lang: 'ru',
     locales: ['ru', 'en', 'uk'],
     email: true,
     //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
@@ -116,7 +115,7 @@ var maxOptions = {
     start_time: '2018-11-11'
   },
   params: {
-    merchant_id: '1000', // 900024
+    merchant_id: 1000, // 900024
     verification_type: 'code',
     required_rectoken: 'y',
     verification: 'y',
@@ -125,7 +124,9 @@ var maxOptions = {
     fee: 0.03,
     order_desc: 'my_desc',
     response_url: 'https://www.fondy.eu',
-    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
+    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50',
+    email: 'asd@asd.asd',
+    lang: 'ru'
   },
   messages: {
     ru: {
@@ -162,7 +163,7 @@ var maxOptions = {
 var minOptions = {
   options: {
 //    fields: true,
-    fullScreen: true,
+    fullScreen: false,
 //    lang: 'en',
 //    locales: ['ru', 'en', 'uk']
   },

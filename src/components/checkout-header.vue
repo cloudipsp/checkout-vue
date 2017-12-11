@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select v-if="options.locales.length" :class="[css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="options.lang">
+      <select v-if="options.locales.length" :class="[css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="form.lang">
         <option v-for="item in options.locales" :key="item" :value="item">{{ configLocales[item] }}</option>
       </select>
     </div>
@@ -26,7 +26,7 @@
       }
     },
     watch: {
-      'options.lang': {
+      'form.lang': {
         handler: function (lang) {
           let self = this
           loadLanguageAsync(lang).then(function () {
@@ -36,7 +36,6 @@
             path: '/',
             expires: 3600
           })
-          this.form.lang = lang
         },
         immediate: true
       }

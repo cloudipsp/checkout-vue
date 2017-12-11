@@ -1,9 +1,12 @@
 <template>
   <div id="f" ref="f">
-    <div class="f-container" :class="{'f-min': min}">
+    <div v-if="!state.error.errors.length" class="f-container" :class="{'f-min': min}">
       <checkout-header></checkout-header>
       <payment :on-set-min="setMin"></payment>
     </div>
+    <ul v-else>
+      <li v-for="error in state.error.errors">{{ error.message }}</li>
+    </ul>
   </div>
 </template>
 
@@ -18,13 +21,14 @@
     props: ['options'],
     data () {
       return {
-        min: true
+        min: true,
+        state: store.state
       }
     },
     created: function () {
       store.setOptions(this.options, this.$i18n)
 //      require('./less/style.less')
-      if (store.state.options.fullScreen) {
+      if (this.state.options.fullScreen) {
         require('./less/style-sm.less')
         require('./less/style-md.less')
         setTimeout(() => {

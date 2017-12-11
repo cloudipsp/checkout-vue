@@ -1,8 +1,9 @@
+import config from '@/config/config'
 import configCss from '@/config/css'
 import configLocales from '@/config/locales'
-import configMethods from '@/config/methods'
 import configPaymentSystems from '@/config/payment-systems'
 import { getCookie } from '@/utils/helpers'
+import Schema from 'async-validator'
 
 export default {
   state: {
@@ -21,7 +22,6 @@ export default {
       link: '',
       offer: false,
       locales: [],
-      lang: 'en',
       messages: {}
     },
     regular: {
@@ -31,8 +31,7 @@ export default {
       period: ['day', 'week', 'month', 'year']
     },
     form: {
-      // merchant_id: '1396424', // prod
-      merchant_id: '900024', // dev
+      merchant_id: 900024, // 900024 dev, 1396424 prod
       amount: 100,
       fee: 0,
       amount_with_fee: 0,
@@ -51,13 +50,15 @@ export default {
       code: '',
       order_desc: '',
       offer: false,
-      token: ''
+      token: '',
+      lang: 'en'
     },
     error: {
       flag: false,
       buffer: false,
       code: '',
-      message: ''
+      message: '',
+      errors: []
     },
     router: {
       page: undefined, // payment-method verify success
@@ -69,6 +70,7 @@ export default {
     validate: {}
   },
   setOptions (options, $i18n) {
+    this.validate(options)
     Object.assign(this.state.options, options.options)
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params)
@@ -77,10 +79,16 @@ export default {
     Object.assign(this.state.validate, options.validate)
     this.validFast()
     this.validCss()
-    this.validLocales()
     this.validLocale()
-    this.validMethods()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
+  },
+  validate: function (options) {
+    new Schema(config).validate(options, (errors, fields) => {
+      if (errors) {
+        // console.log(errors, fields)
+        this.state.error.errors = errors
+      }
+    })
   },
   validFast: function () {
     let fast = []
@@ -99,22 +107,13 @@ export default {
   validCss: function () {
     this.state.css = configCss[this.state.options.css] || configCss.default
   },
-  validLocales: function () {
-    let result = []
-    this.state.options.locales.forEach(function (lang) {
-      if (lang in configLocales) {
-        result.push(lang)
-      }
-    }, this)
-    this.state.options.locales = result
-  },
   validLocale: function () {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.fullScreen) {
-      lang = getCookie('lang') || this.state.options.lang
+      lang = getCookie('lang') || this.state.form.lang
     } else {
-      lang = this.state.options.lang || getCookie('lang')
+      lang = this.state.form.lang || getCookie('lang')
     }
     if (locales.length) {
       if (locales.indexOf(lang) < 0) {
@@ -124,15 +123,6 @@ export default {
     if (!(lang in configLocales)) {
       lang = 'en'
     }
-    this.state.options.lang = lang
+    this.state.form.lang = lang
   },
-  validMethods: function () {
-    let result = []
-    this.state.options.methods.forEach(function (method) {
-      if (configMethods.indexOf(method) > -1) {
-        result.push(method)
-      }
-    }, this)
-    this.state.options.methods = result
-  }
 }

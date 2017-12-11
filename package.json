@@ -7,13 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
-    "build": "node build/build.js",
-    "build-min": "node build/build.js --min",
-    "build-css": "node build/build.js --css",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "build": "node build/build.js"
   },
   "files": [
     "dist"
@@ -24,6 +18,7 @@
   },
   "unpkg": "dist/checkout.js",
   "dependencies": {
+    "async-validator": "^1.8.2",
     "fondy-icons": "^1.0.1",
     "ipsp-js-sdk": "^1.0.8",
     "vee-validate": "^2.0.0-rc.25",
