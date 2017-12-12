@@ -1,5 +1,6 @@
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
+import rules from 'async-validator/es/rule/'
 
 let i18n = {}
 let methods = ['card', 'emoney', 'ibank', 'cash', 'sepa']
@@ -22,20 +23,21 @@ let notSet = {
 }
 
 let validatorArray = function (array) {
-  return function (rule, value, callback) {
-    let flag = false
+  return function (rule, value, callback, source, options) {
+    let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
     let errors = []
-    value.forEach(function (item) {
-      if(array.indexOf(item) < 0) {
-        flag = true
-        errors.push([rule.fullField,item,'is not equal to one of',array.join(', ')].join(' '))
+    if (validate) {
+      if(Array.isArray(value)){
+        value.forEach(function (item) {
+          if(array.indexOf(item) < 0) {
+            errors.push([rule.fullField,item,'is not equal to one of',array.join(', ')].join(' '))
+          }
+        })
+      } else {
+        rules.type(rule, value, source, errors, options);
       }
-    })
-    if (flag) {
-      callback(errors)
-    } else {
-      callback([])
     }
+    callback(errors)
   }
 }
 
@@ -49,19 +51,19 @@ export default {
   options: {
     type: 'object',
     fields: {
-      methods: { type: 'array', validator: validatorArray(methods) },
-      ibank: { type: 'array', validator: validatorArray(ibank) },
-      emoney: { type: 'array', validator: validatorArray(emoney) },
-      cash: { type: 'array', validator: validatorArray(cash) },
-      fast: { type: 'array', validator: validatorArray(fast) },
-      cardIcons: { type: 'array', validator: validatorArray(cardIcons) },
+      methods: { validator: validatorArray(methods) },
+      ibank: { validator: validatorArray(ibank) },
+      emoney: { validator: validatorArray(emoney) },
+      cash: { validator: validatorArray(cash) },
+      fast: { validator: validatorArray(fast) },
+      cardIcons: { validator: validatorArray(cardIcons) },
       fields: { type: 'boolean' },
       offer: { type: 'boolean' },
       title: { type: 'string' },
       link: { type: 'url' },
       fullScreen: { type: 'boolean' },
       button: { type: 'boolean' },
-      locales: { type: 'array', validator: validatorArray(locales) },
+      locales: { validator: validatorArray(locales) },
       email: { type: 'boolean' },
       css:{ type: 'enum', enum: css },
     }
@@ -72,7 +74,7 @@ export default {
       insert: { type: 'boolean' },
       open: { type: 'boolean' },
       hide: { type: 'boolean' },
-      period: { type: 'array', validator: validatorArray(period) },
+      period: { validator: validatorArray(period) },
     }
   },
   recurring: {

@@ -1,5 +1,6 @@
 import config from '@/config/config'
 import configCss from '@/config/css'
+import configTemplate from '@/config/template'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import { getCookie } from '@/utils/helpers'
@@ -66,6 +67,7 @@ export default {
       system: undefined
     },
     css: {},
+    template: {},
     messages: {},
     validate: {}
   },
@@ -77,9 +79,9 @@ export default {
     Object.assign(this.state.form.recurring_data, options.recurring)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
-    this.validFast()
-    this.validCss()
-    this.validLocale()
+    this.setFast()
+    this.setCss()
+    this.setLocale()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
   },
   validate: function (options) {
@@ -90,7 +92,7 @@ export default {
       }
     })
   },
-  validFast: function () {
+  setFast: function () {
     let fast = []
     this.state.options.fast.forEach(function (system) {
       Object.keys(configPaymentSystems).forEach(function (method) {
@@ -104,10 +106,16 @@ export default {
     }, this)
     this.state.options.fast = fast
   },
-  validCss: function () {
-    this.state.css = configCss[this.state.options.css] || configCss.default
+  setCss: function () {
+    let css = configCss[this.state.options.css]
+    if (css) {
+      this.state.css = css
+    } else {
+      this.state.css = configCss.default
+      this.state.template = configTemplate[this.state.options.template] || configTemplate.default
+    }
   },
-  validLocale: function () {
+  setLocale: function () {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.fullScreen) {
