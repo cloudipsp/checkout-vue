@@ -18,12 +18,17 @@ let verificationType = ['amount', 'code']
 
 let notSet = {
   validator (rule, value, callback) {
-    callback(value !== undefined ? [rule.fullField + ' not set']: [])
+    let errors = []
+    if (value !== undefined) {
+      errors.push(rule.fullField + ' not set')
+    }
+    callback(errors)
   }
 }
 
 let validatorArray = function (array) {
   return function (rule, value, callback, source, options) {
+    rule.type = 'array'
     let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
     let errors = []
     if (validate) {
