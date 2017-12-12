@@ -27,22 +27,24 @@ let notSet = {
 }
 
 let validatorArray = function (array) {
-  return function (rule, value, callback, source, options) {
-    rule.type = 'array'
-    let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
-    let errors = []
-    if (validate) {
-      if(Array.isArray(value)){
-        value.forEach(function (item) {
-          if(array.indexOf(item) < 0) {
-            errors.push([rule.fullField,item,'is not equal to one of',array.join(', ')].join(' '))
-          }
-        })
-      } else {
-        rules.type(rule, value, source, errors, options);
+  return {
+    validator (rule, value, callback, source, options) {
+      rule.type = 'array'
+      let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
+      let errors = []
+      if (validate) {
+        if(Array.isArray(value)){
+          value.forEach(function (item) {
+            if(array.indexOf(item) < 0) {
+              errors.push([rule.fullField,item,'is not equal to one of',array.join(', ')].join(' '))
+            }
+          })
+        } else {
+          rules.type(rule, value, source, errors, options);
+        }
       }
+      callback(errors)
     }
-    callback(errors)
   }
 }
 
@@ -56,19 +58,19 @@ export default {
   options: {
     type: 'object',
     fields: {
-      methods: { validator: validatorArray(methods) },
-      ibank: { validator: validatorArray(ibank) },
-      emoney: { validator: validatorArray(emoney) },
-      cash: { validator: validatorArray(cash) },
-      fast: { validator: validatorArray(fast) },
-      cardIcons: { validator: validatorArray(cardIcons) },
+      methods: validatorArray(methods),
+      ibank: validatorArray(ibank),
+      emoney: validatorArray(emoney),
+      cash: validatorArray(cash),
+      fast: validatorArray(fast),
+      cardIcons: validatorArray(cardIcons),
       fields: { type: 'boolean' },
       offer: { type: 'boolean' },
       title: { type: 'string' },
       link: { type: 'url' },
       fullScreen: { type: 'boolean' },
       button: { type: 'boolean' },
-      locales: { validator: validatorArray(locales) },
+      locales: validatorArray(locales),
       email: { type: 'boolean' },
       css:{ type: 'enum', enum: css },
     }
@@ -79,7 +81,7 @@ export default {
       insert: { type: 'boolean' },
       open: { type: 'boolean' },
       hide: { type: 'boolean' },
-      period: { validator: validatorArray(period) },
+      period: validatorArray(period),
     }
   },
   recurring: {
