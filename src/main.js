@@ -1,7 +1,6 @@
-// TODO directive/component params
 // TODO свайп
 // TODO config fields payment systems
-// TODO сделать дебаг сборку
+// TODO сделать дебаг сборку -4kB gzip
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'

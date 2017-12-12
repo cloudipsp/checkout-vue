@@ -3,6 +3,7 @@
   import { sendRequest } from '@/utils/helpers'
   import InputText from '@/components/input-text'
   import InputAmount from '@/components/input-amount'
+  import InputHidden from '@/components/input-hidden'
 
   export default {
     template: '#f-fields',
@@ -25,7 +26,8 @@
     },
     components: {
       InputText,
-      InputAmount
+      InputAmount,
+      InputHidden
     }
   }
 </script>
