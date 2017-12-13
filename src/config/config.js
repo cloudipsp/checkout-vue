@@ -16,16 +16,6 @@ let currency = ['UAH', 'RUB', 'USD', 'EUR', 'GBP', 'CZK']
 let YN = ['Y', 'N', 'y', 'n']
 let verificationType = ['amount', 'code']
 
-let notSet = {
-  validator (rule, value, callback) {
-    let errors = []
-    if (value !== undefined) {
-      errors.push(rule.fullField + ' not set')
-    }
-    callback(errors)
-  }
-}
-
 let validatorArray = function (array) {
   return {
     validator (rule, value, callback, source, options) {
@@ -108,14 +98,7 @@ export default {
       verification_type: { type: 'enum', enum: verificationType },
       email: { type: 'email'},
       token: { type: 'string', len: 40},
-      fee: { type: 'float' },
-
-      amount_with_fee: notSet,
-      card_number: notSet,
-      expiry_date: notSet,
-      cvv2: notSet,
-      code: notSet,
-      offer: notSet
+      offer: { type: 'boolean' }
     }
   },
   messages: {

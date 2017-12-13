@@ -75,7 +75,14 @@ export default {
     this.validate(options)
     Object.assign(this.state.options, options.options)
     Object.assign(this.state.regular, options.regular)
-    Object.assign(this.state.form, options.params)
+    Object.assign(this.state.form, options.params, {
+      card_number: '',
+      expiry_date: '',
+      cvv2: '',
+      code: '',
+      fee: 0,
+      amount_with_fee: 0,
+    })
     Object.assign(this.state.form.recurring_data, options.recurring)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
