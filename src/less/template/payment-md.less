@@ -5,9 +5,9 @@
 .f-wrapper {
   @media (min-width: @screen-md-min) {
     min-height: inherit;
-    border: 1px solid #E0E8EF;
+    border: 1px solid @wrapper-border;
     border-radius: 8px;
-    box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 16px 0 @wrapper-shadow;
   }
 }
 
@@ -25,7 +25,7 @@
     box-shadow: none;
 
     .f-block-hr {
-      border-bottom: 2px solid rgba(61,61,61,0.06);
+      border-bottom: 2px solid @hr-border;
     }
   }
 }
@@ -47,6 +47,6 @@
 
     width: 100% - @f-md-width*2; // col-md-6
     right: @f-md-width; // col-md-pull-3
-    border-right: 2px solid rgba(61, 61, 61, 0.06);
+    border-right: 2px solid @center-border;
   }
 }

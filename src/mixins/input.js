@@ -22,6 +22,8 @@ export default {
   },
   data () {
     return {
+      css: store.state.css,
+      options: store.state.options,
       name_: 'f-' + this.name,
       field_: this.field || this.name
     }

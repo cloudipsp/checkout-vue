@@ -40,94 +40,87 @@ html {
       left: 50%;
       margin-left: -@tooltip-arrow-width;
       border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-      border-top-color: @tooltip-arrow-color;
+      border-top-color: @tooltip-bg;
     }
-    &.top-left .f-tooltip-arrow {
-      bottom: 0;
-      right: @tooltip-arrow-width;
-      margin-bottom: -@tooltip-arrow-width;
-      border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-      border-top-color: @tooltip-arrow-color;
-    }
-    &.top-right .f-tooltip-arrow {
-      bottom: 0;
-      left: @tooltip-arrow-width;
-      margin-bottom: -@tooltip-arrow-width;
-      border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-      border-top-color: @tooltip-arrow-color;
-    }
+    //&.top-left .f-tooltip-arrow {
+    //  bottom: 0;
+    //  right: @tooltip-arrow-width;
+    //  margin-bottom: -@tooltip-arrow-width;
+    //  border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    //  border-top-color: @tooltip-bg;
+    //}
+    //&.top-right .f-tooltip-arrow {
+    //  bottom: 0;
+    //  left: @tooltip-arrow-width;
+    //  margin-bottom: -@tooltip-arrow-width;
+    //  border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    //  border-top-color: @tooltip-bg;
+    //}
     &.right .f-tooltip-arrow {
       top: 50%;
       left: 0;
       margin-top: -@tooltip-arrow-width;
       border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
-      border-right-color: @tooltip-arrow-color;
+      border-right-color: @tooltip-bg;
     }
     &.left .f-tooltip-arrow {
       top: 50%;
       right: 0;
       margin-top: -@tooltip-arrow-width;
       border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
-      border-left-color: @tooltip-arrow-color;
+      border-left-color: @tooltip-bg;
     }
     &.bottom .f-tooltip-arrow {
       top: 0;
       left: 50%;
       margin-left: -@tooltip-arrow-width;
       border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-      border-bottom-color: @tooltip-arrow-color;
+      border-bottom-color: @tooltip-bg;
     }
-    &.bottom-left .f-tooltip-arrow {
-      top: 0;
-      right: @tooltip-arrow-width;
-      margin-top: -@tooltip-arrow-width;
-      border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-      border-bottom-color: @tooltip-arrow-color;
-    }
-    &.bottom-right .f-tooltip-arrow {
-      top: 0;
-      left: @tooltip-arrow-width;
-      margin-top: -@tooltip-arrow-width;
-      border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-      border-bottom-color: @tooltip-arrow-color;
-    }
+    //&.bottom-left .f-tooltip-arrow {
+    //  top: 0;
+    //  right: @tooltip-arrow-width;
+    //  margin-top: -@tooltip-arrow-width;
+    //  border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    //  border-bottom-color: @tooltip-bg;
+    //}
+    //&.bottom-right .f-tooltip-arrow {
+    //  top: 0;
+    //  left: @tooltip-arrow-width;
+    //  margin-top: -@tooltip-arrow-width;
+    //  border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    //  border-bottom-color: @tooltip-bg;
+    //}
   }
 
-  [data-theme="error"]{
+  .f-tooltip-error{
     .f-tooltip-inner {
-      background-color: #D6696D;
-      border: 1px solid #B05D60;
+      background-color: @tooltip-error-bg;
+      border: 1px solid @tooltip-error-border;
     }
     .f-tooltip-arrow {
       width: @tooltip-arrow-width * 2;
       height: @tooltip-arrow-width * 2;
-      background: #D6696D;
+      background: @tooltip-error-bg;
       transform: rotate(45deg);
+      border: 1px solid @tooltip-error-border;
     }
     &.f-tooltip {
-      &.top .f-tooltip-arrow,
-      &.top-left .f-tooltip-arrow,
-      &.top-right .f-tooltip-arrow {
-        border: 1px solid #B05D60;
-        border-top: none;
-        border-left: none;
+      //&.top-left .f-tooltip-arrow,
+      //&.top-right .f-tooltip-arrow,
+      &.top .f-tooltip-arrow {
+        border-width: 0 1px 1px 0;
       }
       &.right .f-tooltip-arrow {
-        border: 1px solid #B05D60;
-        border-top: none;
-        border-right: none;
+        border-width: 0 0 1px 1px;
       }
       &.left .f-tooltip-arrow {
-        border: 1px solid #B05D60;
-        border-bottom: none;
-        border-left: none;
+        border-width: 1px 1px 0 0;
       }
-      &.bottom .f-tooltip-arrow,
-      &.bottom-left .f-tooltip-arrow,
-      &.bottom-right .f-tooltip-arrow {
-        border: 1px solid #B05D60;
-        border-bottom: none;
-        border-right: none;
+      //&.bottom-left .f-tooltip-arrow,
+      //&.bottom-right .f-tooltip-arrow,
+      &.bottom .f-tooltip-arrow {
+        border-width: 1px 0 0 1px;
       }
     }
   }

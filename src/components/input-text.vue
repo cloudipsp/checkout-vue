@@ -17,7 +17,8 @@
         :masked="masked"
         @blur.native="$validator.validate(name_)"
       ></the-mask>
-      <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+      <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+      <div v-if="!options.tooltip && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
       <slot name="group"></slot>
     </div>
     <the-mask
@@ -49,8 +50,8 @@
       :placeholder="placeholder"
     >
     <slot></slot>
-    <div v-if="false && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
-    <tooltip v-if="!group" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+    <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+    <div v-if="!group && !options.tooltip && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
   </div>
 </template>
 
@@ -74,9 +75,7 @@
       group: Boolean
     },
     data () {
-      return {
-        css: store.state.css
-      }
+      return {}
     },
     computed: {
       hasDefaultSlot () {

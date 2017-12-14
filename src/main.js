@@ -1,9 +1,10 @@
 // TODO свайп
 // TODO config fields payment systems
-// TODO сделать дебаг сборку -4kB gzip
+// TODO ? сделать дебаг сборку -4kB gzip
 // TODO create color template param
-// TODO f-fields create root div
+// TODO ? f-fields create root div
 // TODO ? config payment systems in options
+// TODO локализировать название платежных методов
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'

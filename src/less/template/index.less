@@ -31,18 +31,17 @@
 
 .f-title{
   line-height: 20px;
-  opacity: 0.8;
-  color: #3D3D3D;
+  color: @title-color;
   font-size: 16px;
   font-weight: bold;
   padding: 22px 8px;
 }
 .f-title2{
-  color: #9AA4B8;
+  color: @title2-color;
   text-align: center;
 }
 .f-title3{
-  color: #3D3D3D;
+  color: @title3-color;
   font-size: 16px;
   text-align: center;
 }
@@ -54,7 +53,7 @@
   margin: auto;
 }
 .f-block-hr{
-  border-bottom: 2px solid rgba(61,61,61,0.06);
+  border-bottom: 2px solid @hr-border;
 }
 .f-ps{
   display: inline-block;
@@ -78,7 +77,7 @@
       position: absolute;
       top: 8px;
       left: 8px;
-      border: 3px solid #dcdcdc;
+      border: 3px solid @check-disabled-border;
       border-top: none;
       border-right: none;
       background: transparent;
@@ -90,14 +89,14 @@
   &:hover,
   &.active{
     .f-icon {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 8px 0 @ps-active-shadow;
     }
   }
 
   &.active{
     .f-icon {
       &:after{
-        border-color: #62BA46;
+        border-color: @check-enable-border;
       }
     }
   }
@@ -134,9 +133,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #fff;
-  opacity: 0.7;
-
+  background-color: @loading-bg;
 }
 
 .f-loading-i {
@@ -170,7 +167,7 @@
 .f-error {
   position: absolute;
   font-size: 10px;
-  color: #a94442;
+  color: @input-error-color;
   top: 100%;
   width: 100%;
   display: none;

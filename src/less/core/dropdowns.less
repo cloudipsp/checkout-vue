@@ -6,7 +6,7 @@
   margin-left: 2px;
   vertical-align: middle;
   border-top:   @caret-width-base dashed;
-  border-top:   @caret-width-base solid ~"\9"; // IE8
+  //border-top:   @caret-width-base solid ~"\9"; // IE8
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
 }
@@ -41,10 +41,10 @@
   font-size: @font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
-  border: 1px solid @dropdown-fallback-border; // IE8 fallback
+  //border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 8px 16px 0 @dropdown-shadow;
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right

@@ -55,10 +55,6 @@
         type: String,
         default: 'right'
       },
-//      appendTo: {
-//        type: String,
-//        default: '#f'
-//      },
       transitionDuration: {
         type: Number,
         default: 0

@@ -3,7 +3,7 @@ import configCss from '@/config/css'
 import configTemplate from '@/config/template'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
-import { getCookie } from '@/utils/helpers'
+import { getCookie, setOrigin } from '@/utils/helpers'
 import Schema from 'async-validator'
 
 export default {
@@ -18,12 +18,14 @@ export default {
       title: '',
       button: true,
       fullScreen: true,
+      tooltip: true,
       email: false,
       fields: false,
       link: '',
       offer: false,
       locales: [],
-      messages: {}
+      messages: {},
+      apiDomain: 'api.fondy.eu'
     },
     regular: {
       insert: false,
@@ -89,6 +91,7 @@ export default {
     this.setFast()
     this.setCss()
     this.setLocale()
+    setOrigin()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
   },
   validate: function (options) {

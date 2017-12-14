@@ -3,7 +3,7 @@
 }
 .f-item{
   cursor: pointer;
-  color: #3D3D3D;
+  color: @menu-item-color;
   transition: background ease-in-out .15s;
   background-repeat: no-repeat;
   vertical-align: top;
@@ -17,7 +17,7 @@
   display: inline-block;
   height: 92px;
   width: 140px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 2px 4px 0 @menu-item-shadow;
   margin: 5px;
   padding: 50px 0 0 0;
   background-position: 50% 20px;
@@ -30,9 +30,9 @@
   }
 
   &.active{
-    color: #62BA46;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 16px 0 rgba(90,136,215,0.16);
+    color: @menu-item-active-color;
+    background-color: @menu-item-active-bg;
+    box-shadow: 0 0 16px 0 @menu-item-active-shadow;
 
     .bg(card, card_a);
     .bg(emoney, emoney_a);

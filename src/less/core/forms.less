@@ -1,7 +1,6 @@
 .f-control-label {
   display: inline-block;
-  max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  color: #707D8A;
+  color: @label-color;
   font-size: 12px;
   font-weight: normal;
   margin-bottom: 2px;
@@ -63,13 +62,12 @@ input[type="checkbox"]:focus {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  box-shadow: @input-shadow;
+  box-shadow: 0 2px 4px 0 @input-shadow;
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   &:focus {
     outline: 0;
-    border-color: #62BA46;
-    box-shadow: @input-shadow;
+    border-color: @input-border-focus;
   }
 
   // Placeholder
@@ -167,7 +165,7 @@ input[type="checkbox"]:focus {
 }
 
 .f-has-error {
-  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+  .form-control-validation(@state-danger-text; @state-danger-border; @state-danger-bg; @state-danger-shadow);
 }
 
 //.f-has-feedback {

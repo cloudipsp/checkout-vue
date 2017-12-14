@@ -2,9 +2,6 @@ import $checkout from 'ipsp-js-sdk/dist/checkout'
 import store from '@/store'
 
 let api = $checkout('Api')
-// api.setOrigin('https://api.fondy.eu')
-api.setOrigin('https://api.dev.fondy.eu')
-
 let cache = {}
 let cacheError = {}
 
@@ -19,6 +16,10 @@ const setError = function (model) {
       store.state.error.flag = true
     })
   }
+}
+
+export function setOrigin () {
+  api.setOrigin('https://' + store.state.options.apiDomain)
 }
 
 export function sendRequest (name, method, params, cacheName) {

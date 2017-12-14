@@ -21,7 +21,7 @@
           <div class="f-col-xs-5">
             <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="digitsCvv">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
-              <tooltip :text="$t('cvv_question', [digitsCvv])" trigger="hover" theme="" target=".f-i-question"></tooltip>
+              <tooltip :text="$t('cvv_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>

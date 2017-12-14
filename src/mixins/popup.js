@@ -18,6 +18,10 @@ const SHOW_CLASS = 'in'
 
 export default {
   props: {
+    theme: {
+      type: String,
+      default: 'error'
+    },
     value: {
       type: Boolean,
       default: false
@@ -188,7 +192,7 @@ export default {
           clearTimeout(this.timeoutId)
           this.timeoutId = 0
         } else {
-          popup.className = `${this.name} ${this.placement} fade`
+          popup.className = `${this.name} ${this.name}-${this.theme} ${this.placement} fade`
           let container = document.querySelector(this.appendTo)
           container.appendChild(popup)
           this.resetPosition()

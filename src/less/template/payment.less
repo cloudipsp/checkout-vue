@@ -4,7 +4,7 @@
 
 .f-wrapper {
   //position: relative;
-  background-color: #FCFEFF;
+  background-color: @wrapper-bg;
   &:extend(.clearfix all);
 }
 
@@ -34,13 +34,15 @@
 }
 
 .f-info { // col-md-3 col-md-push-9
-  color: #A9A9A9;
 
-  border-top: 2px solid #EAF1F6;
-  border-bottom: 2px solid #EAF1F6;
+  border-top: 2px solid @info-border-mobile;
+  border-bottom: 2px solid @info-border-mobile;
 
   .f-block-hr {
     border: none;
+  }
+  .f-block{
+    color: @info-block-color;
   }
 }
 
@@ -50,7 +52,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: @methods-bg;
   padding: 0;
   overflow-y: auto;
   transform: translateX(-1000%);
@@ -70,5 +72,5 @@
   .f-min & {
 
   }
-  background: #fff;
+  background: @center-bg;
 }

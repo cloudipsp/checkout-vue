@@ -12,9 +12,10 @@
         :class="[css.fc, css.igi, errors.has(name_) ? css.ie : '']"
         :id="name_"
       >
+      <div v-if="!options.tooltip && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
       <span :class="css.iga">{{ state.form.currency }}</span>
     </div>
-    <tooltip :text="errors.first(name_)" :enable="errors.has(name_)" :target="'#'+name_"></tooltip>
+    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
 </template>
 
@@ -31,7 +32,6 @@
     data () {
       return {
         state: store.state,
-        css: store.state.css
       }
     },
     computed: {

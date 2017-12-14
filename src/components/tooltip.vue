@@ -18,8 +18,7 @@
             {
               ref: 'popup',
               attrs: {
-                role: 'tooltip',
-                'data-theme': this.theme
+                role: 'tooltip'
               },
               on: {
                 mouseenter: this.showOnHover,
@@ -38,10 +37,6 @@
       )
     },
     props: {
-      theme: {
-        type: String,
-        default: 'error'
-      },
       text: {
         type: String,
         default: ''
@@ -54,10 +49,6 @@
         type: String,
         default: 'right'
       },
-//      appendTo: {
-//        type: String,
-//        default: '#f'
-//      },
       transitionDuration: {
         type: Number,
         default: 0

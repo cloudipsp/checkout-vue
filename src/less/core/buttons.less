@@ -16,6 +16,7 @@
 
   &,
   &:active {
+    outline: none;
     &:focus {
       outline: none;
     }
@@ -27,19 +28,22 @@
     text-decoration: none;
   }
 
-  &:active {
-    outline: 0;
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
-
   &.disabled,
   &[disabled] {
     cursor: @cursor-disabled;
     box-shadow: none;
-    border: 1px solid #DCDCDC;
-    background-color: #E4E4E4;
-    color: #ADADAD;
+    border: 1px solid @btn-disabled-border;
+    background-color: @btn-disabled-bg;
+    color: @btn-disabled-color;
+
+    &:active:hover,
+    &:active:focus,
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      background-color: @btn-disabled-bg;
+      color: @btn-disabled-color;
+    }
   }
 
   a& {
@@ -55,10 +59,6 @@
 
 .f-btn-default {
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
-  box-shadow: 0 4px 8px 0 rgba(186,186,186,0.4);
-  &:hover{
-    box-shadow: 0 1px 2px 0 rgba(186,186,186,0.4);
-  }
 }
 //.f-btn-primary {
 //  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
@@ -66,10 +66,6 @@
 // Success appears as green
 .f-btn-success {
   .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-  box-shadow: 0 4px 8px 0 rgba(98,186,70,0.4);
-  &:hover{
-    box-shadow: 0 1px 2px 0 rgba(98,186,70,0.4);
-  }
 }
 // Info appears as blue-green
 //.f-btn-info {
@@ -135,10 +131,8 @@
 .f-btn-sm {
   // line-height: ensure proper height of button next to small input
   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
-  border: 1px solid #D5DDE0;
   text-transform: none;
   font-weight: normal;
-  color: #3D3D3D;
 }
 //.f-btn-xs {
 //  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);

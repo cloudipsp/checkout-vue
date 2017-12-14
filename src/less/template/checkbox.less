@@ -16,8 +16,8 @@
       width: 41px;
       height: 25px;
       border-radius: 15px;
-      background-color: #CDD1DA;
-      box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+      background-color: @checkbox-swipe-disabled-bg;
+      box-shadow: inset 0 2px 3px @checkbox-swipe-disabled-shadow;
     }
 
     &:after {
@@ -28,8 +28,8 @@
       width: 23px;
       height: 23px;
       border-radius: 50%;
-      border: 0.5px solid #E5E5E5;
-      background-color: #FFFFFF;
+      border: 0.5px solid @checkbox-swipe-switch-border;
+      background-color: @checkbox-swipe-switch-bg;
       box-shadow: 0 5px 8px 0 rgba(0,0,0,0.1), 0 2px 2px 0 rgba(0,0,0,0.3);
       transition: all ease-in-out .2s;
     }
@@ -37,7 +37,7 @@
 
   &:checked + label {
     &:before {
-      background-color: #59C341;
+      background-color: @checkbox-swipe-enabled-bg;
       box-shadow: none;
     }
     &:after {
@@ -65,13 +65,13 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: #fff;
+      background-color: @input-bg;
       border-radius: 2px;
-      border: 1px solid #9AA4B8;
+      border: 1px solid @checkbox-border;
       transition: background-color ease-in-out .2s;
 
       .f-has-error & {
-        border-color: #a94442;
+        border-color: @checkbox-error-border;
       }
     }
 
@@ -82,7 +82,7 @@
       position: absolute;
       top: 3px;
       left: 3px;
-      border: 2px solid #fff;
+      border: 2px solid @checkbox-switch-border;
       border-top: none;
       border-right: none;
       background: transparent;
@@ -93,7 +93,7 @@
 
   &:checked + label {
     &:before {
-      background-color: #57A63F;
+      background-color: @checkbox-enabled-bg;
       border: none;
     }
     &:after {

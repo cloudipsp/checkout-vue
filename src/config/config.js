@@ -12,7 +12,7 @@ let cardIcons = ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'america
 let locales = Object.keys(configLocales)
 let period = ['day', 'week', 'month', 'year']
 let css = ['bootstrap3', 'bootstrap4', 'foundation6']
-let currency = ['UAH', 'RUB', 'USD', 'EUR', 'GBP', 'CZK']
+// let currency = ['UAH', 'RUB', 'USD', 'EUR', 'GBP', 'CZK']
 let YN = ['Y', 'N', 'y', 'n']
 let verificationType = ['amount', 'code']
 
@@ -63,6 +63,8 @@ export default {
       locales: validatorArray(locales),
       email: { type: 'boolean' },
       css:{ type: 'enum', enum: css },
+      tooltip: { type: 'boolean' },
+      apiDomain: { type: 'string' },
     }
   },
   regular: {
@@ -90,7 +92,8 @@ export default {
       merchant_id: { type: 'integer', max: 999999999999 },
       order_desc: { type: 'string', max: 1024},
       amount: { type: 'integer' , max: 999999999999 },
-      currency: { type: 'enum', enum: currency },
+      // currency: { type: 'enum', enum: currency },
+      currency: { type: 'string' },
       response_url: { type: 'url'},
       lang: { type: 'enum', enum: locales },
       required_rectoken: { type: 'enum', enum: YN },

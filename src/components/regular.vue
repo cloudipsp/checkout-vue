@@ -15,7 +15,7 @@
             <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" :form="form"></input-text>
           </div>
           <div class="f-col-xs-6">
-            <input-select :options="options.period" name="regular_period" field="period" validate="required" :form="form"></input-select>
+            <input-select :list="options.period" name="regular_period" field="period" validate="required" :form="form"></input-select>
           </div>
         </div>
         <input-amount name="regular_amount" field="amount" :form="form"></input-amount>
