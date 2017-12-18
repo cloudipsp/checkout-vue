@@ -93,7 +93,6 @@ var maxOptions = {
     fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
     cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
     fields: true,
-    offer: true,
     title: 'my_title',
     link: 'https://fondy.eu',
     fullScreen: true,
@@ -102,6 +101,7 @@ var maxOptions = {
     email: true,
     tooltip: true,
     apiDomain: 'api.dev.fondy.eu',
+    fee: true,
     //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
   },
   regular: {
@@ -118,7 +118,7 @@ var maxOptions = {
     start_time: '2018-11-11'
   },
   params: {
-    merchant_id: 1000, // 900024
+    merchant_id: 1396424,
     verification_type: 'code',
     required_rectoken: 'y',
     verification: 'y',
@@ -165,9 +165,10 @@ var maxOptions = {
 var minOptions = {
   options: {
 //    fields: true,
-    fullScreen: false,
-//    lang: 'en',
+    fullScreen: true,
 //    locales: ['ru', 'en', 'uk']
+//    apiDomain: 'api.dev.fondy.eu',
+    fee: true,
   },
 //  regular: {
 //    insert: true,
@@ -182,15 +183,18 @@ var minOptions = {
 //    start_time: '2018-11-11'
 //  },
   params: {
-    merchant_id: 1000,
+    merchant_id: 1396424,
+    lang: 'ru',
+    order_desc: 'Тестовый платеж',
+//    delayed: 'n',
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-//    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50'
+    token: 'ea28f1fa0dee99204a9d89fde75b55aa1a121e51'
   }
 }
 
-var app = fondy('#app', maxOptions)
+var app = fondy('#app', minOptions)
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()

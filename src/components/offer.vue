@@ -10,7 +10,7 @@
         class="f-checkbox"
         id="f-offer"
       />
-      <label :class="[css.cl]" for="f-offer" v-html="$t('offer_t')"></label>
+      <label :class="[css.cl]" for="f-offer" v-html="$t('offer_t', [options.offer])"></label>
     </tooltip>
   </div>
 </template>
@@ -24,7 +24,8 @@
     data () {
       return {
         form: store.state.form,
-        css: store.state.css
+        css: store.state.css,
+        options: store.state.options,
       }
     },
     components: {

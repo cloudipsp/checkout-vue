@@ -5,6 +5,10 @@ let api = $checkout('Api')
 let cache = {}
 let cacheError = {}
 
+api.on('modal.close', function () {
+  store.state.loading = false
+})
+
 const setError = function (model) {
   let code = String(model.attr('error.code'))
   let message = model.attr('error.message')

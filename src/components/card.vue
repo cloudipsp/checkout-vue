@@ -10,7 +10,7 @@
           <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
             <template slot="dropdown">
-              <li v-for="card in cards"><a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a></li>
+              <li v-for="card in cards"><a role="button" @click="store.setCardNumber(card)">{{ card.card_number }}</a></li>
             </template>
           </dropdown>
         </input-text>
@@ -44,7 +44,7 @@
     props: ['icons', 'cards'],
     data () {
       return {
-        state: store.state,
+        store: store,
         form: store.state.form,
         options: store.state.options,
         css: store.state.css,
@@ -97,13 +97,6 @@
     methods: {
       imagePath: function (id) {
         return require('../assets/img/' + id + '.svg')
-      },
-      setCardNumber: function (card) {
-        this.form.card_number = card.card_number.replace(/ /g, '')
-        this.form.expiry_date = card.expiry_date.replace(/ /g, '')
-        this.form.email = card.email
-        this.form.hash = card.hash
-        this.form.cvv2 = ''
       }
     },
     components: {

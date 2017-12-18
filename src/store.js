@@ -22,10 +22,11 @@ export default {
       email: false,
       fields: false,
       link: '',
-      offer: false,
+      offer: '',
       locales: [],
       messages: {},
-      apiDomain: 'api.fondy.eu'
+      apiDomain: 'api.fondy.eu',
+      fee: true
     },
     regular: {
       insert: false,
@@ -53,7 +54,6 @@ export default {
       code: '',
       order_desc: '',
       offer: false,
-      token: '',
       lang: 'en'
     },
     error: {
@@ -71,11 +71,14 @@ export default {
     css: {},
     template: {},
     messages: {},
-    validate: {}
+    validate: {},
+    loading: false
   },
   setOptions (options, $i18n) {
     this.validate(options)
-    Object.assign(this.state.options, options.options)
+    Object.assign(this.state.options, options.options, {
+      offer: ''
+    })
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params, {
       card_number: '',
@@ -143,4 +146,11 @@ export default {
     }
     this.state.form.lang = lang
   },
+  setCardNumber: function (card) {
+    this.state.form.card_number = card.card_number.replace(/ /g, '')
+    this.state.form.expiry_date = card.expiry_date.replace(/ /g, '')
+    this.state.form.email = card.email
+    this.state.form.hash = card.hash
+    this.state.form.cvv2 = ''
+  }
 }

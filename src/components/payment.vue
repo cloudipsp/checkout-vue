@@ -11,7 +11,7 @@
     </div>
     <div class="f-center" ref="center">
       <component :is="router.page" :method="router.method" :on-submit="submit" :valid="!errors.items.length" :order="order" :cards="cards"></component>
-      <div v-if="loading">
+      <div v-if="state.loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
@@ -37,8 +37,9 @@
     props: ['onSetMin'],
     data () {
       return {
-        loading: false,
         show: false,
+        store: store,
+        state: store.state,
         options: store.state.options,
         form: store.state.form,
         error: store.state.error,
@@ -73,7 +74,7 @@
         this.router.method = method
         this.router.system = system
       })
-      let self = this
+
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
         this.form.recurring_data.amount = 0
@@ -81,50 +82,14 @@
       if (this.regular.insert) {
         this.form.recurring = 'y'
       }
-
-      sendRequest('api.checkout.cards', 'get', {}).then(
-        function (model) {
-          self.cards = Object.values(model.data)
-//          self.cards = [{
-//            card_number: '4444 55XX XXXX 6666',
-//            expiry_date: '12 / 17',
-//            email: 'asd@asd.asd',
-//            hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
-//          },
-//          {
-//            card_number: '4444 55XX XXXX 1111',
-//            expiry_date: '11 / 19',
-//            email: 'test@asd.asd',
-//            hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
-//          }]
-        }, function () {})
-      sendRequest('api.checkout.info', 'get', self.form).then(
-        function (model) {
-          let info = model.data
-          let order = model.data.order_data
-          if (order) {
-            self.form.amount = order.amount
-            self.form.recurring_data.amount = order.amount
-            self.form.currency = order.currency
-            self.form.merchant_id = order.merchant_id
-            self.form.fee = info.order.fee || 0
-          } else {
-            self.form.fee = info.client_fee || 0
-          }
-          self.options.email = info.checkout_email_required
-
-//          self.form.fee = 0.055
-          if (self.form.fee) {
-            return sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
-              function (model) {
-                self.form.amount_with_fee = parseInt(model.data.amount_with_fee)
-              }, function () {})
-          }
-        }, function () {})
       if (!this.router.method) {
         this.router.page = 'payment-method'
         this.router.method = this.options.methods[0]
       }
+
+      let self = this
+      sendRequest('api.checkout.cards', 'get', {}).then(self.cardsSuccess, function () {})
+      sendRequest('api.checkout.info', 'get', self.form).then(self.infoSuccess, function () {})
     },
     mounted: function () {
       window.addEventListener('resize', this.resize)
@@ -160,34 +125,82 @@
           this.autoFocus()
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
+//        this.errors.clear()
           console.log('form', this.form)
-//      this.errors.clear()
-          if (!this.errors.items.length && !this.loading) {
-            this.loading = true
+
+          if (!this.errors.count() && !this.state.loading) {
+            this.state.loading = true
             this.error.flag = false
             this.form.payment_system = this.router.system || this.router.method
             let self = this
             sendRequest('api.checkout.form', 'request', self.form).finally(function () {
-              self.loading = false
-            }).then(
-              function (model) {
-                model.sendResponse()
-                if (model.needVerifyCode()) {
-                  self.router.page = 'verify'
-                  self.router.method = 'card'
-                  self.router.system = 'verify'
-                  self.form.token = model.attr('order.token')
-                } else if (!model.submitToMerchant()) {
-                  self.order = model.attr('order.order_data')
-                  self.router.page = 'success'
-                }
-              }, function () {})
+              self.state.loading = false
+            }).then(self.submitSuccess, self.submitError)
           }
         })
       },
+      submitSuccess: function (model) {
+        let order = model.attr('order');
+        if (!order) return;
+        if (model.sendResponse()) return;
+        if (model.needVerifyCode()) {
+          this.router.page = 'verify'
+          this.router.method = 'card'
+          this.router.system = 'verify'
+          this.form.token = order.token
+        } else
+        if (!model.submitToMerchant()) {
+          this.order = order.order_data
+          this.router.page = 'success'
+        }
+      },
+      submitError: function () {},
+      cardsSuccess: function (model) {
+        this.cards = Object.values(model.data)
+//        this.cards = [{
+//          card_number: '4444 55XX XXXX 6666',
+//          expiry_date: '12 / 17',
+//          email: 'asd@asd.asd',
+//          hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
+//        },
+//        {
+//          card_number: '4444 55XX XXXX 1111',
+//          expiry_date: '11 / 19',
+//          email: 'test@asd.asd',
+//          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
+//        }]
+        if (this.cards.length) {
+          store.setCardNumber(this.cards[0])
+        }
+      },
+      infoSuccess: function (model) {
+        let info = model.data
+        let order = model.attr('order_data')
+        if (order) {
+          this.form.amount = order.amount
+          this.form.recurring_data.amount = order.amount
+          this.form.currency = order.currency
+          this.form.merchant_id = order.merchant_id
+          this.form.fee = info.order.fee || 0
+        } else {
+          this.form.fee = info.client_fee || 0
+        }
+        this.options.email = info.checkout_email_required
+
+        if (this.form.fee) {
+          let self = this
+          return sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
+            function (model) {
+              self.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
+            }, function () {})
+        }
+
+        this.options.title = this.options.title || model.attr('merchant.localized_name')
+        this.options.offer = model.attr('merchant.offerta_url')
+      },
       autoFocus: function () {
-        if (this.errors.items.length) {
-          let $firstErrorField = this.$el.querySelector('[data-vv-id="' + this.$validator.errors.items[0].id + '"]')
+        if (this.errors.count()) {
+          let $firstErrorField = this.$el.querySelector('[data-vv-id="' + this.errors.items[0].id + '"]')
           $firstErrorField.scrollIntoView()
           $firstErrorField.focus()
         }

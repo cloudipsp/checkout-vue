@@ -55,7 +55,6 @@ export default {
       fast: validatorArray(fast),
       cardIcons: validatorArray(cardIcons),
       fields: { type: 'boolean' },
-      offer: { type: 'boolean' },
       title: { type: 'string' },
       link: { type: 'url' },
       fullScreen: { type: 'boolean' },
@@ -65,6 +64,7 @@ export default {
       css:{ type: 'enum', enum: css },
       tooltip: { type: 'boolean' },
       apiDomain: { type: 'string' },
+      fee: { type: 'boolean' },
     }
   },
   regular: {
