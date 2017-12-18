@@ -10,8 +10,8 @@
         @click="setPaymentSystem(item)"
         :class="{active : item === active}"
       >
-        <div class="f-icon" :class="'f-i-' + config[item].icon"></div>
-        <div>{{ config[item].name }}</div>
+        <div class="f-icon" :class="'f-i-' + config[item].i"></div>
+        <div v-t="item"></div>
       </div>
     </div>
   </div>

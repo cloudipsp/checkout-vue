@@ -141,7 +141,7 @@ export default {
         lang = locales[0]
       }
     } else
-    if (!(lang in configLocales)) {
+    if (configLocales.indexOf(lang) < 0) {
       lang = 'en'
     }
     this.state.form.lang = lang

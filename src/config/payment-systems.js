@@ -1,44 +1,32 @@
 export default {
   ibank: {
     p24: {
-      icon: 'p24',
-      name: 'Приват 24'
-    },
-    p25: {
-      icon: 'p24',
-      name: 'Приват 25'
+      i: 'p24'
     },
     platba24: {
-      icon: 'platba24',
-      name: 'Платба 24'
+      i: 'platba24'
     },
     raiffeisen: {
-      icon: 'raiffeisen',
-      name: 'Райффайзен Банк Аваль'
+      i: 'raiffeisen'
     }
   },
   emoney: {
     paypal: {
-      icon: 'paypal',
-      name: 'PayPal'
+      i: 'paypal'
     },
     qiwi: {
-      icon: 'qiwi',
-      name: 'QIWI'
+      i: 'qiwi'
     },
     webmoney: {
-      icon: 'webmoney',
-      name: 'WebMoney WebMoney WebMoney'
+      i: 'webmoney'
     },
     yamoney: {
-      icon: 'yamoney',
-      name: 'Яндекс.Деньги'
+      i: 'yamoney'
     }
   },
   cash: {
     liqpay: {
-      icon: 'liqpay',
-      name: 'LiqPay'
+      i: 'liqpay'
     }
   }
 }

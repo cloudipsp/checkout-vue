@@ -49,7 +49,24 @@ export const messages = {
   continue: 'Continue',
   cancel: 'Cancel',
   code: 'Verification code',
-  pay: 'Pay now'
+  pay: 'Pay now',
+
+  p24: 'Приват 24',
+  platba24: 'Платба 24',
+  raiffeisen: 'Райффайзен Банк Аваль',
+  paypal: 'PayPal',
+  qiwi: 'QIWI',
+  webmoney: 'WebMoney',
+  yamoney: 'Яндекс.Деньги',
+  liqpay: 'LiqPay',
+
+  ru: 'Русский',
+  en: 'English',
+  uk: 'Українською',
+  lv: 'Latviešu',
+  fr: 'Français',
+  cs: 'Čeština',
+  sk: 'Slovenský'
 }
 
 export const validate = {
