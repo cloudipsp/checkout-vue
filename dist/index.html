@@ -127,7 +127,7 @@ var maxOptions = {
     amount: 500,
     order_desc: 'my_desc',
     response_url: 'https://www.fondy.eu',
-    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50',
+//    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50',
     email: 'asd@asd.asd',
     lang: 'ru'
   },
@@ -179,7 +179,7 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', minOptions)
+var app = fondy('#app', maxOptions)
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()

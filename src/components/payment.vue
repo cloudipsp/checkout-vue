@@ -208,7 +208,11 @@
       changeMethod: function () {
         this.show = false
       },
-      resize () {
+      resize: function () {
+        this.resizeWindow()
+        this.resizeError()
+      },
+      resizeWindow: function () {
         let $container = document.querySelector('.f-container')
         this.$refs.center.style.minHeight = 'auto'
         $container.style.paddingTop = '0'
@@ -230,8 +234,6 @@
             this.$refs.center.style.minHeight = centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
           }
         }
-
-        this.resizeError()
       },
       resizeError: function () {
         if (this.error.flag) {
@@ -250,7 +252,7 @@
       firstResize: function () {
 //        console.log('firstResize')
         setTimeout(() => {
-          this.resize()
+          this.resizeWindow()
         })
       }
     }
