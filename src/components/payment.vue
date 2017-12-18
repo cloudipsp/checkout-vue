@@ -132,8 +132,22 @@
             this.state.loading = true
             this.error.flag = false
             this.form.payment_system = this.router.system || this.router.method
+
+            let form = {}
+            let custom = {}
+            Object.assign(form, this.form)
+            for (let field in form.custom) {
+              if(form.custom.hasOwnProperty(field)) {
+                custom[field] = {
+                  value: form.custom[field],
+                  label: this.$t(field)
+                }
+              }
+            }
+            form.custom = custom
+
             let self = this
-            sendRequest('api.checkout.form', 'request', self.form).finally(function () {
+            sendRequest('api.checkout.form', 'request', form).finally(function () {
               self.state.loading = false
             }).then(self.submitSuccess, self.submitError)
           }

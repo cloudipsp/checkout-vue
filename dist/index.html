@@ -77,8 +77,9 @@
 <script type=text/x-vue-template id=f-fields>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <input-hidden name="test" value="test2"></input-hidden>
-      <input-text name="my_email" validate="required|email"></input-text>
+      <input-hidden name="test" value="test2" custom></input-hidden>
+      <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
+      <input-text name="my_email" validate="required|email" custom></input-text>
       <input-amount name="amount" label="my_amount" :on-input="onInput"></input-amount>
     </div>
   </div>
@@ -120,19 +121,24 @@ var maxOptions = {
   },
   params: {
     merchant_id: 1396424,
-    verification_type: 'code',
-    required_rectoken: 'y',
-    verification: 'y',
+//    verification_type: 'code',
+//    required_rectoken: 'y',
+//    verification: 'y',
     currency: 'UAH',
     amount: 500,
     order_desc: 'my_desc',
-    response_url: 'https://www.fondy.eu',
+//    response_url: 'https://www.fondy.eu',
 //    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50',
     email: 'asd@asd.asd',
-    lang: 'ru'
+    lang: 'ru',
+    custom: {
+//      field_11: 'field_11_json_value',
+      my_email: 'asd@asd.asd'
+    },
   },
   messages: {
     ru: {
+      field_11: 'field_11_ru',
       card_number: 'edit Номер карты',
       my_amount: 'Сума к оплате',
       my_email: 'Эл. адрес',

@@ -54,7 +54,8 @@ export default {
       code: '',
       order_desc: '',
       offer: false,
-      lang: 'en'
+      lang: 'en',
+      custom: {}
     },
     error: {
       flag: false,

@@ -4,12 +4,6 @@ import {TheMask} from 'vue-the-mask'
 
 export default {
   props: {
-    form: {
-      type: Object,
-      default: function () {
-        return store.state.form
-      }
-    },
     name: {
       type: String,
       required: true
@@ -18,7 +12,16 @@ export default {
     label: String,
     validate: [String, Object],
     placement: String,
-    placeholder: String
+    placeholder: String,
+    custom: {
+      type: Boolean,
+      default: false
+    },
+    recurring: {
+      type: Boolean,
+      default: false
+    },
+    value: String
   },
   data () {
     return {
@@ -26,6 +29,19 @@ export default {
       options: store.state.options,
       name_: 'f-' + this.name,
       field_: this.field || this.name
+    }
+  },
+  created: function () {
+    if(this.custom) {
+      this.form = store.state.form.custom
+    } else
+    if (this.recurring) {
+      this.form = store.state.form.recurring_data
+    } else {
+      this.form = store.state.form
+    }
+    if(this.value) {
+      this.form[this.field_] = this.value
     }
   },
   computed: {
