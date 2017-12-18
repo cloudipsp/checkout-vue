@@ -55,20 +55,20 @@
 <script type="text/x-vue-template" id="f-fields2">
 <div>
   <div class="f-block f-block-hr">
-    <input-text name="field_1" label="Фио" validate="required|alpha"></input-text>
+    <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
     <div class="f-row">
       <div class="f-col-xs-6">
-        <input-text name="email" label="Email" validate="required|email"></input-text>
+        <input-text name="email" validate="required|email"></input-text>
       </div>
       <div class="f-col-xs-6">
-        <input-text name="field_3" label="Телефон" validate="required|numeric"></input-text>
+        <input-text name="phone" label="Телефон" validate="required|numeric"></input-text>
       </div>
     </div>
   </div>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
       <input-amount name="amount" label="Сума к оплате" :on-input="onInput"></input-amount>
-      <input-text name="field_5" label="Номер договора" validate="required|alpha_num"></input-text>
+      <input-text name="field_5" validate="required|alpha_num" custom></input-text>
     </div>
   </div>
 </div>
@@ -131,13 +131,15 @@ var maxOptions = {
     email: 'asd@asd.asd',
     lang: 'ru',
     custom: {
-//      field_11: 'field_11_json_value',
-      my_email: 'asd@asd.asd'
+      field_11: 'field_11_json_value',
+      my_email: 'asd@asd.asd',
+      field_5: 'asd123asd'
     },
   },
   messages: {
     ru: {
       field_11: 'field_11_ru',
+      field_5: 'Номер договора',
       card_number: 'edit Номер карты',
       my_amount: 'Сума к оплате',
       my_email: 'Эл. адрес',
