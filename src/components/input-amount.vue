@@ -12,10 +12,10 @@
         :class="[css.fc, css.igi, errors.has(name_) ? css.ie : '']"
         :id="name_"
       >
-      <div v-if="!options.tooltip && errors.has(name_)" class="f-error">{{ errors.first(name_) }}</div>
+      <div v-if="!options.tooltip && errors.has(name_) && $validator.flags[name_].touched" class="f-error">{{ errors.first(name_) }}</div>
       <span :class="css.iga">{{ state.form.currency }}</span>
     </div>
-    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_)" :placement="placement" :target="'#'+name_"></tooltip>
+    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_) && $validator.flags[name_].touched" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
 </template>
 
