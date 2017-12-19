@@ -10,7 +10,7 @@
       <methods :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <component :is="router.page" :method="router.method" :on-submit="submit" :valid="!errors.items.length" :order="order" :cards="cards"></component>
+      <component :is="router.page" :method="router.method" :on-submit="submit" :valid="!errors.items.length" :order="order"></component>
       <div v-if="state.loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -47,8 +47,7 @@
         css: store.state.css,
         regular: store.state.regular,
         timeoutId: 0,
-        order: {},
-        cards: []
+        order: {}
       }
     },
     watch: {
@@ -170,8 +169,8 @@
       },
       submitError: function () {},
       cardsSuccess: function (model) {
-        this.cards = Object.values(model.data)
-//        this.cards = [{
+        this.state.cards = Object.values(model.data)
+//        this.state.cards = [{
 //          card_number: '4444 55XX XXXX 6666',
 //          expiry_date: '12 / 17',
 //          email: 'asd@asd.asd',
@@ -183,8 +182,8 @@
 //          email: 'test@asd.asd',
 //          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
 //        }]
-        if (this.cards.length) {
-          store.setCardNumber(this.cards[0])
+        if (this.state.cards.length) {
+          store.setCardNumber(this.state.cards[0])
         }
       },
       infoSuccess: function (model) {

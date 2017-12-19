@@ -32,6 +32,12 @@ export default {
       field_: this.field || this.name
     }
   },
+  watch: {
+    'name': function () {
+      this.name_= 'f-' + this.name
+      this.field_= this.field || this.name
+    }
+  },
   created: function () {
     if(this.custom) {
       this.form = store.state.form.custom
@@ -50,7 +56,7 @@ export default {
       return this.$t(this.label || this.name)
     },
     hasError: function () {
-      return this.errors.has(this.name_) && this.$validator.flags[this.name_].touched
+      return this.errors.has(this.name_) && this.$validator.flags[this.name_] && this.$validator.flags[this.name_].touched
     }
   },
   // methods: {

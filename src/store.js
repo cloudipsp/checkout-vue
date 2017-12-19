@@ -73,7 +73,8 @@ export default {
     template: {},
     messages: {},
     validate: {},
-    loading: false
+    loading: false,
+    cards: []
   },
   setOptions (options, $i18n) {
     this.validate(options)

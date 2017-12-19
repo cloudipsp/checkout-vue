@@ -5,7 +5,6 @@
       :is="method"
       :icons="options[method + 'Icons']"
       :payment-systems="options[method]"
-      :cards="cards"
     ></component>
     <regular v-if="regular.insert && method === 'card'"></regular>
     <offer v-if="options.offer"></offer>
@@ -34,7 +33,7 @@
   import Fields from '@/components/payment-fields'
 
   export default {
-    props: ['method', 'onSubmit', 'valid', 'cards'],
+    props: ['method', 'onSubmit', 'valid'],
     data () {
       return {
         options: store.state.options,

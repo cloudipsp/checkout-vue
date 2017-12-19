@@ -15,7 +15,7 @@
 
         :mask="mask"
         :masked="masked"
-        @blur.native="$validator.validate(name_)"
+        @blur.native="blur()"
       ></the-mask>
       <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
@@ -35,7 +35,7 @@
 
       :mask="mask"
       :masked="masked"
-      @blur.native="$validator.validate(name_)"
+      @blur.native="blur()"
     ></the-mask>
     <input
       v-else
@@ -76,6 +76,13 @@
     computed: {
       hasDefaultSlot () {
         return !!this.$slots.default
+      }
+    },
+    methods: {
+      blur: function () {
+        this.$validator.validate(this.name_)
+        this.$validator.flags[this.name_].touched = true
+
       }
     }
   }
