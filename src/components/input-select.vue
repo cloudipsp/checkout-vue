@@ -1,18 +1,18 @@
 <template>
-  <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_" v-html="label_"></label>
+  <div :class="['f-form-group', hasError ? css.he : '']">
+    <label :class="[css.cl, hasError ? css.le : '']" :for="name_" v-html="label_"></label>
     <select
       v-validate="validate"
       v-model="form[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
-      :class="[css.fc, errors.has(name_) ? css.ie : '']"
+      :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
     >
       <option v-for="item in list" :key="item" :value="item" v-t="item"></option>
     </select>
-    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_) && $validator.flags[name_].touched" :placement="placement" :target="'#'+name_"></tooltip>
-    <div v-if="!options.tooltip && errors.has(name_) && $validator.flags[name_].touched" class="f-error">{{ errors.first(name_) }}</div>
+    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
+    <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
   </div>
 </template>
 
@@ -22,14 +22,10 @@
 
   export default {
     mixins: [Input],
-    inject: ['$validator'],
     props: {
       list: {
         type: Array
       }
-    },
-    data () {
-      return {}
     }
   }
 </script>

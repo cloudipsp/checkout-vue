@@ -1,6 +1,6 @@
 <template>
-  <div :class="['f-form-group', errors.has(name_) ? css.he : '', hasDefaultSlot ? css.hf : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label_ }}</label>
+  <div :class="['f-form-group', hasError ? css.he : '', hasDefaultSlot ? css.hf : '']">
+    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{ label_ }}</label>
     <div v-if="group && mask" :class="[css.ig]">
       <the-mask
         v-validate="validate"
@@ -8,7 +8,7 @@
         :data-vv-as="label_"
         :data-vv-name="name_"
         :type="type"
-        :class="[css.fc, errors.has(name_) ? css.ie : '']"
+        :class="[css.fc, hasError ? css.ie : '']"
         :id="name_"
         :maxlength="maxlength"
         :placeholder="placeholder"
@@ -17,8 +17,8 @@
         :masked="masked"
         @blur.native="$validator.validate(name_)"
       ></the-mask>
-      <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_) && $validator.flags[name_].touched" :placement="placement" :target="'#'+name_"></tooltip>
-      <div v-if="!options.tooltip && errors.has(name_) && $validator.flags[name_].touched" class="f-error">{{ errors.first(name_) }}</div>
+      <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
+      <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
       <slot name="group"></slot>
     </div>
     <the-mask
@@ -28,7 +28,7 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, errors.has(name_) ? css.ie : '']"
+      :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder"
@@ -44,14 +44,14 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, errors.has(name_) ? css.ie : '']"
+      :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder"
     >
     <slot></slot>
-    <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_) && $validator.flags[name_].touched" :placement="placement" :target="'#'+name_"></tooltip>
-    <div v-if="!group && !options.tooltip && errors.has(name_) && $validator.flags[name_].touched" class="f-error">{{ errors.first(name_) }}</div>
+    <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
+    <div v-if="!group && !options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
   </div>
 </template>
 
@@ -61,7 +61,6 @@
 
   export default {
     mixins: [Input],
-    inject: ['$validator'],
     props: {
       type: {
         type: String,
@@ -73,9 +72,6 @@
       mask: [String, Object],
       masked: Boolean,
       group: Boolean
-    },
-    data () {
-      return {}
     },
     computed: {
       hasDefaultSlot () {

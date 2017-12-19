@@ -1,6 +1,6 @@
 <template>
-  <div :class="['f-form-group', errors.has(name_) ? css.he : '']">
-    <label :class="[css.cl, errors.has(name_) ? css.le : '']" :for="name_">{{ label_ }}</label>
+  <div :class="['f-form-group', hasError ? css.he : '']">
+    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{ label_ }}</label>
     <div :class="css.ig">
       <input
         v-validate="'required|decimal:2'"
@@ -9,13 +9,13 @@
         :data-vv-as="label_"
         :data-vv-name="name_"
         type="text"
-        :class="[css.fc, css.igi, errors.has(name_) ? css.ie : '']"
+        :class="[css.fc, css.igi, hasError ? css.ie : '']"
         :id="name_"
       >
-      <div v-if="!options.tooltip && errors.has(name_) && $validator.flags[name_].touched" class="f-error">{{ errors.first(name_) }}</div>
+      <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
       <span :class="css.iga">{{ state.form.currency }}</span>
     </div>
-    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="errors.has(name_) && $validator.flags[name_].touched" :placement="placement" :target="'#'+name_"></tooltip>
+    <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
 </template>
 
@@ -25,7 +25,6 @@
 
   export default {
     mixins: [Input],
-    inject: ['$validator'],
     props: {
       onInput: Function
     },

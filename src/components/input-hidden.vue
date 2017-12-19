@@ -5,9 +5,6 @@
     render: function (h) {
       return h()
     },
-    mixins: [Input],
-    data () {
-      return {}
-    }
+    mixins: [Input]
   }
 </script>

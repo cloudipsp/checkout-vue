@@ -3,6 +3,7 @@ import Tooltip from '@/components/tooltip'
 import {TheMask} from 'vue-the-mask'
 
 export default {
+  inject: ['$validator'],
   props: {
     name: {
       type: String,
@@ -47,6 +48,9 @@ export default {
   computed: {
     label_: function () {
       return this.$t(this.label || this.name)
+    },
+    hasError: function () {
+      return this.errors.has(this.name_) && this.$validator.flags[this.name_].touched
     }
   },
   // methods: {
