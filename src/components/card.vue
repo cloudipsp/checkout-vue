@@ -50,7 +50,7 @@
         options: store.state.options,
         css: store.state.css,
         maskExpiryDate: '##/##',
-        maskCardNumber: '#### ##XX XXXX ####'
+        maskCardNumber: 'XXXX XXXX XXXX XXXX XXX'
       }
     },
     computed: {
@@ -64,7 +64,7 @@
         return {
           rules: {
             required: true,
-            credit_card: !/\d{6}XXXXXX\d{4}/.test(this.form.card_number)
+            credit_card: !/\d{6}X/.test(this.form.card_number)
           }
         }
       },

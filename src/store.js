@@ -35,7 +35,7 @@ export default {
       period: ['day', 'week', 'month', 'year']
     },
     form: {
-      merchant_id: 900024, // 900024 dev, 1396424 prod
+      merchant_id: 1396424, // 900024 dev, 1396424 prod
       amount: 100,
       fee: 0,
       amount_with_fee: 0,

@@ -29,7 +29,12 @@ export default {
       css: store.state.css,
       options: store.state.options,
       name_: 'f-' + this.name,
-      field_: this.field || this.name
+      field_: this.field || this.name,
+      hexTokens: {
+        X: {
+          pattern: /[0-9X]/
+        }
+      }
     }
   },
   watch: {
