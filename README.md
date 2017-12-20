@@ -62,23 +62,51 @@ Name                  | Type        | Default                 | Description
 `every`               | Integer     | 1                       |
 `period`              | String      | 'month'                 | support `day`, `week`, `month`, `year`.
 `amount`              | Integer     | 100                     |
-`end_time`            | String      |                         | format YYYY-MM-DD'
-`start_time`          | String      |                         | format YYYY-MM-DD'
+`end_time`            | String      |                         | format YYYY-MM-DD
+`start_time`          | String      |                         | format YYYY-MM-DD
 
 ### params
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `merchant_id`         | Integer     | 1396424                 |
-`order_desc`          |       |                        |
-`amount`              |       |                        |
-`currency`            |       |                        |
-`response_url`        |       |                        |
-`lang`                |       |                        |
-`required_rectoken`   |       |                        |
-`verification`        |       |                        |
-`verification_type`   |       |                        |
-`email`               |       |                        |
-`token`               |       |                        |
-`offer`               |       |                        |
+`order_desc`          | String      |                         |
+`amount`              | Integer     | 100                     |
+`currency`            | String      | 'UAH'                   |
+`response_url`        | String      |                         | format url
+`lang`                | String      | 'en'                    |
+`required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`.
+`verification`        | String      |                         | support `Y`, `N`, `y`, `n`.
+`verification_type`   | String      |                         | support `amount`, `code`
+`email`               | String      |                         |
+`token`               | String      |                         |
+`offer`               | Boolean     | false                   |
+`custom`              | Object      |                         |
+
+### messages
+``` js
+{
+  messages: {
+    en: {
+      {id}: {value },
+      ...
+    },
+    ...
+  },
+}
+```
+
+### validate
+``` js
+{
+  validate: {
+    en: {
+      {id}: {value },
+      ...
+    },
+    ...
+  },
+}
+```
+
 
 
