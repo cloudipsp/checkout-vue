@@ -46,7 +46,7 @@ Name                  | Type        | Default                 | Description
 `tooltip`             | Boolean     | true                    |
 `apiDomain`           | String      | 'api.fondy.eu'          |
 `fee`                 | Boolean     | true                    |
-`css`                 | Boolean     | true                    | support `bootstrap3`, `bootstrap4`, `foundation6`.
+`css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.
 
 ### regular
 Name                  | Type        | Default                 | Description
@@ -54,7 +54,7 @@ Name                  | Type        | Default                 | Description
 `insert`              | Boolean     | false                   |
 `open`                | Boolean     | false                   |
 `hide`                | Boolean     | false                   |
-`period`              | Array       |                         | support `day`, `week`, `month`, `year`.
+`period`              | Array       | ['day', 'week', 'month', 'year']| support `day`, `week`, `month`, `year`.
 
 ### recurring
 Name                  | Type        | Default                 | Description
@@ -71,7 +71,7 @@ Name                  | Type        | Default                 | Description
 `merchant_id`         | Integer     | 1396424                 |
 `order_desc`          | String      |                         |
 `amount`              | Integer     | 100                     |
-`currency`            | String      | 'UAH'                   |
+`currency`            | String      | 'USD'                   |
 `response_url`        | String      |                         | format url
 `lang`                | String      | 'en'                    |
 `required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`.

@@ -127,29 +127,28 @@
 //        this.errors.clear()
           console.log('form', this.form)
 
-          if (!this.errors.count() && !this.state.loading) {
-            this.state.loading = true
-            this.error.flag = false
-            this.form.payment_system = this.router.system || this.router.method
+          if (this.errors.count() || this.state.loading) return
+          this.state.loading = true
+          this.error.flag = false
 
-            let form = {}
-            let custom = {}
-            Object.assign(form, this.form)
-            for (let field in form.custom) {
-              if(form.custom.hasOwnProperty(field)) {
-                custom[field] = {
-                  value: form.custom[field],
-                  label: this.$t(field)
-                }
+          let form = {}
+          let custom = {}
+          Object.assign(form, this.form)
+          for (let field in form.custom) {
+            if(form.custom.hasOwnProperty(field)) {
+              custom[field] = {
+                value: form.custom[field],
+                label: this.$t(field)
               }
             }
-            form.custom = custom
-
-            let self = this
-            sendRequest('api.checkout.form', 'request', form).finally(function () {
-              self.state.loading = false
-            }).then(self.submitSuccess, self.submitError)
           }
+          form.payment_system = this.router.system || this.router.method
+          form.custom = custom
+
+          let self = this
+          sendRequest('api.checkout.form', 'request', form).finally(function () {
+            self.state.loading = false
+          }).then(self.submitSuccess, self.submitError)
         })
       },
       submitSuccess: function (model) {

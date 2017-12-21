@@ -39,7 +39,7 @@ export default {
       amount: 100,
       fee: 0,
       amount_with_fee: 0,
-      currency: 'UAH',
+      currency: 'USD',
       recurring_data: {
         period: 'month',
         every: 1,

@@ -2,8 +2,8 @@ export const messages = {
   card: 'Оплата картой',
   card_number: 'Номер карты',
   expiry_date: 'Действительна до',
-  cvv2: 'CVV',
-  cvv_question: '{0} цифры с оборотноой стороны карты',
+  cvv2: 'CVV2',
+  cvv2_question: '{0} цифры с оборотноой стороны карты',
   email: 'Email',
 
   regular: 'Регулярный платеж',
