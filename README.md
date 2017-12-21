@@ -77,8 +77,8 @@ Name                  | Type        | Default                 | Description
 `required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`.
 `verification`        | String      |                         | support `Y`, `N`, `y`, `n`.
 `verification_type`   | String      |                         | support `amount`, `code`
-`email`               | String      |                         |
-`token`               | String      |                         |
+`email`               | String      |                         | format email
+`token`               | String      |                         | length 40
 `offer`               | Boolean     | false                   |
 `custom`              | Object      |                         |
 
@@ -86,8 +86,8 @@ Name                  | Type        | Default                 | Description
 ``` js
 {
   messages: {
-    en: {
-      {id}: {value },
+    {en}: {
+      {id}: {value},
       ...
     },
     ...
@@ -99,8 +99,8 @@ Name                  | Type        | Default                 | Description
 ``` js
 {
   validate: {
-    en: {
-      {id}: {value },
+    {en}: {
+      {id}: {value},
       ...
     },
     ...

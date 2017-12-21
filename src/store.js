@@ -87,6 +87,7 @@ export default {
       expiry_date: '',
       cvv2: '',
       code: '',
+
       fee: 0,
       amount_with_fee: 0,
     })
