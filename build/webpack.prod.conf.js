@@ -65,7 +65,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
-  entry: config.build.entry,
+  entry: {
+    'checkout.css': './src/less/style.less',
+    'checkout-dark.css': './src/less/style-dark.less',
+  },
   // output: {
   //   path: config.build.assetsRoot,
   //   filename: utils.assetsPath('[name].js'), // 'js/[name].[chunkhash].js'
