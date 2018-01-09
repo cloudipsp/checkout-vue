@@ -197,7 +197,7 @@
         } else {
           this.form.fee = info.client_fee || 0
         }
-        this.options.email = info.checkout_email_required
+        this.options.email = info.checkout_email_required || this.options.email
 
         if (this.form.fee) {
           let self = this

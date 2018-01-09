@@ -2,6 +2,7 @@
 // TODO config fields payment systems
 // TODO create color template param
 // TODO ? f-fields create root div
+// TODO support material
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'

@@ -39,7 +39,7 @@
       },
       appendToBody: {
         type: Boolean,
-        default: false
+        default: true
       },
       value: Boolean,
       dropup: {
@@ -48,7 +48,7 @@
       },
       menuRight: {
         type: Boolean,
-        default: false
+        default: true
       },
       notCloseElements: Array,
       positionElement: null
