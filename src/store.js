@@ -26,7 +26,8 @@ export default {
       locales: [],
       messages: {},
       apiDomain: 'api.fondy.eu',
-      fee: true
+      fee: true,
+      customerFields: []
     },
     regular: {
       insert: false,
@@ -55,7 +56,8 @@ export default {
       order_desc: '',
       offer: false,
       lang: 'en',
-      custom: {}
+      custom: {},
+      customer_data: {},
     },
     error: {
       flag: false,
@@ -79,7 +81,8 @@ export default {
   setOptions (options, $i18n) {
     this.validate(options)
     Object.assign(this.state.options, options.options, {
-      offer: ''
+      offer: '',
+      customerFields: []
     })
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.form, options.params, {

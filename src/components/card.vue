@@ -28,7 +28,8 @@
             </input-text>
           </div>
         </div>
-        <input-text v-if="options.email" name="email" validate="required|email"></input-text>
+        <input-text v-if="options.email" name="checkout-email" field="email" label="email" validate="required|email"></input-text>
+        <customer-fields v-if="options.customerFields.length"></customer-fields>
       </div>
     </div>
   </div>
@@ -41,6 +42,7 @@
   import Tooltip from '@/components/tooltip'
   import Dropdown from '@/components/dropdown'
   import InputText from '@/components/input-text'
+  import customerFields from '@/components/customer-fields'
 
   export default {
     inject: ['$validator'],
@@ -115,7 +117,8 @@
     components: {
       Tooltip,
       Dropdown,
-      InputText
+      InputText,
+      customerFields
     }
   }
 </script>

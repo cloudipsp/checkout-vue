@@ -9,7 +9,7 @@
       :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
     >
-      <option v-for="item in list" :key="item" :value="item" v-t="item"></option>
+      <option v-for="item in list" :key="item.id || item" :value="item.id || item" v-t="item.name || item"></option>
     </select>
     <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
     <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>

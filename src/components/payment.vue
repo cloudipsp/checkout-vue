@@ -198,6 +198,7 @@
           this.form.fee = info.client_fee || 0
         }
         this.options.email = info.checkout_email_required || this.options.email
+        this.options.customerFields = info.customer_required_data || this.options.customerFields
 
         if (this.form.fee) {
           let self = this
