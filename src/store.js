@@ -76,7 +76,8 @@ export default {
     messages: {},
     validate: {},
     loading: false,
-    cards: []
+    cards: [],
+    submit: false
   },
   setOptions (options, $i18n) {
     this.validate(options)

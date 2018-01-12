@@ -11,7 +11,7 @@
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block', css.submit]" :disabled="!valid">
-          <span v-t="'pay'"></span> <span v-if="fullAmount">{{fullAmount}} {{form.currency}}</span>
+          <span v-t="{path: 'pay', args: args}"></span>
         </button>
         <div class="f-hidden-desktop">
           <i class="f-icon f-icon-block f-i-security"></i>
@@ -50,6 +50,9 @@
           return false
         }
         return (amountWithFee || amount) / 100
+      },
+      args: function () {
+        return this.fullAmount ? [this.fullAmount, this.$t(this.form.currency)] : []
       }
     },
     components: {

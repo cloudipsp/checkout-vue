@@ -122,6 +122,7 @@
         this.$validator.validateAll()
         this.$nextTick(function () {
           this.autoFocus()
+          this.state.submit = true;
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
 //        this.errors.clear()

@@ -11,9 +11,10 @@
         type="text"
         :class="[css.fc, css.igi, hasError ? css.ie : '']"
         :id="name_"
+        :placeholder="placeholder_"
       >
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
-      <span :class="css.iga">{{ state.form.currency }}</span>
+      <span :class="css.iga" v-t="state.form.currency"></span>
     </div>
     <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
