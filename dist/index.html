@@ -177,9 +177,6 @@ var minOptions = {
     fullScreen: true,
     fee: true,
   },
-  popup: {
-    appendTo: 'body'
-  },
   params: {
     merchant_id: 1396424,
 //    lang: 'ru',
@@ -191,7 +188,7 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', minOptions)
+var app = fondy('#app', maxOptions)
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()
