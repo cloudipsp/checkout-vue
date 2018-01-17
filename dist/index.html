@@ -30,11 +30,10 @@
         }
       }
     </style>
-    <link href=checkout.css rel=stylesheet>
-    <script type=text/javascript src=checkout.js></script>
-    <script type=text/javascript src=i18n/ru.js></script>
-    <script type=text/javascript src=i18n/uk.js></script>
-  </head>
+    
+    
+    
+  <link href=checkout.css rel=stylesheet><link href=checkout-dark.css rel=stylesheet><script type=text/javascript src=checkout.js></script><script type=text/javascript src=checkout.css></script><script type=text/javascript src=checkout-dark.css></script></head>
   <body>
   <div id=app></div>
 <div>
@@ -178,6 +177,9 @@ var minOptions = {
     fullScreen: true,
     fee: true,
   },
+  popup: {
+    appendTo: 'body'
+  },
   params: {
     merchant_id: 1396424,
 //    lang: 'ru',
@@ -189,7 +191,7 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', maxOptions)
+var app = fondy('#app', minOptions)
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()

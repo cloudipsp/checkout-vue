@@ -18,15 +18,15 @@ let verificationType = ['amount', 'code']
 
 let validatorArray = function (array) {
   return {
-    validator (rule, value, callback, source, options) {
+    validator(rule, value, callback, source, options) {
       rule.type = 'array'
       let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
       let errors = []
       if (validate) {
-        if(Array.isArray(value)){
+        if (Array.isArray(value)) {
           value.forEach(function (item) {
-            if(array.indexOf(item) < 0) {
-              errors.push([rule.fullField,item,'is not equal to one of',array.join(', ')].join(' '))
+            if (array.indexOf(item) < 0) {
+              errors.push([rule.fullField, item, 'is not equal to one of', array.join(', ')].join(' '))
             }
           })
         } else {
@@ -54,54 +54,60 @@ export default {
       cash: validatorArray(cash),
       fast: validatorArray(fast),
       cardIcons: validatorArray(cardIcons),
-      fields: { type: 'boolean' },
-      title: { type: 'string' },
-      link: { type: 'url' },
-      fullScreen: { type: 'boolean' },
-      button: { type: 'boolean' },
+      fields: {type: 'boolean'},
+      title: {type: 'string'},
+      link: {type: 'url'},
+      fullScreen: {type: 'boolean'},
+      button: {type: 'boolean'},
       locales: validatorArray(locales),
-      email: { type: 'boolean' },
-      css:{ type: 'enum', enum: css },
-      tooltip: { type: 'boolean' },
-      apiDomain: { type: 'string' },
-      fee: { type: 'boolean' },
+      email: {type: 'boolean'},
+      css: {type: 'enum', enum: css},
+      tooltip: {type: 'boolean'},
+      apiDomain: {type: 'string'},
+      fee: {type: 'boolean'}
+    }
+  },
+  popup: {
+    type: 'object',
+    fields: {
+      appendTo: {type: 'string'}
     }
   },
   regular: {
     type: 'object',
     fields: {
-      insert: { type: 'boolean' },
-      open: { type: 'boolean' },
-      hide: { type: 'boolean' },
-      period: validatorArray(period),
+      insert: {type: 'boolean'},
+      open: {type: 'boolean'},
+      hide: {type: 'boolean'},
+      period: validatorArray(period)
     }
   },
   recurring: {
     type: 'object',
     fields: {
-      period: { type: 'enum', enum: period },
-      every: { type: 'integer' },
-      start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-      end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-      amount: { type: 'integer' }
+      period: {type: 'enum', enum: period},
+      every: {type: 'integer'},
+      start_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
+      end_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
+      amount: {type: 'integer'}
     }
   },
   params: {
     type: 'object',
     fields: {
-      merchant_id: { type: 'integer', max: 999999999999 },
-      order_desc: { type: 'string', max: 1024},
-      amount: { type: 'integer' , max: 999999999999 },
+      merchant_id: {type: 'integer', max: 999999999999},
+      order_desc: {type: 'string', max: 1024},
+      amount: {type: 'integer', max: 999999999999},
       // currency: { type: 'enum', enum: currency },
-      currency: { type: 'string' },
-      response_url: { type: 'url'},
-      lang: { type: 'enum', enum: locales },
-      required_rectoken: { type: 'enum', enum: YN },
-      verification: { type: 'enum', enum: YN },
-      verification_type: { type: 'enum', enum: verificationType },
-      email: { type: 'email'},
-      token: { type: 'string', len: 40},
-      offer: { type: 'boolean' }
+      currency: {type: 'string'},
+      response_url: {type: 'url'},
+      lang: {type: 'enum', enum: locales},
+      required_rectoken: {type: 'enum', enum: YN},
+      verification: {type: 'enum', enum: YN},
+      verification_type: {type: 'enum', enum: verificationType},
+      email: {type: 'email'},
+      token: {type: 'string', len: 40},
+      offer: {type: 'boolean'}
     }
   },
   messages: {

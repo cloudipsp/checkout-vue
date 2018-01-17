@@ -14,6 +14,8 @@ import {
 } from '@/utils/dom'
 import {isString} from '@/utils/object'
 
+import store from '@/store'
+
 const SHOW_CLASS = 'in'
 
 export default {
@@ -38,10 +40,6 @@ export default {
       type: Boolean,
       default: true
     },
-    appendTo: {
-      type: String,
-      default: 'body'
-    },
     transitionDuration: {
       type: Number,
       default: 150
@@ -52,26 +50,27 @@ export default {
     },
     target: null
   },
-  data () {
+  data() {
     return {
       triggerEl: null,
-      timeoutId: 0
+      timeoutId: 0,
+      appendTo: store.state.popup.appendTo
     }
   },
   watch: {
-    value (v) {
+    value(v) {
       v ? this.show() : this.hide()
     },
-    trigger () {
+    trigger() {
       this.clearListeners()
       this.initListeners()
     },
-    target (value) {
+    target(value) {
       this.clearListeners()
       this.initTriggerElByTarget(value)
       this.initListeners()
     },
-    allContent (value) {
+    allContent(value) {
       // can not use value because it can not detect slot changes
       if (this.isNotEmpty()) {
         // reset position while content changed & is shown
@@ -85,14 +84,14 @@ export default {
         this.hide()
       }
     },
-    enable (value) {
+    enable(value) {
       // hide if enable changed to false
       if (!value) {
         this.hide()
       }
     }
   },
-  mounted () {
+  mounted() {
     ensureElementMatchesFunction()
     removeFromDom(this.$refs.popup)
     this.$nextTick(() => {
@@ -103,12 +102,12 @@ export default {
       }
     })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.clearListeners()
     removeFromDom(this.$refs.popup)
   },
   methods: {
-    initTriggerElByTarget (target) {
+    initTriggerElByTarget(target) {
       if (target) {
         // target exist
         if (isString(target)) { // is selector
@@ -130,7 +129,7 @@ export default {
         }
       }
     },
-    initListeners () {
+    initListeners() {
       if (this.triggerEl) {
         if (this.trigger === TRIGGERS.HOVER) {
           on(this.triggerEl, EVENTS.MOUSE_ENTER, this.show)
@@ -149,7 +148,7 @@ export default {
       }
       on(window, EVENTS.CLICK, this.windowClicked)
     },
-    clearListeners () {
+    clearListeners() {
       if (this.triggerEl) {
         off(this.triggerEl, EVENTS.FOCUS, this.show)
         off(this.triggerEl, EVENTS.BLUR, this.hide)
@@ -163,29 +162,29 @@ export default {
       }
       off(window, EVENTS.CLICK, this.windowClicked)
     },
-    resetPosition () {
+    resetPosition() {
       const popup = this.$refs.popup
       setTooltipPosition(popup, this.triggerEl, this.placement, this.autoPlacement, this.appendTo)
       // popup.offsetHeight
     },
-    showOnHover () {
+    showOnHover() {
       if (this.trigger === TRIGGERS.HOVER || this.trigger === TRIGGERS.HOVER_FOCUS) {
         this.show()
       }
     },
-    hideOnLeave () {
+    hideOnLeave() {
       if (this.trigger === TRIGGERS.HOVER || (this.trigger === TRIGGERS.HOVER_FOCUS && !this.triggerEl.matches(':focus'))) {
         this.hide()
       }
     },
-    toggle () {
+    toggle() {
       if (this.isShown()) {
         this.hide()
       } else {
         this.show()
       }
     },
-    show () {
+    show() {
       if (this.enable && this.triggerEl && this.isNotEmpty() && !this.isShown()) {
         let popup = this.$refs.popup
         if (this.timeoutId > 0) {
@@ -202,7 +201,7 @@ export default {
         this.$emit('show')
       }
     },
-    hide () {
+    hide() {
       if (this.isShown()) {
         clearTimeout(this.timeoutId)
         removeClass(this.$refs.popup, SHOW_CLASS)
@@ -214,17 +213,17 @@ export default {
         }, this.transitionDuration)
       }
     },
-    isShown () {
+    isShown() {
       return hasClass(this.$refs.popup, SHOW_CLASS)
     },
-    windowClicked (event) {
+    windowClicked(event) {
       if (this.triggerEl && !this.triggerEl.contains(event.target) &&
         this.trigger === TRIGGERS.OUTSIDE_CLICK && !this.$refs.popup.contains(event.target) &&
         this.isShown()) {
         this.hide()
       }
     },
-    handleAuto () {
+    handleAuto() {
       setTimeout(() => {
         if (this.triggerEl.matches(':hover, :focus')) {
           this.show()

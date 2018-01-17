@@ -3,7 +3,7 @@ import configCss from '@/config/css'
 import configTemplate from '@/config/template'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
-import { getCookie, setOrigin } from '@/utils/helpers'
+import {getCookie, setOrigin} from '@/utils/helpers'
 import Schema from 'async-validator'
 
 export default {
@@ -28,6 +28,9 @@ export default {
       apiDomain: 'api.fondy.eu',
       fee: true,
       customerFields: []
+    },
+    popup: {
+      appendTo: 'body'
     },
     regular: {
       insert: false,
@@ -79,7 +82,7 @@ export default {
     cards: [],
     submit: false
   },
-  setOptions (options, $i18n) {
+  setOptions(options, $i18n) {
     this.validate(options)
     Object.assign(this.state.options, options.options, {
       offer: '',
@@ -91,13 +94,13 @@ export default {
       expiry_date: '',
       cvv2: '',
       code: '',
-
       fee: 0,
-      amount_with_fee: 0,
+      amount_with_fee: 0
     })
     Object.assign(this.state.form.recurring_data, options.recurring)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
+    Object.assign(this.state.popup, options.popup)
     this.setFast()
     this.setCss()
     this.setLocale()
@@ -147,8 +150,7 @@ export default {
       if (locales.indexOf(lang) < 0) {
         lang = locales[0]
       }
-    } else
-    if (configLocales.indexOf(lang) < 0) {
+    } else if (configLocales.indexOf(lang) < 0) {
       lang = 'en'
     }
     this.state.form.lang = lang
