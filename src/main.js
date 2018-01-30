@@ -23,14 +23,10 @@ const install = function (Vue, VeeValidate) {
   Vue.use(VeeValidate, { inject: false })
   window.fondy = function (el, options) {
     options = options || {}
-    if (isString(el) && isObject(options)) {
-      let selected = document.querySelector(el);
-      if (!selected) {
-        return console.error('error run')
-      }
-    } else {
-      return console.error('error run')
-    }
+    if (!isString(el)) return console.error('Selector not a string')
+    if (!isObject(options)) return console.error('Options not an object')
+    if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
+
     return new Vue({
       i18n,
       el: el,

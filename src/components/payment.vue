@@ -154,8 +154,8 @@
       },
       submitSuccess: function (model) {
         let order = model.attr('order');
-        if (!order) return;
         if (model.sendResponse()) return;
+        if (!order) return;
         if (model.needVerifyCode()) {
           this.router.page = 'verify'
           this.router.method = 'card'
@@ -188,18 +188,24 @@
       },
       infoSuccess: function (model) {
         let info = model.data
-        let order = model.attr('order_data')
+        let order_data = model.attr('order_data')
+        let order = model.attr('order')
         if (order) {
-          this.form.amount = order.amount
-          this.form.recurring_data.amount = order.amount
-          this.form.currency = order.currency
-          this.form.merchant_id = order.merchant_id
-          this.form.fee = info.order.fee || 0
+          this.form.amount = order_data.amount
+          this.form.recurring_data.amount = order_data.amount
+          this.form.currency = order_data.currency
+          this.form.merchant_id = order_data.merchant_id
+          this.form.fee = order.fee || 0
+          this.form.order_desc = order.order_desc
+          this.form.sender_email = order_data.sender_email
+          this.form.order_id = order_data.order_id
         } else {
           this.form.fee = info.client_fee || 0
         }
         this.options.email = info.checkout_email_required || this.options.email
         this.options.customerFields = info.customer_required_data || this.options.customerFields
+        this.options.title = this.options.title || model.attr('merchant.localized_name')
+        this.options.offer = model.attr('merchant.offerta_url')
 
         if (this.form.fee) {
           let self = this
@@ -208,9 +214,6 @@
               self.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
             }, function () {})
         }
-
-        this.options.title = this.options.title || model.attr('merchant.localized_name')
-        this.options.offer = model.attr('merchant.offerta_url')
       },
       autoFocus: function () {
         if (this.errors.count()) {

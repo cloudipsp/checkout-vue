@@ -38,6 +38,18 @@ let validatorArray = function (array) {
   }
 }
 
+let validatorToken = function () {
+  return {
+    validator(rule, value, callback, source, options) {
+      let errors = []
+      if (source.token && rule.field in source) {
+        errors.push(['Parameter', rule.fullField, 'can\'t be modified when token is used.'].join(' '))
+      }
+      callback(errors)
+    }
+  }
+}
+
 locales.forEach(function (locale) {
   i18n[locale] = {
     type: 'object'
@@ -97,9 +109,15 @@ export default {
     fields: {
       merchant_id: {type: 'integer', max: 999999999999},
       order_desc: {type: 'string', max: 1024},
-      amount: {type: 'integer', max: 999999999999},
+      amount: [
+        {type: 'integer', max: 999999999999},
+        validatorToken()
+      ],
       // currency: { type: 'enum', enum: currency },
-      currency: {type: 'string'},
+      currency: [
+        {type: 'string'},
+        validatorToken()
+      ],
       response_url: {type: 'url'},
       lang: {type: 'enum', enum: locales},
       required_rectoken: {type: 'enum', enum: YN},
