@@ -44,6 +44,9 @@ const install = function (Vue, VeeValidate) {
         },
         location: function (method, system) {
           this.$emit('location', method, system)
+        },
+        setAmount: function (amount) {
+          this.$emit('setAmount', amount)
         }
       }
     })

@@ -64,16 +64,6 @@
       }
     },
     created: function () {
-      this.$root.$on('submit', () => {
-        this.submit()
-      })
-      this.$root.$on('location', (method, system) => {
-        this.show = false
-        this.router.page = 'payment-method'
-        this.router.method = method
-        this.router.system = system
-      })
-
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
         this.form.recurring_data.amount = 0
@@ -207,6 +197,10 @@
         this.options.title = this.options.title || model.attr('merchant.localized_name')
         this.options.offer = model.attr('merchant.offerta_url')
 
+        this.getAmountWithFee()
+        this.createdEvent()
+      },
+      getAmountWithFee: function() {
         if (this.form.fee) {
           let self = this
           return sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
@@ -214,6 +208,21 @@
               self.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
             }, function () {})
         }
+      },
+      createdEvent: function() {
+        this.$root.$on('submit', () => {
+          this.submit()
+        })
+        this.$root.$on('location', (method, system) => {
+          this.show = false
+          this.router.page = 'payment-method'
+          this.router.method = method
+          this.router.system = system
+        })
+        this.$root.$on('setAmount', (amount) => {
+          this.form.amount = amount
+          this.getAmountWithFee()
+        })
       },
       autoFocus: function () {
         if (this.errors.count()) {

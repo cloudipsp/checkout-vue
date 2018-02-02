@@ -41,6 +41,7 @@
     <button id=submit>submit 1</button>
     <button id=go-ibank>go ibank</button>
     <button id=go-card>go card</button>
+    <button id=set-amount>set amount</button>
   </div>
   <div>
     <div class=coll>
@@ -127,7 +128,7 @@ var maxOptions = {
 //    amount: 500,
     order_desc: 'my_desc',
 //    response_url: 'https://www.fondy.eu',
-    token: 'f062e8a6812b152d78405ae2b5c3ab3477fd3124',
+    token: '5b6517c30bb7ef039e416c0d1233d4e3e170093e',
     email: 'asd@asd.asd',
     lang: 'ru',
     custom: {
@@ -199,6 +200,9 @@ document.getElementById('go-card').addEventListener('click', function () {
 })
 document.getElementById('go-ibank').addEventListener('click', function () {
   app.location('ibank')
+})
+document.getElementById('set-amount').addEventListener('click', function () {
+  app.setAmount(500)
 })
 </script>
   </body>
