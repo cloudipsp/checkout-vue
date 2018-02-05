@@ -1,10 +1,9 @@
-import config from '@/config/config'
 import configCss from '@/config/css'
 import configTemplate from '@/config/template'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
-import {getCookie, setOrigin} from '@/utils/helpers'
-import Schema from 'async-validator'
+import notSet from '@/config/not-set'
+import {getCookie, setOrigin, deepMerge, validate} from '@/utils/helpers'
 
 export default {
   state: {
@@ -83,21 +82,13 @@ export default {
     submit: false
   },
   setOptions(options, $i18n) {
-    this.validate(options)
+    validate(options)
+    deepMerge(this.state.form, options.params, notSet)
     Object.assign(this.state.options, options.options, {
       offer: '',
       customerFields: []
     })
     Object.assign(this.state.regular, options.regular)
-    Object.assign(this.state.form, options.params, {
-      card_number: '',
-      expiry_date: '',
-      cvv2: '',
-      code: '',
-      fee: 0,
-      amount_with_fee: 0
-    })
-    Object.assign(this.state.form.recurring_data, options.recurring)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
     Object.assign(this.state.popup, options.popup)
@@ -106,14 +97,6 @@ export default {
     this.setLocale()
     setOrigin()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
-  },
-  validate: function (options) {
-    new Schema(config).validate(options, (errors, fields) => {
-      if (errors) {
-        // console.log(errors, fields)
-        this.state.error.errors = errors
-      }
-    })
   },
   setFast: function () {
     let fast = []

@@ -94,16 +94,6 @@ export default {
       period: validatorArray(period)
     }
   },
-  recurring: {
-    type: 'object',
-    fields: {
-      period: {type: 'enum', enum: period},
-      every: {type: 'integer'},
-      start_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-      end_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-      amount: {type: 'integer'}
-    }
-  },
   params: {
     type: 'object',
     fields: {
@@ -125,7 +115,19 @@ export default {
       verification_type: {type: 'enum', enum: verificationType},
       email: {type: 'email'},
       token: {type: 'string', len: 40},
-      offer: {type: 'boolean'}
+      offer: {type: 'boolean'},
+      recurring_data: {
+        type: 'object',
+        fields: {
+          period: {type: 'enum', enum: period},
+          every: {type: 'integer'},
+          start_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
+          end_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
+          amount: {type: 'integer'}
+        }
+      },
+      custom: {type: 'object'},
+      customer_data: {type: 'object'}
     }
   },
   messages: {

@@ -31,6 +31,8 @@
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
+  import { deepMerge, validate } from '@/utils/helpers'
+  import notSet from '@/config/not-set'
 
   export default {
     inject: ['$validator'],
@@ -64,6 +66,8 @@
       }
     },
     created: function () {
+      this.createdEvent()
+
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
         this.form.recurring_data.amount = 0
@@ -198,7 +202,6 @@
         this.options.offer = model.attr('merchant.offerta_url')
 
         this.getAmountWithFee()
-        this.createdEvent()
       },
       getAmountWithFee: function() {
         if (this.form.fee) {
@@ -219,9 +222,16 @@
           this.router.method = method
           this.router.system = system
         })
-        this.$root.$on('setAmount', (amount) => {
-          this.form.amount = amount
-          this.getAmountWithFee()
+        this.$root.$on('setParams', (params) => {
+          if (this.form.token || this.form.order_id) {
+            console.warn('You can not change the parameters if there is a token or an order is created')
+            return;
+          }
+          validate({params: params})
+          if(!this.error.errors.length) {
+            deepMerge(this.form, params, notSet)
+            this.getAmountWithFee()
+          }
         })
       },
       autoFocus: function () {

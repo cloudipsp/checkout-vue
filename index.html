@@ -41,7 +41,7 @@
     <button id="submit">submit 1</button>
     <button id="go-ibank">go ibank</button>
     <button id="go-card">go card</button>
-    <button id="set-amount">set amount</button>
+    <button id="set-params">set params</button>
   </div>
   <div>
     <div class="coll">
@@ -112,13 +112,6 @@ var maxOptions = {
     hide: false,
     period: ['week', 'month', 'year']
   },
-  recurring: {
-    every: 2,
-    period: 'month',
-    amount: 100,
-    end_time: '2020-11-14',
-    start_time: '2018-11-11'
-  },
   params: {
     merchant_id: 1396424,
 //    verification_type: 'code',
@@ -126,11 +119,18 @@ var maxOptions = {
 //    verification: 'y',
 //    currency: 'UAH',
 //    amount: 500,
-    order_desc: 'my_desc',
+    order_desc: 'my_desc1',
 //    response_url: 'https://www.fondy.eu',
-    token: '5b6517c30bb7ef039e416c0d1233d4e3e170093e',
+//    token: '5b6517c30bb7ef039e416c0d1233d4e3e170093e',
     email: 'asd@asd.asd',
     lang: 'ru',
+    recurring_data: {
+      every: 2,
+      period: 'month',
+      amount: 100,
+      end_time: '2020-11-14',
+      start_time: '2018-11-11'
+    },
     custom: {
       field_11: 'field_11_json_value',
       my_email: 'asd@asd.asd',
@@ -201,8 +201,17 @@ document.getElementById('go-card').addEventListener('click', function () {
 document.getElementById('go-ibank').addEventListener('click', function () {
   app.location('ibank')
 })
-document.getElementById('set-amount').addEventListener('click', function () {
-  app.setAmount(500)
+document.getElementById('set-params').addEventListener('click', function () {
+  app.setParams({
+    order_desc: 'my_desc2',
+    amount: 500,
+    currency: 'UAH',
+    recurring_data: {
+      every: 3,
+      period: 'week',
+      amount: 200,
+    }
+  })
 })
 </script>
   </body>
