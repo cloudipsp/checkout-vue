@@ -26,12 +26,12 @@
   import Info from '@/components/info'
   import Methods from '@/components/methods'
   import Verify from '@/components/verify'
-  import { sendRequest } from '@/utils/helpers'
   import store from '@/store'
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
-  import { deepMerge, validate } from '@/utils/helpers'
+  import { sendRequest, deepMerge, validate } from '@/utils/helpers'
+  import { isFunction } from '@/utils/object'
   import notSet from '@/config/not-set'
 
   export default {
@@ -112,7 +112,7 @@
       Success
     },
     methods: {
-      submit: function () {
+      submit: function (cb) {
         this.$validator.validateAll()
         this.$nextTick(function () {
           this.autoFocus()
@@ -141,27 +141,45 @@
           form.custom = custom
 
           let self = this
-          sendRequest('api.checkout.form', 'request', form).finally(function () {
-            self.state.loading = false
-          }).then(self.submitSuccess, self.submitError)
+          sendRequest('api.checkout.form', 'request', form)
+            .finally(function () {
+              self.state.loading = false
+            })
+            .then(function(model){
+              if(isFunction(cb)) {
+                let hash = JSON.stringify(model)
+                if(JSON.stringify(cb(model)) === hash) {
+                  return model
+                }
+              } else {
+                return model
+              }
+//              return isFunction(cb) ? cb(model) : model;
+            })
+            .then(self.submitSuccess, self.submitError)
         })
       },
       submitSuccess: function (model) {
+        if(!model) return;
+        this.$root.$emit('success', model)
+
         let order = model.attr('order');
-        if (model.sendResponse()) return;
+        if (model.sendResponse()) return; // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
         if (!order) return;
-        if (model.needVerifyCode()) {
+        if (model.needVerifyCode()) { // need_verify_code
           this.router.page = 'verify'
           this.router.method = 'card'
           this.router.system = 'verify'
           this.form.token = order.token
         } else
-        if (!model.submitToMerchant()) {
+        if (!model.submitToMerchant()) {  // !(ready_to_submit && response_url && order_data formDataSubmit())
           this.order = order.order_data
           this.router.page = 'success'
         }
       },
-      submitError: function () {},
+      submitError: function (model) {
+        this.$root.$emit('error', model)
+      },
       cardsSuccess: function (model) {
         this.state.cards = Object.values(model.data)
 //        this.state.cards = [{
@@ -213,8 +231,8 @@
         }
       },
       createdEvent: function() {
-        this.$root.$on('submit', () => {
-          this.submit()
+        this.$root.$on('submit', (cb) => {
+          this.submit(cb)
         })
         this.$root.$on('location', (method, system) => {
           this.show = false

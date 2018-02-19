@@ -20,7 +20,7 @@
   "dependencies": {
     "async-validator": "^1.8.2",
     "fondy-icons": "^1.0.1",
-    "ipsp-js-sdk": "^1.0.9",
+    "ipsp-js-sdk": "^1.0.12",
     "vee-validate": "^2.0.0-rc.27",
     "vue": "^2.5.11",
     "vue-i18n": "^7.3.2",

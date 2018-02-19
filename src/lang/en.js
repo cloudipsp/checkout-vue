@@ -6,6 +6,7 @@ export const messages = {
   expiry_date: 'Expiry date',
   expiry_date_p: 'MM/YY',
   cvv2: 'CVV2',
+  cvv2_p: '',
   cvv2_question: '{0} digits on the back of the card',
   email: 'Email',
   email_p: '',

@@ -190,9 +190,18 @@ var minOptions = {
 }
 
 var app = fondy('#app', maxOptions)
+  .$on('success', function(model) {
+    console.log('сработало событие success');
+  })
+  .$on('error', function(model) {
+    console.log('сработало событие error');
+  })
 
 document.getElementById('submit').addEventListener('click', function () {
-  app.submit()
+  app.submit(function(model){
+    console.log('на сабмин выполняется етот колбек, если вернуть медель (return model) пойдет наша обработка');
+    return model
+  })
 //  this.disabled = app.errors.items.length
 })
 document.getElementById('go-card').addEventListener('click', function () {

@@ -39,8 +39,8 @@ const install = function (Vue, VeeValidate) {
         validator: 'new'
       },
       methods: {
-        submit: function () {
-          this.$emit('submit')
+        submit: function (cb) {
+          this.$emit('submit', cb)
         },
         location: function (method, system) {
           this.$emit('location', method, system)
