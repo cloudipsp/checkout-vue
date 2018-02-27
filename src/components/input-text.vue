@@ -11,7 +11,7 @@
         :class="[css.fc, hasError ? css.ie : '']"
         :id="name_"
         :maxlength="maxlength"
-        :placeholder="placeholder"
+        :placeholder="placeholder_"
 
         :mask="mask"
         :masked="masked"
@@ -31,7 +31,7 @@
       :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
-      :placeholder="placeholder"
+      :placeholder="placeholder_"
 
       :mask="mask"
       :masked="masked"
@@ -47,7 +47,7 @@
       :class="[css.fc, hasError ? css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
-      :placeholder="placeholder"
+      :placeholder="placeholder_"
     >
     <slot></slot>
     <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>

@@ -11,12 +11,6 @@ const webpack = require('webpack')
 const config = require('../config')
 let webpackConfig = require('./webpack.prod.conf')
 
-let opts = process.argv.slice(2)
-if (opts.indexOf('--css') > -1) {
-  webpackConfig = require('./webpack.css.conf')
-  // console.log(webpackConfig)
-}
-
 const spinner = ora('building for production...')
 spinner.start()
 

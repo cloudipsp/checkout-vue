@@ -19,7 +19,5 @@ export function isBoolean (obj) {
 }
 
 export function isObject (obj) {
-  return obj !== null && typeof obj === 'object'
+  return obj !== null && !Array.isArray(obj) && typeof obj === 'object'
 }
-
-// Array.isArray()

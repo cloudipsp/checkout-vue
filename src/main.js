@@ -1,29 +1,32 @@
 // TODO свайп
 // TODO config fields payment systems
-// TODO ? сделать дебаг сборку -4kB gzip
 // TODO create color template param
 // TODO ? f-fields create root div
-// TODO ? config payment systems in options
+// TODO support material
 
 import Vue from 'vue'
-import VeeValidate from 'vee-validate'
+import VeeValidate, { Validator } from 'vee-validate'
 import Checkout from '@/checkout'
 import { i18n } from '@/i18n'
 import { isString, isObject } from '@/utils/object'
 
 const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
+  Validator.extend('customer_field', {
+    getMessage: (field) => `The ${field} field format is invalid.`,
+    validate: value => /^(?!\s)[0-9A-Za-z-\/\s\.,]+(?!\s)$/.test(value)
+  })
+  Validator.extend('phone', {
+    getMessage: (field) => `The ${field} field format is invalid.`,
+    validate: value => /^\+?\d{7,14}$/.test(value)
+  })
   Vue.use(VeeValidate, { inject: false })
   window.fondy = function (el, options) {
     options = options || {}
-    if (isString(el) && isObject(options)) {
-      let selected = document.querySelector(el);
-      if (!selected) {
-        return console.error('error run')
-      }
-    } else {
-      return console.error('error run')
-    }
+    if (!isString(el)) return console.error('Selector not a string')
+    if (!isObject(options)) return console.error('Options not an object')
+    if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
+
     return new Vue({
       i18n,
       el: el,
@@ -36,11 +39,14 @@ const install = function (Vue, VeeValidate) {
         validator: 'new'
       },
       methods: {
-        submit: function () {
-          this.$emit('submit')
+        submit: function (cb) {
+          this.$emit('submit', cb)
         },
         location: function (method, system) {
           this.$emit('location', method, system)
+        },
+        setParams: function (params) {
+          this.$emit('setParams', params)
         }
       }
     })

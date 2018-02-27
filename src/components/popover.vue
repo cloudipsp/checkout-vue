@@ -4,6 +4,28 @@
 
   export default {
     mixins: [Popup],
+    props: {
+      title: {
+        type: String,
+        default: ''
+      },
+      content: {
+        type: String,
+        default: ''
+      },
+      trigger: {
+        type: String,
+        default: TRIGGERS.OUTSIDE_CLICK
+      },
+      placement: {
+        type: String,
+        default: 'right'
+      },
+      transitionDuration: {
+        type: Number,
+        default: 0
+      }
+    },
     data () {
       return {
         name: 'f-popover'
@@ -38,28 +60,7 @@
         ]
       )
     },
-    props: {
-      title: {
-        type: String,
-        default: ''
-      },
-      content: {
-        type: String,
-        default: ''
-      },
-      trigger: {
-        type: String,
-        default: TRIGGERS.OUTSIDE_CLICK
-      },
-      placement: {
-        type: String,
-        default: 'right'
-      },
-      transitionDuration: {
-        type: Number,
-        default: 0
-      }
-    },
+
     computed: {
       allContent () {
         return this.title + this.content

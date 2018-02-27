@@ -41,6 +41,7 @@
     <button id="submit">submit 1</button>
     <button id="go-ibank">go ibank</button>
     <button id="go-card">go card</button>
+    <button id="set-params">set params</button>
   </div>
   <div>
     <div class="coll">
@@ -111,25 +112,25 @@ var maxOptions = {
     hide: false,
     period: ['week', 'month', 'year']
   },
-  recurring: {
-    every: 2,
-    period: 'month',
-    amount: 100,
-    end_time: '2020-11-14',
-    start_time: '2018-11-11'
-  },
   params: {
     merchant_id: 1396424,
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-    currency: 'UAH',
-    amount: 500,
-    order_desc: 'my_desc',
+//    currency: 'UAH',
+//    amount: 500,
+    order_desc: 'my_desc1',
 //    response_url: 'https://www.fondy.eu',
-//    token: 'ca6b43549ceccdc764333ac8e05973aa4000ef50',
+//    token: '5b6517c30bb7ef039e416c0d1233d4e3e170093e',
     email: 'asd@asd.asd',
     lang: 'ru',
+    recurring_data: {
+      every: 2,
+      period: 'month',
+      amount: 100,
+      end_time: '2020-11-14',
+      start_time: '2018-11-11'
+    },
     custom: {
       field_11: 'field_11_json_value',
       my_email: 'asd@asd.asd',
@@ -147,7 +148,9 @@ var maxOptions = {
       my_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)'
     },
     en: {
+      UAH: 'гривна',
       card_number: 'edit Card number',
+      card_number_p: 'Card number',
       my_amount: 'Sum to pay',
       my_email: 'Email',
       my_title: 'Purpose of payment',
@@ -187,9 +190,18 @@ var minOptions = {
 }
 
 var app = fondy('#app', maxOptions)
+  .$on('success', function(model) {
+    console.log('сработало событие success');
+  })
+  .$on('error', function(model) {
+    console.log('сработало событие error');
+  })
 
 document.getElementById('submit').addEventListener('click', function () {
-  app.submit()
+  app.submit(function(model){
+    console.log('на сабмин выполняется етот колбек, если вернуть медель (return model) пойдет наша обработка');
+    return model
+  })
 //  this.disabled = app.errors.items.length
 })
 document.getElementById('go-card').addEventListener('click', function () {
@@ -197,6 +209,18 @@ document.getElementById('go-card').addEventListener('click', function () {
 })
 document.getElementById('go-ibank').addEventListener('click', function () {
   app.location('ibank')
+})
+document.getElementById('set-params').addEventListener('click', function () {
+  app.setParams({
+    order_desc: 'my_desc2',
+    amount: 500,
+    currency: 'UAH',
+    recurring_data: {
+      every: 3,
+      period: 'week',
+      amount: 200,
+    }
+  })
 })
 </script>
   </body>

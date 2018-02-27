@@ -4,6 +4,24 @@
 
   export default {
     mixins: [Popup],
+    props: {
+      text: {
+        type: String,
+        default: ''
+      },
+      trigger: {
+        type: String,
+        default: TRIGGERS.FOCUS
+      },
+      placement: {
+        type: String,
+        default: 'right'
+      },
+      transitionDuration: {
+        type: Number,
+        default: 0
+      }
+    },
     data () {
       return {
         name: 'f-tooltip'
@@ -35,24 +53,6 @@
           )
         ]
       )
-    },
-    props: {
-      text: {
-        type: String,
-        default: ''
-      },
-      trigger: {
-        type: String,
-        default: TRIGGERS.FOCUS
-      },
-      placement: {
-        type: String,
-        default: 'right'
-      },
-      transitionDuration: {
-        type: Number,
-        default: 0
-      }
     },
     computed: {
       allContent () {

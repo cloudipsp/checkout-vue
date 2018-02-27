@@ -28,8 +28,21 @@
     }
   }
 
+  &:hover {
+    @media (min-width: @screen-sm-min) {
+      background-color: transparent;
+    }
+  }
+
   &.active{
     @media (min-width: @screen-sm-min) {
+      box-shadow: 0 0 16px 0 @menu-item-active-shadow;
+      border: none;
+
+      &:hover {
+        background-color: @menu-item-active-bg;
+      }
+
       &:after{
         content: '';
         display: inline-block;

@@ -22,17 +22,18 @@
   padding: 50px 0 0 0;
   background-position: 50% 20px;
 
-  &:hover,
-  &:focus{
+  &:hover {
     text-decoration: none;
     color: inherit;
     outline: none;
+    background-color: @menu-item-hover-bg;
   }
 
   &.active{
     color: @menu-item-active-color;
     background-color: @menu-item-active-bg;
-    box-shadow: 0 0 16px 0 @menu-item-active-shadow;
+    box-shadow: none;
+    border: 1px solid @menu-item-active-border;
 
     .bg(card, card_a);
     .bg(emoney, emoney_a);

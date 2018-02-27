@@ -20,8 +20,8 @@ npm run build
 {
   options: {},
   regular: {},
-  recurring: {},
   params: {},
+  popup: {},
   messages: {},
   validate: {}
 }
@@ -48,6 +48,11 @@ Name                  | Type        | Default                 | Description
 `fee`                 | Boolean     | true                    |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.
 
+### popup
+Name                  | Type        | Default                 | Description
+---                   | ---         | ---                     | ---
+`appendTo`            | String      | 'body'                  |
+
 ### regular
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
@@ -55,15 +60,6 @@ Name                  | Type        | Default                 | Description
 `open`                | Boolean     | false                   |
 `hide`                | Boolean     | false                   |
 `period`              | Array       | ['day', 'week', 'month', 'year']| support `day`, `week`, `month`, `year`.
-
-### recurring
-Name                  | Type        | Default                 | Description
----                   | ---         | ---                     | ---
-`every`               | Integer     | 1                       |
-`period`              | String      | 'month'                 | support `day`, `week`, `month`, `year`.
-`amount`              | Integer     | 100                     |
-`end_time`            | String      |                         | format YYYY-MM-DD
-`start_time`          | String      |                         | format YYYY-MM-DD
 
 ### params
 Name                  | Type        | Default                 | Description
@@ -80,7 +76,30 @@ Name                  | Type        | Default                 | Description
 `email`               | String      |                         | format email
 `token`               | String      |                         | length 40
 `offer`               | Boolean     | false                   |
+`recurring_data`      | Object      |                         |
 `custom`              | Object      |                         |
+`customer_data`       | Object      |                         |
+
+#### recurring_data
+Name                  | Type        | Default                 | Description
+---                   | ---         | ---                     | ---
+`every`               | Integer     | 1                       |
+`period`              | String      | 'month'                 | support `day`, `week`, `month`, `year`.
+`amount`              | Integer     | 100                     |
+`end_time`            | String      |                         | format YYYY-MM-DD
+`start_time`          | String      |                         | format YYYY-MM-DD
+
+#### customer_data
+Name                  | Type        | Default                 | Description
+---                   | ---         | ---                     | ---
+`customer_name`       | String      |                         |
+`customer_address`    | String      |                         |
+`customer_zip`        | String      |                         |
+`customer_city`       | String      |                         |
+`customer_country`    | String      |                         | dictionary countries
+`customer_state`      | String      |                         |
+`phonemobile`         | String      |                         | format phone
+`email`               | String      |                         | format email
 
 ### messages
 ``` js

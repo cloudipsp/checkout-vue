@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: false
     },
+    customer_data: {
+      type: Boolean,
+      default: false
+    },
     recurring: {
       type: Boolean,
       default: false
@@ -26,6 +30,7 @@ export default {
   },
   data () {
     return {
+      state: store.state,
       css: store.state.css,
       options: store.state.options,
       name_: 'f-' + this.name,
@@ -49,7 +54,11 @@ export default {
     } else
     if (this.recurring) {
       this.form = store.state.form.recurring_data
-    } else {
+    } else
+    if (this.customer_data) {
+      this.form = store.state.form.customer_data
+    } else
+    {
       this.form = store.state.form
     }
     if(this.value) {
@@ -60,8 +69,12 @@ export default {
     label_: function () {
       return this.$t(this.label || this.name)
     },
+    placeholder_: function () {
+      return this.$t(this.placeholder)
+    },
     hasError: function () {
-      return this.errors.has(this.name_) && this.$validator.flags[this.name_] && this.$validator.flags[this.name_].touched
+      let flag = this.$validator.flags[this.name_]
+      return this.errors.has(this.name_) && ((flag && flag.touched) || this.state.submit)
     }
   },
   // methods: {

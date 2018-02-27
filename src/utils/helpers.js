@@ -1,5 +1,7 @@
 import $checkout from 'ipsp-js-sdk/dist/checkout'
 import store from '@/store'
+import config from '@/config/config'
+import Schema from 'async-validator'
 
 let api = $checkout('Api')
 let cache = {}
@@ -98,5 +100,36 @@ export function setCookie (name, value, options) {
 export function deleteCookie (name) {
   setCookie(name, '', {
     expires: -1
+  })
+}
+
+export function deepMerge () {
+  let extended = arguments[0];
+
+  let merge = function ( obj ) {
+    for ( let prop in obj ) {
+      if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
+        if ( Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
+          extended[prop] = deepMerge( extended[prop], obj[prop] );
+        } else {
+          extended[prop] = obj[prop];
+        }
+      }
+    }
+  };
+
+  for (let i = 1; i < arguments.length; i++ ) {
+    merge(arguments[i]);
+  }
+
+  return extended;
+}
+
+export function validate (options) {
+  new Schema(config).validate(options, (errors, fields) => {
+    if (errors) {
+      console.log(errors, fields)
+      store.state.error.errors = errors
+    }
   })
 }

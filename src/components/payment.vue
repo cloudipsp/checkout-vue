@@ -26,11 +26,13 @@
   import Info from '@/components/info'
   import Methods from '@/components/methods'
   import Verify from '@/components/verify'
-  import { sendRequest } from '@/utils/helpers'
   import store from '@/store'
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
+  import { sendRequest, deepMerge, validate } from '@/utils/helpers'
+  import { isFunction } from '@/utils/object'
+  import notSet from '@/config/not-set'
 
   export default {
     inject: ['$validator'],
@@ -64,15 +66,7 @@
       }
     },
     created: function () {
-      this.$root.$on('submit', () => {
-        this.submit()
-      })
-      this.$root.$on('location', (method, system) => {
-        this.show = false
-        this.router.page = 'payment-method'
-        this.router.method = method
-        this.router.system = system
-      })
+      this.createdEvent()
 
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
@@ -118,10 +112,11 @@
       Success
     },
     methods: {
-      submit: function () {
+      submit: function (cb) {
         this.$validator.validateAll()
         this.$nextTick(function () {
           this.autoFocus()
+          this.state.submit = true;
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
 //        this.errors.clear()
@@ -146,27 +141,45 @@
           form.custom = custom
 
           let self = this
-          sendRequest('api.checkout.form', 'request', form).finally(function () {
-            self.state.loading = false
-          }).then(self.submitSuccess, self.submitError)
+          sendRequest('api.checkout.form', 'request', form)
+            .finally(function () {
+              self.state.loading = false
+            })
+            .then(function(model){
+              if(isFunction(cb)) {
+                let hash = JSON.stringify(model)
+                if(JSON.stringify(cb(model)) === hash) {
+                  return model
+                }
+              } else {
+                return model
+              }
+//              return isFunction(cb) ? cb(model) : model;
+            })
+            .then(self.submitSuccess, self.submitError)
         })
       },
       submitSuccess: function (model) {
+        if(!model) return;
+        this.$root.$emit('success', model)
+
         let order = model.attr('order');
+        if (model.sendResponse()) return; // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
         if (!order) return;
-        if (model.sendResponse()) return;
-        if (model.needVerifyCode()) {
+        if (model.needVerifyCode()) { // need_verify_code
           this.router.page = 'verify'
           this.router.method = 'card'
           this.router.system = 'verify'
           this.form.token = order.token
         } else
-        if (!model.submitToMerchant()) {
+        if (!model.submitToMerchant()) {  // !(ready_to_submit && response_url && order_data formDataSubmit())
           this.order = order.order_data
           this.router.page = 'success'
         }
       },
-      submitError: function () {},
+      submitError: function (model) {
+        this.$root.$emit('error', model)
+      },
       cardsSuccess: function (model) {
         this.state.cards = Object.values(model.data)
 //        this.state.cards = [{
@@ -187,18 +200,28 @@
       },
       infoSuccess: function (model) {
         let info = model.data
-        let order = model.attr('order_data')
+        let order_data = model.attr('order_data')
+        let order = model.attr('order')
         if (order) {
-          this.form.amount = order.amount
-          this.form.recurring_data.amount = order.amount
-          this.form.currency = order.currency
-          this.form.merchant_id = order.merchant_id
-          this.form.fee = info.order.fee || 0
+          this.form.amount = order_data.amount
+          this.form.recurring_data.amount = order_data.amount
+          this.form.currency = order_data.currency
+          this.form.merchant_id = order_data.merchant_id
+          this.form.fee = order.fee || 0
+          this.form.order_desc = order.order_desc
+          this.form.sender_email = order_data.sender_email
+          this.form.order_id = order_data.order_id
         } else {
           this.form.fee = info.client_fee || 0
         }
-        this.options.email = info.checkout_email_required
+        this.options.email = info.checkout_email_required || this.options.email
+        this.options.customerFields = info.customer_required_data || this.options.customerFields
+        this.options.title = this.options.title || model.attr('merchant.localized_name')
+        this.options.offer = model.attr('merchant.offerta_url')
 
+        this.getAmountWithFee()
+      },
+      getAmountWithFee: function() {
         if (this.form.fee) {
           let self = this
           return sendRequest('api.checkout.fee', 'get', self.form, String(self.form.amount) + String(self.form.fee)).then(
@@ -206,9 +229,28 @@
               self.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
             }, function () {})
         }
-
-        this.options.title = this.options.title || model.attr('merchant.localized_name')
-        this.options.offer = model.attr('merchant.offerta_url')
+      },
+      createdEvent: function() {
+        this.$root.$on('submit', (cb) => {
+          this.submit(cb)
+        })
+        this.$root.$on('location', (method, system) => {
+          this.show = false
+          this.router.page = 'payment-method'
+          this.router.method = method
+          this.router.system = system
+        })
+        this.$root.$on('setParams', (params) => {
+          if (this.form.token || this.form.order_id) {
+            console.warn('You can not change the parameters if there is a token or an order is created')
+            return;
+          }
+          validate({params: params})
+          if(!this.error.errors.length) {
+            deepMerge(this.form, params, notSet)
+            this.getAmountWithFee()
+          }
+        })
       },
       autoFocus: function () {
         if (this.errors.count()) {

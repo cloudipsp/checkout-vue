@@ -2,15 +2,21 @@ export const messages = {
 
   card: 'Payment by card',
   card_number: 'Card number',
+  card_number_p: '',
   expiry_date: 'Expiry date',
+  expiry_date_p: 'MM/YY',
   cvv2: 'CVV2',
+  cvv2_p: '',
   cvv2_question: '{0} digits on the back of the card',
   email: 'Email',
+  email_p: '',
 
   regular: 'Regular payment',
   regular_every: 'Periodicity',
+  regular_every_p: '',
   regular_period: '&nbsp;',
   regular_amount: 'Regular payment amount',
+  regular_amount_p: '',
   regular_start_time: 'Begin with',
   day: 'Day',
   week: 'Week',
@@ -49,7 +55,7 @@ export const messages = {
   continue: 'Continue',
   cancel: 'Cancel',
   code: 'Verification code',
-  pay: 'Pay now',
+  pay: 'Pay now {0} {1}',
 
   p24: 'Приват24',
   platba24: 'Платба24',
@@ -66,7 +72,16 @@ export const messages = {
   lv: 'Latviešu',
   fr: 'Français',
   cs: 'Čeština',
-  sk: 'Slovenský'
+  sk: 'Slovenský',
+
+  customer_name: 'Customer name',
+  customer_address: 'Customer address',
+  customer_zip: 'Customer zip',
+  customer_city: 'Customer city',
+  customer_country: 'Customer country',
+  customer_state: 'Customer state',
+  customer_phonemobile: 'Phone mobile',
+  customer_email: 'Email',
 }
 
 export const validate = {

@@ -5,27 +5,31 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen">
+        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
           <span v-if="!cardsLen" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
           <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
             <template slot="dropdown">
-              <li v-for="card in state.cards"><a role="button" @click="store.setCardNumber(card)">{{ card.card_number }}</a></li>
+              <li v-for="card in state.cards" :class="{active: hasActive(card)}">
+                <a role="button" @click="store.setCardNumber(card)">{{ card.card_number }}</a>
+              </li>
+
             </template>
           </dropdown>
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="MM/YY" placement="top"></input-text>
+            <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="digitsCvv">
+            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="digitsCvv" placeholder="cvv2_p">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
               <tooltip :text="$t('cvv2_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>
-        <input-text v-if="options.email" name="email" validate="required|email"></input-text>
+        <input-text v-if="options.email" name="checkout-email" field="email" label="email" validate="required|email" placeholder="email_p"></input-text>
+        <customer-fields v-if="options.customerFields.length"></customer-fields>
       </div>
     </div>
   </div>
@@ -38,6 +42,7 @@
   import Tooltip from '@/components/tooltip'
   import Dropdown from '@/components/dropdown'
   import InputText from '@/components/input-text'
+  import customerFields from '@/components/customer-fields'
 
   export default {
     inject: ['$validator'],
@@ -104,12 +109,16 @@
     methods: {
       imagePath: function (id) {
         return require('../assets/img/' + id + '.svg')
+      },
+      hasActive: function (card) {
+        return card.card_number.replace(/ /g, '') === this.form.card_number
       }
     },
     components: {
       Tooltip,
       Dropdown,
-      InputText
+      InputText,
+      customerFields
     }
   }
 </script>
