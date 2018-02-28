@@ -15,6 +15,7 @@
 
         :mask="mask"
         :masked="masked"
+        :tokens="tokens"
         @blur.native="blur()"
       ></the-mask>
       <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
@@ -35,6 +36,7 @@
 
       :mask="mask"
       :masked="masked"
+      :tokens="tokens"
       @blur.native="blur()"
     ></the-mask>
     <input
@@ -71,6 +73,7 @@
       maxlength: Number,
       mask: [String, Object],
       masked: Boolean,
+      tokens: Object,
       group: Boolean
     },
     computed: {

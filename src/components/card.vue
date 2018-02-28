@@ -5,7 +5,7 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" :mask="maskCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
+        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
           <span v-if="!cardsLen" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
           <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
@@ -22,7 +22,7 @@
             <input-text name="expiry_date" :validate="validExpiryDate" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" :maxlength="digitsCvv" placeholder="cvv2_p">
+            <input-text name="cvv2" :validate="validCvv" type="password" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
               <tooltip :text="$t('cvv2_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>
@@ -55,7 +55,13 @@
         options: store.state.options,
         css: store.state.css,
         maskExpiryDate: '##/##',
-        maskCardNumber: 'XXXX XXXX XXXX XXXX XXX'
+        maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
+        maskCvv: '####',
+        tokenCardNumber: {
+          X: {
+            pattern: /[\dX]/
+          }
+        }
       }
     },
     computed: {
