@@ -10,7 +10,7 @@
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block', css.submit]" :disabled="!valid">
+        <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block', css.submit]" :disabled="disabled">
           <span v-t="{path: 'pay', args: args}"></span>
         </button>
         <div class="f-hidden-desktop">
@@ -33,7 +33,7 @@
   import Fields from '@/components/payment-fields'
 
   export default {
-    props: ['method', 'onSubmit', 'valid'],
+    props: ['method', 'onSubmit', 'disabled'],
     data () {
       return {
         options: store.state.options,

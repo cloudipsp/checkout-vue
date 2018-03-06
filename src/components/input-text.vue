@@ -12,11 +12,13 @@
         :id="name_"
         :maxlength="maxlength"
         :placeholder="placeholder_"
+        :inputmode="inputmode"
 
         :mask="mask"
         :masked="masked"
         :tokens="tokens"
         @blur.native="blur()"
+        @keyup.native.enter="onEnter"
       ></the-mask>
       <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
@@ -33,11 +35,13 @@
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
+      :inputmode="inputmode"
 
       :mask="mask"
       :masked="masked"
       :tokens="tokens"
       @blur.native="blur()"
+      @keyup.native.enter="onEnter"
     ></the-mask>
     <input
       v-else
@@ -50,6 +54,8 @@
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
+      :inputmode="inputmode"
+      @keyup.enter="onEnter"
     >
     <slot></slot>
     <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>

@@ -26,7 +26,8 @@ export default {
       type: Boolean,
       default: false
     },
-    value: String
+    value: String,
+    inputmode: String
   },
   data () {
     return {
@@ -77,12 +78,11 @@ export default {
       return this.errors.has(this.name_) && ((flag && flag.touched) || this.state.submit)
     }
   },
-  // methods: {
-  //   onEnter: function () {
-  //     this.$root.$emit('submit')
-  //     @keyup.enter="onEnter"
-  //   }
-  // },
+  methods: {
+    onEnter: function () {
+      this.$root.$emit('submit')
+    }
+  },
   components: {
     Tooltip,
     TheMask

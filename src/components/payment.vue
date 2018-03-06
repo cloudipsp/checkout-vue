@@ -10,7 +10,7 @@
       <methods :on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <component :is="router.page" :method="router.method" :on-submit="submit" :valid="!errors.items.length" :order="order"></component>
+      <component :is="router.page" :method="router.method" :on-submit="submit" :disabled="isDisabled" :order="order"></component>
       <div v-if="state.loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -101,6 +101,9 @@
           return this.error.flag && !this.show
         },
         set: function () {}
+      },
+      isDisabled: function () {
+        return !!this.errors.items.length && this.state.submit
       }
     },
     components: {

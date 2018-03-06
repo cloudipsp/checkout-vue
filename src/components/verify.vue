@@ -4,7 +4,7 @@
       <div class="f-block-sm">
         <input-text name="code" :validate="validCode" type="tel" :maxlength="4"></input-text>
         <div class="f-form-group">
-          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="!valid" v-t="'continue'"></button>
+          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="disabled" v-t="'continue'"></button>
         </div>
         <div class="f-form-group">
           <button @click="back()" type="button" :class="[css.btn, css.bd, css.btnLg, 'f-btn-block']" v-t="'cancel'"></button>
@@ -20,7 +20,7 @@
 
   export default {
     inject: ['$validator'],
-    props: ['onSubmit', 'valid'],
+    props: ['onSubmit', 'disabled'],
     data () {
       return {
         form: store.state.form,

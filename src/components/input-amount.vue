@@ -8,10 +8,12 @@
         data-vv-validate-on="blur"
         :data-vv-as="label_"
         :data-vv-name="name_"
-        type="text"
+        type="tel"
         :class="[css.fc, css.igi, hasError ? css.ie : '']"
         :id="name_"
         :placeholder="placeholder_"
+        inputmode="number"
+        @keyup.enter="onEnter"
       >
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
       <span :class="css.iga" v-t="state.form.currency"></span>
