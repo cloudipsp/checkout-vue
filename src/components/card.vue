@@ -5,7 +5,7 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" type="tel" inputmode="number" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
+        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" type="tel" inputmode="numeric" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
           <span v-if="!cardsLen" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
           <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
@@ -19,10 +19,10 @@
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <input-text name="expiry_date" :validate="validExpiryDate" type="tel" inputmode="number" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
+            <input-text name="expiry_date" :validate="validExpiryDate" type="tel" inputmode="numeric" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" inputmode="number" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
+            <input-text name="cvv2" :validate="validCvv" type="password" inputmode="numeric" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
               <tooltip :text="$t('cvv2_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>

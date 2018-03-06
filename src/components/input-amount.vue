@@ -12,7 +12,7 @@
         :class="[css.fc, css.igi, hasError ? css.ie : '']"
         :id="name_"
         :placeholder="placeholder_"
-        inputmode="number"
+        inputmode="numeric"
         @keyup.enter="onEnter"
       >
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>

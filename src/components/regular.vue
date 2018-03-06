@@ -12,7 +12,7 @@
       <div class="f-block-sm">
         <div class="f-row">
           <div class="f-col-xs-6">
-            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" inputmode="number" recurring placeholder="regular_every_p"></input-text>
+            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" inputmode="numeric" recurring placeholder="regular_every_p"></input-text>
           </div>
           <div class="f-col-xs-6">
             <input-select :list="options.period" name="regular_period" field="period" validate="required" recurring></input-select>
