@@ -22,7 +22,7 @@
             <input-text name="expiry_date" :validate="validExpiryDate" type="tel" inputmode="numeric" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="password" inputmode="numeric" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
+            <input-text name="cvv2" :validate="validCvv" type="tel" inputmode="numeric" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
               <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
               <tooltip :text="$t('cvv2_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>
