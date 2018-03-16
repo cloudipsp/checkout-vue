@@ -142,6 +142,10 @@
           }
           form.payment_system = this.router.system || this.router.method
           form.custom = custom
+          form.amount = form.amount / 100
+          if(this.form.recurring_data.amount){
+            this.form.recurring_data.amount = this.form.recurring_data.amount / 100
+          }
 
           let self = this
           sendRequest('api.checkout.form', 'request', form)
