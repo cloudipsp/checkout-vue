@@ -25,8 +25,8 @@ export const messages = {
   cash: 'Наличные',
   cash_t: 'Чем платить будете?',
 
-  sepa: 'Международные платежи',
-  sepa_t: 'Надо какой–то текст',
+  sepa: 'SEPA Direct Debit',
+  sepa_t: 'Введите реквизиты вашего счета',
   sender_name: 'Имя',
   sender_familyName: 'Фамилия',
   bic: 'BIC',

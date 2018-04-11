@@ -32,12 +32,16 @@ export const messages = {
   cash: 'Cash',
   cash_t: 'What will you pay?',
 
-  sepa: 'International payments',
-  sepa_t: '&nbsp;',
+  sepa: 'SEPA Direct Debit',
+  sepa_t: 'Provide your bank account details',
   sender_name: 'Name',
+  sender_name_p: '',
   sender_familyName: 'Surname',
+  sender_familyName_p: '',
   bic: 'BIC',
+  bic_p: '',
   iban: 'IBAN',
+  iban_p: '',
 
   info: 'Order information',
   amount: 'Order amount:',
