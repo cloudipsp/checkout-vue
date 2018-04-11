@@ -21,7 +21,6 @@ export const messages = {
   day: 'Day',
   week: 'Week',
   month: 'Month',
-  year: 'Year',
 
   emoney: 'Emoney',
   emoney_t: 'Choose the payment service from the list:',

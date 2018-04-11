@@ -35,7 +35,7 @@ export default {
       insert: false,
       open: false,
       hide: false,
-      period: ['day', 'week', 'month', 'year']
+      period: ['day', 'week', 'month']
     },
     form: {
       merchant_id: 1396424, // 900024 dev, 1396424 prod

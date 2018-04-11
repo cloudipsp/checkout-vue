@@ -14,7 +14,6 @@ export const messages = {
   day: 'День',
   week: 'Неделя',
   month: 'Месяц',
-  year: 'Год',
 
   emoney: 'Электроные деньги',
   emoney_t: 'Выебрите платежный сервис из списка:',
