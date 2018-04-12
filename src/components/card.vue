@@ -5,13 +5,13 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text :name="cardNumber" label="card_number" field="card_number" :validate="validCardNumber" type="tel" inputmode="numeric" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
+        <input-text name="card_number" label="card_number" field="card_number" :validate="validCardNumber" type="tel" inputmode="numeric" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
           <span v-if="!cardsLen" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
           <dropdown slot="group" :class="[css.igb]">
             <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
             <template slot="dropdown">
               <li v-for="card in state.cards" :class="{active: hasActive(card)}">
-                <a role="button" @click="store.setCardNumber(card)">{{ card.card_number }}</a>
+                <a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a>
               </li>
 
             </template>
@@ -87,9 +87,6 @@
       },
       cardsLen: function () {
         return this.state.cards.length
-      },
-      cardNumber: function () {
-        return !!this.cardsLen ? 'card_number_group': 'card_number'
       }
     },
     watch: {
@@ -118,6 +115,12 @@
       },
       hasActive: function (card) {
         return card.card_number.replace(/ /g, '') === this.form.card_number
+      },
+      setCardNumber: function (card) {
+        store.setCardNumber(card)
+        this.$nextTick(function () {
+          this.$validator.validateAll()
+        })
       }
     },
     components: {

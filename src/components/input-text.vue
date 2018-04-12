@@ -17,7 +17,8 @@
         :mask="mask"
         :masked="masked"
         :tokens="tokens"
-        @blur.native="blur()"
+        @blur.native="blur"
+        @input="valid"
         @keyup.native.enter="onEnter"
       ></the-mask>
       <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
@@ -40,7 +41,8 @@
       :mask="mask"
       :masked="masked"
       :tokens="tokens"
-      @blur.native="blur()"
+      @blur.native="blur"
+      @input="valid"
       @keyup.native.enter="onEnter"
     ></the-mask>
     <input
@@ -91,7 +93,11 @@
       blur: function () {
         this.$validator.validate(this.name_)
         this.$validator.flags[this.name_].touched = true
-
+      },
+      valid: function () {
+        this.$nextTick(function () {
+          this.$validator.validate(this.name_)
+        })
       }
     }
   }

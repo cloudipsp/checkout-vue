@@ -59,7 +59,7 @@ Name                  | Type        | Default                 | Description
 `insert`              | Boolean     | false                   |
 `open`                | Boolean     | false                   |
 `hide`                | Boolean     | false                   |
-`period`              | Array       | ['day', 'week', 'month', 'year']| support `day`, `week`, `month`, `year`.
+`period`              | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
 
 ### params
 Name                  | Type        | Default                 | Description
@@ -84,7 +84,7 @@ Name                  | Type        | Default                 | Description
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `every`               | Integer     | 1                       |
-`period`              | String      | 'month'                 | support `day`, `week`, `month`, `year`.
+`period`              | String      | 'month'                 | support `day`, `week`, `month`.
 `amount`              | Integer     | 100                     |
 `end_time`            | String      |                         | format YYYY-MM-DD
 `start_time`          | String      |                         | format YYYY-MM-DD

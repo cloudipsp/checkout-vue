@@ -202,7 +202,11 @@
 //          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
 //        }]
         if (this.state.cards.length) {
+          this.$validator.detach('f-card_number')
           store.setCardNumber(this.state.cards[0])
+          this.$nextTick(function () {
+            this.$validator.validateAll()
+          })
         }
       },
       infoSuccess: function (model) {
