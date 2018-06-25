@@ -63,6 +63,7 @@ export const messages = {
   p24: 'Приват24',
   platba24: 'Платба24',
   raiffeisen: 'Райффайзен Банк Аваль',
+  trustly: 'Trustly',
   paypal: 'PayPal',
   qiwi: 'QIWI',
   webmoney: 'WebMoney',
