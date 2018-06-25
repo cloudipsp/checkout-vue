@@ -4,6 +4,9 @@
 // TODO ? f-fields create root div
 // TODO support material
 
+// TODO field input v-if add identical :key
+// TODO mixin global store
+
 import Vue from 'vue'
 import VeeValidate, { Validator } from 'vee-validate'
 import Checkout from '@/checkout'
