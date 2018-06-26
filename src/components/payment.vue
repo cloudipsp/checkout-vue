@@ -30,7 +30,7 @@
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
-  import { sendRequest, deepMerge, validate } from '@/utils/helpers'
+  import { sendRequest, deepMerge, validate, findGetParameter } from '@/utils/helpers'
   import { isFunction } from '@/utils/object'
   import notSet from '@/config/not-set'
 
@@ -67,6 +67,8 @@
     },
     created: function () {
       this.createdEvent()
+
+      this.form.token = findGetParameter('token') ||  this.form.token
 
       if (!parseInt(this.form.amount)) {
         this.form.amount = 0
