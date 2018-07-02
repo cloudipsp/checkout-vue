@@ -18,13 +18,11 @@
 </template>
 
 <script>
-  import store from '@/store'
 
   export default {
     props: ['paymentSystems'],
     data () {
       return {
-        router: store.state.router,
         active: ''
       }
     },

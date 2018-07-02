@@ -4,10 +4,10 @@
       <div class="f-block-sm">
         <input-text name="code" :validate="validCode" type="tel" :maxlength="4"></input-text>
         <div class="f-form-group">
-          <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block']" :disabled="disabled" v-t="'continue'"></button>
+          <button @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block']" :disabled="disabled" v-t="'continue'"></button>
         </div>
         <div class="f-form-group">
-          <button @click="back()" type="button" :class="[css.btn, css.bd, css.btnLg, 'f-btn-block']" v-t="'cancel'"></button>
+          <button @click="back()" type="button" :class="[$css.btn, $css.bd, $css.btnLg, 'f-btn-block']" v-t="'cancel'"></button>
         </div>
       </div>
     </div>
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-  import store from '@/store'
   import InputText from '@/components/input-text'
 
   export default {
@@ -23,9 +22,6 @@
     props: ['onSubmit', 'disabled'],
     data () {
       return {
-        form: store.state.form,
-        router: store.state.router,
-        css: store.state.css
       }
     },
     computed: {

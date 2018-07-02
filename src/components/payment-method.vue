@@ -1,16 +1,19 @@
 <template>
   <div>
     <fields v-if="options.fields"></fields>
+    <transition name="fade">
     <component
       :is="method"
+      :key="method"
       :icons="options[method + 'Icons']"
       :payment-systems="options[method]"
     ></component>
+    </transition>
     <regular v-if="regular.insert && method === 'card'"></regular>
     <offer v-if="options.offer"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" :class="[css.btn, css.bs, css.btnLg, 'f-btn-block', css.submit]" :disabled="disabled">
+        <button @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]" :disabled="disabled">
           <span v-t="{path: 'pay', args: args}"></span>
         </button>
         <div class="f-hidden-desktop">
@@ -29,17 +32,12 @@
   import Sepa from '@/components/sepa'
   import Regular from '@/components/regular'
   import Offer from '@/components/offer'
-  import store from '@/store'
   import Fields from '@/components/payment-fields'
 
   export default {
-    props: ['method', 'onSubmit', 'disabled'],
+    props: ['onSubmit', 'disabled'],
     data () {
       return {
-        options: store.state.options,
-        regular: store.state.regular,
-        form: store.state.form,
-        css: store.state.css
       }
     },
     computed: {
@@ -53,6 +51,9 @@
       },
       args: function () {
         return this.fullAmount ? [this.fullAmount, this.$t(this.form.currency)] : []
+      },
+      method: function () {
+        return this.router.method
       }
     },
     components: {

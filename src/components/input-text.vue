@@ -1,14 +1,23 @@
 <template>
-  <div :class="['f-form-group', hasError ? css.he : '', hasDefaultSlot ? css.hf : '']">
-    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{ label_ }}</label>
-    <div v-if="group && mask" :class="[css.ig]">
+  <div :class="['f-form-group', hasError ? $css.he : '', hasDefaultSlot ? $css.hf : '']">
+    <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
+    <the-mask
+        v-if="disabled"
+        v-model="form[field_]"
+        :class="[$css.fc, 'f-form-control-text']"
+        :mask="mask"
+        :masked="masked"
+      >
+      {{ form[field_] }}
+    </the-mask>
+    <div v-else-if="group && mask" :class="[$css.ig]">
       <the-mask
         v-validate="validate"
         v-model="form[field_]"
         :data-vv-as="label_"
         :data-vv-name="name_"
         :type="type"
-        :class="[css.fc, hasError ? css.ie : '']"
+        :class="[$css.fc, hasError ? $css.ie : '']"
         :id="name_"
         :maxlength="maxlength"
         :placeholder="placeholder_"
@@ -16,7 +25,6 @@
 
         :mask="mask"
         :masked="masked"
-        :tokens="tokens"
         @blur.native="blur"
         @input="valid"
         @keyup.native.enter="onEnter"
@@ -32,7 +40,7 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, hasError ? css.ie : '']"
+      :class="[$css.fc, hasError ? $css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
@@ -40,7 +48,6 @@
 
       :mask="mask"
       :masked="masked"
-      :tokens="tokens"
       @blur.native="blur"
       @input="valid"
       @keyup.native.enter="onEnter"
@@ -52,7 +59,7 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, hasError ? css.ie : '']"
+      :class="[$css.fc, hasError ? $css.ie : '']"
       :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
@@ -66,7 +73,6 @@
 </template>
 
 <script>
-  import store from '@/store'
   import Input from '@/mixins/input'
 
   export default {
@@ -81,8 +87,17 @@
       maxlength: Number,
       mask: [String, Object],
       masked: Boolean,
-      tokens: Object,
-      group: Boolean
+      group: Boolean,
+      disabled: Boolean,
+    },
+    data () {
+      return {
+        tokens: {
+          X: {
+            pattern: /[\dX]/
+          }
+        }
+      }
     },
     computed: {
       hasDefaultSlot () {

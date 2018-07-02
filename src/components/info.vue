@@ -17,13 +17,9 @@
 </template>
 
 <script>
-  import store from '@/store'
-
   export default {
     data () {
       return {
-        options: store.state.options,
-        form: store.state.form
       }
     },
     computed: {

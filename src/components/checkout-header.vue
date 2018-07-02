@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select v-if="options.locales.length" :class="[css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="form.lang">
+      <select v-if="options.locales.length" :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="form.lang">
         <option v-for="item in options.locales" :key="item" :value="item" v-t="item"></option>
       </select>
     </div>
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-  import store from '@/store'
   import { setCookie } from '@/utils/helpers'
   import { loadLanguageAsync } from '@/i18n'
 
@@ -18,9 +17,6 @@
     inject: ['$validator'],
     data () {
       return {
-        css: store.state.css,
-        options: store.state.options,
-        form: store.state.form,
       }
     },
     watch: {

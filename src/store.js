@@ -79,7 +79,8 @@ export default {
     validate: {},
     loading: false,
     cards: [],
-    submit: false
+    submit: false,
+    read_only: false
   },
   setOptions(options, $i18n) {
     validate(options)
@@ -113,13 +114,7 @@ export default {
     this.state.options.fast = fast
   },
   setCss: function () {
-    let css = configCss[this.state.options.css]
-    if (css) {
-      this.state.css = css
-    } else {
-      this.state.css = configCss.default
-      this.state.template = configTemplate[this.state.options.template] || configTemplate.default
-    }
+    Object.assign(this.state.css, configCss[this.state.options.css] || configCss.default)
   },
   setLocale: function () {
     let lang
@@ -144,5 +139,6 @@ export default {
     this.state.form.email = card.email
     this.state.form.hash = card.hash
     this.state.form.cvv2 = ''
+    this.state.read_only = card.read_only
   }
 }

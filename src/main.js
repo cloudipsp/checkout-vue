@@ -12,6 +12,7 @@ import VeeValidate, { Validator } from 'vee-validate'
 import Checkout from '@/checkout'
 import { i18n } from '@/i18n'
 import { isString, isObject } from '@/utils/object'
+import store from '@/store'
 
 const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
@@ -30,13 +31,40 @@ const install = function (Vue, VeeValidate) {
     if (!isObject(options)) return console.error('Options not an object')
     if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
 
+    Vue.mixin({
+      beforeCreate(){
+        const options = this.$options
+        // store injection
+        if (options.store) {
+          this.store = options.store
+        } else if (options.parent && options.parent.store) {
+          this.store = options.parent.store
+        }
+
+        // alias
+        // this.state = this.store.state
+        this.options = this.store.state.options
+        this.regular = this.store.state.regular
+        this.form = this.store.state.form
+        this.error = this.store.state.error
+        this.router = this.store.state.router
+        this.$css = this.store.state.css
+      },
+      data () {
+        return {
+          store: this.store, // store make reactive
+        }
+      },
+    })
+
     return new Vue({
       i18n,
       el: el,
+      store,
       data: {
         options: options
       },
-      template: '<checkout :options="options"/>',
+      template: '<checkout :options2="options"/>',
       components: { Checkout },
       $_veeValidate: {
         validator: 'new'

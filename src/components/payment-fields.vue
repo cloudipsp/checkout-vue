@@ -1,5 +1,4 @@
 <script>
-  import store from '@/store'
   import { sendRequest } from '@/utils/helpers'
   import InputText from '@/components/input-text'
   import InputAmount from '@/components/input-amount'
@@ -19,8 +18,6 @@
 //    },
     data () {
       return {
-        form: store.state.form
-//        html: ''
       }
     },
     methods: {

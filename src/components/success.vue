@@ -22,13 +22,10 @@
 </template>
 
 <script>
-  import store from '@/store'
-
   export default {
     props: ['order'],
     data () {
       return {
-        options: store.state.options,
       }
     }
   }

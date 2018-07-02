@@ -5,30 +5,61 @@
     </div>
     <div class="f-block">
       <div class="f-block-sm">
-        <input-text name="card_number" label="card_number" field="card_number" :validate="validCardNumber" type="tel" inputmode="numeric" :mask="maskCardNumber" :tokens="tokenCardNumber" :masked="false" :maxlength="23" :group="!!cardsLen" placeholder="card_number_p">
-          <span v-if="!cardsLen" :class="[css.fcf, 'f-icon', 'f-i-card-empty']"></span>
-          <dropdown slot="group" :class="[css.igb]">
-            <button type="button" :class="[css.btn, css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
+        <input-text name="card_number"
+                    :validate="validCardNumber"
+                    :mask="maskCardNumber"
+                    :masked="false"
+                    :maxlength="23"
+                    :group="!!cardsLen"
+                    :disabled="store.state.read_only"
+                    type="tel"
+                    inputmode="numeric"
+                    placeholder="card_number_p"
+        >
+          <span v-if="!cardsLen" :class="[$css.fcf, 'f-icon', 'f-i-card-empty']"></span>
+          <dropdown slot="group" :class="[$css.igb]">
+            <button type="button" :class="[$css.btn, $css.bd, 'f-dropdown-toggle']"><span class="f-caret"></span></button>
             <template slot="dropdown">
-              <li v-for="card in state.cards" :class="{active: hasActive(card)}">
+              <li v-for="card in store.state.cards" :class="{active: hasActive(card)}">
                 <a role="button" @click="setCardNumber(card)">{{ card.card_number }}</a>
               </li>
-
             </template>
           </dropdown>
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
-            <input-text name="expiry_date" :validate="validExpiryDate" type="tel" inputmode="numeric" :mask="maskExpiryDate" :masked="true" placeholder="expiry_date_p" placement="top"></input-text>
+            <input-text name="expiry_date"
+                        :validate="validExpiryDate"
+                        :mask="maskExpiryDate"
+                        :masked="true"
+                        :disabled="store.state.read_only"
+                        type="tel"
+                        inputmode="numeric"
+                        placeholder="expiry_date_p"
+                        placement="top"
+            ></input-text>
           </div>
           <div class="f-col-xs-5">
-            <input-text name="cvv2" :validate="validCvv" type="tel" inputmode="numeric" :mask="maskCvv" :maxlength="digitsCvv" placeholder="cvv2_p">
-              <span :class="[css.fcf, 'f-icon',  'f-i-question']"></span>
+            <input-text name="cvv2"
+                        :validate="validCvv"
+                        type="tel"
+                        inputmode="numeric"
+                        :mask="maskCvv"
+                        :maxlength="digitsCvv"
+                        placeholder="cvv2_p"
+            >
+              <span :class="[$css.fcf, 'f-icon',  'f-i-question']"></span>
               <tooltip :text="$t('cvv2_question', [digitsCvv])" trigger="hover" theme="default" target=".f-i-question"></tooltip>
             </input-text>
           </div>
         </div>
-        <input-text v-if="options.email" name="checkout-email" field="email" label="email" validate="required|email" placeholder="email_p"></input-text>
+        <input-text v-if="options.email"
+                    name="checkout-email"
+                    field="email"
+                    label="email"
+                    validate="required|email"
+                    placeholder="email_p"
+        ></input-text>
         <customer-fields v-if="options.customerFields.length"></customer-fields>
       </div>
     </div>
@@ -37,7 +68,6 @@
 
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
-  import store from '@/store'
   import { sendRequest } from '@/utils/helpers'
   import Tooltip from '@/components/tooltip'
   import Dropdown from '@/components/dropdown'
@@ -49,19 +79,9 @@
     props: ['icons'],
     data () {
       return {
-        store: store,
-        state: store.state,
-        form: store.state.form,
-        options: store.state.options,
-        css: store.state.css,
         maskExpiryDate: '##/##',
         maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
-        maskCvv: '####',
-        tokenCardNumber: {
-          X: {
-            pattern: /[\dX]/
-          }
-        }
+        maskCvv: '####'
       }
     },
     computed: {
@@ -86,7 +106,7 @@
         return this.form.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
       },
       cardsLen: function () {
-        return this.state.cards.length
+        return this.store.state.cards.length
       }
     },
     watch: {
@@ -117,7 +137,7 @@
         return card.card_number.replace(/ /g, '') === this.form.card_number
       },
       setCardNumber: function (card) {
-        store.setCardNumber(card)
+        this.store.setCardNumber(card)
         this.$nextTick(function () {
           this.$validator.validateAll()
         })

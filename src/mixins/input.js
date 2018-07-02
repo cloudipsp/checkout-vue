@@ -1,4 +1,3 @@
-import store from '@/store'
 import Tooltip from '@/components/tooltip'
 import {TheMask} from 'vue-the-mask'
 
@@ -29,57 +28,43 @@ export default {
     value: String,
     inputmode: String
   },
-  data () {
-    return {
-      state: store.state,
-      css: store.state.css,
-      options: store.state.options,
-      name_: 'f-' + this.name,
-      field_: this.field || this.name,
-      hexTokens: {
-        X: {
-          pattern: /[0-9X]/
-        }
-      }
+  computed: {
+    name_() {
+      return 'f-' + this.name
+    },
+    field_() {
+      return this.field || this.name
+    },
+    label_() {
+      return this.$t(this.label || this.name)
+    },
+    placeholder_() {
+      return this.$t(this.placeholder)
+    },
+    hasError() {
+      let flag = this.$validator.flags[this.name_]
+      return this.errors.has(this.name_) && ((flag && flag.touched) || this.store.state.submit)
     }
   },
-  watch: {
-    'name': function () {
-      this.name_= 'f-' + this.name
-      this.field_= this.field || this.name
-    }
-  },
-  created: function () {
+  created() {
     if(this.custom) {
-      this.form = store.state.form.custom
+      this.form = this.store.state.form.custom
     } else
     if (this.recurring) {
-      this.form = store.state.form.recurring_data
+      this.form = this.store.state.form.recurring_data
     } else
     if (this.customer_data) {
-      this.form = store.state.form.customer_data
+      this.form = this.store.state.form.customer_data
     } else
     {
-      this.form = store.state.form
+      this.form = this.store.state.form
     }
     if(this.value) {
       this.form[this.field_] = this.value
     }
   },
-  computed: {
-    label_: function () {
-      return this.$t(this.label || this.name)
-    },
-    placeholder_: function () {
-      return this.$t(this.placeholder)
-    },
-    hasError: function () {
-      let flag = this.$validator.flags[this.name_]
-      return this.errors.has(this.name_) && ((flag && flag.touched) || this.state.submit)
-    }
-  },
   methods: {
-    onEnter: function () {
+    onEnter() {
       this.$root.$emit('submit')
     }
   },

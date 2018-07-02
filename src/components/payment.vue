@@ -1,21 +1,21 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button type="button" :class="[css.btn, css.bd, css.btnSm]" @click="show = !show" v-t="'other'"></button>
+      <button type="button" :class="[$css.btn, $css.bd, $css.btnSm]" @click="show = !show" v-t="'other'"></button>
     </div>
     <div class="f-info" ref="info">
       <info></info>
     </div>
     <div v-if="!isMin" class="f-methods" :class="{'f-open' : show}">
-      <methods :on-change-method="changeMethod"></methods>
+      <methods @on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <component :is="router.page" :method="router.method" :on-submit="submit" :disabled="isDisabled" :order="order"></component>
-      <div v-if="state.loading">
+      <component :is="router.page" :on-submit="submit" :disabled="isDisabled" :order="order"></component>
+      <div v-if="store.state.loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
       </div>
-      <popover :title="error.code" :content="error.message" trigger="manual" v-model="showError">
+      <popover :title="error.code" :content="error.message" trigger="manual" :value="showError">
         <div class="f-center-error"></div>
       </popover>
     </div>
@@ -26,7 +26,6 @@
   import Info from '@/components/info'
   import Methods from '@/components/methods'
   import Verify from '@/components/verify'
-  import store from '@/store'
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
@@ -36,18 +35,9 @@
 
   export default {
     inject: ['$validator'],
-    props: ['onSetMin'],
     data () {
       return {
         show: false,
-        store: store,
-        state: store.state,
-        options: store.state.options,
-        form: store.state.form,
-        error: store.state.error,
-        router: store.state.router,
-        css: store.state.css,
-        regular: store.state.regular,
         timeoutId: 0,
         order: {}
       }
@@ -83,8 +73,8 @@
       }
 
       let self = this
-      sendRequest('api.checkout.cards', 'get', {}).then(self.cardsSuccess, function () {})
-      sendRequest('api.checkout.info', 'get', self.form).then(self.infoSuccess, function () {})
+      sendRequest('api.checkout.cards', 'get', {token: this.form.token}).then(self.cardsSuccess, function () {})
+      sendRequest('api.checkout.info', 'get', this.form).then(self.infoSuccess, function () {})
     },
     mounted: function () {
       window.addEventListener('resize', this.resize)
@@ -95,17 +85,14 @@
     computed: {
       isMin: function () {
         let result = this.options.methods.length === 1 && this.options.methods[0] === 'card'
-        this.onSetMin(result)
+        this.$emit('on-set-min', result)
         return result
       },
-      showError: {
-        get: function () {
-          return this.error.flag && !this.show
-        },
-        set: function () {}
+      showError: function() {
+        return this.error.flag && !this.show
       },
       isDisabled: function () {
-        return !!this.errors.items.length && this.state.submit
+        return !!this.errors.items.length && this.store.state.submit
       }
     },
     components: {
@@ -121,14 +108,14 @@
         this.$validator.validateAll()
         this.$nextTick(function () {
           this.autoFocus()
-          this.state.submit = true;
+          this.store.state.submit = true;
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
 //        this.errors.clear()
           console.log('form', this.form)
 
-          if (this.errors.count() || this.state.loading) return
-          this.state.loading = true
+          if (this.errors.count() || this.store.state.loading) return
+          this.store.state.loading = true
           this.error.flag = false
 
           let form = {}
@@ -152,7 +139,7 @@
           let self = this
           sendRequest('api.checkout.form', 'request', form)
             .finally(function () {
-              self.state.loading = false
+              self.store.state.loading = false
             })
             .then(function(model){
               if(isFunction(cb)) {
@@ -190,12 +177,13 @@
         this.$root.$emit('error', model)
       },
       cardsSuccess: function (model) {
-        this.state.cards = Object.values(model.data)
-//        this.state.cards = [{
+        this.store.state.cards = Object.values(model.data)
+//        this.store.state.cards = [{
 //          card_number: '4444 55XX XXXX 6666',
 //          expiry_date: '12 / 17',
 //          email: 'asd@asd.asd',
-//          hash: '725272f6b133a2a9357f413fed91138bb0bf1893'
+//          hash: '725272f6b133a2a9357f413fed91138bb0bf1893',
+//          read_only: true
 //        },
 //        {
 //          card_number: '4444 55XX XXXX 1111',
@@ -203,9 +191,9 @@
 //          email: 'test@asd.asd',
 //          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
 //        }]
-        if (this.state.cards.length) {
+        if (this.store.state.cards.length) {
           this.$validator.detach('f-card_number')
-          store.setCardNumber(this.state.cards[0])
+          this.store.setCardNumber(this.store.state.cards[0])
           this.$nextTick(function () {
             this.$validator.validateAll()
           })

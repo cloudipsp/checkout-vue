@@ -19,14 +19,12 @@
 </template>
 
 <script>
-  import store from '@/store'
   import InputText from '@/components/input-text'
 
   export default {
     inject: ['$validator'],
     data () {
       return {
-        form: store.state.form
       }
     },
     components: {

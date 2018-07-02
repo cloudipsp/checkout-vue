@@ -1,7 +1,7 @@
 <template>
-  <div :class="['f-form-group', hasError ? css.he : '']">
-    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{ label_ }}</label>
-    <div :class="css.ig">
+  <div :class="['f-form-group', hasError ? $css.he : '']">
+    <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
+    <div :class="$css.ig">
       <input
         v-validate="'required|decimal:2'"
         v-model="amount"
@@ -9,21 +9,20 @@
         :data-vv-as="label_"
         :data-vv-name="name_"
         type="tel"
-        :class="[css.fc, css.igi, hasError ? css.ie : '']"
+        :class="[$css.fc, $css.igi, hasError ? $css.ie : '']"
         :id="name_"
         :placeholder="placeholder_"
         inputmode="numeric"
         @keyup.enter="onEnter"
       >
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
-      <span :class="css.iga" v-t="state.form.currency"></span>
+      <span :class="$css.iga" v-t="store.state.form.currency"></span>
     </div>
     <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
 </template>
 
 <script>
-  import store from '@/store'
   import Input from '@/mixins/input'
 
   export default {
@@ -33,7 +32,6 @@
     },
     data () {
       return {
-        state: store.state,
       }
     },
     computed: {

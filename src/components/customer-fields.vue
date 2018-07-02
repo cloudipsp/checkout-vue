@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import store from '@/store'
   import config from '@/config/customer-fields'
   import countries from '@/config/countries'
   import InputText from '@/components/input-text'
@@ -30,7 +29,6 @@
   export default {
     data () {
       return {
-        options: store.state.options
       }
     },
     computed: {

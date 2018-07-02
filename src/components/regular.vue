@@ -4,7 +4,7 @@
       <div class="f-block-sm">
         <div class="f-text-center">
           <input type="checkbox" v-model="options.open" class="f-checkbox-swipe" id="f-regular-swipe" />
-          <label :class="[css.cl]" for="f-regular-swipe" v-t="'regular'"></label>
+          <label :class="[$css.cl]" for="f-regular-swipe" v-t="'regular'"></label>
         </div>
       </div>
     </div>
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  import store from '@/store'
   import InputAmount from '@/components/input-amount'
   import InputText from '@/components/input-text'
   import InputSelect from '@/components/input-select'
@@ -35,9 +34,8 @@
     inject: ['$validator'],
     data () {
       return {
-        options: store.state.regular,
-        form: store.state.form.recurring_data,
-        css: store.state.css
+        options: this.store.state.regular,
+        form: this.store.state.form.recurring_data,
       }
     },
     created: function () {
