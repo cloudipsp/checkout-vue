@@ -27,6 +27,12 @@
   import InputSelect from '@/components/input-select'
 
   export default {
+    created: function () {
+      let index = this.options.customerFields.indexOf('email')
+      if(this.options.email && index > -1) {
+        this.options.customerFields.splice(index, 1)
+      }
+    },
     data () {
       return {
       }

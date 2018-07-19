@@ -63,6 +63,7 @@ module.exports = {
 
       },
       {
+        // картинки не с node_modules конвертировать в base64
         test: /^((?!node_modules).)*\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {

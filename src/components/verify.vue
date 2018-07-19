@@ -42,8 +42,7 @@
     },
     methods: {
       back: function () {
-        this.router.page = 'payment-method'
-        this.router.method = 'card'
+        this.store.location('payment-method', 'card')
       }
     }
   }

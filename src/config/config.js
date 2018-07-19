@@ -76,7 +76,10 @@ export default {
       css: {type: 'enum', enum: css},
       tooltip: {type: 'boolean'},
       apiDomain: {type: 'string'},
-      fee: {type: 'boolean'}
+      fee: {type: 'boolean'},
+      activeTab: {type: 'enum', enum: methods},
+      logoUrl: {type: 'url'},
+      offertaUrl: {type: 'url'},
     }
   },
   popup: {
@@ -113,7 +116,6 @@ export default {
       required_rectoken: {type: 'enum', enum: YN},
       verification: {type: 'enum', enum: YN},
       verification_type: {type: 'enum', enum: verificationType},
-      email: {type: 'email'},
       token: {type: 'string', len: 40},
       offer: {type: 'boolean'},
       recurring_data: {
@@ -127,7 +129,7 @@ export default {
         }
       },
       custom: {type: 'object'},
-      customer_data: {type: 'object'}
+      customer_data: {type: 'object'},
     }
   },
   messages: {

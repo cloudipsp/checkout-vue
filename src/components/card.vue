@@ -118,16 +118,21 @@
         let newBin = newVal && newVal.slice(0, 6)
         let oldBin = oldVal && oldVal.slice(0, 6)
         if (newFirst && newFirst !== oldFirst) {
-          sendRequest('api.checkout.card_type_fee', 'get', { first_card_digit: newFirst }, String(newFirst)).then(
-            function (model) {},
-            function (model) {})
+          sendRequest('api.checkout.card_type_fee', 'get', {
+            token: this.form.token,
+            first_card_digit: newFirst
+          }, String(newFirst))
         }
         if (newBin.length === 6 && newBin !== oldBin) {
-          sendRequest('api.checkout.card_bin', 'get', { card_bin: newBin }, String(newBin)).then(
-            function (model) {},
-            function (model) {})
+          sendRequest('api.checkout.card_bin', 'get', {
+            token: this.form.token,
+            card_bin: newBin
+          }, String(newBin))
         }
       }
+    },
+    created: function () {
+      sendRequest('api.checkout.cards', 'get', {token: this.form.token}).then(this.cardsSuccess, function () {})
     },
     methods: {
       imagePath: function (id) {
@@ -138,10 +143,33 @@
       },
       setCardNumber: function (card) {
         this.store.setCardNumber(card)
-        this.$nextTick(function () {
+        this.$nextTick(() => {
           this.$validator.validateAll()
         })
-      }
+      },
+      cardsSuccess: function (model) {
+        this.store.state.cards = Object.values(model.data)
+//        this.store.state.cards = [{
+//          card_number: '4444 55XX XXXX 6666',
+//          expiry_date: '12 / 17',
+//          email: 'asd@asd.asd',
+//          hash: '725272f6b133a2a9357f413fed91138bb0bf1893',
+//          read_only: true
+//        },
+//        {
+//          card_number: '4444 55XX XXXX 1111',
+//          expiry_date: '11 / 19',
+//          email: 'test@asd.asd',
+//          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
+//        }]
+        if (this.store.state.cards.length) {
+          this.$validator.detach('f-card_number')
+          this.store.setCardNumber(this.store.state.cards[0])
+          this.$nextTick(() => {
+            this.$validator.validateAll()
+          })
+        }
+      },
     },
     components: {
       Tooltip,

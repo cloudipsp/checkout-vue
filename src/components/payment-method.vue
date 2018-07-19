@@ -10,7 +10,7 @@
     ></component>
     </transition>
     <regular v-if="regular.insert && method === 'card'"></regular>
-    <offer v-if="options.offer"></offer>
+    <offer v-if="options.offertaUrl"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]" :disabled="disabled">

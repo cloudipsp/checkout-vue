@@ -1,9 +1,8 @@
 import configCss from '@/config/css'
-import configTemplate from '@/config/template'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import notSet from '@/config/not-set'
-import {getCookie, setOrigin, deepMerge, validate} from '@/utils/helpers'
+import { getCookie, setOrigin, deepMerge, validate, sendRequest } from '@/utils/helpers'
 
 export default {
   state: {
@@ -26,7 +25,10 @@ export default {
       messages: {},
       apiDomain: 'api.fondy.eu',
       fee: true,
-      customerFields: []
+      customerFields: [],
+      activeTab: 'card',
+      logoUrl: '',
+      offertaUrl: '',
     },
     popup: {
       appendTo: 'body'
@@ -39,16 +41,16 @@ export default {
     },
     form: {
       merchant_id: 1396424, // 900024 dev, 1396424 prod
-      amount: 100,
-      fee: 0,
+      amount: 0,
       amount_with_fee: 0,
+      fee: 0,
       currency: 'USD',
       recurring_data: {
         period: 'month',
         every: 1,
         start_time: '',
         end_time: '',
-        amount: 100
+        amount: 0,
       },
       card_number: '',
       expiry_date: '',
@@ -66,12 +68,12 @@ export default {
       buffer: false,
       code: '',
       message: '',
-      errors: []
+      errors: [],
     },
     router: {
       page: undefined, // payment-method verify success
       method: undefined,
-      system: undefined
+      system: undefined,
     },
     css: {},
     template: {},
@@ -80,15 +82,12 @@ export default {
     loading: false,
     cards: [],
     submit: false,
-    read_only: false
+    read_only: false,
   },
   setOptions(options, $i18n) {
     validate(options)
-    deepMerge(this.state.form, options.params, notSet)
-    Object.assign(this.state.options, options.options, {
-      offer: '',
-      customerFields: []
-    })
+    deepMerge(this.state.form, options.params, notSet.form)
+    Object.assign(this.state.options, options.options, notSet.options)
     Object.assign(this.state.regular, options.regular)
     Object.assign(this.state.messages, options.messages)
     Object.assign(this.state.validate, options.validate)
@@ -140,5 +139,30 @@ export default {
     this.state.form.hash = card.hash
     this.state.form.cvv2 = ''
     this.state.read_only = card.read_only
+  },
+  getAmountWithFee: function () {
+    if (this.state.form.fee) {
+      return sendRequest('api.checkout.fee', 'get', this.state.form, String(this.state.form.amount) + String(this.state.form.fee)).then(
+        (model) => {
+          this.state.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
+        })
+    }
+  },
+  location: function(page, method, system) {
+    this.state.router.page = page
+    this.state.router.method = method
+    this.state.router.system = system
+  },
+  showError: function(code, message) {
+    if (code || message) {
+      this.state.error.code = code
+      this.state.error.message = message
+      setTimeout(() => {
+        this.state.error.flag = true
+      })
+    }
+  },
+  formLoading: function(loading) {
+    this.state.loading = loading
   }
 }

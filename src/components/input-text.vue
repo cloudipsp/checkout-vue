@@ -106,11 +106,14 @@
     },
     methods: {
       blur: function () {
+//        if(!this.$validator.flags[this.name_]){
+//          console.log(this.$validator.flags, this.name_)
+//        }
         this.$validator.validate(this.name_)
         this.$validator.flags[this.name_].touched = true
       },
       valid: function () {
-        this.$nextTick(function () {
+        this.$nextTick(() => {
           this.$validator.validate(this.name_)
         })
       }

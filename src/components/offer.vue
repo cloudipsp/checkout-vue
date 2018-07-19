@@ -10,7 +10,7 @@
         class="f-checkbox"
         id="f-offer"
       />
-      <label :class="[$css.cl]" for="f-offer" v-html="$t('offer_t', [options.offer])"></label>
+      <label :class="[$css.cl]" for="f-offer" v-html="$t('offer_t', [options.offertaUrl])"></label>
     </tooltip>
   </div>
 </template>

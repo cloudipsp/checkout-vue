@@ -11,19 +11,6 @@ api.on('modal.close', function () {
   store.state.loading = false
 })
 
-const setError = function (model) {
-  let code = String(model.attr('error.code'))
-  let message = model.attr('error.message')
-
-  if (code || message) {
-    store.state.error.code = code
-    store.state.error.message = message
-    setTimeout(() => {
-      store.state.error.flag = true
-    })
-  }
-}
-
 export function setOrigin () {
   api.setOrigin('https://' + store.state.options.apiDomain)
 }
@@ -41,7 +28,7 @@ export function sendRequest (name, method, params, cacheName) {
           function (model) {
             console.log(name, method, params)
             console.log('done', model)
-            // setError(model)
+            // store.showError(String(model.attr('error.code')), model.attr('error.message'))
             if (cacheName) {
               cache[id] = model
             }
@@ -50,7 +37,7 @@ export function sendRequest (name, method, params, cacheName) {
           function (model) {
             console.log(name, method, params)
             console.log('fail', model)
-            setError(model)
+            store.showError(String(model.attr('error.code')), model.attr('error.message'))
             // if (cacheName) {
             //   cacheError[id] = model
             // }

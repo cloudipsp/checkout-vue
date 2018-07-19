@@ -5,7 +5,7 @@
         <option v-for="item in options.locales" :key="item" :value="item" v-t="item"></option>
       </select>
     </div>
-    <div class="f-logo"></div>
+    <div class="f-logo" :style="style"></div>
   </div>
 </template>
 
@@ -22,9 +22,8 @@
     watch: {
       'form.lang': {
         handler: function (lang) {
-          let self = this
-          loadLanguageAsync(lang).then(function () {
-            self.$validator.localize(lang)
+          loadLanguageAsync(lang).then(() => {
+            this.$validator.localize(lang)
           })
           setCookie('lang', lang, {
             path: '/',
@@ -32,6 +31,14 @@
           })
         },
         immediate: true
+      }
+    },
+    computed: {
+      style (){
+        if(!this.options.logoUrl) return {}
+        return {
+          'background-image': `url(${this.options.logoUrl})`
+        }
       }
     }
   }

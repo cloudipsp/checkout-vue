@@ -13,8 +13,10 @@
       >
       </div>
     </div>
-    <div class="f-block-hr f-title f-hidden-mobile" v-t="'fast'"></div>
-    <div class="f-block f-title3 f-visible-mobile" v-t="'fast'"></div>
+    <template v-if="!hideTitle">
+      <div class="f-block-hr f-title f-hidden-mobile" v-t="'fast'"></div>
+      <div class="f-block f-title3 f-visible-mobile" v-t="'fast'"></div>
+    </template>
     <div class="f-block f-fast-access">
       <div
         class="f-icon"
@@ -37,12 +39,14 @@
         configPaymentSystems: configPaymentSystems
       }
     },
+    computed: {
+      hideTitle: function (){
+        return this.options.fast.length === 1 && this.options.fast[0].system === this.router.system
+      }
+    },
     methods: {
       changeMethod: function (method, system) {
-//        console.log(method, system)
-        this.router.page = 'payment-method'
-        this.router.method = method
-        this.router.system = system
+        this.store.location('payment-method', method, system)
         this.$emit('on-change-method')
       }
     }

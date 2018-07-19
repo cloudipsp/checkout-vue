@@ -28,25 +28,28 @@ npm run build
 ```
 
 ### options
-Name                  | Type        | Default                 | Description
----                   | ---         | ---                     | ---
-`methods`             | Array       | ['card']                | support `card`, `emoney`, `ibank`, `cash`, `sepa`.
-`ibank`               | Array       |                         | support `p24`, `platba24`, `raiffeisen`.
-`emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.
-`cash`                | Array       |                         | support `liqpay`.
-`fast`                | Array       |                         | support .
-`cardIcons`           | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.
-`fields`              | Boolean     | false                   |
-`title`               | String      |                         |
-`link`                | String      |                         | format url
-`fullScreen`          | Boolean     | true                    |
-`button`              | Boolean     | true                    |
-`locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.
-`email`               | Boolean     | false                   |
-`tooltip`             | Boolean     | true                    |
-`apiDomain`           | String      | 'api.fondy.eu'          |
-`fee`                 | Boolean     | true                    |
-`css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.
+Name                  | Type        | Default                 | Description                                                                         | Priority
+---                   | ---         | ---                     | ---                                                                                 | ---
+`methods`             | Array       | ['card']                | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  |
+`ibank`               | Array       |                         | support `p24`, `platba24`, `raiffeisen`.                                            |
+`emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.                                    |
+`cash`                | Array       |                         | support `liqpay`.                                                                   |
+`fast`                | Array       |                         | support .                                                                           |
+`cardIcons`           | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.  |
+`fields`              | Boolean     | false                   |                                                                                     |
+`title`               | String      |                         |                                                                                     | options or server
+`link`                | String      |                         | format url                                                                          | server or options
+`fullScreen`          | Boolean     | true                    |                                                                                     |
+`button`              | Boolean     | true                    |                                                                                     |
+`locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
+`email`               | Boolean     | false                   |                                                                                     | server or options
+`tooltip`             | Boolean     | true                    |                                                                                     |
+`apiDomain`           | String      | 'api.fondy.eu'          |                                                                                     |
+`fee`                 | Boolean     | true                    |                                                                                     |
+`css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
+`activeTab`           | String      |                         | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
+`logoUrl`             | String      |                         | format url                                                                          | options or server
+`offertaUrl`          | String      |                         | format url                                                                          | options or server
 
 ### popup
 Name                  | Type        | Default                 | Description
@@ -62,23 +65,22 @@ Name                  | Type        | Default                 | Description
 `period`              | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
 
 ### params
-Name                  | Type        | Default                 | Description
----                   | ---         | ---                     | ---
-`merchant_id`         | Integer     | 1396424                 |
-`order_desc`          | String      |                         |
-`amount`              | Integer     | 100                     |
-`currency`            | String      | 'USD'                   |
-`response_url`        | String      |                         | format url
-`lang`                | String      | 'en'                    |
-`required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`.
-`verification`        | String      |                         | support `Y`, `N`, `y`, `n`.
-`verification_type`   | String      |                         | support `amount`, `code`
-`email`               | String      |                         | format email
-`token`               | String      |                         | length 40
-`offer`               | Boolean     | false                   |
-`recurring_data`      | Object      |                         |
-`custom`              | Object      |                         |
-`customer_data`       | Object      |                         |
+Name                  | Type        | Default                 | Description                 | Priority
+---                   | ---         | ---                     | ---                         | ---
+`merchant_id`         | Integer     | 1396424                 |                             |
+`order_desc`          | String      |                         |                             | options or server
+`amount`              | Integer     | 100                     |                             |
+`currency`            | String      | 'USD'                   |                             |
+`response_url`        | String      |                         | format url                  |
+`lang`                | String      | 'en'                    |                             | server or options
+`required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`. |
+`verification`        | String      |                         | support `Y`, `N`, `y`, `n`. |
+`verification_type`   | String      |                         | support `amount`, `code`    |
+`token`               | String      |                         | length 40                   |
+`offer`               | Boolean     | false                   |                             |
+`recurring_data`      | Object      |                         |                             |
+`custom`              | Object      |                         |                             |
+`customer_data`       | Object      |                         |                             |
 
 #### recurring_data
 Name                  | Type        | Default                 | Description
