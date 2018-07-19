@@ -53,6 +53,7 @@ export const messages = {
   other: 'Other methods',
   declined: 'Payment is declined',
   approved: 'Payment is approved',
+  pending: 'Your payment is being processed',
   number_payment: '№ of payment in {0}:',
   payment_system: 'payment system',
   continue: 'Continue',

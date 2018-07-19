@@ -29,6 +29,7 @@
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
+  import Pending from '@/components/pending'
   import { sendRequest, deepMerge, validate, findGetParameter } from '@/utils/helpers'
   import { isFunction } from '@/utils/object'
   import notSet from '@/config/not-set'
@@ -39,7 +40,8 @@
       return {
         show: false,
         timeoutId: 0,
-        order: {}
+        order: {},
+        inProgress: false
       }
     },
     watch: {
@@ -81,7 +83,7 @@
     },
     computed: {
       isMin: function () {
-        let result = this.options.methods.length === 1 && this.options.methods[0] === 'card'
+        let result = (this.options.methods.length === 1 && this.options.methods[0] === 'card') || this.inProgress
         this.$emit('on-set-min', result)
         return result
       },
@@ -98,7 +100,8 @@
       Verify,
       Popover,
       PaymentMethod,
-      Success
+      Success,
+      Pending
     },
     methods: {
       submit: function (cb) {
@@ -198,32 +201,42 @@
         this.store.getAmountWithFee()
       },
       location: function(model){
-        let status = model.attr('order_data.order_status')
-        let validStatus = /^(declined|approved|)$/.test(status)
+//        console.warn('model.inProgress()', 'order.in_progress', model.inProgress())
+//        console.warn('model.readyToSubmit()', 'order.ready_to_submit', model.readyToSubmit())
+//        console.warn('model.waitForResponse()', 'order.pending', model.waitForResponse())
+//        console.warn('model.needVerifyCode()', 'order.need_verify_code', model.needVerifyCode())
+//        console.warn('model.submitToMerchant()', model.submitToMerchant())
 
-        if (model.sendResponse()) return; // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
+        if (model.sendResponse()) return // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
 
         if (model.submitToMerchant()) return  // ready_to_submit && response_url && order_data formDataSubmit()
 
-        if (model.attr('in_progress')) {
-          if(this.store.state.loading) return
-          this.store.formLoading(true)
-          setTimeout(()=>{
-            sendRequest('api.checkout.order', 'get', this.form).finally(() => {
-              this.store.formLoading(false)
-            }).then(this.orderSuccess)
-          }, 5000)
-        } else
         if (model.needVerifyCode()) { // need_verify_code
           this.form.token = model.attr('token')
           this.store.location('verify', 'card')
         } else
-        if (validStatus) {
+        if (model.inProgress() && model.waitForResponse()) {
+          this.inProgress = true
+          this.locationPending()
+        } else
+        if (model.inProgress()) {
+          this.inProgress = true
           this.order = model.attr('order_data')
           this.store.location('success')
         } else {
           this.store.location('payment-method', this.options.activeTab)
         }
+      },
+      locationPending: function() {
+        if(this.store.state.loading) return
+        this.store.formLoading(true)
+        setTimeout(()=>{
+          sendRequest('api.checkout.order', 'get', this.form).finally(() => {
+            this.store.formLoading(false)
+          }).then(this.orderSuccess)
+        }, 5000)
+
+        this.store.location('pending')
       },
       createdEvent: function() {
         this.$root.$on('submit', (cb) => {

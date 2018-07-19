@@ -22,7 +22,7 @@
     "async-validator": "^1.8.2",
     "es6-promise": "^4.2.4",
     "fondy-icons": "^1.0.1",
-    "ipsp-js-sdk": "^1.0.14",
+    "ipsp-js-sdk": "^1.0.15",
     "vee-validate": "^2.0.6",
     "vue": "^2.5.16",
     "vue-i18n": "^7.6.0",
