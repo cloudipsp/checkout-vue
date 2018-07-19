@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      overflow-y: scroll;
+      font-family: 'Arial', sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .coll{
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+      display: block;
+    }
+    @media (min-width: 600px) {
+      .coll{
+        float: left;
+        width: 50%;
+      }
+    }
+  </style>
+
+  <script src="https://unpkg.com/ipsp-js-sdk@latest/dist/checkout.min.js"></script>
+</head>
+<body>
+<div>
+  <div class="coll">
+1
+  </div>
+  <div class="coll">
+2
+  </div>
+</div>
+<script>
+  var api = $checkout('Api')
+  api.setOrigin('https://api.dev.fondy.eu')
+  api.scope(function(){
+    this.request('api.checkout','app', {
+      token: 'f5dea2f35a70d46a1e259f41ca631402e8d47b68',
+    } ).done(function(model){
+      model.sendResponse();
+      console.log(model.attr('order'));
+    }).fail(function(model){
+      console.log(model.attr('error'));
+    });
+  });
+</script>
+</body>
+</html>
