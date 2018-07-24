@@ -35,19 +35,19 @@
     data () {
       return {
         options: this.store.state.regular,
-        form: this.store.state.form.recurring_data,
+        params: this.store.state.params.recurring_data,
       }
     },
     created: function () {
-      this.form.end_time = this.recurringEndTime()
-      this.form.start_time = this.recurringStartTime()
+      this.params.end_time = this.recurringEndTime()
+      this.params.start_time = this.recurringStartTime()
     },
     watch: {
-      'form.period': function () {
-        this.form.start_time = this.getFuturePeriod(this.form.period, this.form.every)
+      'params.period': function () {
+        this.params.start_time = this.getFuturePeriod(this.params.period, this.params.every)
       },
-      'form.every': function () {
-        this.form.start_time = this.getFuturePeriod(this.form.period, this.form.every)
+      'params.every': function () {
+        this.params.start_time = this.getFuturePeriod(this.params.period, this.params.every)
       }
     },
     methods: {
@@ -62,21 +62,21 @@
         return d.getFullYear() + '-' + (('0' + (d.getMonth() + 1)).slice(-2)) + '-' + (('0' + d.getDate()).slice(-2))
       },
       recurringTime: function (field) {
-        let date = this.form[field] || new Date()
+        let date = this.params[field] || new Date()
         let value = this.getDate(new Date(date))
         let now = this.getDate(new Date())
         if (now > value) value = now
         return this.getDateFormat(value)
       },
       recurringStartTime: function () {
-        if (this.form.start_time) {
+        if (this.params.start_time) {
           return this.recurringTime('start_time')
         } else {
-          return this.getFuturePeriod(this.form.period, this.form.every)
+          return this.getFuturePeriod(this.params.period, this.params.every)
         }
       },
       recurringEndTime: function () {
-        if (this.form.end_time) {
+        if (this.params.end_time) {
           return this.recurringTime('end_time')
         } else {
           return this.getDefaultEndDate()

@@ -65,27 +65,27 @@ export default {
       emoney: validatorArray(emoney),
       cash: validatorArray(cash),
       fast: validatorArray(fast),
-      cardIcons: validatorArray(cardIcons),
+      card_icons: validatorArray(cardIcons),
       fields: {type: 'boolean'},
       title: {type: 'string'},
       link: {type: 'url'},
-      fullScreen: {type: 'boolean'},
+      full_screen: {type: 'boolean'},
       button: {type: 'boolean'},
       locales: validatorArray(locales),
       email: {type: 'boolean'},
       css: {type: 'enum', enum: css},
       tooltip: {type: 'boolean'},
-      apiDomain: {type: 'string'},
+      api_domain: {type: 'string'},
       fee: {type: 'boolean'},
-      activeTab: {type: 'enum', enum: methods},
-      logoUrl: {type: 'url'},
-      offertaUrl: {type: 'url'},
+      active_tab: {type: 'enum', enum: methods},
+      logo_url: {type: 'url'},
+      offerta_url: {type: 'url'},
     }
   },
   popup: {
     type: 'object',
     fields: {
-      appendTo: {type: 'string'}
+      append_to: {type: 'string'}
     }
   },
   regular: {

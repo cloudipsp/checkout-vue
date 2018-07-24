@@ -5,12 +5,12 @@
     <component
       :is="method"
       :key="method"
-      :icons="options[method + 'Icons']"
+      :icons="options[method + '_icons']"
       :payment-systems="options[method]"
     ></component>
     </transition>
     <regular v-if="regular.insert && method === 'card'"></regular>
-    <offer v-if="options.offertaUrl"></offer>
+    <offer v-if="options.offerta_url"></offer>
     <div class="f-block" v-if="options.button">
       <div class="f-block-sm">
         <button @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]" :disabled="disabled">
@@ -42,15 +42,15 @@
     },
     computed: {
       fullAmount: function () {
-        let amount = parseInt(this.form.amount)
-        let amountWithFee = parseInt(this.form.amount_with_fee)
+        let amount = parseInt(this.params.amount)
+        let amountWithFee = parseInt(this.params.amount_with_fee)
         if (!amount) {
           return false
         }
         return (amountWithFee || amount) / 100
       },
       args: function () {
-        return this.fullAmount ? [this.fullAmount, this.$t(this.form.currency)] : []
+        return this.fullAmount ? [this.fullAmount, this.$t(this.params.currency)] : []
       },
       method: function () {
         return this.router.method

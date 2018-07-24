@@ -35,26 +35,26 @@ Name                  | Type        | Default                 | Description     
 `emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.                                    |
 `cash`                | Array       |                         | support `liqpay`.                                                                   |
 `fast`                | Array       |                         | support .                                                                           |
-`cardIcons`           | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.  |
+`card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.  |
 `fields`              | Boolean     | false                   |                                                                                     |
 `title`               | String      |                         |                                                                                     | options or server
 `link`                | String      |                         | format url                                                                          | server or options
-`fullScreen`          | Boolean     | true                    |                                                                                     |
+`full_screen`         | Boolean     | true                    |                                                                                     |
 `button`              | Boolean     | true                    |                                                                                     |
 `locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `tooltip`             | Boolean     | true                    |                                                                                     |
-`apiDomain`           | String      | 'api.fondy.eu'          |                                                                                     |
+`api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
 `fee`                 | Boolean     | true                    |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
-`activeTab`           | String      |                         | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
-`logoUrl`             | String      |                         | format url                                                                          | options or server
-`offertaUrl`          | String      |                         | format url                                                                          | options or server
+`active_tab`          | String      |                         | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
+`logo_url`            | String      |                         | format url                                                                          | options or server
+`offerta_url`         | String      |                         | format url                                                                          | options or server
 
 ### popup
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
-`appendTo`            | String      | 'body'                  |
+`append_to`           | String      | 'body'                  |
 
 ### regular
 Name                  | Type        | Default                 | Description

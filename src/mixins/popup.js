@@ -14,8 +14,6 @@ import {
 } from '@/utils/dom'
 import {isString} from '@/utils/object'
 
-import store from '@/store'
-
 const SHOW_CLASS = 'in'
 
 export default {
@@ -54,7 +52,7 @@ export default {
     return {
       triggerEl: null,
       timeoutId: 0,
-      appendTo: store.state.popup.appendTo
+      appendTo: this.store.state.popup.append_to
     }
   },
   watch: {

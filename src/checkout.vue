@@ -17,16 +17,16 @@
 
   export default {
     name: 'f-checkout',
-    props: ['options2'],
+    props: ['optionsUser'],
     data () {
       return {
         min: true,
       }
     },
     created: function () {
-      this.store.setOptions(this.options2, this.$i18n)
+      this.store.setOptions(this.optionsUser, this.$i18n)
 //      require('./less/style.less')
-      if (this.options.fullScreen) {
+      if (this.options.full_screen) {
         require('./less/style-sm.less')
         require('./less/style-md.less')
         setTimeout(() => {

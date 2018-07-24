@@ -12,7 +12,7 @@ api.on('modal.close', function () {
 })
 
 export function setOrigin () {
-  api.setOrigin('https://' + store.state.options.apiDomain)
+  api.setOrigin('https://' + store.state.options.api_domain)
 }
 
 export function sendRequest (name, method, params, cacheName) {

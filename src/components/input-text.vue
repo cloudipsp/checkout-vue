@@ -3,17 +3,17 @@
     <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
     <the-mask
         v-if="disabled"
-        v-model="form[field_]"
+        v-model="params[field_]"
         :class="[$css.fc, 'f-form-control-text']"
         :mask="mask"
         :masked="masked"
       >
-      {{ form[field_] }}
+      {{ params[field_] }}
     </the-mask>
     <div v-else-if="group && mask" :class="[$css.ig]">
       <the-mask
         v-validate="validate"
-        v-model="form[field_]"
+        v-model="params[field_]"
         :data-vv-as="label_"
         :data-vv-name="name_"
         :type="type"
@@ -36,7 +36,7 @@
     <the-mask
       v-else-if="mask"
       v-validate="validate"
-      v-model="form[field_]"
+      v-model="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
@@ -55,7 +55,7 @@
     <input
       v-else
       v-validate="validate"
-      v-model="form[field_]"
+      v-model="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"

@@ -1,68 +1,14 @@
+import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import notSet from '@/config/not-set'
 import { getCookie, setOrigin, deepMerge, validate, sendRequest } from '@/utils/helpers'
+import { isObject } from '@/utils/object'
 
 export default {
   state: {
-    options: {
-      methods: ['card'],
-      ibank: [],
-      emoney: [],
-      cash: [],
-      fast: [],
-      cardIcons: ['mastercard', 'visa'],
-      title: '',
-      button: true,
-      fullScreen: true,
-      tooltip: true,
-      email: false,
-      fields: false,
-      link: '',
-      offer: '',
-      locales: [],
-      messages: {},
-      apiDomain: 'api.fondy.eu',
-      fee: true,
-      customerFields: [],
-      activeTab: 'card',
-      logoUrl: '',
-      offertaUrl: '',
-    },
-    popup: {
-      appendTo: 'body'
-    },
-    regular: {
-      insert: false,
-      open: false,
-      hide: false,
-      period: ['day', 'week', 'month']
-    },
-    form: {
-      merchant_id: 1396424, // 900024 dev, 1396424 prod
-      amount: 0,
-      amount_with_fee: 0,
-      fee: 0,
-      currency: 'USD',
-      recurring_data: {
-        period: 'month',
-        every: 1,
-        start_time: '',
-        end_time: '',
-        amount: 0,
-      },
-      card_number: '',
-      expiry_date: '',
-      cvv2: '',
-      email: '',
-      code: '',
-      order_desc: '',
-      offer: false,
-      lang: 'en',
-      custom: {},
-      customer_data: {},
-    },
+    ...optionsDefault,
     error: {
       flag: false,
       buffer: false,
@@ -76,27 +22,48 @@ export default {
       system: undefined,
     },
     css: {},
-    template: {},
-    messages: {},
     validate: {},
     loading: false,
     cards: [],
     submit: false,
     read_only: false,
   },
-  setOptions(options, $i18n) {
-    validate(options)
-    deepMerge(this.state.form, options.params, notSet.form)
-    Object.assign(this.state.options, options.options, notSet.options)
-    Object.assign(this.state.regular, options.regular)
-    Object.assign(this.state.messages, options.messages)
-    Object.assign(this.state.validate, options.validate)
-    Object.assign(this.state.popup, options.popup)
+  setOptions(optionsUser, $i18n) {
+    this.optionsFormat(optionsUser)
+    validate(optionsUser)
+    this.state.options_user = optionsUser
+    this.state.options_default = optionsDefault
+    deepMerge(this.state.params, optionsUser.params, notSet.params)
+    Object.assign(this.state.options, optionsUser.options, notSet.options)
+    Object.assign(this.state.regular, optionsUser.regular)
+    Object.assign(this.state.messages, optionsUser.messages)
+    Object.assign(this.state.validate, optionsUser.validate)
+    Object.assign(this.state.popup, optionsUser.popup)
     this.setFast()
     this.setCss()
     this.setLocale()
     setOrigin()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
+  },
+  optionsFormat: function(options) {
+    let regex = /[A-Z]+/g;
+
+    if(!isObject(options)) return
+
+    for (let prop in options) {
+      if( options.hasOwnProperty(prop) ) {
+        let modified = prop.replace(regex, function(match) {
+          return '_' + match.toLowerCase();
+        });
+        if(prop !== modified){
+          options[modified] = options[prop]
+          delete options[prop]
+          this.optionsFormat(options[modified])
+        } else {
+          this.optionsFormat(options[prop])
+        }
+      }
+    }
   },
   setFast: function () {
     let fast = []
@@ -118,10 +85,10 @@ export default {
   setLocale: function () {
     let lang
     let locales = this.state.options.locales
-    if (this.state.options.fullScreen) {
-      lang = getCookie('lang') || this.state.form.lang
+    if (this.state.options.full_screen) {
+      lang = getCookie('lang') || this.state.params.lang
     } else {
-      lang = this.state.form.lang || getCookie('lang')
+      lang = this.state.params.lang || getCookie('lang')
     }
     if (locales.length) {
       if (locales.indexOf(lang) < 0) {
@@ -130,21 +97,21 @@ export default {
     } else if (configLocales.indexOf(lang) < 0) {
       lang = 'en'
     }
-    this.state.form.lang = lang
+    this.state.params.lang = lang
   },
   setCardNumber: function (card) {
-    this.state.form.card_number = card.card_number.replace(/ /g, '')
-    this.state.form.expiry_date = card.expiry_date.replace(/ /g, '')
-    this.state.form.email = card.email
-    this.state.form.hash = card.hash
-    this.state.form.cvv2 = ''
+    this.state.params.card_number = card.card_number.replace(/ /g, '')
+    this.state.params.expiry_date = card.expiry_date.replace(/ /g, '')
+    this.state.params.email = card.email
+    this.state.params.hash = card.hash
+    this.state.params.cvv2 = ''
     this.state.read_only = card.read_only
   },
   getAmountWithFee: function () {
-    if (this.state.form.fee) {
-      return sendRequest('api.checkout.fee', 'get', this.state.form, String(this.state.form.amount) + String(this.state.form.fee)).then(
+    if (this.state.params.fee) {
+      return sendRequest('api.checkout.fee', 'get', this.state.params, String(this.state.params.amount) + String(this.state.params.fee)).then(
         (model) => {
-          this.state.form.amount_with_fee = parseInt(model.attr('amount_with_fee'))
+          this.state.params.amount_with_fee = parseInt(model.attr('amount_with_fee'))
         })
     }
   },

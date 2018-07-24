@@ -60,20 +60,20 @@
     created: function () {
       this.createdEvent()
 
-      this.form.token = findGetParameter('token') ||  this.form.token
+      this.params.token = findGetParameter('token') ||  this.params.token
 
-      if (!parseInt(this.form.amount)) {
-        this.form.amount = 0
-        this.form.recurring_data.amount = 0
+      if (!parseInt(this.params.amount)) {
+        this.params.amount = 0
+        this.params.recurring_data.amount = 0
       }
       if (this.regular.insert) {
-        this.form.recurring = 'y'
+        this.params.recurring = 'y'
       }
       if (!this.router.method) {
-        this.store.location('payment-method', this.options.activeTab)
+        this.store.location('payment-method', this.options.active_tab)
       }
 
-      sendRequest('api.checkout', 'app', this.form).then(this.appSuccess, function () {})
+      sendRequest('api.checkout', 'app', this.params).then(this.appSuccess, function () {})
     },
     mounted: function () {
       window.addEventListener('resize', this.resize)
@@ -112,31 +112,31 @@
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
 //        this.errors.clear()
-          console.log('form', this.form)
+          console.log('params', this.params)
 
           if (this.errors.count() || this.store.state.loading) return
           this.store.formLoading(true)
           this.error.flag = false
 
-          let form = {}
+          let params = {}
           let custom = {}
-          Object.assign(form, this.form)
-          for (let field in form.custom) {
-            if(form.custom.hasOwnProperty(field)) {
+          Object.assign(params, this.params)
+          for (let field in params.custom) {
+            if(params.custom.hasOwnProperty(field)) {
               custom[field] = {
-                value: form.custom[field],
+                value: params.custom[field],
                 label: this.$t(field)
               }
             }
           }
-          form.payment_system = this.router.system || this.router.method
-          form.custom = custom
-          form.amount = form.amount / 100
-          if(this.form.recurring_data.amount){
-            this.form.recurring_data.amount = this.form.recurring_data.amount / 100
+          params.payment_system = this.router.system || this.router.method
+          params.custom = custom
+          params.amount = params.amount / 100
+          if(this.params.recurring_data.amount){
+            this.params.recurring_data.amount = this.params.recurring_data.amount / 100
           }
 
-          sendRequest('api.checkout.form', 'request', form)
+          sendRequest('api.checkout.form', 'request', params)
             .finally(() => {
               this.store.formLoading(false)
             })
@@ -169,34 +169,34 @@
       },
       infoSuccess: function (model) {
         this.options.link = model.attr('merchant_url') || this.options.link
-        this.form.lang =  model.attr('lang') || this.form.lang
-        this.options.activeTab = model.attr('active_tab') || this.options.activeTab
+        this.params.lang =  model.attr('lang') || this.params.lang
+        this.options.active_tab = model.attr('active_tab') || this.options.active_tab
         this.options.email = model.attr('checkout_email_required') || this.options.email
         this.options.title = this.options.title || model.attr('merchant.localized_name')
-        this.options.logoUrl = this.options.logoUrl || model.attr('merchant.logo_url')
-        this.options.offertaUrl = this.options.offertaUrl || model.attr('merchant.offerta_url')
+        this.options.logo_url = this.options.logo_url || model.attr('merchant.logo_url')
+        this.options.offerta_url = this.options.offerta_url || model.attr('merchant.offerta_url')
 
-        this.form.fee = model.attr('client_fee') || 0
-        this.options.customerFields = model.attr('customer_required_data') || []
+        this.params.fee = model.attr('client_fee') || 0
+        this.options.customer_fields = model.attr('customer_required_data') || []
 
-        //this.form.amount_with_fee = parseInt(order.actual_amount * 100)
-        this.form.order_desc = this.form.order_desc || model.attr('order.order_desc')
-        // TODO
+        //this.params.amount_with_fee = parseInt(order.actual_amount * 100)
+        this.params.order_desc = this.params.order_desc || model.attr('order.order_desc')
+
         this.store.showError(model.attr('order.error_code'), model.attr('order.error_description'))
       },
       orderSuccess: function(model) {
         let order_data = model.attr('order_data')
 
-        if (!order_data) return this.store.location('payment-method', this.options.activeTab);
+        if (!order_data) return this.store.location('payment-method', this.options.active_tab);
 
         this.location(model)
 
-        this.form.amount = order_data.amount
-        this.form.recurring_data.amount = order_data.amount
-        this.form.currency = order_data.currency
-        this.form.merchant_id = order_data.merchant_id
-        this.form.email = order_data.sender_email || this.form.email
-        this.form.order_id = order_data.order_id
+        this.params.amount = order_data.amount
+        this.params.recurring_data.amount = order_data.amount
+        this.params.currency = order_data.currency
+        this.params.merchant_id = order_data.merchant_id
+        this.params.email = order_data.sender_email || this.params.email
+        this.params.order_id = order_data.order_id
 
         this.store.getAmountWithFee()
       },
@@ -212,7 +212,7 @@
         if (model.submitToMerchant()) return  // ready_to_submit && response_url && order_data formDataSubmit()
 
         if (model.needVerifyCode()) { // need_verify_code
-          this.form.token = model.attr('token')
+          this.params.token = model.attr('token')
           this.store.location('verify', 'card')
         } else
         if (model.inProgress() && model.waitForResponse()) {
@@ -224,14 +224,14 @@
           this.order = model.attr('order_data')
           this.store.location('success')
         } else {
-          this.store.location('payment-method', this.options.activeTab)
+          this.store.location('payment-method', this.options.active_tab)
         }
       },
       locationPending: function() {
         if(this.store.state.loading) return
         this.store.formLoading(true)
         setTimeout(()=>{
-          sendRequest('api.checkout.order', 'get', this.form).finally(() => {
+          sendRequest('api.checkout.order', 'get', this.params).finally(() => {
             this.store.formLoading(false)
           }).then(this.orderSuccess)
         }, 5000)
@@ -247,13 +247,13 @@
           this.store.location('payment-method', method, system)
         })
         this.$root.$on('setParams', (params) => {
-          if (this.form.token || this.form.order_id) {
+          if (this.params.token || this.params.order_id) {
             console.warn('You can not change the parameters if there is a token or an order is created')
             return;
           }
           validate({params: params})
           if(!this.error.errors.length) {
-            deepMerge(this.form, params, notSet)
+            deepMerge(this.params, params, notSet)
             this.getAmountWithFee()
           }
         })
@@ -284,7 +284,7 @@
         let infoH = this.$refs.info.offsetHeight
         let containerH = $container.offsetHeight
 
-        if (this.options.fullScreen) {
+        if (this.options.full_screen) {
           if (width >= 992) {
             this.$refs.center.style.minHeight = centerH < wraperH ? wraperH + 'px' : 'auto'
             if (containerH < height) {

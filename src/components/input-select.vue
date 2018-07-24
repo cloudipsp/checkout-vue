@@ -3,7 +3,7 @@
     <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_" v-html="label_"></label>
     <select
       v-validate="validate"
-      v-model="form[field_]"
+      v-model="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :class="[$css.fc, hasError ? $css.ie : '']"

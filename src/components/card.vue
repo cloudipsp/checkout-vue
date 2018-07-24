@@ -60,7 +60,7 @@
                     validate="required|email"
                     placeholder="email_p"
         ></input-text>
-        <customer-fields v-if="options.customerFields.length"></customer-fields>
+        <customer-fields v-if="options.customer_fields.length"></customer-fields>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@
   import Tooltip from '@/components/tooltip'
   import Dropdown from '@/components/dropdown'
   import InputText from '@/components/input-text'
-  import customerFields from '@/components/customer-fields'
+  import CustomerFields from '@/components/customer-fields'
 
   export default {
     inject: ['$validator'],
@@ -95,7 +95,7 @@
         return {
           rules: {
             required: true,
-            credit_card: !/\d{6}X/.test(this.form.card_number)
+            credit_card: !/\d{6}X/.test(this.params.card_number)
           }
         }
       },
@@ -103,14 +103,14 @@
         return 'required|digits:' + this.digitsCvv
       },
       digitsCvv: function () {
-        return this.form.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
+        return this.params.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
       },
       cardsLen: function () {
         return this.store.state.cards.length
       }
     },
     watch: {
-      'form.card_number': function (newVal, oldVal) {
+      'params.card_number': function (newVal, oldVal) {
         newVal = newVal.replace(/ /g, '')
         oldVal = oldVal.replace(/ /g, '')
         let newFirst = newVal && newVal[0]
@@ -119,27 +119,27 @@
         let oldBin = oldVal && oldVal.slice(0, 6)
         if (newFirst && newFirst !== oldFirst) {
           sendRequest('api.checkout.card_type_fee', 'get', {
-            token: this.form.token,
+            token: this.params.token,
             first_card_digit: newFirst
           }, String(newFirst))
         }
         if (newBin.length === 6 && newBin !== oldBin) {
           sendRequest('api.checkout.card_bin', 'get', {
-            token: this.form.token,
+            token: this.params.token,
             card_bin: newBin
           }, String(newBin))
         }
       }
     },
     created: function () {
-      sendRequest('api.checkout.cards', 'get', {token: this.form.token}).then(this.cardsSuccess, function () {})
+      sendRequest('api.checkout.cards', 'get', {token: this.params.token}).then(this.cardsSuccess, function () {})
     },
     methods: {
       imagePath: function (id) {
         return require('../assets/img/' + id + '.svg')
       },
       hasActive: function (card) {
-        return card.card_number.replace(/ /g, '') === this.form.card_number
+        return card.card_number.replace(/ /g, '') === this.params.card_number
       },
       setCardNumber: function (card) {
         this.store.setCardNumber(card)
@@ -175,7 +175,7 @@
       Tooltip,
       Dropdown,
       InputText,
-      customerFields
+      CustomerFields
     }
   }
 </script>

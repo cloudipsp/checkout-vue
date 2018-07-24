@@ -48,19 +48,19 @@ export default {
   },
   created() {
     if(this.custom) {
-      this.form = this.store.state.form.custom
+      this.params = this.store.state.params.custom
     } else
     if (this.recurring) {
-      this.form = this.store.state.form.recurring_data
+      this.params = this.store.state.params.recurring_data
     } else
     if (this.customer_data) {
-      this.form = this.store.state.form.customer_data
+      this.params = this.store.state.params.customer_data
     } else
     {
-      this.form = this.store.state.form
+      this.params = this.store.state.params
     }
     if(this.value) {
-      this.form[this.field_] = this.value
+      this.params[this.field_] = this.value
     }
   },
   methods: {

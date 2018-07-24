@@ -1,7 +1,7 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select v-if="options.locales.length" :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="form.lang">
+      <select v-if="options.locales.length" :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="params.lang">
         <option v-for="item in options.locales" :key="item" :value="item" v-t="item"></option>
       </select>
     </div>
@@ -20,7 +20,7 @@
       }
     },
     watch: {
-      'form.lang': {
+      'params.lang': {
         handler: function (lang) {
           loadLanguageAsync(lang).then(() => {
             this.$validator.localize(lang)
@@ -35,9 +35,9 @@
     },
     computed: {
       style (){
-        if(!this.options.logoUrl) return {}
+        if(!this.options.logo_url) return {}
         return {
-          'background-image': `url(${this.options.logoUrl})`
+          'background-image': `url(${this.options.logo_url})`
         }
       }
     }

@@ -29,13 +29,13 @@
         return {
           rules: {
             required: true,
-            digits: /EURT/.test(this.form.code) ? false : '4'
+            digits: /EURT/.test(this.params.code) ? false : '4'
           }
         }
       }
     },
     created: function () {
-      this.form.code = ''
+      this.params.code = ''
     },
     components: {
       InputText

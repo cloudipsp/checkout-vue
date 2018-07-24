@@ -28,10 +28,10 @@ const install = function (Vue, VeeValidate) {
   Vue.use(VeeValidate, { inject: false })
   Vue.use(Store)
 
-  window.fondy = function (el, options) {
-    options = options || {}
+  window.fondy = function (el, optionsUser) {
+    optionsUser = optionsUser || {}
     if (!isString(el)) return console.error('Selector not a string')
-    if (!isObject(options)) return console.error('Options not an object')
+    if (!isObject(optionsUser)) return console.error('Options not an object')
     if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
 
     return new Vue({
@@ -39,9 +39,9 @@ const install = function (Vue, VeeValidate) {
       el: el,
       store,
       data: {
-        options: options
+        optionsUser: optionsUser
       },
-      template: '<checkout :options2="options"/>',
+      template: '<checkout :optionsUser="optionsUser"/>',
       components: { Checkout },
       $_veeValidate: {
         validator: 'new'

@@ -16,7 +16,7 @@
         @keyup.enter="onEnter"
       >
       <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
-      <span :class="$css.iga" v-t="store.state.form.currency"></span>
+      <span :class="$css.iga" v-t="store.state.params.currency"></span>
     </div>
     <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
   </div>
@@ -37,14 +37,14 @@
     computed: {
       amount: {
         get: function () {
-          let amount = parseInt(this.form[this.field_])
+          let amount = parseInt(this.params[this.field_])
           return amount ? amount / 100 : ''
         },
         set: function (v) {
           if (v.slice(-1) === '.') {
             return false
           }
-          this.form[this.field_] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
+          this.params[this.field_] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
           this.$validator.validate(this.name_, v)
           if (this.onInput) {
             this.onInput(v, this.field_)

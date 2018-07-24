@@ -28,9 +28,9 @@
 
   export default {
     created: function () {
-      let index = this.options.customerFields.indexOf('email')
+      let index = this.options.customer_fields.indexOf('email')
       if(this.options.email && index > -1) {
-        this.options.customerFields.splice(index, 1)
+        this.options.customer_fields.splice(index, 1)
       }
     },
     data () {
@@ -40,7 +40,7 @@
     computed: {
       getFields: function() {
         let result = [];
-        this.options.customerFields.forEach(function(name){
+        this.options.customer_fields.forEach(function(name){
           let item = { field: name }
           if(config[name].dictionary){
             item.list = countries

@@ -1,9 +1,9 @@
 export default {
   options: {
-    // offertaUrl: '',
-    customerFields: [],
+    // offerta_url: '',
+    customer_fields: [],
   },
-  form: {
+  params: {
     card_number: '',
     expiry_date: '',
     cvv2: '',
