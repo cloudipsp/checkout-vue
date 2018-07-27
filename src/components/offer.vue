@@ -1,5 +1,5 @@
 <template>
-  <div class="f-offer" :class="{'f-has-error': errors.has('offer')}">
+  <div class="f-offer" :class="[hasError ? $css.he : '']">
     <tooltip :text="errors.first('offer')" :enable="errors.has('offer')" target="#f-offer">
       <input
         v-model="params.offer"
@@ -26,6 +26,12 @@
     },
     components: {
       Tooltip
-    }
+    },
+    computed: {
+      hasError() {
+        let flag = this.$validator.flags['f-offer']
+        return this.errors.has('f-offer') && ((flag && flag.touched) || this.store.state.submit)
+      }
+    },
   }
 </script>

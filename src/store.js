@@ -4,11 +4,11 @@ import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import notSet from '@/config/not-set'
 import { getCookie, setOrigin, deepMerge, validate, sendRequest } from '@/utils/helpers'
-import { isObject } from '@/utils/object'
+import { isObject, isExist } from '@/utils/object'
 
 export default {
   state: {
-    ...optionsDefault,
+    ...JSON.parse(JSON.stringify(optionsDefault)),
     error: {
       flag: false,
       buffer: false,
@@ -27,12 +27,14 @@ export default {
     cards: [],
     submit: false,
     read_only: false,
+    verification_type: '',
+    need_verify_code: false
   },
   setOptions(optionsUser, $i18n) {
     this.optionsFormat(optionsUser)
     validate(optionsUser)
-    this.state.options_user = optionsUser
-    this.state.options_default = optionsDefault
+    this.user = optionsUser
+    this.default = optionsDefault
     deepMerge(this.state.params, optionsUser.params, notSet.params)
     Object.assign(this.state.options, optionsUser.options, notSet.options)
     Object.assign(this.state.regular, optionsUser.regular)
@@ -56,12 +58,47 @@ export default {
           return '_' + match.toLowerCase();
         });
         if(prop !== modified){
+          if(options.hasOwnProperty(modified)) continue
           options[modified] = options[prop]
           delete options[prop]
           this.optionsFormat(options[modified])
         } else {
           this.optionsFormat(options[prop])
         }
+      }
+    }
+  },
+  priority: function(priority, field, server){
+    // 'user' 'server' 'default' 'state'
+    let priorityValue = []
+
+    priority.forEach((item) => {
+      let data = this[item]
+      if(data){
+        priorityValue.push(this.attr(data, field))
+      } else {
+        priorityValue.push(server)
+      }
+    })
+    return this.merge(priorityValue)
+  },
+  attr: function(data, field){
+    field = (field || '').split('.')
+    let prop = field.pop()
+    for (let i = 0; i < field.length; i++) {
+      if (data && data.hasOwnProperty(field[i])) {
+        data = data[field[i]];
+      }
+      else {
+        break;
+      }
+    }
+    return data[prop];
+  },
+  merge: function(data){
+    for (let i = 0; i < data.length; i++) {
+      if(isExist(data[i])){
+        return data[i]
       }
     }
   },

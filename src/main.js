@@ -5,7 +5,7 @@
 // TODO support material
 
 // TODO field input v-if add identical :key
-// TODO mixin global store
+// TODO create component type="checkbox" f-offer
 
 import Vue from 'vue'
 import VeeValidate, { Validator } from 'vee-validate'
@@ -25,6 +25,15 @@ const install = function (Vue, VeeValidate) {
     getMessage: (field) => `The ${field} field format is invalid.`,
     validate: value => /^\+?\d{7,14}$/.test(value)
   })
+  Validator.extend('numrange', {
+    getMessage: (field) => `Transfer amount limit exceeded.`,
+    validate: (value, range) => {
+      value = parseInt(value,10);
+      range = range.map(function(i){ return parseInt(i,10)})
+      return range[0]<=value && value<=range[1]
+    }
+  })
+
   Vue.use(VeeValidate, { inject: false })
   Vue.use(Store)
 

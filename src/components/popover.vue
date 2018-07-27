@@ -54,7 +54,12 @@
                   {name: 'show', value: this.title}
                 ]
               }, this.title),
-              h('div', {'class': 'f-popover-content'}, [this.content || this.$slots.popover])
+              h('div', {
+                'class': 'f-popover-content',
+                domProps: {
+                  innerHTML: this.content
+                },
+              }, [this.content || this.$slots.popover])
             ]
           )
         ]

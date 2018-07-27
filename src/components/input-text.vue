@@ -2,13 +2,14 @@
   <div :class="['f-form-group', hasError ? $css.he : '', hasDefaultSlot ? $css.hf : '']">
     <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
     <the-mask
-        v-if="disabled"
+        v-if="readonly"
         v-model="params[field_]"
         :class="[$css.fc, 'f-form-control-text']"
         :mask="mask"
         :masked="masked"
+        :readonly="readonly"
+        :id="name_"
       >
-      {{ params[field_] }}
     </the-mask>
     <div v-else-if="group && mask" :class="[$css.ig]">
       <the-mask
@@ -88,7 +89,7 @@
       mask: [String, Object],
       masked: Boolean,
       group: Boolean,
-      disabled: Boolean,
+      readonly: Boolean,
     },
     data () {
       return {

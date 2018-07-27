@@ -11,7 +11,7 @@
                     :masked="false"
                     :maxlength="23"
                     :group="!!cardsLen"
-                    :disabled="store.state.read_only"
+                    :readonly="store.state.read_only || store.state.need_verify_code"
                     type="tel"
                     inputmode="numeric"
                     placeholder="card_number_p"
@@ -32,7 +32,7 @@
                         :validate="validExpiryDate"
                         :mask="maskExpiryDate"
                         :masked="true"
-                        :disabled="store.state.read_only"
+                        :readonly="store.state.read_only || store.state.need_verify_code"
                         type="tel"
                         inputmode="numeric"
                         placeholder="expiry_date_p"
@@ -45,6 +45,7 @@
                         type="tel"
                         inputmode="numeric"
                         :mask="maskCvv"
+                        :readonly="store.state.need_verify_code"
                         :maxlength="digitsCvv"
                         placeholder="cvv2_p"
             >
@@ -59,6 +60,23 @@
                     label="email"
                     validate="required|email"
                     placeholder="email_p"
+        ></input-text>
+        <input-text
+          v-if="isVerificationCode"
+          name="code"
+          :validate="validCode"
+          type="tel"
+          :maxlength="4"
+          label="verification_code"
+          placeholder="verification_code_p"
+        ></input-text>
+        <input-text
+          v-if="isVerificationAmount"
+          name="code"
+          :validate="validAmount"
+          type="text"
+          label="verification_amount"
+          placeholder="verification_amount_p"
         ></input-text>
         <customer-fields v-if="options.customer_fields.length"></customer-fields>
       </div>
@@ -107,6 +125,30 @@
       },
       cardsLen: function () {
         return this.store.state.cards.length
+      },
+      validCode: function () {
+        return {
+          rules: {
+            required: true,
+            digits: /EURT/.test(this.params.code) ? false : '4'
+          }
+        }
+      },
+      validAmount: function () {
+        return {
+          rules: {
+            required: true,
+            numrange: [0,9999999.99],
+            regex: /^\d{1,7}([,\.]\d{1,2})?$/,
+
+          }
+        }
+      },
+      isVerificationAmount: function(){
+        return this.store.state.need_verify_code && this.store.state.verification_type === 'amount'
+      },
+      isVerificationCode: function(){
+        return this.store.state.need_verify_code && this.store.state.verification_type !== 'amount'
       }
     },
     watch: {
@@ -148,6 +190,8 @@
         })
       },
       cardsSuccess: function (model) {
+        if(this.store.state.need_verify_code) return
+
         this.store.state.cards = Object.values(model.data)
 //        this.store.state.cards = [{
 //          card_number: '4444 55XX XXXX 6666',

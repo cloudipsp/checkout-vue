@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fields v-if="options.fields"></fields>
+    <fields v-if="options.fields && !store.state.need_verify_code"></fields>
     <transition name="fade">
     <component
       :is="method"

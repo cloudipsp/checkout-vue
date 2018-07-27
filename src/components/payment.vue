@@ -66,9 +66,7 @@
         this.params.amount = 0
         this.params.recurring_data.amount = 0
       }
-      if (this.regular.insert) {
-        this.params.recurring = 'y'
-      }
+
       if (!this.router.method) {
         this.store.location('payment-method', this.options.active_tab)
       }
@@ -130,6 +128,8 @@
             }
           }
           params.payment_system = this.router.system || this.router.method
+// TODO ?
+//          if(!this.store.state.need_verify_code)
           params.custom = custom
           params.amount = params.amount / 100
           if(this.params.recurring_data.amount){
@@ -170,7 +170,6 @@
       infoSuccess: function (model) {
         this.options.link = model.attr('merchant_url') || this.options.link
         this.params.lang =  model.attr('lang') || this.params.lang
-        this.options.active_tab = model.attr('active_tab') || this.options.active_tab
         this.options.email = model.attr('checkout_email_required') || this.options.email
         this.options.title = this.options.title || model.attr('merchant.localized_name')
         this.options.logo_url = this.options.logo_url || model.attr('merchant.logo_url')
@@ -182,12 +181,20 @@
         //this.params.amount_with_fee = parseInt(order.actual_amount * 100)
         this.params.order_desc = this.params.order_desc || model.attr('order.order_desc')
 
+        this.regular.insert = model.attr('order.subscription')
+
+        if(model.attr('order.verification')){
+          this.store.state.verification_type = model.attr('verification_type')
+          this.options.title = 'verification_t'
+          this.params.order_desc = 'verification_' + this.store.state.verification_type + '_d'
+        }
+
         this.store.showError(model.attr('order.error_code'), model.attr('order.error_description'))
       },
       orderSuccess: function(model) {
         let order_data = model.attr('order_data')
 
-        if (!order_data) return this.store.location('payment-method', this.options.active_tab);
+        if (!order_data) return
 
         this.location(model)
 
@@ -212,8 +219,11 @@
         if (model.submitToMerchant()) return  // ready_to_submit && response_url && order_data formDataSubmit()
 
         if (model.needVerifyCode()) { // need_verify_code
-          this.params.token = model.attr('token')
-          this.store.location('verify', 'card')
+          this.store.state.need_verify_code = true
+          this.params.card_number = model.attr('order_data.masked_card')
+          this.params.expiry_date =  model.attr('order_data.expiry_date')
+          this.params.cvv2 = ''
+          this.store.location('payment-method', 'card')
         } else
         if (model.inProgress() && model.waitForResponse()) {
           this.inProgress = true
@@ -223,18 +233,23 @@
           this.inProgress = true
           this.order = model.attr('order_data')
           this.store.location('success')
-        } else {
-          this.store.location('payment-method', this.options.active_tab)
         }
       },
       locationPending: function() {
         if(this.store.state.loading) return
         this.store.formLoading(true)
-        setTimeout(()=>{
+        this.processingTimeout = setTimeout(() => {
           sendRequest('api.checkout.order', 'get', this.params).finally(() => {
             this.store.formLoading(false)
           }).then(this.orderSuccess)
-        }, 5000)
+        }, 15 * 1000)
+        if (!this.processingClear) {
+          this.processingClear = setTimeout(() => {
+            this.processingClear = null
+            this.store.formLoading(false)
+            clearTimeout(this.processingTimeout)
+          }, 2 * 30 * 1000)
+        }
 
         this.store.location('pending')
       },

@@ -36,7 +36,7 @@ export default {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
     amount: 0,
     amount_with_fee: 0,
-    fee: 0,
+    fee: 0, // %
     currency: 'USD',
     recurring_data: {
       period: 'month',

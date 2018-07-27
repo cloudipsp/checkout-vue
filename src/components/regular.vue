@@ -48,7 +48,13 @@
       },
       'params.every': function () {
         this.params.start_time = this.getFuturePeriod(this.params.period, this.params.every)
-      }
+      },
+      'options.open': {
+        handler: function (value) {
+          this.store.state.params.recurring = value ? 'y' : 'n'
+        },
+        immediate: true
+      },
     },
     methods: {
       getDate: function (date) {
