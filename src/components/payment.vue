@@ -10,7 +10,13 @@
       <methods @on-change-method="changeMethod"></methods>
     </div>
     <div class="f-center" ref="center">
-      <component :is="router.page" :on-submit="submit" :disabled="isDisabled" :order="order"></component>
+      <component
+        :is="router.page"
+        @on-submit="submit"
+        @on-cancel="cancel"
+        :disabled="isDisabled"
+        :order="order"
+      ></component>
       <div v-if="store.state.loading">
         <div class="f-loading"></div>
         <div class="f-loading-i"></div>
@@ -25,7 +31,6 @@
 <script>
   import Info from '@/components/info'
   import Methods from '@/components/methods'
-  import Verify from '@/components/verify'
   import Popover from '@/components/popover'
   import PaymentMethod from '@/components/payment-method'
   import Success from '@/components/success'
@@ -95,7 +100,6 @@
     components: {
       Info,
       Methods,
-      Verify,
       Popover,
       PaymentMethod,
       Success,
@@ -154,6 +158,18 @@
             .then(this.submitSuccess, this.submitError)
         })
       },
+      cancel: function(){
+        if(this.store.state.loading) return
+        this.store.formLoading(true)
+        sendRequest('api.checkout.order', 'get', this.params).finally(() => {
+          this.store.formLoading(false)
+        }).then(this.cancelLocation, this.cancelLocation)
+      },
+      cancelLocation: function(model){
+        if (!model.submitToMerchant()){
+          location.assign(this.options.link)
+        }
+      },
       submitSuccess: function (model) {
         if(!model) return;
         this.$root.$emit('success', model)
@@ -174,6 +190,10 @@
         this.options.title = this.options.title || model.attr('merchant.localized_name')
         this.options.logo_url = this.options.logo_url || model.attr('merchant.logo_url')
         this.options.offerta_url = this.options.offerta_url || model.attr('merchant.offerta_url')
+
+        this.options.methods = this.options.methods.concat(model.attr('tabs_order') || []).filter(function(item, pos, self) {
+          return self.indexOf(item) === pos;
+        })
 
         this.params.fee = model.attr('client_fee') || 0
         this.options.customer_fields = model.attr('customer_required_data') || []

@@ -3,7 +3,6 @@
 // TODO create color template param
 // TODO ? f-fields create root div
 // TODO support material
-
 // TODO field input v-if add identical :key
 // TODO create component type="checkbox" f-offer
 

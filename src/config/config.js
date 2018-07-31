@@ -68,7 +68,7 @@ export default {
       card_icons: validatorArray(cardIcons),
       fields: {type: 'boolean'},
       title: {type: 'string'},
-      link: {type: 'url'},
+      link: {type: 'url',required: true},
       full_screen: {type: 'boolean'},
       button: {type: 'boolean'},
       locales: validatorArray(locales),
@@ -80,6 +80,7 @@ export default {
       active_tab: {type: 'enum', enum: methods},
       logo_url: {type: 'url'},
       offerta_url: {type: 'url'},
+      cancel: {type: 'boolean'},
     }
   },
   popup: {

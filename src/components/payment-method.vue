@@ -11,11 +11,14 @@
     </transition>
     <regular v-if="regular.insert && method === 'card'"></regular>
     <offer v-if="options.offerta_url"></offer>
-    <div class="f-block" v-if="options.button">
+    <div class="f-block">
       <div class="f-block-sm">
-        <button @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]" :disabled="disabled">
+        <button v-if="options.button" @click="onSubmit()" type="button" :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]" :disabled="disabled">
           <span v-t="{path: 'pay', args: args}"></span>
         </button>
+        <div v-if="options.cancel" class="f-text-center">
+          <a :class="[$css.btn, 'f-btn-link']" href="" v-t="'cancel'" @click.prevent="onCancel()"></a>
+        </div>
         <div class="f-hidden-desktop">
           <i class="f-icon f-icon-block f-i-security"></i>
         </div>
@@ -35,7 +38,7 @@
   import Fields from '@/components/payment-fields'
 
   export default {
-    props: ['onSubmit', 'disabled'],
+    props: ['disabled'],
     data () {
       return {
       }
@@ -66,6 +69,13 @@
       Offer,
       Fields
     },
-    methods: {}
+    methods: {
+      onSubmit: function(){
+        this.$emit('on-submit')
+      },
+      onCancel: function(){
+        this.$emit('on-cancel')
+      }
+    }
   }
 </script>

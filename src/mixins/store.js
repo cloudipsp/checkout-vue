@@ -20,7 +20,7 @@ const install = (Vue) => {
     },
     data () {
       return {
-        store: this.store, // store make reactive
+        state: this.store.state, // store make reactive
       }
     },
   })

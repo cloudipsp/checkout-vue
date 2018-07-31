@@ -36,20 +36,21 @@ Name                  | Type        | Default                 | Description     
 `cash`                | Array       |                         | support `liqpay`.                                                                   |
 `fast`                | Array       |                         | support .                                                                           |
 `card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.  |
-`fields`              | Boolean     | false                   |                                                                                     |
 `title`               | String      |                         |                                                                                     | options or server
 `link`                | String      |                         | format url                                                                          | server or options
 `full_screen`         | Boolean     | true                    |                                                                                     |
-`button`              | Boolean     | true                    |                                                                                     |
 `locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
-`email`               | Boolean     | false                   |                                                                                     | server or options
-`tooltip`             | Boolean     | true                    |                                                                                     |
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
-`fee`                 | Boolean     | true                    |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
 `active_tab`          | String      |                         | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
+`button`              | Boolean     | true                    |                                                                                     |
+`cancel`              | Boolean     | true                    |                                                                                     |
+`fee`                 | Boolean     | true                    |                                                                                     |
+`tooltip`             | Boolean     | true                    |                                                                                     |
+`email`               | Boolean     | false                   |                                                                                     | server or options
+`fields`              | Boolean     | false                   |                                                                                     |
 
 ### popup
 Name                  | Type        | Default                 | Description
