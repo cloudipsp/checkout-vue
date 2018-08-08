@@ -265,7 +265,7 @@
       },
       autoFocus: function () {
         if (this.errors.count()) {
-          let $firstErrorField = this.$el.querySelector('[data-vv-id="' + this.errors.items[0].id + '"]')
+          let $firstErrorField = this.$el.querySelector('#'+ this.errors.items[0].field)
           $firstErrorField.scrollIntoView()
           $firstErrorField.focus()
         }
