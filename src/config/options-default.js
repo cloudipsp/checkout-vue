@@ -1,4 +1,6 @@
-export default {
+import configLocales from '@/config/locales'
+
+const options = {
   options: {
     methods: ['card'],
     ibank: [],
@@ -9,7 +11,6 @@ export default {
     title: '',
     full_screen: true,
     link: '',
-    offer: '',
     locales: [],
     messages: {},
     api_domain: 'api.fondy.eu',
@@ -56,7 +57,16 @@ export default {
     lang: 'en',
     custom: {},
     customer_data: {},
+    order_id: ''
   },
   template: {},
   messages: {},
+  validate: {},
 }
+
+configLocales.forEach(function (locale) {
+  options.messages[locale] = {}
+  options.validate[locale] = {}
+})
+
+export default options

@@ -2,6 +2,7 @@ import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
+import configPriority from '@/config/priority'
 import notSet from '@/config/not-set'
 import { getCookie, setOrigin, deepMerge, validate, sendRequest } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
@@ -22,25 +23,22 @@ export default {
       system: undefined,
     },
     css: {},
-    validate: {},
     loading: false,
     cards: [],
     submit: false,
     read_only: false,
+    need_verify_code: false,
     verification_type: '',
-    need_verify_code: false
   },
+  // server: {
+  //   ...JSON.parse(JSON.stringify(optionsDefault))
+  // },
+  default: optionsDefault,
   setOptions(optionsUser, $i18n) {
     this.optionsFormat(optionsUser)
     validate(optionsUser)
     this.user = optionsUser
-    this.default = optionsDefault
-    deepMerge(this.state.params, optionsUser.params, notSet.params)
-    Object.assign(this.state.options, optionsUser.options, notSet.options)
-    Object.assign(this.state.regular, optionsUser.regular)
-    Object.assign(this.state.messages, optionsUser.messages)
-    Object.assign(this.state.validate, optionsUser.validate)
-    Object.assign(this.state.popup, optionsUser.popup)
+    deepMerge(this.state, optionsUser, notSet)
     this.setFast()
     this.setCss()
     this.setLocale()
@@ -68,32 +66,40 @@ export default {
       }
     }
   },
-  priority: function(priority, field, server){
-    // 'user' 'server' 'default' 'state'
+  priority: function(field, priority){
+    priority = priority || this.attr(configPriority, field)
     let priorityValue = []
 
+    if(!priority) return
+
     priority.forEach((item) => {
-      let data = this[item]
-      if(data){
-        priorityValue.push(this.attr(data, field))
-      } else {
-        priorityValue.push(server)
-      }
+      priorityValue.push(this.attr(this[item], field))
     })
-    return this.merge(priorityValue)
+    this.attr(this.state, field, this.merge(priorityValue))
   },
-  attr: function(data, field){
-    field = (field || '').split('.')
-    let prop = field.pop()
-    for (let i = 0; i < field.length; i++) {
-      if (data && data.hasOwnProperty(field[i])) {
-        data = data[field[i]];
+  attr: function(data, name, value){
+    name = (name || '').split('.')
+    let prop = name.pop()
+    let len = arguments.length
+    for (let i = 0; i < name.length; i++) {
+      if (data && data.hasOwnProperty(name[i])) {
+        data = data[name[i]];
       }
       else {
-        break;
+        if (len === 3) {
+          data = (data[name[i]] = {});
+        }
+        else {
+          break;
+        }
       }
     }
-    return data[prop];
+    if (len === 2) {
+      return data ? data[prop] : null;
+    }
+    if (len === 3) {
+      data[prop] = value;
+    }
   },
   merge: function(data){
     for (let i = 0; i < data.length; i++) {
@@ -101,6 +107,22 @@ export default {
         return data[i]
       }
     }
+  },
+  mergeServer: function() {
+    function merge(obj, field){
+      for ( let prop in obj ) {
+        if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
+          let f  = (field && field.slice()) || []
+          f.push(prop)
+          if (isObject(obj[prop])) {
+            merge.call(this, obj[prop], f);
+          } else {
+            this.priority(f.join('.'))
+          }
+        }
+      }
+    }
+    merge.call(this, this.server)
   },
   setFast: function () {
     let fast = []

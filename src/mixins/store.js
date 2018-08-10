@@ -9,8 +9,9 @@ const install = (Vue) => {
         this.store = options.parent.store
       }
 
+      if(!this.store) return
       // alias
-      // this.state = this.store.state
+      this.state = this.store.state
       this.options = this.store.state.options
       this.regular = this.store.state.regular
       this.params = this.store.state.params
@@ -20,7 +21,7 @@ const install = (Vue) => {
     },
     data () {
       return {
-        state: this.store.state, // store make reactive
+        store: this.store, // store make reactive
       }
     },
   })

@@ -61,6 +61,12 @@
       show: function (show) {
         document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
       },
+//      'store.server': {
+//        handler: function () {
+//          this.store.mergeServer()
+//        },
+//        deep: true
+//      }
     },
     created: function () {
       this.createdEvent()
@@ -132,9 +138,10 @@
             }
           }
           params.payment_system = this.router.system || this.router.method
-// TODO ?
-//          if(!this.store.state.need_verify_code)
           params.custom = custom
+          if(this.store.state.need_verify_code){
+            delete params.custom
+          }
           params.amount = params.amount / 100
           if(this.params.recurring_data.amount){
             this.params.recurring_data.amount = this.params.recurring_data.amount / 100
@@ -184,6 +191,25 @@
         this.orderSuccess(model.instance(model.attr('order')))
       },
       infoSuccess: function (model) {
+//        deepMerge(this.store.server, {
+//          options: {
+//            link: model.attr('merchant_url'),
+//            email: model.attr('checkout_email_required'),
+//            title: model.attr('merchant.localized_name'),
+//            logo_url: model.attr('merchant.logo_url'),
+//            offerta_url: model.attr('merchant.offerta_url'),
+//            methods: model.attr('tabs_order'),
+//            customer_fields: model.attr('customer_required_data'),
+//          },
+//          params: {
+//            lang: model.attr('lang'),
+//            fee: model.attr('client_fee'),
+//            order_desc: model.attr('order.order_desc'),
+//          },
+//          regular: {
+//            insert: model.attr('order.subscription'),
+//          },
+//        })
         this.options.link = model.attr('merchant_url') || this.options.link
         this.params.lang =  model.attr('lang') || this.params.lang
         this.options.email = model.attr('checkout_email_required') || this.options.email
@@ -215,6 +241,19 @@
         let order_data = model.attr('order_data')
 
         if (!order_data) return
+
+//        deepMerge(this.store.server, {
+//          params: {
+//            amount: order_data.amount,
+//            recurring_data: {
+//              amount: order_data.amount,
+//            },
+//            currency: order_data.currency,
+//            merchant_id: order_data.merchant_id,
+//            email: order_data.sender_email,
+//            order_id: order_data.order_id,
+//          }
+//        })
 
         this.location(model)
 
@@ -288,7 +327,7 @@
           }
           validate({params: params})
           if(!this.error.errors.length) {
-            deepMerge(this.params, params, notSet)
+            deepMerge(this.params, params, notSet.params)
             this.getAmountWithFee()
           }
         })

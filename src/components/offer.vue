@@ -1,11 +1,11 @@
 <template>
   <div class="f-offer" :class="[hasError ? $css.he : '']">
-    <tooltip :text="errors.first('offer')" :enable="errors.has('offer')" target="#f-offer">
+    <tooltip :text="errors.first('f-offer')" :enable="errors.has('f-offer')" target="#f-offer">
       <input
         v-model="params.offer"
         v-validate="'required'"
         :data-vv-as="$t('offer')"
-        data-vv-name="offer"
+        data-vv-name="f-offer"
         type="checkbox"
         class="f-checkbox"
         id="f-offer"

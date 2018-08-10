@@ -41,9 +41,11 @@ export default {
     placeholder_() {
       return this.$t(this.placeholder)
     },
+    flag() {
+      return this.$validator.flags[this.name_]
+    },
     hasError() {
-      let flag = this.$validator.flags[this.name_]
-      return this.errors.has(this.name_) && ((flag && flag.touched) || this.store.state.submit)
+      return this.errors.has(this.name_) && ((this.flag && this.flag.touched) || this.store.state.submit)
     }
   },
   created() {
