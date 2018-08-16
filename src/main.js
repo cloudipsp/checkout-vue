@@ -7,34 +7,20 @@
 // TODO create component type="checkbox" f-offer
 
 import Vue from 'vue'
-import VeeValidate, { Validator } from 'vee-validate'
+import VeeValidate from 'vee-validate'
 import Checkout from '@/checkout'
 import { i18n } from '@/i18n'
 import { isString, isObject } from '@/utils/object'
 import store from '@/store'
 import Store from '@/mixins/store'
+import Validator from '@/mixins/validator'
 
 const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
-  Validator.extend('customer_field', {
-    getMessage: (field) => `The ${field} field format is invalid.`,
-    validate: value => /^(?!\s)[0-9A-Za-z-\/\s\.,]+(?!\s)$/.test(value)
-  })
-  Validator.extend('phone', {
-    getMessage: (field) => `The ${field} field format is invalid.`,
-    validate: value => /^\+?\d{7,14}$/.test(value)
-  })
-  Validator.extend('numrange', {
-    getMessage: (field) => `Transfer amount limit exceeded.`,
-    validate: (value, range) => {
-      value = parseInt(value,10);
-      range = range.map(function(i){ return parseInt(i,10)})
-      return range[0]<=value && value<=range[1]
-    }
-  })
 
   Vue.use(VeeValidate, { inject: false })
   Vue.use(Store)
+  Vue.use(Validator)
 
   window.fondy = function (el, optionsUser) {
     optionsUser = optionsUser || {}
