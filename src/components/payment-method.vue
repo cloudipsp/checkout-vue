@@ -31,6 +31,7 @@
   import Card from '@/components/card'
   import Emoney from '@/components/emoney'
   import Ibank from '@/components/ibank'
+  import Trustly from '@/components/trustly'
   import Cash from '@/components/cash'
   import Sepa from '@/components/sepa'
   import Regular from '@/components/regular'
@@ -63,6 +64,7 @@
       Card,
       Emoney,
       Ibank,
+      Trustly,
       Cash,
       Sepa,
       Regular,

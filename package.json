@@ -20,7 +20,7 @@
   "unpkg": "dist/checkout.js",
   "dependencies": {
     "async-validator": "^1.8.2",
-    "fondy-icons": "^1.0.1",
+    "fondy-icons": "^1.0.3",
     "ipsp-js-sdk": "^1.0.15",
     "vee-validate": "^2.1.0-beta.7",
     "vue": "^2.5.16",

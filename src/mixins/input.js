@@ -25,8 +25,12 @@ export default {
       type: Boolean,
       default: false
     },
+    model: {
+      type: Object
+    },
     value: String,
-    inputmode: String
+    inputmode: String,
+    readonly: Boolean,
   },
   computed: {
     name_() {
@@ -49,6 +53,9 @@ export default {
     }
   },
   created() {
+    if(this.model) {
+      this.params = this.model
+    } else
     if(this.custom) {
       this.params = this.store.state.params.custom
     } else

@@ -1,1 +1,1 @@
-export default ['card', 'emoney', 'ibank', 'cash', 'sepa']
+export default ['card', 'emoney', 'ibank', 'trustly', 'cash', 'sepa']

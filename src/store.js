@@ -38,7 +38,12 @@ export default {
     this.optionsFormat(optionsUser)
     validate(optionsUser)
     this.user = optionsUser
-    deepMerge(this.state, optionsUser, notSet)
+    deepMerge(this.state.params, optionsUser.params, notSet.params)
+    Object.assign(this.state.options, optionsUser.options, notSet.options)
+    Object.assign(this.state.regular, optionsUser.regular)
+    Object.assign(this.state.messages, optionsUser.messages)
+    Object.assign(this.state.validate, optionsUser.validate)
+    Object.assign(this.state.popup, optionsUser.popup)
     this.setFast()
     this.setCss()
     this.setLocale()

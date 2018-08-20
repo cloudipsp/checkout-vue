@@ -8,6 +8,7 @@
         :mask="mask"
         :masked="masked"
         :readonly="readonly"
+        :disabled="readonly"
         :id="name_"
       >
     </the-mask>
@@ -89,7 +90,6 @@
       mask: [String, Object],
       masked: Boolean,
       group: Boolean,
-      readonly: Boolean,
     },
     data () {
       return {

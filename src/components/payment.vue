@@ -220,6 +220,7 @@
         this.options.methods = this.options.methods.concat(model.attr('tabs_order') || []).filter(function(item, pos, self) {
           return self.indexOf(item) === pos;
         })
+        this.options.tabs = model.attr('tabs')
 
         this.params.fee = model.attr('client_fee') || 0
         this.options.customer_fields = model.attr('customer_required_data') || []

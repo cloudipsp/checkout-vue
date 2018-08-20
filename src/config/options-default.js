@@ -4,6 +4,7 @@ const options = {
   options: {
     methods: ['card'],
     ibank: [],
+    trustly: [],
     emoney: [],
     cash: [],
     fast: [],

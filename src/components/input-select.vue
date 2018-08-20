@@ -8,6 +8,9 @@
       :data-vv-name="name_"
       :class="[$css.fc, hasError ? $css.ie : '']"
       :id="name_"
+      :readonly="readonly"
+      :disabled="readonly"
+      @input="input"
     >
       <option v-for="item in list" :key="item.id || item" :value="item.id || item" v-t="item.name || item"></option>
     </select>
@@ -24,6 +27,11 @@
     props: {
       list: {
         type: Array
+      }
+    },
+    methods:{
+      input($event){
+        this.$emit('input', $event.target.value)
       }
     }
   }

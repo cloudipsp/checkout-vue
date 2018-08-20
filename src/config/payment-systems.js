@@ -8,9 +8,6 @@ export default {
     },
     raiffeisen: {
       i: 'raiffeisen'
-    },
-    trustly: {
-      i: 'trustly'
     }
   },
   emoney: {

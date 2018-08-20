@@ -1,9 +1,10 @@
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
+import configMethods from '@/config/methods'
 import rules from 'async-validator/es/rule/'
 
 let i18n = {}
-let methods = ['card', 'emoney', 'ibank', 'cash', 'sepa']
+let methods = configMethods
 let ibank = Object.keys(configPaymentSystems.ibank)
 let emoney = Object.keys(configPaymentSystems.emoney)
 let cash = Object.keys(configPaymentSystems.cash)
