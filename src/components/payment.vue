@@ -228,7 +228,7 @@
         //this.params.amount_with_fee = parseInt(order.actual_amount * 100)
         this.params.order_desc = this.params.order_desc || model.attr('order.order_desc')
 
-        this.regular.insert = model.attr('order.subscription')
+//        this.regular.insert = model.attr('order.subscription')
 
         if(model.attr('order.verification')){
           this.store.state.verification_type = model.attr('verification_type')
