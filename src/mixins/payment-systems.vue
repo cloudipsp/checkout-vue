@@ -33,19 +33,14 @@
       list () {
         return this.paymentSystems
       },
-      icon: (vm) => (item) => vm.config[item].i || item,
-      text: (vm) => (item) => vm.config[item].name || item
+      icon: (vm) => (item) => vm.config[item].i,
+      text: (vm) => (item) => item
     },
     methods: {
       setPaymentSystem: function (system) {
         let active = system || this.router.system || this.list[0]
         this.router.system = active
         this.active = active
-      }
-    },
-    watch: {
-      'router.system' (to, from) {
-        this.setPaymentSystem()
       }
     }
   }

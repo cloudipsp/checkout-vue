@@ -32,31 +32,55 @@
           ...item
         }))
       },
+      mapper () {
+        let result = {}
+        this.configArray.forEach(function(item){
+          result[item.bank_logo] = item.id
+        })
+        return result
+      },
       country () {
-        return Object.values(this.config)
+        let result = this.values
           .map((item)=>item.country)
           .filter((item, key, self)=>self.indexOf(item) === key)
+          .map((item)=>({
+            id: item,
+            name: this.$t(item)
+          }))
+        return this.sort(result, 'name');
       },
       listSelect () {
         return this.configArray
           .filter((item)=>item.country===this.formData.country)
           .map((item)=>item.id)
       },
-      sort () {
+      listSort () {
         return sort
-          .map((item)=>String(item))
+          .map((item)=>this.mapper[item])
           .filter((item)=>this.listSelect.indexOf(item)>-1)
       },
       list () {
-        return this.sort
+        return this.listSort
           .concat(this.listSelect)
           .filter((item, key, self)=>self.indexOf(item) === key)
-      }
+      },
+      icon: (vm) => (item) => vm.config[item].bank_logo,
+      text: (vm) => (item) => vm.config[item].name
     },
     created(){
       this.$slots.default = this.renderSlot(this.$createElement)
     },
     methods: {
+      sort: function (arr, field, reverse) {
+        reverse = reverse ? -1 : 1;
+        return arr.sort((a, b) => {
+          if(String.prototype.localeCompare){
+            return a[field].localeCompare(b[field], this.$i18n.locale) * reverse;
+          } else {
+            return (a[field] < b[field] ? -1 : 1) * reverse;
+          }
+        });
+      },
       renderSlot (h) {
         return h('div', {
           class: {

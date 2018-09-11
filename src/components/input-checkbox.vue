@@ -1,7 +1,7 @@
 <template>
   <div :class="['f-form-group', hasError ? $css.he : '']">
     <input
-      v-model="params[field_]"
+      v-model="params.offer"
       v-validate="validate"
 
       :data-vv-as="label_"
