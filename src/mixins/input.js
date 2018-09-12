@@ -50,6 +50,14 @@ export default {
     },
     hasError() {
       return this.errors.has(this.name_) && ((this.flag && this.flag.touched) || this.store.state.submit)
+    },
+    value_: {
+      get(){
+        return this.params[this.field_]
+      },
+      set(v){
+        this.params[this.field_] = v
+      }
     }
   },
   created() {

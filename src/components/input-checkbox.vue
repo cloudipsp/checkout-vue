@@ -1,9 +1,8 @@
 <template>
   <div :class="['f-form-group', hasError ? $css.he : '']">
     <input
-      v-model="params.offer"
+      v-model="value_"
       v-validate="validate"
-
       :data-vv-as="label_"
       :data-vv-name="name_"
       type="checkbox"
