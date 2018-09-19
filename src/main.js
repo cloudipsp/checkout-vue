@@ -14,6 +14,7 @@ import { isString, isObject } from '@/utils/object'
 import store from '@/store'
 import Store from '@/mixins/store'
 import Validator from '@/mixins/validator'
+import { iframeCreate } from '@/utils/helpers'
 
 const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
@@ -27,6 +28,8 @@ const install = function (Vue, VeeValidate) {
     if (!isString(el)) return console.error('Selector not a string')
     if (!isObject(optionsUser)) return console.error('Options not an object')
     if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
+
+    iframeCreate(optionsUser.options.api_domain || optionsUser.options.apiDomain)
 
     return new Vue({
       i18n,

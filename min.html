@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    console.time(['api.checkout', 'app'].join('.'))
+  </script>
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://api.dev.fondy.eu">
+
+
+
+  <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script type=text/javascript src="node_modules/ipsp-js-sdk/dist/checkout.min.js"></script>
+  <!--<script type=text/javascript src="https://unpkg.com/ipsp-js-sdk@latest/dist/checkout.min.js"></script>-->
+</head>
+<body>
+<script>
+
+  console.time('load iframe');
+  var api = $checkout('Api');
+  api.setOrigin('https://api.dev.fondy.eu');
+  api.create();
+  api.scope(function () {
+    console.timeEnd('load iframe');
+    this.request('api.checkout', 'app', {
+      merchant_id: 900024,
+      token: '1ee9c70723efab151a93937cdbc7a6fc7b961fb0'
+    }).then(
+      function (model) {
+        console.timeEnd(['api.checkout', 'app'].join('.'))
+      },
+      function (model) {
+        console.timeEnd(['api.checkout', 'app'].join('.'))
+      })
+  })
+</script>
+</body>
+</html>

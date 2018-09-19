@@ -11,8 +11,12 @@ api.on('modal.close', function () {
   store.state.loading = false
 })
 
-export function setOrigin () {
-  api.setOrigin('https://' + store.state.options.api_domain)
+export function iframeCreate(apiDomain){
+  console.time('load iframe')
+  if(apiDomain){
+    api.setOrigin('https://' + apiDomain)
+  }
+  api.create()
 }
 
 export function sendRequest (name, method, params, cacheName) {
@@ -23,9 +27,13 @@ export function sendRequest (name, method, params, cacheName) {
     } else if (cacheName && cacheError[id]) {
       reject(cacheError[id])
     } else {
+      console.timeEnd(['start', name, method].join('.'))
+      console.time([name, method].join('.'))
       api.scope(function () {
+        console.timeEnd('load iframe')
         this.request(name, method, params).then(
           function (model) {
+            console.timeEnd([name, method].join('.'))
             console.log(name, method, params)
             console.log('done', model)
             // store.showError(String(model.attr('error.code')), model.attr('error.message'))
@@ -35,6 +43,7 @@ export function sendRequest (name, method, params, cacheName) {
             resolve(model)
           },
           function (model) {
+            console.timeEnd([name, method].join('.'))
             console.log(name, method, params)
             console.log('fail', model)
             store.showError(String(model.attr('error.code')), model.attr('error.message'))

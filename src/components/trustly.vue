@@ -12,7 +12,7 @@
     data () {
       return {
         formData: {
-          country: 'PL'
+          country: this.options.default_country
         }
       }
     },

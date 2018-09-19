@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      console.time(['mounted', 'card'].join('.'))
+      console.time(['start', 'api.checkout', 'app'].join('.'))
+    </script>
     <meta charset=utf-8>
     <meta name=viewport content="width=device-width,initial-scale=1">
     <title>checkout-vue</title>
@@ -68,7 +72,7 @@
   </div>
   <div class="f-block f-block-hr">
     <div class="f-block-sm">
-      <input-amount name="amount" label="Сума к оплате" :on-input="onInput"></input-amount>
+      <input-amount name="amount" label="Сума к оплате"></input-amount>
       <input-text name="field_5" validate="required|alpha_num" custom></input-text>
     </div>
   </div>
@@ -80,7 +84,7 @@
       <input-hidden name="test" value="test2" custom></input-hidden>
       <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
       <input-text name="my_email" validate="required|email" custom></input-text>
-      <input-amount name="amount" label="my_amount" :on-input="onInput"></input-amount>
+      <input-amount name="amount" label="my_amount"></input-amount>
     </div>
   </div>
 </script>
@@ -125,7 +129,7 @@ var maxOptions = {
 //    amount: 500,
     order_desc: 'my_desc',
 //    response_url: 'https://www.fondy.eu',
-    token: '55dc1b153aedf596e74ba206e4ec5646a718b457',
+//    token: 'db7fbf994724d688b25c978ce630ebd749341495',
     lang: 'ru',
     recurring_data: {
       every: 2,
@@ -178,21 +182,25 @@ var maxOptions = {
 
 var minOptions = {
   options: {
-    fullScreen: true,
-    fee: true,
+    api_domain: 'api.dev.fondy.eu',
+    link: 'https://fondy.eu',
+    fullScreen: false,
+//    fee: true,
   },
   params: {
-    merchant_id: 1396424,
+//    currency: 'UAH',
+//    merchant_id: 1396424,
+    merchant_id: 900024,
 //    lang: 'ru',
-    order_desc: 'Тестовый платеж',
+//    order_desc: 'Тестовый платеж',
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-//    token: 'ea28f1fa0dee99204a9d89fde75b55aa1a121e51'
+    token: 'd038bf2fd511f7098d7babc136bd600f9c13f2f0'
   }
 }
 
-var app = fondy('#app', maxOptions)
+var app = fondy('#app', minOptions)
   .$on('success', function(model) {
     console.log('сработало событие success');
   })

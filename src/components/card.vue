@@ -173,8 +173,8 @@
         }
       }
     },
-    created: function () {
-      sendRequest('api.checkout.cards', 'get', {token: this.params.token}).then(this.cardsSuccess, function () {})
+    mounted: function () {
+      console.timeEnd(['mounted', 'card'].join('.'))
     },
     methods: {
       imagePath: function (id) {
@@ -188,31 +188,6 @@
         this.$nextTick(() => {
           this.$validator.validateAll()
         })
-      },
-      cardsSuccess: function (model) {
-        if(this.store.state.need_verify_code) return
-
-        this.store.state.cards = Object.values(model.data)
-//        this.store.state.cards = [{
-//          card_number: '4444 55XX XXXX 6666',
-//          expiry_date: '12 / 17',
-//          email: 'asd@asd.asd',
-//          hash: '725272f6b133a2a9357f413fed91138bb0bf1893',
-//          read_only: true
-//        },
-//        {
-//          card_number: '4444 55XX XXXX 1111',
-//          expiry_date: '11 / 19',
-//          email: 'test@asd.asd',
-//          hash: '4e1ec8228e78bd2900774d61ca63eaa0ffd3c'
-//        }]
-        if (this.store.state.cards.length) {
-          this.$validator.detach('f-card_number')
-          this.store.setCardNumber(this.store.state.cards[0])
-          this.$nextTick(() => {
-            this.$validator.validateAll()
-          })
-        }
       },
     },
     components: {

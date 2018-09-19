@@ -20,11 +20,9 @@
       return {
       }
     },
-    methods: {
-      onInput: function (v) {
-        if (v) {
-          this.store.getAmountWithFee();
-        }
+    watch: {
+      'params.amount' () {
+        this.store.getAmountWithFee()
       }
     },
     components: {

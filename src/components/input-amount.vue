@@ -27,9 +27,6 @@
 
   export default {
     mixins: [Input],
-    props: {
-      onInput: Function
-    },
     data () {
       return {
       }
@@ -46,9 +43,6 @@
           }
           this.params[this.field_] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
           this.$validator.validate(this.name_, v)
-          if (this.onInput) {
-            this.onInput(v, this.field_)
-          }
         }
       }
     }
