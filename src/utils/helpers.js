@@ -1,9 +1,10 @@
-import $checkout from 'ipsp-js-sdk/dist/checkout'
+// import $checkout from 'ipsp-js-sdk/dist/checkout'
 import store from '@/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
 
-let api = $checkout('Api')
+// let api = $checkout('Api')
+let api = window.$checkout('Api')
 let cache = {}
 let cacheError = {}
 
@@ -11,13 +12,13 @@ api.on('modal.close', function () {
   store.state.loading = false
 })
 
-export function iframeCreate(apiDomain){
-  console.time('load iframe')
-  if(apiDomain){
-    api.setOrigin('https://' + apiDomain)
-  }
-  api.create()
-}
+// export function iframeCreate(apiDomain){
+//   console.time('load iframe')
+//   if(apiDomain){
+//     api.setOrigin('https://' + apiDomain)
+//   }
+//   api.create()
+// }
 
 export function sendRequest (name, method, params, cacheName) {
   return new Promise(function (resolve, reject) {

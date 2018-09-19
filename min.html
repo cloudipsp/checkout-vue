@@ -4,10 +4,6 @@
   <script>
     console.time(['api.checkout', 'app'].join('.'))
   </script>
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://api.dev.fondy.eu">
-
-
 
   <meta charset="UTF-8">
     <title>Title</title>
@@ -26,7 +22,7 @@
     console.timeEnd('load iframe');
     this.request('api.checkout', 'app', {
       merchant_id: 900024,
-      token: '1ee9c70723efab151a93937cdbc7a6fc7b961fb0'
+      token: '80c81958402f177f6aaed260fca1971c8d5139d9'
     }).then(
       function (model) {
         console.timeEnd(['api.checkout', 'app'].join('.'))

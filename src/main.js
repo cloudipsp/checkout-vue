@@ -29,7 +29,7 @@ const install = function (Vue, VeeValidate) {
     if (!isObject(optionsUser)) return console.error('Options not an object')
     if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
 
-    iframeCreate(optionsUser.options.api_domain || optionsUser.options.apiDomain)
+    // iframeCreate(optionsUser.options.api_domain || optionsUser.options.apiDomain)
 
     return new Vue({
       i18n,

@@ -35,6 +35,7 @@
       }
     </style>
     <link href=checkout.css rel=stylesheet>
+    <script type=text/javascript src=sdk.js></script>
     <script type=text/javascript src=checkout.js></script>
     <script type=text/javascript src=i18n/ru.js></script>
     <script type=text/javascript src=i18n/uk.js></script>
@@ -90,6 +91,15 @@
 </script>
 
 <script>
+  console.time('load iframe');
+  var api = $checkout('Api');
+  api.setOrigin('https://api.dev.fondy.eu');
+  api.create();
+
+  api.on('checkout.api', init);
+
+
+  function init(){
 var maxOptions = {
   options: {
     methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
@@ -196,7 +206,7 @@ var minOptions = {
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-    token: 'd038bf2fd511f7098d7babc136bd600f9c13f2f0'
+    token: '80c81958402f177f6aaed260fca1971c8d5139d9'
   }
 }
 
@@ -233,6 +243,7 @@ document.getElementById('set-params').addEventListener('click', function () {
     }
   })
 })
+  }
 </script>
   </body>
 </html>
