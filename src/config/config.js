@@ -69,7 +69,7 @@ export default {
       card_icons: validatorArray(cardIcons),
       fields: {type: 'boolean'},
       title: {type: 'string'},
-      link: {type: 'url',required: true},
+      link: {type: 'url'},
       full_screen: {type: 'boolean'},
       button: {type: 'boolean'},
       locales: validatorArray(locales),
