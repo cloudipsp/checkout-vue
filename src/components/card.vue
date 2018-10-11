@@ -173,9 +173,6 @@
         }
       }
     },
-    mounted: function () {
-      console.timeEnd(['mounted', 'card'].join('.'))
-    },
     methods: {
       imagePath: function (id) {
         return require('../assets/img/' + id + '.svg')

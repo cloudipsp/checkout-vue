@@ -14,7 +14,7 @@
         </div>
         <div class="f-row">
           <div class="f-col-xs-6" v-t="{path: 'number_payment', args: [$t(options.title)]}"></div>
-          <div class="f-col-xs-6 f-text-bold">{{ order.order_id }}</div>
+          <div class="f-col-xs-6 f-text-bold f-hyphens">{{ order.order_id }}</div>
         </div>
       </div>
     </div>
