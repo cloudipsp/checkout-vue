@@ -113,7 +113,7 @@
         return {
           rules: {
             required: true,
-            credit_card: !/\d{6}X/.test(this.params.card_number)
+            ccard: !/\d{6}X/.test(this.params.card_number)
           }
         }
       },
