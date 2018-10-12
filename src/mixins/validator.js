@@ -17,6 +17,27 @@ const install = (Vue) => {
       return range[0]<=value && value<=range[1]
     }
   })
+  Validator.extend('ccard', {
+    getMessage: (field) => `The ${field} field format is invalid.`,
+    validate: (value) => {
+      let REGEXP_LUHN_DASHED = /^[\d\-\s]+$/;
+      if (!REGEXP_LUHN_DASHED.test(value))
+        return false
+      let nCheck = 0, nDigit = 0, bEven = false
+      let strippedField = value.replace(/\D/g, '')
+      for (let n = strippedField.length - 1; n >= 0; n--) {
+        let cDigit = strippedField.charAt(n)
+        nDigit = parseInt(cDigit, 10)
+        if (bEven) {
+          if ((nDigit *= 2) > 9)
+            nDigit -= 9
+        }
+        nCheck += nDigit
+        bEven = !bEven
+      }
+      return (nCheck % 10) === 0
+    }
+  })
 }
 
 export default { install }
