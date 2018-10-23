@@ -49,22 +49,7 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /(node_modules).*\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1,
-              name: utils.assetsPath('img/[name].[ext]')
-            }
-          },
-          'image-webpack-loader'
-        ]
-
-      },
-      {
-        // картинки не с node_modules конвертировать в base64
-        test: /^((?!node_modules).)*\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
             loader: 'url-loader',
