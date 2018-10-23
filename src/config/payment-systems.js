@@ -1,32 +1,16 @@
 export default {
   ibank: {
-    p24: {
-      i: 'p24'
-    },
-    platba24: {
-      i: 'platba24'
-    },
-    raiffeisen: {
-      i: 'raiffeisen'
-    }
+    p24: {},
+    platba24: {},
+    raiffeisen: {}
   },
   emoney: {
-    paypal: {
-      i: 'paypal'
-    },
-    qiwi: {
-      i: 'qiwi'
-    },
-    webmoney: {
-      i: 'webmoney'
-    },
-    yamoney: {
-      i: 'yamoney'
-    }
+    paypal: {},
+    qiwi: {},
+    webmoney: {},
+    yamoney: {}
   },
   cash: {
-    liqpay: {
-      i: 'liqpay'
-    }
+    liqpay: {}
   }
 }

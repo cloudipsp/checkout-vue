@@ -10,7 +10,11 @@
         @click="setPaymentSystem(item)"
         :class="{active : item === active}"
       >
-        <div class="f-icon" :class="'f-i-' + icon(item)"></div>
+        <div class="f-icon"
+             :class="'f-i-' + icon(item)"
+             :style="{
+               backgroundImage:  'url(' + cdn + icon(item) + '.svg)'
+             }"></div>
         <div v-t="text(item)"></div>
       </div>
     </div>
@@ -23,7 +27,8 @@
     props: ['paymentSystems'],
     data () {
       return {
-        active: ''
+        active: '',
+        cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/'
       }
     },
     created: function () {
@@ -33,7 +38,7 @@
       list () {
         return this.paymentSystems
       },
-      icon: (vm) => (item) => vm.config[item].i,
+      icon: (vm) => (item) => vm.config[item].i || item,
       text: (vm) => (item) => item
     },
     methods: {

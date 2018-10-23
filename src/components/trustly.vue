@@ -98,11 +98,13 @@
                 name: 'country',
                 value: this.formData.country,
                 model: this.formData,
-                readonly: this.country.length === 1
+                readonly: this.country.length === 1,
+                validate: 'required'
               },
               on: {
                 input: (value) => {
                   this.formData.country = value
+                  this.$root.$emit('resize')
                 }
               }
             })
