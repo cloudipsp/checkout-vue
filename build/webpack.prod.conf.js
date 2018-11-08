@@ -59,15 +59,14 @@ const webpackConfig = merge(baseWebpackConfig, {
         test: /^((?!style-sm|style-md).)*\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [cssLoader, postcssLoader, 'less-loader']
+          use: [cssLoader, autoprefixerLoader, postcssLoader, 'less-loader']
         })
       }
     ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: {
-    'checkout.css': './src/less/style.less',
-    'checkout-dark.css': './src/less/style-dark.less',
+    'checkout-dark': './src/less/style-dark.less',
   },
   // output: {
   //   path: config.build.assetsRoot,
@@ -91,7 +90,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('[name]') // 'css/[name].[contenthash].css'
+      filename: utils.assetsPath('[name].css') // 'css/[name].[contenthash].css'
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -121,7 +120,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      // excludeChunks: ['checkout.css']
+      chunks: ['checkout'],
     }),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
