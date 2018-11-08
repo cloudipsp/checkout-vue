@@ -1,4 +1,5 @@
 export const messages = {
+  my_title: 'Назначение платежа',
   card: 'Оплата картой',
   card_number: 'Номер карты',
   card_number_p: 'XXXX XXXX XXXX XXXX',
@@ -12,7 +13,7 @@ export const messages = {
 
   regular: 'Регулярный платеж',
   regular_every: 'Периодичность',
-  regular_period: '&nbsp;',
+  regular_period: 'Период',
   regular_amount: 'Сума к оплате',
   regular_start_time: 'Начать с',
   day: 'День',
