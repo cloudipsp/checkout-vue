@@ -1,5 +1,4 @@
 export const messages = {
-  my_title: 'Призначення платежу',
   card: 'Оплата картою',
   card_number: 'Номер карти',
   card_number_p: 'XXXX XXXX XXXX XXXX',

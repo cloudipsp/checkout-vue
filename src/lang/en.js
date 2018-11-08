@@ -1,5 +1,4 @@
 export const messages = {
-  my_title: 'Order description',
   card: 'Payment by card',
   card_number: 'Card number',
   card_number_p: 'XXXX XXXX XXXX XXXX',
