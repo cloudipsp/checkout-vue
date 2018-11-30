@@ -12,7 +12,7 @@ export const messages = {
 
   regular: 'Регулярный платеж',
   regular_every: 'Периодичность',
-  regular_period: '&nbsp;',
+  regular_period: 'Период',
   regular_amount: 'Сума к оплате',
   regular_start_time: 'Начать с',
   day: 'День',

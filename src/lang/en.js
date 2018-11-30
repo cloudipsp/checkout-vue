@@ -1,7 +1,7 @@
 export const messages = {
   card: 'Payment by card',
   card_number: 'Card number',
-  card_number_p: '',
+  card_number_p: 'XXXX XXXX XXXX XXXX',
   expiry_date: 'Expiry date',
   expiry_date_p: 'MM/YY',
   cvv2: 'CVV2',
@@ -13,7 +13,7 @@ export const messages = {
   regular: 'Regular payment',
   regular_every: 'Periodicity',
   regular_every_p: '',
-  regular_period: '&nbsp;',
+  regular_period: 'Interval',
   regular_amount: 'Regular payment amount',
   regular_amount_p: '',
   regular_start_time: 'Begin with',
