@@ -12,14 +12,14 @@
       <div class="f-block-sm">
         <div class="f-row">
           <div class="f-col-xs-6">
-            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" inputmode="numeric" recurring placeholder="regular_every_p"></input-text>
+            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" inputmode="numeric" recurring placeholder="regular_every_p" :readonly="params.readonly"></input-text>
           </div>
           <div class="f-col-xs-6">
-            <input-select :list="options.period" name="regular_period" field="period" validate="required" recurring></input-select>
+            <input-select :list="options.period" name="regular_period" field="period" validate="required" recurring :readonly="params.readonly"></input-select>
           </div>
         </div>
-        <input-amount name="regular_amount" field="amount" recurring placeholder="regular_amount_p"></input-amount>
-        <input-text name="regular_start_time" field="start_time" validate="required" type="date" recurring></input-text>
+        <input-amount name="regular_amount" field="amount" recurring placeholder="regular_amount_p" :readonly="params.readonly"></input-amount>
+        <input-text name="regular_start_time" field="start_time" validate="required" type="date" recurring :readonly="params.readonly"></input-text>
       </div>
     </div>
   </div>
@@ -43,12 +43,6 @@
       this.params.start_time = this.recurringStartTime()
     },
     watch: {
-      'params.period': function () {
-        this.params.start_time = this.getFuturePeriod(this.params.period, this.params.every)
-      },
-      'params.every': function () {
-        this.params.start_time = this.getFuturePeriod(this.params.period, this.params.every)
-      },
       'options.open': {
         handler: function (value) {
           this.store.state.params.recurring = value ? 'y' : 'n'
@@ -111,11 +105,6 @@
         d.setFullYear(d.getFullYear() + 5)
         return this.getDateFormat(d)
       }
-//      recurringDefaultPeriod: function () {
-//        let every = this.attr('recurring.every') || '1'
-//        let period = this.attr('recurring.period') || 'month'
-//        return [every, period].join(',')
-//      }
     },
     components: {
       InputAmount,

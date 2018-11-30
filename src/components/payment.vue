@@ -73,11 +73,6 @@
 
       this.params.token = findGetParameter('token') ||  this.params.token
 
-      if (!parseInt(this.params.amount)) {
-        this.params.amount = 0
-        this.params.recurring_data.amount = 0
-      }
-
       if (!this.router.method) {
         this.store.location('payment-method', this.options.active_tab)
       }
@@ -250,6 +245,12 @@
           this.params.order_desc = 'verification_' + this.store.state.verification_type + '_d'
         }
 
+        let recurring_data = model.attr('order.recurring_data')
+        if(recurring_data){
+          Object.assign(this.params.recurring_data, recurring_data)
+          this.regular.insert = true
+        }
+
         this.store.showError(model.attr('order.error_code'), model.attr('order.error_description'))
       },
       orderSuccess: function(model) {
@@ -273,7 +274,6 @@
         this.location(model)
 
         this.params.amount = order_data.amount
-        this.params.recurring_data.amount = order_data.amount
         this.params.currency = order_data.currency
         this.params.merchant_id = order_data.merchant_id
         this.params.email = order_data.sender_email || this.params.email

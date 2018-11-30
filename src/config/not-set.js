@@ -11,5 +11,8 @@ export default {
     fee: 0,
     amount_with_fee: 0,
     // email: '',
+    recurring_data: {
+      readonly: false
+    }
   }
 }

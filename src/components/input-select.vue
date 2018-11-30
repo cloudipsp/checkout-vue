@@ -6,7 +6,7 @@
       v-model="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
-      :class="[$css.fc, hasError ? $css.ie : '']"
+      :class="[$css.fc, hasError ? $css.ie : '', classReadonly]"
       :id="name_"
       :readonly="readonly"
       :disabled="readonly"

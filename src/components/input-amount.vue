@@ -1,7 +1,7 @@
 <template>
   <div :class="['f-form-group', hasError ? $css.he : '']">
     <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
-    <div :class="$css.ig">
+    <div :class="[$css.ig, classReadonly]">
       <input
         v-validate="'required|decimal:2'"
         v-model="amount"
@@ -9,9 +9,11 @@
         :data-vv-as="label_"
         :data-vv-name="name_"
         type="tel"
-        :class="[$css.fc, $css.igi, hasError ? $css.ie : '']"
+        :class="[$css.fc, $css.igi, hasError ? $css.ie : '', classReadonly]"
         :id="name_"
         :placeholder="placeholder_"
+        :readonly="readonly"
+        :disabled="readonly"
         inputmode="numeric"
         @keyup.enter="onEnter"
       >

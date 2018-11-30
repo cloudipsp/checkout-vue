@@ -1,10 +1,20 @@
 <template>
   <div :class="['f-form-group', hasError ? $css.he : '', hasDefaultSlot ? $css.hf : '']">
     <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
+    <input
+      v-if="readonly"
+      v-model="params[field_]"
+      :type="type"
+      :class="[$css.fc, classReadonly]"
+      :readonly="readonly"
+      :disabled="readonly"
+      :id="name_"
+    >
     <the-mask
-        v-if="readonly"
+        v-else-if="readonly && mask"
         v-model="params[field_]"
-        :class="[$css.fc, 'f-form-control-text']"
+        :type="type"
+        :class="[$css.fc, classReadonly]"
         :mask="mask"
         :masked="masked"
         :readonly="readonly"

@@ -58,6 +58,9 @@ export default {
       set(v){
         this.params[this.field_] = v
       }
+    },
+    classReadonly() {
+      return this.readonly ? 'f-form-control-text' : ''
     }
   },
   created() {

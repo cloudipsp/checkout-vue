@@ -47,6 +47,7 @@ const options = {
       start_time: '',
       end_time: '',
       amount: 0,
+      readonly: false
     },
     card_number: '',
     expiry_date: '',
