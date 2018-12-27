@@ -46,6 +46,9 @@ export function sendRequest (name, method, params, cacheName) {
             // }
             reject(model)
           })
+          .progress(function(model){
+            resolve(model)
+          })
       })
     }
   })

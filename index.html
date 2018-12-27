@@ -184,19 +184,20 @@ var minOptions = {
 //    fee: true,
   },
   params: {
-//    currency: 'UAH',
+    amount: 200,
+    currency: 'AZN',
 //    merchant_id: 1396424,
-    merchant_id: 900001,
+    merchant_id: 900187,
 //    lang: 'ru',
-//    order_desc: 'Тестовый платеж',
+    order_desc: '3ds',
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-    token: 'ca6be498656fb173d9219b5427828edb69b36542'
+//     token: 'ca6be498656fb173d9219b5427828edb69b36542'
   }
 }
 
-var app = fondy('#app', maxOptions)
+var app = fondy('#app', minOptions)
   .$on('success', function(model) {
     console.log('сработало событие success');
   })

@@ -24,6 +24,7 @@
       <popover :title="error.code" :content="error.message" trigger="manual" :value="showError">
         <div class="f-center-error"></div>
       </popover>
+      <submit3ds v-model="show3ds" :duration.sync="duration3ds" @submit3ds="submit3ds"></submit3ds>
     </div>
   </div>
 </template>
@@ -38,6 +39,9 @@
   import { sendRequest, deepMerge, validate, findGetParameter } from '@/utils/helpers'
   import { isFunction } from '@/utils/object'
   import notSet from '@/config/not-set'
+  import Submit3ds from '@/components/submit3ds'
+
+  let model3ds
 
   export default {
     inject: ['$validator'],
@@ -46,7 +50,9 @@
         show: false,
         timeoutId: 0,
         order: {},
-        inProgress: false
+        inProgress: false,
+        show3ds: false,
+        duration3ds: 0
       }
     },
     watch: {
@@ -107,7 +113,8 @@
       Popover,
       PaymentMethod,
       Success,
-      Pending
+      Pending,
+      Submit3ds
     },
     methods: {
       submit: function (cb) {
@@ -180,6 +187,7 @@
         this.$root.$emit('success', model)
 
         this.location(model.instance(model.attr('order')))
+        this.submit3dsSuccess(model)
       },
       submitError: function (model) {
         this.$root.$emit('error', model)
@@ -281,6 +289,13 @@
         this.params.merchant_id = order_data.merchant_id
         this.params.email = order_data.sender_email || this.params.email
         this.params.order_id = order_data.order_id
+      },
+      submit3dsSuccess: function(model) {
+        if(!model.waitOn3dsDecline()) return
+
+        this.show3ds = true
+        this.duration3ds = model.waitOn3dsDecline()
+        model3ds = model
       },
       location: function(model){
 //        console.warn('model.inProgress()', 'order.in_progress', model.inProgress())
@@ -406,6 +421,9 @@
         setTimeout(() => {
           this.resizeWindow()
         })
+      },
+      submit3ds: function () {
+        model3ds.submit3dsForm()
       }
     }
   }
