@@ -67,6 +67,9 @@
 //        },
 //        deep: true
 //      }
+      'params.amount' () {
+        this.store.getAmountWithFee()
+      }
     },
     created: function () {
       this.createdEvent()
