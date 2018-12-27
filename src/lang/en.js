@@ -337,7 +337,14 @@ export const messages = {
   customer_country: 'Customer country',
   customer_state: 'Customer state',
   customer_phonemobile: 'Phone mobile',
-  customer_email: 'Email'
+  customer_email: 'Email',
+
+  back: 'Back',
+  submit3ds_title: 'Payment was not completed successfully',
+  submit3ds_text: 'Please try again',
+  submit3ds_submit: 'Repeat payment',
+  submit3ds_wait: 'payment will be repeated in {0} sec.',
+
 }
 
 export const validate = {
