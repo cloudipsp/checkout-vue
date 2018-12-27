@@ -97,10 +97,22 @@
 @popover-bg:                      #FEF8F8;
 @popover-border:                  #F5E6E4;
 
+//== Modals
+@modal-content-bg:                @brand-bg;
+@modal-content-border-color:      darken(@brand-red, 5%);
+@modal-backdrop-bg:               #000;
+
+//== Close
+@close-color:                     @brand-text;
+
+//== Type
+@text-muted:                      darken(@brand-red, 24%);
+
 //== shadow
 @menu-item-active-shadow:         rgba(90,136,215,0.16);
 @menu-item-shadow:                fade(@brand-text, 16%); //rgba(0,0,0,0.16);
 @wrapper-shadow:                  fade(@brand-text, 4%); //rgba(0,0,0,0.04);
+@modal-shadow:                    fade(@brand-text, 4%); //rgba(0,0,0,0.04);
 @info-shadow:                     rgba(72,133,149,0.24);
 @checkbox-swipe-disabled-shadow:  fade(@brand-text, 20%); //rgba(0,0,0,.2);
 @ps-active-shadow:                fade(@brand-text, 8%); //rgba(0,0,0,0.08);
@@ -108,3 +120,4 @@
 @dropdown-shadow:                 fade(@brand-text, 24%); //rgba(0,0,0,0.24);
 @state-danger-shadow:             rgba(208,2,27,0.24);
 @popover-shadow:                  fade(@brand-text, 10%); //rgba(0,0,0,0.1);
+@close-shadow:                    fade(@brand-text, 10%);

@@ -11,7 +11,9 @@ export const EVENTS = {
   KEY_UP: 'keyup',
   KEY_PRESS: 'keypress',
   RESIZE: 'resize',
-  SCROLL: 'scroll'
+  SCROLL: 'scroll',
+  TOUCH_START: 'touchstart',
+  TOUCH_END: 'touchend'
 }
 
 export const TRIGGERS = {
@@ -30,39 +32,51 @@ export const PLACEMENTS = {
   LEFT: 'left'
 }
 
+export function isIE11 () {
+  return !!window.MSInputMethodContext && !!document.documentMode
+}
+
+export function isIE10 () {
+  return window.navigator.appVersion.indexOf('MSIE 10') !== -1
+}
+
+export function getComputedStyle (el) {
+  return window.getComputedStyle(el)
+}
+
 export function getViewportSize () {
   let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
   let height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
   return {width, height}
 }
 
-// let scrollbarWidth = null
-// let savedScreenSize = null
+let scrollbarWidth = null
+let savedScreenSize = null
 
-// export function getScrollbarWidth (recalculate = false) {
-//   let screenSize = getViewportSize()
-//   // return directly when already calculated & not force recalculate & screen size not changed
-//   if (scrollbarWidth !== null && !recalculate &&
-//     screenSize.height === savedScreenSize.height && screenSize.width === savedScreenSize.width) {
-//     return scrollbarWidth
-//   }
-//   if (document.readyState === 'loading') {
-//     return null
-//   }
-//   const div1 = document.createElement('div')
-//   const div2 = document.createElement('div')
-//   div1.style.width = div2.style.width = div1.style.height = div2.style.height = '100px'
-//   div1.style.overflow = 'scroll'
-//   div2.style.overflow = 'hidden'
-//   document.body.appendChild(div1)
-//   document.body.appendChild(div2)
-//   scrollbarWidth = Math.abs(div1.scrollHeight - div2.scrollHeight)
-//   document.body.removeChild(div1)
-//   document.body.removeChild(div2)
-//   // save new screen size
-//   savedScreenSize = screenSize
-//   return scrollbarWidth
-// }
+export function getScrollbarWidth (recalculate = false) {
+  let screenSize = getViewportSize()
+  // return directly when already calculated & not force recalculate & screen size not changed
+  if (scrollbarWidth !== null && !recalculate &&
+    screenSize.height === savedScreenSize.height && screenSize.width === savedScreenSize.width) {
+    return scrollbarWidth
+  }
+  if (document.readyState === 'loading') {
+    return null
+  }
+  const div1 = document.createElement('div')
+  const div2 = document.createElement('div')
+  div1.style.width = div2.style.width = div1.style.height = div2.style.height = '100px'
+  div1.style.overflow = 'scroll'
+  div2.style.overflow = 'hidden'
+  document.body.appendChild(div1)
+  document.body.appendChild(div2)
+  scrollbarWidth = Math.abs(div1.scrollHeight - div2.scrollHeight)
+  document.body.removeChild(div1)
+  document.body.removeChild(div2)
+  // save new screen size
+  savedScreenSize = screenSize
+  return scrollbarWidth
+}
 
 export function on (element, event, handler) {
   element.addEventListener(event, handler)
@@ -259,16 +273,62 @@ export function setTooltipPosition (tooltip, trigger, placement, auto, appendToS
   }
 }
 
-// export function hasScrollbar (el) {
-//   return el.scrollHeight > el.clientHeight
-// }
+export function hasScrollbar (el) {
+  const SCROLL = 'scroll'
+  const hasVScroll = el.scrollHeight > el.clientHeight
+  const style = getComputedStyle(el)
+  return hasVScroll || style.overflow === SCROLL || style.overflowY === SCROLL
+}
 
-// export function toggleBodyOverflow (enable) {
-//   if (enable) {
-//     document.body.style.paddingRight = null
-//   } else {
-//     if (hasScrollbar(document.documentElement)) {
-//       document.body.style.paddingRight = `${getScrollbarWidth()}px`
-//     }
-//   }
-// }
+export function toggleBodyOverflow (enable) {
+  const MODAL_OPEN = 'f-modal-open'
+  const body = document.body
+  if (enable) {
+    removeClass(body, MODAL_OPEN)
+    body.style.paddingRight = null
+  } else {
+    // const browsersWithFloatingScrollbar = isIE10() || isIE11()
+    // const documentHasScrollbar = hasScrollbar(document.documentElement) || hasScrollbar(document.body)
+    // if (documentHasScrollbar && !browsersWithFloatingScrollbar) {
+    //   body.style.paddingRight = `${getScrollbarWidth()}px`
+    // }
+    addClass(body, MODAL_OPEN)
+  }
+}
+
+export function getClosest (el, selector) {
+  ensureElementMatchesFunction()
+  let parent
+  let _el = el
+  while (_el) {
+    parent = _el.parentElement
+    if (parent && parent.matches(selector)) {
+      return parent
+    }
+    _el = parent
+  }
+  return null
+}
+
+export function getParents (el, selector, until = null) {
+  ensureElementMatchesFunction()
+  let parents = []
+  let parent = el.parentElement
+  while (parent) {
+    if (parent.matches(selector)) {
+      parents.push(parent)
+    } else if (until && (until === parent || parent.matches(until))) {
+      break
+    }
+    parent = parent.parentElement
+  }
+  return parents
+}
+
+export function focus (el) {
+  if (!isElement(el)) {
+    return
+  }
+  el.getAttribute('tabindex') ? null : el.setAttribute('tabindex', '-1')
+  el.focus()
+}
