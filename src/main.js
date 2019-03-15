@@ -15,6 +15,7 @@ import store from '@/store'
 import Store from '@/mixins/store'
 import Validator from '@/mixins/validator'
 import { iframeCreate } from '@/utils/helpers'
+import optionsDefault from '@/config/options-default'
 
 const install = function (Vue, VeeValidate) {
   Vue.config.productionTip = false
@@ -29,7 +30,7 @@ const install = function (Vue, VeeValidate) {
     if (!isObject(optionsUser)) return console.error('Options not an object')
     if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
 
-    iframeCreate(optionsUser.options.api_domain || optionsUser.options.apiDomain)
+    iframeCreate((optionsUser.options && (optionsUser.options.api_domain || optionsUser.options.apiDomain)) || optionsDefault.options.api_domain)
 
     return new Vue({
       i18n,

@@ -1,6 +1,6 @@
 <template>
   <div class="f-card">
-    <div class="f-block f-block-hr f-text-center">
+    <div v-if="icons.length" class="f-block f-block-hr f-text-center">
       <img class="f-card-icon" v-for="icon in icons" :src="imagePath(icon)">
     </div>
     <div class="f-block">
