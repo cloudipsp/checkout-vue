@@ -344,6 +344,8 @@
         this.store.location('pending')
       },
       createdEvent: function() {
+        this.$root.$emit('ready')
+
         this.$root.$on('submit', (cb) => {
           this.submit(cb)
         })
