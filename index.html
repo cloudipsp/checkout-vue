@@ -204,6 +204,9 @@ var app = fondy('#app', minOptions)
   .$on('error', function(model) {
     console.log('сработало событие error');
   })
+  .$on('ready', function() {
+    console.log('ready');
+  });
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit(function(model){
