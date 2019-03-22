@@ -64,6 +64,28 @@ const options = {
   template: {},
   messages: {},
   validate: {},
+
+  // not config
+  error: {
+    flag: false,
+    buffer: false,
+    code: '',
+    message: '',
+    errors: [],
+  },
+  router: {
+    page: undefined, // payment-method verify success
+    method: undefined,
+    system: undefined,
+  },
+  css: {},
+  loading: false,
+  cards: [],
+  submit: false,
+  read_only: false,
+  need_verify_code: false,
+  verification_type: '',
+  default_country: '',
 }
 
 configLocales.forEach(function (locale) {

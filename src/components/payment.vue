@@ -125,7 +125,6 @@
 //        console.log('errors', this.errors.items)
 //        console.log('fields', this.fields)
 //        this.errors.clear()
-          console.log('params', this.params)
 
           if (this.errors.count() || this.store.state.loading) return
           this.store.formLoading(true)

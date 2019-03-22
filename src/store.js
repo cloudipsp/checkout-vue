@@ -8,29 +8,7 @@ import { getCookie, deepMerge, validate, sendRequest } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
 
 export default {
-  state: {
-    ...JSON.parse(JSON.stringify(optionsDefault)),
-    error: {
-      flag: false,
-      buffer: false,
-      code: '',
-      message: '',
-      errors: [],
-    },
-    router: {
-      page: undefined, // payment-method verify success
-      method: undefined,
-      system: undefined,
-    },
-    css: {},
-    loading: false,
-    cards: [],
-    submit: false,
-    read_only: false,
-    need_verify_code: false,
-    verification_type: '',
-    default_country: '',
-  },
+  state: JSON.parse(JSON.stringify(optionsDefault)),
   // server: {
   //   ...JSON.parse(JSON.stringify(optionsDefault))
   // },
