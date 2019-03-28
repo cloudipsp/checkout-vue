@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const increaseSpecificity = require('./postcss-increase-specificity')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const gitRevisionPlugin = new GitRevisionPlugin()
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -102,6 +104,9 @@ const webpackConfig = merge(baseWebpackConfig, {
         }
       }
     }),
+
+    new webpack.BannerPlugin(gitRevisionPlugin.branch() + ' ' + gitRevisionPlugin.commithash()),
+
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
