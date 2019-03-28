@@ -74,9 +74,9 @@ const options = {
     errors: [],
   },
   router: {
-    page: undefined, // payment-method verify success
-    method: undefined,
-    system: undefined,
+    page: '', // payment-method verify success
+    method: '',
+    system: '',
   },
   css: {},
   loading: false,

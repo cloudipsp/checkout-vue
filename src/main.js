@@ -1,10 +1,11 @@
 // TODO свайп
 // TODO config fields payment systems
 // TODO create color template param
-// TODO ? f-fields create root div
 // TODO support material
 // TODO field input v-if add identical :key
-// TODO create component type="checkbox" f-offer
+
+// TODO $emit setParams затирает стейт параметрами notSet.params
+// TODO два тултипа
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
@@ -45,8 +46,8 @@ const install = function (Vue, VeeValidate) {
         validator: 'new'
       },
       methods: {
-        submit: function (cb) {
-          this.$emit('submit', cb)
+        submit: function () {
+          this.$emit('submit')
           return this
         },
         location: function (method, system) {

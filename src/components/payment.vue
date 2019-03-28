@@ -117,7 +117,7 @@
       Submit3ds
     },
     methods: {
-      submit: function (cb) {
+      submit: function () {
         this.$validator.validateAll()
         this.$nextTick(()=>{
           this.autoFocus()
@@ -155,19 +155,15 @@
             .finally(() => {
               this.store.formLoading(false)
             })
-            .then(function(model){
-              if(isFunction(cb)) {
-                let hash = JSON.stringify(model)
-                if(JSON.stringify(cb(model)) === hash) {
-                  return model
-                }
-              } else {
-                return model
-              }
-//              return isFunction(cb) ? cb(model) : model;
-            })
+            .then(this.callback)
             .then(this.submitSuccess, this.submitError)
         })
+      },
+      callback: function(model){
+        this.$root.$emit('callback', model)
+        if( !this.$root._events.callback.length) {
+          return model
+        }
       },
       cancel: function(){
         if(this.store.state.loading) return
@@ -192,7 +188,7 @@
         this.$root.$emit('error', model)
       },
       appSuccess: function(model){
-        this.$root.$emit('ready')
+        this.$root.$emit('ready', model)
         this.infoSuccess(model.instance(model.attr('info')))
         this.orderSuccess(model.instance(model.attr('order')))
         this.cardsSuccess(model.instance(model.attr('cards')))
@@ -345,8 +341,8 @@
       },
       createdEvent: function() {
 
-        this.$root.$on('submit', (cb) => {
-          this.submit(cb)
+        this.$root.$on('submit', () => {
+          this.submit()
         })
         this.$root.$on('location', (method, system) => {
           this.show = false

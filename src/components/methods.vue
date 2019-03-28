@@ -23,7 +23,7 @@
         v-if="item.system !== router.system"
         v-for="item in options.fast"
         :key="item.system"
-        :class="'f-i-' + configPaymentSystems[item.method][item.system].i"
+        :class="'f-i-' + item.system"
         @click="changeMethod(item.method, item.system )"
       ></div>
     </div>

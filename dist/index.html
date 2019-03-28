@@ -117,15 +117,15 @@ var maxOptions = {
     period: ['week', 'month']
   },
   params: {
-    merchant_id: 900001,
+    merchant_id: 900158,
 //    verification_type: 'code',
 //    required_rectoken: 'y',
 //    verification: 'y',
-//    currency: 'UAH',
+   currency: 'EUR',
 //    amount: 500,
     order_desc: 'my_desc',
 //    response_url: 'https://www.fondy.eu',
-    token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
+//     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
     lang: 'ru',
     recurring_data: {
       every: 2,
@@ -197,22 +197,23 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', minOptions)
+var app = fondy('#app', maxOptions)
   .$on('success', function(model) {
-    console.log('сработало событие success');
+    console.log('success', model);
   })
   .$on('error', function(model) {
-    console.log('сработало событие error');
+    console.log('error', model);
   })
-  .$on('ready', function() {
-    console.log('ready');
-  });
+  .$on('ready', function(model) {
+    console.log('ready', model);
+  })
+  .$on('callback', function(model) {
+    console.log('callback', model);
+  })
+
 
 document.getElementById('submit').addEventListener('click', function () {
-  app.submit(function(model){
-    console.log('на сабмин выполняется етот колбек, если вернуть медель (return model) пойдет наша обработка');
-    return model
-  })
+  app.submit()
 //  this.disabled = app.errors.items.length
 })
 document.getElementById('go-card').addEventListener('click', function () {
