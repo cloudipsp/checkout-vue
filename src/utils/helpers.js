@@ -29,6 +29,7 @@ export function sendRequest (name, method, params, cacheName) {
       api.scope(function () {
         this.request(name, method, params).then(
           function (model) {
+            delete model.connector
             console.log(name, method, params)
             console.log('done', model)
             // store.showError(String(model.attr('error.code')), model.attr('error.message'))
@@ -38,6 +39,7 @@ export function sendRequest (name, method, params, cacheName) {
             resolve(model)
           },
           function (model) {
+            delete model.connector
             console.log(name, method, params)
             console.log('fail', model)
             store.showError(String(model.attr('error.code')), model.attr('error.message'))
@@ -47,6 +49,7 @@ export function sendRequest (name, method, params, cacheName) {
             reject(model)
           })
           .progress(function(model){
+            delete model.connector
             resolve(model)
           })
       })

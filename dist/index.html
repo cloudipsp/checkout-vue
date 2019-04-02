@@ -42,6 +42,7 @@
     <button id=go-ibank>go ibank</button>
     <button id=go-card>go card</button>
     <button id=set-params>set params</button>
+    <button id=render>render</button>
   </div>
   <div>
     <div class=coll>
@@ -86,6 +87,7 @@
 </script>
 
 <script>
+(function () {
 var maxOptions = {
   options: {
     methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
@@ -180,7 +182,7 @@ var minOptions = {
   options: {
     api_domain: 'api.dev.fondy.eu',
     link: 'https://fondy.eu',
-//    fullScreen: false,
+    fullScreen: false,
 //    fee: true,
   },
   params: {
@@ -197,20 +199,19 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', maxOptions)
-  .$on('success', function(model) {
-    console.log('success', model);
+var app = fondy('#app', minOptions)
+  .$on('success', function (model) {
+    console.log('success', model)
   })
-  .$on('error', function(model) {
-    console.log('error', model);
+  .$on('error', function (model) {
+    console.log('error', model)
   })
-  .$on('ready', function(model) {
-    console.log('ready', model);
+  .$on('ready', function (model) {
+    console.log('ready', model)
   })
   .$on('callback', function(model) {
     console.log('callback', model);
   })
-
 
 document.getElementById('submit').addEventListener('click', function () {
   app.submit()
@@ -234,6 +235,22 @@ document.getElementById('set-params').addEventListener('click', function () {
     }
   })
 })
+
+document.getElementById('render').addEventListener('click', function () {
+  let random = Math.random()
+
+  app = fondy('#app', random < 0.5 ? maxOptions : minOptions)
+    .$on('success', function (model) {
+      console.log('success', random, model)
+    })
+    .$on('error', function (model) {
+      console.log('error', random, model)
+    })
+    .$on('ready', function (model) {
+      console.log('ready', random, model)
+    })
+})
+})()
 </script>
-  </body>
+</body>
 </html>

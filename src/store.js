@@ -8,10 +8,9 @@ import { getCookie, deepMerge, validate, sendRequest } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
 
 export default {
-  state: JSON.parse(JSON.stringify(optionsDefault)),
-  // server: {
-  //   ...JSON.parse(JSON.stringify(optionsDefault))
-  // },
+  setStateDefault: function() {
+    this.state = JSON.parse(JSON.stringify(optionsDefault))
+  },
   default: optionsDefault,
   setOptions(optionsUser, $i18n) {
     this.optionsFormat(optionsUser)

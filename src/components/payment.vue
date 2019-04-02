@@ -161,7 +161,7 @@
       },
       callback: function(model){
         this.$root.$emit('callback', model)
-        if( !this.$root._events.callback.length) {
+        if(!(this.$root._events.callback && this.$root._events.callback.length)) {
           return model
         }
       },

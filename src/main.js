@@ -19,6 +19,8 @@ import { iframeCreate } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 
 const install = function (Vue, VeeValidate) {
+  let instance
+
   Vue.config.productionTip = false
 
   Vue.use(VeeValidate, { inject: false })
@@ -29,13 +31,16 @@ const install = function (Vue, VeeValidate) {
     optionsUser = optionsUser || {}
     if (!isString(el)) return console.error('Selector not a string')
     if (!isObject(optionsUser)) return console.error('Options not an object')
-    if (!document.querySelector(el)) return console.error(['Selector', el, 'not found'].join(' '))
+    let node = document.querySelector(el)
+    if (!node) return console.error(['Selector', el, 'not found'].join(' '))
 
     iframeCreate((optionsUser.options && (optionsUser.options.api_domain || optionsUser.options.apiDomain)) || optionsDefault.options.api_domain)
 
-    return new Vue({
+    if (instance) instance.$destroy()
+    store.setStateDefault()
+
+    instance = new Vue({
       i18n,
-      el: el,
       store,
       data: {
         optionsUser: optionsUser
@@ -59,7 +64,13 @@ const install = function (Vue, VeeValidate) {
           return this
         }
       }
-    })
+    }).$mount()
+
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    }
+    node.appendChild(instance.$el)
+    return instance
   }
 }
 
