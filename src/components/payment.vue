@@ -155,15 +155,8 @@
             .finally(() => {
               this.store.formLoading(false)
             })
-            .then(this.callback)
             .then(this.submitSuccess, this.submitError)
         })
-      },
-      callback: function(model){
-        this.$root.$emit('callback', model)
-        if(!(this.$root._events.callback && this.$root._events.callback.length)) {
-          return model
-        }
       },
       cancel: function(){
         if(this.store.state.loading) return
@@ -301,6 +294,8 @@
 //        console.warn('model.submitToMerchant()', model.submitToMerchant())
 
         if (model.sendResponse()) return // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
+
+        if(this.$root._events.callback && this.$root._events.callback.length && model.attr('ready_to_submit')) return this.$root.$emit('callback', model)
 
         if (model.submitToMerchant()) return  // ready_to_submit && response_url && order_data formDataSubmit()
 
