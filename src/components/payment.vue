@@ -174,7 +174,8 @@
         if(!model) return;
         this.$root.$emit('success', model)
 
-        this.location(model.instance(model.attr('order')))
+        // TODO уточнить у Степана
+        this.location(model.instance(model.alt('order', model.data)))
         this.submit3dsSuccess(model)
       },
       submitError: function (model) {
