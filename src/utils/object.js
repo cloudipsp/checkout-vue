@@ -1,23 +1,23 @@
-export function isExist (obj) {
+export function isExist(obj) {
   return typeof obj !== 'undefined' && obj !== null
 }
 
-export function isFunction (obj) {
+export function isFunction(obj) {
   return typeof obj === 'function'
 }
 
-export function isNumber (obj) {
+export function isNumber(obj) {
   return typeof obj === 'number'
 }
 
-export function isString (obj) {
+export function isString(obj) {
   return typeof obj === 'string'
 }
 
-export function isBoolean (obj) {
+export function isBoolean(obj) {
   return typeof obj === 'boolean'
 }
 
-export function isObject (obj) {
+export function isObject(obj) {
   return obj !== null && !Array.isArray(obj) && typeof obj === 'object'
 }

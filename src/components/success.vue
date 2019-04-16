@@ -22,11 +22,10 @@
 </template>
 
 <script>
-  export default {
-    props: ['order'],
-    data () {
-      return {
-      }
-    }
-  }
+export default {
+  props: ['order'],
+  data() {
+    return {}
+  },
+}
 </script>

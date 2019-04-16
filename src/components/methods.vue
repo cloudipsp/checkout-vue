@@ -31,24 +31,27 @@
 </template>
 
 <script>
-  import configPaymentSystems from '@/config/payment-systems'
+import configPaymentSystems from '@/config/payment-systems'
 
-  export default {
-    data () {
-      return {
-        configPaymentSystems: configPaymentSystems
-      }
-    },
-    computed: {
-      hideTitle: function (){
-        return this.options.fast.length === 1 && this.options.fast[0].system === this.router.system
-      }
-    },
-    methods: {
-      changeMethod: function (method, system) {
-        this.store.location('payment-method', method, system)
-        this.$emit('on-change-method')
-      }
+export default {
+  data() {
+    return {
+      configPaymentSystems: configPaymentSystems,
     }
-  }
+  },
+  computed: {
+    hideTitle: function() {
+      return (
+        this.options.fast.length === 1 &&
+        this.options.fast[0].system === this.router.system
+      )
+    },
+  },
+  methods: {
+    changeMethod: function(method, system) {
+      this.store.location('payment-method', method, system)
+      this.$emit('on-change-method')
+    },
+  },
+}
 </script>

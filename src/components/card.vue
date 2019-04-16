@@ -86,112 +86,127 @@
 
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
-  import { sendRequest } from '@/utils/helpers'
-  import Tooltip from '@/components/tooltip'
-  import Dropdown from '@/components/dropdown'
-  import InputText from '@/components/input-text'
-  import CustomerFields from '@/components/customer-fields'
+import { sendRequest } from '@/utils/helpers'
+import Tooltip from '@/components/tooltip'
+import Dropdown from '@/components/dropdown'
+import InputText from '@/components/input-text'
+import CustomerFields from '@/components/customer-fields'
 
-  export default {
-    inject: ['$validator'],
-    props: ['icons'],
-    data () {
-      return {
-        maskExpiryDate: '##/##',
-        maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
-        maskCvv: '####'
-      }
-    },
-    computed: {
-      validExpiryDate: function () {
-        let date = new Date()
-        let year = String(date.getFullYear()).slice(-2)
-        let month = ('0' + (date.getMonth() + 1)).slice(-2)
-        return 'required|date_format:MM/YY|after:' + month + '/' + year + ',true'
-      },
-      validCardNumber: function () {
-        return {
-          rules: {
-            required: true,
-            ccard: !/\d{6}X/.test(this.params.card_number)
-          }
-        }
-      },
-      validCvv: function () {
-        return 'required|digits:' + this.digitsCvv
-      },
-      digitsCvv: function () {
-        return this.params.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
-      },
-      cardsLen: function () {
-        return this.store.state.cards.length
-      },
-      validCode: function () {
-        return {
-          rules: {
-            required: true,
-            digits: /EURT/.test(this.params.code) ? false : '4'
-          }
-        }
-      },
-      validAmount: function () {
-        return {
-          rules: {
-            required: true,
-            numrange: [0,9999999.99],
-            regex: /^\d{1,7}([,\.]\d{1,2})?$/,
-
-          }
-        }
-      },
-      isVerificationAmount: function(){
-        return this.store.state.need_verify_code && this.store.state.verification_type === 'amount'
-      },
-      isVerificationCode: function(){
-        return this.store.state.need_verify_code && this.store.state.verification_type !== 'amount'
-      }
-    },
-    watch: {
-      'params.card_number': function (newVal, oldVal) {
-        newVal = newVal.replace(/ /g, '')
-        oldVal = oldVal.replace(/ /g, '')
-        let newFirst = newVal && newVal[0]
-        let oldFirst = oldVal && oldVal[0]
-        let newBin = newVal && newVal.slice(0, 6)
-        let oldBin = oldVal && oldVal.slice(0, 6)
-        if (newFirst && newFirst !== oldFirst) {
-          sendRequest('api.checkout.card_type_fee', 'get', {
-            token: this.params.token,
-            first_card_digit: newFirst
-          }, String(newFirst))
-        }
-        if (newBin.length === 6 && newBin !== oldBin) {
-          sendRequest('api.checkout.card_bin', 'get', {
-            token: this.params.token,
-            card_bin: newBin
-          }, String(newBin))
-        }
-      }
-    },
-    methods: {
-      imagePath: function (id) {
-        return require('../assets/img/' + id + '.svg')
-      },
-      hasActive: function (card) {
-        return card.card_number.replace(/ /g, '') === this.params.card_number
-      },
-      setCardNumber: function (card) {
-        this.store.setCardNumber(card)
-        this.$nextTick(() => {
-          this.$validator.validateAll()
-        })
-      },
-    },
-    components: {
-      Tooltip,
-      Dropdown,
-      InputText,
-      CustomerFields
+export default {
+  inject: ['$validator'],
+  props: ['icons'],
+  data() {
+    return {
+      maskExpiryDate: '##/##',
+      maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
+      maskCvv: '####',
     }
-  }
+  },
+  computed: {
+    validExpiryDate: function() {
+      let date = new Date()
+      let year = String(date.getFullYear()).slice(-2)
+      let month = ('0' + (date.getMonth() + 1)).slice(-2)
+      return 'required|date_format:MM/YY|after:' + month + '/' + year + ',true'
+    },
+    validCardNumber: function() {
+      return {
+        rules: {
+          required: true,
+          ccard: !/\d{6}X/.test(this.params.card_number),
+        },
+      }
+    },
+    validCvv: function() {
+      return 'required|digits:' + this.digitsCvv
+    },
+    digitsCvv: function() {
+      return this.params.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
+    },
+    cardsLen: function() {
+      return this.store.state.cards.length
+    },
+    validCode: function() {
+      return {
+        rules: {
+          required: true,
+          digits: /EURT/.test(this.params.code) ? false : '4',
+        },
+      }
+    },
+    validAmount: function() {
+      return {
+        rules: {
+          required: true,
+          numrange: [0, 9999999.99],
+          regex: /^\d{1,7}([,\.]\d{1,2})?$/,
+        },
+      }
+    },
+    isVerificationAmount: function() {
+      return (
+        this.store.state.need_verify_code &&
+        this.store.state.verification_type === 'amount'
+      )
+    },
+    isVerificationCode: function() {
+      return (
+        this.store.state.need_verify_code &&
+        this.store.state.verification_type !== 'amount'
+      )
+    },
+  },
+  watch: {
+    'params.card_number': function(newVal, oldVal) {
+      newVal = newVal.replace(/ /g, '')
+      oldVal = oldVal.replace(/ /g, '')
+      let newFirst = newVal && newVal[0]
+      let oldFirst = oldVal && oldVal[0]
+      let newBin = newVal && newVal.slice(0, 6)
+      let oldBin = oldVal && oldVal.slice(0, 6)
+      if (newFirst && newFirst !== oldFirst) {
+        sendRequest(
+          'api.checkout.card_type_fee',
+          'get',
+          {
+            token: this.params.token,
+            first_card_digit: newFirst,
+          },
+          String(newFirst)
+        )
+      }
+      if (newBin.length === 6 && newBin !== oldBin) {
+        sendRequest(
+          'api.checkout.card_bin',
+          'get',
+          {
+            token: this.params.token,
+            card_bin: newBin,
+          },
+          String(newBin)
+        )
+      }
+    },
+  },
+  methods: {
+    imagePath: function(id) {
+      return require('../assets/img/' + id + '.svg')
+    },
+    hasActive: function(card) {
+      return card.card_number.replace(/ /g, '') === this.params.card_number
+    },
+    setCardNumber: function(card) {
+      this.store.setCardNumber(card)
+      this.$nextTick(() => {
+        this.$validator.validateAll()
+      })
+    },
+  },
+  components: {
+    Tooltip,
+    Dropdown,
+    InputText,
+    CustomerFields,
+  },
+}
 </script>

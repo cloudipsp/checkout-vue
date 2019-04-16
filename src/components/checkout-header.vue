@@ -10,36 +10,35 @@
 </template>
 
 <script>
-  import { setCookie } from '@/utils/helpers'
-  import { loadLanguageAsync } from '@/i18n'
+import { setCookie } from '@/utils/helpers'
+import { loadLanguageAsync } from '@/i18n'
 
-  export default {
-    inject: ['$validator'],
-    data () {
+export default {
+  inject: ['$validator'],
+  data() {
+    return {}
+  },
+  watch: {
+    'params.lang': {
+      handler: function(lang) {
+        loadLanguageAsync(lang).then(() => {
+          this.$validator.localize(lang)
+        })
+        setCookie('lang', lang, {
+          path: '/',
+          expires: 3600,
+        })
+      },
+      immediate: true,
+    },
+  },
+  computed: {
+    style() {
+      if (!this.options.logo_url) return {}
       return {
+        'background-image': `url(${this.options.logo_url})`,
       }
     },
-    watch: {
-      'params.lang': {
-        handler: function (lang) {
-          loadLanguageAsync(lang).then(() => {
-            this.$validator.localize(lang)
-          })
-          setCookie('lang', lang, {
-            path: '/',
-            expires: 3600
-          })
-        },
-        immediate: true
-      }
-    },
-    computed: {
-      style (){
-        if(!this.options.logo_url) return {}
-        return {
-          'background-image': `url(${this.options.logo_url})`
-        }
-      }
-    }
-  }
+  },
+}
 </script>

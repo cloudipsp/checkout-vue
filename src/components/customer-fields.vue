@@ -21,38 +21,37 @@
 </template>
 
 <script>
-  import config from '@/config/customer-fields'
-  import countries from '@/config/countries'
-  import InputText from '@/components/input-text'
-  import InputSelect from '@/components/input-select'
+import config from '@/config/customer-fields'
+import countries from '@/config/countries'
+import InputText from '@/components/input-text'
+import InputSelect from '@/components/input-select'
 
-  export default {
-    created: function () {
-      let index = this.options.customer_fields.indexOf('email')
-      if(this.options.email && index > -1) {
-        this.options.customer_fields.splice(index, 1)
-      }
-    },
-    data () {
-      return {
-      }
-    },
-    computed: {
-      getFields: function() {
-        let result = [];
-        this.options.customer_fields.forEach(function(name){
-          let item = { field: name }
-          if(config[name].dictionary){
-            item.list = countries
-          }
-          config[name] && result.push(Object.assign(item, config[name]))
-        })
-        return result;
-      }
-    },
-    components: {
-      InputText,
-      InputSelect
+export default {
+  created: function() {
+    let index = this.options.customer_fields.indexOf('email')
+    if (this.options.email && index > -1) {
+      this.options.customer_fields.splice(index, 1)
     }
-  }
+  },
+  data() {
+    return {}
+  },
+  computed: {
+    getFields: function() {
+      let result = []
+      this.options.customer_fields.forEach(function(name) {
+        let item = { field: name }
+        if (config[name].dictionary) {
+          item.list = countries
+        }
+        config[name] && result.push(Object.assign(item, config[name]))
+      })
+      return result
+    },
+  },
+  components: {
+    InputText,
+    InputSelect,
+  },
+}
 </script>

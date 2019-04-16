@@ -85,46 +85,46 @@
 </template>
 
 <script>
-  import Input from '@/mixins/input'
+import Input from '@/mixins/input'
 
-  export default {
-    mixins: [Input],
-    props: {
-      type: {
-        type: String,
-        default: function () {
-          return 'text'
-        }
+export default {
+  mixins: [Input],
+  props: {
+    type: {
+      type: String,
+      default: function() {
+        return 'text'
       },
-      maxlength: Number,
-      mask: [String, Object],
-      masked: Boolean,
-      group: Boolean,
     },
-    data () {
-      return {
-        tokens: {
-          X: {
-            pattern: /[\dX]/
-          }
-        }
-      }
-    },
-    computed: {
-      hasDefaultSlot () {
-        return !!this.$slots.default
-      }
-    },
-    methods: {
-      blur: function () {
-        this.$validator.validate(this.name_)
-        this.flag.touched = true
+    maxlength: Number,
+    mask: [String, Object],
+    masked: Boolean,
+    group: Boolean,
+  },
+  data() {
+    return {
+      tokens: {
+        X: {
+          pattern: /[\dX]/,
+        },
       },
-      valid: function () {
-        this.$nextTick(() => {
-          this.$validator.validate(this.name_)
-        })
-      }
     }
-  }
+  },
+  computed: {
+    hasDefaultSlot() {
+      return !!this.$slots.default
+    },
+  },
+  methods: {
+    blur: function() {
+      this.$validator.validate(this.name_)
+      this.flag.touched = true
+    },
+    valid: function() {
+      this.$nextTick(() => {
+        this.$validator.validate(this.name_)
+      })
+    },
+  },
+}
 </script>

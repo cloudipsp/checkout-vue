@@ -1,7 +1,3 @@
-export const messages = {
+export const messages = {}
 
-}
-
-export const validate = {
-
-}
+export const validate = {}

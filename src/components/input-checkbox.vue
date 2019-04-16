@@ -15,9 +15,9 @@
 </template>
 
 <script>
-  import Input from '@/mixins/input'
+import Input from '@/mixins/input'
 
-  export default {
-    mixins: [Input],
-  }
+export default {
+  mixins: [Input],
+}
 </script>

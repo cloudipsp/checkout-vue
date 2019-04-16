@@ -19,16 +19,15 @@
 </template>
 
 <script>
-  import InputText from '@/components/input-text'
+import InputText from '@/components/input-text'
 
-  export default {
-    inject: ['$validator'],
-    data () {
-      return {
-      }
-    },
-    components: {
-      InputText
-    }
-  }
+export default {
+  inject: ['$validator'],
+  data() {
+    return {}
+  },
+  components: {
+    InputText,
+  },
+}
 </script>

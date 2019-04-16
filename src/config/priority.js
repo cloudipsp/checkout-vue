@@ -22,9 +22,9 @@ export default {
     expiry_date: ['server', 'state'],
     recurring_data: {
       amount: ['server', 'state'],
-    }
+    },
   },
   regular: {
     // insert: [],
-  }
+  },
 }

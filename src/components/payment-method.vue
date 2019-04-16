@@ -28,56 +28,57 @@
 </template>
 
 <script>
-  import Card from '@/components/card'
-  import Emoney from '@/components/emoney'
-  import Ibank from '@/components/ibank'
-  import Trustly from '@/components/trustly'
-  import Cash from '@/components/cash'
-  import Sepa from '@/components/sepa'
-  import Regular from '@/components/regular'
-  import Offer from '@/components/offer'
-  import Fields from '@/components/payment-fields'
+import Card from '@/components/card'
+import Emoney from '@/components/emoney'
+import Ibank from '@/components/ibank'
+import Trustly from '@/components/trustly'
+import Cash from '@/components/cash'
+import Sepa from '@/components/sepa'
+import Regular from '@/components/regular'
+import Offer from '@/components/offer'
+import Fields from '@/components/payment-fields'
 
-  export default {
-    props: ['disabled'],
-    data () {
-      return {
+export default {
+  props: ['disabled'],
+  data() {
+    return {}
+  },
+  computed: {
+    fullAmount: function() {
+      let amount = parseInt(this.params.amount)
+      let amountWithFee = parseInt(this.params.amount_with_fee)
+      if (!amount) {
+        return false
       }
+      return (amountWithFee || amount) / 100
     },
-    computed: {
-      fullAmount: function () {
-        let amount = parseInt(this.params.amount)
-        let amountWithFee = parseInt(this.params.amount_with_fee)
-        if (!amount) {
-          return false
-        }
-        return (amountWithFee || amount) / 100
-      },
-      args: function () {
-        return this.fullAmount ? [this.fullAmount, this.$t(this.params.currency)] : []
-      },
-      method: function () {
-        return this.router.method
-      }
+    args: function() {
+      return this.fullAmount
+        ? [this.fullAmount, this.$t(this.params.currency)]
+        : []
     },
-    components: {
-      Card,
-      Emoney,
-      Ibank,
-      Trustly,
-      Cash,
-      Sepa,
-      Regular,
-      Offer,
-      Fields
+    method: function() {
+      return this.router.method
     },
-    methods: {
-      onSubmit: function(){
-        this.$emit('on-submit')
-      },
-      onCancel: function(){
-        this.$emit('on-cancel')
-      }
-    }
-  }
+  },
+  components: {
+    Card,
+    Emoney,
+    Ibank,
+    Trustly,
+    Cash,
+    Sepa,
+    Regular,
+    Offer,
+    Fields,
+  },
+  methods: {
+    onSubmit: function() {
+      this.$emit('on-submit')
+    },
+    onCancel: function() {
+      this.$emit('on-cancel')
+    },
+  },
+}
 </script>

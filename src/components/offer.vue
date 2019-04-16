@@ -8,24 +8,26 @@
 </template>
 
 <script>
-  import Tooltip from '@/components/tooltip'
-  import InputCheckbox from '@/components/input-checkbox'
+import Tooltip from '@/components/tooltip'
+import InputCheckbox from '@/components/input-checkbox'
 
-  export default {
-    inject: ['$validator'],
-    data () {
-      return {
-      }
+export default {
+  inject: ['$validator'],
+  data() {
+    return {}
+  },
+  components: {
+    Tooltip,
+    InputCheckbox,
+  },
+  computed: {
+    hasError() {
+      let flag = this.$validator.flags['f-offer']
+      return (
+        this.errors.has('f-offer') &&
+        ((flag && flag.touched) || this.store.state.submit)
+      )
     },
-    components: {
-      Tooltip,
-      InputCheckbox
-    },
-    computed: {
-      hasError() {
-        let flag = this.$validator.flags['f-offer']
-        return this.errors.has('f-offer') && ((flag && flag.touched) || this.store.state.submit)
-      }
-    },
-  }
+  },
+}
 </script>

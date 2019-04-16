@@ -22,31 +22,30 @@
 </template>
 
 <script>
-
-  export default {
-    props: ['paymentSystems'],
-    data () {
-      return {
-        active: '',
-        cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/'
-      }
-    },
-    created: function () {
-      this.setPaymentSystem()
-    },
-    computed: {
-      list () {
-        return this.paymentSystems
-      },
-      icon: (vm) => (item) => vm.config[item].i || item,
-      text: (vm) => (item) => item
-    },
-    methods: {
-      setPaymentSystem: function (system) {
-        let active = system || this.router.system || this.list[0]
-        this.router.system = active
-        this.active = active
-      }
+export default {
+  props: ['paymentSystems'],
+  data() {
+    return {
+      active: '',
+      cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/',
     }
-  }
+  },
+  created: function() {
+    this.setPaymentSystem()
+  },
+  computed: {
+    list() {
+      return this.paymentSystems
+    },
+    icon: vm => item => vm.config[item].i || item,
+    text: vm => item => item,
+  },
+  methods: {
+    setPaymentSystem: function(system) {
+      let active = system || this.router.system || this.list[0]
+      this.router.system = active
+      this.active = active
+    },
+  },
+}
 </script>

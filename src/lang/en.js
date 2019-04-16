@@ -49,7 +49,8 @@ export const messages = {
   methods_m: 'Select a payment method',
   fast: 'Quick access to payment methods:',
   offer: 'offer',
-  offer_t: 'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
+  offer_t:
+    'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
   other: 'Other methods',
   declined: 'Payment is declined',
   approved: 'Payment is approved',
@@ -62,7 +63,8 @@ export const messages = {
   verification_code_d: 'Amount is hold on your credit card account',
   verification_code: 'Please enter verification code',
   verification_code_p: '',
-  verification_amount_d: 'a random amount has been temporarily blocked on your card. To confirm that you are owner of the card - contact the bank, that issued it, to clarify this amount or check it by yourself through the online-banking service',
+  verification_amount_d:
+    'a random amount has been temporarily blocked on your card. To confirm that you are owner of the card - contact the bank, that issued it, to clarify this amount or check it by yourself through the online-banking service',
   verification_amount: 'Enter the verification amount',
   verification_amount_p: '',
   pay: 'Pay now {0} {1}',
@@ -127,7 +129,7 @@ export const messages = {
   CF: 'Central African Republic',
   CG: 'Congo',
   CH: 'Switzerland',
-  CI: 'Côte d\'Ivoire',
+  CI: "Côte d'Ivoire",
   CK: 'Cook Islands',
   CL: 'Chile',
   CM: 'Cameroon',
@@ -203,12 +205,12 @@ export const messages = {
   KI: 'Kiribati',
   KM: 'Comoros',
   KN: 'Saint Kitts and Nevis',
-  KP: 'Korea, Democratic People\'s Republic of',
+  KP: "Korea, Democratic People's Republic of",
   KR: 'Korea, Republic of',
   KW: 'Kuwait',
   KY: 'Cayman Islands',
   KZ: 'Kazakhstan',
-  LA: 'Lao People\'s Democratic Republic',
+  LA: "Lao People's Democratic Republic",
   LB: 'Lebanon',
   LC: 'Saint Lucia',
   LI: 'Liechtenstein',
@@ -344,9 +346,6 @@ export const messages = {
   submit3ds_text: 'Please try again',
   submit3ds_submit: 'Repeat payment',
   submit3ds_wait: 'payment will be repeated in {0} sec.',
-
 }
 
-export const validate = {
-
-}
+export const validate = {}

@@ -27,13 +27,13 @@ const options = {
     fields: false,
   },
   popup: {
-    append_to: 'body'
+    append_to: 'body',
   },
   regular: {
     insert: false,
     open: false,
     hide: false,
-    period: ['day', 'week', 'month']
+    period: ['day', 'week', 'month'],
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
@@ -47,7 +47,7 @@ const options = {
       start_time: '',
       end_time: '',
       amount: 0,
-      readonly: false
+      readonly: false,
     },
     card_number: '',
     expiry_date: '',
@@ -59,7 +59,7 @@ const options = {
     lang: 'en',
     custom: {},
     customer_data: {},
-    order_id: ''
+    order_id: '',
   },
   template: {},
   messages: {},
@@ -88,7 +88,7 @@ const options = {
   default_country: '',
 }
 
-configLocales.forEach(function (locale) {
+configLocales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
 })

@@ -1,12 +1,12 @@
 import Tooltip from '@/components/tooltip'
-import {TheMask} from 'vue-the-mask'
+import { TheMask } from 'vue-the-mask'
 
 export default {
   inject: ['$validator'],
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     field: String,
     label: String,
@@ -15,18 +15,18 @@ export default {
     placeholder: String,
     custom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     customer_data: {
       type: Boolean,
-      default: false
+      default: false,
     },
     recurring: {
       type: Boolean,
-      default: false
+      default: false,
     },
     model: {
-      type: Object
+      type: Object,
     },
     value: String,
     inputmode: String,
@@ -49,47 +49,46 @@ export default {
       return this.$validator.flags[this.name_]
     },
     hasError() {
-      return this.errors.has(this.name_) && ((this.flag && this.flag.touched) || this.store.state.submit)
+      return (
+        this.errors.has(this.name_) &&
+        ((this.flag && this.flag.touched) || this.store.state.submit)
+      )
     },
     value_: {
-      get(){
+      get() {
         return this.params[this.field_]
       },
-      set(v){
+      set(v) {
         this.params[this.field_] = v
-      }
+      },
     },
     classReadonly() {
       return this.readonly ? 'f-form-control-text' : ''
-    }
+    },
   },
   created() {
-    if(this.model) {
+    if (this.model) {
       this.params = this.model
-    } else
-    if(this.custom) {
+    } else if (this.custom) {
       this.params = this.store.state.params.custom
-    } else
-    if (this.recurring) {
+    } else if (this.recurring) {
       this.params = this.store.state.params.recurring_data
-    } else
-    if (this.customer_data) {
+    } else if (this.customer_data) {
       this.params = this.store.state.params.customer_data
-    } else
-    {
+    } else {
       this.params = this.store.state.params
     }
-    if(this.value) {
+    if (this.value) {
       this.params[this.field_] = this.value
     }
   },
   methods: {
     onEnter() {
       this.$root.$emit('submit')
-    }
+    },
   },
   components: {
     Tooltip,
-    TheMask
-  }
+    TheMask,
+  },
 }

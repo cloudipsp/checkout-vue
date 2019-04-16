@@ -10,9 +10,9 @@ import {
   hasClass,
   setTooltipPosition,
   isElement,
-  addClass
+  addClass,
 } from '@/utils/dom'
-import {isString} from '@/utils/object'
+import { isString } from '@/utils/object'
 
 const SHOW_CLASS = 'in'
 
@@ -20,39 +20,39 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'error'
+      default: 'error',
     },
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tag: {
       type: String,
-      default: 'span'
+      default: 'span',
     },
     placement: {
       type: String,
-      default: PLACEMENTS.TOP
+      default: PLACEMENTS.TOP,
     },
     autoPlacement: {
       type: Boolean,
-      default: true
+      default: true,
     },
     transitionDuration: {
       type: Number,
-      default: 150
+      default: 150,
     },
     enable: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    target: null
+    target: null,
   },
   data() {
     return {
       triggerEl: null,
       timeoutId: 0,
-      appendTo: this.store.state.popup.append_to
+      appendTo: this.store.state.popup.append_to,
     }
   },
   watch: {
@@ -87,7 +87,7 @@ export default {
       if (!value) {
         this.hide()
       }
-    }
+    },
   },
   mounted() {
     ensureElementMatchesFunction()
@@ -108,11 +108,14 @@ export default {
     initTriggerElByTarget(target) {
       if (target) {
         // target exist
-        if (isString(target)) { // is selector
+        if (isString(target)) {
+          // is selector
           this.triggerEl = document.querySelector(target)
-        } else if (isElement(target)) { // is element
+        } else if (isElement(target)) {
+          // is element
           this.triggerEl = target
-        } else if (isElement(target.$el)) { // is component
+        } else if (isElement(target.$el)) {
+          // is component
           this.triggerEl = target.$el
         }
       } else {
@@ -140,7 +143,10 @@ export default {
           on(this.triggerEl, EVENTS.MOUSE_LEAVE, this.handleAuto)
           on(this.triggerEl, EVENTS.FOCUS, this.handleAuto)
           on(this.triggerEl, EVENTS.BLUR, this.handleAuto)
-        } else if (this.trigger === TRIGGERS.CLICK || this.trigger === TRIGGERS.OUTSIDE_CLICK) {
+        } else if (
+          this.trigger === TRIGGERS.CLICK ||
+          this.trigger === TRIGGERS.OUTSIDE_CLICK
+        ) {
           on(this.triggerEl, EVENTS.CLICK, this.toggle)
         }
       }
@@ -162,16 +168,29 @@ export default {
     },
     resetPosition() {
       const popup = this.$refs.popup
-      setTooltipPosition(popup, this.triggerEl, this.placement, this.autoPlacement, this.appendTo)
+      setTooltipPosition(
+        popup,
+        this.triggerEl,
+        this.placement,
+        this.autoPlacement,
+        this.appendTo
+      )
       // popup.offsetHeight
     },
     showOnHover() {
-      if (this.trigger === TRIGGERS.HOVER || this.trigger === TRIGGERS.HOVER_FOCUS) {
+      if (
+        this.trigger === TRIGGERS.HOVER ||
+        this.trigger === TRIGGERS.HOVER_FOCUS
+      ) {
         this.show()
       }
     },
     hideOnLeave() {
-      if (this.trigger === TRIGGERS.HOVER || (this.trigger === TRIGGERS.HOVER_FOCUS && !this.triggerEl.matches(':focus'))) {
+      if (
+        this.trigger === TRIGGERS.HOVER ||
+        (this.trigger === TRIGGERS.HOVER_FOCUS &&
+          !this.triggerEl.matches(':focus'))
+      ) {
         this.hide()
       }
     },
@@ -183,13 +202,20 @@ export default {
       }
     },
     show() {
-      if (this.enable && this.triggerEl && this.isNotEmpty() && !this.isShown()) {
+      if (
+        this.enable &&
+        this.triggerEl &&
+        this.isNotEmpty() &&
+        !this.isShown()
+      ) {
         let popup = this.$refs.popup
         if (this.timeoutId > 0) {
           clearTimeout(this.timeoutId)
           this.timeoutId = 0
         } else {
-          popup.className = `${this.name} ${this.name}-${this.theme} ${this.placement} fade`
+          popup.className = `${this.name} ${this.name}-${this.theme} ${
+            this.placement
+          } fade`
           let container = document.querySelector(this.appendTo)
           container.appendChild(popup)
           this.resetPosition()
@@ -215,9 +241,13 @@ export default {
       return hasClass(this.$refs.popup, SHOW_CLASS)
     },
     windowClicked(event) {
-      if (this.triggerEl && !this.triggerEl.contains(event.target) &&
-        this.trigger === TRIGGERS.OUTSIDE_CLICK && !this.$refs.popup.contains(event.target) &&
-        this.isShown()) {
+      if (
+        this.triggerEl &&
+        !this.triggerEl.contains(event.target) &&
+        this.trigger === TRIGGERS.OUTSIDE_CLICK &&
+        !this.$refs.popup.contains(event.target) &&
+        this.isShown()
+      ) {
         this.hide()
       }
     },
@@ -229,6 +259,6 @@ export default {
           this.hide()
         }
       }, 20) // 20ms make firefox happy
-    }
-  }
+    },
+  },
 }

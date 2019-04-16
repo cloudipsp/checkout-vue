@@ -19,28 +19,31 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    amount_fee: function() {
+      let amount = parseInt(this.params.amount)
+      let amountWithFee = parseInt(this.params.amount_with_fee)
+      if (!amount || amountWithFee - amount < 0) {
+        return false
       }
+      return amountWithFee ? (amountWithFee - amount) / 100 : false
     },
-    computed: {
-      amount_fee: function () {
-        let amount = parseInt(this.params.amount)
-        let amountWithFee = parseInt(this.params.amount_with_fee)
-        if (!amount || amountWithFee - amount < 0) {
-          return false
-        }
-        return amountWithFee ? (amountWithFee - amount) / 100 : false
-      },
-      amount: function () {
-        let amount = parseInt(this.params.amount)
-        return amount / 100
-      },
-      fee: function () {
-        let current = Number(this.params.fee)
-        return current ? parseFloat(String(current * 100)).toFixed(2).concat('%') : 0
-      }
-    }
-  }
+    amount: function() {
+      let amount = parseInt(this.params.amount)
+      return amount / 100
+    },
+    fee: function() {
+      let current = Number(this.params.fee)
+      return current
+        ? parseFloat(String(current * 100))
+            .toFixed(2)
+            .concat('%')
+        : 0
+    },
+  },
+}
 </script>

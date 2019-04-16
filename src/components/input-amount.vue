@@ -25,28 +25,28 @@
 </template>
 
 <script>
-  import Input from '@/mixins/input'
+import Input from '@/mixins/input'
 
-  export default {
-    mixins: [Input],
-    data () {
-      return {
-      }
-    },
-    computed: {
-      amount: {
-        get: function () {
-          let amount = parseInt(this.params[this.field_])
-          return amount ? amount / 100 : ''
-        },
-        set: function (v) {
-          if (v.slice(-1) === '.') {
-            return false
-          }
-          this.params[this.field_] = Math.round(parseFloat(v).toFixed(2) * 100) || 0
-          this.$validator.validate(this.name_, v)
+export default {
+  mixins: [Input],
+  data() {
+    return {}
+  },
+  computed: {
+    amount: {
+      get: function() {
+        let amount = parseInt(this.params[this.field_])
+        return amount ? amount / 100 : ''
+      },
+      set: function(v) {
+        if (v.slice(-1) === '.') {
+          return false
         }
-      }
-    }
-  }
+        this.params[this.field_] =
+          Math.round(parseFloat(v).toFixed(2) * 100) || 0
+        this.$validator.validate(this.name_, v)
+      },
+    },
+  },
+}
 </script>

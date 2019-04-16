@@ -1,8 +1,6 @@
 export default {
   default: {
-    wrapperBg: '#FCFEFF'
+    wrapperBg: '#FCFEFF',
   },
-  dark: {
-
-  }
+  dark: {},
 }

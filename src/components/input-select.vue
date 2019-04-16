@@ -20,19 +20,19 @@
 </template>
 
 <script>
-  import Input from '@/mixins/input'
+import Input from '@/mixins/input'
 
-  export default {
-    mixins: [Input],
-    props: {
-      list: {
-        type: Array
-      }
+export default {
+  mixins: [Input],
+  props: {
+    list: {
+      type: Array,
     },
-    methods:{
-      input($event){
-        this.$emit('input', $event.target.value)
-      }
-    }
-  }
+  },
+  methods: {
+    input($event) {
+      this.$emit('input', $event.target.value)
+    },
+  },
+}
 </script>
