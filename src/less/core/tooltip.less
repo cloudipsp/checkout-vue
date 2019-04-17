@@ -6,15 +6,34 @@ html {
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     .reset-text();
+
     font-size: @font-size-small;
 
     .opacity(0);
 
-    &.in     { .opacity(@tooltip-opacity); }
-    &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
-    &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
-    &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
-    &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+    &.in {
+      .opacity(@tooltip-opacity);
+    }
+
+    &.top {
+      margin-top: -3px;
+      padding: @tooltip-arrow-width 0;
+    }
+
+    &.right {
+      margin-left: 3px;
+      padding: 0 @tooltip-arrow-width;
+    }
+
+    &.bottom {
+      margin-top: 3px;
+      padding: @tooltip-arrow-width 0;
+    }
+
+    &.left {
+      margin-left: -3px;
+      padding: 0 @tooltip-arrow-width;
+    }
   }
 
   .f-tooltip-inner {
@@ -34,6 +53,7 @@ html {
     border-style: solid;
   }
   // Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
+  // stylelint-disable-next-line no-duplicate-selectors
   .f-tooltip {
     &.top .f-tooltip-arrow {
       bottom: 0;
@@ -60,16 +80,20 @@ html {
       top: 50%;
       left: 0;
       margin-top: -@tooltip-arrow-width;
-      border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+      border-width: @tooltip-arrow-width @tooltip-arrow-width
+        @tooltip-arrow-width 0;
       border-right-color: @tooltip-bg;
     }
+
     &.left .f-tooltip-arrow {
       top: 50%;
       right: 0;
       margin-top: -@tooltip-arrow-width;
-      border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+      border-width: @tooltip-arrow-width 0 @tooltip-arrow-width
+        @tooltip-arrow-width;
       border-left-color: @tooltip-bg;
     }
+
     &.bottom .f-tooltip-arrow {
       top: 0;
       left: 50%;
@@ -93,11 +117,12 @@ html {
     //}
   }
 
-  .f-tooltip-error{
+  .f-tooltip-error {
     .f-tooltip-inner {
       background-color: @tooltip-error-bg;
       border: 1px solid @tooltip-error-border;
     }
+
     .f-tooltip-arrow {
       width: @tooltip-arrow-width * 2;
       height: @tooltip-arrow-width * 2;
@@ -105,15 +130,18 @@ html {
       transform: rotate(45deg);
       border: 1px solid @tooltip-error-border;
     }
+
     &.f-tooltip {
       //&.top-left .f-tooltip-arrow,
       //&.top-right .f-tooltip-arrow,
       &.top .f-tooltip-arrow {
         border-width: 0 1px 1px 0;
       }
+
       &.right .f-tooltip-arrow {
         border-width: 0 0 1px 1px;
       }
+
       &.left .f-tooltip-arrow {
         border-width: 1px 1px 0 0;
       }

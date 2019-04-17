@@ -11,38 +11,38 @@
 </template>
 
 <script>
-  import CheckoutHeader from '@/components/checkout-header'
-  import Tooltip from '@/components/tooltip'
-  import Payment from '@/components/payment'
+import CheckoutHeader from '@/components/checkout-header'
+import Tooltip from '@/components/tooltip'
+import Payment from '@/components/payment'
 
-  export default {
-    name: 'f-checkout',
-    props: ['optionsUser'],
-    data () {
-      return {
-        min: true,
-      }
-    },
-    created: function () {
-      this.store.setOptions(this.optionsUser, this.$i18n)
-//      require('./less/style.less')
-      if (this.options.full_screen) {
-        require('./less/style-sm.less')
-        require('./less/style-md.less')
-        setTimeout(() => {
-          this.$refs.f.style.height = '100%'
-        })
-      }
-    },
-    components: {
-      CheckoutHeader,
-      Tooltip,
-      Payment
-    },
-    methods: {
-      setMin: function (min) {
-        this.min = min
-      }
+export default {
+  name: 'f-checkout',
+  props: ['optionsUser'],
+  data() {
+    return {
+      min: true,
     }
-  }
+  },
+  created: function() {
+    this.store.setOptions(this.optionsUser, this.$i18n)
+    //      require('./less/style.less')
+    if (this.options.full_screen) {
+      require('./less/style-sm.less')
+      require('./less/style-md.less')
+      setTimeout(() => {
+        this.$refs.f.style.height = '100%'
+      })
+    }
+  },
+  components: {
+    CheckoutHeader,
+    Tooltip,
+    Payment,
+  },
+  methods: {
+    setMin: function(min) {
+      this.min = min
+    },
+  },
+}
 </script>

@@ -10,18 +10,29 @@ html {
     // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     .reset-text();
-    font-size: @font-size-base;
 
+    font-size: @font-size-base;
     background-color: @popover-bg;
     background-clip: padding-box;
     border: 1px solid @popover-border;
     border-radius: 4px; //@border-radius-large;
     box-shadow: 0 4px 8px 0 @popover-shadow;
 
-    &.top     { margin-top: -@popover-arrow-width; }
-    &.right   { margin-left: @popover-arrow-width; }
-    &.bottom  { margin-top: @popover-arrow-width; }
-    &.left    { margin-left: -@popover-arrow-width; }
+    &.top {
+      margin-top: -@popover-arrow-width;
+    }
+
+    &.right {
+      margin-left: @popover-arrow-width;
+    }
+
+    &.bottom {
+      margin-top: @popover-arrow-width;
+    }
+
+    &.left {
+      margin-left: -@popover-arrow-width;
+    }
   }
 
   .f-popover-title {
@@ -45,8 +56,10 @@ html {
   // .arrow is outer, .arrow:after is inner
 
   .f-popover > .arrow {
+    border-width: @popover-arrow-outer-width;
+
     &,
-    &:after {
+    &::after {
       position: absolute;
       display: block;
       width: 0;
@@ -55,14 +68,13 @@ html {
       border-style: solid;
     }
   }
-  .f-popover > .arrow {
-    border-width: @popover-arrow-outer-width;
-  }
-  .f-popover > .arrow:after {
+
+  .f-popover > .arrow::after {
     border-width: @popover-arrow-width;
-    content: "";
+    content: '';
   }
 
+  // stylelint-disable-next-line no-duplicate-selectors
   .f-popover {
     &.top > .arrow {
       left: 50%;
@@ -70,36 +82,41 @@ html {
       border-bottom-width: 0;
       border-top-color: @popover-border;
       bottom: -@popover-arrow-outer-width;
-      &:after {
-        content: " ";
+
+      &::after {
+        content: ' ';
         bottom: 1px;
         margin-left: -@popover-arrow-width;
         border-bottom-width: 0;
         border-top-color: @popover-bg;
       }
     }
+
     &.right > .arrow {
       top: 50%;
       left: -@popover-arrow-outer-width;
       margin-top: -@popover-arrow-outer-width;
       border-left-width: 0;
       border-right-color: @popover-border;
-      &:after {
-        content: " ";
+
+      &::after {
+        content: ' ';
         left: 1px;
         bottom: -@popover-arrow-width;
         border-left-width: 0;
         border-right-color: @popover-bg;
       }
     }
+
     &.bottom > .arrow {
       left: 50%;
       margin-left: -@popover-arrow-outer-width;
       border-top-width: 0;
       border-bottom-color: @popover-border;
       top: -@popover-arrow-outer-width;
-      &:after {
-        content: " ";
+
+      &::after {
+        content: ' ';
         top: 1px;
         margin-left: -@popover-arrow-width;
         border-top-width: 0;
@@ -113,8 +130,9 @@ html {
       margin-top: -@popover-arrow-outer-width;
       border-right-width: 0;
       border-left-color: @popover-border;
-      &:after {
-        content: " ";
+
+      &::after {
+        content: ' ';
         right: 1px;
         border-right-width: 0;
         border-left-color: @popover-bg;
@@ -123,4 +141,3 @@ html {
     }
   }
 }
-

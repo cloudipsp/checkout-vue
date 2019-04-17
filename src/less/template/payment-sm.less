@@ -7,11 +7,13 @@
     .f-min & {
       min-height: inherit;
     }
+
     min-height: calc(~'100% - 62px');
   }
 }
 
-.f-info { // col-md-3 col-md-push-9
+.f-info {
+  // col-md-3 col-md-push-9
   @media (min-width: @screen-sm-min) {
     border-top: none;
     border-bottom: 2px solid @info-border-tablet;
@@ -19,7 +21,8 @@
   }
 }
 
-.f-methods { // col-sm-4 col-md-3 col-md-pull-3
+.f-methods {
+  // col-sm-4 col-md-3 col-md-pull-3
   @media (min-width: @screen-sm-min) {
     position: relative;
     top: auto;
@@ -30,7 +33,6 @@
     padding-left: 15px;
     padding-right: 15px;
     transform: translateX(0);
-
     float: left;
     width: @f-sm-width; // col-sm-4
 
@@ -40,7 +42,8 @@
   }
 }
 
-.f-center { // col-sm-8 col-md-6 col-md-pull-3
+.f-center {
+  // col-sm-8 col-md-6 col-md-pull-3
   @media (min-width: @screen-sm-min) {
     .f-min & {
       width: 100%;

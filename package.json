@@ -80,6 +80,7 @@
     "karma-webpack": "^2.0.13",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "lint-staged": "^8.1.5",
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.20",
     "opn": "^5.3.0",
@@ -96,6 +97,10 @@
     "sinon": "^4.5.0",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.19.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-prettier": "^5.0.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.7.1",
     "vue-style-loader": "^3.1.2",
@@ -122,7 +127,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run build"
+      "pre-commit": "lint-staged && npm run build && git add dist/* -u"
     }
   },
   "lint-staged": {
@@ -130,6 +135,22 @@
       "node_modules/.bin/eslint --max-warnings=0",
       "node_modules/.bin/prettier --write",
       "git add"
+    ],
+    "src/**/*.less": [
+      "node_modules/.bin/stylelint",
+      "node_modules/.bin/prettier --write",
+      "git add"
     ]
+  },
+  "stylelint": {
+    "syntax": "less",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ],
+    "rules": {
+      "no-descending-specificity": null,
+      "media-feature-name-no-unknown": null
+    }
   }
 }

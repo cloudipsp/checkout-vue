@@ -1,5 +1,5 @@
-@import "core/index.less";
-@import "template/index.less";
+@import 'core/index.less';
+@import 'template/index.less';
 
 #f {
   font-size: @font-size-base;
@@ -14,16 +14,18 @@
   font-family: 'text-security-disc';
   src: url('../fonts/text-security-disc.eot');
   src: url('../fonts/text-security-disc.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/text-security-disc.woff') format('woff'),
-  url('../fonts/text-security-disc.ttf') format('truetype');
+    url('../fonts/text-security-disc.woff') format('woff'),
+    url('../fonts/text-security-disc.ttf') format('truetype');
   //url('../fonts/text-security-disc.svg#text-security') format('svg');
 }
 
 #f-cvv2 {
+  // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
   font-family: 'text-security-disc';
   -webkit-text-security: disc;
 }
-@supports (-webkit-text-security: disc){
+
+@supports (-webkit-text-security: disc) {
   #f-cvv2 {
     font-family: inherit;
   }

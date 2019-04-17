@@ -1,83 +1,86 @@
 //== Scaffolding
-@link-hover-decoration:           underline;
+@link-hover-decoration: underline;
 
 //== Typography
-@font-size-base:                  14px;
-@font-size-large:                 ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:                 ceil((@font-size-base * 0.85)); // ~12px
-@line-height-base:                1.428571429; // 20/14
-@line-height-computed:            floor((@font-size-base * @line-height-base)); // ~20px
+@font-size-base: 14px;
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@line-height-base: 1.428571429; // 20/14
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
 
 //== Components
-@padding-base-vertical:           10px;
-@padding-base-horizontal:         15px;
+@padding-base-vertical: 10px;
+@padding-base-horizontal: 15px;
 
-@padding-large-vertical:          14px;
-@padding-large-horizontal:        16px;
+@padding-large-vertical: 14px;
+@padding-large-horizontal: 16px;
 
-@padding-small-vertical:          7px;
-@padding-small-horizontal:        15px;
+@padding-small-vertical: 7px;
+@padding-small-horizontal: 15px;
 
-@line-height-large:               1.3333333; // extra decimals for Win 8.1 Chrome
-@line-height-small:               1.5;
+@line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small: 1.5;
 
-@border-radius-base:              4px;
-@border-radius-large:             6px;
-@border-radius-small:             2px;
+@border-radius-base: 4px;
+@border-radius-large: 6px;
+@border-radius-small: 2px;
 
 //== Buttons
-@btn-font-weight:                 bold;
-@btn-border-radius-base:          @border-radius-base;
-@btn-border-radius-large:         @border-radius-large;
-@btn-border-radius-small:         @border-radius-small;
+@btn-font-weight: bold;
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-large: @border-radius-large;
+@btn-border-radius-small: @border-radius-small;
 
 //== Forms
-@input-border-radius:             @border-radius-base;
-@input-border-radius-small:       @border-radius-small;
-@input-height-base:               (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-small:              (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
-@form-group-margin-bottom:        12px;
-@cursor-disabled:                 not-allowed;
+@input-border-radius: @border-radius-base;
+@input-border-radius-small: @border-radius-small;
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-small: (
+  floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) +
+    2
+);
+@form-group-margin-bottom: 12px;
+@cursor-disabled: not-allowed;
 
 //== Dropdowns
-@caret-width-base:                4px;
+@caret-width-base: 4px;
 
 //== Z-index master list
-@zindex-dropdown:                 1000;
-@zindex-popover:                  1060;
-@zindex-tooltip:                  1070;
-@zindex-modal-background:  1040;
-@zindex-modal:             1050;
+@zindex-dropdown: 1000;
+@zindex-popover: 1060;
+@zindex-tooltip: 1070;
+@zindex-modal-background: 1040;
+@zindex-modal: 1050;
 
 //== Media queries breakpoints
-@screen-sm-min:                   768px;
-@screen-md-min:                   992px;
-@screen-lg-min:                   1200px;
-@screen-xs-max:                   (@screen-sm-min - 1);
-@screen-sm-max:                   (@screen-md-min - 1);
-@screen-md-max:                   (@screen-lg-min - 1);
+@screen-sm-min: 768px;
+@screen-md-min: 992px;
+@screen-lg-min: 1200px;
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
 
 //== Grid system
-@grid-columns:                    12;
-@grid-gutter-width:               30px;
+@grid-columns: 12;
+@grid-gutter-width: 30px;
 
 //== Tooltips
-@tooltip-max-width:               200px;
-@tooltip-opacity:                 1;
-@tooltip-arrow-width:             6px;
+@tooltip-max-width: 200px;
+@tooltip-opacity: 1;
+@tooltip-arrow-width: 6px;
 
 //== Popovers
-@popover-max-width:               265px;
-@popover-arrow-width:             12px;
-@popover-arrow-outer-width:       (@popover-arrow-width + 1);
+@popover-max-width: 265px;
+@popover-arrow-width: 12px;
+@popover-arrow-outer-width: (@popover-arrow-width + 1);
 
 //== Modals
-@modal-padding:                   15px;
-@modal-title-line-height:         @line-height-base;
-@modal-backdrop-opacity:          .5;
-@modal-lg:                        900px;
-@modal-md:                        600px;
-@modal-sm:                        300px;
+@modal-padding: 15px;
+@modal-title-line-height: @line-height-base;
+@modal-backdrop-opacity: 0.5;
+@modal-lg: 900px;
+@modal-md: 600px;
+@modal-sm: 300px;
 
 //== Close
-@close-font-weight:               bold;
+@close-font-weight: bold;

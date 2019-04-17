@@ -1,4 +1,3 @@
-
 //
 // Remove the gray background color from active links in IE 10.
 //
@@ -71,8 +70,7 @@ select {
 //
 
 button,
-html input[type="button"], // 1
-input[type="reset"],
+html input[type="button"], /* 1 input[type="reset"], */
 input[type="submit"] {
   -webkit-appearance: button; // 2
   cursor: pointer; // 3
@@ -105,8 +103,8 @@ input::-moz-focus-inner {
 // 2. Remove excess padding in IE 8/9/10.
 //
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   box-sizing: border-box; // 1
   padding: 0; // 2
 }
@@ -117,7 +115,7 @@ input[type="radio"] {
 // decrement button to change from `default` to `text`.
 //
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
