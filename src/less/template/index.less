@@ -8,6 +8,7 @@
 @import 'offer.less';
 @import 'payment.less';
 @import 'checkout.less';
+@import 'payment-systems.less';
 
 .f-visible-mobile {
   .responsive-visibility();
@@ -63,81 +64,6 @@
 
 .f-block-hr {
   border-bottom: 2px solid @hr-border;
-}
-
-.f-ps {
-  display: inline-block;
-  cursor: pointer;
-  margin: 0 5px 20px 5px;
-  width: 60px;
-  vertical-align: top;
-  text-align: center;
-
-  .f-icon {
-    height: 60px;
-    width: 60px;
-    border-radius: 6px;
-    position: relative;
-    //display: block;
-
-    &::after {
-      content: '';
-      width: 15px;
-      height: 9px;
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      border: 3px solid @check-disabled-border;
-      border-top: none;
-      border-right: none;
-      background: transparent;
-      transform: rotate(-45deg);
-      transition: border ease-in-out 0.15s;
-    }
-  }
-
-  &:hover,
-  &.active {
-    .f-icon {
-      box-shadow: 0 4px 8px 0 @ps-active-shadow;
-    }
-  }
-
-  &.active {
-    .f-icon {
-      &::after {
-        border-color: @check-enable-border;
-      }
-    }
-  }
-}
-
-.f-ps-1,
-.f-ps-2,
-.f-ps-3 {
-  .f-ps {
-    width: 110px;
-
-    .f-icon {
-      height: 110px;
-      width: 110px;
-    }
-  }
-}
-
-.f-ps-4,
-.f-ps-5,
-.f-ps-6,
-.f-ps-7,
-.f-ps-8 {
-  .f-ps {
-    width: 80px;
-
-    .f-icon {
-      height: 80px;
-      width: 80px;
-    }
-  }
 }
 
 .f-loading {

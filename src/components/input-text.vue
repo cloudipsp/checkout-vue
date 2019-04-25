@@ -117,8 +117,10 @@ export default {
   },
   methods: {
     blur: function() {
-      this.$validator.validate(this.name_)
-      this.flag.touched = true
+      if ('touched' in this.flag) {
+        this.$validator.validate(this.name_)
+        this.flag.touched = true
+      }
     },
     valid: function() {
       this.$nextTick(() => {

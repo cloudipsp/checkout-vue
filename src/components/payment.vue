@@ -86,10 +86,6 @@ export default {
 
     this.params.token = findGetParameter('token') || this.params.token
 
-    if (!this.router.method) {
-      this.store.location('payment-method', this.options.active_tab)
-    }
-
     sendRequest('api.checkout', 'app', this.params).then(
       this.appSuccess,
       function() {}
@@ -245,13 +241,18 @@ export default {
       this.options.offerta_url =
         this.options.offerta_url || model.attr('merchant.offerta_url')
 
-      this.options.methods = this.options.methods
-        .concat(model.attr('tabs_order') || [])
-        .filter(function(item, pos, self) {
-          return self.indexOf(item) === pos
-        })
-      this.options.tabs = model.attr('tabs')
-      this.options.default_country = model.attr('default_country')
+      if (
+        (!this.store.user.options.methods ||
+          !this.store.user.options.methods.length) &&
+        model.attr('tabs_order') &&
+        model.attr('tabs_order').length
+      ) {
+        this.options.methods = model.attr('tabs_order')
+        this.store.setLocation()
+      }
+      this.state.tabs = model.attr('tabs')
+      this.options.default_country =
+        this.store.user.options.default_country || model.attr('default_country')
 
       this.params.fee = model.attr('client_fee') || 0
       this.options.customer_fields = model.attr('customer_required_data') || []

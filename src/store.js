@@ -25,6 +25,7 @@ export default {
     this.setFast()
     this.setCss()
     this.setLocale()
+    this.setLocation()
     $i18n.mergeLocaleMessage('en', this.state.messages['en'])
   },
   optionsFormat: function(options) {
@@ -141,6 +142,12 @@ export default {
     }
     this.state.params.lang = lang
   },
+  setLocation: function() {
+    let methods = this.state.options.methods
+    let active_tab = this.state.options.active_tab
+    let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
+    this.location('payment-method', method)
+  },
   setCardNumber: function(card) {
     this.state.params.card_number = card.card_number.replace(/ /g, '')
     this.state.params.expiry_date = card.expiry_date.replace(/ /g, '')
@@ -166,6 +173,9 @@ export default {
   location: function(page, method, system) {
     this.state.router.page = page
     this.state.router.method = method
+    this.state.router.system = system
+  },
+  locationSystem: function(system) {
     this.state.router.system = system
   },
   showError: function(code, message) {

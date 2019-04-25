@@ -1,4 +1,4 @@
-export const sort = [
+export const sortBanks = [
   'mbank',
   'pko_bp',
   'bpko_webapi',

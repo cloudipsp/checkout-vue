@@ -2,6 +2,7 @@ import $checkout from 'ipsp-js-sdk/dist/checkout'
 import store from '@/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
+import { i18n } from '@/i18n'
 
 let api = $checkout('Api')
 let cache = {}
@@ -147,4 +148,15 @@ export function findGetParameter(parameterName) {
       if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1])
     })
   return result
+}
+
+export function sort(arr, field, reverse) {
+  reverse = reverse ? -1 : 1
+  return arr.sort((a, b) => {
+    if (String.prototype.localeCompare) {
+      return a[field].localeCompare(b[field], i18n.locale) * reverse
+    } else {
+      return (a[field] < b[field] ? -1 : 1) * reverse
+    }
+  })
 }

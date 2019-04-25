@@ -1,6 +1,7 @@
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import configMethods from '@/config/methods'
+import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 
 let i18n = {}
@@ -103,6 +104,8 @@ export default {
       logo_url: { type: 'url' },
       offerta_url: { type: 'url' },
       cancel: { type: 'boolean' },
+      default_country: { type: 'enum', enum: configCountries },
+      countries: validatorArray(configCountries),
     },
   },
   popup: {

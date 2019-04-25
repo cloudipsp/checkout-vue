@@ -203,7 +203,21 @@ var minOptions = {
   }
 }
 
-var app = fondy('#app', minOptions)
+  var trustlyOptions = {
+    options: {
+      api_domain: 'api.dev.fondy.eu',
+      // active_tab: 'trustly',
+      default_country: 'PL',
+      countries: ['PL'],
+    },
+    params: {
+      amount: 100,
+      currency: 'USD',
+      merchant_id: 900158,
+    }
+  }
+
+var app = fondy('#app', trustlyOptions)
   .$on('success', function (model) {
     console.log('success', model)
   })

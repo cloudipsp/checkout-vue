@@ -6,6 +6,8 @@
 
 // TODO $emit setParams затирает стейт параметрами notSet.params
 // TODO два тултипа
+// TODO в fail приходят cards, их отображать?
+// TODO если поставить countries: ['PL'], то через поиск будет искать среди всех банков
 
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'

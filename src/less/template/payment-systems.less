@@ -1,0 +1,99 @@
+.f-ps {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 5px 20px 5px;
+  width: 60px;
+  font-size: 12px;
+  vertical-align: top;
+  text-align: center;
+  word-wrap: break-word;
+
+  .f-wrapper-icon {
+    height: 60px;
+  }
+  .f-svg {
+    height: 100%;
+  }
+
+  .f-icon {
+    border-radius: 9px;
+    position: relative;
+    background-size: auto;
+    transition: all ease-in-out 0.15s;
+    border: solid 1px transparent;
+    display: block;
+    height: 100%;
+
+    &::after {
+      content: '';
+      width: 15px;
+      height: 9px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid @check-disabled-border;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      transform: rotate(-45deg);
+      transition: border ease-in-out 0.15s;
+    }
+  }
+
+  &:hover,
+  &.active {
+    .f-icon {
+      box-shadow: 0 -1px 12px 0 @ps-active-shadow;
+      border-color: @ps-active-border;
+    }
+  }
+
+  &.active {
+    .f-icon {
+      &::after {
+        border-color: @check-enable-border;
+      }
+    }
+  }
+}
+
+.f-ps-1,
+.f-ps-2,
+.f-ps-3 {
+  .f-ps {
+    width: 110px;
+    font-size: 14px;
+  }
+  .f-wrapper-icon {
+    height: 110px;
+  }
+
+  .f-icon::after {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+.f-ps-4,
+.f-ps-5,
+.f-ps-6,
+.f-ps-7,
+.f-ps-8 {
+  .f-ps {
+    width: 80px;
+    font-size: 13px;
+  }
+  .f-wrapper-icon {
+    height: 80px;
+  }
+
+  .f-icon::after {
+    top: 6px;
+    left: 6px;
+  }
+}
+
+.f-iban {
+  font-size: 10px;
+  opacity: 0.8;
+}

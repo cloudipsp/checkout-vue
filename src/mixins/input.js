@@ -46,12 +46,12 @@ export default {
       return this.$t(this.placeholder)
     },
     flag() {
-      return this.$validator.flags[this.name_]
+      return this.$validator.flags[this.name_] || {}
     },
     hasError() {
       return (
         this.errors.has(this.name_) &&
-        ((this.flag && this.flag.touched) || this.store.state.submit)
+        (this.flag.touched || this.store.state.submit)
       )
     },
     value_: {

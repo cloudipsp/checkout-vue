@@ -13,20 +13,20 @@
       >
       </div>
     </div>
-    <template v-if="!hideTitle">
+    <template v-if="showFast">
       <div class="f-block-hr f-title f-hidden-mobile" v-t="'fast'"></div>
       <div class="f-block f-title3 f-visible-mobile" v-t="'fast'"></div>
+      <div class="f-block f-fast-access">
+        <div
+          class="f-icon"
+          v-for="item in list"
+          :key="item.system"
+          :class="'f-i-' + item.system"
+          @click="changeMethod(item.method, item.system )"
+          :style="style(item.system)"
+        ></div>
+      </div>
     </template>
-    <div class="f-block f-fast-access">
-      <div
-        class="f-icon"
-        v-if="item.system !== router.system"
-        v-for="item in options.fast"
-        :key="item.system"
-        :class="'f-i-' + item.system"
-        @click="changeMethod(item.method, item.system )"
-      ></div>
-    </div>
   </div>
 </template>
 
@@ -40,11 +40,20 @@ export default {
     }
   },
   computed: {
-    hideTitle: function() {
-      return (
-        this.options.fast.length === 1 &&
-        this.options.fast[0].system === this.router.system
+    showFast: function() {
+      return this.list.length
+    },
+    list: function() {
+      return this.options.fast.filter(
+        item => item.system !== this.router.system
       )
+    },
+    style: function() {
+      return function(item) {
+        return {
+          'background-image': 'url(' + this.store.state.cdn + item + '.svg)',
+        }
+      }
     },
   },
   methods: {

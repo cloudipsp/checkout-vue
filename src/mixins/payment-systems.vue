@@ -1,50 +1,169 @@
 <template>
   <div :class="['f-' + router.method]">
-    <slot></slot>
-    <div v-if="list.length > 1" class="f-block f-title2" v-t="router.method + '_t'"></div>
-    <div class="f-block f-text-center" :class="'f-ps-' + list.length">
+    <div class="f-block">
+      <div class="f-block-sm">
+        <input-select
+          v-if="showCountry"
+          name="default_country"
+          :list="country"
+          :model="options"
+          validate="required"
+          @input="clear"
+        ></input-select>
+        <input-text
+          v-if="showSearch"
+          name="search"
+          label="system_search"
+          type="text"
+          :model="form"
+          placeholder="system_search_p"
+        ></input-text>
+      </div>
       <div
-        class="f-ps"
-        v-for="item in list"
-        :key="item"
-        @click="setPaymentSystem(item)"
-        :class="{active : item === active}"
+        v-if="showTitle"
+        class="f-block f-title2"
+        v-t="router.method + '_t'"
+      ></div>
+      <div
+        v-if="showList"
+        class="f-text-center"
+        :class="'f-ps-' + list.length"
       >
-        <div class="f-icon"
-             :class="'f-i-' + icon(item)"
-             :style="{
-               backgroundImage:  'url(' + cdn + icon(item) + '.svg)'
-             }"></div>
-        <div v-t="text(item)"></div>
+        <div
+          class="f-ps"
+          v-for="item in listMin"
+          :key="item.id"
+          @click="locationSystem(item.id)"
+          :class="{active : isSystem(item.id)}"
+        >
+          <div class="f-wrapper-icon">
+            <div class="f-icon"
+                 :class="'f-i-' + item.id"
+                 :style="style(item.bank_logo)"></div>
+          </div>
+          <div v-t="item.name"></div>
+          <div class="f-iban">{{item.iban}}</div>
+        </div>
+        <div v-if="showMore" class="f-ps" @click="loadMore">
+          <div class="f-wrapper-icon">
+            <icon-svg name="redo" size="3x" :spin="spin"></icon-svg>
+          </div>
+          <div v-t="'load_more'"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import InputText from '@/components/input-text'
+import InputSelect from '@/components/input-select'
+import IconSvg from '@/components/icon-svg'
+
 export default {
+  components: {
+    InputText,
+    InputSelect,
+    IconSvg,
+  },
   props: ['paymentSystems'],
   data() {
     return {
-      active: '',
-      cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/',
+      form: {
+        search: '',
+      },
+      count: 25,
+      more: 0,
+      spin: false,
     }
   },
-  created: function() {
-    this.setPaymentSystem()
+  watch: {
+    list: {
+      handler(value) {
+        this.locationSystem(value[0] && value[0].id)
+        this.more = this.count
+      },
+      immediate: true,
+    },
   },
   computed: {
-    list() {
-      return this.paymentSystems
+    country() {
+      return []
     },
-    icon: vm => item => vm.config[item].i || item,
-    text: vm => item => item,
+    listFull() {
+      return this.paymentSystems.map(function(item) {
+        return {
+          id: item,
+          name: item,
+          bank_logo: item,
+        }
+      })
+    },
+    listFilter() {
+      return this.listFull
+    },
+    list() {
+      let search = this.form.search.toLowerCase()
+      if (search) {
+        return this.listFull.filter(function(item) {
+          let name = item.name.toLowerCase()
+          let iban = item.iban.toLowerCase()
+
+          return name.indexOf(search) > -1 || iban.indexOf(search) > -1
+        }, this)
+      } else {
+        return this.listFilter
+      }
+    },
+    listMin() {
+      return this.list.slice(0, this.more)
+    },
+    showCountry() {
+      return this.isMethod('trustly') && this.country.length > 1
+    },
+    showSearch() {
+      return this.listFull.length > 10
+    },
+    showTitle() {
+      return this.list.length > 1
+    },
+    showList() {
+      return this.listFilter.length < 100 || this.form.search
+    },
+    showMore() {
+      return this.list.length > this.more
+    },
+    style() {
+      return function(item) {
+        return {
+          'background-image': 'url(' + this.store.state.cdn + item + '.svg)',
+        }
+      }
+    },
+    isMethod() {
+      return function(method) {
+        return this.store.state.router.method === method
+      }
+    },
+    isSystem() {
+      return function(system) {
+        return this.router.system === system
+      }
+    },
   },
   methods: {
-    setPaymentSystem: function(system) {
-      let active = system || this.router.system || this.list[0]
-      this.router.system = active
-      this.active = active
+    locationSystem(system) {
+      this.store.locationSystem(system)
+    },
+    clear() {
+      this.form.search = ''
+    },
+    loadMore() {
+      this.spin = true
+      setTimeout(() => {
+        this.more += this.count
+        this.spin = false
+      }, 300)
     },
   },
 }

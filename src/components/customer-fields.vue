@@ -25,6 +25,7 @@ import config from '@/config/customer-fields'
 import countries from '@/config/countries'
 import InputText from '@/components/input-text'
 import InputSelect from '@/components/input-select'
+import { sort } from '@/utils/helpers'
 
 export default {
   created: function() {
@@ -37,12 +38,19 @@ export default {
     return {}
   },
   computed: {
+    countries: function() {
+      let result = countries.map(item => ({
+        id: item,
+        name: this.$t(item),
+      }))
+      return sort(result, 'name')
+    },
     getFields: function() {
       let result = []
-      this.options.customer_fields.forEach(function(name) {
+      this.options.customer_fields.forEach(name => {
         let item = { field: name }
         if (config[name].dictionary) {
-          item.list = countries
+          item.list = this.countries
         }
         config[name] && result.push(Object.assign(item, config[name]))
       })
