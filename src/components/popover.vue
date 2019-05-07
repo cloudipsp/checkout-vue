@@ -42,7 +42,6 @@ export default {
           },
           ref: 'popup',
           on: {
-            mouseenter: this.showOnHover,
             mouseleave: this.hideOnLeave,
           },
         },

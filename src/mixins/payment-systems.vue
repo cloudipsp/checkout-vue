@@ -78,13 +78,10 @@ export default {
     }
   },
   watch: {
-    list: {
-      handler(value) {
-        this.locationSystem(value[0] && value[0].id)
-        this.more = this.count
-      },
-      immediate: true,
-    },
+    list: 'setActive',
+  },
+  created() {
+    this.setActive(this.list)
   },
   computed: {
     country() {
@@ -150,6 +147,11 @@ export default {
         return this.router.system === system
       }
     },
+    isActive() {
+      return this.list.some(item => {
+        return this.isSystem(item.id)
+      })
+    },
   },
   methods: {
     locationSystem(system) {
@@ -164,6 +166,13 @@ export default {
         this.more += this.count
         this.spin = false
       }, 300)
+    },
+    setActive(list) {
+      if (!this.isActive) {
+        this.locationSystem(list[0] && list[0].id)
+      }
+
+      this.more = this.count
     },
   },
 }

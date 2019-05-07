@@ -24,6 +24,7 @@
     </the-mask>
     <div v-else-if="group && mask" :class="[$css.ig]">
       <the-mask
+        ref="input"
         v-validate="validate"
         v-model="params[field_]"
         :data-vv-as="label_"
@@ -38,7 +39,6 @@
         :mask="mask"
         :masked="masked"
         @blur.native="blur"
-        @input="valid"
         @keyup.native.enter="onEnter"
       ></the-mask>
       <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
@@ -46,6 +46,7 @@
       <slot name="group"></slot>
     </div>
     <the-mask
+      ref="input"
       v-else-if="mask"
       v-validate="validate"
       v-model="params[field_]"
@@ -61,7 +62,6 @@
       :mask="mask"
       :masked="masked"
       @blur.native="blur"
-      @input="valid"
       @keyup.native.enter="onEnter"
     ></the-mask>
     <input
@@ -117,15 +117,7 @@ export default {
   },
   methods: {
     blur: function() {
-      if ('touched' in this.flag) {
-        this.$validator.validate(this.name_)
-        this.flag.touched = true
-      }
-    },
-    valid: function() {
-      this.$nextTick(() => {
-        this.$validator.validate(this.name_)
-      })
+      this.$refs.input.$emit('blur')
     },
   },
 }

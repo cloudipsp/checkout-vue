@@ -107,7 +107,7 @@ export default {
       let date = new Date()
       let year = String(date.getFullYear()).slice(-2)
       let month = ('0' + (date.getMonth() + 1)).slice(-2)
-      return 'required|date_format:MM/YY|after:' + month + '/' + year + ',true'
+      return 'required|date_format:MM/yy|after:' + month + '/' + year + ',true'
     },
     validCardNumber: function() {
       return {

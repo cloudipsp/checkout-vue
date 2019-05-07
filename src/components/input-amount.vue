@@ -5,7 +5,6 @@
       <input
         v-validate="'required|decimal:2'"
         v-model="amount"
-        data-vv-validate-on="blur"
         :data-vv-as="label_"
         :data-vv-name="name_"
         type="tel"

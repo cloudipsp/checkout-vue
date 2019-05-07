@@ -24,7 +24,7 @@ export default {
     }
   },
   created: function() {
-    this.store.setOptions(this.optionsUser, this.$i18n)
+    this.store.setOptions(this.optionsUser)
     //      require('./less/style.less')
     if (this.options.full_screen) {
       require('./less/style-sm.less')

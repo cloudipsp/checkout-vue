@@ -64,9 +64,12 @@ export default {
     'options.email': 'firstResize',
     router: {
       handler: function() {
-        this.firstResize()
+        this.$nextTick(() => {
+          this.firstResize()
+        })
       },
       deep: true,
+      immediate: true,
     },
     show: function(show) {
       document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
@@ -124,15 +127,11 @@ export default {
   },
   methods: {
     submit: function() {
-      this.$validator.validateAll()
-      this.$nextTick(() => {
-        this.autoFocus()
+      this.$validator.validateAll().then(isValid => {
         this.store.state.submit = true
-        //        console.log('errors', this.errors.items)
-        //        console.log('fields', this.fields)
-        //        this.errors.clear()
+        // this.errors.items this.fields this.errors.clear() this.errors.count()
 
-        if (this.errors.count() || this.store.state.loading) return
+        if (!isValid || this.store.state.loading) return this.autoFocus()
         this.store.formLoading(true)
         this.error.flag = false
 
@@ -388,17 +387,17 @@ export default {
         }
       })
       this.$root.$on('resize', () => {
-        this.resizeWindow()
+        this.resize()
       })
     },
     autoFocus: function() {
-      if (this.errors.count()) {
-        let $firstErrorField = this.$el.querySelector(
-          '#' + this.errors.items[0].field
-        )
-        $firstErrorField.scrollIntoView()
+      let $firstErrorField = this.$el.querySelector(
+        '#' + this.errors.items[0].field
+      )
+      $firstErrorField.scrollIntoView()
+      setTimeout(() => {
         $firstErrorField.focus()
-      }
+      })
     },
     changeMethod: function() {
       this.show = false
@@ -408,6 +407,8 @@ export default {
       this.resizeError()
     },
     resizeWindow: function() {
+      if (!this.options.full_screen) return
+
       let $container = document.querySelector('.f-container')
       this.$refs.center.style.minHeight = 'auto'
       $container.style.paddingTop = '0'
@@ -419,17 +420,15 @@ export default {
       let infoH = this.$refs.info.offsetHeight
       let containerH = $container.offsetHeight
 
-      if (this.options.full_screen) {
-        if (width >= 992) {
-          this.$refs.center.style.minHeight =
-            centerH < wraperH ? wraperH + 'px' : 'auto'
-          if (containerH < height) {
-            $container.style.paddingTop = (height - containerH) / 2 + 'px'
-          }
-        } else if (width >= 768 && !this.isMin) {
-          this.$refs.center.style.minHeight =
-            centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
+      if (width >= 992) {
+        this.$refs.center.style.minHeight =
+          centerH < wraperH ? wraperH + 'px' : 'auto'
+        if (containerH < height) {
+          $container.style.paddingTop = (height - containerH) / 2 + 'px'
         }
+      } else if (width >= 768 && !this.isMin) {
+        this.$refs.center.style.minHeight =
+          centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
       }
     },
     resizeError: function() {
@@ -447,8 +446,7 @@ export default {
       }, 150)
     },
     firstResize: function() {
-      //        console.log('firstResize')
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.resizeWindow()
       })
     },

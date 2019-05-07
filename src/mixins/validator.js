@@ -1,6 +1,33 @@
-import { Validator } from 'vee-validate'
+import {
+  Validator,
+  install as VeeValidate,
+} from 'vee-validate/dist/vee-validate.minimal.esm.js'
+import {
+  required,
+  email,
+  numeric,
+  decimal,
+  date_format,
+  alpha,
+  min,
+  max,
+  after,
+  digits,
+} from 'vee-validate/dist/rules.esm.js'
+import en from 'vee-validate/dist/locale/en'
 
 const install = Vue => {
+  Validator.extend('required', required)
+  Validator.extend('email', email)
+  Validator.extend('numeric', numeric)
+  Validator.extend('decimal', decimal)
+  Validator.extend('date_format', date_format)
+  Validator.extend('alpha', alpha)
+  Validator.extend('min', min)
+  Validator.extend('max', max)
+  Validator.extend('after', after)
+  Validator.extend('digits', digits)
+
   Validator.extend('customer_field', {
     getMessage: field => `The ${field} field format is invalid.`,
     validate: value => /^(?!\s)[0-9A-Za-z-\/\s\.,]+(?!\s)$/.test(value),
@@ -39,6 +66,13 @@ const install = Vue => {
       }
       return nCheck % 10 === 0
     },
+  })
+
+  Validator.localize('en', en)
+
+  Vue.use(VeeValidate, {
+    inject: false,
+    events: 'change|input|blur',
   })
 }
 
