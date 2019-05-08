@@ -105,7 +105,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     }),
 
-    new webpack.BannerPlugin(gitRevisionPlugin.branch() + ' ' + gitRevisionPlugin.commithash()),
+    new webpack.BannerPlugin(gitRevisionPlugin.branch() + ' parent commithash ' + gitRevisionPlugin.commithash()),
 
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
