@@ -15,8 +15,6 @@ export const i18n = new VueI18n({
   },
 })
 
-const loadedLanguages = []
-
 function setI18nLanguage(lang) {
   i18n.locale = lang
   document.querySelector('html').setAttribute('lang', lang)
@@ -24,11 +22,10 @@ function setI18nLanguage(lang) {
 }
 
 export function loadLanguageAsync(lang) {
-  if (loadedLanguages.indexOf(lang) > -1)
-    return Promise.resolve(setI18nLanguage(lang))
-
-  return import(/* webpackChunkName: "[request]" */
-  `@/lang/${lang}`).then(msgs => {
+  return import(
+    /* webpackChunkName: "[request]" */
+    `@/lang/${lang}`
+  ).then(msgs => {
     Validator.localize(lang, {
       messages: Object.assign(
         {},
@@ -43,7 +40,6 @@ export function loadLanguageAsync(lang) {
       Object.assign({}, msgs.messages, store.state.messages[lang])
     )
 
-    loadedLanguages.push(lang)
     return setI18nLanguage(lang)
   })
 }
