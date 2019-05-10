@@ -1,6 +1,6 @@
 <template>
   <div class="f-customer-fields">
-    <div v-for="item in getFields">
+    <div v-for="item in getFields" :key="item.name">
       <input-select
         v-if="item.list"
         :list="item.list"
@@ -8,14 +8,14 @@
         :field="item.field"
         :validate="item.valid"
         customer_data
-      ></input-select>
+      />
       <input-text
         v-else
         :name="item.name"
         :field="item.field"
         :validate="item.valid"
         customer_data
-      ></input-text>
+      />
     </div>
   </div>
 </template>
@@ -28,11 +28,9 @@ import InputSelect from '@/components/input-select'
 import { sort } from '@/utils/helpers'
 
 export default {
-  created: function() {
-    let index = this.options.customer_fields.indexOf('email')
-    if (this.options.email && index > -1) {
-      this.options.customer_fields.splice(index, 1)
-    }
+  components: {
+    InputText,
+    InputSelect,
   },
   data() {
     return {}
@@ -57,9 +55,11 @@ export default {
       return result
     },
   },
-  components: {
-    InputText,
-    InputSelect,
+  created: function() {
+    let index = this.options.customer_fields.indexOf('email')
+    if (this.options.email && index > -1) {
+      this.options.customer_fields.splice(index, 1)
+    }
   },
 }
 </script>

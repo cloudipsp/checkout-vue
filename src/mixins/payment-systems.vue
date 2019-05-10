@@ -9,7 +9,7 @@
           :model="options"
           validate="required"
           @input="clear"
-        ></input-select>
+        />
         <input-text
           v-if="showSearch"
           name="search"
@@ -17,38 +17,38 @@
           type="text"
           :model="form"
           placeholder="system_search_p"
-        ></input-text>
+        />
       </div>
       <div
         v-if="showTitle"
-        class="f-block f-title2"
         v-t="router.method + '_t'"
-      ></div>
-      <div
-        v-if="showList"
-        class="f-text-center"
-        :class="'f-ps-' + list.length"
-      >
+        class="f-block f-title2"
+      />
+      <div v-if="showList" class="f-text-center" :class="'f-ps-' + list.length">
         <div
-          class="f-ps"
           v-for="item in listMin"
           :key="item.id"
+          class="f-ps"
+          :class="{ active: isSystem(item.id) }"
           @click="locationSystem(item.id)"
-          :class="{active : isSystem(item.id)}"
         >
           <div class="f-wrapper-icon">
-            <div class="f-icon"
-                 :class="'f-i-' + item.id"
-                 :style="style(item.bank_logo)"></div>
+            <div
+              class="f-icon"
+              :class="'f-i-' + item.id"
+              :style="style(item.bank_logo)"
+            />
           </div>
-          <div v-t="item.name"></div>
-          <div class="f-iban">{{item.iban}}</div>
+          <div v-t="item.name" />
+          <div class="f-iban">
+            {{ item.iban }}
+          </div>
         </div>
         <div v-if="showMore" class="f-ps" @click="loadMore">
           <div class="f-wrapper-icon">
-            <icon-svg name="redo" size="3x" :spin="spin"></icon-svg>
+            <icon-svg name="redo" size="3x" :spin="spin" />
           </div>
-          <div v-t="'load_more'"></div>
+          <div v-t="'load_more'" />
         </div>
       </div>
     </div>
@@ -66,7 +66,12 @@ export default {
     InputSelect,
     IconSvg,
   },
-  props: ['paymentSystems'],
+  props: {
+    paymentSystems: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       form: {
@@ -76,12 +81,6 @@ export default {
       more: 0,
       spin: false,
     }
-  },
-  watch: {
-    list: 'setActive',
-  },
-  created() {
-    this.setActive(this.list)
   },
   computed: {
     country() {
@@ -152,6 +151,12 @@ export default {
         return this.isSystem(item.id)
       })
     },
+  },
+  watch: {
+    list: 'setActive',
+  },
+  created() {
+    this.setActive(this.list)
   },
   methods: {
     locationSystem(system) {

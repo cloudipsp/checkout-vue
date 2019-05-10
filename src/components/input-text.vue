@@ -1,86 +1,108 @@
 <template>
-  <div :class="['f-form-group', hasError ? $css.he : '', hasDefaultSlot ? $css.hf : '']">
-    <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{ label_ }}</label>
+  <div
+    :class="[
+      'f-form-group',
+      hasError ? $css.he : '',
+      hasDefaultSlot ? $css.hf : '',
+    ]"
+  >
+    <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{
+      label_
+    }}</label>
     <input
       v-if="readonly"
+      :id="name_"
       v-model="params[field_]"
       :type="type"
       :class="[$css.fc, classReadonly]"
       :readonly="readonly"
       :disabled="readonly"
-      :id="name_"
-    >
+    />
     <the-mask
-        v-else-if="readonly && mask"
-        v-model="params[field_]"
-        :type="type"
-        :class="[$css.fc, classReadonly]"
-        :mask="mask"
-        :masked="masked"
-        :readonly="readonly"
-        :disabled="readonly"
-        :id="name_"
-      >
-    </the-mask>
+      v-else-if="readonly && mask"
+      :id="name_"
+      v-model="params[field_]"
+      :type="type"
+      :class="[$css.fc, classReadonly]"
+      :mask="mask"
+      :masked="masked"
+      :readonly="readonly"
+      :disabled="readonly"
+    />
     <div v-else-if="group && mask" :class="[$css.ig]">
       <the-mask
+        :id="name_"
         ref="input"
-        v-validate="validate"
         v-model="params[field_]"
+        v-validate="validate"
         :data-vv-as="label_"
         :data-vv-name="name_"
         :type="type"
         :class="[$css.fc, hasError ? $css.ie : '']"
-        :id="name_"
         :maxlength="maxlength"
         :placeholder="placeholder_"
         :inputmode="inputmode"
-
         :mask="mask"
         :masked="masked"
         @blur.native="blur"
         @keyup.native.enter="onEnter"
-      ></the-mask>
-      <tooltip v-if="options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
-      <div v-if="!options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
-      <slot name="group"></slot>
+      />
+      <tooltip
+        v-if="options.tooltip"
+        :text="errors.first(name_)"
+        :enable="hasError"
+        :placement="placement"
+        :target="'#' + name_"
+      />
+      <div v-if="!options.tooltip && hasError" class="f-error">
+        {{ errors.first(name_) }}
+      </div>
+      <slot name="group" />
     </div>
     <the-mask
-      ref="input"
       v-else-if="mask"
-      v-validate="validate"
+      :id="name_"
+      ref="input"
       v-model="params[field_]"
+      v-validate="validate"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
       :class="[$css.fc, hasError ? $css.ie : '']"
-      :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
-
       :mask="mask"
       :masked="masked"
       @blur.native="blur"
       @keyup.native.enter="onEnter"
-    ></the-mask>
+    />
     <input
       v-else
-      v-validate="validate"
+      :id="name_"
       v-model="params[field_]"
+      v-validate="validate"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
       :class="[$css.fc, hasError ? $css.ie : '']"
-      :id="name_"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
       @keyup.enter="onEnter"
-    >
-    <slot></slot>
-    <tooltip v-if="!group && options.tooltip" :text="errors.first(name_)" :enable="hasError" :placement="placement" :target="'#'+name_"></tooltip>
-    <div v-if="!group && !options.tooltip && hasError" class="f-error">{{ errors.first(name_) }}</div>
+    />
+    <slot />
+    <tooltip
+      v-if="!group && options.tooltip"
+      :text="errors.first(name_)"
+      :enable="hasError"
+      :placement="placement"
+      :target="'#' + name_"
+    />
+    <div v-if="!group && !options.tooltip && hasError" class="f-error">
+      {{ errors.first(name_) }}
+    </div>
+    {{ placement }}
   </div>
 </template>
 
@@ -92,12 +114,16 @@ export default {
   props: {
     type: {
       type: String,
-      default: function() {
-        return 'text'
-      },
+      default: 'text',
     },
-    maxlength: Number,
-    mask: [String, Object],
+    maxlength: {
+      type: Number,
+      default: null,
+    },
+    mask: {
+      type: [String, Object],
+      default: null,
+    },
     masked: Boolean,
     group: Boolean,
   },

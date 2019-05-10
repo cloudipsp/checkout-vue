@@ -5,12 +5,9 @@
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     :viewBox="viewBox"
-    :class="className">
-    <path
-      fill="currentColor"
-      :d="d"
-    >
-    </path>
+    :class="className"
+  >
+    <path fill="currentColor" :d="d" />
   </svg>
 </template>
 

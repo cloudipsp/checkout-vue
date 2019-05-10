@@ -3,23 +3,58 @@
     <div class="f-block">
       <div class="f-block-sm">
         <div class="f-text-center">
-          <input type="checkbox" v-model="options.open" class="f-checkbox-swipe" id="f-regular-swipe" />
-          <label :class="[$css.cl]" for="f-regular-swipe" v-t="'regular'"></label>
+          <input
+            id="f-regular-swipe"
+            v-model="options.open"
+            type="checkbox"
+            class="f-checkbox-swipe"
+          />
+          <label v-t="'regular'" :class="[$css.cl]" for="f-regular-swipe" />
         </div>
       </div>
     </div>
-    <div class="f-block" v-if="options.open">
+    <div v-if="options.open" class="f-block">
       <div class="f-block-sm">
         <div class="f-row">
           <div class="f-col-xs-6">
-            <input-text name="regular_every" field="every" validate="required|numeric" placement="bottom" type="tel" inputmode="numeric" recurring placeholder="regular_every_p" :readonly="params.readonly"></input-text>
+            <input-text
+              name="regular_every"
+              field="every"
+              validate="required|numeric"
+              placement="bottom"
+              type="tel"
+              inputmode="numeric"
+              recurring
+              placeholder="regular_every_p"
+              :readonly="params.readonly"
+            />
           </div>
           <div class="f-col-xs-6">
-            <input-select :list="options.period" name="regular_period" field="period" validate="required" recurring :readonly="params.readonly"></input-select>
+            <input-select
+              :list="options.period"
+              name="regular_period"
+              field="period"
+              validate="required"
+              recurring
+              :readonly="params.readonly"
+            />
           </div>
         </div>
-        <input-amount name="regular_amount" field="amount" recurring placeholder="regular_amount_p" :readonly="params.readonly"></input-amount>
-        <input-text name="regular_start_time" field="start_time" validate="required" type="date" recurring :readonly="params.readonly"></input-text>
+        <input-amount
+          name="regular_amount"
+          field="amount"
+          recurring
+          placeholder="regular_amount_p"
+          :readonly="params.readonly"
+        />
+        <input-text
+          name="regular_start_time"
+          field="start_time"
+          validate="required"
+          type="date"
+          recurring
+          :readonly="params.readonly"
+        />
       </div>
     </div>
   </div>
@@ -32,15 +67,16 @@ import InputSelect from '@/components/input-select'
 
 export default {
   inject: ['$validator'],
+  components: {
+    InputAmount,
+    InputText,
+    InputSelect,
+  },
   data() {
     return {
       options: this.store.state.regular,
       params: this.store.state.params.recurring_data,
     }
-  },
-  created: function() {
-    this.params.end_time = this.recurringEndTime()
-    this.params.start_time = this.recurringStartTime()
   },
   watch: {
     'options.open': {
@@ -49,6 +85,10 @@ export default {
       },
       immediate: true,
     },
+  },
+  created: function() {
+    this.params.end_time = this.recurringEndTime()
+    this.params.start_time = this.recurringStartTime()
   },
   methods: {
     getDate: function(date) {
@@ -111,11 +151,6 @@ export default {
       d.setFullYear(d.getFullYear() + 5)
       return this.getDateFormat(d)
     },
-  },
-  components: {
-    InputAmount,
-    InputText,
-    InputSelect,
   },
 }
 </script>

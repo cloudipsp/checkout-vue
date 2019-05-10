@@ -1,5 +1,11 @@
 const install = Vue => {
+  // @vue/component
   Vue.mixin({
+    data() {
+      return {
+        store: this.store, // store make reactive
+      }
+    },
     beforeCreate() {
       const options = this.$options
       // store injection
@@ -18,11 +24,6 @@ const install = Vue => {
       this.error = this.store.state.error
       this.router = this.store.state.router
       this.$css = this.store.state.css
-    },
-    data() {
-      return {
-        store: this.store, // store make reactive
-      }
     },
   })
 }

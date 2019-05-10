@@ -2,8 +2,8 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
+    parser: 'babel-eslint',
     sourceType: 'module'
   },
   env: {
@@ -11,16 +11,16 @@ module.exports = {
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   extends: [
-    'standard',
-    'prettier'
+    'standard', // добавляет правила eslint/
+    'prettier', // отключает правила eslint/
+    'plugin:vue/recommended', // добавляет правила vue/
+    'prettier/vue', // отключает правила vue/
   ],
   // required to lint *.vue files
   plugins: [
-    'html',
-    'prettier'
   ],
   // add your custom rules here
-  'rules': {
+  rules: {
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

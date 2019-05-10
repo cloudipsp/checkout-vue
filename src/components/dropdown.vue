@@ -5,33 +5,6 @@ import { isBoolean } from '@/utils/object'
 const DEFAULT_TAG = 'div'
 
 export default {
-  render(h) {
-    return h(
-      this.tag,
-      {
-        class: {
-          //            'btn-group': this.tag === DEFAULT_TAG,
-          'f-dropdown': !this.dropup,
-          'f-dropup': this.dropup,
-          'f-open': this.show,
-        },
-      },
-      [
-        this.$slots.default,
-        h(
-          'ul',
-          {
-            class: {
-              'f-dropdown-menu': true,
-              'f-dropdown-menu-right': this.menuRight,
-            },
-            ref: 'dropdown',
-          },
-          [this.$slots.dropdown]
-        ),
-      ]
-    )
-  },
   props: {
     tag: {
       type: String,
@@ -50,8 +23,16 @@ export default {
       type: Boolean,
       default: true,
     },
-    notCloseElements: Array,
-    positionElement: null,
+    notCloseElements: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    positionElement: {
+      type: Element,
+      default: null,
+    },
   },
   data() {
     return {
@@ -138,6 +119,33 @@ export default {
         // Silent
       }
     },
+  },
+  render(h) {
+    return h(
+      this.tag,
+      {
+        class: {
+          //            'btn-group': this.tag === DEFAULT_TAG,
+          'f-dropdown': !this.dropup,
+          'f-dropup': this.dropup,
+          'f-open': this.show,
+        },
+      },
+      [
+        this.$slots.default,
+        h(
+          'ul',
+          {
+            class: {
+              'f-dropdown-menu': true,
+              'f-dropdown-menu-right': this.menuRight,
+            },
+            ref: 'dropdown',
+          },
+          [this.$slots.dropdown]
+        ),
+      ]
+    )
   },
 }
 </script>

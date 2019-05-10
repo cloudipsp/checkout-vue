@@ -1,30 +1,44 @@
 <template>
   <div class="f-wrapper">
     <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button type="button" :class="[$css.btn, $css.bd, $css.btnSm]" @click="show = !show" v-t="'other'"></button>
+      <button
+        v-t="'other'"
+        type="button"
+        :class="[$css.btn, $css.bd, $css.btnSm]"
+        @click="show = !show"
+      />
     </div>
-    <div class="f-info" ref="info">
-      <info></info>
+    <div ref="info" class="f-info">
+      <info />
     </div>
-    <div v-if="!isMin" class="f-methods" :class="{'f-open' : show}">
-      <methods @on-change-method="changeMethod"></methods>
+    <div v-if="!isMin" class="f-methods" :class="{ 'f-open': show }">
+      <methods @on-change-method="changeMethod" />
     </div>
-    <div class="f-center" ref="center">
+    <div ref="center" class="f-center">
       <component
         :is="router.page"
-        @on-submit="submit"
-        @on-cancel="cancel"
         :disabled="isDisabled"
         :order="order"
-      ></component>
+        @on-submit="submit"
+        @on-cancel="cancel"
+      />
       <div v-if="store.state.loading">
-        <div class="f-loading"></div>
-        <div class="f-loading-i"></div>
+        <div class="f-loading" />
+        <div class="f-loading-i" />
       </div>
-      <popover :title="error.code" :content="error.message" trigger="manual" :value="showError">
-        <div class="f-center-error"></div>
+      <popover
+        :title="error.code"
+        :content="error.message"
+        trigger="manual"
+        :value="showError"
+      >
+        <div class="f-center-error" />
       </popover>
-      <submit3ds v-model="show3ds" :duration.sync="duration3ds" @submit3ds="submit3ds"></submit3ds>
+      <submit3ds
+        v-model="show3ds"
+        :duration.sync="duration3ds"
+        @submit3ds="submit3ds"
+      />
     </div>
   </div>
 </template>
@@ -49,6 +63,15 @@ let model3ds
 
 export default {
   inject: ['$validator'],
+  components: {
+    Info,
+    Methods,
+    Popover,
+    PaymentMethod,
+    Success,
+    Pending,
+    Submit3ds,
+  },
   data() {
     return {
       show: false,
@@ -58,6 +81,22 @@ export default {
       show3ds: false,
       duration3ds: 0,
     }
+  },
+  computed: {
+    isMin: function() {
+      let result =
+        (this.options.methods.length === 1 &&
+          this.options.methods[0] === 'card') ||
+        this.inProgress
+      this.$emit('on-set-min', result)
+      return result
+    },
+    showError: function() {
+      return this.error.flag && !this.show
+    },
+    isDisabled: function() {
+      return !!this.errors.items.length && this.store.state.submit
+    },
   },
   watch: {
     'regular.open': 'firstResize',
@@ -99,31 +138,6 @@ export default {
   },
   beforeDestroy: function() {
     window.removeEventListener('resize', this.resize)
-  },
-  computed: {
-    isMin: function() {
-      let result =
-        (this.options.methods.length === 1 &&
-          this.options.methods[0] === 'card') ||
-        this.inProgress
-      this.$emit('on-set-min', result)
-      return result
-    },
-    showError: function() {
-      return this.error.flag && !this.show
-    },
-    isDisabled: function() {
-      return !!this.errors.items.length && this.store.state.submit
-    },
-  },
-  components: {
-    Info,
-    Methods,
-    Popover,
-    PaymentMethod,
-    Success,
-    Pending,
-    Submit3ds,
   },
   methods: {
     submit: function() {

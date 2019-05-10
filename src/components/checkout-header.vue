@@ -1,11 +1,20 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select v-if="options.locales.length" :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']" v-model="params.lang">
-        <option v-for="item in options.locales" :key="item" :value="item" v-t="item"></option>
+      <select
+        v-if="options.locales.length"
+        v-model="params.lang"
+        :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']"
+      >
+        <option
+          v-for="item in options.locales"
+          :key="item"
+          v-t="item"
+          :value="item"
+        />
       </select>
     </div>
-    <div class="f-logo" :style="style"></div>
+    <div class="f-logo" :style="style" />
   </div>
 </template>
 
@@ -17,6 +26,14 @@ export default {
   inject: ['$validator'],
   data() {
     return {}
+  },
+  computed: {
+    style() {
+      if (!this.options.logo_url) return {}
+      return {
+        'background-image': `url(${this.options.logo_url})`,
+      }
+    },
   },
   watch: {
     'params.lang': {
@@ -30,14 +47,6 @@ export default {
         })
       },
       immediate: true,
-    },
-  },
-  computed: {
-    style() {
-      if (!this.options.logo_url) return {}
-      return {
-        'background-image': `url(${this.options.logo_url})`,
-      }
     },
   },
 }

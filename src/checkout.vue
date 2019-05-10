@@ -1,23 +1,37 @@
 <template>
   <div id="f" ref="f">
-    <div v-if="!error.errors.length" class="f-container" :class="{'f-min': min}">
-      <checkout-header></checkout-header>
-      <payment @on-set-min="setMin"></payment>
+    <div
+      v-if="!error.errors.length"
+      class="f-container"
+      :class="{ 'f-min': min }"
+    >
+      <checkout-header />
+      <payment @on-set-min="setMin" />
     </div>
     <ul v-else>
-      <li v-for="error in error.errors">{{ error.message }}</li>
+      <li v-for="error in error.errors" :key="error.message">
+        {{ error.message }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 import CheckoutHeader from '@/components/checkout-header'
-import Tooltip from '@/components/tooltip'
 import Payment from '@/components/payment'
 
 export default {
-  name: 'f-checkout',
-  props: ['optionsUser'],
+  name: 'FCheckout',
+  components: {
+    CheckoutHeader,
+    Payment,
+  },
+  props: {
+    optionsUser: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       min: true,
@@ -33,11 +47,6 @@ export default {
         this.$refs.f.style.height = '100%'
       })
     }
-  },
-  components: {
-    CheckoutHeader,
-    Tooltip,
-    Payment,
   },
   methods: {
     setMin: function(min) {

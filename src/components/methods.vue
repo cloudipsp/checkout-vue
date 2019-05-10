@@ -1,30 +1,29 @@
 <template>
   <div>
-    <div class="f-block-hr f-title f-hidden-mobile" v-t="'methods'"></div>
-    <div class="f-block f-title3 f-visible-mobile" v-t="'methods_m'"></div>
+    <div v-t="'methods'" class="f-block-hr f-title f-hidden-mobile" />
+    <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
     <div class="f-menu f-block-hr">
       <div
-        class="f-item"
-        :class="['f-i-' + item, {active: router.method === item}]"
         v-for="item in options.methods"
         :key="item"
-        @click="changeMethod(item)"
         v-t="item"
-      >
-      </div>
+        class="f-item"
+        :class="['f-i-' + item, { active: router.method === item }]"
+        @click="changeMethod(item)"
+      />
     </div>
     <template v-if="showFast">
-      <div class="f-block-hr f-title f-hidden-mobile" v-t="'fast'"></div>
-      <div class="f-block f-title3 f-visible-mobile" v-t="'fast'"></div>
+      <div v-t="'fast'" class="f-block-hr f-title f-hidden-mobile" />
+      <div v-t="'fast'" class="f-block f-title3 f-visible-mobile" />
       <div class="f-block f-fast-access">
         <div
-          class="f-icon"
           v-for="item in list"
           :key="item.system"
+          class="f-icon"
           :class="'f-i-' + item.system"
-          @click="changeMethod(item.method, item.system )"
           :style="style(item.system)"
-        ></div>
+          @click="changeMethod(item.method, item.system)"
+        />
       </div>
     </template>
   </div>

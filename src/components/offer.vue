@@ -1,24 +1,22 @@
 <template>
   <div class="f-offer" :class="[hasError ? $css.he : '']">
-   <input-checkbox
-      name="offer"
-      :validate="'required'"
-    ><span v-html="$t('offer_t', [options.offerta_url])"></span></input-checkbox>
+    <input-checkbox name="offer" :validate="'required'">
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <span v-html="$t('offer_t', [options.offerta_url])" />
+    </input-checkbox>
   </div>
 </template>
 
 <script>
-import Tooltip from '@/components/tooltip'
 import InputCheckbox from '@/components/input-checkbox'
 
 export default {
   inject: ['$validator'],
+  components: {
+    InputCheckbox,
+  },
   data() {
     return {}
-  },
-  components: {
-    Tooltip,
-    InputCheckbox,
   },
   computed: {
     hasError() {

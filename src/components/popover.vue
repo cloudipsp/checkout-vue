@@ -1,3 +1,4 @@
+<!--v0.31.5-->
 <script>
 import { TRIGGERS } from '@/utils/dom'
 import Popup from '@/mixins/popup'
@@ -30,6 +31,17 @@ export default {
     return {
       name: 'f-popover',
     }
+  },
+
+  computed: {
+    allContent() {
+      return this.title + this.content
+    },
+  },
+  methods: {
+    isNotEmpty() {
+      return this.title || this.content || this.$slots.popover
+    },
   },
   render(h) {
     return h(this.tag, [
@@ -68,17 +80,6 @@ export default {
         ]
       ),
     ])
-  },
-
-  computed: {
-    allContent() {
-      return this.title + this.content
-    },
-  },
-  methods: {
-    isNotEmpty() {
-      return this.title || this.content || this.$slots.popover
-    },
   },
 }
 </script>

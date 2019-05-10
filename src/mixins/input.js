@@ -1,35 +1,53 @@
 import Tooltip from '@/components/tooltip'
 import { TheMask } from 'vue-the-mask'
 
+// @vue/component
 export default {
   inject: ['$validator'],
+  components: {
+    Tooltip,
+    TheMask,
+  },
   props: {
     name: {
       type: String,
       required: true,
     },
-    field: String,
-    label: String,
-    validate: [String, Object],
-    placement: String,
-    placeholder: String,
-    custom: {
-      type: Boolean,
-      default: false,
+    field: {
+      type: String,
+      default: '',
     },
-    customer_data: {
-      type: Boolean,
-      default: false,
+    label: {
+      type: String,
+      default: '',
     },
-    recurring: {
-      type: Boolean,
-      default: false,
+    validate: {
+      type: [String, Object],
+      default: null,
     },
+    placement: {
+      type: String,
+      default: undefined,
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    custom: Boolean,
+    customerData: Boolean,
+    recurring: Boolean,
     model: {
       type: Object,
+      default: null,
     },
-    value: String,
-    inputmode: String,
+    value: {
+      type: String,
+      default: '',
+    },
+    inputmode: {
+      type: String,
+      default: null,
+    },
     readonly: Boolean,
   },
   computed: {
@@ -86,9 +104,5 @@ export default {
     onEnter() {
       this.$root.$emit('submit')
     },
-  },
-  components: {
-    Tooltip,
-    TheMask,
   },
 }

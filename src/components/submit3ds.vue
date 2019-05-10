@@ -1,15 +1,24 @@
 <template>
-  <modal :value="value" @input="toggle" size="md" :backdrop="false">
-    <div slot="title" class="f-text-danger">{{$t('submit3ds_title')}}</div>
-    <span v-t="'submit3ds_text'"></span>
+  <modal :value="value" size="md" :backdrop="false" @input="toggle">
+    <div slot="title" class="f-text-danger">
+      {{ $t('submit3ds_title') }}
+    </div>
+    <span v-t="'submit3ds_text'" />
     <div slot="footer">
-      <button type="button" @click="toggle(false)" :class="[$css.btn, 'f-btn-link']">
-        <span v-t="'back'"></span>
+      <button
+        type="button"
+        :class="[$css.btn, 'f-btn-link']"
+        @click="toggle(false)"
+      >
+        <span v-t="'back'" />
       </button>
-      <button type="button" @click="submit" :class="[$css.btn, $css.bs]">
-        <span v-t="'submit3ds_submit'"></span>
+      <button type="button" :class="[$css.btn, $css.bs]" @click="submit">
+        <span v-t="'submit3ds_submit'" />
       </button>
-      <div class="f-text-muted" v-t="{path: 'submit3ds_wait', args: [duration]}"></div>
+      <div
+        v-t="{ path: 'submit3ds_wait', args: [duration] }"
+        class="f-text-muted"
+      />
     </div>
   </modal>
 </template>
@@ -18,6 +27,9 @@
 import Modal from '@/components/modal'
 
 export default {
+  components: {
+    Modal,
+  },
   props: {
     value: {
       type: Boolean,
@@ -40,9 +52,6 @@ export default {
         this.wait()
       }
     },
-  },
-  components: {
-    Modal,
   },
   methods: {
     submit: function() {

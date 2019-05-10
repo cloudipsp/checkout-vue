@@ -45,13 +45,9 @@ const install = function(Vue) {
     instance = new Vue({
       i18n,
       store,
+      components: { Checkout },
       data: {
         optionsUser: optionsUser,
-      },
-      template: '<checkout :optionsUser="optionsUser"/>',
-      components: { Checkout },
-      $_veeValidate: {
-        validator: 'new',
       },
       methods: {
         submit: function() {
@@ -66,6 +62,10 @@ const install = function(Vue) {
           this.$emit('setParams', params)
           return this
         },
+      },
+      template: '<checkout :optionsUser="optionsUser"/>',
+      $_veeValidate: {
+        validator: 'new',
       },
     }).$mount()
 

@@ -1,3 +1,4 @@
+<!--v0.31.5-->
 <script>
 import { TRIGGERS } from '@/utils/dom'
 import Popup from '@/mixins/popup'
@@ -27,6 +28,23 @@ export default {
       name: 'f-tooltip',
     }
   },
+  computed: {
+    allContent() {
+      return this.text
+    },
+  },
+  watch: {
+    enable(v) {
+      if (v && this.triggerEl.matches(':hover, :focus')) {
+        this.show()
+      }
+    },
+  },
+  methods: {
+    isNotEmpty() {
+      return this.text
+    },
+  },
   render(h) {
     return h(this.tag, [
       this.$slots.default,
@@ -50,23 +68,6 @@ export default {
         ]
       ),
     ])
-  },
-  computed: {
-    allContent() {
-      return this.text
-    },
-  },
-  watch: {
-    enable(v) {
-      if (v && this.triggerEl.matches(':hover, :focus')) {
-        this.show()
-      }
-    },
-  },
-  methods: {
-    isNotEmpty() {
-      return this.text
-    },
   },
 }
 </script>

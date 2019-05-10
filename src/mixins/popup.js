@@ -17,6 +17,7 @@ import { isString, isFunction } from '@/utils/object'
 
 const SHOW_CLASS = 'in'
 
+// @vue/component
 export default {
   props: {
     theme: {
@@ -59,8 +60,14 @@ export default {
       type: Boolean,
       default: true,
     },
-    target: null,
-    viewport: null,
+    target: {
+      type: [String, Element],
+      default: null,
+    },
+    viewport: {
+      type: [String, Element],
+      default: null,
+    },
   },
   data() {
     return {

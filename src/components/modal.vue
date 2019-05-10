@@ -1,40 +1,58 @@
 <template>
-  <div tabindex="-1" role="dialog" class="f-modal" :class="{fade:transitionDuration>0}" @click.self="backdropClicked">
-    <div ref="dialog" class="f-modal-dialog" :class="modalSizeClass" role="document">
+  <div
+    tabindex="-1"
+    role="dialog"
+    class="f-modal"
+    :class="{ fade: transitionDuration > 0 }"
+    @click.self="backdropClicked"
+  >
+    <div
+      ref="dialog"
+      class="f-modal-dialog"
+      :class="modalSizeClass"
+      role="document"
+    >
       <div class="f-modal-content">
-        <div class="f-modal-header" v-if="header">
+        <div v-if="header" class="f-modal-header">
           <slot name="header">
             <button
+              v-if="dismissBtn"
               type="button"
               class="f-close"
               aria-label="Close"
-              @click="toggle(false)"
               style="position: relative;z-index: 1060"
-              v-if="dismissBtn">
+              @click="toggle(false)"
+            >
               <!-- 1060 is bigger than dialog z-index 1050 because it got cover by title sometimes -->
               <span aria-hidden="true">×</span>
             </button>
             <h4 class="f-modal-title">
-              <slot name="title">{{title}}</slot>
+              <slot name="title">
+                {{ title }}
+              </slot>
             </h4>
           </slot>
         </div>
         <div class="f-modal-body">
-          <slot/>
+          <slot />
         </div>
-        <div class="f-modal-footer" v-if="footer">
+        <div v-if="footer" class="f-modal-footer">
           <slot name="footer">
             <!--<btn :type="cancelType" @click="toggle(false,'cancel')">-->
-              <!--<span>{{cancelText || t('uiv.modal.cancel')}}</span>-->
+            <!--<span>{{cancelText || t('uiv.modal.cancel')}}</span>-->
             <!--</btn>-->
             <!--<btn :type="okType" @click="toggle(false,'ok')" data-action="auto-focus">-->
-              <!--<span>{{okText || t('uiv.modal.ok')}}</span>-->
+            <!--<span>{{okText || t('uiv.modal.ok')}}</span>-->
             <!--</btn>-->
           </slot>
         </div>
       </div>
     </div>
-    <div ref="backdrop" class="f-modal-backdrop" :class="{fade:transitionDuration>0}"></div>
+    <div
+      ref="backdrop"
+      class="f-modal-backdrop"
+      :class="{ fade: transitionDuration > 0 }"
+    />
   </div>
 </template>
 
@@ -62,8 +80,14 @@ export default {
       type: Boolean,
       default: false,
     },
-    title: String,
-    size: String,
+    title: {
+      type: String,
+      default: '',
+    },
+    size: {
+      type: String,
+      default: '',
+    },
     backdrop: {
       type: Boolean,
       default: true,
@@ -76,12 +100,18 @@ export default {
       type: Boolean,
       default: true,
     },
-    cancelText: String,
+    cancelText: {
+      type: String,
+      default: '',
+    },
     cancelType: {
       type: String,
       default: 'default',
     },
-    okText: String,
+    okText: {
+      type: String,
+      default: '',
+    },
     okType: {
       type: String,
       default: 'primary',
@@ -102,7 +132,10 @@ export default {
       type: Boolean,
       default: true,
     },
-    beforeClose: Function,
+    beforeClose: {
+      type: Function,
+      default: null,
+    },
     zOffset: {
       type: Number,
       default: 20,
