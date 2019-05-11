@@ -102,7 +102,6 @@
     <div v-if="!group && !options.tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>
-    {{ placement }}
   </div>
 </template>
 

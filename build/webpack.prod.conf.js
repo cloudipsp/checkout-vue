@@ -22,7 +22,7 @@ process.noDeprecation = true
 const cssLoader = {
   loader: 'css-loader',
   options: {
-    minimize: true,
+    // minimize: true,
     sourceMap: config.build.productionSourceMap
   }
 }
