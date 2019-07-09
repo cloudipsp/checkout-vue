@@ -24,7 +24,7 @@
         v-t="router.method + '_t'"
         class="f-block f-title2"
       />
-      <div v-if="showList" class="f-text-center" :class="'f-ps-' + list.length">
+      <div class="f-text-center" :class="'f-ps-' + list.length">
         <div
           v-for="item in listMin"
           :key="item.id"
@@ -77,7 +77,7 @@ export default {
       form: {
         search: '',
       },
-      count: 25,
+      count: 24,
       more: 0,
       spin: false,
     }
@@ -101,7 +101,7 @@ export default {
     list() {
       let search = this.form.search.toLowerCase()
       if (search) {
-        return this.listFull.filter(function(item) {
+        return this.listFilter.filter(function(item) {
           let name = item.name.toLowerCase()
           let iban = item.iban.toLowerCase()
 
@@ -118,13 +118,10 @@ export default {
       return this.isMethod('trustly') && this.country.length > 1
     },
     showSearch() {
-      return this.listFull.length > 10
+      return this.listFilter.length > 10
     },
     showTitle() {
       return this.list.length > 1
-    },
-    showList() {
-      return this.listFilter.length < 100 || this.form.search
     },
     showMore() {
       return this.list.length > this.more
@@ -157,6 +154,7 @@ export default {
   },
   created() {
     this.setActive(this.list)
+    this.store.formLoading(true)
   },
   methods: {
     locationSystem(system) {

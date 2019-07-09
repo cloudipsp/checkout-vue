@@ -208,6 +208,7 @@ export default {
       this.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
+      this.store.formLoading(false)
     },
     cardsSuccess: function(model) {
       if (this.store.state.need_verify_code || !Array.isArray(model.data))
