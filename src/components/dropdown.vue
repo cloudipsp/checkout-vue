@@ -1,140 +1,151 @@
 <script>
-  import {setDropdownPosition, on, off, EVENTS} from '@/utils/dom'
-  import {isBoolean} from '@/utils/object'
+import { setDropdownPosition, on, off, EVENTS } from '@/utils/dom'
+import { isBoolean } from '@/utils/object'
 
-  const DEFAULT_TAG = 'div'
+const DEFAULT_TAG = 'div'
 
-  export default {
-    render (h) {
-      return h(
-        this.tag,
-        {
-          class: {
-//            'btn-group': this.tag === DEFAULT_TAG,
-            'f-dropdown': !this.dropup,
-            'f-dropup': this.dropup,
-            'f-open': this.show
-          }
-        },
-        [
-          this.$slots.default,
-          h(
-            'ul',
-            {
-              class: {
-                'f-dropdown-menu': true,
-                'f-dropdown-menu-right': this.menuRight
-              },
-              ref: 'dropdown'
-            },
-            [this.$slots.dropdown]
-          )
-        ]
-      )
+export default {
+  props: {
+    tag: {
+      type: String,
+      default: DEFAULT_TAG,
     },
-    props: {
-      tag: {
-        type: String,
-        default: DEFAULT_TAG
+    appendToBody: {
+      type: Boolean,
+      default: true,
+    },
+    value: Boolean,
+    dropup: {
+      type: Boolean,
+      default: false,
+    },
+    menuRight: {
+      type: Boolean,
+      default: true,
+    },
+    notCloseElements: {
+      type: Array,
+      default() {
+        return []
       },
-      appendToBody: {
-        type: Boolean,
-        default: true
-      },
-      value: Boolean,
-      dropup: {
-        type: Boolean,
-        default: false
-      },
-      menuRight: {
-        type: Boolean,
-        default: true
-      },
-      notCloseElements: Array,
-      positionElement: null
     },
-    data () {
-      return {
-        show: false,
-        triggerEl: undefined
-      }
+    positionElement: {
+      type: Element,
+      default: null,
     },
-    watch: {
-      value (v) {
-        this.toggle(v)
-      }
+  },
+  data() {
+    return {
+      show: false,
+      triggerEl: undefined,
+    }
+  },
+  watch: {
+    value(v) {
+      this.toggle(v)
     },
-    mounted () {
-      this.triggerEl = this.$el.querySelector('[data-role="trigger"]') || this.$el.querySelector('.f-dropdown-toggle') || this.$el.firstChild
-      // attach trigger events if:
-      // 1. trigger exist
-      // 2. not the dropdown menu
-      if (this.triggerEl && this.triggerEl !== this.$refs.dropdown) {
-        on(this.triggerEl, EVENTS.CLICK, this.toggle)
+  },
+  mounted() {
+    this.triggerEl =
+      this.$el.querySelector('[data-role="trigger"]') ||
+      this.$el.querySelector('.f-dropdown-toggle') ||
+      this.$el.firstChild
+    // attach trigger events if:
+    // 1. trigger exist
+    // 2. not the dropdown menu
+    if (this.triggerEl && this.triggerEl !== this.$refs.dropdown) {
+      on(this.triggerEl, EVENTS.CLICK, this.toggle)
+    }
+    on(window, EVENTS.CLICK, this.windowClicked)
+    if (this.value) {
+      this.toggle(true)
+    }
+  },
+  beforeDestroy() {
+    this.removeDropdownFromBody()
+    if (this.triggerEl) {
+      off(this.triggerEl, EVENTS.CLICK, this.toggle)
+    }
+    off(window, EVENTS.CLICK, this.windowClicked)
+  },
+  methods: {
+    toggle(show) {
+      if (isBoolean(show)) {
+        this.show = show
+      } else {
+        this.show = !this.show
       }
-      on(window, EVENTS.CLICK, this.windowClicked)
-      if (this.value) {
-        this.toggle(true)
+      if (this.appendToBody) {
+        this.show ? this.appendDropdownToBody() : this.removeDropdownFromBody()
       }
+      this.$emit('input', this.show)
     },
-    beforeDestroy () {
-      this.removeDropdownFromBody()
-      if (this.triggerEl) {
-        off(this.triggerEl, EVENTS.CLICK, this.toggle)
-      }
-      off(window, EVENTS.CLICK, this.windowClicked)
-    },
-    methods: {
-      toggle (show) {
-        if (isBoolean(show)) {
-          this.show = show
-        } else {
-          this.show = !this.show
-        }
-        if (this.appendToBody) {
-          this.show ? this.appendDropdownToBody() : this.removeDropdownFromBody()
-        }
-        this.$emit('input', this.show)
-      },
-      windowClicked (event) {
-        let target = event.target
-        if (this.show && target) {
-          let targetInNotCloseElements = false
-          if (this.notCloseElements) {
-            for (let i = 0, l = this.notCloseElements.length; i < l; i++) {
-              if (this.notCloseElements[i].contains(target)) {
-                targetInNotCloseElements = true
-                break
-              }
+    windowClicked(event) {
+      let target = event.target
+      if (this.show && target) {
+        let targetInNotCloseElements = false
+        if (this.notCloseElements) {
+          for (let i = 0, l = this.notCloseElements.length; i < l; i++) {
+            if (this.notCloseElements[i].contains(target)) {
+              targetInNotCloseElements = true
+              break
             }
           }
-          let targetInDropdownBody = this.$refs.dropdown.contains(target)
-          let targetInTrigger = this.$el.contains(target) && !targetInDropdownBody
-          if (!targetInTrigger && !targetInNotCloseElements) {
-            this.toggle(false)
-          }
         }
-      },
-      appendDropdownToBody () {
-        try {
-          let el = this.$refs.dropdown
-          el.style.display = 'block'
-          document.body.appendChild(el)
-          let positionElement = this.positionElement || this.$el
-          setDropdownPosition(el, positionElement, this)
-        } catch (e) {
-          // Silent
-        }
-      },
-      removeDropdownFromBody () {
-        try {
-          let el = this.$refs.dropdown
-          el.removeAttribute('style')
-          this.$el.appendChild(el)
-        } catch (e) {
-          // Silent
+        let targetInDropdownBody = this.$refs.dropdown.contains(target)
+        let targetInTrigger = this.$el.contains(target) && !targetInDropdownBody
+        if (!targetInTrigger && !targetInNotCloseElements) {
+          this.toggle(false)
         }
       }
-    }
-  }
+    },
+    appendDropdownToBody() {
+      try {
+        let el = this.$refs.dropdown
+        el.style.display = 'block'
+        document.body.appendChild(el)
+        let positionElement = this.positionElement || this.$el
+        setDropdownPosition(el, positionElement, this)
+      } catch (e) {
+        // Silent
+      }
+    },
+    removeDropdownFromBody() {
+      try {
+        let el = this.$refs.dropdown
+        el.removeAttribute('style')
+        this.$el.appendChild(el)
+      } catch (e) {
+        // Silent
+      }
+    },
+  },
+  render(h) {
+    return h(
+      this.tag,
+      {
+        class: {
+          //            'btn-group': this.tag === DEFAULT_TAG,
+          'f-dropdown': !this.dropup,
+          'f-dropup': this.dropup,
+          'f-open': this.show,
+        },
+      },
+      [
+        this.$slots.default,
+        h(
+          'ul',
+          {
+            class: {
+              'f-dropdown-menu': true,
+              'f-dropdown-menu-right': this.menuRight,
+            },
+            ref: 'dropdown',
+          },
+          [this.$slots.dropdown]
+        ),
+      ]
+    )
+  },
+}
 </script>

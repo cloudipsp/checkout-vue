@@ -6,16 +6,17 @@ html {
     height: 0;
     margin-left: 2px;
     vertical-align: middle;
-    border-top:   @caret-width-base dashed;
+    border-top: @caret-width-base dashed;
     //border-top:   @caret-width-base solid ~"\9"; // IE8
     border-right: @caret-width-base solid transparent;
-    border-left:  @caret-width-base solid transparent;
+    border-left: @caret-width-base solid transparent;
   }
 
   // The dropdown wrapper (div)
   .f-dropup,
   .f-dropdown {
     position: relative;
+
     .f-input-group & {
       position: static;
     }
@@ -72,16 +73,13 @@ html {
       color: @dropdown-link-color;
       white-space: nowrap; // prevent links from randomly breaking onto new lines
       cursor: pointer;
-    }
-  }
 
-  // Hover/Focus state
-  .f-dropdown-menu > li > a {
-    &:hover,
-    &:focus {
-      text-decoration: none;
-      color: @dropdown-link-hover-color;
-      background-color: @dropdown-link-hover-bg;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: @dropdown-link-hover-color;
+        background-color: @dropdown-link-hover-bg;
+      }
     }
   }
 

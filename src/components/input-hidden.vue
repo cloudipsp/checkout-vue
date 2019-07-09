@@ -1,10 +1,10 @@
 <script>
-  import Input from '@/mixins/input'
+import Input from '@/mixins/input'
 
-  export default {
-    render: function (h) {
-      return h()
-    },
-    mixins: [Input]
-  }
+export default {
+  mixins: [Input],
+  render: function(h) {
+    return h()
+  },
+}
 </script>

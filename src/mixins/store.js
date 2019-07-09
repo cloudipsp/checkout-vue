@@ -1,6 +1,12 @@
-const install = (Vue) => {
+const install = Vue => {
+  // @vue/component
   Vue.mixin({
-    beforeCreate(){
+    data() {
+      return {
+        store: this.store, // store make reactive
+      }
+    },
+    beforeCreate() {
       const options = this.$options
       // store injection
       if (options.store) {
@@ -9,7 +15,7 @@ const install = (Vue) => {
         this.store = options.parent.store
       }
 
-      if(!this.store) return
+      if (!this.store) return
       // alias
       this.state = this.store.state
       this.options = this.store.state.options
@@ -18,11 +24,6 @@ const install = (Vue) => {
       this.error = this.store.state.error
       this.router = this.store.state.router
       this.$css = this.store.state.css
-    },
-    data () {
-      return {
-        store: this.store, // store make reactive
-      }
     },
   })
 }

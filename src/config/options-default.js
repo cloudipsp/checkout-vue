@@ -25,15 +25,17 @@ const options = {
     tooltip: true,
     email: false,
     fields: false,
+    default_country: '',
+    countries: [],
   },
   popup: {
-    append_to: 'body'
+    append_to: 'body',
   },
   regular: {
     insert: false,
     open: false,
     hide: false,
-    period: ['day', 'week', 'month']
+    period: ['day', 'week', 'month'],
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
@@ -47,7 +49,7 @@ const options = {
       start_time: '',
       end_time: '',
       amount: 0,
-      readonly: false
+      readonly: false,
     },
     card_number: '',
     expiry_date: '',
@@ -59,14 +61,37 @@ const options = {
     lang: 'en',
     custom: {},
     customer_data: {},
-    order_id: ''
+    order_id: '',
   },
   template: {},
   messages: {},
   validate: {},
+
+  // not config
+  error: {
+    flag: false,
+    buffer: false,
+    code: '',
+    message: '',
+    errors: [],
+  },
+  router: {
+    page: '', // payment-method verify success
+    method: '',
+    system: '',
+  },
+  css: {},
+  loading: false,
+  cards: [],
+  submit: false,
+  read_only: false,
+  need_verify_code: false,
+  verification_type: '',
+  cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/',
+  tabs: {},
 }
 
-configLocales.forEach(function (locale) {
+configLocales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
 })

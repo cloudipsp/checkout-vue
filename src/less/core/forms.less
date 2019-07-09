@@ -8,8 +8,8 @@
 }
 
 // Position radios and checkboxes better
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
   margin: 4px 0 0;
   margin-top: 1px \9; // IE8-9
   line-height: normal;
@@ -23,8 +23,8 @@ select[size] {
 
 // Focus for file, radio, and checkbox
 //input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   .tab-focus();
 }
 
@@ -63,7 +63,7 @@ input[type="checkbox"]:focus {
   border: 1px solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   box-shadow: 0 2px 4px 0 @input-shadow;
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  .transition(~'border-color ease-in-out .15s, box-shadow ease-in-out .15s');
 
   &:focus {
     outline: 0;
@@ -110,21 +110,20 @@ input[type="checkbox"]:focus {
 // Note that as of 9.3, iOS doesn't support `week`.
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"],
-  input[type="time"],
-  input[type="datetime-local"],
-  input[type="month"] {
+  input[type='date'],
+  input[type='time'],
+  input[type='datetime-local'],
+  input[type='month'] {
     &.f-form-control {
       line-height: @input-height-base;
     }
 
     &.f-input-sm {
-    //.input-group-sm & {
+      //.input-group-sm & {
       line-height: @input-height-small;
     }
   }
 }
-
 
 // Form groups
 //
@@ -137,17 +136,20 @@ input[type="checkbox"]:focus {
 }
 
 .f-input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-small; @input-border-radius-small);
+  .input-size(
+    @input-height-small; @padding-small-vertical; @padding-small-horizontal;
+      @font-size-base; @line-height-small; @input-border-radius-small
+  );
 }
 
 .f-has-feedback {
   // Enable absolute positioning
   position: relative;
-//
-//  // Ensure icons don't overlap text
-//  .f-form-control {
-//    padding-right: 15px; // (@input-height-base * 1.25);
-//  }
+  //
+  //  // Ensure icons don't overlap text
+  //  .f-form-control {
+  //    padding-right: 15px; // (@input-height-base * 1.25);
+  //  }
 }
 // Feedback icon (requires .glyphicon classes)
 .f-form-control-feedback {
@@ -165,7 +167,10 @@ input[type="checkbox"]:focus {
 }
 
 .f-has-error {
-  .form-control-validation(@state-danger-text; @state-danger-border; @state-danger-bg; @state-danger-shadow);
+  .form-control-validation(
+    @state-danger-text; @state-danger-border; @state-danger-bg;
+      @state-danger-shadow
+  );
 }
 
 //.f-has-feedback {

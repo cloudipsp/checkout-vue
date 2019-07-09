@@ -1,116 +1,74 @@
 <script>
-  import PaymentSystems from '@/mixins/payment-systems'
-  import config from '@/config/payment-systems'
-  import InputSelect from '@/components/input-select'
-  import { sort } from '@/config/trustly'
+import PaymentSystems from '@/mixins/payment-systems'
+import { sortBanks } from '@/config/trustly'
+import { sort } from '@/utils/helpers'
 
-  export default {
-    components: {
-      InputSelect,
+export default {
+  mixins: [PaymentSystems],
+  computed: {
+    // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
+    config() {
+      return (
+        (this.state.tabs.trustly && this.state.tabs.trustly.payment_systems) ||
+        {}
+      )
     },
-    mixins: [PaymentSystems],
-    data () {
-      return {
-        formData: {
-          country: this.options.default_country
-        }
-      }
+    // [147209]
+    keys() {
+      return Object.keys(this.config)
     },
-    computed: {
-      config () {
-        return (this.options.tabs.trustly && this.options.tabs.trustly.payment_systems) || {}
-      },
-      keys () {
-        return Object.keys(this.config)
-      },
-      values () {
-        return Object.values(this.config)
-      },
-      configArray () {
-        return this.values.map((item, i)=>({
-          id: this.keys[i],
-          ...item
-        }))
-      },
-      mapper () {
-        let result = {}
-        this.configArray.forEach(function(item){
-          result[item.bank_logo] = item.id
-        })
-        return result
-      },
-      country () {
-        let result = this.values
-          .map((item)=>item.country)
-          .filter((item, key, self)=>self.indexOf(item) === key)
-          .map((item)=>({
-            id: item,
-            name: this.$t(item)
-          }))
-        return this.sort(result, 'name');
-      },
-      listSelect () {
-        return this.configArray
-          .filter((item)=>item.country===this.formData.country)
-          .map((item)=>item.id)
-      },
-      listSort () {
-        return sort
-          .map((item)=>this.mapper[item])
-          .filter((item)=>this.listSelect.indexOf(item)>-1)
-      },
-      list () {
-        return this.listSort
-          .concat(this.listSelect)
-          .filter((item, key, self)=>self.indexOf(item) === key)
-      },
-      icon: (vm) => (item) => vm.config[item].bank_logo,
-      text: (vm) => (item) => vm.config[item].name
+    // [{country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    values() {
+      return Object.values(this.config)
     },
-    created(){
-      this.$slots.default = this.renderSlot(this.$createElement)
+    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    listFull() {
+      return this.values.map((item, i) => ({
+        ...item,
+        id: this.keys[i],
+        bank_logo: item.bank_logo || 'no_logo',
+        iban: this.keys[i].split('|')[1] || '',
+      }))
     },
-    methods: {
-      sort: function (arr, field, reverse) {
-        reverse = reverse ? -1 : 1;
-        return arr.sort((a, b) => {
-          if(String.prototype.localeCompare){
-            return a[field].localeCompare(b[field], this.$i18n.locale) * reverse;
-          } else {
-            return (a[field] < b[field] ? -1 : 1) * reverse;
-          }
-        });
-      },
-      renderSlot (h) {
-        return h('div', {
-          class: {
-            'f-block': true
-          }
-        }, [
-          h('div', {
-            class: {
-              'f-block-sm': true
-            },
-          }, [
-            h('input-select', {
-              props: {
-                list: this.country,
-                name: 'country',
-                value: this.formData.country,
-                model: this.formData,
-                readonly: this.country.length === 1,
-                validate: 'required'
-              },
-              on: {
-                input: (value) => {
-                  this.formData.country = value
-                  this.$root.$emit('resize')
-                }
-              }
-            })
-          ])
-        ])
-      }
-    }
-  }
+    // [{id: 'PL', name: 'Poland'}]
+    country() {
+      let result =
+        this.options.countries && this.options.countries.length
+          ? this.options.countries
+          : this.values
+              .map(item => item.country)
+              .filter((item, key, self) => self.indexOf(item) === key)
+      result = result.map(item => ({
+        id: item,
+        name: this.$t(item),
+      }))
+      return sort(result, 'name')
+    },
+    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    listSelect() {
+      return this.listFull.filter(
+        item => item.country === this.options.default_country
+      )
+    },
+    // {mbank: {id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
+    mapper() {
+      let result = {}
+      this.listSelect.forEach(function(item) {
+        if (item.bank_logo === 'no_logo') return
+        result[item.bank_logo] = item
+      })
+      return result
+    },
+    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    listSort() {
+      return sortBanks.map(item => this.mapper[item]).filter(item => item)
+    },
+    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    listFilter() {
+      return this.listSort
+        .concat(this.listSelect)
+        .filter((item, key, self) => self.indexOf(item) === key)
+    },
+  },
+}
 </script>

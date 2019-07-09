@@ -1,6 +1,7 @@
 import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import configMethods from '@/config/methods'
+import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 
 let i18n = {}
@@ -9,7 +10,14 @@ let ibank = Object.keys(configPaymentSystems.ibank)
 let emoney = Object.keys(configPaymentSystems.emoney)
 let cash = Object.keys(configPaymentSystems.cash)
 let fast = [].concat(ibank, emoney, cash)
-let cardIcons = ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express']
+let cardIcons = [
+  'mastercard',
+  'visa',
+  'mir',
+  'prostir',
+  'diners-club',
+  'american-express',
+]
 let locales = configLocales
 let period = ['day', 'week', 'month']
 let css = ['bootstrap3', 'bootstrap4', 'foundation6']
@@ -17,43 +25,57 @@ let css = ['bootstrap3', 'bootstrap4', 'foundation6']
 let YN = ['Y', 'N', 'y', 'n']
 let verificationType = ['amount', 'code']
 
-let validatorArray = function (array) {
+let validatorArray = function(array) {
   return {
     validator(rule, value, callback, source, options) {
       rule.type = 'array'
-      let validate = rule.required || !rule.required && source.hasOwnProperty(rule.field);
+      let validate =
+        rule.required || (!rule.required && source.hasOwnProperty(rule.field))
       let errors = []
       if (validate) {
         if (Array.isArray(value)) {
-          value.forEach(function (item) {
+          value.forEach(function(item) {
             if (array.indexOf(item) < 0) {
-              errors.push([rule.fullField, item, 'is not equal to one of', array.join(', ')].join(' '))
+              errors.push(
+                [
+                  rule.fullField,
+                  item,
+                  'is not equal to one of',
+                  array.join(', '),
+                ].join(' ')
+              )
             }
           })
         } else {
-          rules.type(rule, value, source, errors, options);
+          rules.type(rule, value, source, errors, options)
         }
       }
       callback(errors)
-    }
+    },
   }
 }
 
-let validatorToken = function () {
+let validatorToken = function() {
   return {
     validator(rule, value, callback, source, options) {
       let errors = []
       if (source.token && rule.field in source) {
-        errors.push(['Parameter', rule.fullField, 'can\'t be modified when token is used.'].join(' '))
+        errors.push(
+          [
+            'Parameter',
+            rule.fullField,
+            "can't be modified when token is used.",
+          ].join(' ')
+        )
       }
       callback(errors)
-    }
+    },
   }
 }
 
-locales.forEach(function (locale) {
+locales.forEach(function(locale) {
   i18n[locale] = {
-    type: 'object'
+    type: 'object',
   }
 })
 
@@ -67,79 +89,75 @@ export default {
       cash: validatorArray(cash),
       fast: validatorArray(fast),
       card_icons: validatorArray(cardIcons),
-      fields: {type: 'boolean'},
-      title: {type: 'string'},
-      link: {type: 'url'},
-      full_screen: {type: 'boolean'},
-      button: {type: 'boolean'},
+      fields: { type: 'boolean' },
+      title: { type: 'string' },
+      link: { type: 'url' },
+      full_screen: { type: 'boolean' },
+      button: { type: 'boolean' },
       locales: validatorArray(locales),
-      email: {type: 'boolean'},
-      css: {type: 'enum', enum: css},
-      tooltip: {type: 'boolean'},
-      api_domain: {type: 'string'},
-      fee: {type: 'boolean'},
-      active_tab: {type: 'enum', enum: methods},
-      logo_url: {type: 'url'},
-      offerta_url: {type: 'url'},
-      cancel: {type: 'boolean'},
-    }
+      email: { type: 'boolean' },
+      css: { type: 'enum', enum: css },
+      tooltip: { type: 'boolean' },
+      api_domain: { type: 'string' },
+      fee: { type: 'boolean' },
+      active_tab: { type: 'enum', enum: methods },
+      logo_url: { type: 'url' },
+      offerta_url: { type: 'url' },
+      cancel: { type: 'boolean' },
+      default_country: { type: 'enum', enum: configCountries },
+      countries: validatorArray(configCountries),
+    },
   },
   popup: {
     type: 'object',
     fields: {
-      append_to: {type: 'string'}
-    }
+      append_to: { type: 'string' },
+    },
   },
   regular: {
     type: 'object',
     fields: {
-      insert: {type: 'boolean'},
-      open: {type: 'boolean'},
-      hide: {type: 'boolean'},
-      period: validatorArray(period)
-    }
+      insert: { type: 'boolean' },
+      open: { type: 'boolean' },
+      hide: { type: 'boolean' },
+      period: validatorArray(period),
+    },
   },
   params: {
     type: 'object',
     fields: {
-      merchant_id: {type: 'integer', max: 999999999999},
-      order_desc: {type: 'string', max: 1024},
-      amount: [
-        {type: 'integer', max: 999999999999},
-        validatorToken()
-      ],
+      merchant_id: { type: 'integer', max: 999999999999 },
+      order_desc: { type: 'string', max: 1024 },
+      amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
       // currency: { type: 'enum', enum: currency },
-      currency: [
-        {type: 'string'},
-        validatorToken()
-      ],
-      response_url: {type: 'url'},
-      lang: {type: 'enum', enum: locales},
-      required_rectoken: {type: 'enum', enum: YN},
-      verification: {type: 'enum', enum: YN},
-      verification_type: {type: 'enum', enum: verificationType},
-      token: {type: 'string', len: 40},
-      offer: {type: 'boolean'},
+      currency: [{ type: 'string' }, validatorToken()],
+      response_url: { type: 'url' },
+      lang: { type: 'enum', enum: locales },
+      required_rectoken: { type: 'enum', enum: YN },
+      verification: { type: 'enum', enum: YN },
+      verification_type: { type: 'enum', enum: verificationType },
+      token: { type: 'string', len: 40 },
+      offer: { type: 'boolean' },
       recurring_data: {
         type: 'object',
         fields: {
-          period: {type: 'enum', enum: period},
-          every: {type: 'integer'},
-          start_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-          end_time: {type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/},
-          amount: {type: 'integer'}
-        }
+          period: { type: 'enum', enum: period },
+          every: { type: 'integer' },
+          start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
+          end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
+          amount: { type: 'integer' },
+        },
       },
-      custom: {type: 'object'},
-      customer_data: {type: 'object'},
-    }
+      custom: { type: 'object' },
+      customer_data: { type: 'object' },
+    },
   },
   messages: {
     type: 'object',
-    fields: i18n
+    fields: i18n,
   },
   validate: {
     type: 'object',
-    fields: i18n
-  }
+    fields: i18n,
+  },
 }

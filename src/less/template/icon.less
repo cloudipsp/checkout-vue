@@ -1,29 +1,34 @@
-.f-icon{
+.f-icon {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 90%;
   display: inline-block;
-}
-.f-icon{
+
   .bg(security);
   .bg(card-empty);
   .bg(question);
   .bg(error);
   .bg(success);
 
-  &.f-i-{
-    &security{
-      opacity: .3;
+  &.f-i- {
+    &security {
+      opacity: 0.3;
       background-size: 80%;
       height: 42px;
     }
-    &question{
+
+    &question {
       background-size: 50%;
       pointer-events: auto;
     }
+
+    &card-empty {
+      background-size: 70%;
+    }
   }
 }
-.f-icon-block{
+
+.f-icon-block {
   display: block;
   width: 100%;
   background-size: contain;
@@ -33,7 +38,7 @@
   background-size: contain;
 }
 
-.f-icon-sm{
+.f-icon-sm {
   width: 24px;
   height: 24px;
   background-size: contain;

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>checkout-vue</title>
     <style>
       html {
@@ -17,17 +17,26 @@
       * {
         box-sizing: border-box;
       }
-      .coll{
+      #app {
+        height: 100%;
+      }
+      .coll {
         position: relative;
         min-height: 1px;
         padding-left: 15px;
         padding-right: 15px;
+        display: none;
       }
       @media (min-width: 600px) {
-        .coll{
+        .coll {
           float: left;
           width: 50%;
         }
+      }
+      .btns {
+        position: fixed;
+        left: 0;
+        bottom: 0;
       }
     </style>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -35,200 +44,278 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">-->
   </head>
   <body>
-  <div id="app"></div>
-<div>
-  <div>
-    <button id="submit">submit 1</button>
-    <button id="go-ibank">go ibank</button>
-    <button id="go-card">go card</button>
-    <button id="set-params">set params</button>
-  </div>
-  <div>
-    <div class="coll">
-
+    <div id="app"></div>
+    <div class="btns">
+      <select class="options">
+        <option value="min">min</option>
+        <option value="max">max</option>
+        <option value="trustly">trustly</option>
+        <option value="token">token</option>
+      </select>
+      <button class="render">render</button>
+      <button class="go-ibank">go ibank</button>
+      <button class="go-card">go card</button>
+      <button class="set-params">set params</button>
+      <button class="submit">submit 1</button>
     </div>
-    <div class="coll">
-
+    <div>
+      <div class="coll"></div>
+      <div class="coll"></div>
     </div>
-  </div>
-</div>
 
-<script type="text/x-vue-template" id="f-fields2">
-<div>
-  <div class="f-block f-block-hr">
-    <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
-    <div class="f-row">
-      <div class="f-col-xs-6">
-        <input-text name="email" validate="required|email"></input-text>
+    <script type="text/x-vue-template" id="f-fields2">
+      <div>
+        <div class="f-block f-block-hr">
+          <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
+          <div class="f-row">
+            <div class="f-col-xs-6">
+              <input-text name="email" validate="required|email"></input-text>
+            </div>
+            <div class="f-col-xs-6">
+              <input-text name="phone" label="Телефон" validate="required|numeric"></input-text>
+            </div>
+          </div>
+        </div>
+        <div class="f-block f-block-hr">
+          <div class="f-block-sm">
+            <input-amount name="amount" label="Сума к оплате"></input-amount>
+            <input-text name="field_5" validate="required|alpha_num" custom></input-text>
+          </div>
+        </div>
       </div>
-      <div class="f-col-xs-6">
-        <input-text name="phone" label="Телефон" validate="required|numeric"></input-text>
+    </script>
+    <script type="text/x-vue-template" id="f-fields">
+      <div class="f-block f-block-hr">
+        <div class="f-block-sm">
+          <input-hidden name="test" value="test2" custom></input-hidden>
+          <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
+          <input-text name="my_email" validate="required|email" custom></input-text>
+          <input-amount name="amount" label="my_amount"></input-amount>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="f-block f-block-hr">
-    <div class="f-block-sm">
-      <input-amount name="amount" label="Сума к оплате"></input-amount>
-      <input-text name="field_5" validate="required|alpha_num" custom></input-text>
-    </div>
-  </div>
-</div>
-</script>
-<script type="text/x-vue-template" id="f-fields">
-  <div class="f-block f-block-hr">
-    <div class="f-block-sm">
-      <input-hidden name="test" value="test2" custom></input-hidden>
-      <input-text name="field_11" value="field_11_html_value" validate="required" custom></input-text>
-      <input-text name="my_email" validate="required|email" custom></input-text>
-      <input-amount name="amount" label="my_amount"></input-amount>
-    </div>
-  </div>
-</script>
+    </script>
 
-<script>
-var maxOptions = {
-  options: {
-    methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
-    ibank: ['p24', 'platba24', 'raiffeisen'],
-    emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-    cash: ['liqpay'],
-    fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-    cardIcons: ['mastercard', 'visa', 'mir', 'prostir', 'diners-club', 'american-express'],
-    fields: true,
-    title: 'my_title',
-    link: 'https://fondy.eu',
-    fullScreen: true,
-    button: true,
-    cancel: true,
-    locales: ['ru', 'en', 'uk'],
-    email: true,
-    tooltip: true,
-    apiDomain: 'api.dev.fondy.eu',
-    fee: true,
-    //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
-    activeTab: 'card',
-    logoUrl: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-    offertaUrl: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-  },
-  regular: {
-    insert: true,
-    open: true,
-    hide: false,
-    period: ['week', 'month']
-  },
-  params: {
-    merchant_id: 900001,
-//    verification_type: 'code',
-//    required_rectoken: 'y',
-//    verification: 'y',
-//    currency: 'UAH',
-//    amount: 500,
-    order_desc: 'my_desc',
-//    response_url: 'https://www.fondy.eu',
-    token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
-    lang: 'ru',
-    recurring_data: {
-      every: 2,
-      period: 'week',
-      amount: 100,
-      end_time: '2020-11-14',
-      start_time: '2019-11-11'
-    },
-    custom: {
-      field_11: 'field_11_json_value',
-      my_email: 'asd@asd.asd',
-      field_5: 'asd123asd'
-    },
-  },
-  messages: {
-    ru: {
-      field_11: 'field_11_ru',
-      field_5: 'Номер договора',
-      card_number: 'edit Номер карты',
-      my_amount: 'Сума к оплате',
-      my_email: 'Эл. адрес',
-      my_title: 'Назначение платежа',
-      my_desc: 'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)'
-    },
-    en: {
-      UAH: 'гривна',
-      card_number: 'edit Card number',
-      card_number_p: 'Card number',
-      my_amount: 'Sum to pay',
-      my_email: 'Email',
-      my_title: 'Purpose of payment',
-      my_desc: 'Charitable assistance (to a child or a department of hematology, or to a department of planned surgery with oncological beds of the Dnipropetrovsk regional children\'s clinical hospital)'
-    },
-    uk: {
-      my_amount: 'Сума до оплати',
-      my_email: 'електронна пошта',
-      my_title: 'Назначення платежа',
-      my_desc: 'Благодійна допомога (дитині або відділенню гематології, або відділенню планової хірургії з онкологічними ліжками дніпропетровської обласної дитячої клінічної лікарні)'
-    }
-  },
-  validate: {
-    ru: {
-      credit_card: function (field) { return 'edit Поле ' + field + ' должно быть действительным номером карты' }
-    },
-    uk: {
-      credit_card: function (field) { return 'edit Поле ' + field + ' має бути дійсним номером карти' }
-    }
-  }
-}
+    <script>
+      ;(function() {
+        var options = {
+          max: {
+            options: {
+              methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+              ibank: ['p24', 'platba24', 'raiffeisen'],
+              emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
+              cash: ['liqpay'],
+              fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
+              cardIcons: [
+                'mastercard',
+                'visa',
+                'mir',
+                'prostir',
+                'diners-club',
+                'american-express',
+              ],
+              fields: true,
+              title: 'my_title',
+              link: 'https://fondy.eu',
+              fullScreen: true,
+              button: true,
+              cancel: true,
+              locales: ['ru', 'en', 'uk'],
+              email: true,
+              tooltip: true,
+              apiDomain: 'api.dev.fondy.eu',
+              fee: true,
+              //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
+              activeTab: 'card',
+              logoUrl:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              offertaUrl:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+            },
+            regular: {
+              insert: true,
+              open: true,
+              hide: false,
+              period: ['week', 'month'],
+            },
+            params: {
+              merchant_id: 900158,
+              //    verification_type: 'code',
+              //    required_rectoken: 'y',
+              //    verification: 'y',
+              currency: 'EUR',
+              //    amount: 500,
+              order_desc: 'my_desc',
+              //    response_url: 'https://www.fondy.eu',
+              //     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
+              lang: 'ru',
+              recurring_data: {
+                every: 2,
+                period: 'week',
+                amount: 100,
+                end_time: '2020-11-14',
+                start_time: '2019-11-11',
+              },
+              custom: {
+                field_11: 'field_11_json_value',
+                my_email: 'asd@asd.asd',
+                field_5: 'asd123asd',
+              },
+            },
+            messages: {
+              ru: {
+                field_11: 'field_11_ru',
+                field_5: 'Номер договора',
+                card_number: 'edit Номер карты',
+                my_amount: 'Сума к оплате',
+                my_email: 'Эл. адрес',
+                my_title: 'Назначение платежа',
+                my_desc:
+                  'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
+              },
+              en: {
+                UAH: 'гривна',
+                card_number: 'edit Card number',
+                card_number_p: 'Card number',
+                my_amount: 'Sum to pay',
+                my_email: 'Email',
+                my_title: 'Purpose of payment',
+                my_desc:
+                  "Charitable assistance (to a child or a department of hematology, or to a department of planned surgery with oncological beds of the Dnipropetrovsk regional children's clinical hospital)",
+              },
+              uk: {
+                my_amount: 'Сума до оплати',
+                my_email: 'електронна пошта',
+                my_title: 'Назначення платежа',
+                my_desc:
+                  'Благодійна допомога (дитині або відділенню гематології, або відділенню планової хірургії з онкологічними ліжками дніпропетровської обласної дитячої клінічної лікарні)',
+              },
+            },
+            validate: {
+              en: {
+                ccard: function(field) {
+                  return (
+                    'edit Поле ' +
+                    field +
+                    ' должно быть действительным номером карты'
+                  )
+                },
+              },
+              ru: {
+                ccard: function(field) {
+                  return (
+                    'edit Поле ' +
+                    field +
+                    ' должно быть действительным номером карты'
+                  )
+                },
+              },
+              uk: {
+                ccard: function(field) {
+                  return (
+                    'edit Поле ' + field + ' має бути дійсним номером карти'
+                  )
+                },
+              },
+            },
+          },
+          min: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              link: 'https://fondy.eu',
+              fullScreen: false,
+              //    fee: true,
+            },
+            params: {
+              amount: 200,
+              currency: 'AZN',
+              //    merchant_id: 1396424,
+              merchant_id: 900187,
+              //    lang: 'ru',
+              order_desc: '3ds',
+              //    verification_type: 'code',
+              //    required_rectoken: 'y',
+              //    verification: 'y',
+              //     token: 'ca6be498656fb173d9219b5427828edb69b36542'
+            },
+          },
+          trustly: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              // active_tab: 'trustly',
+              default_country: 'PL',
+              // countries: ['PL'],
+            },
+            params: {
+              amount: 100,
+              currency: 'USD',
+              merchant_id: 900158,
+            },
+          },
+          token: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              fullScreen: false,
+            },
+            params: {
+              token: 'd7de461a3d8051d4207f073ae0c63afd1c9aeafb',
+            },
+          },
+        }
 
-var minOptions = {
-  options: {
-    api_domain: 'api.dev.fondy.eu',
-    link: 'https://fondy.eu',
-//    fullScreen: false,
-//    fee: true,
-  },
-  params: {
-//    currency: 'UAH',
-//    merchant_id: 1396424,
-    merchant_id: 900001,
-//    lang: 'ru',
-//    order_desc: 'Тестовый платеж',
-//    verification_type: 'code',
-//    required_rectoken: 'y',
-//    verification: 'y',
-    token: 'ca6be498656fb173d9219b5427828edb69b36542'
-  }
-}
+        var app = render('trustly')
 
-var app = fondy('#app', maxOptions)
-  .$on('success', function(model) {
-    console.log('сработало событие success');
-  })
-  .$on('error', function(model) {
-    console.log('сработало событие error');
-  })
+        document.querySelector('.submit').addEventListener('click', function() {
+          app.submit()
+          //  this.disabled = app.errors.items.length
+        })
+        document
+          .querySelector('.go-card')
+          .addEventListener('click', function() {
+            app.location('card')
+          })
+        document
+          .querySelector('.go-ibank')
+          .addEventListener('click', function() {
+            app.location('ibank')
+          })
+        document
+          .querySelector('.set-params')
+          .addEventListener('click', function() {
+            app.setParams({
+              order_desc: 'my_desc2',
+              amount: 500,
+              currency: 'UAH',
+              recurring_data: {
+                every: 3,
+                period: 'week',
+                amount: 200,
+              },
+            })
+          })
 
-document.getElementById('submit').addEventListener('click', function () {
-  app.submit(function(model){
-    console.log('на сабмин выполняется етот колбек, если вернуть медель (return model) пойдет наша обработка');
-    return model
-  })
-//  this.disabled = app.errors.items.length
-})
-document.getElementById('go-card').addEventListener('click', function () {
-  app.location('card')
-})
-document.getElementById('go-ibank').addEventListener('click', function () {
-  app.location('ibank')
-})
-document.getElementById('set-params').addEventListener('click', function () {
-  app.setParams({
-    order_desc: 'my_desc2',
-    amount: 500,
-    currency: 'UAH',
-    recurring_data: {
-      every: 3,
-      period: 'week',
-      amount: 200,
-    }
-  })
-})
-</script>
+        document.querySelector('.render').addEventListener('click', function() {
+          render()
+        })
+
+        function render(type) {
+          return (app = fondy(
+            '#app',
+            options[type || document.querySelector('.options').value]
+          )
+            .$on('success', function(model) {
+              console.log('success', model)
+            })
+            .$on('error', function(model) {
+              console.log('error', model)
+            })
+            .$on('ready', function(model) {
+              console.log('ready', model)
+            }))
+            // .$on('callback', function(model) {
+            //   console.log('callback', model);
+            // })
+        }
+      })()
+    </script>
   </body>
 </html>

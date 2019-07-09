@@ -1,35 +1,53 @@
 import Tooltip from '@/components/tooltip'
-import {TheMask} from 'vue-the-mask'
+import { TheMask } from 'vue-the-mask'
 
+// @vue/component
 export default {
   inject: ['$validator'],
+  components: {
+    Tooltip,
+    TheMask,
+  },
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
-    field: String,
-    label: String,
-    validate: [String, Object],
-    placement: String,
-    placeholder: String,
-    custom: {
-      type: Boolean,
-      default: false
+    field: {
+      type: String,
+      default: '',
     },
-    customer_data: {
-      type: Boolean,
-      default: false
+    label: {
+      type: String,
+      default: '',
     },
-    recurring: {
-      type: Boolean,
-      default: false
+    validate: {
+      type: [String, Object],
+      default: null,
     },
+    placement: {
+      type: String,
+      default: undefined,
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    custom: Boolean,
+    customerData: Boolean,
+    recurring: Boolean,
     model: {
-      type: Object
+      type: Object,
+      default: null,
     },
-    value: String,
-    inputmode: String,
+    value: {
+      type: String,
+      default: '',
+    },
+    inputmode: {
+      type: String,
+      default: null,
+    },
     readonly: Boolean,
   },
   computed: {
@@ -46,50 +64,45 @@ export default {
       return this.$t(this.placeholder)
     },
     flag() {
-      return this.$validator.flags[this.name_]
+      return this.$validator.flags[this.name_] || {}
     },
     hasError() {
-      return this.errors.has(this.name_) && ((this.flag && this.flag.touched) || this.store.state.submit)
+      return (
+        this.errors.has(this.name_) &&
+        (this.flag.touched || this.store.state.submit)
+      )
     },
     value_: {
-      get(){
+      get() {
         return this.params[this.field_]
       },
-      set(v){
+      set(v) {
         this.params[this.field_] = v
-      }
+      },
     },
     classReadonly() {
       return this.readonly ? 'f-form-control-text' : ''
-    }
+    },
   },
   created() {
-    if(this.model) {
+    if (this.model) {
       this.params = this.model
-    } else
-    if(this.custom) {
+    } else if (this.custom) {
       this.params = this.store.state.params.custom
-    } else
-    if (this.recurring) {
+    } else if (this.recurring) {
       this.params = this.store.state.params.recurring_data
-    } else
-    if (this.customer_data) {
+    } else if (this.customer_data) {
       this.params = this.store.state.params.customer_data
-    } else
-    {
+    } else {
       this.params = this.store.state.params
     }
-    if(this.value) {
+    if (this.value) {
       this.params[this.field_] = this.value
     }
   },
   methods: {
     onEnter() {
       this.$root.$emit('submit')
-    }
+    },
   },
-  components: {
-    Tooltip,
-    TheMask
-  }
 }

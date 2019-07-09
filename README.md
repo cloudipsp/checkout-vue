@@ -51,6 +51,8 @@ Name                  | Type        | Default                 | Description     
 `tooltip`             | Boolean     | true                    |                                                                                     |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `fields`              | Boolean     | false                   |                                                                                     |
+`default_country`     | String      |                         |                                                                                     |
+`countries`           | Array       |                         |                                                                                     |
 
 ### popup
 Name                  | Type        | Default                 | Description

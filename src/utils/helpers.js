@@ -2,63 +2,76 @@ import $checkout from 'ipsp-js-sdk/dist/checkout'
 import store from '@/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
+import { i18n } from '@/i18n'
 
 let api = $checkout('Api')
 let cache = {}
 let cacheError = {}
 
-api.on('modal.close', function () {
+api.on('modal.close', function() {
   store.state.loading = false
 })
 
-export function iframeCreate(apiDomain){
-  if(apiDomain){
+export function iframeCreate(apiDomain) {
+  if (apiDomain) {
     api.setOrigin('https://' + apiDomain)
   }
   api.create()
 }
 
-export function sendRequest (name, method, params, cacheName) {
-  return new Promise(function (resolve, reject) {
+export function sendRequest(name, method, params, cacheName) {
+  return new Promise(function(resolve, reject) {
     let id = name + cacheName
     if (cacheName && cache[id]) {
       resolve(cache[id])
     } else if (cacheName && cacheError[id]) {
       reject(cacheError[id])
     } else {
-      api.scope(function () {
-        this.request(name, method, params).then(
-          function (model) {
-            console.log(name, method, params)
-            console.log('done', model)
-            // store.showError(String(model.attr('error.code')), model.attr('error.message'))
-            if (cacheName) {
-              cache[id] = model
+      api.scope(function() {
+        this.request(name, method, params)
+          .then(
+            function(model) {
+              console.log(name, method, params)
+              console.log('done', model)
+              // store.showError(String(model.attr('error.code')), model.attr('error.message'))
+              if (cacheName) {
+                cache[id] = model
+              }
+              resolve(model)
+            },
+            function(model) {
+              console.log(name, method, params)
+              console.log('fail', model)
+              store.showError(
+                String(model.attr('error.code')),
+                model.attr('error.message')
+              )
+              // if (cacheName) {
+              //   cacheError[id] = model
+              // }
+              reject(model)
             }
+          )
+          .progress(function(model) {
             resolve(model)
-          },
-          function (model) {
-            console.log(name, method, params)
-            console.log('fail', model)
-            store.showError(String(model.attr('error.code')), model.attr('error.message'))
-            // if (cacheName) {
-            //   cacheError[id] = model
-            // }
-            reject(model)
           })
       })
     }
   })
 }
 
-export function getCookie (name) {
-  let matches = document.cookie.match(new RegExp(
-    '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
-  ))
+export function getCookie(name) {
+  let matches = document.cookie.match(
+    new RegExp(
+      '(?:^|; )' +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+        '=([^;]*)'
+    )
+  )
   return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
-export function setCookie (name, value, options) {
+export function setCookie(name, value, options) {
   options = options || {}
 
   let expires = options.expires
@@ -69,7 +82,7 @@ export function setCookie (name, value, options) {
     expires = options.expires = d
   }
   if (expires && expires.toUTCString) {
-    options.expires = expires.toUTCString();
+    options.expires = expires.toUTCString()
   }
 
   value = encodeURIComponent(value)
@@ -87,35 +100,35 @@ export function setCookie (name, value, options) {
   document.cookie = updatedCookie
 }
 
-export function deleteCookie (name) {
+export function deleteCookie(name) {
   setCookie(name, '', {
-    expires: -1
+    expires: -1,
   })
 }
 
-export function deepMerge () {
-  let extended = arguments[0];
+export function deepMerge() {
+  let extended = arguments[0]
 
-  let merge = function ( obj ) {
-    for ( let prop in obj ) {
-      if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
-        if ( Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
-          extended[prop] = deepMerge( extended[prop], obj[prop] );
+  let merge = function(obj) {
+    for (let prop in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+          extended[prop] = deepMerge(extended[prop], obj[prop])
         } else {
-          extended[prop] = obj[prop];
+          extended[prop] = obj[prop]
         }
       }
     }
-  };
-
-  for (let i = 1; i < arguments.length; i++ ) {
-    merge(arguments[i]);
   }
 
-  return extended;
+  for (let i = 1; i < arguments.length; i++) {
+    merge(arguments[i])
+  }
+
+  return extended
 }
 
-export function validate (options) {
+export function validate(options) {
   new Schema(config).validate(options, (errors, fields) => {
     if (errors) {
       console.log(errors, fields)
@@ -124,15 +137,26 @@ export function validate (options) {
   })
 }
 
-export function findGetParameter (parameterName) {
-  let result = null,
-    tmp = []
+export function findGetParameter(parameterName) {
+  let result = null
+  let tmp = []
   location.search
     .substr(1)
     .split('&')
-    .forEach(function (item) {
+    .forEach(function(item) {
       tmp = item.split('=')
       if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1])
     })
   return result
+}
+
+export function sort(arr, field, reverse) {
+  reverse = reverse ? -1 : 1
+  return arr.sort((a, b) => {
+    if (String.prototype.localeCompare) {
+      return a[field].localeCompare(b[field], i18n.locale) * reverse
+    } else {
+      return (a[field] < b[field] ? -1 : 1) * reverse
+    }
+  })
 }

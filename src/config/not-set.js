@@ -12,7 +12,7 @@ export default {
     amount_with_fee: 0,
     // email: '',
     recurring_data: {
-      readonly: false
-    }
-  }
+      readonly: false,
+    },
+  },
 }
