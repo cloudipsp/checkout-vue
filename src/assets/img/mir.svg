@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="51px" height="15px" viewBox="0 0 51 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-    <title>mir</title>
-    <desc>Created with Sketch.</desc>
+<svg viewBox="0 0 51 15" height="20px" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <linearGradient x1="30.0057035%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
             <stop stop-color="#13AAE3" offset="0%"></stop>
