@@ -23,7 +23,7 @@ function setI18nLanguage(lang) {
 
 export function loadLanguageAsync(lang) {
   return import(
-    /* webpackChunkName: "[request]" */
+    /* webpackChunkName: "i18n/[request]" */
     `@/lang/${lang}`
   ).then(msgs => {
     Validator.localize(lang, {
