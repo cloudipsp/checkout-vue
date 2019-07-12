@@ -172,6 +172,8 @@ export default {
     on(window, EVENTS.KEY_UP, this.onKeyPress)
     if (this.value) {
       this.$toggle(true)
+    } else {
+      this.$el.style.display = 'none'
     }
   },
   beforeDestroy() {
