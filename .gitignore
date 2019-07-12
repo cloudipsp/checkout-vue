@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
+dist
 dist/checkout-*.js
 dist/i18n/countries-*.js
 npm-debug.log*
