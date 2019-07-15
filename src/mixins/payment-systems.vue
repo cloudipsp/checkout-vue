@@ -154,7 +154,6 @@ export default {
   },
   created() {
     this.setActive(this.list)
-    this.store.formLoading(true)
   },
   methods: {
     locationSystem(system) {

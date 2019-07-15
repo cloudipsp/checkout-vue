@@ -70,5 +70,10 @@ export default {
         .filter((item, key, self) => self.indexOf(item) === key)
     },
   },
+  created() {
+    if (!this.state.tabs.trustly) {
+      this.store.formLoading(true)
+    }
+  },
 }
 </script>
