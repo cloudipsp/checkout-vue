@@ -6,7 +6,6 @@
 
 // TODO $emit setParams затирает стейт параметрами notSet.params
 // TODO в fail приходят cards, их отображать?
-// TODO если поставить countries: ['PL'], то через поиск будет искать среди всех банков
 
 import Vue from 'vue'
 import Checkout from '@/checkout'

@@ -10,7 +10,10 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "release": "./scripts/release.sh"
+    "release": "./scripts/release.sh",
+    "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --syntax scss --color --formatter verbose --fix",
+    "eslint:fix": "eslint src/**/*.{js,vue} --fix",
+    "prettier:fix": "prettier src/**/*.{js,vue,scss} --write"
   },
   "files": [
     "dist"
