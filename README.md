@@ -133,7 +133,7 @@ Name                  | Type        | Default                 | Description
 ```
 
 ## Use
-
+``` js
 var app = fondy({css selector}, {config})
 
 app.$on('success', function(model) {})
@@ -151,7 +151,7 @@ app.setParams({params})
 app.$emit('setParams', {params})
 
 app.destroy()
-
+```
 full_screen: true - add css
 
 ## Use validate

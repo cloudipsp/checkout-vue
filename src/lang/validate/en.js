@@ -29,6 +29,7 @@ export default {
 
 // https://github.com/baianat/vee-validate/blob/master/locale/en.js
 // https://baianat.github.io/vee-validate/guide/rules.html
+/*
 export const messages = {
   _default: field => `The ${field} value is not valid.`,
   after: (field, [target, inclusion]) =>
@@ -85,8 +86,8 @@ export const messages = {
   required: field => `The ${field} field is required.`,
   required_if: (field, [target]) =>
     `The ${field} field is required when the ${target} field has this value.`,
-  // eslint-disable-next-line
   size: (field, [size]) =>
     `The ${field} size must be less than ${formatFileSize(size)}.`,
   url: field => `The ${field} field is not a valid URL.`,
 }
+*/
