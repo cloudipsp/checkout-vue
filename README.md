@@ -154,5 +154,11 @@ app.destroy()
 
 full_screen: true - add css
 
+## Use validate
 
+support `after`, `alpha`, `date_format`, `decimal`, `digits`, `email`, `max`, `min`, `numeric`, `required`, `customer_field`, `phone`, `numrange`, `ccard`
+
+``` html
+<input-text name="email" validate="required|email"></input-text>
+```
 

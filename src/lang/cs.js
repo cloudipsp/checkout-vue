@@ -1,5 +1,6 @@
 import countries from '@/lang/countries/cs'
+import validate from '@/lang/validate/cs'
 
-export const messages = Object.assign({}, countries)
+const messages = Object.assign({}, countries)
 
-export const validate = {}
+export { messages, validate }

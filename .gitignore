@@ -3,6 +3,7 @@ node_modules/
 dist
 dist/checkout-*.js
 dist/i18n/countries-*.js
+dist/i18n/validate-*.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

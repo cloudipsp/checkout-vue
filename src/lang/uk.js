@@ -1,6 +1,7 @@
 import countries from '@/lang/countries/uk'
+import validate from '@/lang/validate/uk'
 
-export const messages = Object.assign(
+const messages = Object.assign(
   {
     card: 'Оплата картою',
     card_number: 'Номер карти',
@@ -85,48 +86,4 @@ export const messages = Object.assign(
   countries
 )
 
-export const validate = {
-  after: (field, [target]) =>
-    `В полі ${field} повинна бути дата після ${target} .`,
-  alpha_dash: field =>
-    `Поле ${field} може містити тільки букви, цифри та дефіс.`,
-  alpha_num: field => `Поле ${field} може містити тільки букви і ціфри.`,
-  alpha_spaces: field => `Поле ${field} може містити тільки букви і пробели.`,
-  alpha: field => `Поле ${field} може містити тільки букви.`,
-  before: (field, [target]) =>
-    `В полі ${field} повинна бути дата до ${target} .`,
-  between: (field, [min, max]) =>
-    `Поле ${field} має бути між ${min} і ${max} .`,
-  confirmed: (field, [confirmedField]) =>
-    `Поле ${field} не збігається з ${confirmedField} .`,
-  credit_card: field => `Поле ${field} має бути дійсним номером карти`,
-  ccard: field => `Поле ${field} має бути дійсним номером карти`,
-  date_between: (field, [min, max]) =>
-    `Поле ${field} має бути між ${min} і ${max} .`,
-  date_format: (field, [format]) =>
-    `Поле ${field} має бути в форматі ${format} .`,
-  decimal: (field, [decimals = '*'] = []) =>
-    `Поле ${field} має бути числовим і може містити ${
-      decimals === '*' ? '' : decimals
-    } десяткових чісла.`,
-  digits: (field, [length]) =>
-    `Поле ${field} має бути числовим і точно містити ${length} ціфри.`,
-  dimensions: (field, [width, height]) =>
-    `Поле ${field} має бути ${width} пікселів на ${height} пікселей.`,
-  email: field => `Поле ${field} має бути дійсним електронним адресом.`,
-  image: field => `Поле ${field} має бути ізображеніем.`,
-  in: field => `Поле ${field} має бути допустимим значеніем.`,
-  max: (field, [length]) =>
-    `Поле ${field} не може бути більше ${length} сімволов.`,
-  max_value: (field, [max]) => `Поле ${field} має бути ${max} або менее.`,
-  mimes: (field, [...args]) =>
-    `Поле ${field} повинно мати дійсний тип файлу. (${args}) `,
-  min: (field, [length]) =>
-    `Поле ${field} має бути не менше ${length} сімволов.`,
-  min_value: (field, [min]) => `Поле ${field} має бути ${min} або больше.`,
-  not_in: field => `Поле ${field} має бути допустимим значеніем.`,
-  numeric: field => `Поле ${field} має бути чіслом.`,
-  regex: field => `Поле ${field} має помилковий формат.`,
-  required: field => `Поле ${field} обов'язково для заполненія.`,
-  url: field => `Поле ${field} має хибний формат URL.`,
-}
+export { messages, validate }
