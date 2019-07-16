@@ -1,0 +1,11 @@
+// vee-validate 123kb (minimal 68kb, rules 64kb)
+// vue 106kb
+// js 62kb
+// async-validator 46kb
+// fonts 28kb
+// img 25kb 6 иконок
+// ipsp-js-sdk 25kb
+// vue-i18n 23kb
+// css 10kb
+// vue-the-mask 5kb
+// 453kb
