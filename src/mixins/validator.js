@@ -14,7 +14,7 @@ import {
   after,
   digits,
 } from 'vee-validate/dist/rules.esm.js'
-import en from 'vee-validate/dist/locale/en'
+import { validate as messages } from '@/lang/en'
 
 const install = Vue => {
   Validator.extend('required', required)
@@ -29,15 +29,12 @@ const install = Vue => {
   Validator.extend('digits', digits)
 
   Validator.extend('customer_field', {
-    getMessage: field => `The ${field} field format is invalid.`,
     validate: value => /^(?!\s)[0-9A-Za-z-\/\s\.,]+(?!\s)$/.test(value),
   })
   Validator.extend('phone', {
-    getMessage: field => `The ${field} field format is invalid.`,
     validate: value => /^\+?\d{7,14}$/.test(value),
   })
   Validator.extend('numrange', {
-    getMessage: field => `Transfer amount limit exceeded.`,
     validate: (value, range) => {
       value = parseInt(value, 10)
       range = range.map(function(i) {
@@ -47,7 +44,6 @@ const install = Vue => {
     },
   })
   Validator.extend('ccard', {
-    getMessage: field => `The ${field} field format is invalid.`,
     validate: value => {
       let REGEXP_LUHN_DASHED = /^[\d\-\s]+$/
       if (!REGEXP_LUHN_DASHED.test(value)) return false
@@ -68,7 +64,7 @@ const install = Vue => {
     },
   })
 
-  Validator.localize('en', en)
+  Validator.localize('en', messages)
 
   Vue.use(VeeValidate, {
     inject: false,

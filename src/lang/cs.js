@@ -1,6 +1,6 @@
-import countries from '@/lang/countries/cs'
-import validate from '@/lang/validate/cs'
+import countries from '@umpirsky/country-list/data/cs/country.json'
+import { messages as validateMessages } from 'vee-validate/dist/locale/cs'
 
-const messages = Object.assign({}, countries)
+export const messages = Object.assign({}, countries, {})
 
-export { messages, validate }
+export const validate = Object.assign({}, validateMessages, {})
