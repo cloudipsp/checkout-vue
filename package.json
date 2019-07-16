@@ -24,6 +24,7 @@
   },
   "unpkg": "dist/checkout.js",
   "dependencies": {
+    "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^1.11.2",
     "ipsp-js-sdk": "^1.0.16",
     "vee-validate": "^2.2.7",
