@@ -20,7 +20,6 @@
     position: relative;
     background-size: auto;
     transition: all ease-in-out 0.15s;
-    border: solid 1px transparent;
     display: block;
     height: 100%;
 
@@ -36,15 +35,14 @@
       border-right: none;
       background: transparent;
       transform: rotate(-45deg);
-      transition: border ease-in-out 0.15s;
+      transition: box-shadow ease-in-out 0.15s;
     }
   }
 
   &:hover,
   &.active {
     .f-icon {
-      box-shadow: 0 -1px 12px 0 @ps-active-shadow;
-      border-color: @ps-active-border;
+      box-shadow: 0 0 0 1.1px @ps-active-shadow, 0 -1px 12px 0 @ps-active-shadow;
     }
   }
 
