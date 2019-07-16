@@ -42,7 +42,7 @@ Name                  | Type        | Default                 | Description     
 `locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
-`active_tab`          | String      |                         | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
+`active_tab`          | String      | 'card'                  | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
@@ -72,7 +72,7 @@ Name                  | Type        | Default                 | Description     
 ---                   | ---         | ---                     | ---                         | ---
 `merchant_id`         | Integer     | 1396424                 |                             |
 `order_desc`          | String      |                         |                             | options or server
-`amount`              | Integer     | 100                     |                             |
+`amount`              | Integer     | 0                       |                             |
 `currency`            | String      | 'USD'                   |                             |
 `response_url`        | String      |                         | format url                  |
 `lang`                | String      | 'en'                    |                             | server or options
@@ -90,7 +90,7 @@ Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `every`               | Integer     | 1                       |
 `period`              | String      | 'month'                 | support `day`, `week`, `month`.
-`amount`              | Integer     | 100                     |
+`amount`              | Integer     | 0                       |
 `end_time`            | String      |                         | format YYYY-MM-DD
 `start_time`          | String      |                         | format YYYY-MM-DD
 
