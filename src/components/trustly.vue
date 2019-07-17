@@ -71,10 +71,13 @@ export default {
     },
   },
   watch: {
-    country(item) {
-      if (item.length === 1) {
-        this.options.default_country = item[0].id
-      }
+    country: {
+      handler(item) {
+        if (item.length === 1) {
+          this.options.default_country = item[0].id
+        }
+      },
+      immediate: true,
     },
   },
   created() {
