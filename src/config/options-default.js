@@ -27,6 +27,7 @@ const options = {
     fields: false,
     default_country: '',
     countries: [],
+    langs: true,
   },
   popup: {
     append_to: 'body',

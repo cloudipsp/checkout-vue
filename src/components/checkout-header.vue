@@ -2,7 +2,7 @@
   <div class="f-header">
     <div class="f-header-menu">
       <select
-        v-if="options.locales.length"
+        v-if="show"
         v-model="params.lang"
         :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']"
       >
@@ -33,6 +33,9 @@ export default {
       return {
         'background-image': `url(${this.options.logo_url})`,
       }
+    },
+    show() {
+      return this.options.langs && this.options.locales.length
     },
   },
   watch: {
