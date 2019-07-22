@@ -128,10 +128,11 @@ export default {
 
     this.params.token = findGetParameter('token') || this.params.token
 
-    sendRequest('api.checkout', 'app', this.params).then(
-      this.appSuccess,
-      function() {}
-    )
+    sendRequest('api.checkout', 'app', this.params)
+      .finally(() => {
+        this.store.formLoading(false)
+      })
+      .then(this.appSuccess, function() {})
   },
   mounted: function() {
     window.addEventListener('resize', this.resize)
@@ -204,11 +205,11 @@ export default {
       this.$root.$emit('error', model)
     },
     appSuccess: function(model) {
+      this.store.state.ready = true
       this.$root.$emit('ready', model)
       this.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
-      this.store.formLoading(false)
     },
     cardsSuccess: function(model) {
       if (this.store.state.need_verify_code || !Array.isArray(model.data))

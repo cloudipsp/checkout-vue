@@ -81,7 +81,7 @@ export default {
     },
   },
   created() {
-    if (!this.state.tabs.trustly) {
+    if (!this.store.state.ready) {
       this.store.formLoading(true)
     }
   },

@@ -90,6 +90,7 @@ const options = {
   verification_type: '',
   cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/',
   tabs: {},
+  ready: false,
 }
 
 configLocales.forEach(function(locale) {
