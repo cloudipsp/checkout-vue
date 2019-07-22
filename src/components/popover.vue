@@ -60,6 +60,34 @@ export default {
         [
           h('div', { class: 'arrow' }),
           h(
+            'button',
+            {
+              attrs: {
+                type: 'button',
+                'aria-label': 'Close',
+              },
+              class: 'f-close',
+              style: {
+                position: 'relative',
+                zIndex: 1060,
+              },
+              on: {
+                click: this.toggle,
+              },
+            },
+            [
+              h(
+                'span',
+                {
+                  attrs: {
+                    'aria-hidden': true,
+                  },
+                },
+                '×'
+              ),
+            ]
+          ),
+          h(
             'h3',
             {
               class: 'f-popover-title',
