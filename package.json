@@ -11,9 +11,9 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "release": "./scripts/release.sh",
-    "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --syntax scss --color --formatter verbose --fix",
+    "stylelint:fix": "stylelint src/{**/,**/**/}*.less --syntax less --color --formatter verbose --fix",
     "eslint:fix": "eslint src/**/*.{js,vue} --fix",
-    "prettier:fix": "prettier src/**/*.{js,vue,scss} --write"
+    "prettier:fix": "prettier src/**/*.{js,vue,less} --write"
   },
   "files": [
     "dist"
