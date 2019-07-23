@@ -58,7 +58,7 @@ export default {
   methods: {
     changeMethod: function(method, system) {
       this.store.location('payment-method', method, system)
-      this.$emit('on-change-method')
+      this.store.state.showChangeMethods = false
     },
   },
 }

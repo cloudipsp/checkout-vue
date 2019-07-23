@@ -1,18 +1,14 @@
 <template>
   <div class="f-wrapper">
-    <div v-if="!isMin" class="f-mobile-menu f-visible-mobile">
-      <button
-        v-t="'other'"
-        type="button"
-        :class="[$css.btn, $css.bd, $css.btnSm]"
-        @click="show = !show"
-      />
-    </div>
     <div ref="info" class="f-info">
       <info />
     </div>
-    <div v-if="!isMin" class="f-methods" :class="{ 'f-open': show }">
-      <methods @on-change-method="changeMethod" />
+    <div
+      v-if="!isMin"
+      class="f-methods"
+      :class="{ 'f-open': store.state.showChangeMethods }"
+    >
+      <methods />
     </div>
     <div ref="center" class="f-center">
       <component
@@ -74,7 +70,6 @@ export default {
   },
   data() {
     return {
-      show: false,
       timeoutId: 0,
       order: {},
       inProgress: false,
@@ -92,7 +87,7 @@ export default {
       return result
     },
     showError: function() {
-      return this.error.flag && !this.show
+      return this.error.flag && !this.store.state.showChangeMethods
     },
     isDisabled: function() {
       return !!this.errors.items.length && this.store.state.submit
@@ -109,9 +104,6 @@ export default {
       },
       deep: true,
       immediate: true,
-    },
-    show: function(show) {
-      document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
     },
     //      'store.server': {
     //        handler: function () {
@@ -387,7 +379,7 @@ export default {
         this.submit()
       })
       this.$root.$on('location', (method, system) => {
-        this.show = false
+        this.store.state.showChangeMethods = false
         this.store.location('payment-method', method, system)
       })
       this.$root.$on('setParams', params => {
@@ -414,9 +406,6 @@ export default {
       setTimeout(() => {
         $firstErrorField.focus()
       })
-    },
-    changeMethod: function() {
-      this.show = false
     },
     resize: function() {
       this.resizeWindow()

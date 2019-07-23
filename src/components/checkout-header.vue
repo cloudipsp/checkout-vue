@@ -4,7 +4,12 @@
       <select
         v-if="show"
         v-model="params.lang"
-        :class="[$css.fc, 'f-input-sm', 'f-hidden-mobile']"
+        :class="[
+          $css.fc,
+          'f-input-sm',
+          'f-hidden-mobile',
+          'f-visible-inline-block',
+        ]"
       >
         <option
           v-for="item in options.locales"
@@ -13,6 +18,18 @@
           :value="item"
         />
       </select>
+      <button
+        v-if="!min"
+        v-t="'other'"
+        type="button"
+        :class="[
+          $css.btn,
+          $css.bd,
+          $css.btnSm,
+          'f-visible-mobile-inline-block',
+        ]"
+        @click="changeMethods"
+      />
     </div>
     <div class="f-logo" :style="style" />
   </div>
@@ -24,6 +41,12 @@ import { loadLanguageAsync } from '@/i18n'
 
 export default {
   inject: ['$validator'],
+  props: {
+    min: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {}
   },
@@ -50,6 +73,14 @@ export default {
         })
       },
       immediate: true,
+    },
+    'state.showChangeMethods': function(show) {
+      document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
+    },
+  },
+  methods: {
+    changeMethods() {
+      this.store.state.showChangeMethods = !this.store.state.showChangeMethods
     },
   },
 }

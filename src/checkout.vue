@@ -5,7 +5,7 @@
       class="f-container"
       :class="{ 'f-min': min }"
     >
-      <checkout-header />
+      <checkout-header :min="min" />
       <payment @on-set-min="setMin" />
     </div>
     <ul v-else>
