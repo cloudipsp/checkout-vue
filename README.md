@@ -53,6 +53,7 @@ Name                  | Type        | Default                 | Description     
 `fields`              | Boolean     | false                   |                                                                                     |
 `default_country`     | String      |                         |                                                                                     |
 `countries`           | Array       |                         |                                                                                     |
+`lang`                | Boolean     | true                    |                                                                                     |
 
 ### popup
 Name                  | Type        | Default                 | Description
