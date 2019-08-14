@@ -1,23 +1,26 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <select
+      <dropdown
         v-if="show"
-        v-model="params.lang"
-        :class="[
-          $css.fc,
-          'f-input-sm',
-          'f-hidden-mobile',
-          'f-visible-inline-block',
-        ]"
+        class="f-visible-inline-block"
+        tag="span"
+        :append-to-body="false"
       >
-        <option
-          v-for="item in options.locales"
-          :key="item"
-          v-t="item"
-          :value="item"
-        />
-      </select>
+        <a
+          class="f-icon-flag"
+          data-role="trigger"
+          :style="styleFlag(params.lang)"
+        ></a>
+        <template slot="dropdown">
+          <li v-for="item in options.locales" :key="item">
+            <a @click="store.changeLocale(item)">
+              <span class="f-icon-flag" :style="styleFlag(item)"></span>
+              <span v-t="item"></span>
+            </a>
+          </li>
+        </template>
+      </dropdown>
       <button
         v-if="!min"
         v-t="'other'"
@@ -36,11 +39,13 @@
 </template>
 
 <script>
-import { setCookie } from '@/utils/helpers'
-import { loadLanguageAsync } from '@/i18n'
+import Dropdown from '@/components/dropdown'
 
 export default {
   inject: ['$validator'],
+  components: {
+    Dropdown,
+  },
   props: {
     min: {
       type: Boolean,
@@ -58,22 +63,18 @@ export default {
       }
     },
     show() {
-      return this.options.langs && this.options.locales.length
+      return this.options.langs && this.options.locales.length > 1
+    },
+    styleFlag() {
+      return function(lang) {
+        return {
+          'background-image':
+            'url(' + this.store.state.cdn + 'flags/' + lang + '.svg)',
+        }
+      }
     },
   },
   watch: {
-    'params.lang': {
-      handler: function(lang) {
-        loadLanguageAsync(lang).then(() => {
-          this.$validator.localize(lang)
-        })
-        setCookie('lang', lang, {
-          path: '/',
-          expires: 3600,
-        })
-      },
-      immediate: true,
-    },
     'state.showChangeMethods': function(show) {
       document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
     },

@@ -1,11 +1,17 @@
 import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
-import configLocales from '@/config/locales'
 import configPaymentSystems from '@/config/payment-systems'
 import configPriority from '@/config/priority'
 import notSet from '@/config/not-set'
-import { getCookie, deepMerge, validate, sendRequest } from '@/utils/helpers'
+import {
+  getCookie,
+  setCookie,
+  deepMerge,
+  validate,
+  sendRequest,
+} from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
+import { loadLanguageAsync } from '@/i18n'
 
 export default {
   setStateDefault: function() {
@@ -136,10 +142,18 @@ export default {
       if (locales.indexOf(lang) < 0) {
         lang = locales[0]
       }
-    } else if (configLocales.indexOf(lang) < 0) {
-      lang = 'en'
     }
-    this.state.params.lang = lang
+    this.changeLocale(lang)
+  },
+  changeLocale(lang) {
+    loadLanguageAsync(lang).then(() => {
+      this.state.params.lang = lang
+
+      setCookie('lang', lang, {
+        path: '/',
+        expires: 3600,
+      })
+    })
   },
   setLocation: function() {
     let methods = this.state.options.methods

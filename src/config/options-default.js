@@ -88,7 +88,7 @@ const options = {
   read_only: false,
   need_verify_code: false,
   verification_type: '',
-  cdn: 'https://pay.fondy.eu/icons/dist/svg/banks/',
+  cdn: 'https://pay.fondy.eu/icons/dist/svg/',
   tabs: {},
   ready: false,
   showChangeMethods: false,

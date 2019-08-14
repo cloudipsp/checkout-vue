@@ -50,7 +50,8 @@ export default {
     style: function() {
       return function(item) {
         return {
-          'background-image': 'url(' + this.store.state.cdn + item + '.svg)',
+          'background-image':
+            'url(' + this.store.state.cdn + 'banks/' + item + '.svg)',
         }
       }
     },
