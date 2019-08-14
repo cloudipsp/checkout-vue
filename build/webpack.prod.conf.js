@@ -69,6 +69,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: {
     'checkout-dark': './src/less/style-dark.less',
+    snippet: './src/snippet.js',
   },
   // output: {
   //   path: config.build.assetsRoot,
