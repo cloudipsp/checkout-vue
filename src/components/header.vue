@@ -64,8 +64,17 @@ export default {
   },
   watch: {
     'state.showChangeMethods': function(show) {
-      document.querySelector('#f').style.overflow = show ? 'hidden' : 'visible'
+      this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
     },
+  },
+  created() {
+    this.$root.$on('resize', () => {
+      if (window.innerWidth >= 768) {
+        this.$root.$el.style.overflow = 'visible'
+      } else if (this.store.state.showChangeMethods) {
+        this.$root.$el.style.overflow = 'hidden'
+      }
+    })
   },
   methods: {
     changeMethods() {

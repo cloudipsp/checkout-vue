@@ -386,9 +386,6 @@ export default {
           deepMerge(this.params, params, notSet.params)
         }
       })
-      this.$root.$on('resize', () => {
-        this.resize()
-      })
     },
     autoFocus: function() {
       let $firstErrorField = this.$el.querySelector(
@@ -400,6 +397,7 @@ export default {
       })
     },
     resize: function() {
+      this.$root.$emit('resize')
       this.resizeWindow()
       this.resizeError()
     },
