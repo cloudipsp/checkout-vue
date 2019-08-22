@@ -45,14 +45,16 @@
 }
 
 html {
+  @icon-flag-height: 22px;
   .f-icon-flag {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
     vertical-align: middle;
-    height: 34px;
-    width: 45px;
+    height: @icon-flag-height;
+    width: @icon-flag-height / 0.75;
     cursor: pointer;
+    border: 1px solid @btn-default-border;
   }
 }

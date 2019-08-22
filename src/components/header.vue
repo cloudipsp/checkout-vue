@@ -2,7 +2,7 @@
   <div class="f-header">
     <div class="f-header-menu">
       <dropdown
-        v-if="show"
+        v-if="false && show"
         class="f-visible-inline-block"
         tag="span"
         :append-to-body="false"
@@ -21,6 +21,19 @@
           </li>
         </template>
       </dropdown>
+      <select
+        v-if="show"
+        :value="params.lang"
+        :class="[$css.fc, 'f-input-sm', 'f-visible-inline-block']"
+        @input="store.changeLocale($event.target.value)"
+      >
+        <option
+          v-for="item in options.locales"
+          :key="item"
+          v-t="item"
+          :value="item"
+        />
+      </select>
       <button
         v-if="!min"
         v-t="'other'"

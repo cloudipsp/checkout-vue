@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import CheckoutHeader from '@/components/checkout-header'
+import CheckoutHeader from '@/components/header'
 import Payment from '@/components/payment'
 
 export default {
