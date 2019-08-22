@@ -1,5 +1,5 @@
 <template>
-  <div class="f-info-wrapper">
+  <div class="f-info">
     <div v-t="'info'" class="f-block-hr f-title f-visible-desktop" />
     <div
       v-if="options.title || params.order_desc || options.link"

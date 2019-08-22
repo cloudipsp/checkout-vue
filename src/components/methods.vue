@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="f-methods" :class="{ 'f-open': store.state.showChangeMethods }">
     <div v-t="'methods'" class="f-block-hr f-title f-hidden-mobile" />
     <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
     <div class="f-menu f-block-hr">

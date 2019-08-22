@@ -1,15 +1,7 @@
 <template>
   <div class="f-wrapper">
-    <div ref="info" class="f-info">
-      <info />
-    </div>
-    <div
-      v-if="!isMin"
-      class="f-methods"
-      :class="{ 'f-open': store.state.showChangeMethods }"
-    >
-      <methods />
-    </div>
+    <info ref="info" />
+    <methods v-if="!isMin" />
     <div ref="center" class="f-center">
       <component
         :is="router.page"
