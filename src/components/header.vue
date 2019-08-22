@@ -1,26 +1,6 @@
 <template>
   <div class="f-header">
     <div class="f-header-menu">
-      <dropdown
-        v-if="false && show"
-        class="f-visible-inline-block"
-        tag="span"
-        :append-to-body="false"
-      >
-        <a
-          class="f-icon-flag"
-          data-role="trigger"
-          :style="styleFlag(params.lang)"
-        ></a>
-        <template slot="dropdown">
-          <li v-for="item in options.locales" :key="item">
-            <a @click="store.changeLocale(item)">
-              <span class="f-icon-flag" :style="styleFlag(item)"></span>
-              <span v-t="item"></span>
-            </a>
-          </li>
-        </template>
-      </dropdown>
       <select
         v-if="show"
         :value="params.lang"
@@ -52,13 +32,8 @@
 </template>
 
 <script>
-import Dropdown from '@/components/dropdown'
-
 export default {
   inject: ['$validator'],
-  components: {
-    Dropdown,
-  },
   props: {
     min: {
       type: Boolean,
