@@ -11,6 +11,7 @@ import Vue from 'vue'
 import Checkout from '@/checkout'
 import { i18n } from '@/i18n'
 import { isString, isObject } from '@/utils/object'
+import components from '@/components'
 import store from '@/store'
 import Store from '@/mixins/store'
 import Validator from '@/mixins/validator'
@@ -22,6 +23,7 @@ const install = function(Vue) {
 
   Vue.config.productionTip = false
 
+  Vue.use(components)
   Vue.use(Store)
   Vue.use(Validator)
 
