@@ -10,7 +10,7 @@
       />
     </transition>
     <f-regular />
-    <offer v-if="options.offerta_url" />
+    <f-offer />
     <div class="f-block">
       <div class="f-block-sm">
         <button
@@ -45,7 +45,6 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
-import Offer from '@/components/offer'
 import Fields from '@/components/payment-fields'
 
 export default {
@@ -56,7 +55,6 @@ export default {
     Trustly,
     Cash,
     Sepa,
-    Offer,
     Fields,
   },
   props: {

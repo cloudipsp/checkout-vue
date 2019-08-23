@@ -1,9 +1,11 @@
 <template>
-  <div class="f-offer" :class="[hasError ? $css.he : '']">
-    <input-checkbox name="offer" :validate="'required'">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <span v-html="$t('offer_t', [options.offerta_url])" />
-    </input-checkbox>
+  <div v-if="show" class="f-offer">
+    <div class="f-block-sm">
+      <input-checkbox name="offer" :validate="'required'">
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <span v-html="$t('offer_t', [options.offerta_url])" />
+      </input-checkbox>
+    </div>
   </div>
 </template>
 
@@ -19,12 +21,8 @@ export default {
     return {}
   },
   computed: {
-    hasError() {
-      let flag = this.$validator.flags['f-offer']
-      return (
-        this.errors.has('f-offer') &&
-        ((flag && flag.touched) || this.store.state.submit)
-      )
+    show() {
+      return this.options.offerta_url
     },
   },
 }
