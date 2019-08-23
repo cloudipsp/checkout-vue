@@ -1,7 +1,7 @@
 <template>
   <div class="f-wrapper">
     <info ref="info" />
-    <methods v-if="!isMin" />
+    <f-methods :in-progress="inProgress" />
     <div ref="center" class="f-center">
       <component :is="router.page" :order="order" />
       <div v-if="store.state.loading">
@@ -27,7 +27,6 @@
 
 <script>
 import Info from '@/components/info'
-import Methods from '@/components/methods'
 import Popover from '@/components/popover'
 import PaymentMethod from '@/components/payment-method'
 import Success from '@/components/success'
@@ -47,7 +46,6 @@ export default {
   inject: ['$validator'],
   components: {
     Info,
-    Methods,
     Popover,
     PaymentMethod,
     Success,
@@ -64,14 +62,6 @@ export default {
     }
   },
   computed: {
-    isMin: function() {
-      let result =
-        (this.options.methods.length === 1 &&
-          this.options.methods[0] === 'card') ||
-        this.inProgress
-      this.$emit('on-set-min', result)
-      return result
-    },
     showError: function() {
       return this.error.flag && !this.store.state.showChangeMethods
     },

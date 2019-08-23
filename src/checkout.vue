@@ -18,6 +18,7 @@
 
 <script>
 import Payment from '@/components/payment'
+import EventBus from '@/event-bus'
 
 export default {
   name: 'FCheckout',
@@ -45,6 +46,8 @@ export default {
         this.$refs.f.style.height = '100%'
       })
     }
+
+    EventBus.$on('checkout-min', this.setMin)
   },
   methods: {
     setMin: function(min) {

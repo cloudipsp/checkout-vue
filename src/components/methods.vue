@@ -1,20 +1,36 @@
 <template>
-  <div class="f-methods" :class="{ 'f-open': store.state.showChangeMethods }">
+  <div
+    v-if="show"
+    class="f-methods"
+    :class="{ 'f-open': store.state.showChangeMethods }"
+  >
     <f-menu @on-change-method="changeMethod"></f-menu>
     <f-fast-access @on-change-method="changeMethod"></f-fast-access>
   </div>
 </template>
 
 <script>
-import configPaymentSystems from '@/config/payment-systems'
+import EventBus from '@/event-bus'
 
 export default {
-  data() {
-    return {
-      configPaymentSystems: configPaymentSystems,
-    }
+  props: {
+    inProgress: {
+      type: Boolean,
+    },
   },
-  computed: {},
+  data() {
+    return {}
+  },
+  computed: {
+    show: function() {
+      let min =
+        (this.options.methods.length === 1 &&
+          this.options.methods[0] === 'card') ||
+        this.inProgress
+      EventBus.$emit('checkout-min', min)
+      return !min
+    },
+  },
   methods: {
     changeMethod: function(method, system) {
       this.store.location('payment-method', method, system)
