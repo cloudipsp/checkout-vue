@@ -5,7 +5,7 @@
       class="f-container"
       :class="{ 'f-min': min }"
     >
-      <checkout-header :min="min" />
+      <f-header :min="min" />
       <payment @on-set-min="setMin" />
     </div>
     <ul v-else>
@@ -17,13 +17,11 @@
 </template>
 
 <script>
-import CheckoutHeader from '@/components/header'
 import Payment from '@/components/payment'
 
 export default {
   name: 'FCheckout',
   components: {
-    CheckoutHeader,
     Payment,
   },
   props: {
