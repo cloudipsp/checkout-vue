@@ -11,30 +11,7 @@
     </transition>
     <f-regular />
     <f-offer />
-    <div class="f-block">
-      <div class="f-block-sm">
-        <button
-          v-if="options.button"
-          type="button"
-          :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]"
-          :disabled="disabled"
-          @click="onSubmit()"
-        >
-          <span v-t="{ path: 'pay', args: args }" />
-        </button>
-        <div v-if="options.cancel" class="f-text-center">
-          <a
-            v-t="'cancel'"
-            :class="[$css.btn, 'f-btn-link']"
-            href=""
-            @click.prevent="onCancel()"
-          />
-        </div>
-        <div class="f-hidden-desktop">
-          <i class="f-icon f-icon-block f-i-security" />
-        </div>
-      </div>
-    </div>
+    <f-pay-button />
   </div>
 </template>
 
@@ -57,38 +34,12 @@ export default {
     Sepa,
     Fields,
   },
-  props: {
-    disabled: {
-      type: Boolean,
-    },
-  },
   data() {
     return {}
   },
   computed: {
-    fullAmount: function() {
-      let amount = parseInt(this.params.amount)
-      let amountWithFee = parseInt(this.params.amount_with_fee)
-      if (!amount) {
-        return false
-      }
-      return (amountWithFee || amount) / 100
-    },
-    args: function() {
-      return this.fullAmount
-        ? [this.fullAmount, this.$t(this.params.currency)]
-        : []
-    },
     method: function() {
       return this.router.method
-    },
-  },
-  methods: {
-    onSubmit: function() {
-      this.$emit('on-submit')
-    },
-    onCancel: function() {
-      this.$emit('on-cancel')
     },
   },
 }

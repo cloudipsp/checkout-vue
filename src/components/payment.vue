@@ -3,13 +3,7 @@
     <info ref="info" />
     <methods v-if="!isMin" />
     <div ref="center" class="f-center">
-      <component
-        :is="router.page"
-        :disabled="isDisabled"
-        :order="order"
-        @on-submit="submit"
-        @on-cancel="cancel"
-      />
+      <component :is="router.page" :order="order" />
       <div v-if="store.state.loading">
         <div class="f-loading" />
         <div class="f-loading-i" />
@@ -80,9 +74,6 @@ export default {
     },
     showError: function() {
       return this.error.flag && !this.store.state.showChangeMethods
-    },
-    isDisabled: function() {
-      return !!this.errors.items.length && this.store.state.submit
     },
   },
   watch: {
@@ -162,20 +153,6 @@ export default {
           })
           .then(this.submitSuccess, this.submitError)
       })
-    },
-    cancel: function() {
-      if (this.store.state.loading) return
-      this.store.formLoading(true)
-      sendRequest('api.checkout.order', 'get', this.params)
-        .finally(() => {
-          this.store.formLoading(false)
-        })
-        .then(this.cancelLocation, this.cancelLocation)
-    },
-    cancelLocation: function(model) {
-      if (!model.submitToMerchant()) {
-        location.assign(this.options.link)
-      }
     },
     submitSuccess: function(model) {
       if (!model) return
@@ -367,9 +344,7 @@ export default {
       this.store.location('pending')
     },
     createdEvent: function() {
-      this.$root.$on('submit', () => {
-        this.submit()
-      })
+      this.$root.$on('submit', this.submit)
       this.$root.$on('location', (method, system) => {
         this.store.state.showChangeMethods = false
         this.store.location('payment-method', method, system)
