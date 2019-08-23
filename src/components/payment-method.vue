@@ -9,7 +9,7 @@
         :payment-systems="options[method]"
       />
     </transition>
-    <regular v-if="regular.insert && method === 'card'" />
+    <f-regular />
     <offer v-if="options.offerta_url" />
     <div class="f-block">
       <div class="f-block-sm">
@@ -45,7 +45,6 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
-import Regular from '@/components/regular'
 import Offer from '@/components/offer'
 import Fields from '@/components/payment-fields'
 
@@ -57,7 +56,6 @@ export default {
     Trustly,
     Cash,
     Sepa,
-    Regular,
     Offer,
     Fields,
   },

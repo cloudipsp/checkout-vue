@@ -1,5 +1,9 @@
 <template>
-  <div class="f-regular" :style="{ display: options.hide ? 'none' : 'block' }">
+  <div
+    v-if="show"
+    class="f-regular"
+    :style="{ display: options.hide ? 'none' : 'block' }"
+  >
     <div class="f-block">
       <div class="f-block-sm">
         <div class="f-text-center">
@@ -77,6 +81,11 @@ export default {
       options: this.store.state.regular,
       params: this.store.state.params.recurring_data,
     }
+  },
+  computed: {
+    show() {
+      return this.regular.insert && this.router.method === 'card'
+    },
   },
   watch: {
     'options.open': {
