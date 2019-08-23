@@ -1,17 +1,6 @@
 <template>
   <div class="f-methods" :class="{ 'f-open': store.state.showChangeMethods }">
-    <div v-t="'methods'" class="f-block-hr f-title f-hidden-mobile" />
-    <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
-    <div class="f-menu f-block-hr">
-      <div
-        v-for="item in options.methods"
-        :key="item"
-        v-t="item"
-        class="f-item"
-        :class="['f-i-' + item, { active: router.method === item }]"
-        @click="changeMethod(item)"
-      />
-    </div>
+    <f-menu @on-change-method="changeMethod"></f-menu>
     <template v-if="showFast">
       <div v-t="'fast'" class="f-block-hr f-title f-hidden-mobile" />
       <div v-t="'fast'" class="f-block f-title3 f-visible-mobile" />
