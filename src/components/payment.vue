@@ -387,7 +387,7 @@ export default {
       let height = document.documentElement.clientHeight
       let wraperH = this.$el.offsetHeight
       let centerH = this.$refs.center.offsetHeight
-      let infoH = this.$refs.info.offsetHeight
+      let infoH = this.$refs.info.$el.offsetHeight
       let containerH = $container.offsetHeight
 
       if (width >= 992) {
