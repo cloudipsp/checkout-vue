@@ -1,6 +1,6 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <fields v-if="options.fields && !store.state.need_verify_code" />
+    <f-payment-fields />
     <transition name="fade">
       <component
         :is="method"
@@ -22,7 +22,6 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
-import Fields from '@/components/payment-fields'
 
 export default {
   components: {
@@ -32,7 +31,6 @@ export default {
     Trustly,
     Cash,
     Sepa,
-    Fields,
   },
   data() {
     return {}

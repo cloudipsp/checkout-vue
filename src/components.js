@@ -1,3 +1,4 @@
+import FPaymentFields from '@/components/payment-fields'
 import FPaymentMethod from '@/components/payment-method'
 import FMethods from '@/components/methods'
 import FFastAccess from '@/components/fast-access'
@@ -8,6 +9,7 @@ import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
 
 const components = {
+  FPaymentFields,
   FPaymentMethod,
   FMethods,
   FFastAccess,
