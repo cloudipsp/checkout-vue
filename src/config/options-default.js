@@ -1,4 +1,5 @@
 import configLocales from '@/config/locales'
+import configMethods from '@/config/methods'
 
 const options = {
   options: {
@@ -28,6 +29,7 @@ const options = {
     default_country: '',
     countries: [],
     langs: true,
+    wallet_pay_button: {},
   },
   popup: {
     append_to: 'body',
@@ -97,6 +99,13 @@ const options = {
 configLocales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
+})
+
+configMethods.concat('menu').forEach(function(method) {
+  options.options.wallet_pay_button[method] = {
+    position: 'bottom',
+    display: method === 'card',
+  }
 })
 
 export default options

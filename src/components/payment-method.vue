@@ -1,5 +1,6 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
+    <f-wallet-pay-button position="top" :tab="method"></f-wallet-pay-button>
     <f-payment-fields />
     <transition name="fade">
       <component

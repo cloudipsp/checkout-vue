@@ -4,7 +4,6 @@ import configMethods from '@/config/methods'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 
-let i18n = {}
 let methods = configMethods
 let ibank = Object.keys(configPaymentSystems.ibank)
 let emoney = Object.keys(configPaymentSystems.emoney)
@@ -73,9 +72,27 @@ let validatorToken = function() {
   }
 }
 
+let i18n = {
+  type: 'object',
+  fields: {},
+}
 locales.forEach(function(locale) {
-  i18n[locale] = {
+  i18n.fields[locale] = {
     type: 'object',
+  }
+})
+
+let wallet_pay_button = {
+  type: 'object',
+  fields: {},
+}
+methods.concat('menu').forEach(function(method) {
+  wallet_pay_button.fields[method] = {
+    type: 'object',
+    fields: {
+      position: { type: 'enum', enum: ['top', 'bottom'] },
+      display: { type: 'enum', enum: [true, false] },
+    },
   }
 })
 
@@ -106,6 +123,7 @@ export default {
       cancel: { type: 'boolean' },
       default_country: { type: 'enum', enum: configCountries },
       countries: validatorArray(configCountries),
+      wallet_pay_button,
     },
   },
   popup: {
@@ -152,12 +170,6 @@ export default {
       customer_data: { type: 'object' },
     },
   },
-  messages: {
-    type: 'object',
-    fields: i18n,
-  },
-  validate: {
-    type: 'object',
-    fields: i18n,
-  },
+  messages: i18n,
+  validate: i18n,
 }

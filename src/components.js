@@ -7,6 +7,7 @@ import FHeader from '@/components/header'
 import FPayButton from '@/components/pay-button'
 import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
+import FWalletPayButton from '@/components/wallet-pay-button'
 
 const components = {
   FPaymentFields,
@@ -18,6 +19,7 @@ const components = {
   FPayButton,
   FOffer,
   FRegular,
+  FWalletPayButton,
 }
 
 const install = Vue => {

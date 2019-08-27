@@ -4,8 +4,10 @@
     class="f-methods"
     :class="{ 'f-open': store.state.showChangeMethods }"
   >
+    <f-wallet-pay-button position="top" tab="menu"></f-wallet-pay-button>
     <f-menu @on-change-method="changeMethod"></f-menu>
     <f-fast-access @on-change-method="changeMethod"></f-fast-access>
+    <f-wallet-pay-button position="bottom" tab="menu"></f-wallet-pay-button>
   </div>
 </template>
 

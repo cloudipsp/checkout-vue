@@ -130,20 +130,25 @@
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               offertaUrl:
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              wallet_pay_button: {
+                menu: {
+                  display: true
+                }
+              }
             },
             regular: {
               insert: true,
-              open: true,
+              open: false,
               hide: false,
               period: ['week', 'month'],
             },
             params: {
-              merchant_id: 900158,
+              merchant_id: 900187,
               //    verification_type: 'code',
               //    required_rectoken: 'y',
               //    verification: 'y',
-              currency: 'EUR',
-              //    amount: 500,
+              currency: 'AZN',
+                 amount: 500,
               order_desc: 'my_desc',
               //    response_url: 'https://www.fondy.eu',
               //     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
@@ -289,7 +294,7 @@
           }
         }
 
-        var app = render('venalio')
+        var app = render('max')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()

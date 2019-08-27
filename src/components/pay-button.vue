@@ -10,6 +10,10 @@
       >
         <span v-t="{ path: 'pay', args: args }" />
       </button>
+      <f-wallet-pay-button
+        position="bottom"
+        :tab="method"
+      ></f-wallet-pay-button>
       <a
         v-if="options.cancel"
         v-t="'cancel'"
