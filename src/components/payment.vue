@@ -3,6 +3,7 @@
     <info ref="info" />
     <f-methods :in-progress="inProgress" />
     <div ref="center" class="f-center">
+      <!--payment-method success pending-->
       <component :is="router.page" :order="order" />
       <div v-if="store.state.loading">
         <div class="f-loading" />
@@ -28,7 +29,6 @@
 <script>
 import Info from '@/components/info'
 import Popover from '@/components/popover'
-import PaymentMethod from '@/components/payment-method'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
 import {
@@ -47,7 +47,6 @@ export default {
   components: {
     Info,
     Popover,
-    PaymentMethod,
     Success,
     Pending,
     Submit3ds,
@@ -303,7 +302,7 @@ export default {
         this.params.card_number = model.attr('order_data.masked_card')
         this.params.expiry_date = model.attr('order_data.expiry_date')
         this.params.cvv2 = ''
-        this.store.location('payment-method', 'card')
+        this.store.location('f-payment-method', 'card')
       } else if (model.inProgress() && model.waitForResponse()) {
         this.inProgress = true
         this.locationPending()
@@ -337,7 +336,7 @@ export default {
       this.$root.$on('submit', this.submit)
       this.$root.$on('location', (method, system) => {
         this.store.state.showChangeMethods = false
-        this.store.location('payment-method', method, system)
+        this.store.location('f-payment-method', method, system)
       })
       this.$root.$on('setParams', params => {
         if (this.params.token || this.params.order_id) {

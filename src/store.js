@@ -159,7 +159,7 @@ export default {
     let methods = this.state.options.methods
     let active_tab = this.state.options.active_tab
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
-    this.location('payment-method', method)
+    this.location('f-payment-method', method)
   },
   setCardNumber: function(card) {
     this.state.params.card_number = card.card_number.replace(/ /g, '')

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="['f-payment-method', 'f-payment-method-' + method]">
     <fields v-if="options.fields && !store.state.need_verify_code" />
     <transition name="fade">
       <component

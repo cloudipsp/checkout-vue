@@ -1,12 +1,14 @@
+import FPaymentMethod from '@/components/payment-method'
 import FMethods from '@/components/methods'
-import FFastAccess from '@/components/fast-access.vue'
-import FMenu from '@/components/menu.vue'
-import FHeader from '@/components/header.vue'
-import FPayButton from '@/components/pay-button.vue'
+import FFastAccess from '@/components/fast-access'
+import FMenu from '@/components/menu'
+import FHeader from '@/components/header'
+import FPayButton from '@/components/pay-button'
 import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
 
 const components = {
+  FPaymentMethod,
   FMethods,
   FFastAccess,
   FMenu,

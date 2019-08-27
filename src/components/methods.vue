@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     changeMethod: function(method, system) {
-      this.store.location('payment-method', method, system)
+      this.store.location('f-payment-method', method, system)
       this.store.state.showChangeMethods = false
     },
   },
