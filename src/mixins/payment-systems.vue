@@ -46,7 +46,7 @@
         </div>
         <div v-if="showMore" class="f-ps" @click="loadMore">
           <div class="f-wrapper-icon">
-            <icon-svg name="redo" size="3x" :spin="spin" />
+            <f-svg name="redo" size="3x" :spin="spin" />
           </div>
           <div v-t="'load_more'" />
         </div>
@@ -58,13 +58,11 @@
 <script>
 import InputText from '@/components/input-text'
 import InputSelect from '@/components/input-select'
-import IconSvg from '@/components/icon-svg'
 
 export default {
   components: {
     InputText,
     InputSelect,
-    IconSvg,
   },
   props: {
     paymentSystems: {
