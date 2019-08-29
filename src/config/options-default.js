@@ -104,7 +104,9 @@ configLocales.forEach(function(locale) {
 configMethods.concat('menu').forEach(function(method) {
   options.options.wallet_pay_button[method] = {
     position: 'bottom',
-    display: method === 'card',
+    display: method === 'card' || method === 'wallets',
+    theme: 'dark',
+    text: false,
   }
 })
 

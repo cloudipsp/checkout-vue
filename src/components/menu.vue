@@ -3,14 +3,31 @@
     <div v-t="'methods'" class="f-block-hr f-title f-hidden-mobile" />
     <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
     <div class="f-block-hr">
-      <div
-        v-for="item in options.methods"
-        :key="item"
-        v-t="item"
-        class="f-item"
-        :class="['f-i-' + item, { active: router.method === item }]"
-        @click="$emit('on-change-method', item)"
-      />
+      <template v-for="item in options.methods">
+        <f-wallet-pay-button
+          v-if="item === 'wallets'"
+          :key="item"
+          tab="wallets"
+          position="bottom"
+        >
+          <template v-slot:default="{ open }">
+            <div
+              v-t="item"
+              class="f-item"
+              :class="['f-i-' + item]"
+              @click="open"
+            ></div>
+          </template>
+        </f-wallet-pay-button>
+        <div
+          v-else
+          :key="item"
+          v-t="item"
+          class="f-item"
+          :class="['f-i-' + item, { active: router.method === item }]"
+          @click="$emit('on-change-method', item)"
+        />
+      </template>
     </div>
   </div>
 </template>

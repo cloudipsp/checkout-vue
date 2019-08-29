@@ -91,7 +91,9 @@ methods.concat('menu').forEach(function(method) {
     type: 'object',
     fields: {
       position: { type: 'enum', enum: ['top', 'bottom'] },
-      display: { type: 'enum', enum: [true, false] },
+      display: { type: 'boolean' },
+      theme: { type: 'enum', enum: ['dark', 'light'] },
+      text: { type: 'boolean' },
     },
   }
 })

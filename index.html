@@ -291,10 +291,30 @@
               order_desc: "Číslo objednávky: 84330",
               email: "kubik@jam3son.sk"
             }
-          }
+          },
+          wallet: {
+            options: {
+              methods: ['card', 'wallets', 'sepa'],
+              api_domain: 'api.dev.fondy.eu',
+              wallet_pay_button: {
+                menu: {
+                  position: 'top',
+                  display: true,
+                  theme: 'light',
+                  text: true
+                }
+              }
+            },
+            params: {
+              // currency: 'RUB',
+              // merchant_id: 900234,
+              // amount: 500,
+              token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
+            },
+          },
         }
 
-        var app = render('max')
+        var app = render('wallet')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()
