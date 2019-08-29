@@ -30,7 +30,7 @@ npm run build
 ### options
 Name                  | Type        | Default                 | Description                                                                         | Priority
 ---                   | ---         | ---                     | ---                                                                                 | ---
-`methods`             | Array       | ['card']                | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  |
+`methods`             | Array       | ['card']                | support `card`, `emoney`, `ibank`, `cash`, `sepa`, `wallets`.                                  |
 `ibank`               | Array       |                         | support `p24`, `platba24`, `raiffeisen`.                                            |
 `emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.                                    |
 `cash`                | Array       |                         | support `liqpay`.                                                                   |
