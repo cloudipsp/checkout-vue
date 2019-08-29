@@ -36,6 +36,9 @@ export const messages = Object.assign({}, countries, {
   load_more: 'Load more...',
   cash: 'Cash',
   cash_t: 'What will you pay?',
+  wallets: 'Apple/Google Pay',
+  apple_pay: 'Apple Pay',
+  google_pay: 'Google Pay',
 
   sepa: 'SEPA Direct Debit',
   sepa_t: 'Provide your bank account details',
