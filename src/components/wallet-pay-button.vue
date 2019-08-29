@@ -13,7 +13,7 @@
           @click="open"
         >
           <span v-if="text" v-t="icon"></span>
-          <f-svg style="vertical-align: middle;" :name="icon" size="2x"></f-svg>
+          <f-svg :name="icon" size="2x"></f-svg>
         </button>
       </div>
     </slot>
