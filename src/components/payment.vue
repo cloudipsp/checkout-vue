@@ -136,6 +136,10 @@ export default {
             this.params.recurring_data.amount / 100
         }
 
+        if (params.recurring === 'n') {
+          delete params.recurring_data
+        }
+
         sendRequest('api.checkout.form', 'request', params)
           .finally(() => {
             this.store.formLoading(false)

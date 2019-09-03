@@ -40,8 +40,8 @@ export default {
     this.store.setOptions(this.optionsUser)
     //      require('./less/style.less')
     if (this.options.full_screen) {
-      require('./less/style-sm.less')
-      require('./less/style-md.less')
+      require('./less/style-sm.less?no-extract')
+      require('./less/style-md.less?no-extract')
       setTimeout(() => {
         this.$refs.f.style.height = '100%'
       })

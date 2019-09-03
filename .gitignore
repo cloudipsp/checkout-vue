@@ -1,15 +1,18 @@
 .DS_Store
-node_modules/
-dist
-dist/checkout-*.js
-dist/i18n/countries-*.js
-dist/i18n/validate-*.js
+node_modules
+/dist
+
+/tests/e2e/reports/
+selenium-debug.log
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-test/unit/coverage
-test/e2e/reports
-selenium-debug.log
 
 # Editor directories and files
 .idea
@@ -18,5 +21,6 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+*.sw?
 
 .firebase

@@ -237,9 +237,7 @@ export default {
         this.showTimeoutId = setTimeout(() => {
           // add to dom
           if (!popUpAppendedContainer) {
-            popup.className = `${this.name} ${this.name}-${this.theme} ${
-              this.placement
-            } fade`
+            popup.className = `${this.name} ${this.name}-${this.theme} ${this.placement} fade`
             let container = document.querySelector(this.appendTo)
             container.appendChild(popup)
             this.resetPosition()
