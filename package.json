@@ -54,6 +54,7 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.2.5",
+    "minimist": "^1.2.0",
     "prettier": "^1.18.2",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
@@ -61,7 +62,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "babel": {
-    "presets": ["@vue/app"]
+    "presets": [
+      "@vue/app"
+    ]
   },
   "eslintConfig": {
     "root": true,

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const gitRevisionPlugin = new GitRevisionPlugin();
 const increaseSpecificity = require('./build/postcss-increase-specificity');
+const argv = require('minimist')(process.argv.slice(2));
 
 function addF (options) {
   options.plugins = () => [
@@ -73,7 +74,7 @@ module.exports = {
             })
             .end()
           .plugin('banner')
-            .use(webpack.BannerPlugin, [gitRevisionPlugin.branch() + ' parent commithash ' + gitRevisionPlugin.commithash()])
+            .use(webpack.BannerPlugin, [argv.version + ' parent commithash ' + gitRevisionPlugin.commithash()])
             .end()
       })
       .when(process.env.NODE_ENV !== 'production', config => {
