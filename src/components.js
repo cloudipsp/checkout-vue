@@ -9,6 +9,7 @@ import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
 import FWalletPayButton from '@/components/wallet-pay-button'
 import FSvg from '@/components/svg'
+import FMask from '@/components/mask'
 
 const components = {
   FPaymentFields,
@@ -22,6 +23,7 @@ const components = {
   FRegular,
   FWalletPayButton,
   FSvg,
+  FMask,
 }
 
 const install = Vue => {

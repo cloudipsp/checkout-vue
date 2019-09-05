@@ -1,12 +1,10 @@
 import Tooltip from '@/components/tooltip'
-import { TheMask } from 'vue-the-mask'
 
 // @vue/component
 export default {
   inject: ['$validator'],
   components: {
     Tooltip,
-    TheMask,
   },
   props: {
     name: {

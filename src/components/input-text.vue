@@ -18,7 +18,7 @@
       :readonly="readonly"
       :disabled="readonly"
     />
-    <the-mask
+    <f-mask
       v-else-if="readonly && mask"
       :id="name_"
       v-model="params[field_]"
@@ -30,7 +30,7 @@
       :disabled="readonly"
     />
     <div v-else-if="group && mask" :class="[$css.ig]">
-      <the-mask
+      <f-mask
         :id="name_"
         ref="input"
         v-model="params[field_]"
@@ -59,7 +59,7 @@
       </div>
       <slot name="group" />
     </div>
-    <the-mask
+    <f-mask
       v-else-if="mask"
       :id="name_"
       ref="input"
@@ -127,13 +127,7 @@ export default {
     group: Boolean,
   },
   data() {
-    return {
-      tokens: {
-        X: {
-          pattern: /[\dX]/,
-        },
-      },
-    }
+    return {}
   },
   computed: {
     hasDefaultSlot() {
