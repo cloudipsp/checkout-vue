@@ -162,12 +162,12 @@ export default {
       this.initRequest()
     },
     shippingOptionChange(event) {
-      var request = event.target
+      let request = event.target
       console.log('fire event', event.type)
       console.log('shippingOptions', request.shippingOption)
       console.log(this.config.details)
       console.log(event)
-      var option = this.config.details.shippingOptions.find(option => {
+      let option = this.config.details.shippingOptions.find(option => {
         if (option.id === request.shippingOption) {
           return option
         }

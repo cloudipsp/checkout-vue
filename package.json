@@ -60,6 +60,9 @@
     "stylelint-config-twbs-bootstrap": "^0.4.0",
     "vue-template-compiler": "^2.6.10"
   },
+  "babel": {
+    "presets": ["@vue/app"]
+  },
   "eslintConfig": {
     "root": true,
     "env": {
@@ -73,7 +76,8 @@
       "no-useless-escape": 0,
       "no-console": 0,
       "no-unused-vars": 0,
-      "no-empty": 0
+      "no-empty": 0,
+      "no-var": 2
     },
     "parserOptions": {
       "parser": "babel-eslint"
