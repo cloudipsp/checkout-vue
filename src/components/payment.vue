@@ -98,7 +98,7 @@ export default {
 
     this.params.token = findGetParameter('token') || this.params.token
 
-    sendRequest('api.checkout', 'app', this.params)
+    sendRequest('api.checkout', 'app', this.store.formParams())
       .finally(() => {
         this.store.formLoading(false)
       })
@@ -120,33 +120,7 @@ export default {
         this.store.formLoading(true)
         this.error.flag = false
 
-        let params = {}
-        let custom = {}
-        Object.assign(params, this.params)
-        for (let field in params.custom) {
-          if (params.custom.hasOwnProperty(field)) {
-            custom[field] = {
-              value: params.custom[field],
-              label: this.$t(field),
-            }
-          }
-        }
-        params.payment_system = this.router.system || this.router.method
-        params.custom = custom
-        if (this.store.state.need_verify_code) {
-          delete params.custom
-        }
-        params.amount = params.amount / 100
-        if (this.params.recurring_data.amount) {
-          this.params.recurring_data.amount =
-            this.params.recurring_data.amount / 100
-        }
-
-        if (params.recurring === 'n') {
-          delete params.recurring_data
-        }
-
-        sendRequest('api.checkout.form', 'request', params)
+        sendRequest('api.checkout.form', 'request', this.store.formParams())
           .finally(() => {
             this.store.formLoading(false)
           })

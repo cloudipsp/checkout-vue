@@ -203,4 +203,35 @@ export default {
   formLoading: function(loading) {
     this.state.loading = loading
   },
+  formParams() {
+    let params = Object.assign({}, this.state.params)
+
+    let custom = {}
+    for (let field in params.custom) {
+      if (params.custom.hasOwnProperty(field)) {
+        custom[field] = {
+          value: params.custom[field],
+          label: this.$t(field),
+        }
+      }
+    }
+    params.custom = custom
+
+    params.payment_system = this.state.router.system || this.state.router.method
+
+    if (this.state.need_verify_code) {
+      delete params.custom
+    }
+
+    params.amount = params.amount / 100
+    if (this.state.params.recurring_data.amount) {
+      this.state.params.recurring_data.amount =
+        this.state.params.recurring_data.amount / 100
+    }
+
+    if (params.recurring === 'n') {
+      delete params.recurring_data
+    }
+    return params
+  },
 }
