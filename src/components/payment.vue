@@ -51,6 +51,12 @@ export default {
     Pending,
     Submit3ds,
   },
+  props: {
+    min: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       timeoutId: 0,
@@ -389,7 +395,7 @@ export default {
         if (containerH < height) {
           $container.style.paddingTop = (height - containerH) / 2 + 'px'
         }
-      } else if (width >= 768 && !this.isMin) {
+      } else if (width >= 768 && !this.min) {
         this.$refs.center.style.minHeight =
           centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
       }

@@ -6,7 +6,7 @@
       :class="{ 'f-min': min }"
     >
       <f-header :min="min" />
-      <payment @on-set-min="setMin" />
+      <payment :min="min" />
     </div>
     <ul v-else>
       <li v-for="error in error.errors" :key="error.message">
