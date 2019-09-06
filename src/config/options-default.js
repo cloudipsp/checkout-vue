@@ -46,6 +46,7 @@ const options = {
     amount_with_fee: 0,
     fee: 0, // %
     currency: 'USD',
+    recurring: 'n',
     recurring_data: {
       period: 'month',
       every: 1,
