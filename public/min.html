@@ -35,6 +35,21 @@
         console.timeEnd(['api.checkout', 'app'].join('.'))
       })
   })
+
+  api.scope(function () {
+    this.request('api.checkout.pay', 'get', {
+      currency: 'RUB',
+      merchant_id: 900234,
+      amount: 500,
+    }).then(
+      function (model) {
+        console.log(model)
+      },
+      function (model) {
+
+      })
+  })
+
 </script>
 </body>
 </html>
