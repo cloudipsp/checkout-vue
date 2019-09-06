@@ -6,7 +6,6 @@ import { i18n } from '@/i18n'
 
 let api = $checkout('Api')
 let cache = {}
-let cacheError = {}
 
 api.on('modal.close', function() {
   store.state.loading = false
@@ -20,12 +19,11 @@ export function iframeCreate(apiDomain) {
 }
 
 export function sendRequest(name, method, params, cacheName) {
-  return new Promise(function(resolve, reject) {
-    let id = name + cacheName
+  let id = name + cacheName
+  if (cache[id]) return cache[id]
+  cache[id] = new Promise(function(resolve, reject) {
     if (cacheName && cache[id]) {
       resolve(cache[id])
-    } else if (cacheName && cacheError[id]) {
-      reject(cacheError[id])
     } else {
       api.scope(function() {
         this.request(name, method, params)
@@ -33,11 +31,8 @@ export function sendRequest(name, method, params, cacheName) {
             function(model) {
               console.log(name, method, params)
               console.log('done', model)
-              // store.showError(String(model.attr('error.code')), model.attr('error.message'))
-              if (cacheName) {
-                cache[id] = model
-              }
               resolve(model)
+              delete cache[id]
             },
             function(model) {
               console.log(name, method, params)
@@ -46,10 +41,8 @@ export function sendRequest(name, method, params, cacheName) {
                 String(model.attr('error.code')),
                 model.attr('error.message')
               )
-              // if (cacheName) {
-              //   cacheError[id] = model
-              // }
               reject(model)
+              delete cache[id]
             }
           )
           .progress(function(model) {
@@ -58,6 +51,7 @@ export function sendRequest(name, method, params, cacheName) {
       })
     }
   })
+  return cache[id]
 }
 
 export function getCookie(name) {
