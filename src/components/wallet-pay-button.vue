@@ -154,7 +154,6 @@ export default {
       return sendRequest('api.checkout.form', 'request', {
         payment_system: this.config.payment_system,
         data: this.response.details,
-        transaction_id: this.transaction_id,
       })
     },
     close(...args) {
@@ -163,35 +162,25 @@ export default {
     },
     shippingOptionChange(event) {
       let request = event.target
-      console.log('fire event', event.type)
-      console.log('shippingOptions', request.shippingOption)
-      console.log(this.config.details)
-      console.log(event)
       let option = this.config.details.shippingOptions.find(option => {
         if (option.id === request.shippingOption) {
           return option
         }
       })
       this.config.details.displayItems.push(option)
-      console.log(option)
       event.updateWith(this.config.details)
     },
     merchantValidation(event) {
-      console.log(event.type)
-      console.log('validation url', event.validationURL)
-      this.appleSession(event.validationURL).then(session => {
-        this.transaction_id = session.transaction_id || null
-        console.log('session options', session.data || session)
-        event.complete(session.data || session)
+      this.appleSession({
+        url: event.validationURL,
+        domain: location.host,
+        merchant_id: this.store.state.params.merchant_id,
+      }).then(session => {
+        event.complete(session.data)
       })
     },
-    appleSession(url) {
-      return sendRequest('api.checkout.pay', 'session', {
-        payment_system: this.config.payment_system,
-        url,
-        merchant_id: '',
-        domain: '',
-      })
+    appleSession(data) {
+      return sendRequest('api.checkout.pay', 'session', data)
     },
     paymentMethodChange(event) {
       console.log('fire event', event.type)
