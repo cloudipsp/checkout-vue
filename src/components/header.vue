@@ -32,7 +32,10 @@
 </template>
 
 <script>
+import Resize from '@/mixins/resize'
+
 export default {
+  mixins: [Resize],
   inject: ['$validator'],
   props: {
     min: {
@@ -67,18 +70,16 @@ export default {
       this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
     },
   },
-  created() {
-    this.$root.$on('resize', () => {
+  methods: {
+    changeMethods() {
+      this.store.state.showChangeMethods = !this.store.state.showChangeMethods
+    },
+    resize() {
       if (window.innerWidth >= 768) {
         this.$root.$el.style.overflow = 'visible'
       } else if (this.store.state.showChangeMethods) {
         this.$root.$el.style.overflow = 'hidden'
       }
-    })
-  },
-  methods: {
-    changeMethods() {
-      this.store.state.showChangeMethods = !this.store.state.showChangeMethods
     },
   },
 }

@@ -39,10 +39,12 @@ import {
 } from '@/utils/helpers'
 import notSet from '@/config/not-set'
 import Submit3ds from '@/components/submit3ds'
+import Resize from '@/mixins/resize'
 
 let model3ds
 
 export default {
+  mixins: [Resize],
   inject: ['$validator'],
   components: {
     Info,
@@ -103,12 +105,6 @@ export default {
         this.store.formLoading(false)
       })
       .then(this.appSuccess, function() {})
-  },
-  mounted: function() {
-    window.addEventListener('resize', this.resize)
-  },
-  beforeDestroy: function() {
-    window.removeEventListener('resize', this.resize)
   },
   methods: {
     submit: function() {
@@ -345,7 +341,6 @@ export default {
       })
     },
     resize: function() {
-      this.$root.$emit('resize')
       this.resizeWindow()
       this.resizeError()
     },
