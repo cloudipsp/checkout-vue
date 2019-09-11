@@ -151,7 +151,7 @@ app.$emit('location', {method}, {system}) method support `card`, `emoney`, `iban
 app.setParams({params})
 app.$emit('setParams', {params})
 
-app.destroy()
+app.$destroy()
 ```
 full_screen: true - add css
 
