@@ -134,7 +134,7 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/(?!vee-validate)"
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
