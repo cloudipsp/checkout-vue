@@ -18,38 +18,32 @@ export function iframeCreate(apiDomain) {
   api.create()
 }
 
-export function sendRequest(name, method, params, cacheName) {
-  let id = name + cacheName
-  if (cache[id]) return cache[id]
+export function sendRequest(name, method, params, cached = true) {
+  let id = name + method
+  if (cached && cache[id]) return cache[id]
   cache[id] = new Promise(function(resolve, reject) {
-    if (cacheName && cache[id]) {
-      resolve(cache[id])
-    } else {
-      api.scope(function() {
-        this.request(name, method, params)
-          .then(
-            function(model) {
-              console.log(name, method, params)
-              console.log('done', model)
-              resolve(model)
-              delete cache[id]
-            },
-            function(model) {
-              console.log(name, method, params)
-              console.log('fail', model)
-              store.showError(
-                String(model.attr('error.code')),
-                model.attr('error.message')
-              )
-              reject(model)
-              delete cache[id]
-            }
-          )
-          .progress(function(model) {
+    api.scope(function() {
+      this.request(name, method, params)
+        .then(
+          function(model) {
+            console.info('done', { name, method, params, model })
             resolve(model)
-          })
-      })
-    }
+            delete cache[id]
+          },
+          function(model) {
+            console.log('fail', { name, method, params, model })
+            store.showError(
+              String(model.attr('error.code')),
+              model.attr('error.message')
+            )
+            reject(model)
+            delete cache[id]
+          }
+        )
+        .progress(function(model) {
+          resolve(model)
+        })
+    })
   })
   return cache[id]
 }
