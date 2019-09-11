@@ -79,13 +79,15 @@ export default {
     Promise.all([
       sendRequest('api.checkout.kkh', 'get'),
       sendRequest('api.checkout.pay', 'get', this.store.formParams()),
-    ]).then(([kkh, model]) => {
-      this.config = model.data
-      this.initRequest()
-      if (!this.request) return
-      this.initIcon(kkh)
-      this.initCanMakePayment()
-    })
+    ])
+      .then(([kkh, model]) => {
+        this.config = model.data
+        this.initRequest()
+        if (!this.request) return
+        this.initIcon(kkh)
+        this.initCanMakePayment()
+      })
+      .catch(() => {})
   },
   methods: {
     initIcon(browser) {

@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     showError: function() {
-      return this.error.flag && !this.store.state.showChangeMethods
+      return this.error.flag
     },
   },
   watch: {
@@ -320,7 +320,6 @@ export default {
     createdEvent: function() {
       this.$root.$on('submit', this.submit)
       this.$root.$on('location', (method, system) => {
-        this.store.state.showChangeMethods = false
         this.store.location('f-payment-method', method, system)
       })
       this.$root.$on('setParams', params => {
@@ -379,10 +378,7 @@ export default {
         this.error.buffer = true
         this.error.flag = false
       }
-      if (this.timeoutId > 0) {
-        clearTimeout(this.timeoutId)
-        this.timeoutId = 0
-      }
+      clearTimeout(this.timeoutId)
       this.timeoutId = setTimeout(() => {
         this.error.flag = this.error.buffer
         this.error.buffer = false

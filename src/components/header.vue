@@ -56,14 +56,6 @@ export default {
     show() {
       return this.options.langs && this.options.locales.length > 1
     },
-    styleFlag() {
-      return function(lang) {
-        return {
-          'background-image':
-            'url(' + this.store.state.cdn + 'flags/' + lang + '.svg)',
-        }
-      }
-    },
   },
   watch: {
     'state.showChangeMethods': function(show) {

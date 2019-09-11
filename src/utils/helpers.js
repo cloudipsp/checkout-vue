@@ -94,6 +94,8 @@ export function deleteCookie(name) {
   })
 }
 
+// TODO https://github.com/TehShrike/deepmerge
+
 export function deepMerge() {
   let extended = arguments[0]
 

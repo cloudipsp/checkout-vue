@@ -1,5 +1,5 @@
 <template>
-  <div id="f" ref="f">
+  <div id="f">
     <div
       v-if="!error.errors.length"
       class="f-container"
@@ -38,13 +38,9 @@ export default {
   },
   created: function() {
     this.store.setOptions(this.optionsUser)
-    //      require('./less/style.less')
     if (this.options.full_screen) {
       require('./less/style-sm.less?no-extract')
       require('./less/style-md.less?no-extract')
-      setTimeout(() => {
-        this.$refs.f.style.height = '100%'
-      })
     }
 
     EventBus.$on('checkout-min', this.setMin)
