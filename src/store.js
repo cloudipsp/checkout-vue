@@ -206,6 +206,18 @@ export default {
 
     this.state.loading = loading
   },
+  setParams(params) {
+    if (this.state.params.token || this.state.params.order_id) {
+      console.warn(
+        'You can not change the parameters if there is a token or an order is created'
+      )
+      return
+    }
+    validate({ params: params })
+    if (!this.state.error.errors.length) {
+      deepMerge(this.state.params, params, notSet.params)
+    }
+  },
   formParams() {
     let params = Object.assign({}, this.state.params)
 

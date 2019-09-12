@@ -23,13 +23,7 @@
 import Info from '@/components/info'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
-import {
-  sendRequest,
-  deepMerge,
-  validate,
-  findGetParameter,
-} from '@/utils/helpers'
-import notSet from '@/config/not-set'
+import { sendRequest, findGetParameter } from '@/utils/helpers'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 
@@ -307,18 +301,7 @@ export default {
       this.$root.$on('location', (method, system) => {
         this.store.location('f-payment-method', method, system)
       })
-      this.$root.$on('setParams', params => {
-        if (this.params.token || this.params.order_id) {
-          console.warn(
-            'You can not change the parameters if there is a token or an order is created'
-          )
-          return
-        }
-        validate({ params: params })
-        if (!this.error.errors.length) {
-          deepMerge(this.params, params, notSet.params)
-        }
-      })
+      this.$root.$on('setParams', this.store.setParams)
     },
     autoFocus: function() {
       let $firstErrorField = this.$el.querySelector(

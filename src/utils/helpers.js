@@ -8,7 +8,7 @@ let api = $checkout('Api')
 let cache = {}
 
 api.on('modal.close', function() {
-  store.state.loading = false
+  store.formLoading(false)
 })
 
 export function iframeCreate(apiDomain) {
