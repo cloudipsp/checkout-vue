@@ -1,0 +1,42 @@
+<template>
+  <f-popover
+    :title="error.code"
+    :content="error.message"
+    trigger="manual"
+    :value="value"
+  >
+    <div class="f-center-error" />
+  </f-popover>
+</template>
+
+<script>
+import Resize from '@/mixins/resize'
+
+export default {
+  mixins: [Resize],
+  data() {
+    return {
+      show: true,
+    }
+  },
+  computed: {
+    error() {
+      return this.store.state.error
+    },
+    value() {
+      return this.error.show && this.show
+    },
+  },
+  methods: {
+    resize() {
+      if (!this.error.show) return
+      this.show = false
+
+      clearTimeout(this.timeoutId)
+      this.timeoutId = setTimeout(() => {
+        this.show = true
+      }, 150)
+    },
+  },
+}
+</script>

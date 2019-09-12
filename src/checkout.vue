@@ -9,8 +9,8 @@
       <payment :min="min" />
     </div>
     <ul v-else>
-      <li v-for="error in error.errors" :key="error.message">
-        {{ error.message }}
+      <li v-for="item in error.errors" :key="item.message">
+        {{ item.message }}
       </li>
     </ul>
   </div>
@@ -35,6 +35,11 @@ export default {
     return {
       min: true,
     }
+  },
+  computed: {
+    error() {
+      return this.store.state.error
+    },
   },
   created: function() {
     this.store.setOptions(this.optionsUser)

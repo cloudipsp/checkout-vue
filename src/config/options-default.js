@@ -73,8 +73,7 @@ const options = {
 
   // not config
   error: {
-    flag: false,
-    buffer: false,
+    show: false,
     code: '',
     message: '',
     errors: [], // ошибки валидации конфига

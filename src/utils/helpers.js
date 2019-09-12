@@ -120,10 +120,8 @@ export function deepMerge() {
 
 export function validate(options) {
   new Schema(config).validate(options, (errors, fields) => {
-    if (errors) {
-      console.log(errors, fields)
-      store.state.error.errors = errors
-    }
+    if (!errors) return
+    store.setError(errors)
   })
 }
 

@@ -9,14 +9,7 @@
         <div class="f-loading" />
         <div class="f-loading-i" />
       </div>
-      <popover
-        :title="error.code"
-        :content="error.message"
-        trigger="manual"
-        :value="showError"
-      >
-        <div class="f-center-error" />
-      </popover>
+      <f-error></f-error>
       <submit3ds
         v-model="show3ds"
         :duration.sync="duration3ds"
@@ -28,7 +21,6 @@
 
 <script>
 import Info from '@/components/info'
-import Popover from '@/components/popover'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
 import {
@@ -48,7 +40,6 @@ export default {
   inject: ['$validator'],
   components: {
     Info,
-    Popover,
     Success,
     Pending,
     Submit3ds,
@@ -67,11 +58,6 @@ export default {
       show3ds: false,
       duration3ds: 0,
     }
-  },
-  computed: {
-    showError: function() {
-      return this.error.flag
-    },
   },
   watch: {
     'regular.open': 'firstResize',
@@ -114,7 +100,6 @@ export default {
 
         if (!isValid || this.store.state.loading) return this.autoFocus()
         this.store.formLoading(true)
-        this.error.flag = false
 
         sendRequest(
           'api.checkout.form',
@@ -346,7 +331,6 @@ export default {
     },
     resize: function() {
       this.resizeWindow()
-      this.resizeError()
     },
     resizeWindow: function() {
       if (!this.options.full_screen) return
@@ -372,17 +356,6 @@ export default {
         this.$refs.center.style.minHeight =
           centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
       }
-    },
-    resizeError: function() {
-      if (this.error.flag) {
-        this.error.buffer = true
-        this.error.flag = false
-      }
-      clearTimeout(this.timeoutId)
-      this.timeoutId = setTimeout(() => {
-        this.error.flag = this.error.buffer
-        this.error.buffer = false
-      }, 150)
     },
     firstResize: function() {
       this.$nextTick(() => {
