@@ -11,7 +11,7 @@ import {
   sendRequest,
 } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
-import { loadLanguageAsync } from '@/i18n'
+import { i18n, loadLanguageAsync } from '@/i18n'
 
 export default {
   setStateDefault: function() {
@@ -210,7 +210,7 @@ export default {
       if (params.custom.hasOwnProperty(field)) {
         custom[field] = {
           value: params.custom[field],
-          label: this.$t(field),
+          label: i18n.t(field),
         }
       }
     }
