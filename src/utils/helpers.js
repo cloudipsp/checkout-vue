@@ -26,7 +26,7 @@ export function sendRequest(name, method, params, cached = true) {
       this.request(name, method, params)
         .then(
           function(model) {
-            console.info('done', { name, method, params, model })
+            console.log('done', { name, method, params, model })
             resolve(model)
             delete cache[id]
           },

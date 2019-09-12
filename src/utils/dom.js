@@ -251,7 +251,6 @@ export function setTooltipPosition(
     const container = document.querySelector(appendToSelector)
     containerScrollLeft = container.scrollLeft
     containerScrollTop = container.scrollTop
-    // console.log(containerScrollLeft, containerScrollTop)
   }
   // auto adjust placement
   if (auto) {
@@ -266,7 +265,6 @@ export function setTooltipPosition(
     ]
     // The class switch helper function
     const changePlacementClass = placement => {
-      // console.log(placement)
       placements.forEach(placement => {
         removeClass(tooltip, placement)
       })
