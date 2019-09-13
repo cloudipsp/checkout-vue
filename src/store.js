@@ -1,7 +1,6 @@
 import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
 import configPaymentSystems from '@/config/payment-systems'
-import configPriority from '@/config/priority'
 import notSet from '@/config/not-set'
 import {
   getCookie,
@@ -53,62 +52,6 @@ export default {
         }
       }
     }
-  },
-  priority: function(field, priority) {
-    priority = priority || this.attr(configPriority, field)
-    let priorityValue = []
-
-    if (!priority) return
-
-    priority.forEach(item => {
-      priorityValue.push(this.attr(this[item], field))
-    })
-    this.attr(this.state, field, this.merge(priorityValue))
-  },
-  attr: function(data, name, value) {
-    name = (name || '').split('.')
-    let prop = name.pop()
-    let len = arguments.length
-    for (let i = 0; i < name.length; i++) {
-      if (data && data.hasOwnProperty(name[i])) {
-        data = data[name[i]]
-      } else {
-        if (len === 3) {
-          data = data[name[i]] = {}
-        } else {
-          break
-        }
-      }
-    }
-    if (len === 2) {
-      return data ? data[prop] : null
-    }
-    if (len === 3) {
-      data[prop] = value
-    }
-  },
-  merge: function(data) {
-    for (let i = 0; i < data.length; i++) {
-      if (isExist(data[i])) {
-        return data[i]
-      }
-    }
-  },
-  mergeServer: function() {
-    function merge(obj, field) {
-      for (let prop in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-          let f = (field && field.slice()) || []
-          f.push(prop)
-          if (isObject(obj[prop])) {
-            merge.call(this, obj[prop], f)
-          } else {
-            this.priority(f.join('.'))
-          }
-        }
-      }
-    }
-    merge.call(this, this.server)
   },
   setFast: function() {
     let fast = []

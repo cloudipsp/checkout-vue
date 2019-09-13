@@ -23,7 +23,7 @@
 import Info from '@/components/info'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
-import { sendRequest, findGetParameter } from '@/utils/helpers'
+import { deepMerge, sendRequest, findGetParameter } from '@/utils/helpers'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 
@@ -65,12 +65,6 @@ export default {
       deep: true,
       immediate: true,
     },
-    //      'store.server': {
-    //        handler: function () {
-    //          this.store.mergeServer()
-    //        },
-    //        deep: true
-    //      }
     'params.amount'() {
       this.store.getAmountWithFee()
     },
@@ -140,25 +134,6 @@ export default {
       }
     },
     infoSuccess: function(model) {
-      //        deepMerge(this.store.server, {
-      //          options: {
-      //            link: model.attr('merchant_url'),
-      //            email: model.attr('checkout_email_required'),
-      //            title: model.attr('merchant.localized_name'),
-      //            logo_url: model.attr('merchant.logo_url'),
-      //            offerta_url: model.attr('merchant.offerta_url'),
-      //            methods: model.attr('tabs_order'),
-      //            customer_fields: model.attr('customer_required_data'),
-      //          },
-      //          params: {
-      //            lang: model.attr('lang'),
-      //            fee: model.attr('client_fee'),
-      //            order_desc: model.attr('order.order_desc'),
-      //          },
-      //          regular: {
-      //            insert: model.attr('order.subscription'),
-      //          },
-      //        })
       this.options.link = model.attr('merchant_url') || this.options.link
       this.params.lang = model.attr('lang') || this.params.lang
       this.options.email =
@@ -213,19 +188,6 @@ export default {
       let order_data = model.attr('order_data')
 
       if (!order_data) return
-
-      //        deepMerge(this.store.server, {
-      //          params: {
-      //            amount: order_data.amount,
-      //            recurring_data: {
-      //              amount: order_data.amount,
-      //            },
-      //            currency: order_data.currency,
-      //            merchant_id: order_data.merchant_id,
-      //            email: order_data.sender_email,
-      //            order_id: order_data.order_id,
-      //          }
-      //        })
 
       this.location(model)
 
