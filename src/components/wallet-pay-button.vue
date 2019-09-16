@@ -103,6 +103,10 @@ export default {
       this.icon = (map[type === 'desktop' ? name : os] || 'google') + '_pay'
     },
     initRequest() {
+      this.config.methods.push({
+        supportedMethods: 'basic-card',
+        data: { supportedNetworks: ['visa', 'mastercard', 'amex', 'discover'] },
+      })
       try {
         this.request = new PaymentRequest(
           this.config.methods,
