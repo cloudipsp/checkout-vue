@@ -23,7 +23,7 @@
 import Info from '@/components/info'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
-import { deepMerge, sendRequest, findGetParameter } from '@/utils/helpers'
+import { deepMerge, sendRequest } from '@/utils/helpers'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 
@@ -54,16 +54,11 @@ export default {
     }
   },
   watch: {
-    'regular.open': 'firstResize',
-    'options.email': 'firstResize',
+    'store.state.regular.open': 'nextResize',
+    'options.email': 'nextResize',
     router: {
-      handler: function() {
-        this.$nextTick(() => {
-          this.firstResize()
-        })
-      },
+      handler: 'nextResize',
       deep: true,
-      immediate: true,
     },
     'params.amount'() {
       this.store.getAmountWithFee()
@@ -72,13 +67,15 @@ export default {
   created: function() {
     this.createdEvent()
 
-    this.params.token = findGetParameter('token') || this.params.token
-
     sendRequest('api.checkout', 'app', this.store.formParams())
       .finally(() => {
         this.store.formLoading(false)
       })
-      .then(this.appSuccess, function() {})
+      .then(this.appSuccess)
+      .catch(() => {})
+  },
+  mounted() {
+    this.nextResize()
   },
   methods: {
     submit: function() {
@@ -152,7 +149,7 @@ export default {
         model.attr('tabs_order').length
       ) {
         this.options.methods = model.attr('tabs_order')
-        this.store.setLocation()
+        this.store.initLocation()
       }
       this.state.tabs = model.attr('tabs')
       this.options.default_country =
@@ -164,8 +161,6 @@ export default {
       this.params.order_desc =
         this.params.order_desc || model.attr('order.order_desc')
 
-      //        this.regular.insert = model.attr('order.subscription')
-
       if (model.attr('order.verification')) {
         this.store.state.verification_type = model.attr('verification_type')
         this.options.title = 'verification_t'
@@ -173,11 +168,7 @@ export default {
           'verification_' + this.store.state.verification_type + '_d'
       }
 
-      let recurring_data = model.attr('order.recurring_data')
-      if (recurring_data) {
-        Object.assign(this.params.recurring_data, recurring_data)
-        this.regular.insert = true
-      }
+      this.store.setRecurringData(model.attr('order.recurring_data'))
 
       this.store.showError(
         model.attr('order.error_code'),
@@ -275,9 +266,6 @@ export default {
       })
     },
     resize: function() {
-      this.resizeWindow()
-    },
-    resizeWindow: function() {
       if (!this.options.full_screen) return
 
       let $container = document.querySelector('.f-container')
@@ -302,10 +290,8 @@ export default {
           centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
       }
     },
-    firstResize: function() {
-      this.$nextTick(() => {
-        this.resizeWindow()
-      })
+    nextResize: function() {
+      this.$nextTick(this.resize)
     },
     submit3ds: function() {
       model3ds.submit3dsForm()

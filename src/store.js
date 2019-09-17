@@ -8,6 +8,7 @@ import {
   deepMerge,
   validate,
   sendRequest,
+  findGetParameter,
 } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
 import { i18n, loadLanguageAsync } from '@/i18n'
@@ -27,10 +28,11 @@ export default {
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
     Object.assign(this.state.popup, optionsUser.popup)
-    this.setFast()
-    this.setCss()
-    this.setLocale()
-    this.setLocation()
+    this.initFast()
+    this.initCss()
+    this.initLocale()
+    this.initLocation()
+    this.initToken()
   },
   optionsFormat: function(options) {
     let regex = /[A-Z]+/g
@@ -53,7 +55,7 @@ export default {
       }
     }
   },
-  setFast: function() {
+  initFast: function() {
     let fast = []
     this.state.options.fast.forEach(function(system) {
       Object.keys(configPaymentSystems).forEach(function(method) {
@@ -67,13 +69,13 @@ export default {
     }, this)
     this.state.options.fast = fast
   },
-  setCss: function() {
+  initCss: function() {
     Object.assign(
       this.state.css,
       configCss[this.state.options.css] || configCss.default
     )
   },
-  setLocale: function() {
+  initLocale: function() {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.full_screen) {
@@ -88,6 +90,10 @@ export default {
     }
     this.changeLocale(lang)
   },
+  initToken() {
+    this.state.params.token =
+      findGetParameter('token') || this.state.params.token
+  },
   changeLocale(lang) {
     loadLanguageAsync(lang).then(() => {
       this.state.params.lang = lang
@@ -98,7 +104,7 @@ export default {
       })
     })
   },
-  setLocation: function() {
+  initLocation: function() {
     let methods = this.state.options.methods
     let active_tab = this.state.options.active_tab
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
@@ -194,5 +200,11 @@ export default {
   },
   setError(errors) {
     this.state.error.errors = errors
+  },
+  setRecurringData(recurring_data) {
+    if (!recurring_data) return
+
+    Object.assign(this.state.params.recurring_data, recurring_data)
+    this.state.regular.insert = true
   },
 }
