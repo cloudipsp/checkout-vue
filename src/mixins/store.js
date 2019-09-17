@@ -19,7 +19,6 @@ const install = Vue => {
       // alias
       this.state = this.store.state
       this.options = this.store.state.options
-      this.regular = this.store.state.regular
       this.params = this.store.state.params
       this.router = this.store.state.router
       this.$css = this.store.state.css

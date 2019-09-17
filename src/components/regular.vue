@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-if="show"
-    class="f-regular"
-    :style="{ display: options.hide ? 'none' : 'block' }"
-  >
+  <div v-if="show" class="f-regular">
     <div class="f-block">
       <div class="f-block-sm">
         <div class="f-text-center">
@@ -84,30 +80,30 @@ export default {
   },
   computed: {
     show() {
-      return this.regular.insert && this.router.method === 'card'
+      return this.options.insert && this.router.method === 'card'
     },
   },
   watch: {
     'options.open': {
-      handler: function(value) {
+      handler(value) {
         this.store.state.params.recurring = value ? 'y' : 'n'
       },
       immediate: true,
     },
   },
-  created: function() {
+  created() {
     this.params.end_time = this.recurringEndTime()
     this.params.start_time = this.recurringStartTime()
   },
   methods: {
-    getDate: function(date) {
+    getDate(date) {
       date.setHours(0)
       date.setMinutes(0)
       date.setSeconds(0)
       date.setMilliseconds(0)
       return date
     },
-    getDateFormat: function(d) {
+    getDateFormat(d) {
       return (
         d.getFullYear() +
         '-' +
@@ -116,28 +112,28 @@ export default {
         ('0' + d.getDate()).slice(-2)
       )
     },
-    recurringTime: function(field) {
+    recurringTime(field) {
       let date = this.params[field] || new Date()
       let value = this.getDate(new Date(date))
       let now = this.getDate(new Date())
       if (now > value) value = now
       return this.getDateFormat(value)
     },
-    recurringStartTime: function() {
+    recurringStartTime() {
       if (this.params.start_time) {
         return this.recurringTime('start_time')
       } else {
         return this.getFuturePeriod(this.params.period, this.params.every)
       }
     },
-    recurringEndTime: function() {
+    recurringEndTime() {
       if (this.params.end_time) {
         return this.recurringTime('end_time')
       } else {
         return this.getDefaultEndDate()
       }
     },
-    getFuturePeriod: function(period, every) {
+    getFuturePeriod(period, every) {
       let d = new Date()
       switch (period) {
         case 'day':
@@ -155,7 +151,7 @@ export default {
       }
       return this.getDateFormat(d)
     },
-    getDefaultEndDate: function() {
+    getDefaultEndDate() {
       let d = new Date()
       d.setFullYear(d.getFullYear() + 5)
       return this.getDateFormat(d)

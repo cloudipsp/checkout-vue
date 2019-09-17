@@ -65,7 +65,6 @@ Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `insert`              | Boolean     | false                   |
 `open`                | Boolean     | false                   |
-`hide`                | Boolean     | false                   |
 `period`              | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
 
 ### params
