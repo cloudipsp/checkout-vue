@@ -1,10 +1,12 @@
-const simple = require('../utils/simple')
-const data = require('../data/simple')
+//browser.Keys.ENTER
 
-let tests = {}
+let result = {}
+let tests = ['approved_3ds', 'declined_3ds']
 
-data.forEach((i, k) => {
-  tests['simple' + k] = simple(i[0], i[1])
+tests.forEach(name => {
+  require(`../data/${name}`).forEach((i, k) => {
+    result[`${name}_${k}`] = require(`../utils/${name}`)(i[0], i[1])
+  })
 })
 
-module.exports = tests
+module.exports = result

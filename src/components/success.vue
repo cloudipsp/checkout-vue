@@ -1,5 +1,5 @@
 <template>
-  <div class="f-success">
+  <div class="f-success" :data-status="order.order_status">
     <div class="f-block f-block-hr">
       <div class="f-form-group">
         <div class="f-block f-title3">
