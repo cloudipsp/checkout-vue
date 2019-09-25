@@ -54,6 +54,8 @@ module.exports = {
     : '/',
   pluginOptions: {},
   chainWebpack: config => {
+    const normalRule = config.module.rule('less').oneOfs.get('normal')
+
     config
       .when(process.env.NODE_ENV === 'production', config => {
         config
@@ -121,15 +123,40 @@ module.exports = {
         .rule('less')
           .oneOf('vue').use('postcss-loader').tap(addF).end().end()
           .oneOf('normal').use('postcss-loader').tap(addF).end().end()
-          .oneOfs
-            .set('no-extract', config.module.rule('less').oneOfs.get('vue'))
-            .end()
           .oneOf('no-extract')
-            .resourceQuery(/no-extract/)
-            .uses
-              .delete('extract-css-loader')
+            .resourceQuery(/\?no-extract/)
+            .use('vue-style-loader')
+              .loader('vue-style-loader')
+              .options({
+                sourceMap: false,
+                shadowMode: false
+              })
+              .end()
+            .use('css-loader')
+              .loader('css-loader')
+              .options({
+                sourceMap: false,
+                importLoaders: 2
+              })
+              .end()
+            .use('postcss-loader')
+              .loader('postcss-loader')
+              .options({
+                sourceMap: false
+              })
+              .tap(addF)
+              .end()
+            .use('less-loader')
+              .loader('less-loader')
+              .options({
+                sourceMap: false
+              })
               .end()
             .end()
+            .oneOfs
+              .delete('normal') // TODO https://github.com/neutrinojs/webpack-chain/issues/119
+              .set('normal', normalRule)
+              .end()
           .end()
         .rule('images')
           .use('url-loader')
