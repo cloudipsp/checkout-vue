@@ -1,0 +1,15 @@
+https://stackoverflow.com/questions/53976130/how-to-debug-vue-js-e2e-tests-in-webstorm
+https://github.com/nightwatchjs/nightwatch/wiki/Understanding-the-Command-Queue#setting-a-breakpoint-to-inspect-a-page-in-browser
+https://www.youtube.com/watch?v=SVOC_c_vOTs
+
+browser.Keys.ENTER
+
++Node.js
+~/webstorm/checkout-vue
+node_modules/nightwatch/bin/runner.js
+--config node_modules/@vue/cli-plugin-e2e-nightwatch/nightwatch.config.js --tag dev --env chrome --reporter ./tests/e2e/reporter/html-reporter.js
+VUE_NIGHTWATCH_USER_OPTIONS
+{"custom_commands_path":["tests/e2e/custom-command"],"selenium":{"cli_args":{"webdriver.chrome.driver":"/home/mixa/webstorm/checkout-vue/node_modules/chromedriver/lib/chromedriver/chromedriver"}},"test_settings":{"chrome":{"screenshots":{"enabled":true,"on_failure":true,"on_error":true,"path":"tests/e2e/reports/"},"desiredCapabilities":{"chromeOptions":{"args":[]}}}}}
+VUE_DEV_SERVER_URL
+http://localhost:8080
+

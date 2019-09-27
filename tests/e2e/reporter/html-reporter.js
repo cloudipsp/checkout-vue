@@ -4,8 +4,7 @@ let handlebars = require('handlebars')
 
 module.exports = {
   write: function(results, options, done) {
-    let reportFilename =
-      options.filename_prefix + Math.floor(Date.now() / 1000) + '.html'
+    let reportFilename = options.filename_prefix + Math.floor(Date.now() / 1000)
     let reportFilePath = path.join(options.output_folder, reportFilename)
     // read the html template
     fs.readFile('./tests/e2e/reporter/html-reporter.hbs', function(err, data) {
@@ -22,11 +21,21 @@ module.exports = {
       })
 
       // write the html to a file
-      fs.writeFile(reportFilePath, html, function(err) {
+      fs.writeFile(reportFilePath + '.html', html, function(err) {
         if (err) throw err
         console.log('Report generated: ' + reportFilePath)
         done()
       })
+
+      fs.writeFile(
+        reportFilePath + '.json',
+        JSON.stringify({ results, options }, null, 2),
+        function(err) {
+          if (err) throw err
+          console.log('Report generated: ' + reportFilePath)
+          done()
+        }
+      )
     })
   },
 }

@@ -9,6 +9,12 @@ module.exports = {
   },
   test_settings: {
     chrome: {
+      screenshots: {
+        enabled: true,
+        on_failure: true,
+        on_error: true,
+        path: 'tests/e2e/reports/',
+      },
       desiredCapabilities: {
         chromeOptions: {
           args: [
