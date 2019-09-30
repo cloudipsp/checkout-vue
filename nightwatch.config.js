@@ -9,6 +9,9 @@ module.exports = {
   },
   test_settings: {
     chrome: {
+      globals: {
+        waitForConditionTimeout: 5000,
+      },
       screenshots: {
         enabled: true,
         on_failure: true,

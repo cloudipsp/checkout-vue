@@ -24,7 +24,7 @@ exports.command = function(options) {
     .ifClearSetValue($tp_verification, verification)
     .ifClearSetValue($tp_verification_type, verification_type)
     .click($tp_submit)
-    .waitForElementVisible($root_checkout_v1, 5000)
+    .waitForElementVisible($root_checkout_v1)
     .url(function(result) {
       options.params.token = result.value.split('=')[1]
       delete options.params.amount

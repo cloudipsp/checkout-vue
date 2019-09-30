@@ -8,5 +8,5 @@ exports.command = function(options) {
       },
       [options]
     )
-    .waitForElementVisible($root, 5000)
+    .waitForElementVisible($root)
 }

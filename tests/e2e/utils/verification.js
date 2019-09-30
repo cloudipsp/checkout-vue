@@ -12,10 +12,10 @@ module.exports = (options, { card_number, expiry_date, cvv2 }) => browser => {
     .isNotDisabled($card_number)
     .setCard(card_number, expiry_date, cvv2)
     .click($submit)
-    .waitForElementVisible($code, 5000)
+    .waitForElementVisible($code)
     .isDisabled($card_number)
     .setValue($code, 'EURT')
     .click($submit)
-    .waitForElementVisible($status_approved, 5000)
+    .waitForElementVisible($status_approved)
     .end()
 }
