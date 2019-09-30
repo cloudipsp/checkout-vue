@@ -5,6 +5,8 @@ const {
   $tp_submit,
   $tp_verification,
   $tp_verification_type,
+  $tp_required_rectoken,
+  $tp_rectoken,
   $root_checkout_v1,
 } = require('../config/selector')
 
@@ -15,6 +17,8 @@ exports.command = function(options) {
     amount,
     verification,
     verification_type,
+    required_rectoken,
+    rectoken,
   } = options.params
   return this.url('https://api.dev.fondy.eu/test/testpage')
     .ifClearSetValue($tp_merchant_id, merchant_id)
@@ -23,6 +27,8 @@ exports.command = function(options) {
     .ifClearSetValue($tp_amount, amount)
     .ifClearSetValue($tp_verification, verification)
     .ifClearSetValue($tp_verification_type, verification_type)
+    .ifClearSetValue($tp_required_rectoken, required_rectoken)
+    .ifClearSetValue($tp_rectoken, rectoken)
     .click($tp_submit)
     .waitForElementVisible($root_checkout_v1)
     .url(function(result) {

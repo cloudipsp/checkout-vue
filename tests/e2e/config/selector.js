@@ -17,6 +17,8 @@ module.exports = {
   $tp_submit: '[type="submit"]',
   $tp_verification: '#verification',
   $tp_verification_type: '#verification_type',
+  $tp_required_rectoken: '#required_rectoken',
+  $tp_rectoken: '#rectoken',
 
   $root_checkout_v1: '.pages-checkout',
 }
