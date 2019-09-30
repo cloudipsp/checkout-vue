@@ -29,7 +29,7 @@ module.exports = {
 
       fs.writeFile(
         reportFilePath + '.json',
-        JSON.stringify({ results, options }, null, 2),
+        JSON.stringify(results, null, 2),
         function(err) {
           if (err) throw err
           console.log('Report generated: ' + reportFilePath)

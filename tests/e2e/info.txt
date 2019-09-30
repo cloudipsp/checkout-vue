@@ -13,3 +13,7 @@ VUE_NIGHTWATCH_USER_OPTIONS
 VUE_DEV_SERVER_URL
 http://localhost:8080
 
+Получить конфиг
+1. node
+2. JSON.stringify(require('./nightwatch.config.js')).replace(/\n/g, '')
+

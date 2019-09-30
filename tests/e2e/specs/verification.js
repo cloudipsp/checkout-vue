@@ -1,5 +1,5 @@
 let result = {
-  '@tags': ['dev'],
+  '@tags': [],
 }
 
 let tests = 'verification'
