@@ -6,7 +6,8 @@ module.exports = {
   $code: '#f-code',
   $submit: '.f-pay-button [type="button"]',
   $error: '.f-popover-error',
-  $status_approved: '[data-status=approved]',
+  $status_approved: '[data-e2e-status=approved]',
+  $is_ready: '[data-e2e-ready]',
 
   $3ds: '.ipsp-modal-iframe',
   $3ds_submit: '[type="submit"]',

@@ -1,5 +1,5 @@
 <template>
-  <div class="f-wrapper">
+  <div class="f-wrapper" :data-e2e-ready="isReady">
     <info ref="info" />
     <f-methods :in-progress="inProgress" />
     <div ref="center" class="f-center">
@@ -52,6 +52,11 @@ export default {
       show3ds: false,
       duration3ds: 0,
     }
+  },
+  computed: {
+    isReady() {
+      return this.store.state.ready
+    },
   },
   watch: {
     'store.state.regular.open': 'nextResize',
