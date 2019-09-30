@@ -21,5 +21,9 @@ module.exports = {
   $tp_required_rectoken: '#required_rectoken',
   $tp_rectoken: '#rectoken',
 
+  $tr_root: '#table_response',
+  $tr_rectoken: '.field_rectoken .value',
+  $tr_status: '.field_order_status .value',
+
   $root_checkout_v1: '.pages-checkout',
 }
