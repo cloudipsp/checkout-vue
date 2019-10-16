@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 exports.command = function() {
-  this.perform(() => {
+  return this.perform(() => {
     debugger
   })
 }

@@ -17,3 +17,5 @@ http://localhost:8080
 1. node
 2. JSON.stringify(require('./nightwatch.config.js')).replace(/\n/g, '')
 
+.perform(() => browser.expect.element(selector).to.be.visible)
+

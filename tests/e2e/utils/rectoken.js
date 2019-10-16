@@ -28,6 +28,6 @@ module.exports = (options, { card_number, expiry_date, cvv2 }) => browser => {
     .setValue($cvv2, cvv2)
     .click($submit)
     .waitForElementVisible($tr_root)
-    .equalText($tr_status, 'approved')
+    .assert.containsText($tr_status, 'approved')
     .end()
 }
