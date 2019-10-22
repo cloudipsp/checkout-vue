@@ -119,18 +119,19 @@ export default {
     this.state.read_only = card.read_only
   },
   getAmountWithFee: function() {
-    if (this.state.params.fee && this.state.params.amount) {
-      return sendRequest(
-        'api.checkout.fee',
-        'get',
-        this.state.params,
-        String(this.state.params.amount) + String(this.state.params.fee)
-      ).then(model => {
-        this.state.params.amount_with_fee = parseInt(
-          model.attr('amount_with_fee')
-        )
-      })
-    }
+    if (!this.state.params.amount) return
+    if (!this.state.params.fee) return
+    return sendRequest('api.checkout.fee', 'get', this.state.params, {
+      cached: true,
+      params: {
+        amount: this.state.params.amount,
+        fee: this.state.params.fee,
+      },
+    }).then(model => {
+      this.state.params.amount_with_fee = parseInt(
+        model.attr('amount_with_fee')
+      )
+    })
   },
   location: function(page, method, system) {
     this.state.showChangeMethods = false

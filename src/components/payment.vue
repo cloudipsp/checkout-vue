@@ -91,12 +91,7 @@ export default {
         if (!isValid || this.store.state.loading) return this.autoFocus()
         this.store.formLoading(true)
 
-        sendRequest(
-          'api.checkout.form',
-          'request',
-          this.store.formParams(),
-          false
-        )
+        sendRequest('api.checkout.form', 'request', this.store.formParams())
           .finally(() => {
             this.store.formLoading(false)
           })

@@ -214,7 +214,7 @@ export default {
             token: this.params.token,
             first_card_digit: newFirst,
           },
-          String(newFirst)
+          { cached: true }
         )
       }
       if (newBin.length === 6 && newBin !== oldBin) {
@@ -225,7 +225,7 @@ export default {
             token: this.params.token,
             card_bin: newBin,
           },
-          String(newBin)
+          { cached: true }
         )
       }
     },

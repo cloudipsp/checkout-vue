@@ -78,7 +78,11 @@ export default {
 
     Promise.all([
       sendRequest('api.checkout.kkh', 'get'),
-      sendRequest('api.checkout.pay', 'get', this.store.formParams()),
+      sendRequest('api.checkout.pay', 'get', this.store.formParams(), {
+        cached: true,
+        clear: true,
+        params: {},
+      }),
     ])
       .then(([kkh, model]) => {
         this.config = model.data
