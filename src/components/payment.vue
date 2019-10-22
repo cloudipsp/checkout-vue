@@ -30,14 +30,14 @@ import Resize from '@/mixins/resize'
 let model3ds
 
 export default {
-  mixins: [Resize],
-  inject: ['$validator'],
   components: {
     Info,
     Success,
     Pending,
     Submit3ds,
   },
+  mixins: [Resize],
+  inject: ['$validator'],
   props: {
     min: {
       type: Boolean,
@@ -64,9 +64,6 @@ export default {
     router: {
       handler: 'nextResize',
       deep: true,
-    },
-    'params.amount'() {
-      this.store.getAmountWithFee()
     },
   },
   created: function() {

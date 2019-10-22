@@ -15,7 +15,7 @@
       <div>
         <span v-t="'amount'" /> {{ amount }} <span v-t="params.currency" />
       </div>
-      <div v-if="params.fee">
+      <div v-if="fee">
         <span v-t="'fee'" />
         <span v-if="amount_fee"
           >{{ amount_fee }} <span v-t="params.currency"
@@ -35,7 +35,7 @@ export default {
     return {}
   },
   computed: {
-    amount_fee: function() {
+    amount_fee() {
       let amount = parseInt(this.params.amount)
       let amountWithFee = parseInt(this.params.amount_with_fee)
       if (!amount || amountWithFee - amount < 0) {
@@ -43,17 +43,25 @@ export default {
       }
       return amountWithFee ? (amountWithFee - amount) / 100 : false
     },
-    amount: function() {
+    amount() {
       let amount = parseInt(this.params.amount)
       return amount / 100
     },
-    fee: function() {
+    fee() {
       let current = Number(this.params.fee)
       return current
         ? parseFloat(String(current * 100))
             .toFixed(2)
             .concat('%')
         : 0
+    },
+  },
+  watch: {
+    'params.fee'() {
+      this.store.getAmountWithFee()
+    },
+    'params.amount'() {
+      this.store.getAmountWithFee()
     },
   },
 }
