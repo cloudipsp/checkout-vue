@@ -38,6 +38,8 @@ export default {
     return {
       icon: '',
       canMakePayment: false,
+      timeout: null,
+      time: null,
     }
   },
   computed: {
@@ -48,7 +50,7 @@ export default {
       )
     },
     show() {
-      return this.canMakePayment && this.canRequest
+      return this.canMakePayment && this.canRequest && this.icon
     },
     isTop() {
       return this.position === 'top'
@@ -72,39 +74,54 @@ export default {
     text() {
       return this.options.wallet_pay_button[this.tab].text
     },
+    amount() {
+      return this.store.state.params.amount
+    },
+  },
+  watch: {
+    amount() {
+      if (!this.show) return
+
+      clearTimeout(this.timeout)
+
+      this.timeout = setTimeout(this.sendRequest, 100)
+    },
   },
   created() {
     if (!this.canRequest) return
+    sendRequest('api.checkout.kkh', 'get').then(this.initIcon)
 
-    Promise.all([
-      sendRequest('api.checkout.kkh', 'get'),
-      sendRequest('api.checkout.pay', 'get', this.store.formParams(), {
+    this.sendRequest().then(this.initCanMakePayment)
+  },
+  methods: {
+    sendRequest() {
+      let time = new Date().getTime()
+      return sendRequest('api.checkout.pay', 'get', this.store.formParams(), {
         cached: true,
         clear: true,
         params: {},
-      }),
-    ])
-      .then(([kkh, model]) => {
-        this.config = model.data
+      }).then(({ data }) => {
+        if (this.time > time) return Promise.reject()
+        this.time = time
+
+        this.config = data
         this.initRequest()
-        if (!this.request) return
-        this.initIcon(kkh)
-        this.initCanMakePayment()
       })
-      .catch(() => {})
-  },
-  methods: {
-    initIcon(browser) {
-      const os = browser.data.platform_os // ios android linux
-      const type = browser.data.platform_type // desktop mobile
-      const name = browser.data.platform_name // chrome safari
+    },
+    initIcon({ data }) {
+      const { platform_os, platform_type, platform_name } = data.data
+      // platform_os: ios android linux
+      // platform_type: mobile tablet desktop
+      // platform_name: chrome safari
       const map = {
         safari: 'apple',
         chrome: 'google',
         ios: 'apple',
         android: 'google',
       }
-      this.icon = (map[type === 'desktop' ? name : os] || 'google') + '_pay'
+      this.icon =
+        (map[platform_type === 'desktop' ? platform_name : platform_os] ||
+          'google') + '_pay'
     },
     initRequest() {
       this.config.methods.push({
@@ -137,6 +154,8 @@ export default {
       } catch (e) {}
     },
     initCanMakePayment() {
+      if (!this.request) return
+
       this.request
         .canMakePayment()
         .then(result => {
