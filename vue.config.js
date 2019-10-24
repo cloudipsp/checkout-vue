@@ -39,6 +39,13 @@ module.exports = {
       chunks: ['snippet'],
       inject: 'head',
     },
+    index_snippet: {
+      entry: 'src/main.js',
+      template: 'public/index_snippet.html',
+      filename: 'index_snippet.html',
+      chunks: ['snippet'],
+      inject: 'head',
+    },
   },
   devServer: {
     overlay: {
@@ -61,9 +68,6 @@ module.exports = {
         config
           .entry('checkout-dark')
             .add('./src/less/style-dark.less')
-            .end()
-          .entry('snippet')
-            .add('./src/snippet.js')
             .end()
           .optimization
             .delete('splitChunks')
@@ -110,10 +114,14 @@ module.exports = {
         .delete('index')
         .delete('e2e')
         .delete('e2e_snippet')
+        .delete('index_snippet')
         .end()
       .entry('checkout')
         .add('./src/less/style.less')
         .add('./src/main.js')
+        .end()
+      .entry('snippet')
+        .add('./src/snippet.js')
         .end()
       .output
         .filename('[name].js')

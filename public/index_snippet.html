@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      overflow-y: scroll;
+      font-family: 'Arial', sans-serif;
+    }
+    #app {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  var app = fondy('#app', {
+    options: {
+      api_domain: 'api.dev.fondy.eu',
+      locales: ['ru'],
+      methods: ['ibank', 'card']
+    },
+    params: {
+    currency: 'UAH',
+      merchant_id: 900240,
+      amount: 500,
+    },
+  }).$on('success', function(model) {
+      console.log('success', model)
+    })
+    .$on('error', function(model) {
+      console.log('error', model)
+    })
+    .$on('ready', function(model) {
+      console.log('ready', model)
+    })
+    .$emit('location', 'ibank')
+    .location('ibank')
+
+  app.$on('ready', function(model) {
+    console.log('ready2', model)
+  })
+
+  setTimeout(function(){
+    app.$emit('submit')
+    app.submit()
+  }, 1000)
+</script>
+</body>
+</html>

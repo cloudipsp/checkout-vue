@@ -1,5 +1,5 @@
-const cdn = 'https://checkout-vue.web.app/'
-const version = Date.now()
+const cdn = 'https://pay.fondy.eu/latest/'
+const version = '1.1.1'
 
 class F {
   constructor() {
@@ -7,7 +7,7 @@ class F {
     this._emit = []
   }
   init(el, optionsUser) {
-    this._init = true
+    this.isInit = true
     if (optionsUser && optionsUser.options && optionsUser.options.locales) {
       let locales = optionsUser.options.locales
       let index = locales.indexOf('en')
@@ -15,7 +15,7 @@ class F {
         locales.splice(index, 1)
       }
       locales.forEach(locale => {
-        loadScript(`${cdn}i18n/${locale}.js`)
+        loadScript(`i18n/${locale}.js`)
       })
     }
     this.element = el
@@ -62,24 +62,33 @@ class F {
 }
 
 let fondy = new F()
-let count = 0
 let load = 0
+let loaded = 0
 
 function loadScript(src) {
   const el = document.createElement('script')
   load += 1
   el.type = 'text/javascript'
-  el.src = `${src}?${version}`
+  el.src = `${cdn}${src}?${version}`
   el.async = false
   el.addEventListener('load', function() {
-    count += 1
-    if (load === count && fondy._init) {
+    loaded += 1
+    if (load === loaded && fondy.isInit) {
       fondy.run()
     }
   })
   document.getElementsByTagName('head')[0].appendChild(el)
 }
 
-loadScript(`${cdn}checkout.js`)
+function loadStyle(src) {
+  const el = document.createElement('link')
+  el.rel = 'stylesheet'
+  el.type = 'text/css'
+  el.href = `${cdn}${src}?${version}`
+  document.getElementsByTagName('head')[0].appendChild(el)
+}
+
+loadStyle(`checkout.css`)
+loadScript(`checkout.js`)
 
 window.fondy = fondy.init.bind(fondy)
