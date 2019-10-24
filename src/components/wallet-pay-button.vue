@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { sendRequest } from '@/utils/helpers'
+import { sendRequest, isSafari } from '@/utils/helpers'
 
 export default {
   props: {
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      icon: '',
+      icon: isSafari() ? 'apple_pay' : 'google_pay',
       canMakePayment: false,
       timeout: null,
       time: null,
@@ -50,7 +50,7 @@ export default {
       )
     },
     show() {
-      return this.canMakePayment && this.canRequest && this.icon
+      return this.canMakePayment && this.canRequest
     },
     isTop() {
       return this.position === 'top'
@@ -89,7 +89,6 @@ export default {
   },
   created() {
     if (!this.canRequest) return
-    sendRequest('api.checkout.kkh', 'get').then(this.initIcon)
 
     this.sendRequest().then(this.initCanMakePayment)
   },
@@ -108,26 +107,7 @@ export default {
         this.initRequest()
       })
     },
-    initIcon({ data }) {
-      const { platform_os, platform_type, platform_name } = data.data
-      // platform_os: ios android linux
-      // platform_type: mobile tablet desktop
-      // platform_name: chrome safari
-      const map = {
-        safari: 'apple',
-        chrome: 'google',
-        ios: 'apple',
-        android: 'google',
-      }
-      this.icon =
-        (map[platform_type === 'desktop' ? platform_name : platform_os] ||
-          'google') + '_pay'
-    },
     initRequest() {
-      this.config.methods.push({
-        supportedMethods: 'basic-card',
-        data: { supportedNetworks: ['visa', 'mastercard', 'amex', 'discover'] },
-      })
       try {
         this.request = new PaymentRequest(
           this.config.methods,

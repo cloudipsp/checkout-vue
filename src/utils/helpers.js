@@ -149,3 +149,7 @@ export function sort(arr, field, reverse) {
     }
   })
 }
+
+export function isSafari() {
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+}
