@@ -141,7 +141,7 @@ export default {
         .then(result => {
           console.log('can.makePayment', result)
 
-          this.canMakePayment = true
+          this.canMakePayment = result
         })
         .catch(() => {
           console.log('can.makePayment', 'catch error', arguments)
