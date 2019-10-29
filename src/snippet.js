@@ -1,5 +1,5 @@
 const cdn = 'https://pay.fondy.eu/latest/'
-const version = '1.1.1'
+const version = '1.6.0'
 
 class F {
   constructor() {
