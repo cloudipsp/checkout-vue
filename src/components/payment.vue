@@ -145,8 +145,7 @@ export default {
         this.options.offerta_url || model.attr('merchant.offerta_url')
 
       if (
-        (!this.store.user.options.methods ||
-          !this.store.user.options.methods.length) &&
+        !this.store.attr('user.options.methods.length') &&
         model.attr('tabs_order') &&
         model.attr('tabs_order').length
       ) {
@@ -155,7 +154,8 @@ export default {
       }
       this.state.tabs = model.attr('tabs')
       this.options.default_country =
-        this.store.user.options.default_country || model.attr('default_country')
+        this.store.attr('user.options.default_country') ||
+        model.attr('default_country')
 
       this.params.fee = model.attr('client_fee') || 0
       this.options.customer_fields = model.attr('customer_required_data') || []
