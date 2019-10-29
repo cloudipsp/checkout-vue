@@ -69,6 +69,9 @@ export default {
           this.store.formLoading(false)
         })
         .then(this.location, this.location)
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
     location: function(model) {
       if (!model.submitToMerchant()) {

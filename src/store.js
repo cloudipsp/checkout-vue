@@ -127,11 +127,15 @@ export default {
         amount: this.state.params.amount,
         fee: this.state.params.fee,
       },
-    }).then(model => {
-      this.state.params.amount_with_fee = parseInt(
-        model.attr('amount_with_fee')
-      )
     })
+      .then(model => {
+        this.state.params.amount_with_fee = parseInt(
+          model.attr('amount_with_fee')
+        )
+      })
+      .catch(e => {
+        if (e instanceof Error) console.log(e)
+      })
   },
   location: function(page, method, system) {
     this.state.showChangeMethods = false

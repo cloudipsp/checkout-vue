@@ -74,7 +74,9 @@ export default {
         this.store.formLoading(false)
       })
       .then(this.appSuccess)
-      .catch(() => {})
+      .catch(e => {
+        if (e instanceof Error) console.log(e)
+      })
   },
   mounted() {
     this.nextResize()
@@ -93,6 +95,9 @@ export default {
             this.store.formLoading(false)
           })
           .then(this.submitSuccess, this.submitError)
+          .catch(e => {
+            if (e instanceof Error) console.log(e)
+          })
       })
     },
     submitSuccess: function(model) {
@@ -235,6 +240,9 @@ export default {
             this.store.formLoading(false)
           })
           .then(this.orderSuccess)
+          .catch(e => {
+            if (e instanceof Error) console.log(e)
+          })
       }, 15 * 1000)
       if (!this.processingClear) {
         this.processingClear = setTimeout(() => {

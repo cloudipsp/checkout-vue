@@ -90,7 +90,11 @@ export default {
   created() {
     if (!this.canRequest) return
 
-    this.sendRequest().then(this.initCanMakePayment)
+    this.sendRequest()
+      .then(this.initCanMakePayment)
+      .catch(e => {
+        if (e instanceof Error) console.log(e)
+      })
   },
   methods: {
     sendRequest() {
@@ -184,9 +188,13 @@ export default {
         url: event.validationURL,
         domain: location.host,
         merchant_id: this.store.state.params.merchant_id,
-      }).then(session => {
-        event.complete(session.data)
       })
+        .then(session => {
+          event.complete(session.data)
+        })
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
     appleSession(data) {
       return sendRequest('api.checkout.pay', 'session', data)
