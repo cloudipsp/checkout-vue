@@ -5,15 +5,15 @@
     :class="{ 'f-block-hr': isTop, 'f-block': isTop || isMenu }"
   >
     <slot :open="open">
-      <div :class="{ 'f-block-sm': !isMenu && isTop }">
+      <div class="f-text-center" :class="{ 'f-block-sm': !isMenu && isTop }">
         <button
-          :class="[$css.btn, 'f-btn-' + theme]"
+          :class="[$css.btn, $css.btnLg, 'f-btn-' + theme, 'f-btn-' + icon]"
           :style="style"
-          class="f-btn-block"
+          class="f-btn-pay f-btn-block"
           @click="open"
         >
           <span v-if="text" v-t="icon"></span>
-          <f-svg :name="icon" size="2x"></f-svg>
+          <f-svg :name="icon"></f-svg>
         </button>
       </div>
     </slot>
