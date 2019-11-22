@@ -3,11 +3,12 @@
     <f-wallet-pay-button position="top" :tab="method"></f-wallet-pay-button>
     <f-payment-fields />
     <transition name="fade">
+      <!--card emoney ibank trustly cash sepa-->
       <component
         :is="method"
         :key="method"
-        :icons="options[method + '_icons']"
-        :payment-systems="options[method]"
+        :icons="icons"
+        :payment-systems="paymentSystems"
       />
     </transition>
     <f-regular />
@@ -39,8 +40,14 @@ export default {
     return {}
   },
   computed: {
-    method: function() {
-      return this.router.method
+    method() {
+      return this.store.state.router.method
+    },
+    icons() {
+      return this.store.state.options[this.method + '_icons']
+    },
+    paymentSystems() {
+      return this.store.state.options[this.method]
     },
   },
 }

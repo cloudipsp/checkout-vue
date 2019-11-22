@@ -20,9 +20,11 @@
 </template>
 
 <script>
-import Info from '@/components/info'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
+import PaymentMethod from '@/components/payment-method'
+
+import Info from '@/components/info'
 import { deepMerge, sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/object'
 import Submit3ds from '@/components/submit3ds'
@@ -41,6 +43,7 @@ export default {
     Success,
     Pending,
     Submit3ds,
+    PaymentMethod,
   },
   mixins: [Resize],
   inject: ['$validator'],
@@ -250,7 +253,7 @@ export default {
         this.params.card_number = model.attr('order_data.masked_card')
         this.params.expiry_date = model.attr('order_data.expiry_date')
         this.params.cvv2 = ''
-        this.store.location('f-payment-method', 'card')
+        this.store.location('payment-method', 'card')
       } else if (model.inProgress() && model.waitForResponse()) {
         this.inProgress = true
         this.locationPending()
@@ -286,7 +289,7 @@ export default {
     createdEvent: function() {
       this.$root.$on('submit', this.submit)
       this.$root.$on('location', (method, system) => {
-        this.store.location('f-payment-method', method, system)
+        this.store.location('payment-method', method, system)
       })
       this.$root.$on('setParams', this.store.setParams)
     },
