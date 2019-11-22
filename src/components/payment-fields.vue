@@ -1,8 +1,5 @@
 <template>
-  <fields
-    v-if="options.fields && !store.state.need_verify_code"
-    class="f-payment-fields"
-  ></fields>
+  <fields v-if="show" class="f-payment-fields"></fields>
 </template>
 
 <script>
@@ -23,6 +20,13 @@ export default {
   },
   data() {
     return {}
+  },
+  computed: {
+    show() {
+      return (
+        this.store.state.options.fields && !this.store.state.need_verify_code
+      )
+    },
   },
 }
 </script>

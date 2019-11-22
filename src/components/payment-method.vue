@@ -23,6 +23,7 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
+import FPaymentFields from '@/components/payment-fields'
 
 export default {
   components: {
@@ -32,6 +33,7 @@ export default {
     Trustly,
     Cash,
     Sepa,
+    FPaymentFields,
   },
   data() {
     return {}
