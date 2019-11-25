@@ -7,9 +7,9 @@
         v-for="item in list"
         :key="item.system"
         class="f-icon"
-        :class="'f-i-' + item.system"
+        :class="className(item)"
         :style="style(item.system)"
-        @click="$emit('on-change-method', item.method, item.system)"
+        @click="click(item)"
       />
     </div>
   </div>
@@ -21,21 +21,31 @@ export default {
     return {}
   },
   computed: {
-    show: function() {
+    show() {
       return this.list.length
     },
-    list: function() {
-      return this.options.fast.filter(
-        item => item.system !== this.router.system
+    list() {
+      return this.store.state.options.fast.filter(
+        item => item.system !== this.store.state.router.system
       )
     },
-    style: function() {
+    style() {
       return function(item) {
         return {
           'background-image':
             'url(' + this.store.state.cdn + 'banks/' + item + '.svg)',
         }
       }
+    },
+    className() {
+      return function(item) {
+        return 'f-i-' + item.system
+      }
+    },
+  },
+  methods: {
+    click({ method, system }) {
+      this.store.location('payment-method', method, system)
     },
   },
 }
