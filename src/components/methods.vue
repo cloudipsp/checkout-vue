@@ -5,7 +5,7 @@
     :class="{ 'f-open': store.state.showChangeMethods }"
   >
     <f-wallet-pay-button position="top" tab="menu"></f-wallet-pay-button>
-    <f-menu @on-change-method="changeMethod"></f-menu>
+    <f-menu></f-menu>
     <f-fast-access></f-fast-access>
     <f-wallet-pay-button position="bottom" tab="menu"></f-wallet-pay-button>
   </div>
@@ -14,10 +14,12 @@
 <script>
 import EventBus from '@/event-bus'
 import FFastAccess from '@/components/fast-access'
+import FMenu from '@/components/menu'
 
 export default {
   components: {
     FFastAccess,
+    FMenu,
   },
   props: {
     inProgress: {

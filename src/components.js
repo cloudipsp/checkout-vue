@@ -1,6 +1,5 @@
 // TODO https://vuejs.org/v2/guide/components-registration.html
 import FMethods from '@/components/methods'
-import FMenu from '@/components/menu'
 import FHeader from '@/components/header'
 import FPayButton from '@/components/pay-button'
 import FOffer from '@/components/offer'
@@ -13,7 +12,6 @@ import FPopover from '@/components/popover'
 
 const components = {
   FMethods,
-  FMenu,
   FHeader,
   FPayButton,
   FOffer,
