@@ -1,5 +1,4 @@
 // TODO https://vuejs.org/v2/guide/components-registration.html
-import FHeader from '@/components/header'
 import FPayButton from '@/components/pay-button'
 import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
@@ -10,7 +9,6 @@ import FError from '@/components/error'
 import FPopover from '@/components/popover'
 
 const components = {
-  FHeader,
   FPayButton,
   FOffer,
   FRegular,

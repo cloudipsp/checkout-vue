@@ -28,7 +28,7 @@ const options = {
     fields: false,
     default_country: '',
     countries: [],
-    langs: true,
+    lang: true,
     wallet_pay_button: {},
   },
   popup: {
@@ -93,7 +93,7 @@ const options = {
   cdn: 'https://pay.fondy.eu/icons/dist/svg/',
   tabs: {},
   ready: false,
-  showChangeMethods: false,
+  showModalMethods: false,
   validate_expdate: true,
 }
 

@@ -19,10 +19,12 @@
 <script>
 import Payment from '@/components/payment'
 import EventBus from '@/event-bus'
+import FHeader from '@/components/header'
 
 export default {
   name: 'FCheckout',
   components: {
+    FHeader,
     Payment,
   },
   props: {

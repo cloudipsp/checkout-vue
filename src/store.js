@@ -54,7 +54,7 @@ export default {
     Object.assign(this.state.popup, optionsUser.popup)
     this.initFast()
     this.initCss()
-    this.initLocale()
+    this.initLang()
     this.initLocation()
     this.initToken()
     this.initOrigin()
@@ -100,7 +100,7 @@ export default {
       configCss[this.state.options.css] || configCss.default
     )
   },
-  initLocale: function() {
+  initLang: function() {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.full_screen) {
@@ -113,7 +113,7 @@ export default {
         lang = locales[0]
       }
     }
-    this.changeLocale(lang)
+    this.changeLang(lang)
   },
   initToken() {
     this.state.params.token =
@@ -122,7 +122,7 @@ export default {
   initOrigin() {
     api.setOrigin('https://' + this.state.options.api_domain)
   },
-  changeLocale(lang) {
+  changeLang(lang) {
     loadLanguageAsync(lang).then(() => {
       this.state.params.lang = lang
 
@@ -166,7 +166,7 @@ export default {
       })
   },
   location: function(page, method, system) {
-    this.state.showChangeMethods = false
+    this.state.showModalMethods = false
     this.state.router.page = page
     this.state.router.method = method
     this.state.router.system = system
@@ -239,5 +239,8 @@ export default {
 
     Object.assign(this.state.params.recurring_data, recurring_data)
     this.state.regular.insert = true
+  },
+  toggleModalMethods() {
+    this.state.showModalMethods = !this.state.showModalMethods
   },
 }

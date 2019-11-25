@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     openClass() {
-      return { 'f-open': this.store.state.showChangeMethods }
+      return { 'f-open': this.store.state.showModalMethods }
     },
     onlyCard() {
       return (

@@ -2,32 +2,22 @@
   <div class="f-header">
     <div class="f-header-menu">
       <select
-        v-if="show"
-        :value="params.lang"
-        :class="[$css.fc, 'f-input-sm', 'f-visible-inline-block']"
-        @input="store.changeLocale($event.target.value)"
+        v-if="showLang"
+        :value="lang"
+        :class="classLang"
+        @input="changeLang"
       >
-        <option
-          v-for="item in options.locales"
-          :key="item"
-          v-t="item"
-          :value="item"
-        />
+        <option v-for="item in locales" :key="item" v-t="item" :value="item" />
       </select>
       <button
-        v-if="!min"
+        v-if="showButtonMethods"
         v-t="'other'"
         type="button"
-        :class="[
-          $css.btn,
-          $css.bd,
-          $css.btnSm,
-          'f-visible-mobile-inline-block',
-        ]"
-        @click="changeMethods"
+        :class="classButtonMethods"
+        @click="toggleModalMethods"
       />
     </div>
-    <div class="f-logo" :style="style" />
+    <div class="f-logo" :style="styleLogo" />
   </div>
 </template>
 
@@ -47,29 +37,52 @@ export default {
     return {}
   },
   computed: {
-    style() {
-      if (!this.options.logo_url) return {}
+    lang() {
+      return this.store.state.params.lang
+    },
+    locales() {
+      return this.store.state.options.locales
+    },
+    styleLogo() {
+      if (!this.store.state.options.logo_url) return {}
       return {
-        'background-image': `url(${this.options.logo_url})`,
+        'background-image': `url(${this.store.state.options.logo_url})`,
       }
     },
-    show() {
-      return this.options.langs && this.options.locales.length > 1
+    showLang() {
+      return this.store.state.options.lang && this.locales.length > 1
+    },
+    showButtonMethods() {
+      return !this.min
+    },
+    classLang() {
+      return [this.$css.fc, 'f-input-sm', 'f-visible-inline-block']
+    },
+    classButtonMethods() {
+      return [
+        this.$css.btn,
+        this.$css.bd,
+        this.$css.btnSm,
+        'f-visible-mobile-inline-block',
+      ]
     },
   },
   watch: {
-    'state.showChangeMethods': function(show) {
+    'state.showModalMethods': function(show) {
       this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
     },
   },
   methods: {
-    changeMethods() {
-      this.store.state.showChangeMethods = !this.store.state.showChangeMethods
+    changeLang($event) {
+      this.store.changeLang($event.target.value)
+    },
+    toggleModalMethods() {
+      this.store.toggleModalMethods()
     },
     resize() {
       if (window.innerWidth >= 768) {
         this.$root.$el.style.overflow = 'visible'
-      } else if (this.store.state.showChangeMethods) {
+      } else if (this.store.state.showModalMethods) {
         this.$root.$el.style.overflow = 'hidden'
       }
     },
