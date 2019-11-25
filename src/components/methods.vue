@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-if="show"
-    class="f-methods"
-    :class="{ 'f-open': store.state.showChangeMethods }"
-  >
+  <div v-if="show" class="f-methods" :class="openClass">
     <f-wallet-pay-button position="top" tab="menu"></f-wallet-pay-button>
     <f-menu></f-menu>
     <f-fast-access></f-fast-access>
@@ -30,18 +26,19 @@ export default {
     return {}
   },
   computed: {
-    show: function() {
-      let min =
-        (this.options.methods.length === 1 &&
-          this.options.methods[0] === 'card') ||
-        this.inProgress
+    openClass() {
+      return { 'f-open': this.store.state.showChangeMethods }
+    },
+    onlyCard() {
+      return (
+        this.store.state.options.methods.length === 1 &&
+        this.store.state.options.methods[0] === 'card'
+      )
+    },
+    show() {
+      let min = this.onlyCard || this.inProgress
       EventBus.$emit('checkout-min', min)
       return !min
-    },
-  },
-  methods: {
-    changeMethod: function(method, system) {
-      this.store.location('payment-method', method, system)
     },
   },
 }
