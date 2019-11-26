@@ -1,6 +1,10 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <f-wallet-pay-button position="top" :tab="method"></f-wallet-pay-button>
+    <f-button-pay-wallet
+      class="f-block-hr f-block"
+      position="top"
+      :tab="method"
+    ></f-button-pay-wallet>
     <f-payment-fields />
     <transition name="fade">
       <!--card emoney ibank trustly cash sepa-->
@@ -16,10 +20,10 @@
     <div class="f-block">
       <div class="f-block-sm">
         <f-button-pay></f-button-pay>
-        <f-wallet-pay-button
+        <f-button-pay-wallet
           position="bottom"
           :tab="method"
-        ></f-wallet-pay-button>
+        ></f-button-pay-wallet>
         <f-button-cancel></f-button-cancel>
         <i class="f-icon f-icon-block f-i-security f-hidden-desktop" />
       </div>

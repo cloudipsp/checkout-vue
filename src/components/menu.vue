@@ -4,7 +4,7 @@
     <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
     <div class="f-block-hr">
       <template v-for="item in list">
-        <f-wallet-pay-button
+        <f-button-pay-wallet
           v-if="show(item)"
           :key="item"
           tab="wallets"
@@ -18,7 +18,7 @@
             ></div>
             <div style="display: none" :class="classButton"></div>
           </template>
-        </f-wallet-pay-button>
+        </f-button-pay-wallet>
         <div
           v-else
           :key="item"

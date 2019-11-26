@@ -51,10 +51,10 @@ export default {
       return this.tab === 'wallets'
     },
     theme() {
-      return this.options.wallet_pay_button[this.tab].theme
+      return this.options.theme
     },
     text() {
-      return this.options.wallet_pay_button[this.tab].text
+      return this.options.text
     },
     amount() {
       return this.store.state.params.amount

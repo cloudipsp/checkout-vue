@@ -1,9 +1,17 @@
 <template>
   <div v-if="show" class="f-methods" :class="openClass">
-    <f-wallet-pay-button position="top" tab="menu"></f-wallet-pay-button>
+    <f-button-pay-wallet
+      class="f-block-hr f-block"
+      position="top"
+      tab="menu"
+    ></f-button-pay-wallet>
     <f-menu></f-menu>
     <f-fast-access></f-fast-access>
-    <f-wallet-pay-button position="bottom" tab="menu"></f-wallet-pay-button>
+    <f-button-pay-wallet
+      class="f-block"
+      position="bottom"
+      tab="menu"
+    ></f-button-pay-wallet>
   </div>
 </template>
 
