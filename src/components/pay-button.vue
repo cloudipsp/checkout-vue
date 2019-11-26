@@ -6,13 +6,7 @@
         position="bottom"
         :tab="method"
       ></f-wallet-pay-button>
-      <a
-        v-if="options.cancel"
-        v-t="'cancel'"
-        :class="[$css.btn, 'f-btn-link', 'f-btn-block']"
-        href=""
-        @click.prevent="cancel"
-      />
+      <f-button-cancel></f-button-cancel>
       <div class="f-hidden-desktop">
         <i class="f-icon f-icon-block f-i-security" />
       </div>
@@ -21,35 +15,17 @@
 </template>
 
 <script>
-import { sendRequest } from '@/utils/helpers'
 import FButtonPay from '@/components/button-pay'
+import FButtonCancel from '@/components/button-cancel'
 
 export default {
   components: {
     FButtonPay,
+    FButtonCancel,
   },
   computed: {
     method: function() {
       return this.router.method
-    },
-  },
-  methods: {
-    cancel: function() {
-      if (this.store.state.loading) return
-      this.store.formLoading(true)
-      sendRequest('api.checkout.order', 'get', this.params)
-        .finally(() => {
-          this.store.formLoading(false)
-        })
-        .then(this.location, this.location)
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
-    },
-    location: function(model) {
-      if (!model.submitToMerchant()) {
-        location.assign(this.options.link)
-      }
     },
   },
 }
