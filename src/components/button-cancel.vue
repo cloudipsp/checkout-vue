@@ -11,7 +11,7 @@ export default {
       return this.store.state.options.cancel
     },
     className() {
-      return [this.$css.btn, 'f-btn-link', 'f-btn-block']
+      return [this.$css.btn, 'f-btn-link', 'f-btn-block', 'f-button-cancel']
     },
   },
   methods: {

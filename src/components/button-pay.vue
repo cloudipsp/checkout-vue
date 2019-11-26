@@ -27,6 +27,7 @@ export default {
         this.$css.btnLg,
         'f-btn-block',
         this.$css.submit,
+        'f-button-pay',
       ]
     },
     disabled() {
