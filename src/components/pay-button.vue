@@ -1,15 +1,7 @@
 <template>
   <div class="f-pay-button f-block">
     <div class="f-block-sm">
-      <button
-        v-if="options.button"
-        type="button"
-        :class="[$css.btn, $css.bs, $css.btnLg, 'f-btn-block', $css.submit]"
-        :disabled="disabled"
-        @click="submit"
-      >
-        <span v-t="{ path: 'pay', args: args }" />
-      </button>
+      <f-button-pay></f-button-pay>
       <f-wallet-pay-button
         position="bottom"
         :tab="method"
@@ -30,37 +22,18 @@
 
 <script>
 import { sendRequest } from '@/utils/helpers'
+import FButtonPay from '@/components/button-pay'
 
 export default {
-  inject: ['$validator'],
-  data() {
-    return {}
+  components: {
+    FButtonPay,
   },
   computed: {
-    disabled: function() {
-      return !!this.errors.items.length && this.store.state.submit
-    },
-    fullAmount: function() {
-      let amount = parseInt(this.params.amount)
-      let amountWithFee = parseInt(this.params.amount_with_fee)
-      if (!amount) {
-        return false
-      }
-      return (amountWithFee || amount) / 100
-    },
-    args: function() {
-      return this.fullAmount
-        ? [this.fullAmount, this.$t(this.params.currency)]
-        : []
-    },
     method: function() {
       return this.router.method
     },
   },
   methods: {
-    submit: function() {
-      this.$root.$emit('submit')
-    },
     cancel: function() {
       if (this.store.state.loading) return
       this.store.formLoading(true)
