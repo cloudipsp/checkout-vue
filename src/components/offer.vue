@@ -3,7 +3,7 @@
     <div class="f-block-sm">
       <input-checkbox name="offer" :validate="'required'">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <span v-html="$t('offer_t', [options.offerta_url])" />
+        <span v-html="html" />
       </input-checkbox>
     </div>
   </div>
@@ -13,16 +13,15 @@
 import InputCheckbox from '@/components/input-checkbox'
 
 export default {
-  inject: ['$validator'],
   components: {
     InputCheckbox,
   },
-  data() {
-    return {}
-  },
   computed: {
     show() {
-      return this.options.offerta_url
+      return this.store.state.options.offerta_url
+    },
+    html() {
+      return this.$t('offer_t', [this.store.state.options.offerta_url])
     },
   },
 }

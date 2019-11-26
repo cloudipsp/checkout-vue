@@ -37,6 +37,7 @@ import Sepa from '@/components/sepa'
 import FPaymentFields from '@/components/payment-fields'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
+import FOffer from '@/components/offer'
 
 export default {
   components: {
@@ -49,6 +50,7 @@ export default {
     FPaymentFields,
     FButtonPay,
     FButtonCancel,
+    FOffer,
   },
   data() {
     return {}
