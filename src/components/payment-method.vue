@@ -38,6 +38,7 @@ import FPaymentFields from '@/components/payment-fields'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FOffer from '@/components/offer'
+import FRegular from '@/components/regular'
 
 export default {
   components: {
@@ -51,6 +52,7 @@ export default {
     FButtonPay,
     FButtonCancel,
     FOffer,
+    FRegular,
   },
   data() {
     return {}

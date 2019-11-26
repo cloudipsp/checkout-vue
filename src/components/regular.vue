@@ -1,16 +1,14 @@
 <template>
   <div v-if="show" class="f-regular">
     <div class="f-block">
-      <div class="f-block-sm">
-        <div class="f-text-center">
-          <input
-            id="f-regular-swipe"
-            v-model="options.open"
-            type="checkbox"
-            class="f-checkbox-swipe"
-          />
-          <label v-t="'regular'" :class="[$css.cl]" for="f-regular-swipe" />
-        </div>
+      <div class="f-block-sm f-text-center">
+        <input
+          id="f-regular-swipe"
+          v-model="options.open"
+          type="checkbox"
+          class="f-checkbox-swipe"
+        />
+        <label v-t="'regular'" :class="[$css.cl]" for="f-regular-swipe" />
       </div>
     </div>
     <div v-if="options.open" class="f-block">
@@ -66,7 +64,6 @@ import InputText from '@/components/input-text'
 import InputSelect from '@/components/input-select'
 
 export default {
-  inject: ['$validator'],
   components: {
     InputAmount,
     InputText,
@@ -80,7 +77,7 @@ export default {
   },
   computed: {
     show() {
-      return this.options.insert && this.router.method === 'card'
+      return this.options.insert && this.store.state.router.method === 'card'
     },
   },
   watch: {
