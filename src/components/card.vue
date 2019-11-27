@@ -1,13 +1,5 @@
 <template>
   <div class="f-card">
-    <div v-if="icons.length" class="f-block f-block-hr f-text-center">
-      <img
-        v-for="icon in icons"
-        :key="icon"
-        class="f-card-icon"
-        :src="imagePath(icon)"
-      />
-    </div>
     <div class="f-block">
       <div class="f-block-sm">
         <input-text
@@ -122,14 +114,6 @@ export default {
   components: {
     CustomerFields,
   },
-  props: {
-    icons: {
-      type: Array,
-      default() {
-        return []
-      },
-    },
-  },
   data() {
     return {
       maskExpiryDate: '##/##',
@@ -231,9 +215,6 @@ export default {
     },
   },
   methods: {
-    imagePath(id) {
-      return require('../assets/img/' + id + '.svg')
-    },
     hasActive(card) {
       return card.card_number.replace(/ /g, '') === this.params.card_number
     },

@@ -7,13 +7,11 @@
     ></f-button-pay-wallet>
     <f-payment-fields />
     <transition name="fade">
+      <f-icons class="f-block f-block-hr f-text-center" :list="icons"></f-icons>
+    </transition>
+    <transition name="fade">
       <!--card emoney ibank trustly cash sepa-->
-      <component
-        :is="method"
-        :key="method"
-        :icons="icons"
-        :payment-systems="paymentSystems"
-      />
+      <component :is="method" :key="method" :payment-systems="paymentSystems" />
     </transition>
     <f-regular />
     <f-offer />
@@ -43,6 +41,7 @@ import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FOffer from '@/components/offer'
 import FRegular from '@/components/regular'
+import FIcons from '@/components/icons'
 
 export default {
   components: {
@@ -57,6 +56,7 @@ export default {
     FButtonCancel,
     FOffer,
     FRegular,
+    FIcons,
   },
   computed: {
     method() {
