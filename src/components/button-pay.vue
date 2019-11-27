@@ -13,9 +13,6 @@
 <script>
 export default {
   inject: ['$validator'],
-  data() {
-    return {}
-  },
   computed: {
     show() {
       return this.store.state.options.button

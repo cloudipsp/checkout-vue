@@ -33,9 +33,6 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {}
-  },
   computed: {
     lang() {
       return this.store.state.params.lang

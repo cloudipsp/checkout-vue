@@ -9,9 +9,6 @@ export default {
       template: '#f-fields',
     },
   },
-  data() {
-    return {}
-  },
   computed: {
     show() {
       return (

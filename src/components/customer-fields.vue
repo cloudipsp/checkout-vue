@@ -13,9 +13,6 @@ import countries from '@/config/countries'
 import { sort } from '@/utils/helpers'
 
 export default {
-  data() {
-    return {}
-  },
   computed: {
     countries: function() {
       let result = countries.map(item => ({

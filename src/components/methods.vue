@@ -30,9 +30,6 @@ export default {
       type: Boolean,
     },
   },
-  data() {
-    return {}
-  },
   computed: {
     openClass() {
       return { 'f-open': this.store.state.showModalMethods }

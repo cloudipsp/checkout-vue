@@ -38,9 +38,6 @@ import Input from '@/mixins/input'
 
 export default {
   mixins: [Input],
-  data() {
-    return {}
-  },
   computed: {
     amount: {
       get: function() {

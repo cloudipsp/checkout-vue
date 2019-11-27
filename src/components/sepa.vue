@@ -34,8 +34,5 @@
 <script>
 export default {
   inject: ['$validator'],
-  data() {
-    return {}
-  },
 }
 </script>

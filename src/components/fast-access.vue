@@ -17,9 +17,6 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
   computed: {
     show() {
       return this.list.length

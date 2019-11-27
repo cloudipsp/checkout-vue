@@ -31,9 +31,6 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
   computed: {
     amount_fee() {
       let amount = parseInt(this.params.amount)

@@ -127,9 +127,6 @@ export default {
     masked: Boolean,
     group: Boolean,
   },
-  data() {
-    return {}
-  },
   computed: {
     hasDefaultSlot() {
       return !!this.$slots.default

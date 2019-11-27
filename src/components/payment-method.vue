@@ -58,9 +58,6 @@ export default {
     FOffer,
     FRegular,
   },
-  data() {
-    return {}
-  },
   computed: {
     method() {
       return this.store.state.router.method
