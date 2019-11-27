@@ -26,7 +26,6 @@ import Resize from '@/mixins/resize'
 
 export default {
   mixins: [Resize],
-  inject: ['$validator'],
   props: {
     min: {
       type: Boolean,

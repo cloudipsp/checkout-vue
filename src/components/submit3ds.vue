@@ -49,14 +49,14 @@ export default {
     },
   },
   methods: {
-    submit: function() {
+    submit() {
       this.toggle(false)
       this.$emit('submit3ds')
     },
-    toggle: function(show) {
+    toggle(show) {
       this.$emit('input', show)
     },
-    wait: function() {
+    wait() {
       if (!this.duration) return this.submit()
       this.timeout = setTimeout(() => {
         this.$emit('update:duration', this.duration - 1)

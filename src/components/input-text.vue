@@ -133,7 +133,7 @@ export default {
     },
   },
   methods: {
-    blur: function() {
+    blur() {
       this.$refs.input.$emit('blur')
     },
   },

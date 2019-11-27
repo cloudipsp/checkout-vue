@@ -30,9 +30,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  inject: ['$validator'],
-}
-</script>

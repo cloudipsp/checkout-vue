@@ -119,7 +119,6 @@ import { sendRequest } from '@/utils/helpers'
 import CustomerFields from '@/components/customer-fields'
 
 export default {
-  inject: ['$validator'],
   components: {
     CustomerFields,
   },
@@ -139,7 +138,7 @@ export default {
     }
   },
   computed: {
-    validExpiryDate: function() {
+    validExpiryDate() {
       let minDate
       if (this.store.state.validate_expdate) {
         let date = new Date()
@@ -152,7 +151,7 @@ export default {
 
       return `required|date_format:MM/yy|after:${minDate},true`
     },
-    validCardNumber: function() {
+    validCardNumber() {
       return {
         rules: {
           required: true,
@@ -160,16 +159,16 @@ export default {
         },
       }
     },
-    validCvv: function() {
+    validCvv() {
       return 'required|digits:' + this.digitsCvv
     },
-    digitsCvv: function() {
+    digitsCvv() {
       return this.params.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
     },
-    cardsLen: function() {
+    cardsLen() {
       return this.store.state.cards.length
     },
-    validCode: function() {
+    validCode() {
       return {
         rules: {
           required: true,
@@ -177,7 +176,7 @@ export default {
         },
       }
     },
-    validAmount: function() {
+    validAmount() {
       return {
         rules: {
           required: true,
@@ -186,13 +185,13 @@ export default {
         },
       }
     },
-    isVerificationAmount: function() {
+    isVerificationAmount() {
       return (
         this.store.state.need_verify_code &&
         this.store.state.verification_type === 'amount'
       )
     },
-    isVerificationCode: function() {
+    isVerificationCode() {
       return (
         this.store.state.need_verify_code &&
         this.store.state.verification_type !== 'amount'
@@ -232,13 +231,13 @@ export default {
     },
   },
   methods: {
-    imagePath: function(id) {
+    imagePath(id) {
       return require('../assets/img/' + id + '.svg')
     },
-    hasActive: function(card) {
+    hasActive(card) {
       return card.card_number.replace(/ /g, '') === this.params.card_number
     },
-    setCardNumber: function(card) {
+    setCardNumber(card) {
       this.store.setCardNumber(card)
       this.$nextTick(() => {
         this.$validator.validateAll()

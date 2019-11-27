@@ -40,11 +40,11 @@ export default {
   mixins: [Input],
   computed: {
     amount: {
-      get: function() {
+      get() {
         let amount = parseInt(this.params[this.field_])
         return amount ? amount / 100 : ''
       },
-      set: function(v) {
+      set(v) {
         if (v.slice(-1) === '.') {
           return false
         }

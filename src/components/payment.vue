@@ -85,7 +85,7 @@ export default {
       deep: true,
     },
   },
-  created: function() {
+  created() {
     this.createdEvent()
 
     if (this.token) {
@@ -105,7 +105,7 @@ export default {
     this.nextResize()
   },
   methods: {
-    submit: function() {
+    submit() {
       this.$validator.validateAll().then(isValid => {
         this.store.state.submit = true
         // this.errors.items this.fields this.errors.clear() this.errors.count()
@@ -132,7 +132,7 @@ export default {
           if (e instanceof Error) console.log(e)
         })
     },
-    submitSuccess: function(model) {
+    submitSuccess(model) {
       if (!model) return
       this.$root.$emit('success', model)
 
@@ -140,17 +140,17 @@ export default {
       this.location(model.instance(model.alt('order', model.data)))
       this.submit3dsSuccess(model)
     },
-    submitError: function(model) {
+    submitError(model) {
       this.$root.$emit('error', model)
     },
-    appSuccess: function(model) {
+    appSuccess(model) {
       this.store.state.ready = true
       this.$root.$emit('ready', model)
       this.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
     },
-    cardsSuccess: function(model) {
+    cardsSuccess(model) {
       if (this.store.state.need_verify_code || !Array.isArray(model.data))
         return
 
@@ -164,12 +164,11 @@ export default {
         })
       }
     },
-    infoSuccess: function(model) {
+    infoSuccess(model) {
       if (isExist(model.attr('validate_expdate'))) {
         this.store.state.validate_expdate = model.attr('validate_expdate')
       }
-      this.options.link =
-        model.attr('merchant.merchant_url') || this.options.link
+      this.options.link = model.attr('merchant_url') || this.options.link
       this.params.lang = model.attr('lang') || this.params.lang
       this.options.email =
         model.attr('checkout_email_required') || this.options.email
@@ -213,7 +212,7 @@ export default {
         model.attr('order.error_description')
       )
     },
-    orderSuccess: function(model) {
+    orderSuccess(model) {
       let order_data = model.attr('order_data')
 
       if (!order_data) return
@@ -226,14 +225,14 @@ export default {
       this.params.email = order_data.sender_email || this.params.email
       this.params.order_id = order_data.order_id
     },
-    submit3dsSuccess: function(model) {
+    submit3dsSuccess(model) {
       if (!model.waitOn3dsDecline()) return
 
       this.show3ds = true
       this.duration3ds = model.waitOn3dsDecline()
       model3ds = model
     },
-    location: function(model) {
+    location(model) {
       //        console.warn('model.inProgress()', 'order.in_progress', model.inProgress())
       //        console.warn('model.readyToSubmit()', 'order.ready_to_submit', model.readyToSubmit())
       //        console.warn('model.waitForResponse()', 'order.pending', model.waitForResponse())
@@ -267,7 +266,7 @@ export default {
         this.store.location('success')
       }
     },
-    locationPending: function() {
+    locationPending() {
       if (this.store.state.loading) return
       this.store.formLoading(true)
       this.processingTimeout = setTimeout(() => {
@@ -290,14 +289,14 @@ export default {
 
       this.store.location('pending')
     },
-    createdEvent: function() {
+    createdEvent() {
       this.$root.$on('submit', this.submit)
       this.$root.$on('location', (method, system) => {
         this.store.location('payment-method', method, system)
       })
       this.$root.$on('setParams', this.store.setParams)
     },
-    autoFocus: function() {
+    autoFocus() {
       let $firstErrorField = this.$el.querySelector(
         '#' + this.errors.items[0].field
       )
@@ -306,7 +305,7 @@ export default {
         $firstErrorField.focus()
       })
     },
-    resize: function() {
+    resize() {
       if (!this.options.full_screen) return
 
       let $container = document.querySelector('.f-container')
@@ -331,10 +330,10 @@ export default {
           centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
       }
     },
-    nextResize: function() {
+    nextResize() {
       this.$nextTick(this.resize)
     },
-    submit3ds: function() {
+    submit3ds() {
       model3ds.submit3dsForm()
     },
   },

@@ -78,8 +78,8 @@ const options = {
     errors: [], // ошибки валидации конфига
   },
   router: {
-    page: '', // payment-method verify success
-    method: '',
+    page: '', // payment-method success pending
+    method: '', // card emoney ibank trustly cash sepa
     system: '',
   },
   css: {},

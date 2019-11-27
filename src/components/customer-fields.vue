@@ -14,7 +14,7 @@ import { sort } from '@/utils/helpers'
 
 export default {
   computed: {
-    countries: function() {
+    countries() {
       let result = countries.map(item => ({
         id: item,
         name: this.$t(item),
@@ -35,7 +35,7 @@ export default {
         }, [])
     },
   },
-  created: function() {
+  created() {
     let index = this.options.customer_fields.indexOf('email')
     if (this.options.email && index > -1) {
       this.options.customer_fields.splice(index, 1)
