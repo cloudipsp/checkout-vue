@@ -24,6 +24,7 @@ import Success from '@/components/success'
 import Pending from '@/components/pending'
 import PaymentMethod from '@/components/payment-method'
 import FMethods from '@/components/methods'
+import FError from '@/components/error'
 
 import Info from '@/components/info'
 import { deepMerge, sendRequest } from '@/utils/helpers'
@@ -46,6 +47,7 @@ export default {
     FMethods,
     Info,
     Submit3ds,
+    FError,
   },
   mixins: [Resize],
   inject: ['$validator'],
