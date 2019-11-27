@@ -10,15 +10,9 @@
 <script>
 import config from '@/config/customer-fields'
 import countries from '@/config/countries'
-import InputText from '@/components/input-text'
-import InputSelect from '@/components/input-select'
 import { sort } from '@/utils/helpers'
 
 export default {
-  components: {
-    InputText,
-    InputSelect,
-  },
   data() {
     return {}
   },

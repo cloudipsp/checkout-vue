@@ -10,12 +10,7 @@
 </template>
 
 <script>
-import InputCheckbox from '@/components/input-checkbox'
-
 export default {
-  components: {
-    InputCheckbox,
-  },
   computed: {
     show() {
       return this.store.state.options.offerta_url

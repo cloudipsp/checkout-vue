@@ -47,7 +47,7 @@
         @blur.native="blur"
         @keyup.native.enter="onEnter"
       />
-      <tooltip
+      <f-tooltip
         v-if="options.tooltip"
         :text="errors.first(name_)"
         :enable="hasError"
@@ -93,7 +93,7 @@
       @keyup.enter="onEnter"
     />
     <slot />
-    <tooltip
+    <f-tooltip
       v-if="!group && options.tooltip"
       :text="errors.first(name_)"
       :enable="hasError"

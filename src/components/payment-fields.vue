@@ -3,18 +3,9 @@
 </template>
 
 <script>
-import InputText from '@/components/input-text'
-import InputAmount from '@/components/input-amount'
-import InputHidden from '@/components/input-hidden'
-
 export default {
   components: {
     fields: {
-      components: {
-        InputText,
-        InputAmount,
-        InputHidden,
-      },
       template: '#f-fields',
     },
   },

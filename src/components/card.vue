@@ -26,7 +26,7 @@
             v-if="!cardsLen"
             :class="[$css.fcf, 'f-icon', 'f-i-card-empty']"
           />
-          <dropdown slot="group" :class="[$css.igb]">
+          <f-dropdown slot="group" :class="[$css.igb]">
             <button
               type="button"
               :class="[$css.btn, $css.bd, 'f-dropdown-toggle']"
@@ -45,7 +45,7 @@
                 }}</a>
               </li>
             </template>
-          </dropdown>
+          </f-dropdown>
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">
@@ -73,7 +73,7 @@
               placeholder="cvv2_p"
             >
               <span :class="[$css.fcf, 'f-icon', 'f-i-question']" />
-              <tooltip
+              <f-tooltip
                 :text="$t('cvv2_question', [digitsCvv])"
                 trigger="hover"
                 theme="default"
@@ -116,17 +116,11 @@
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { sendRequest } from '@/utils/helpers'
-import Tooltip from '@/components/tooltip'
-import Dropdown from '@/components/dropdown'
-import InputText from '@/components/input-text'
 import CustomerFields from '@/components/customer-fields'
 
 export default {
   inject: ['$validator'],
   components: {
-    Tooltip,
-    Dropdown,
-    InputText,
     CustomerFields,
   },
   props: {

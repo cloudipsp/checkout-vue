@@ -1,5 +1,5 @@
 <template>
-  <modal :value="value" size="md" :backdrop="false" @input="toggle">
+  <f-modal :value="value" size="md" :backdrop="false" @input="toggle">
     <div slot="title" class="f-text-danger">
       {{ $t('submit3ds_title') }}
     </div>
@@ -20,16 +20,11 @@
         class="f-text-muted"
       />
     </div>
-  </modal>
+  </f-modal>
 </template>
 
 <script>
-import Modal from '@/components/modal'
-
 export default {
-  components: {
-    Modal,
-  },
   props: {
     value: {
       type: Boolean,

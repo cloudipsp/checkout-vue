@@ -32,13 +32,8 @@
 </template>
 
 <script>
-import InputText from '@/components/input-text'
-
 export default {
   inject: ['$validator'],
-  components: {
-    InputText,
-  },
   data() {
     return {}
   },

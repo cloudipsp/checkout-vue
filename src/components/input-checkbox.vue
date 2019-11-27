@@ -10,7 +10,7 @@
       class="f-checkbox"
     />
     <label :class="[$css.cl]" :for="name_"><slot /></label>
-    <tooltip
+    <f-tooltip
       :text="errors.first(name_)"
       :enable="hasError"
       :target="'#' + name_"

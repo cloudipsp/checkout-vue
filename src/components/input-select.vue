@@ -25,7 +25,7 @@
         :value="item.id || item"
       />
     </select>
-    <tooltip
+    <f-tooltip
       v-if="options.tooltip"
       :text="errors.first(name_)"
       :enable="hasError"

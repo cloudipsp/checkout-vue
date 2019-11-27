@@ -59,16 +59,7 @@
 </template>
 
 <script>
-import InputAmount from '@/components/input-amount'
-import InputText from '@/components/input-text'
-import InputSelect from '@/components/input-select'
-
 export default {
-  components: {
-    InputAmount,
-    InputText,
-    InputSelect,
-  },
   data() {
     return {
       options: this.store.state.regular,

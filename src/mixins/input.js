@@ -1,11 +1,5 @@
-import Tooltip from '@/components/tooltip'
-
-// @vue/component
 export default {
   inject: ['$validator'],
-  components: {
-    Tooltip,
-  },
   props: {
     name: {
       type: String,

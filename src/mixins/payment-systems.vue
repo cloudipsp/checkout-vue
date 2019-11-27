@@ -56,14 +56,7 @@
 </template>
 
 <script>
-import InputText from '@/components/input-text'
-import InputSelect from '@/components/input-select'
-
 export default {
-  components: {
-    InputText,
-    InputSelect,
-  },
   props: {
     paymentSystems: {
       type: Array,

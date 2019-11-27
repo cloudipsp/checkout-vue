@@ -23,7 +23,7 @@
       </div>
       <span v-t="store.state.params.currency" :class="$css.iga" />
     </div>
-    <tooltip
+    <f-tooltip
       v-if="options.tooltip"
       :text="errors.first(name_)"
       :enable="hasError"
