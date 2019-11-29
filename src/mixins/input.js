@@ -58,7 +58,9 @@ export default {
       return this.$t(this.label || this.name)
     },
     placeholder_() {
-      return this.$t(this.placeholder)
+      const key = this.name + '_p'
+
+      return this.$te(key) ? this.$t(key) : this.$t(this.placeholder)
     },
     flag() {
       return this.$validator.flags[this.name_] || {}
@@ -78,7 +80,7 @@ export default {
       },
     },
     classReadonly() {
-      return this.readonly ? 'f-form-control-text' : ''
+      return { 'f-form-control-text': this.readonly }
     },
   },
   created() {
