@@ -111,6 +111,7 @@ import { sendRequest } from '@/utils/helpers'
 import CustomerFields from '@/components/customer-fields'
 
 export default {
+  inject: ['$validator'],
   components: {
     CustomerFields,
   },
