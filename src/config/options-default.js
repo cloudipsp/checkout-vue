@@ -1,5 +1,6 @@
 import configLocales from '@/config/locales'
 import configMethods from '@/config/methods'
+import configCss from '@/config/css'
 
 const options = {
   options: {
@@ -30,6 +31,7 @@ const options = {
     countries: [],
     lang: true,
     wallet_pay_button: {},
+    css: '',
   },
   popup: {
     append_to: 'body',
@@ -82,7 +84,7 @@ const options = {
     method: '', // card emoney ibank trustly cash sepa
     system: '',
   },
-  css: {},
+  css: configCss.default,
   loading: false,
   cards: [],
   submit: false,

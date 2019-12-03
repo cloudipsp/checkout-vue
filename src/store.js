@@ -52,8 +52,12 @@ export default {
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
     Object.assign(this.state.popup, optionsUser.popup)
+    Object.assign(
+      this.state.css,
+      configCss[this.state.options.css],
+      optionsUser.css
+    )
     this.initFast()
-    this.initCss()
     this.initLang()
     this.initLocation()
     this.initToken()
@@ -93,12 +97,6 @@ export default {
       }, this)
     }, this)
     this.state.options.fast = fast
-  },
-  initCss: function() {
-    Object.assign(
-      this.state.css,
-      configCss[this.state.options.css] || configCss.default
-    )
   },
   initLang: function() {
     let lang
