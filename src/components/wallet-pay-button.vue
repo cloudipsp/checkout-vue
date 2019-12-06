@@ -189,8 +189,8 @@ export default {
         domain: location.host,
         merchant_id: this.store.state.params.merchant_id,
       })
-        .then(session => {
-          event.complete(session.data)
+        .then(model => {
+          event.complete(model.attr('data'))
         })
         .catch(e => {
           if (e instanceof Error) console.log(e)
