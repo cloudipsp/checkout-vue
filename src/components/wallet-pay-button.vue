@@ -24,6 +24,7 @@
 import { sendRequest, isSafari } from '@/utils/helpers'
 
 export default {
+  inject: ['formRequest'],
   props: {
     position: {
       type: String,
@@ -164,7 +165,7 @@ export default {
       return this.response.complete('success')
     },
     success() {
-      return sendRequest('api.checkout.form', 'request', {
+      return this.formRequest({
         payment_system: this.config.payment_system,
         data: this.response.details,
       })

@@ -30,6 +30,11 @@ import Resize from '@/mixins/resize'
 let model3ds
 
 export default {
+  provide() {
+    return {
+      formRequest: this.formRequest,
+    }
+  },
   components: {
     Info,
     Success,
@@ -87,18 +92,27 @@ export default {
         this.store.state.submit = true
         // this.errors.items this.fields this.errors.clear() this.errors.count()
 
-        if (!isValid || this.store.state.loading) return this.autoFocus()
-        this.store.formLoading(true)
+        if (!isValid) return this.autoFocus()
 
-        sendRequest('api.checkout.form', 'request', this.store.formParams())
-          .finally(() => {
-            this.store.formLoading(false)
-          })
-          .then(this.submitSuccess, this.submitError)
-          .catch(e => {
-            if (e instanceof Error) console.log(e)
-          })
+        this.formRequest()
       })
+    },
+    formRequest(data) {
+      if (this.store.state.loading) return
+      this.store.formLoading(true)
+
+      return sendRequest(
+        'api.checkout.form',
+        'request',
+        Object.assign(this.store.formParams(), data)
+      )
+        .finally(() => {
+          this.store.formLoading(false)
+        })
+        .then(this.submitSuccess, this.submitError)
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
     submitSuccess: function(model) {
       if (!model) return
