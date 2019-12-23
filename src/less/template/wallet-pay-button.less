@@ -4,12 +4,32 @@
   max-width: 280px;
   display: inline-block;
 
+  &.f-btn-google_pay {
+    background-origin: content-box;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &::after {
+      content: '\00A0';
+      visibility: hidden;
+    }
+
+    &.f-btn-light {
+      border: none;
+    }
+  }
+
   &.f-btn-dark {
     box-shadow: none;
-  }
-  &.f-btn-light {
-    &.f-btn-google_pay{
-      border: none;
+
+    &:hover {
+      background-color: #3c4043;
+      border-color: #3c4043;
+    }
+    &:active {
+      background-color: #5f6368;
+      border-color: #5f6368;
     }
   }
 

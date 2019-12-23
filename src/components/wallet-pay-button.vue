@@ -7,6 +7,7 @@
     <slot :open="open">
       <div class="f-text-center" :class="{ 'f-block-sm': !isMenu && isTop }">
         <button
+          v-if="isApplePay"
           :class="[$css.btn, $css.btnLg, 'f-btn-' + theme, 'f-btn-' + icon]"
           :style="style"
           class="f-btn-pay f-btn-block"
@@ -15,6 +16,13 @@
           <span v-if="text" v-t="icon"></span>
           <f-svg :name="icon"></f-svg>
         </button>
+        <button
+          v-if="isGooglePay"
+          :class="[$css.btn, $css.btnLg, 'f-btn-' + theme, 'f-btn-' + icon]"
+          :style="[style, styleGooglePay]"
+          class="f-btn-pay f-btn-block"
+          @click="open"
+        />
       </div>
     </slot>
   </div>
@@ -41,9 +49,61 @@ export default {
       canMakePayment: false,
       timeout: null,
       time: null,
+      localeConfig: {
+        en: 152,
+        ar: 189,
+        bg: 163,
+        ca: 182,
+        cs: 192,
+        da: 154,
+        de: 183,
+        el: 178,
+        es: 183,
+        et: 147,
+        fi: 148,
+        fr: 183,
+        hr: 157,
+        id: 186,
+        it: 182,
+        ja: 148,
+        ko: 137,
+        ms: 186,
+        nl: 167,
+        no: 158,
+        pl: 182,
+        pt: 193,
+        ru: 206,
+        sk: 157,
+        sl: 211,
+        sr: 146,
+        sv: 154,
+        th: 146,
+        tr: 161,
+        uk: 207,
+        zh: 156,
+      },
     }
   },
   computed: {
+    isApplePay() {
+      return isSafari()
+    },
+    isGooglePay() {
+      return !isSafari()
+    },
+    styleGooglePay() {
+      return {
+        backgroundImage:
+          'url(https://www.gstatic.com/instantbuy/svg/' +
+          this.theme +
+          (this.text ? '/' + this.locale : '_gpay') +
+          '.svg)',
+        minWidth: this.text ? this.localeConfig[this.locale] : 90 + 'px',
+      }
+    },
+    locale() {
+      return this.localeConfig[this.$i18n.locale] ? this.$i18n.locale : 'en'
+    },
     canRequest() {
       return (
         this.position === this.options.wallet_pay_button[this.tab].position &&
