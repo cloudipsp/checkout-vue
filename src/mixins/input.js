@@ -32,7 +32,8 @@ export default {
       default: '',
     },
     custom: Boolean,
-    customerData: Boolean,
+    // eslint-disable-next-line vue/prop-name-casing
+    customer_data: Boolean,
     recurring: Boolean,
     model: {
       type: Object,
