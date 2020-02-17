@@ -51,7 +51,8 @@ module.exports = {
     overlay: {
       warnings: true,
       errors: true
-    }
+    },
+    public: 'checkout.dev.cipsp.net',
   },
   lintOnSave: process.env.NODE_ENV !== 'production',
   runtimeCompiler: true,
@@ -126,6 +127,7 @@ module.exports = {
       .output
         .filename('[name].js')
         .chunkFilename('[name].js')
+        .jsonpFunction('fondyJsonp')
         .end()
       .module
         .rule('less')
