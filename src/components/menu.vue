@@ -10,13 +10,14 @@
           tab="wallets"
           position="bottom"
         >
-          <template v-slot:default="{ open }">
+          <template v-slot:default="{ open, classButton }">
             <div
               v-t="item"
               class="f-item"
               :class="['f-i-' + item]"
               @click="open"
             ></div>
+            <div style="display: none" :class="classButton"></div>
           </template>
         </f-wallet-pay-button>
         <div

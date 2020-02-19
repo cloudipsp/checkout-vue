@@ -1,35 +1,15 @@
 <template>
-  <div
-    v-if="show"
-    class="f-wallet-pay-button"
-    :class="{ 'f-block-hr': isTop, 'f-block': isTop || isMenu }"
-  >
-    <slot :open="open">
-      <div class="f-text-center" :class="{ 'f-block-sm': !isMenu && isTop }">
-        <button
-          v-if="isApplePay"
-          :class="[$css.btn, $css.btnLg, 'f-btn-' + theme, 'f-btn-' + icon]"
-          :style="style"
-          class="f-btn-pay f-btn-block"
-          @click="open"
-        >
-          <span v-if="text" v-t="icon"></span>
-          <f-svg :name="icon"></f-svg>
-        </button>
-        <button
-          v-if="isGooglePay"
-          :class="[$css.btn, $css.btnLg, 'f-btn-' + theme, 'f-btn-' + icon]"
-          :style="[style, styleGooglePay]"
-          class="f-btn-pay f-btn-block"
-          @click="open"
-        />
-      </div>
-    </slot>
+  <div v-show="show" class="f-wallet-pay-button" :class="classWrapper">
+    <div :class="classWrapperSm">
+      <slot :open="open" :classButton="classButton">
+        <div :class="classButton"></div>
+      </slot>
+    </div>
   </div>
 </template>
 
 <script>
-import { sendRequest, isSafari } from '@/utils/helpers'
+import $checkout from 'ipsp-js-sdk/dist/checkout'
 
 export default {
   inject: ['formRequest'],
@@ -45,73 +25,17 @@ export default {
   },
   data() {
     return {
-      icon: isSafari() ? 'apple_pay' : 'google_pay',
-      canMakePayment: false,
       timeout: null,
-      time: null,
-      localeConfig: {
-        en: 152,
-        ar: 189,
-        bg: 163,
-        ca: 182,
-        cs: 192,
-        da: 154,
-        de: 183,
-        el: 178,
-        es: 183,
-        et: 147,
-        fi: 148,
-        fr: 183,
-        hr: 157,
-        id: 186,
-        it: 182,
-        ja: 148,
-        ko: 137,
-        ms: 186,
-        nl: 167,
-        no: 158,
-        pl: 182,
-        pt: 193,
-        ru: 206,
-        sk: 157,
-        sl: 211,
-        sr: 146,
-        sv: 154,
-        th: 146,
-        tr: 161,
-        uk: 207,
-        zh: 156,
-      },
+      id: null,
+      show: false,
     }
   },
   computed: {
-    isApplePay() {
-      return isSafari()
-    },
-    isGooglePay() {
-      return !isSafari()
-    },
-    styleGooglePay() {
-      return {
-        backgroundImage:
-          'url(https://www.gstatic.com/instantbuy/svg/' +
-          this.theme +
-          (this.text ? '/' + this.locale : '_gpay') +
-          '.svg)',
-        minWidth: this.text ? this.localeConfig[this.locale] : 90 + 'px',
-      }
-    },
-    locale() {
-      return this.localeConfig[this.$i18n.locale] ? this.$i18n.locale : 'en'
-    },
-    canRequest() {
+    isInit() {
       return (
         this.position === this.options.wallet_pay_button[this.tab].position &&
         this.options.wallet_pay_button[this.tab].display
       )
-    },
-    show() {
-      return this.canMakePayment && this.canRequest
     },
     isTop() {
       return this.position === 'top'
@@ -122,21 +46,45 @@ export default {
     isMenu() {
       return this.tab === 'menu'
     },
+    isWallets() {
+      return this.tab === 'wallets'
+    },
     theme() {
       return this.options.wallet_pay_button[this.tab].theme
-    },
-    style() {
-      return !this.isMenu && this.isBottom
-        ? {
-            marginTop: '20px',
-          }
-        : {}
     },
     text() {
       return this.options.wallet_pay_button[this.tab].text
     },
     amount() {
       return this.store.state.params.amount
+    },
+    color() {
+      let result = ''
+      if (this.theme === 'dark') {
+        result = 'black'
+      }
+      if (this.theme === 'light') {
+        result = 'white'
+      }
+      return result
+    },
+    type() {
+      return this.text ? 'long' : 'short'
+    },
+    classWrapper() {
+      return {
+        'f-block-hr': this.isTop,
+        'f-block': this.isTop || this.isMenu,
+        'f-mt-20': !(this.isMenu || this.isWallets) && this.isBottom,
+      }
+    },
+    classWrapperSm() {
+      return {
+        'f-block-sm': !this.isMenu && this.isTop,
+      }
+    },
+    classButton() {
+      return 'f-wallet-pay-button-' + this.id
     },
   },
   watch: {
@@ -145,128 +93,47 @@ export default {
 
       clearTimeout(this.timeout)
 
-      this.timeout = setTimeout(this.sendRequest, 100)
+      this.timeout = setTimeout(this.update, 100)
     },
   },
-  created() {
-    if (!this.canRequest) return
+  mounted() {
+    if (!this.isInit) return
 
-    this.sendRequest()
-      .then(this.initCanMakePayment)
-      .catch(e => {
-        if (e instanceof Error) console.log(e)
-      })
+    this.id = this._uid
+
+    this.$nextTick(function() {
+      this.initButton()
+    })
   },
   methods: {
-    sendRequest() {
-      let time = new Date().getTime()
-      return sendRequest('api.checkout.pay', 'get', this.store.formParams(), {
-        cached: true,
-        clear: true,
-        params: {},
-      }).then(({ data }) => {
-        if (this.time > time) return Promise.reject()
-        this.time = time
-
-        this.config = data
-        this.initRequest()
-      })
-    },
-    initRequest() {
-      try {
-        this.request = new PaymentRequest(
-          this.config.methods,
-          this.config.details,
-          this.config.options
-        )
-        // TODO нада off ети подписки?
-        this.request.addEventListener(
-          'merchantvalidation',
-          this.merchantValidation
-        )
-        this.request.addEventListener(
-          'paymentmethodchange',
-          this.paymentMethodChange
-        )
-        this.request.addEventListener(
-          'shippingaddresschange',
-          this.shippingAddressChange
-        )
-        this.request.addEventListener(
-          'shippingoptionchange',
-          this.shippingOptionChange
-        )
-      } catch (e) {}
-    },
-    initCanMakePayment() {
-      if (!this.request) return
-
-      this.request
-        .canMakePayment()
-        .then(result => {
-          console.log('can.makePayment', result)
-
-          this.canMakePayment = result
+    initButton() {
+      this.button = $checkout
+        .get('PaymentButton', {
+          element: '.' + this.classButton,
+          origin: 'https://' + this.store.state.options.api_domain,
+          style: {
+            type: this.type,
+            color: this.color,
+            height: 55,
+          },
+          data: this.store.formParams(),
         })
-        .catch(() => {
-          console.log('can.makePayment', 'catch error', arguments)
+        .process(this.process)
+        .on('show', () => {
+          this.show = true
         })
+        .on('hide', () => {
+          this.show = false
+        })
+    },
+    update() {
+      this.button.update({ data: this.store.formParams() })
     },
     open() {
-      this.request
-        .show()
-        .then(this.callback)
-        .then(this.success)
-        .then(this.close)
-        .catch(this.close)
+      this.button.click()
     },
-    callback(response) {
-      this.response = response
-      return this.response.complete('success')
-    },
-    success() {
-      return this.formRequest({
-        payment_system: this.config.payment_system,
-        data: this.response.details,
-      })
-    },
-    close(...args) {
-      console.log(args[0].message)
-      this.initRequest()
-    },
-    shippingOptionChange(event) {
-      let request = event.target
-      let option = this.config.details.shippingOptions.find(option => {
-        if (option.id === request.shippingOption) {
-          return option
-        }
-      })
-      this.config.details.displayItems.push(option)
-      event.updateWith(this.config.details)
-    },
-    merchantValidation(event) {
-      this.appleSession({
-        url: event.validationURL,
-        domain: location.host,
-        merchant_id: this.store.state.params.merchant_id,
-      })
-        .then(model => {
-          event.complete(model.attr('data'))
-        })
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
-    },
-    appleSession(data) {
-      return sendRequest('api.checkout.pay', 'session', data)
-    },
-    paymentMethodChange(event) {
-      console.log('fire event', event.type)
-      event.updateWith(this.config.details)
-    },
-    shippingAddressChange(event) {
-      console.log('fire event', event.type, event.target)
-      event.updateWith(this.config.details)
+    process(model) {
+      this.formRequest(model.data)
     },
   },
 }
