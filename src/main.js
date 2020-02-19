@@ -34,12 +34,6 @@ const install = function(Vue) {
     let node = document.querySelector(el)
     if (!node) return console.error(['Selector', el, 'not found'].join(' '))
 
-    iframeCreate(
-      (optionsUser.options &&
-        (optionsUser.options.api_domain || optionsUser.options.apiDomain)) ||
-        optionsDefault.options.api_domain
-    )
-
     if (instance) instance.$destroy()
     store.setStateDefault()
 

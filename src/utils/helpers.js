@@ -4,19 +4,12 @@ import config from '@/config/config'
 import Schema from 'async-validator'
 import { i18n } from '@/i18n'
 
-let api = $checkout('Api')
+export const api = $checkout('Api')
 let cache = {}
 
 api.on('modal.close', function() {
   store.formLoading(false)
 })
-
-export function iframeCreate(apiDomain) {
-  if (apiDomain) {
-    api.setOrigin('https://' + apiDomain)
-  }
-  api.create()
-}
 
 export function sendRequest(name, method, params = {}, cached = {}) {
   let id = [name, method, JSON.stringify(cached.params || params)].join('_')

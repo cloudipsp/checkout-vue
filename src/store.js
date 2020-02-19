@@ -9,6 +9,7 @@ import {
   validate,
   sendRequest,
   findGetParameter,
+  api,
 } from '@/utils/helpers'
 import { isObject, isExist } from '@/utils/object'
 import { i18n, loadLanguageAsync } from '@/i18n'
@@ -56,6 +57,7 @@ export default {
     this.initLocale()
     this.initLocation()
     this.initToken()
+    this.initOrigin()
   },
   optionsFormat: function(options) {
     let regex = /[A-Z]+/g
@@ -116,6 +118,9 @@ export default {
   initToken() {
     this.state.params.token =
       findGetParameter('token') || this.state.params.token
+  },
+  initOrigin() {
+    api.setOrigin('https://' + this.state.options.api_domain)
   },
   changeLocale(lang) {
     loadLanguageAsync(lang).then(() => {
