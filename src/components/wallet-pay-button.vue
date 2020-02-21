@@ -10,6 +10,7 @@
 
 <script>
 import $checkout from 'ipsp-js-sdk/dist/checkout'
+import { api } from '@/utils/helpers'
 
 export default {
   inject: ['formRequest'],
@@ -109,6 +110,7 @@ export default {
     initButton() {
       this.button = $checkout
         .get('PaymentButton', {
+          api,
           element: '.' + this.classButton,
           origin: 'https://' + this.store.state.options.api_domain,
           style: {

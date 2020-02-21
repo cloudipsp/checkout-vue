@@ -26,7 +26,7 @@
   "dependencies": {
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^1.11.2",
-    "ipsp-js-sdk": "^1.0.33",
+    "ipsp-js-sdk": "^1.0.34",
     "vee-validate": "^2.2.7",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3"
