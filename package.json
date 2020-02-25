@@ -5,7 +5,7 @@
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm install && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
     "test:e2e": "vue-cli-service test:e2e --reporter ./tests/e2e/reporter/html-reporter.js",
