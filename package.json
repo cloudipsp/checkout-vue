@@ -1,6 +1,6 @@
 {
   "name": "fondy-checkout-vue",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Fondy checkout",
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
