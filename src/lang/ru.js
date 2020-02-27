@@ -75,6 +75,7 @@ export const messages = Object.assign({}, countries, {
   sk: 'Slovenský',
 
   customer_name: 'ФИО',
+  customer_name_utf8: 'ФИО',
   customer_address: 'Адрес. Улица, дом/строение',
   customer_zip: 'Почтовый код',
   customer_city: 'Город',
