@@ -17,6 +17,11 @@ import {
 import { validate as messages } from '@/lang/en'
 
 const install = Vue => {
+  const REGEX_CUSTOMER_FIELD = /^(?!\s)[0-9A-Za-z-\/\.,\s]+$/
+  const REGEX_CUSTOMER_FIELD_UTF8 = /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\s]+$/
+  const REGEX_CUSTOMER_NAME = /^([\u00BF-\u1FFF\u2C00-\uD7FF\w]+(\s|$)){2,}$/
+  const REGEX_RTRIM = /.+?\S+$/
+
   Validator.extend('required', required)
   Validator.extend('email', email)
   Validator.extend('numeric', numeric)
@@ -29,7 +34,16 @@ const install = Vue => {
   Validator.extend('digits', digits)
 
   Validator.extend('customer_field', {
-    validate: value => /^(?!\s)[0-9A-Za-z-\/\s\.,]+(?!\s)$/.test(value),
+    validate: value =>
+      REGEX_CUSTOMER_FIELD.test(value) && REGEX_RTRIM.test(value),
+  })
+  Validator.extend('customer_name', {
+    validate: value =>
+      REGEX_CUSTOMER_NAME.test(value) && REGEX_RTRIM.test(value),
+  })
+  Validator.extend('customer_field_utf8', {
+    validate: value =>
+      REGEX_CUSTOMER_FIELD_UTF8.test(value) && REGEX_RTRIM.test(value),
   })
   Validator.extend('phone', {
     validate: value => /^\+?\d{7,14}$/.test(value),
