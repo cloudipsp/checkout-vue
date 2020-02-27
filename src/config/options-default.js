@@ -21,7 +21,7 @@ const options = {
     logo_url: '',
     offerta_url: '',
     button: true,
-    cancel: true,
+    cancel: false,
     fee: true,
     tooltip: true,
     email: false,

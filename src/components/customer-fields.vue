@@ -1,21 +1,8 @@
 <template>
   <div class="f-customer-fields">
     <div v-for="item in getFields" :key="item.name">
-      <input-select
-        v-if="item.list"
-        :list="item.list"
-        :name="item.name"
-        :field="item.field"
-        :validate="item.valid"
-        customer_data
-      />
-      <input-text
-        v-else
-        :name="item.name"
-        :field="item.field"
-        :validate="item.valid"
-        customer_data
-      />
+      <input-select v-if="item.list" v-bind="item" />
+      <input-text v-else v-bind="item" />
     </div>
   </div>
 </template>
@@ -44,15 +31,17 @@ export default {
       return sort(result, 'name')
     },
     getFields: function() {
-      let result = []
-      this.options.customer_fields.forEach(name => {
-        let item = { field: name }
-        if (config[name].dictionary) {
-          item.list = this.countries
-        }
-        config[name] && result.push(Object.assign(item, config[name]))
-      })
-      return result
+      return this.options.customer_fields
+        .filter(name => config[name])
+        .reduce((result, field) => {
+          result.push({
+            ...config[field],
+            field,
+            list: config[field].dictionary && this.countries,
+            customer_data: true,
+          })
+          return result
+        }, [])
     },
   },
   created: function() {

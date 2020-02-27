@@ -1,35 +1,48 @@
 export default {
   customer_name: {
     name: 'customer_name',
-    valid: 'required|customer_field',
+    validate: 'required|customer_name',
+    autocomplete: 'cc-name',
+  },
+  customer_name_utf8: {
+    name: 'customer_name_utf8',
+    validate: 'required|customer_field_utf8',
+    autocomplete: 'cc-name',
   },
   customer_address: {
     name: 'customer_address',
-    valid: 'required|customer_field',
+    validate: 'required|customer_field',
+    autocomplete: 'shipping street-address',
   },
   customer_zip: {
     name: 'customer_zip',
-    valid: 'required|customer_field',
+    validate: 'required|customer_field',
+    autocomplete: 'shipping postal-code',
   },
   customer_city: {
     name: 'customer_city',
-    valid: 'required|customer_field',
+    validate: 'required|customer_field',
+    autocomplete: 'shipping locality',
   },
   customer_country: {
     name: 'customer_country',
-    valid: 'required',
+    validate: 'required',
     dictionary: 'countries',
+    autocomplete: 'shipping country',
   },
   customer_state: {
     name: 'customer_state',
-    valid: 'required|customer_field|min:2|max:20',
+    validate: 'required|customer_field|min:2|max:20',
+    autocomplete: 'shipping region',
   },
   phonemobile: {
     name: 'customer_phonemobile',
-    valid: 'required|phone',
+    validate: 'required|phone',
+    autocomplete: 'tel',
   },
   email: {
     name: 'customer_email',
-    valid: 'required|email',
+    validate: 'required|email',
+    autocomplete: 'email',
   },
 }

@@ -62,6 +62,9 @@ export default {
     isReady() {
       return this.store.state.ready
     },
+    token() {
+      return this.store.state.params.token
+    },
   },
   watch: {
     'store.state.regular.open': 'nextResize',
@@ -73,6 +76,10 @@ export default {
   },
   created: function() {
     this.createdEvent()
+
+    if (this.token) {
+      this.store.formLoading(true)
+    }
 
     sendRequest('api.checkout', 'app', this.store.formParams())
       .finally(() => {
