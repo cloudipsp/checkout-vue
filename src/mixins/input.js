@@ -48,6 +48,10 @@ export default {
       default: null,
     },
     readonly: Boolean,
+    autocomplete: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     name_() {

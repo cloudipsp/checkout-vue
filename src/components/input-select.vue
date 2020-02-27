@@ -15,6 +15,7 @@
       :class="[$css.fc, hasError ? $css.ie : '', classReadonly]"
       :readonly="readonly"
       :disabled="readonly"
+      :autocomplete="autocomplete"
       @input="input"
     >
       <option

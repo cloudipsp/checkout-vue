@@ -89,6 +89,7 @@
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
+      :autocomplete="autocomplete"
       @keyup.enter="onEnter"
     />
     <slot />
