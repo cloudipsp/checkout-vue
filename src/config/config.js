@@ -24,7 +24,7 @@ let css = ['bootstrap3', 'bootstrap4', 'foundation6']
 let YN = ['Y', 'N', 'y', 'n']
 let verificationType = ['amount', 'code']
 
-let validatorArray = function(array) {
+function validatorArray(array) {
   return {
     validator(rule, value, callback, source, options) {
       rule.type = 'array'
@@ -54,7 +54,7 @@ let validatorArray = function(array) {
   }
 }
 
-let validatorToken = function() {
+function validatorToken() {
   return {
     validator(rule, value, callback, source, options) {
       let errors = []
@@ -66,6 +66,18 @@ let validatorToken = function() {
             "can't be modified when token is used.",
           ].join(' ')
         )
+      }
+      callback(errors)
+    },
+  }
+}
+
+function validatorCurrencyRequired() {
+  return {
+    validator(rule, value, callback, source, options) {
+      let errors = []
+      if (!source.token && !source[rule.field]) {
+        errors.push([rule.fullField, 'is required'].join(' '))
       }
       callback(errors)
     },
@@ -150,7 +162,11 @@ export default {
       order_desc: { type: 'string', max: 1024 },
       amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
       // currency: { type: 'enum', enum: currency },
-      currency: [{ type: 'string' }, validatorToken()],
+      currency: [
+        { type: 'string' },
+        validatorToken(),
+        validatorCurrencyRequired(),
+      ],
       response_url: { type: 'url' },
       lang: { type: 'enum', enum: locales },
       required_rectoken: { type: 'enum', enum: YN },
