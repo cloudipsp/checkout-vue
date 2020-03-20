@@ -201,8 +201,6 @@ export default {
     }
   },
   formParams() {
-    if (this.state.params.token) return { token: this.state.params.token }
-
     let params = Object.assign({}, this.state.params)
 
     let custom = {}
