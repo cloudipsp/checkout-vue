@@ -4,48 +4,45 @@
     type="button"
     :class="className"
     :disabled="disabled"
-    @click="submit"
+    @click="click"
   >
     <span v-t="{ path: 'pay', args: args }" />
   </button>
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
 export default {
   inject: ['$validator'],
   computed: {
-    show() {
-      return this.store.state.options.button
-    },
+    ...mapState(['css', 'submit']),
+    ...mapState('options', { show: 'button' }),
+    ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     className() {
       return [
-        this.$css.btn,
-        this.$css.bs,
-        this.$css.btnLg,
+        this.css.btn,
+        this.css.bs,
+        this.css.btnLg,
         'f-btn-block',
-        this.$css.submit,
+        this.css.submit,
         'f-button-pay',
       ]
     },
     disabled() {
-      return !!this.errors.items.length && this.store.state.submit
+      return !!this.errors.items.length && this.submit
     },
     fullAmount() {
-      let amount = parseInt(this.store.state.params.amount)
-      let amountWithFee = parseInt(this.store.state.params.amount_with_fee)
-      if (!amount) {
+      if (!this.amount) {
         return false
       }
-      return (amountWithFee || amount) / 100
+      return (this.amount_with_fee || this.amount) / 100
     },
     args() {
-      return this.fullAmount
-        ? [this.fullAmount, this.$t(this.store.state.params.currency)]
-        : []
+      return this.fullAmount ? [this.fullAmount, this.$t(this.currency)] : []
     },
   },
   methods: {
-    submit() {
+    click() {
       this.$root.$emit('submit')
     },
   },
