@@ -34,6 +34,8 @@ export default {
   },
   computed: {
     ...mapState(['css']),
+    ...mapState('params', ['amount']),
+    ...mapState('options', ['api_domain']),
     ...mapState('options.wallet_pay_button', {
       text(state) {
         return state[this.tab].text
@@ -62,9 +64,6 @@ export default {
     },
     isWallets() {
       return this.tab === 'wallets'
-    },
-    amount() {
-      return this.store.state.params.amount
     },
     color() {
       let result = ''
@@ -119,7 +118,7 @@ export default {
         .get('PaymentButton', {
           api,
           element: '.' + this.classButton,
-          origin: 'https://' + this.store.state.options.api_domain,
+          origin: 'https://' + this.api_domain,
           style: {
             type: this.type,
             color: this.color,
