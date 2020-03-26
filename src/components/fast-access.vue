@@ -16,21 +16,23 @@
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   computed: {
+    ...mapState(['cdn']),
+    ...mapState('options', ['fast']),
+    ...mapState('router', ['system']),
     show() {
       return this.list.length
     },
     list() {
-      return this.store.state.options.fast.filter(
-        item => item.system !== this.store.state.router.system
-      )
+      return this.fast.filter(item => item.system !== this.system)
     },
     style() {
       return function(item) {
         return {
-          'background-image':
-            'url(' + this.store.state.cdn + 'banks/' + item + '.svg)',
+          'background-image': `url(${this.cdn}banks/${item}.svg)`,
         }
       }
     },
