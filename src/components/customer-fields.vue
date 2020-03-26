@@ -1,8 +1,7 @@
 <template>
-  <div class="f-customer-fields">
-    <div v-for="item in getFields" :key="item.name">
-      <input-select v-if="item.list" v-bind="item" />
-      <input-text v-else v-bind="item" />
+  <div v-if="show" class="f-customer-fields">
+    <div v-for="item in list" :key="item.name">
+      <component :is="item.component" v-bind="item" />
     </div>
   </div>
 </template>
@@ -11,9 +10,30 @@
 import config from '@/config/customer-fields'
 import countries from '@/config/countries'
 import { sort } from '@/utils/helpers'
+import { mapState } from '@/utils/store'
 
 export default {
   computed: {
+    ...mapState('options', ['email', 'customer_fields']),
+    show() {
+      return this.list.length
+    },
+    list() {
+      return this.customer_fields
+        .filter(name => name !== 'email' || !this.email)
+        .filter(name => config[name])
+        .reduce((result, field) => {
+          let list = config[field].dictionary && this.countries
+          result.push({
+            ...config[field],
+            field,
+            list,
+            customer_data: true,
+            component: list ? 'input-select' : 'input-text',
+          })
+          return result
+        }, [])
+    },
     countries() {
       let result = countries.map(item => ({
         id: item,
@@ -21,25 +41,6 @@ export default {
       }))
       return sort(result, 'name')
     },
-    getFields: function() {
-      return this.options.customer_fields
-        .filter(name => config[name])
-        .reduce((result, field) => {
-          result.push({
-            ...config[field],
-            field,
-            list: config[field].dictionary && this.countries,
-            customer_data: true,
-          })
-          return result
-        }, [])
-    },
-  },
-  created() {
-    let index = this.options.customer_fields.indexOf('email')
-    if (this.options.email && index > -1) {
-      this.options.customer_fields.splice(index, 1)
-    }
   },
 }
 </script>
