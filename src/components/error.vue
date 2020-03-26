@@ -11,6 +11,7 @@
 
 <script>
 import Resize from '@/mixins/resize'
+import { mapState } from '@/utils/store'
 
 export default {
   mixins: [Resize],
@@ -20,9 +21,7 @@ export default {
     }
   },
   computed: {
-    error() {
-      return this.store.state.error
-    },
+    ...mapState(['error']),
     value() {
       return this.error.show && this.show
     },
