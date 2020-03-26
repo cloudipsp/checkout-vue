@@ -23,6 +23,7 @@
 
 <script>
 import Resize from '@/mixins/resize'
+import { mapState } from '@/utils/store'
 
 export default {
   mixins: [Resize],
@@ -33,38 +34,38 @@ export default {
     },
   },
   computed: {
-    lang() {
-      return this.store.state.params.lang
-    },
-    locales() {
-      return this.store.state.options.locales
-    },
+    ...mapState(['css', 'showModalMethods']),
+    ...mapState('params', ['lang']),
+    ...mapState('options', ['locales', 'logo_url']),
+    ...mapState('options', {
+      optionsLang: 'lang',
+    }),
     styleLogo() {
-      if (!this.store.state.options.logo_url) return {}
+      if (!this.logo_url) return {}
       return {
-        'background-image': `url(${this.store.state.options.logo_url})`,
+        'background-image': `url(${this.logo_url})`,
       }
     },
     showLang() {
-      return this.store.state.options.lang && this.locales.length > 1
+      return this.optionsLang && this.locales.length > 1
     },
     showButtonMethods() {
       return !this.min
     },
     classLang() {
-      return [this.$css.fc, 'f-input-sm', 'f-visible-inline-block']
+      return [this.css.fc, 'f-input-sm', 'f-visible-inline-block']
     },
     classButtonMethods() {
       return [
-        this.$css.btn,
-        this.$css.bd,
-        this.$css.btnSm,
+        this.css.btn,
+        this.css.bd,
+        this.css.btnSm,
         'f-visible-mobile-inline-block',
       ]
     },
   },
   watch: {
-    'state.showModalMethods': function(show) {
+    showModalMethods(show) {
       this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
     },
   },
@@ -78,7 +79,7 @@ export default {
     resize() {
       if (window.innerWidth >= 768) {
         this.$root.$el.style.overflow = 'visible'
-      } else if (this.store.state.showModalMethods) {
+      } else if (this.showModalMethods) {
         this.$root.$el.style.overflow = 'hidden'
       }
     },
