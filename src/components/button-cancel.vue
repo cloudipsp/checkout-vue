@@ -4,23 +4,24 @@
 
 <script>
 import { sendRequest } from '@/utils/helpers'
+import { mapState } from '@/utils/store'
 
 export default {
   computed: {
-    show() {
-      return this.store.state.options.cancel
-    },
+    ...mapState(['css', 'loading']),
+    ...mapState('options', ['link']),
+    ...mapState('options', { show: 'cancel' }),
     className() {
-      return [this.$css.btn, 'f-btn-link', 'f-btn-block', 'f-button-cancel']
+      return [this.css.btn, 'f-btn-link', 'f-btn-block', 'f-button-cancel']
     },
   },
   methods: {
     click($event) {
       $event.preventDefault()
 
-      if (this.store.state.loading) return
+      if (this.loading) return
       this.store.formLoading(true)
-      sendRequest('api.checkout.order', 'get', this.params)
+      sendRequest('api.checkout.order', 'get', this.store.formParams())
         .finally(() => {
           this.store.formLoading(false)
         })
@@ -31,7 +32,7 @@ export default {
     },
     location(model) {
       if (!model.submitToMerchant()) {
-        location.assign(this.store.state.options.link)
+        location.assign(this.link)
       }
     },
   },
