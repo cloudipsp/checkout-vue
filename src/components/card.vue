@@ -8,27 +8,26 @@
           :mask="maskCardNumber"
           :masked="false"
           :maxlength="23"
-          :group="!!cardsLen"
-          :readonly="store.state.read_only || store.state.need_verify_code"
+          :group="isCards"
+          :readonly="readonly"
           type="tel"
           inputmode="numeric"
-          placeholder="card_number_p"
         >
           <span
-            v-if="!cardsLen"
-            :class="[$css.fcf, 'f-icon', 'f-i-card-empty']"
+            v-if="!isCards"
+            :class="[css.fcf, 'f-icon', 'f-i-card-empty']"
           />
-          <f-dropdown slot="group" :class="[$css.igb]">
+          <f-dropdown slot="group" :class="[css.igb]">
             <button
               type="button"
-              :class="[$css.btn, $css.bd, 'f-dropdown-toggle']"
+              :class="[css.btn, css.bd, 'f-dropdown-toggle']"
               data-role="trigger"
             >
               <span class="f-caret" />
             </button>
             <template slot="dropdown">
               <li
-                v-for="card in store.state.cards"
+                v-for="card in cards"
                 :key="card.card_number"
                 :class="{ active: hasActive(card) }"
               >
@@ -46,10 +45,9 @@
               :validate="validExpiryDate"
               :mask="maskExpiryDate"
               :masked="true"
-              :readonly="store.state.read_only || store.state.need_verify_code"
+              :readonly="readonly"
               type="tel"
               inputmode="numeric"
-              placeholder="expiry_date_p"
               placement="top"
             />
           </div>
@@ -60,11 +58,10 @@
               type="tel"
               inputmode="numeric"
               :mask="maskCvv"
-              :readonly="store.state.need_verify_code"
+              :readonly="need_verify_code"
               :maxlength="digitsCvv"
-              placeholder="cvv2_p"
             >
-              <span :class="[$css.fcf, 'f-icon', 'f-i-question']" />
+              <span :class="[css.fcf, 'f-icon', 'f-i-question']" />
               <f-tooltip
                 :text="$t('cvv2_question', [digitsCvv])"
                 trigger="hover"
@@ -75,12 +72,11 @@
           </div>
         </div>
         <input-text
-          v-if="options.email"
+          v-if="email"
           name="checkout-email"
           field="email"
           label="email"
           validate="required|email"
-          placeholder="email_p"
         />
         <input-text
           v-if="isVerificationCode"
@@ -99,7 +95,8 @@
           label="verification_amount"
           placeholder="verification_amount_p"
         />
-        <customer-fields v-if="options.customer_fields.length" />
+        <f-customer-fields />
+        <f-regular />
       </div>
     </div>
   </div>
@@ -108,12 +105,15 @@
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { sendRequest } from '@/utils/helpers'
-import CustomerFields from '@/components/customer-fields'
+import { mapState } from '@/utils/store'
+import FCustomerFields from '@/components/customer-fields'
+import FRegular from '@/components/regular'
 
 export default {
   inject: ['$validator'],
   components: {
-    CustomerFields,
+    FCustomerFields,
+    FRegular,
   },
   data() {
     return {
@@ -123,6 +123,18 @@ export default {
     }
   },
   computed: {
+    ...mapState([
+      'css',
+      'read_only',
+      'need_verify_code',
+      'verification_type',
+      'cards',
+    ]),
+    ...mapState('options', ['email']),
+    ...mapState('params', ['card_number', 'code', 'token']),
+    readonly() {
+      return this.read_only || this.need_verify_code
+    },
     validExpiryDate() {
       let minDate
       if (this.store.state.validate_expdate) {
@@ -140,7 +152,7 @@ export default {
       return {
         rules: {
           required: true,
-          ccard: !/\d{6}X/.test(this.params.card_number),
+          ccard: !/\d{6}X/.test(this.card_number),
         },
       }
     },
@@ -148,16 +160,16 @@ export default {
       return 'required|digits:' + this.digitsCvv
     },
     digitsCvv() {
-      return this.params.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
+      return this.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
     },
-    cardsLen() {
-      return this.store.state.cards.length
+    isCards() {
+      return !!this.cards.length
     },
     validCode() {
       return {
         rules: {
           required: true,
-          digits: /EURT/.test(this.params.code) ? false : '4',
+          digits: /EURT/.test(this.code) ? false : '4',
         },
       }
     },
@@ -171,20 +183,14 @@ export default {
       }
     },
     isVerificationAmount() {
-      return (
-        this.store.state.need_verify_code &&
-        this.store.state.verification_type === 'amount'
-      )
+      return this.need_verify_code && this.verification_type === 'amount'
     },
     isVerificationCode() {
-      return (
-        this.store.state.need_verify_code &&
-        this.store.state.verification_type !== 'amount'
-      )
+      return this.need_verify_code && this.verification_type !== 'amount'
     },
   },
   watch: {
-    'params.card_number': function(newVal, oldVal) {
+    card_number(newVal, oldVal) {
       newVal = newVal.replace(/ /g, '')
       oldVal = oldVal.replace(/ /g, '')
       let newFirst = newVal && newVal[0]
@@ -196,7 +202,7 @@ export default {
           'api.checkout.card_type_fee',
           'get',
           {
-            token: this.params.token,
+            token: this.token,
             first_card_digit: newFirst,
           },
           { cached: true }
@@ -207,7 +213,7 @@ export default {
           'api.checkout.card_bin',
           'get',
           {
-            token: this.params.token,
+            token: this.token,
             card_bin: newBin,
           },
           { cached: true }
@@ -217,7 +223,7 @@ export default {
   },
   methods: {
     hasActive(card) {
-      return card.card_number.replace(/ /g, '') === this.params.card_number
+      return card.card_number.replace(/ /g, '') === this.card_number
     },
     setCardNumber(card) {
       this.store.setCardNumber(card)

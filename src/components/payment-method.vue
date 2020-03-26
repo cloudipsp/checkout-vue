@@ -13,7 +13,6 @@
       <!--card emoney ibank trustly cash sepa-->
       <component :is="method" :key="method" :payment-systems="paymentSystems" />
     </transition>
-    <f-regular />
     <f-offer />
     <div class="f-block">
       <div class="f-block-sm">
@@ -40,7 +39,6 @@ import FPaymentFields from '@/components/payment-fields'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FOffer from '@/components/offer'
-import FRegular from '@/components/regular'
 import FIcons from '@/components/icons'
 
 export default {
@@ -55,7 +53,6 @@ export default {
     FButtonPay,
     FButtonCancel,
     FOffer,
-    FRegular,
     FIcons,
   },
   computed: {
