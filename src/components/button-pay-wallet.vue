@@ -11,6 +11,7 @@
 <script>
 import $checkout from 'ipsp-js-sdk/dist/checkout'
 import { api } from '@/utils/helpers'
+import { mapState } from '@/utils/store'
 
 export default {
   inject: ['formRequest'],
@@ -32,11 +33,23 @@ export default {
     }
   },
   computed: {
+    ...mapState(['css']),
+    ...mapState('options.wallet_pay_button', {
+      text(state) {
+        return state[this.tab].text
+      },
+      display(state) {
+        return state[this.tab].display
+      },
+      theme(state) {
+        return state[this.tab].theme
+      },
+      positionConfig(state) {
+        return state[this.tab].position
+      },
+    }),
     isInit() {
-      return (
-        this.position === this.options.wallet_pay_button[this.tab].position &&
-        this.options.wallet_pay_button[this.tab].display
-      )
+      return this.position === this.positionConfig && this.display
     },
     isTop() {
       return this.position === 'top'
@@ -49,12 +62,6 @@ export default {
     },
     isWallets() {
       return this.tab === 'wallets'
-    },
-    theme() {
-      return this.options.theme
-    },
-    text() {
-      return this.options.text
     },
     amount() {
       return this.store.state.params.amount
