@@ -1,28 +1,14 @@
 <template>
   <div class="f-info">
     <div v-t="'info'" class="f-block-hr f-title f-visible-desktop" />
-    <div
-      v-if="options.title || params.order_desc || options.link"
-      class="f-block f-block-hr"
-    >
-      <div v-if="options.title" v-t="options.title" class="f-block-title" />
-      <div v-if="params.order_desc" v-t="params.order_desc" />
-      <div v-if="options.link">
-        <a :href="options.link" target="_blank">{{ options.link }}</a>
+    <div v-if="show" class="f-block f-block-hr">
+      <div v-if="title" v-t="title" class="f-block-title" />
+      <div v-if="order_desc" v-t="order_desc" />
+      <div v-if="link">
+        <a :href="link" target="_blank">{{ link }}</a>
       </div>
     </div>
-    <div v-if="options.fee" class="f-block f-block-hr">
-      <div>
-        <span v-t="'amount'" /> {{ amount }} <span v-t="params.currency" />
-      </div>
-      <div v-if="fee">
-        <span v-t="'fee'" />
-        <span v-if="amount_fee"
-          >{{ amount_fee }} <span v-t="params.currency"
-        /></span>
-        <span v-if="fee">({{ fee }})</span>
-      </div>
-    </div>
+    <f-fee class="f-block f-block-hr" />
     <div class="f-visible-desktop">
       <i class="f-icon f-icon-block f-i-security" />
     </div>
@@ -30,35 +16,18 @@
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+import FFee from '@/components/fee'
+
 export default {
-  computed: {
-    amount_fee() {
-      let amount = parseInt(this.params.amount)
-      let amountWithFee = parseInt(this.params.amount_with_fee)
-      if (!amount || amountWithFee - amount < 0) {
-        return false
-      }
-      return amountWithFee ? (amountWithFee - amount) / 100 : false
-    },
-    amount() {
-      let amount = parseInt(this.params.amount)
-      return amount / 100
-    },
-    fee() {
-      let current = Number(this.params.fee)
-      return current
-        ? parseFloat(String(current * 100))
-            .toFixed(2)
-            .concat('%')
-        : 0
-    },
+  components: {
+    FFee,
   },
-  watch: {
-    'params.fee'() {
-      this.store.getAmountWithFee()
-    },
-    'params.amount'() {
-      this.store.getAmountWithFee()
+  computed: {
+    ...mapState('options', ['title', 'link']),
+    ...mapState('params', ['order_desc']),
+    show() {
+      return !!(this.title || this.order_desc || this.link)
     },
   },
 }
