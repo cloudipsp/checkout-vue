@@ -2,11 +2,11 @@
   <div
     :class="[
       'f-form-group',
-      hasError ? $css.he : '',
-      hasDefaultSlot ? $css.hf : '',
+      hasError ? css.he : '',
+      hasDefaultSlot ? css.hf : '',
     ]"
   >
-    <label :class="[$css.cl, hasError ? $css.le : '']" :for="name_">{{
+    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{
       label_
     }}</label>
     <input
@@ -14,7 +14,7 @@
       :id="name_"
       v-model="params[field_]"
       :type="type"
-      :class="[$css.fc, classReadonly]"
+      :class="[css.fc, classReadonly]"
       :readonly="readonly"
       :disabled="readonly"
     />
@@ -23,13 +23,13 @@
       :id="name_"
       v-model="params[field_]"
       :type="type"
-      :class="[$css.fc, classReadonly]"
+      :class="[css.fc, classReadonly]"
       :mask="mask"
       :masked="masked"
       :readonly="readonly"
       :disabled="readonly"
     />
-    <div v-else-if="group && mask" :class="[$css.ig]">
+    <div v-else-if="group && mask" :class="[css.ig]">
       <f-mask
         :id="name_"
         ref="input"
@@ -38,7 +38,7 @@
         :data-vv-as="label_"
         :data-vv-name="name_"
         :type="type"
-        :class="[$css.fc, hasError ? $css.ie : '']"
+        :class="[css.fc, hasError ? css.ie : '']"
         :maxlength="maxlength"
         :placeholder="placeholder_"
         :inputmode="inputmode"
@@ -47,16 +47,6 @@
         @blur.native="blur"
         @keyup.native.enter="onEnter"
       />
-      <f-tooltip
-        v-if="options.tooltip"
-        :text="errors.first(name_)"
-        :enable="hasError"
-        :placement="placement"
-        :target="'#' + name_"
-      />
-      <div v-if="!options.tooltip && hasError" class="f-error">
-        {{ errors.first(name_) }}
-      </div>
       <slot name="group" />
     </div>
     <f-mask
@@ -68,7 +58,7 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[$css.fc, hasError ? $css.ie : '']"
+      :class="[css.fc, hasError ? css.ie : '']"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
@@ -85,7 +75,7 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[$css.fc, hasError ? $css.ie : '']"
+      :class="[css.fc, hasError ? css.ie : '']"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
@@ -94,13 +84,13 @@
     />
     <slot />
     <f-tooltip
-      v-if="!group && options.tooltip"
+      v-if="tooltip"
       :text="errors.first(name_)"
       :enable="hasError"
       :placement="placement"
       :target="'#' + name_"
     />
-    <div v-if="!group && !options.tooltip && hasError" class="f-error">
+    <div v-if="!tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>
   </div>

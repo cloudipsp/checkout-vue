@@ -1,3 +1,5 @@
+import { mapState } from '@/utils/store'
+
 export default {
   inject: ['$validator'],
   props: {
@@ -48,6 +50,8 @@ export default {
     },
   },
   computed: {
+    ...mapState(['css', 'submit']),
+    ...mapState('options', ['tooltip']),
     name_() {
       return 'f-' + this.name
     },
@@ -66,10 +70,7 @@ export default {
       return this.$validator.flags[this.name_] || {}
     },
     hasError() {
-      return (
-        this.errors.has(this.name_) &&
-        (this.flag.touched || this.store.state.submit)
-      )
+      return this.errors.has(this.name_) && (this.flag.touched || this.submit)
     },
     value_: {
       get() {

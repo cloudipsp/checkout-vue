@@ -1,5 +1,5 @@
 <template>
-  <div :class="['f-form-group', hasError ? $css.he : '']">
+  <div :class="['f-form-group', hasError ? css.he : '']">
     <input
       :id="name_"
       v-model="value_"
@@ -9,12 +9,17 @@
       type="checkbox"
       class="f-checkbox"
     />
-    <label :class="[$css.cl]" :for="name_"><slot /></label>
+    <label :class="[css.cl]" :for="name_"><slot /></label>
     <f-tooltip
+      v-if="tooltip"
       :text="errors.first(name_)"
       :enable="hasError"
+      :placement="placement"
       :target="'#' + name_"
     />
+    <div v-if="!tooltip && hasError" class="f-error">
+      {{ errors.first(name_) }}
+    </div>
   </div>
 </template>
 

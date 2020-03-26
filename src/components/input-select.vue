@@ -1,8 +1,8 @@
 <template>
-  <div :class="['f-form-group', hasError ? $css.he : '']">
+  <div :class="['f-form-group', hasError ? css.he : '']">
     <label
       v-t="label_"
-      :class="[$css.cl, hasError ? $css.le : '']"
+      :class="[css.cl, hasError ? css.le : '']"
       :for="name_"
       >{{ label_ }}</label
     >
@@ -12,7 +12,7 @@
       v-validate="validate"
       :data-vv-as="label_"
       :data-vv-name="name_"
-      :class="[$css.fc, hasError ? $css.ie : '', classReadonly]"
+      :class="[css.fc, hasError ? css.ie : '', classReadonly]"
       :readonly="readonly"
       :disabled="readonly"
       :autocomplete="autocomplete"
@@ -26,13 +26,13 @@
       />
     </select>
     <f-tooltip
-      v-if="options.tooltip"
+      v-if="tooltip"
       :text="errors.first(name_)"
       :enable="hasError"
       :placement="placement"
       :target="'#' + name_"
     />
-    <div v-if="!options.tooltip && hasError" class="f-error">
+    <div v-if="!tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>
   </div>
