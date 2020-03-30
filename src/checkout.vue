@@ -20,6 +20,7 @@
 import Payment from '@/components/payment'
 import EventBus from '@/event-bus'
 import FHeader from '@/components/header'
+import { mapState } from '@/utils/store'
 
 export default {
   name: 'FCheckout',
@@ -39,13 +40,12 @@ export default {
     }
   },
   computed: {
-    error() {
-      return this.store.state.error
-    },
+    ...mapState(['error']),
+    ...mapState('options', ['full_screen']),
   },
   created: function() {
     this.store.setOptions(this.optionsUser)
-    if (this.options.full_screen) {
+    if (this.full_screen) {
       require('./less/style-sm.less?no-extract')
       require('./less/style-md.less?no-extract')
     }
