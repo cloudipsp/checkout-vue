@@ -4,10 +4,10 @@
       class="f-block-hr f-block"
       position="top"
       :tab="method"
-    ></f-button-pay-wallet>
+    />
     <f-payment-fields />
     <transition name="fade">
-      <f-icons class="f-block f-block-hr f-text-center" :list="icons"></f-icons>
+      <f-icons class="f-block f-block-hr f-text-center" :list="icons" />
     </transition>
     <transition name="fade">
       <!--card emoney ibank trustly cash sepa-->
@@ -16,12 +16,9 @@
     <f-offer />
     <div class="f-block">
       <div class="f-block-sm">
-        <f-button-pay></f-button-pay>
-        <f-button-pay-wallet
-          position="bottom"
-          :tab="method"
-        ></f-button-pay-wallet>
-        <f-button-cancel></f-button-cancel>
+        <f-button-pay />
+        <f-button-pay-wallet position="bottom" :tab="method" />
+        <f-button-cancel />
         <i class="f-icon f-icon-block f-i-security f-hidden-desktop" />
       </div>
     </div>
@@ -40,6 +37,7 @@ import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FOffer from '@/components/offer'
 import FIcons from '@/components/icons'
+import { mapState } from '@/utils/store'
 
 export default {
   components: {
@@ -56,14 +54,13 @@ export default {
     FIcons,
   },
   computed: {
-    method() {
-      return this.store.state.router.method
-    },
+    ...mapState('router', ['method']),
+    ...mapState(['options']),
     icons() {
-      return this.store.state.options[this.method + '_icons']
+      return this.options[this.method + '_icons']
     },
     paymentSystems() {
-      return this.store.state.options[this.method]
+      return this.options[this.method]
     },
   },
 }
