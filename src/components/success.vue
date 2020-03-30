@@ -3,15 +3,17 @@
     <div class="f-block f-block-hr">
       <div class="f-form-group">
         <div class="f-block f-title3">
-          <i
-            :class="[
-              'f-icon',
-              'f-icon-sm',
-              {
-                'f-i-error': order.order_status === 'declined',
-                'f-i-success': order.order_status === 'approved',
-              },
-            ]"
+          <f-svg
+            v-if="isApproved"
+            class="f-text-success"
+            name="check-circle"
+            size="lg"
+          />
+          <f-svg
+            v-if="isDeclined"
+            class="f-text-danger"
+            name="times-circle"
+            size="lg"
           />
           <span v-t="order.order_status" />
         </div>
@@ -26,7 +28,7 @@
         </div>
         <div class="f-row">
           <div
-            v-t="{ path: 'number_payment', args: [$t(options.title)] }"
+            v-t="{ path: 'number_payment', args: [$t(title)] }"
             class="f-col-xs-6"
           />
           <div class="f-col-xs-6 f-text-bold f-hyphens">
@@ -39,11 +41,22 @@
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   props: {
     order: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    ...mapState('options', ['title']),
+    isApproved() {
+      return this.order.order_status === 'approved'
+    },
+    isDeclined() {
+      return this.order.order_status === 'declined'
     },
   },
 }
