@@ -10,13 +10,16 @@
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   computed: {
+    ...mapState('options', ['offerta_url']),
     show() {
-      return this.store.state.options.offerta_url
+      return this.offerta_url
     },
     html() {
-      return this.$t('offer_t', [this.store.state.options.offerta_url])
+      return this.$t('offer_t', [this.offerta_url])
     },
   },
 }
