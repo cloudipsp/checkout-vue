@@ -1,17 +1,7 @@
 <template>
   <div v-if="show" class="f-regular">
-    <div class="f-block">
-      <div class="f-block-sm f-text-center">
-        <input
-          id="f-regular-swipe"
-          v-model="options.open"
-          type="checkbox"
-          class="f-checkbox-swipe"
-        />
-        <label v-t="'regular'" :class="[$css.cl]" for="f-regular-swipe" />
-      </div>
-    </div>
-    <div v-if="options.open" class="f-block">
+    <input-swipe v-model="open" class="f-block f-text-center" label="regular" />
+    <div v-if="open" class="f-block">
       <div class="f-block-sm">
         <div class="f-row">
           <div class="f-col-xs-6">
@@ -23,18 +13,17 @@
               type="tel"
               inputmode="numeric"
               recurring
-              placeholder="regular_every_p"
-              :readonly="params.readonly"
+              :readonly="readonly"
             />
           </div>
           <div class="f-col-xs-6">
             <input-select
-              :list="options.period"
+              :list="periods"
               name="regular_period"
               field="period"
               validate="required"
               recurring
-              :readonly="params.readonly"
+              :readonly="readonly"
             />
           </div>
         </div>
@@ -42,8 +31,7 @@
           name="regular_amount"
           field="amount"
           recurring
-          placeholder="regular_amount_p"
-          :readonly="params.readonly"
+          :readonly="readonly"
         />
         <input-text
           name="regular_start_time"
@@ -51,7 +39,7 @@
           validate="required"
           type="date"
           recurring
-          :readonly="params.readonly"
+          :readonly="readonly"
         />
       </div>
     </div>
@@ -59,29 +47,30 @@
 </template>
 
 <script>
+import { mapState, mapStateGetSet } from '@/utils/store'
+
 export default {
-  data() {
-    return {
-      options: this.store.state.regular,
-      params: this.store.state.params.recurring_data,
-    }
-  },
   computed: {
-    show() {
-      return this.options.insert && this.store.state.router.method === 'card'
-    },
+    ...mapState('regular', {
+      periods: 'period',
+      show: 'insert',
+    }),
+    ...mapStateGetSet('regular', ['open']),
+    ...mapStateGetSet('params', ['recurring']),
+    ...mapState('params.recurring_data', ['period', 'every', 'readonly']),
+    ...mapStateGetSet('params.recurring_data', ['start_time', 'end_time']),
   },
   watch: {
-    'options.open': {
+    open: {
       handler(value) {
-        this.store.state.params.recurring = value ? 'y' : 'n'
+        this.recurring = value ? 'y' : 'n'
       },
       immediate: true,
     },
   },
   created() {
-    this.params.end_time = this.recurringEndTime()
-    this.params.start_time = this.recurringStartTime()
+    this.end_time = this.recurringEndTime()
+    this.start_time = this.recurringStartTime()
   },
   methods: {
     getDate(date) {
@@ -101,21 +90,21 @@ export default {
       )
     },
     recurringTime(field) {
-      let date = this.params[field] || new Date()
+      let date = this[field]
       let value = this.getDate(new Date(date))
       let now = this.getDate(new Date())
       if (now > value) value = now
       return this.getDateFormat(value)
     },
     recurringStartTime() {
-      if (this.params.start_time) {
+      if (this.start_time) {
         return this.recurringTime('start_time')
       } else {
-        return this.getFuturePeriod(this.params.period, this.params.every)
+        return this.getFuturePeriod(this.period, this.every)
       }
     },
     recurringEndTime() {
-      if (this.params.end_time) {
+      if (this.end_time) {
         return this.recurringTime('end_time')
       } else {
         return this.getDefaultEndDate()
