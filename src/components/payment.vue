@@ -1,15 +1,15 @@
 <template>
-  <div class="f-wrapper" :data-e2e-ready="isReady">
+  <div class="f-wrapper" :data-e2e-ready="ready">
     <info ref="info" />
     <f-methods :in-progress="inProgress" />
     <div ref="center" class="f-center">
       <!--payment-method success pending-->
-      <component :is="router.page" :order="order" />
-      <div v-if="store.state.loading">
+      <component :is="page" :order="order" />
+      <div v-if="loading">
         <div class="f-loading" />
         <div class="f-loading-i" />
       </div>
-      <f-error></f-error>
+      <f-error />
       <submit3ds
         v-model="show3ds"
         :duration.sync="duration3ds"
@@ -27,10 +27,11 @@ import FMethods from '@/components/methods'
 import FError from '@/components/error'
 
 import Info from '@/components/info'
-import { deepMerge, sendRequest } from '@/utils/helpers'
+import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/object'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
+import { mapState, mapStateGetSet } from '@/utils/store'
 
 let model3ds
 
@@ -67,19 +68,48 @@ export default {
     }
   },
   computed: {
-    isReady() {
-      return this.store.state.ready
-    },
-    token() {
-      return this.store.state.params.token
-    },
+    ...mapState(['loading']),
+    ...mapState('router', ['page']),
+    ...mapState('options', ['full_screen']),
+    ...mapState('params', ['token']),
+
+    ...mapStateGetSet([
+      'ready',
+      'cards',
+      'tabs',
+      'verification_type',
+      'need_verify_code',
+      'validate_expdate',
+    ]),
+    ...mapStateGetSet('options', [
+      'email',
+      'link',
+      'title',
+      'logo_url',
+      'offerta_url',
+      'methods',
+      'default_country',
+      'customer_fields',
+    ]),
+    ...mapStateGetSet('params', [
+      'lang',
+      'fee',
+      'order_desc',
+      'amount',
+      'currency',
+      'merchant_id',
+      'order_id',
+      'card_number',
+      'expiry_date',
+      'cvv2',
+    ]),
     createdFormParams() {
       return this.token ? { token: this.token } : this.store.formParams()
     },
   },
   watch: {
     'store.state.regular.open': 'nextResize',
-    'options.email': 'nextResize',
+    email: 'nextResize',
     router: {
       handler: 'nextResize',
       deep: true,
@@ -116,7 +146,7 @@ export default {
       })
     },
     formRequest(data) {
-      if (this.store.state.loading) return
+      if (this.loading) return
       this.store.formLoading(true)
 
       return sendRequest(
@@ -136,7 +166,6 @@ export default {
       if (!model) return
       this.$root.$emit('success', model)
 
-      // TODO уточнить у Степана
       this.location(model.instance(model.alt('order', model.data)))
       this.submit3dsSuccess(model)
     },
@@ -144,21 +173,20 @@ export default {
       this.$root.$emit('error', model)
     },
     appSuccess(model) {
-      this.store.state.ready = true
+      this.ready = true
       this.$root.$emit('ready', model)
       this.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
     },
     cardsSuccess(model) {
-      if (this.store.state.need_verify_code || !Array.isArray(model.data))
-        return
+      if (this.need_verify_code || !Array.isArray(model.data)) return
 
-      this.store.state.cards = model.data
+      this.cards = model.data
 
-      if (this.store.state.cards.length) {
+      if (this.cards.length) {
         //          this.$validator.detach('f-card_number')
-        this.store.setCardNumber(this.store.state.cards[0])
+        this.store.setCardNumber(this.cards[0])
         this.$nextTick(() => {
           this.$validator.validateAll()
         })
@@ -166,43 +194,37 @@ export default {
     },
     infoSuccess(model) {
       if (isExist(model.attr('validate_expdate'))) {
-        this.store.state.validate_expdate = model.attr('validate_expdate')
+        this.validate_expdate = model.attr('validate_expdate')
       }
-      this.options.link = model.attr('merchant_url') || this.options.link
-      this.params.lang = model.attr('lang') || this.params.lang
-      this.options.email =
-        model.attr('checkout_email_required') || this.options.email
-      this.options.title =
-        this.options.title || model.attr('merchant.localized_name')
-      this.options.logo_url =
-        this.options.logo_url || model.attr('merchant.logo_url')
-      this.options.offerta_url =
-        this.options.offerta_url || model.attr('merchant.offerta_url')
+      this.link = model.attr('merchant_url') || this.link
+      this.lang = model.attr('lang') || this.lang
+      this.email = model.attr('checkout_email_required') || this.email
+      this.title = this.title || model.attr('merchant.localized_name')
+      this.logo_url = this.logo_url || model.attr('merchant.logo_url')
+      this.offerta_url = this.offerta_url || model.attr('merchant.offerta_url')
 
       if (
         !this.store.attr('user.options.methods.length') &&
         model.attr('tabs_order') &&
         model.attr('tabs_order').length
       ) {
-        this.options.methods = model.attr('tabs_order')
+        this.methods = model.attr('tabs_order')
         this.store.initLocation()
       }
-      this.state.tabs = model.attr('tabs')
-      this.options.default_country =
+      this.tabs = model.attr('tabs')
+      this.default_country =
         this.store.attr('user.options.default_country') ||
         model.attr('default_country')
 
-      this.params.fee = model.attr('client_fee') || 0
-      this.options.customer_fields = model.attr('customer_required_data') || []
+      this.fee = model.attr('client_fee') || 0
+      this.customer_fields = model.attr('customer_required_data') || []
 
-      this.params.order_desc =
-        this.params.order_desc || model.attr('order.order_desc')
+      this.order_desc = this.order_desc || model.attr('order.order_desc')
 
       if (model.attr('order.verification')) {
-        this.store.state.verification_type = model.attr('verification_type')
-        this.options.title = 'verification_t'
-        this.params.order_desc =
-          'verification_' + this.store.state.verification_type + '_d'
+        this.verification_type = model.attr('verification_type')
+        this.title = 'verification_t'
+        this.order_desc = 'verification_' + this.verification_type + '_d'
       }
 
       this.store.setRecurringData(model.attr('order.recurring_data'))
@@ -219,11 +241,12 @@ export default {
 
       this.location(model)
 
-      this.params.amount = order_data.amount
-      this.params.currency = order_data.currency
-      this.params.merchant_id = order_data.merchant_id
-      this.params.email = order_data.sender_email || this.params.email
-      this.params.order_id = order_data.order_id
+      this.amount = order_data.amount
+      this.currency = order_data.currency
+      this.merchant_id = order_data.merchant_id
+      this.store.state.params.email =
+        order_data.sender_email || this.store.state.params.email
+      this.order_id = order_data.order_id
     },
     submit3dsSuccess(model) {
       if (!model.waitOn3dsDecline()) return
@@ -252,10 +275,10 @@ export default {
 
       if (model.needVerifyCode()) {
         // need_verify_code
-        this.store.state.need_verify_code = true
-        this.params.card_number = model.attr('order_data.masked_card')
-        this.params.expiry_date = model.attr('order_data.expiry_date')
-        this.params.cvv2 = ''
+        this.need_verify_code = true
+        this.card_number = model.attr('order_data.masked_card')
+        this.expiry_date = model.attr('order_data.expiry_date')
+        this.cvv2 = ''
         this.store.location('payment-method', 'card')
       } else if (model.inProgress() && model.waitForResponse()) {
         this.inProgress = true
@@ -267,10 +290,10 @@ export default {
       }
     },
     locationPending() {
-      if (this.store.state.loading) return
+      if (this.loading) return
       this.store.formLoading(true)
       this.processingTimeout = setTimeout(() => {
-        sendRequest('api.checkout.order', 'get', this.params)
+        sendRequest('api.checkout.order', 'get', this.store.formParams())
           .finally(() => {
             this.store.formLoading(false)
           })
@@ -306,7 +329,7 @@ export default {
       })
     },
     resize() {
-      if (!this.options.full_screen) return
+      if (!this.full_screen) return
 
       let $container = document.querySelector('.f-container')
       this.$refs.center.style.minHeight = 'auto'
