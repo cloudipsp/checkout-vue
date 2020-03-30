@@ -1,29 +1,33 @@
 <template>
   <f-modal :value="value" size="md" :backdrop="false" @input="toggle">
-    <div slot="title" class="f-text-danger">
-      {{ $t('submit3ds_title') }}
-    </div>
+    <template #title>
+      <div class="f-text-danger">
+        {{ $t('submit3ds_title') }}
+      </div>
+    </template>
     <span v-t="'submit3ds_text'" />
-    <div slot="footer">
+    <template #footer>
       <button
         type="button"
-        :class="[$css.btn, 'f-btn-link']"
+        :class="[css.btn, 'f-btn-link']"
         @click="toggle(false)"
       >
         <span v-t="'back'" />
       </button>
-      <button type="button" :class="[$css.btn, $css.bs]" @click="submit">
+      <button type="button" :class="[css.btn, css.bs]" @click="submit">
         <span v-t="'submit3ds_submit'" />
       </button>
       <div
         v-t="{ path: 'submit3ds_wait', args: [duration] }"
         class="f-text-muted"
       />
-    </div>
+    </template>
   </f-modal>
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   props: {
     value: {
@@ -39,6 +43,9 @@ export default {
     return {
       timeout: null,
     }
+  },
+  computed: {
+    ...mapState(['css']),
   },
   watch: {
     value(v) {
