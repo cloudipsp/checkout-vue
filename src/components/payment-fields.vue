@@ -1,8 +1,10 @@
 <template>
-  <fields v-if="show" class="f-payment-fields"></fields>
+  <fields v-if="show" class="f-payment-fields" />
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   components: {
     fields: {
@@ -10,10 +12,10 @@ export default {
     },
   },
   computed: {
+    ...mapState(['need_verify_code']),
+    ...mapState('options', ['fields']),
     show() {
-      return (
-        this.store.state.options.fields && !this.store.state.need_verify_code
-      )
+      return this.fields && !this.need_verify_code
     },
   },
 }
