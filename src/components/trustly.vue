@@ -2,16 +2,17 @@
 import PaymentSystems from '@/mixins/payment-systems'
 import { sortBanks } from '@/config/trustly'
 import { sort } from '@/utils/helpers'
+import { mapState } from '@/utils/store'
 
 export default {
   mixins: [PaymentSystems],
   computed: {
+    ...mapState(['ready']),
+    ...mapState('tabs', ['trustly']),
+    ...mapState('options', ['countries', 'default_country']),
     // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
     config() {
-      return (
-        (this.state.tabs.trustly && this.state.tabs.trustly.payment_systems) ||
-        {}
-      )
+      return (this.trustly && this.trustly.payment_systems) || {}
     },
     // [147209]
     keys() {
@@ -33,8 +34,8 @@ export default {
     // [{id: 'PL', name: 'Poland'}]
     country() {
       let result =
-        this.options.countries && this.options.countries.length
-          ? this.options.countries
+        this.countries && this.countries.length
+          ? this.countries
           : this.values
               .map(item => item.country)
               .filter((item, key, self) => self.indexOf(item) === key)
@@ -46,9 +47,7 @@ export default {
     },
     // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
     listSelect() {
-      return this.listFull.filter(
-        item => item.country === this.options.default_country
-      )
+      return this.listFull.filter(item => item.country === this.default_country)
     },
     // {mbank: {id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
     mapper() {
@@ -74,14 +73,14 @@ export default {
     country: {
       handler(item) {
         if (item.length === 1) {
-          this.options.default_country = item[0].id
+          this.default_country = item[0].id
         }
       },
       immediate: true,
     },
   },
   created() {
-    if (!this.store.state.ready) {
+    if (!this.ready) {
       this.store.formLoading(true)
     }
   },

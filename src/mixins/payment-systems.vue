@@ -1,5 +1,5 @@
 <template>
-  <div :class="['f-' + router.method]">
+  <div :class="['f-' + method]">
     <div class="f-block">
       <div class="f-block-sm">
         <input-select
@@ -19,11 +19,7 @@
           placeholder="system_search_p"
         />
       </div>
-      <div
-        v-if="showTitle"
-        v-t="router.method + '_t'"
-        class="f-block f-title2"
-      />
+      <div v-if="showTitle" v-t="method + '_t'" class="f-block f-title2" />
       <div class="f-text-center" :class="'f-ps-' + list.length">
         <div
           v-for="item in listMin"
@@ -56,6 +52,8 @@
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   props: {
     paymentSystems: {
@@ -74,6 +72,8 @@ export default {
     }
   },
   computed: {
+    ...mapState(['cdn', 'options']),
+    ...mapState('router', ['method', 'system']),
     country() {
       return []
     },
@@ -120,19 +120,18 @@ export default {
     style() {
       return function(item) {
         return {
-          'background-image':
-            'url(' + this.store.state.cdn + 'banks/' + item + '.svg)',
+          'background-image': `url(${this.cdn}banks/${item}.svg)`,
         }
       }
     },
     isMethod() {
       return function(method) {
-        return this.store.state.router.method === method
+        return this.method === method
       }
     },
     isSystem() {
       return function(system) {
-        return this.router.system === system
+        return this.system === system
       }
     },
     isActive() {
