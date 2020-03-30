@@ -11,7 +11,7 @@ import {
   findGetParameter,
   api,
 } from '@/utils/helpers'
-import { isObject, isExist } from '@/utils/object'
+import { isObject } from '@/utils/object'
 import { i18n, loadLanguageAsync } from '@/i18n'
 
 export default {

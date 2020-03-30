@@ -17,26 +17,28 @@
             v-if="!isCards"
             :class="[css.fcf, 'f-icon', 'f-i-card-empty']"
           />
-          <f-dropdown slot="group" :class="[css.igb]">
-            <button
-              type="button"
-              :class="[css.btn, css.bd, 'f-dropdown-toggle']"
-              data-role="trigger"
-            >
-              <span class="f-caret" />
-            </button>
-            <template slot="dropdown">
-              <li
-                v-for="card in cards"
-                :key="card.card_number"
-                :class="{ active: hasActive(card) }"
+          <template #group>
+            <f-dropdown :class="[css.igb]">
+              <button
+                type="button"
+                :class="[css.btn, css.bd, 'f-dropdown-toggle']"
+                data-role="trigger"
               >
-                <a role="button" @click="setCardNumber(card)">{{
-                  card.card_number
-                }}</a>
-              </li>
-            </template>
-          </f-dropdown>
+                <span class="f-caret" />
+              </button>
+              <template #dropdown>
+                <li
+                  v-for="card in cards"
+                  :key="card.card_number"
+                  :class="{ active: hasActive(card) }"
+                >
+                  <a role="button" @click="setCardNumber(card)">{{
+                    card.card_number
+                  }}</a>
+                </li>
+              </template>
+            </f-dropdown>
+          </template>
         </input-text>
         <div class="f-row">
           <div class="f-col-xs-7">

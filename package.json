@@ -77,9 +77,19 @@
     "rules": {
       "no-useless-escape": 0,
       "no-console": 0,
-      "no-unused-vars": 0,
-      "no-empty": 0,
-      "no-var": 2
+      "no-var": 2,
+      "vue/html-self-closing": [
+        "warn",
+        {
+          "html": {
+            "void": "always",
+            "normal": "always",
+            "component": "always"
+          },
+          "svg": "always",
+          "math": "always"
+        }
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"

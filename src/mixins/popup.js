@@ -91,7 +91,7 @@ export default {
       this.initTriggerElByTarget(value)
       this.initListeners()
     },
-    allContent(value) {
+    allContent() {
       // can not use value because it can not detect slot changes
       if (this.isNotEmpty()) {
         // reset position while content changed & is shown

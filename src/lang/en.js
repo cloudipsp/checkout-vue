@@ -112,10 +112,10 @@ export const messages = Object.assign({}, countries, {
 })
 
 export const validate = Object.assign({}, validateMessages, {
-  customer_name: field => `Enter both Surname and Name`,
-  customer_field: field => `Please type only Latin characters`,
-  customer_field_utf8: field => `Invalid characters`,
+  customer_name: () => `Enter both Surname and Name`,
+  customer_field: () => `Please type only Latin characters`,
+  customer_field_utf8: () => `Invalid characters`,
   phone: field => `The ${field} field format is invalid.`,
-  numrange: field => `Transfer amount limit exceeded.`,
+  numrange: () => `Transfer amount limit exceeded.`,
   ccard: field => `The ${field} field format is invalid.`,
 })

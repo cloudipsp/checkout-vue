@@ -56,7 +56,7 @@ function validatorArray(array) {
 
 function validatorToken() {
   return {
-    validator(rule, value, callback, source, options) {
+    validator(rule, value, callback, source) {
       let errors = []
       if (source.token && rule.field in source) {
         errors.push(
@@ -74,7 +74,7 @@ function validatorToken() {
 
 function validatorCurrencyRequired() {
   return {
-    validator(rule, value, callback, source, options) {
+    validator(rule, value, callback, source) {
       let errors = []
       if (!source.token && !source[rule.field]) {
         errors.push([rule.fullField, 'is required'].join(' '))

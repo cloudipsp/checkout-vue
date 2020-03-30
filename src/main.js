@@ -6,6 +6,8 @@
 
 // TODO $emit setParams затирает стейт параметрами notSet.params
 // TODO в fail приходят cards, их отображать?
+// vuepress
+// css class
 
 import Vue from 'vue'
 import Checkout from '@/checkout'
@@ -15,7 +17,6 @@ import components from '@/components'
 import store from '@/store'
 import Store from '@/mixins/store'
 import Validator from '@/mixins/validator'
-import { iframeCreate } from '@/utils/helpers'
 
 const install = function(Vue) {
   let instance

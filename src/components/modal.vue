@@ -276,7 +276,7 @@ export default {
         }, this.transitionDuration)
       }
     },
-    backdropClicked(event) {
+    backdropClicked() {
       if (this.backdrop) {
         this.toggle(false)
       }

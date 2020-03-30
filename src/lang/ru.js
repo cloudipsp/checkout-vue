@@ -86,8 +86,8 @@ export const messages = Object.assign({}, countries, {
 })
 
 export const validate = Object.assign({}, validateMessages, {
-  customer_name: field => `Введите фамилию и имя`,
-  customer_field: field => `Только латинские буквы`,
-  customer_field_utf8: field => `Недопустимые символы`,
+  customer_name: () => `Введите фамилию и имя`,
+  customer_field: () => `Только латинские буквы`,
+  customer_field_utf8: () => `Недопустимые символы`,
   ccard: field => `Поле ${field} должно быть действительным номером карты`,
 })

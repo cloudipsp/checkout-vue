@@ -2,7 +2,7 @@
   <div v-show="show" class="f-wallet-pay-button" :class="classWrapper">
     <div :class="classWrapperSm">
       <slot :open="open" :classButton="classButton">
-        <div :class="classButton"></div>
+        <div :class="classButton" />
       </slot>
     </div>
   </div>
