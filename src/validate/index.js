@@ -13,6 +13,7 @@ import {
   max,
   after,
   digits,
+  regex,
 } from 'vee-validate/dist/rules.esm.js'
 import { validate as messages } from '@/i18n/lang/en'
 
@@ -32,6 +33,7 @@ const install = Vue => {
   Validator.extend('max', max)
   Validator.extend('after', after)
   Validator.extend('digits', digits)
+  Validator.extend('regex', regex)
 
   Validator.extend('customer_field', {
     validate: value =>

@@ -180,7 +180,7 @@ export default {
         rules: {
           required: true,
           numrange: [0, 9999999.99],
-          regex: /^\d{1,7}([,\.]\d{1,2})?$/,
+          regex: '^\\d{1,7}([,\\.]\\d{1,2})?$',
         },
       }
     },
