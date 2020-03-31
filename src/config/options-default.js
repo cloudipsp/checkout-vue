@@ -95,6 +95,7 @@ const options = {
   tabs: {},
   ready: false,
   showModalMethods: false,
+  fields: [],
   validate_expdate: true,
 }
 

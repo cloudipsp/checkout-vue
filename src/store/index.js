@@ -16,7 +16,8 @@ import {
 import { isObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
-import store from '@/store/setup'
+import store from './setup'
+import loadButton from './button'
 
 Vue.use(store)
 
@@ -66,7 +67,9 @@ export default {
     this.initFast()
     this.initLang()
     this.initLocation()
+    this.initError()
     this.initToken()
+    this.initButton()
     this.initOrigin()
   },
   optionsFormat: function(options) {
@@ -119,9 +122,50 @@ export default {
     }
     this.changeLang(lang)
   },
+  initError() {
+    const token = findGetParameter('token')
+    const button = findGetParameter('button')
+    if ((this.state.params.token || token) && button) {
+      this.setError([
+        {
+          message:
+            "Conflict error: order token and button token can't be used concurrently.",
+        },
+      ])
+    }
+  },
   initToken() {
-    this.state.params.token =
-      findGetParameter('token') || this.state.params.token
+    this.setParam(this.state.params, 'token', findGetParameter('token'))
+  },
+  initButton() {
+    let button = findGetParameter('button')
+    if (!button) return
+
+    loadButton(button).then(
+      ({
+        api_domain,
+        name,
+        amount,
+        order_desc,
+        currency,
+        merchant_id,
+        lang,
+        fields,
+      }) => {
+        this.setParam(this.state.options, 'api_domain', api_domain)
+        this.setParam(this.state.options, 'title', name)
+        this.setParam(this.state.params, 'amount', amount)
+        this.setParam(this.state.params, 'order_desc', order_desc)
+        this.setParam(this.state.params, 'currency', currency)
+        this.setParam(this.state.params, 'merchant_id', merchant_id)
+        this.setParam(this.state.params, 'lang', lang)
+        this.setParam(this.state, 'fields', fields)
+      }
+    )
+  },
+  setParam(object, key, value) {
+    if (!value) return
+    object[key] = value
   },
   initOrigin() {
     api.setOrigin('https://' + this.state.options.api_domain)

@@ -5,7 +5,7 @@
       position="top"
       :tab="method"
     />
-    <f-payment-fields />
+    <f-fields />
     <transition name="fade">
       <f-icons class="f-block f-block-hr f-text-center" :list="icons" />
     </transition>
@@ -32,7 +32,7 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
-import FPaymentFields from '@/components/payment-fields'
+import FFields from '@/components/fields'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FOffer from '@/components/offer'
@@ -47,7 +47,7 @@ export default {
     Trustly,
     Cash,
     Sepa,
-    FPaymentFields,
+    FFields,
     FButtonPay,
     FButtonCancel,
     FOffer,

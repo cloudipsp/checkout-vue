@@ -1,6 +1,7 @@
 import { mapState } from '@/utils/store'
 
 export default {
+  inheritAttrs: false,
   inject: ['$validator'],
   props: {
     name: {
