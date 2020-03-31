@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
 import configPaymentSystems from '@/config/payment-systems'
@@ -11,8 +13,12 @@ import {
   findGetParameter,
   api,
 } from '@/utils/helpers'
-import { isObject } from '@/utils/object'
-import { i18n, loadLanguageAsync } from '@/i18n'
+import { isObject } from '@/utils/typeof'
+import { loadLanguageAsync } from '@/i18n/index'
+import i18n from '@/i18n/index'
+import store from '@/store/setup'
+
+Vue.use(store)
 
 export default {
   attr: function(name, value) {

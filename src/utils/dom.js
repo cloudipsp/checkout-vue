@@ -1,5 +1,5 @@
 // v0.31.5
-import { isExist, isString, isFunction } from '@/utils/object'
+import { isExist, isString, isFunction } from '@/utils/typeof'
 
 export const EVENTS = {
   MOUSE_ENTER: 'mouseenter',

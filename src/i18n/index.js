@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import { messages } from '@/lang/en'
+import { messages } from './lang/en'
 import store from '@/store'
 import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
 
 Vue.use(VueI18n)
 
-export const i18n = new VueI18n({
+const i18n = new VueI18n({
   locale: 'en',
   fallbackLocale: 'en',
   silentTranslationWarn: true,
@@ -24,7 +24,7 @@ function setI18nLanguage(lang) {
 export function loadLanguageAsync(lang) {
   return import(
     /* webpackChunkName: "i18n/[request]" */
-    `@/lang/${lang}`
+    `./lang/${lang}`
   ).then(msgs => {
     Validator.localize(lang, {
       messages: Object.assign(
@@ -43,3 +43,5 @@ export function loadLanguageAsync(lang) {
     return setI18nLanguage(lang)
   })
 }
+
+export default i18n

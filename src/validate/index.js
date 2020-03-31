@@ -14,7 +14,7 @@ import {
   after,
   digits,
 } from 'vee-validate/dist/rules.esm.js'
-import { validate as messages } from '@/lang/en'
+import { validate as messages } from '@/i18n/lang/en'
 
 const install = Vue => {
   const REGEX_CUSTOMER_FIELD = /^(?!\s)[0-9A-Za-z-\/\.,\s]+$/

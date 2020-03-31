@@ -67,7 +67,7 @@ import {
   removeClass,
   getComputedStyle,
 } from '@/utils/dom'
-import { isFunction } from '@/utils/object'
+import { isFunction } from '@/utils/typeof'
 
 const MODAL_BACKDROP = 'f-modal-backdrop'
 const IN = 'in'

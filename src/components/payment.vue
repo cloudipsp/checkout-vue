@@ -28,7 +28,7 @@ import FError from '@/components/error'
 
 import Info from '@/components/info'
 import { sendRequest } from '@/utils/helpers'
-import { isExist } from '@/utils/object'
+import { isExist } from '@/utils/typeof'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 import { mapState, mapStateGetSet } from '@/utils/store'

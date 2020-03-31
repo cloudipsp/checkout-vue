@@ -11,12 +11,11 @@
 
 import Vue from 'vue'
 import Checkout from '@/checkout'
-import { i18n } from '@/i18n'
-import { isString, isObject } from '@/utils/object'
-import components from '@/components'
-import store from '@/store'
-import Store from '@/mixins/store'
-import Validator from '@/mixins/validator'
+import i18n from '@/i18n/index'
+import { isString, isObject } from '@/utils/typeof'
+import components from '@/components/index'
+import store from '@/store/index'
+import validate from '@/validate/index'
 
 const install = function(Vue) {
   let instance
@@ -24,8 +23,7 @@ const install = function(Vue) {
   Vue.config.productionTip = false
 
   Vue.use(components)
-  Vue.use(Store)
-  Vue.use(Validator)
+  Vue.use(validate)
 
   window.fondy = function(el, optionsUser) {
     optionsUser = optionsUser || {}

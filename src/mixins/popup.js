@@ -13,7 +13,7 @@ import {
   isElement,
   addClass,
 } from '@/utils/dom'
-import { isString, isFunction } from '@/utils/object'
+import { isString, isFunction } from '@/utils/typeof'
 
 const SHOW_CLASS = 'in'
 
