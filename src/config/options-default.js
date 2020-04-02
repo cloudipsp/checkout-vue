@@ -94,6 +94,7 @@ const options = {
   tabs: {},
   ready: false,
   showChangeMethods: false,
+  validate_expdate: true,
 }
 
 configLocales.forEach(function(locale) {

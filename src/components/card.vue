@@ -146,10 +146,17 @@ export default {
   },
   computed: {
     validExpiryDate: function() {
-      let date = new Date()
-      let year = String(date.getFullYear()).slice(-2)
-      let month = ('0' + (date.getMonth() + 1)).slice(-2)
-      return 'required|date_format:MM/yy|after:' + month + '/' + year + ',true'
+      let minDate
+      if (this.store.state.validate_expdate) {
+        let date = new Date()
+        let year = String(date.getFullYear()).slice(-2)
+        let month = ('0' + (date.getMonth() + 1)).slice(-2)
+        minDate = `${month}/${year}`
+      } else {
+        minDate = '01/19'
+      }
+
+      return `required|date_format:MM/yy|after:${minDate},true`
     },
     validCardNumber: function() {
       return {

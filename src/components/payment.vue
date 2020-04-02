@@ -24,6 +24,7 @@ import Info from '@/components/info'
 import Success from '@/components/success'
 import Pending from '@/components/pending'
 import { deepMerge, sendRequest } from '@/utils/helpers'
+import { isExist } from '@/utils/object'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 
@@ -157,7 +158,11 @@ export default {
       }
     },
     infoSuccess: function(model) {
-      this.options.link = model.attr('merchant_url') || this.options.link
+      if (isExist(model.attr('validate_expdate'))) {
+        this.store.state.validate_expdate = model.attr('validate_expdate')
+      }
+      this.options.link =
+        model.attr('merchant.merchant_url') || this.options.link
       this.params.lang = model.attr('lang') || this.params.lang
       this.options.email =
         model.attr('checkout_email_required') || this.options.email
