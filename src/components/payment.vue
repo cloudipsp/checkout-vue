@@ -32,6 +32,7 @@ import { isExist } from '@/utils/typeof'
 import Submit3ds from '@/components/submit3ds'
 import Resize from '@/mixins/resize'
 import { mapState, mapStateGetSet } from '@/utils/store'
+import loadButton from '@/store/button'
 
 let model3ds
 
@@ -122,7 +123,16 @@ export default {
       this.store.formLoading(true)
     }
 
-    sendRequest('api.checkout', 'app', this.createdFormParams)
+    loadButton()
+      .then(
+        response => {
+          this.store.setButtonParams(response)
+        },
+        () => {}
+      )
+      .then(() => {
+        return sendRequest('api.checkout', 'app', this.createdFormParams)
+      })
       .finally(() => {
         this.store.formLoading(false)
       })

@@ -1,6 +1,10 @@
 import axios from 'axios'
+import { findGetParameter } from '@/utils/helpers'
 
-export default function(button) {
+export default function() {
+  let button = findGetParameter('button')
+  if (!button) return Promise.reject()
+
   return axios
     .get(`${button}.json`)
     .then(response => {
