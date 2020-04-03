@@ -4,7 +4,7 @@
       :id="id"
       class="f-checkbox-swipe"
       type="checkbox"
-      :value="value"
+      :checked="value"
       @input="input"
     />
     <label v-t="label" :class="[css.cl]" :for="id" />

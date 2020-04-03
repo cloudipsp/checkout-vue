@@ -135,24 +135,8 @@ export default {
   initToken() {
     this.setParam(this.state.params, 'token', findGetParameter('token'))
   },
-  setButtonParams({
-    api_domain,
-    name,
-    amount,
-    order_desc,
-    currency,
-    merchant_id,
-    lang,
-    fields,
-  }) {
-    this.setParam(this.state.options, 'api_domain', api_domain)
-    this.setParam(this.state.options, 'title', name)
-    this.setParam(this.state.params, 'amount', amount)
-    this.setParam(this.state.params, 'order_desc', order_desc)
-    this.setParam(this.state.params, 'currency', currency)
-    this.setParam(this.state.params, 'merchant_id', merchant_id)
-    this.setParam(this.state.params, 'lang', lang)
-    this.setParam(this.state, 'fields', fields)
+  setButtonParams(options) {
+    deepMerge(this.state, options)
   },
   setParam(object, key, value) {
     if (!value) return
@@ -240,7 +224,8 @@ export default {
     }
   },
   formParams() {
-    let params = Object.assign({}, this.state.params)
+    // copy params
+    let params = JSON.parse(JSON.stringify(this.state.params))
 
     let custom = {}
     for (let field in params.custom) {
@@ -260,9 +245,8 @@ export default {
     }
 
     params.amount = params.amount / 100
-    if (this.state.params.recurring_data.amount) {
-      this.state.params.recurring_data.amount =
-        this.state.params.recurring_data.amount / 100
+    if (params.recurring_data.amount) {
+      params.recurring_data.amount = params.recurring_data.amount / 100
     }
 
     if (params.recurring === 'n') {
