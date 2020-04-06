@@ -1,48 +1,46 @@
 <template>
   <div v-if="show" class="f-regular">
     <input-swipe v-model="open" class="f-block f-text-center" label="regular" />
-    <div v-if="open" class="f-block">
-      <div class="f-block-sm">
-        <div class="f-row">
-          <div class="f-col-xs-6">
-            <input-text
-              name="regular_every"
-              field="every"
-              validate="required|numeric"
-              placement="bottom"
-              type="tel"
-              inputmode="numeric"
-              recurring
-              :readonly="readonly"
-            />
-          </div>
-          <div class="f-col-xs-6">
-            <input-select
-              :list="periods"
-              name="regular_period"
-              field="period"
-              validate="required"
-              recurring
-              :readonly="readonly"
-            />
-          </div>
+    <template v-if="open">
+      <div class="f-row">
+        <div class="f-col-xs-6">
+          <input-text
+            name="regular_every"
+            field="every"
+            validate="required|numeric"
+            placement="bottom"
+            type="tel"
+            inputmode="numeric"
+            recurring
+            :readonly="readonly"
+          />
         </div>
-        <input-amount
-          name="regular_amount"
-          field="amount"
-          recurring
-          :readonly="readonly"
-        />
-        <input-text
-          name="regular_start_time"
-          field="start_time"
-          validate="required"
-          type="date"
-          recurring
-          :readonly="readonly"
-        />
+        <div class="f-col-xs-6">
+          <input-select
+            :list="periods"
+            name="regular_period"
+            field="period"
+            validate="required"
+            recurring
+            :readonly="readonly"
+          />
+        </div>
       </div>
-    </div>
+      <input-amount
+        name="regular_amount"
+        field="amount"
+        recurring
+        :readonly="readonly"
+      />
+      <input-text
+        name="regular_start_time"
+        field="start_time"
+        validate="required"
+        type="date"
+        recurring
+        :readonly="readonly"
+      />
+    </template>
   </div>
 </template>
 

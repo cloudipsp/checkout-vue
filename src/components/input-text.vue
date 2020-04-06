@@ -46,6 +46,7 @@
         :masked="masked"
         @blur.native="blur"
         @keyup.native.enter="onEnter"
+        v-on="$listeners"
       />
       <slot name="group" />
     </div>
@@ -66,10 +67,12 @@
       :masked="masked"
       @blur.native="blur"
       @keyup.native.enter="onEnter"
+      v-on="$listeners"
     />
     <input
       v-else
       :id="name_"
+      ref="input"
       v-model="params[field_]"
       v-validate="validate"
       :data-vv-as="label_"
@@ -81,6 +84,7 @@
       :inputmode="inputmode"
       :autocomplete="autocomplete"
       @keyup.enter="onEnter"
+      v-on="$listeners"
     />
     <slot />
     <f-tooltip

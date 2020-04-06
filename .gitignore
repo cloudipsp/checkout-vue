@@ -24,4 +24,4 @@ yarn-error.log*
 *.sw?
 
 .firebase
-/public/*.json
+/public/buttons/*.json

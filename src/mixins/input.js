@@ -47,7 +47,7 @@ export default {
     readonly: Boolean,
     autocomplete: {
       type: String,
-      default: '',
+      default: null,
     },
   },
   computed: {
