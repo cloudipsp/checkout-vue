@@ -1,0 +1,40 @@
+{
+  "host": "api.dev.fondy.eu",
+
+  "name": "Payment button",
+  "amount": 1234321,
+  "fields": {
+    "id-e6uTgrkFJl": {
+      "p": 0,
+      "name": "id-e6uTgrkFJl",
+      "label": "label 1",
+      "valid": {
+        "max_length": 222,
+        "min_length": 1
+      },
+      "value": "value 1",
+      "readonly": true,
+      "required": true,
+      "placeholder": "placeholder 1"
+    }
+  },
+  "params": {
+    "delayed": "Y",
+    "order_desc": "Payment for goods test v2",
+    "product_id": 12321,
+    "required_rectoken": "Y"
+  },
+  "currency": "EUR",
+  "protocol": "https",
+  "recurring": {
+    "every": 1,
+    "period": "month",
+    "end_time": "2027-01-08",
+    "start_time": "2020-04-02"
+  },
+  "button_type": ".recurring-form",
+  "merchant_id": 1600516,
+  "amount_readonly": true,
+  "recurring_state": true,
+  "recurring_readonly": true
+}
