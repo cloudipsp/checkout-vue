@@ -12,6 +12,7 @@
           :readonly="readonly"
           type="tel"
           inputmode="numeric"
+          @input="inputCardNumber"
         >
           <span
             v-if="!isCards"
@@ -43,6 +44,7 @@
         <div class="f-row">
           <div class="f-col-xs-7">
             <input-text
+              ref="expiry_date"
               name="expiry_date"
               :validate="validExpiryDate"
               :mask="maskExpiryDate"
@@ -51,10 +53,12 @@
               type="tel"
               inputmode="numeric"
               placement="top"
+              @input="inputExpiryDate"
             />
           </div>
           <div class="f-col-xs-5">
             <input-text
+              ref="cvv2"
               name="cvv2"
               :validate="validCvv"
               type="tel"
@@ -79,6 +83,7 @@
           field="email"
           label="email"
           validate="required|email"
+          autocomplete="email"
         />
         <input-text
           v-if="isVerificationCode"
@@ -231,6 +236,20 @@ export default {
       this.store.setCardNumber(card)
       this.$nextTick(() => {
         this.$validator.validateAll()
+      })
+    },
+    inputCardNumber(value) {
+      if (value.length !== 16 && value.length !== 19) return
+      this.focus('f-card_number', value, 'expiry_date')
+    },
+    inputExpiryDate(value) {
+      this.focus('f-expiry_date', value, 'cvv2')
+    },
+    focus(name, value, next) {
+      if (!this.fields[name]) return
+      this.$validator.validate(name, value).then(valid => {
+        if (!valid) return
+        this.$refs[next].$refs.input.$el.focus()
       })
     },
   },

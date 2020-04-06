@@ -17,6 +17,7 @@ import { isObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
 import store from './setup'
+import { getLabel } from '@/store/button'
 
 Vue.use(store)
 
@@ -69,6 +70,7 @@ export default {
     this.initError()
     this.initToken()
     this.initOrigin()
+    this.initReferrer()
   },
   optionsFormat: function(options) {
     let regex = /[A-Z]+/g
@@ -144,6 +146,9 @@ export default {
   },
   initOrigin() {
     api.setOrigin('https://' + this.state.options.api_domain)
+  },
+  initReferrer() {
+    this.state.params.referrer = document.referrer
   },
   changeLang(lang) {
     loadLanguageAsync(lang).then(() => {
@@ -227,17 +232,17 @@ export default {
     // copy params
     let params = JSON.parse(JSON.stringify(this.state.params))
 
-    let custom = {}
-    for (let field in params.custom) {
-      if (params.custom.hasOwnProperty(field)) {
-        custom[field] = {
-          value: params.custom[field],
-          label: i18n.t(field),
-        }
-      }
-    }
-    params.custom = custom
-
+    params.custom = Object.fromEntries(
+      Object.entries(params.custom).map(([name, value]) => {
+        return [
+          name,
+          {
+            value,
+            label: getLabel(name) || i18n.t(name),
+          },
+        ]
+      })
+    )
     params.payment_system = this.state.router.system || this.state.router.method
 
     if (this.state.need_verify_code) {
