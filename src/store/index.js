@@ -12,6 +12,7 @@ import {
   sendRequest,
   findGetParameter,
   api,
+  fromEntries,
 } from '@/utils/helpers'
 import { isObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
@@ -232,7 +233,7 @@ export default {
     // copy params
     let params = JSON.parse(JSON.stringify(this.state.params))
 
-    params.custom = Object.fromEntries(
+    params.custom = fromEntries(
       Object.entries(params.custom).map(([name, value]) => {
         return [
           name,
