@@ -5,6 +5,7 @@
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:dist": "serve -s dist",
     "build": "npm install && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
