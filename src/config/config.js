@@ -26,28 +26,25 @@ let verificationType = ['amount', 'code']
 
 function validatorArray(array) {
   return {
+    type: 'array',
     validator(rule, value, callback, source, options) {
-      rule.type = 'array'
-      let validate =
-        rule.required || (!rule.required && source.hasOwnProperty(rule.field))
+      if (!rule.required && !source.hasOwnProperty(rule.field))
+        return callback()
       let errors = []
-      if (validate) {
-        if (Array.isArray(value)) {
-          value.forEach(function(item) {
-            if (array.indexOf(item) < 0) {
-              errors.push(
-                [
-                  rule.fullField,
-                  item,
-                  'is not equal to one of',
-                  array.join(', '),
-                ].join(' ')
-              )
-            }
-          })
-        } else {
-          rules.type(rule, value, source, errors, options)
-        }
+      if (Array.isArray(value)) {
+        value.forEach(function(item) {
+          if (array.includes(item)) return
+          errors.push(
+            [
+              rule.fullField,
+              item,
+              'is not equal to one of',
+              array.join(', '),
+            ].join(' ')
+          )
+        })
+      } else {
+        rules.type(rule, value, source, errors, options)
       }
       callback(errors)
     },
