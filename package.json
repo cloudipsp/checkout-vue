@@ -29,6 +29,7 @@
     "async-validator": "^1.11.2",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "css-vars-ponyfill": "^2.2.1",
     "ipsp-js-sdk": "^1.0.34",
     "vee-validate": "^2.2.7",
     "vue": "^2.6.11",
