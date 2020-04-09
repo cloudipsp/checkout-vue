@@ -41,14 +41,9 @@ export default {
   },
   computed: {
     ...mapState(['error']),
-    ...mapState('options', ['full_screen']),
   },
   created: function() {
     this.store.setOptions(this.optionsUser)
-    if (this.full_screen) {
-      require('./less/style-sm.less?no-extract')
-      require('./less/style-md.less?no-extract')
-    }
 
     EventBus.$on('checkout-min', this.setMin)
   },

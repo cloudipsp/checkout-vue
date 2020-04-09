@@ -72,6 +72,7 @@ export default {
     this.initToken()
     this.initOrigin()
     this.initReferrer()
+    this.initCssDevice()
   },
   optionsFormat: function(options) {
     let regex = /[A-Z]+/g
@@ -137,6 +138,12 @@ export default {
   },
   initToken() {
     this.setParam(this.state.params, 'token', findGetParameter('token'))
+  },
+  initCssDevice() {
+    if (!this.state.options.full_screen) return
+
+    require('@/less/style-sm.less?no-extract')
+    require('@/less/style-md.less?no-extract')
   },
   setButtonParams(options) {
     deepMerge(this.state, options)
