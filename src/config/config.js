@@ -51,6 +51,29 @@ function validatorArray(array) {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
+function validatorObject(array) {
+  return {
+    type: 'object',
+    fields: {},
+    validator(rule, value, callback) {
+      let errors = []
+      Object.keys(value).forEach(item => {
+        if (array.includes(item)) return
+        errors.push(
+          [
+            rule.fullField,
+            item,
+            'is not equal to one of',
+            array.join(', '),
+          ].join(' ')
+        )
+      })
+      callback(errors)
+    },
+  }
+}
+
 function validatorToken() {
   return {
     validator(rule, value, callback, source) {
