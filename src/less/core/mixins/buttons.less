@@ -2,7 +2,7 @@
   color: @color;
   background-color: @background;
   border-color: @border;
-  box-shadow: 0 4px 8px 0 fade(@border, 40%);
+  .boxShadowFade(0 4px 8px 0, @border, 40%);
 
   &:focus {
     color: @color;
@@ -10,19 +10,19 @@
 
   &:hover {
     color: @color;
-    box-shadow: 0 1px 2px 0 fade(@border, 40%);
+    .boxShadowFade(0 1px 2px 0, @border, 40%);
   }
 
   &:active {
     &:hover,
     &:focus {
-      background-color: darken(@background, 10%);
+      .backgroundDarken(@background, 10%);
     }
   }
 
   &:hover,
   &:focus {
-    background-color: darken(@background, 5%);
+    .backgroundDarken(@background, 5%);
   }
 }
 
