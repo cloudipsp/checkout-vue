@@ -1,6 +1,7 @@
 import configLocales from '@/config/locales'
 import configMethods from '@/config/methods'
 import configCss from '@/config/css'
+import css_varisble from '@/config/css-varisble'
 
 const options = {
   options: {
@@ -71,6 +72,7 @@ const options = {
   template: {},
   messages: {},
   validate: {},
+  css_variable: css_varisble,
 
   // not config
   error: {

@@ -3,6 +3,7 @@ import configPaymentSystems from '@/config/payment-systems'
 import configMethods from '@/config/methods'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
+import cssVarisble from '@/config/css-varisble'
 
 let methods = configMethods
 let ibank = Object.keys(configPaymentSystems.ibank)
@@ -51,7 +52,6 @@ function validatorArray(array) {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
 function validatorObject(array) {
   return {
     type: 'object',
@@ -127,6 +127,15 @@ methods.concat('menu').forEach(function(method) {
       theme: { type: 'enum', enum: ['dark', 'light'] },
       text: { type: 'boolean' },
     },
+  }
+})
+
+let css_variable = validatorObject(Object.keys(cssVarisble))
+
+Object.keys(cssVarisble).forEach(item => {
+  css_variable.fields[item] = {
+    type: 'string',
+    pattern: /^#[0-9a-fA-F]{6}$/,
   }
 })
 
@@ -210,4 +219,5 @@ export default {
   },
   messages: i18n,
   validate: i18n,
+  css_variable,
 }

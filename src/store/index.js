@@ -19,6 +19,7 @@ import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
+import initCssVariable from '@/store/css-variable'
 
 Vue.use(store)
 
@@ -60,6 +61,7 @@ export default {
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
     Object.assign(this.state.popup, optionsUser.popup)
+    Object.assign(this.state.css_variable, optionsUser.css_variable)
     Object.assign(
       this.state.css,
       configCss[this.state.options.css],
@@ -73,6 +75,7 @@ export default {
     this.initOrigin()
     this.initReferrer()
     this.initCssDevice()
+    initCssVariable(this.state.css_variable)
   },
   optionsFormat: function(options) {
     let regex = /[A-Z]+/g

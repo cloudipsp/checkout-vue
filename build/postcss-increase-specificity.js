@@ -12,7 +12,7 @@ function increaseSpecifityOfRule(rule, opts) {
     if (selector === opts.stackableRoot) {
       return selector
     }
-    if (/^html /.test(selector)) {
+    if (/^(html |:root)/.test(selector)) {
       return selector
     }
 
