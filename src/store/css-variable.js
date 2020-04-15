@@ -45,19 +45,21 @@ function hexToHSL(H) {
   return { h, s, l }
 }
 
+const prefix = '--fondy-'
+
 export default function(variables) {
   variables = fromEntries(
     Object.entries(variables).reduce((acc, [n, v]) => {
-      let name = `--fondy-${n}`
+      let name = `${prefix}${n}`
       let nameh = `${name}-h`
       let names = `${name}-s`
       let namel = `${name}-l`
       let { h, s, l } = /#/.test(v)
         ? hexToHSL(v)
         : {
-            h: `var(--fondy-${v}-h)`,
-            s: `var(--fondy-${v}-s)`,
-            l: `var(--fondy-${v}-l)`,
+            h: `var(${prefix}${v}-h)`,
+            s: `var(${prefix}${v}-s)`,
+            l: `var(${prefix}${v}-l)`,
           }
 
       let value = `hsl(${h},${s},${l})`
@@ -74,8 +76,27 @@ export default function(variables) {
   cssVars({
     include: 'link[href*="checkout.css"],style',
     variables,
-    onComplete: (cssText, styleNodes, cssVariables, benchmark) => {
-      console.log(1, cssText, styleNodes, cssVariables, benchmark)
-    },
+    onSuccess,
   })
+
+  function onSuccess(cssText) {
+    const reg = new RegExp(
+      `calc\\((var\\(${prefix}[\\w-]+\\))[ ]?(\\*)[ ]?([\\d\\.]+)\\)`,
+      'g'
+    )
+    return cssText.replace(reg, (match, ref, operation, y) => {
+      // eslint-disable-next-line no-unused-vars
+      let [full, x, unit] = /([\d\.]+)(%)/.exec(getValue(ref))
+      return (x * y).toFixed(1) + unit
+    })
+  }
+
+  function getValue(value) {
+    const isVariableRef = /var\((--[\w-]+)\)/
+    return value.replace(isVariableRef, (match, prop) =>
+      isVariableRef.test(variables[prop])
+        ? getValue(variables[prop])
+        : variables[prop]
+    )
+  }
 }
