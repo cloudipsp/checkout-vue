@@ -48,19 +48,6 @@
   .darken(@name, @amount);
 
   background-color: @_color;
-
-  .backgroundDarkenIE(@name, @amount);
-}
-
-.backgroundDarkenIE(@_color, @amount) {
-  // IE9, IE10, IE11
-  @media screen and (min-width: 0\0) {
-    background: linear-gradient(
-        rgba(0, 0, 0, @amount * 2),
-        rgba(0, 0, 0, @amount * 2)
-      )
-      @_color;
-  }
 }
 
 .colorFade(@name, @amount) {
