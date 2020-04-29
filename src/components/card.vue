@@ -247,10 +247,18 @@ export default {
     },
     focus(name, value, next) {
       if (!this.fields[name]) return
-      this.$validator.validate(name, value).then(valid => {
-        if (!valid) return
-        this.$refs[next].$refs.input.$el.focus()
-      })
+      this.$validator
+        .validate(name, value)
+        .then(valid => {
+          if (!valid) return Promise.reject()
+          return this.$nextTick()
+        })
+        .then(() => {
+          this.$refs[next].$refs.input.$el.focus()
+        })
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
   },
 }
