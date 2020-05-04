@@ -24,7 +24,7 @@ import initCssVariable from '@/store/css-variable'
 Vue.use(store)
 
 export default {
-  attr: function(name, value) {
+  attr(name, value) {
     name = (name || '').split('.')
     let data = this
     let prop = name.pop()
@@ -47,7 +47,7 @@ export default {
       data[prop] = value
     }
   },
-  setStateDefault: function() {
+  setStateDefault() {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   },
   default: optionsDefault,
@@ -67,6 +67,7 @@ export default {
       configCss[this.state.options.css],
       optionsUser.css
     )
+    this.initBanklinks()
     this.initFast()
     this.initLang()
     this.initLocation()
@@ -77,7 +78,7 @@ export default {
     this.initCssDevice()
     initCssVariable(this.state.css_variable)
   },
-  optionsFormat: function(options) {
+  optionsFormat(options) {
     let regex = /[A-Z]+/g
 
     if (!isObject(options)) return
@@ -98,7 +99,19 @@ export default {
       }
     }
   },
-  initFast: function() {
+  initBanklinks() {
+    let methods = this.state.options.methods
+    let index = methods.indexOf('banklinks_eu')
+
+    if (!methods.length) return
+    if (index === -1) return
+
+    methods[index] = 'trustly'
+    this.state.options.methods = methods.filter(
+      (item, key, self) => self.indexOf(item) === key
+    )
+  },
+  initFast() {
     let fast = []
     this.state.options.fast.forEach(function(system) {
       Object.keys(configPaymentSystems).forEach(function(method) {
@@ -112,7 +125,7 @@ export default {
     }, this)
     this.state.options.fast = fast
   },
-  initLang: function() {
+  initLang() {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.full_screen) {
@@ -171,13 +184,13 @@ export default {
       })
     })
   },
-  initLocation: function() {
+  initLocation() {
     let methods = this.state.options.methods
     let active_tab = this.state.options.active_tab
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
     this.location('payment-method', method)
   },
-  setCardNumber: function(card) {
+  setCardNumber(card) {
     this.state.params.card_number = card.card_number.replace(/ /g, '')
     this.state.params.expiry_date = card.expiry_date.replace(/ /g, '')
     this.state.params.email = card.email || this.state.params.email
@@ -185,7 +198,7 @@ export default {
     this.state.params.cvv2 = ''
     this.state.read_only = card.read_only
   },
-  getAmountWithFee: function() {
+  getAmountWithFee() {
     if (!this.state.params.amount) return
     if (!this.state.params.fee) return
     return sendRequest('api.checkout.fee', 'get', this.state.params, {
@@ -204,23 +217,23 @@ export default {
         if (e instanceof Error) console.log(e)
       })
   },
-  location: function(page, method, system) {
+  location(page, method, system) {
     this.state.showModalMethods = false
     this.state.router.page = page
     this.state.router.method = method
     this.state.router.system = system
   },
-  locationSystem: function(system) {
+  locationSystem(system) {
     this.state.router.system = system
   },
-  showError: function(code, message) {
+  showError(code, message) {
     if (code || message) {
       this.state.error.code = code
       this.state.error.message = message
       this.state.error.show = true
     }
   },
-  formLoading: function(loading) {
+  formLoading(loading) {
     if (loading) {
       this.state.error.show = false
     }
