@@ -133,6 +133,7 @@ export default {
         // target exist
         if (isString(target)) {
           // is selector
+          target = target.replace(/\./g, '\\.')
           this.triggerEl = document.querySelector(target)
         } else if (isElement(target)) {
           // is element
