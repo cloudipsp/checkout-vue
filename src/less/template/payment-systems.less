@@ -22,35 +22,12 @@
     transition: all ease-in-out 0.15s;
     display: block;
     height: 100%;
-
-    &::after {
-      content: '';
-      width: 15px;
-      height: 9px;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      border: 3px solid @check-disabled-border;
-      border-top: none;
-      border-right: none;
-      background: transparent;
-      transform: rotate(-45deg);
-      transition: box-shadow ease-in-out 0.15s;
-    }
   }
 
   &:hover,
   &.active {
     .f-icon {
-      box-shadow: 0 0 0 1.1px @ps-active-shadow, 0 -1px 12px 0 @ps-active-shadow;
-    }
-  }
-
-  &.active {
-    .f-icon {
-      &::after {
-        border-color: @check-enable-border;
-      }
+      .boxShadowFade(0 -1px 12px 0, @ps-active-shadow, 50%);
     }
   }
 }
