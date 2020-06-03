@@ -26,6 +26,7 @@
               <!-- 1060 is bigger than dialog z-index 1050 because it got cover by title sometimes -->
               <span aria-hidden="true">×</span>
             </button>
+            <slot name="icon" />
             <h4 class="f-modal-title">
               <slot name="title">
                 {{ title }}
@@ -37,7 +38,7 @@
           <slot />
         </div>
         <div v-if="footer" class="f-modal-footer">
-          <slot name="footer">
+          <slot name="footer" :toggle="toggle">
             <!--<btn :type="cancelType" @click="toggle(false,'cancel')">-->
             <!--<span>{{cancelText || t('uiv.modal.cancel')}}</span>-->
             <!--</btn>-->
