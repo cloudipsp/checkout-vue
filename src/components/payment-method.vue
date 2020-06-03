@@ -13,15 +13,6 @@
       <!--card emoney ibank trustly cash sepa-->
       <component :is="method" :key="method" :payment-systems="paymentSystems" />
     </transition>
-    <f-offer />
-    <div class="f-block">
-      <div class="f-block-sm">
-        <f-button-pay />
-        <f-button-pay-wallet position="bottom" :tab="method" />
-        <f-button-cancel />
-        <i class="f-icon f-icon-block f-i-security f-hidden-desktop" />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -33,9 +24,6 @@ import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
 import FFields from '@/components/fields'
-import FButtonPay from '@/components/button-pay'
-import FButtonCancel from '@/components/button-cancel'
-import FOffer from '@/components/offer'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
 
@@ -48,9 +36,6 @@ export default {
     Cash,
     Sepa,
     FFields,
-    FButtonPay,
-    FButtonCancel,
-    FOffer,
     FIcons,
   },
   computed: {

@@ -106,6 +106,15 @@
         <f-regular />
       </div>
     </div>
+    <f-offer />
+    <div class="f-block">
+      <div class="f-block-sm">
+        <f-button-pay />
+        <f-button-pay-wallet position="bottom" :tab="method" />
+        <f-button-cancel />
+        <i class="f-icon f-icon-block f-i-security f-hidden-desktop" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -115,12 +124,18 @@ import { sendRequest } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FCustomerFields from '@/components/customer-fields'
 import FRegular from '@/components/regular'
+import FOffer from '@/components/offer'
+import FButtonPay from '@/components/button-pay'
+import FButtonCancel from '@/components/button-cancel'
 
 export default {
   inject: ['$validator'],
   components: {
     FCustomerFields,
     FRegular,
+    FOffer,
+    FButtonPay,
+    FButtonCancel,
   },
   data() {
     return {
@@ -137,6 +152,7 @@ export default {
       'verification_type',
       'cards',
     ]),
+    ...mapState('router', ['method']),
     ...mapState('options', ['email']),
     ...mapState('params', ['card_number', 'code', 'token']),
     readonly() {
