@@ -82,6 +82,8 @@ export const messages = Object.assign({}, countries, {
   customer_state: 'Область',
   customer_phonemobile: 'Номер телефону',
   customer_email: 'Email',
+
+  confirm: 'Підтвердити',
 })
 
 export const validate = Object.assign({}, validateMessages, {
