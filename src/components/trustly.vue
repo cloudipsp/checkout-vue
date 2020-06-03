@@ -2,14 +2,15 @@
 import PaymentSystems from '@/mixins/payment-systems'
 import { sortBanks } from '@/config/trustly'
 import { sort } from '@/utils/helpers'
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
   mixins: [PaymentSystems],
   computed: {
     ...mapState(['ready']),
     ...mapState('tabs', ['trustly']),
-    ...mapState('options', ['countries', 'default_country']),
+    ...mapState('options', ['countries']),
+    ...mapStateGetSet('options', ['default_country']),
     // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
     config() {
       return (this.trustly && this.trustly.payment_systems) || {}

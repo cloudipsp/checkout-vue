@@ -25,15 +25,10 @@
           v-for="item in listMin"
           :key="item.id"
           class="f-ps"
-          :class="{ active: isSystem(item.id) }"
-          @click="locationSystem(item.id)"
+          @click="locationSystem(item)"
         >
           <div class="f-wrapper-icon">
-            <div
-              class="f-icon"
-              :class="'f-i-' + item.id"
-              :style="style(item.bank_logo)"
-            />
+            <f-icon :name="item.bank_logo" />
           </div>
           <div v-t="item.name" />
           <div class="f-iban">
@@ -48,13 +43,25 @@
         </div>
       </div>
     </div>
+    <f-modal-form-bank
+      v-if="item"
+      v-model="open"
+      :config="item"
+      @submit="submit"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
+import FModalFormBank from '@/components/modal-form-bank'
+import { isObject } from '@/utils/typeof'
 
 export default {
+  inject: ['formRequest'],
+  components: {
+    FModalFormBank,
+  },
   props: {
     paymentSystems: {
       type: Array,
@@ -67,13 +74,15 @@ export default {
         search: '',
       },
       count: 24,
-      more: 0,
+      more: 24,
       spin: false,
+      open: false,
+      item: null,
     }
   },
   computed: {
-    ...mapState(['cdn', 'options']),
-    ...mapState('router', ['method', 'system']),
+    ...mapState(['options']),
+    ...mapState('router', ['method']),
     country() {
       return []
     },
@@ -117,38 +126,25 @@ export default {
     showMore() {
       return this.list.length > this.more
     },
-    style() {
-      return function(item) {
-        return {
-          'background-image': `url(${this.cdn}banks/${item}.svg)`,
-        }
-      }
-    },
     isMethod() {
       return function(method) {
         return this.method === method
       }
     },
-    isSystem() {
-      return function(system) {
-        return this.system === system
-      }
-    },
-    isActive() {
-      return this.list.some(item => {
-        return this.isSystem(item.id)
-      })
-    },
-  },
-  watch: {
-    list: 'setActive',
-  },
-  created() {
-    this.setActive(this.list)
   },
   methods: {
-    locationSystem(system) {
-      this.store.locationSystem(system)
+    locationSystem(item) {
+      this.store.locationSystem(item.id)
+
+      if (isObject(item.form)) {
+        this.open = true
+        this.item = item
+      } else {
+        this.formRequest()
+      }
+    },
+    submit(form) {
+      this.formRequest(form)
     },
     clear() {
       this.form.search = ''
@@ -159,13 +155,6 @@ export default {
         this.more += this.count
         this.spin = false
       }, 300)
-    },
-    setActive(list) {
-      if (!this.isActive) {
-        this.locationSystem(list[0] && list[0].id)
-      }
-
-      this.more = this.count
     },
   },
 }
