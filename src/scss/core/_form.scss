@@ -1,0 +1,57 @@
+.f-form-group {
+  position: relative;
+  margin-bottom: px-to-rem(16px);
+}
+
+.f-form-control {
+  display: block;
+  width: 100%;
+  height: px-to-rem(56px);
+  padding: px-to-rem(26px) px-to-rem(12px) px-to-rem(10px);
+  //font-size: 16px;
+  font-weight: 500;
+  //line-height: px-to-rem(20px);
+  color: $input_color;
+  background: $input_bg;
+  border: 1px solid $input_border;
+  border-radius: px-to-rem(8px);
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    border-color: $input_hover_border;
+
+    & + .f-control-label {
+      color: $label_hover_color;
+    }
+  }
+
+  &:focus {
+    border-color: $input_focus_border;
+    outline: none;
+
+    & + .f-control-label {
+      color: $label_focus_color;
+    }
+  }
+
+  & + .active {
+    transform: translateY(-9px) scale(0.75);
+  }
+
+  .f-has-error & {
+    color: $input_error_color;
+    border: 2px solid $input_error_border;
+  }
+}
+.f-form-control + .f-control-label {
+  position: absolute;
+  top: 17px;
+  left: 12px;
+  transition: all ease-in-out 0.15s;
+  transform-origin: 0 100%;
+}
+
+.f-control-label {
+  font-size: 16px;
+  color: $label_color;
+}

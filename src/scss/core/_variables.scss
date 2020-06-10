@@ -1,0 +1,61 @@
+$grid-breakpoints: (
+  xs: 0,
+  ss: 375px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// Spacing
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25,
+  ),
+  2: (
+    $spacer * 0.5,
+  ),
+  3: $spacer,
+  4: (
+    $spacer * 1.5,
+  ),
+  5: (
+    $spacer * 3,
+  ),
+);
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ('<', '%3c'),
+  ('>', '%3e'),
+  ('#', '%23'),
+  ('(', '%28'),
+  (')', '%29')
+) !default;
+
+// Typography
+$font-family-greenwich: greenwich, sans-serif;
+$font-family-inter: inter, sans-serif;
+$font-family-ocr-a-std: 'OCR A Std', sans-serif;
+$font-family-text-security-disc: 'text security disc';
+$font-size-base: 1rem;
+$headings-margin-bottom: $spacer / 2;
+
+//== Z-index master list
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-modal: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;
+
+//== Modals
+$modal-padding: 15px;
+$modal-backdrop-opacity: 0.5;
+$modal-lg: 900px;
+$modal-md: 600px;
+$modal-sm: 300px;

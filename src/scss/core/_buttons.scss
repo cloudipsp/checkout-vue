@@ -1,0 +1,141 @@
+@mixin disabled() {
+  &.disabled,
+  &:disabled {
+    color: $btn_disabled_color;
+
+    &::before {
+      box-shadow: none;
+    }
+
+    &::after {
+      background: $btn_disabled_bg;
+    }
+  }
+}
+
+.f-btn {
+  position: relative;
+  display: inline-block;
+  padding: px-to-rem(16px);
+  font-size: px-to-rem(18px);
+  font-weight: 600;
+  line-height: px-to-rem(24px);
+  text-align: center;
+  background: none;
+  border: none;
+  border-radius: px-to-rem(8px);
+  transition: all ease-in-out 0.15s;
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    z-index: 0;
+    width: 80%;
+    height: px-to-rem(32px);
+    content: '';
+    border-radius: px-to-rem(16px);
+    transition: all ease-in-out 0.15s;
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border-radius: px-to-rem(8px);
+    transition: all ease-in-out 0.15s;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+  }
+
+  :not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+}
+
+.f-btn-success {
+  color: $btn_success_color;
+
+  &::before {
+    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($btn_success_shadow, 60%);
+  }
+  &::after {
+    background: $btn_success_bg;
+  }
+
+  &:hover {
+    &::after {
+      background: darken($btn_success_bg, 20%);
+    }
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 0.2rem fade($btn_success_bg, 50%);
+  }
+
+  @include disabled();
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    &::after {
+      background: darken($btn_success_bg, 40%);
+    }
+  }
+
+  &.f-enable-gradient {
+    &::after,
+    &:hover::after,
+    &:not(:disabled):not(.disabled):active::after,
+    &:not(:disabled):not(.disabled).active::after {
+      background: linear-gradient(
+        130deg,
+        custom($btn_success_bg, 30%, -10%) 11%,
+        custom($btn_success_bg, 20%, -30%) 22%,
+        32%,
+        custom($btn_success_bg, 30%, -30%) 33%,
+        44%,
+        custom($btn_success_bg, 20%, -50%) 55%,
+        65%,
+        custom($btn_success_bg, 30%, -50%) 66%,
+        77%,
+        custom($btn_success_bg, 20%, -70%) 88%
+      );
+      background-position: 0 0;
+      background-size: 300% 300%;
+    }
+
+    &:hover {
+      &::after {
+        background-position: 50% 50%;
+      }
+    }
+
+    @include disabled();
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      &::after {
+        background-position: 100% 100%;
+      }
+    }
+  }
+}
+
+.f-btn-block {
+  display: block;
+  width: 100%;
+}

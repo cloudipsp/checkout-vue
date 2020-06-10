@@ -158,8 +158,8 @@ export default {
   initCssDevice() {
     if (!this.state.options.full_screen) return
 
-    require('@/less/style-sm.less?no-extract')
-    require('@/less/style-md.less?no-extract')
+    // require('@/scss/style-sm.scss?no-extract')
+    // require('@/scss/style-md.scss?no-extract')
   },
   setButtonParams(options) {
     deepMerge(this.state, options)

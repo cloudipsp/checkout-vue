@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'text security disc';
+  src: url('../fonts/text-security-disc.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greenwich;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/greenwich-light.woff2') format('woff2'),
+    url('../fonts/greenwich-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Greenwich;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/greenwich-regular.woff2') format('woff2'),
+    url('../fonts/greenwich-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-regular.woff2') format('woff2'),
+    url('../fonts/inter-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/inter-medium.woff2') format('woff2'),
+    url('../fonts/inter-medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter-semibold.woff2') format('woff2'),
+    url('../fonts/inter-semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'OCR A Std';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ocr-a-std-regular.ttf') format('truetype');
+}

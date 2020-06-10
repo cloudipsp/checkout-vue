@@ -1,0 +1,23 @@
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .f-#{$abbrev}-#{$size} {
+      #{$prop}: $length;
+    }
+    .f-#{$abbrev}t-#{$size},
+    .f-#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length;
+    }
+    .f-#{$abbrev}r-#{$size},
+    .f-#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length;
+    }
+    .f-#{$abbrev}b-#{$size},
+    .f-#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length;
+    }
+    .f-#{$abbrev}l-#{$size},
+    .f-#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length;
+    }
+  }
+}

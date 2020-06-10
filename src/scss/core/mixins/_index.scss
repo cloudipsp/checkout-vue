@@ -1,0 +1,18 @@
+@import 'breakpoints';
+@import 'hover';
+
+@mixin sticky-top($top: 0, $zindex: $zindex-sticky) {
+  @supports (position: sticky) {
+    position: sticky;
+    top: $top;
+    z-index: $zindex;
+  }
+}
+
+@mixin sticky-bottom($bottom: 0, $zindex: $zindex-sticky) {
+  @supports (position: sticky) {
+    position: sticky;
+    bottom: $bottom;
+    z-index: $zindex;
+  }
+}

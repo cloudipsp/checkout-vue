@@ -1,0 +1,128 @@
+.f-card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: px-to-rem(63px) 0 px-to-rem(16px) px-to-rem(16px);
+  margin-bottom: px-to-rem(32px);
+
+  @include media-breakpoint-up(ss) {
+    padding: px-to-rem(96px) 0 px-to-rem(16px) px-to-rem(16px);
+  }
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    z-index: 0;
+    width: 80%;
+    height: px-to-rem(32px);
+    content: '';
+    border-radius: px-to-rem(16px);
+    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($card_shadow, 60%);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: linear-gradient(
+      180deg,
+      custom($card_bg, -10%, 20%) 0%,
+      $card_bg 35%,
+      custom($card_bg, 40%, -30%) 100%
+    );
+    border-bottom: 3px solid $card_border;
+    border-radius: px-to-rem(16px);
+  }
+}
+
+.f-card-group {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: px-to-rem(20px);
+
+  .f-control-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: -1;
+    margin-bottom: px-to-rem(6px);
+    font-size: px-to-rem(10px);
+    line-height: px-to-rem(12px);
+    color: $card_label_color;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0.7;
+
+    @include media-breakpoint-up(ss) {
+      margin-bottom: px-to-rem(8px);
+      font-size: px-to-rem(11px);
+      line-height: px-to-rem(13px);
+    }
+  }
+
+  .f-form-control {
+    height: px-to-rem(18px);
+    padding: 0;
+    font-family: $font-family-ocr-a-std;
+    font-size: px-to-rem(15px);
+    font-weight: 400;
+    line-height: px-to-rem(18px);
+    color: $card_input_color;
+    text-shadow: px-to-rem(1px) px-to-rem(1px) px-to-rem(2px)
+      fade($card_input_shadow, 15%);
+    background: none;
+    border: none;
+    border-radius: 0;
+
+    @include media-breakpoint-up(ss) {
+      height: px-to-rem(25px);
+      font-size: px-to-rem(21px);
+      line-height: px-to-rem(25px);
+    }
+
+    &::placeholder {
+      font-family: $font-family-ocr-a-std;
+      opacity: fade($card_input_color, 30%);
+    }
+
+    &:hover + .f-control-label {
+      color: $card_label_color;
+    }
+
+    &:focus {
+      & + .f-control-label {
+        color: $card_label_color;
+        transform: none;
+      }
+    }
+  }
+}
+
+// stylelint-disable-next-line selector-max-id
+#f-expiry_date {
+  width: 75px;
+}
+
+// stylelint-disable-next-line selector-max-id
+#f-cvv2 {
+  width: 75px;
+  font-family: $font-family-text-security-disc;
+  -webkit-text-security: disc;
+}
+
+@supports (-webkit-text-security: disc) {
+  // stylelint-disable-next-line selector-max-id
+  #f-cvv2 {
+    font-family: inherit;
+  }
+}

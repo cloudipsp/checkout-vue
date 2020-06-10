@@ -12,9 +12,9 @@
     "test:e2e": "vue-cli-service test:e2e --reporter ./tests/e2e/reporter/html-reporter.js",
     "test:unit": "vue-cli-service test:unit",
     "release": "./scripts/release.sh",
-    "stylelint:fix": "stylelint src/{**/,**/**/}*.less --syntax less --color --formatter verbose --fix",
+    "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --syntax scss --color --formatter verbose --fix",
     "eslint:fix": "eslint src/**/*.{js,vue} --fix",
-    "prettier:fix": "prettier src/**/*.{js,vue,less} --write"
+    "prettier:fix": "prettier src/**/*.{js,vue,scss} --write"
   },
   "files": [
     "dist"
@@ -31,6 +31,8 @@
     "core-js": "^3.6.4",
     "css-vars-ponyfill": "^2.2.1",
     "ipsp-js-sdk": "^1.0.34",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
     "vee-validate": "^2.2.7",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3"
@@ -53,13 +55,10 @@
     "eslint-plugin-vue": "^5.0.0",
     "git-revision-webpack-plugin": "^3.0.4",
     "image-webpack-loader": "^5.0.0",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
     "minimist": "^1.2.0",
     "prettier": "^1.19.1",
     "stylelint-config-prettier": "^5.3.0",
-    "stylelint-config-standard": "^18.3.0",
     "stylelint-config-twbs-bootstrap": "^0.4.0",
     "vue-template-compiler": "^2.6.11"
   },
@@ -109,14 +108,15 @@
     ]
   },
   "stylelint": {
-    "syntax": "less",
+    "syntax": "scss",
     "extends": [
-      "stylelint-config-standard",
+      "stylelint-config-twbs-bootstrap/scss",
       "stylelint-config-prettier"
     ],
     "rules": {
       "no-descending-specificity": null,
-      "media-feature-name-no-unknown": null
+      "media-feature-name-no-unknown": null,
+      "scss/dollar-variable-default": null
     }
   },
   "prettier": {
@@ -172,7 +172,7 @@
       "vue-cli-service lint",
       "git add"
     ],
-    "src/**/*.less": [
+    "src/**/*.scss": [
       "vue-cli-service lint:style",
       "node_modules/.bin/prettier --write",
       "git add"

@@ -62,14 +62,11 @@ module.exports = {
     : '/',
   pluginOptions: {},
   chainWebpack: config => {
-    const normalRule = config.module.rule('less').oneOfs.get('normal')
+    const normalRule = config.module.rule('scss').oneOfs.get('normal')
 
     config
       .when(process.env.NODE_ENV === 'production', config => {
         config
-          .entry('checkout-dark')
-            .add('./src/less/style-dark.less')
-            .end()
           .optimization
             .delete('splitChunks')
             .end()
@@ -109,14 +106,6 @@ module.exports = {
       .performance
         .hints(false)
         .end()
-      .plugins
-        .delete('prefetch-index')
-        .delete('prefetch-e2e')
-        .delete('prefetch-e2e_snippet')
-        .delete('preload-index')
-        .delete('preload-e2e')
-        .delete('preload-e2e_snippet')
-        .end()
       .entryPoints
         .delete('app')
         .delete('index')
@@ -125,11 +114,15 @@ module.exports = {
         .delete('index_snippet')
         .end()
       .entry('checkout')
-        .add('./src/less/style.less')
+        .add('./src/scss/fonts.scss')
+        .add('./src/scss/style.scss')
         .add('./src/main.js')
         .end()
       .entry('snippet')
         .add('./src/snippet.js')
+        .end()
+      .entry('fonts')
+        .add('./src/scss/fonts.scss')
         .end()
       .output
         .filename('[name].js')
@@ -137,7 +130,7 @@ module.exports = {
         .jsonpFunction('fondyJsonp')
         .end()
       .module
-        .rule('less')
+        .rule('scss')
           .oneOf('vue').use('postcss-loader').tap(addF).end().end()
           .oneOf('normal').use('postcss-loader').tap(addF).end().end()
           .oneOf('no-extract')
@@ -163,8 +156,8 @@ module.exports = {
               })
               .tap(addF)
               .end()
-            .use('less-loader')
-              .loader('less-loader')
+            .use('scss-loader')
+              .loader('scss-loader')
               .options({
                 sourceMap: false
               })
@@ -197,20 +190,12 @@ module.exports = {
             .loader('image-webpack-loader')
             .end()
           .end()
-        .rule('fonts')
-          .use('url-loader')
-            .tap(options => {
-              delete options.limit;
-              return options
-            })
-            .end()
-          .end()
         .end()
       .plugin('stylelint')
         .use('stylelint-webpack-plugin')
         .tap(() => {
           return [{
-            files: 'src/**/*.less'
+            files: 'src/**/*.scss'
           }]
         })
         .end()

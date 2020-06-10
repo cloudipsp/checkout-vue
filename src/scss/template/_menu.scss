@@ -1,0 +1,50 @@
+.f-menu-item {
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  height: px-to-rem(60px);
+  padding: 0 px-to-rem(18px) 0 px-to-rem(9px);
+  margin-bottom: px-to-rem(12px);
+  font-size: px-to-rem(17px);
+  color: $menu_item_color;
+  cursor: pointer;
+  border: 1px solid $menu_item_border;
+  border-radius: px-to-rem(8px);
+  transition: all ease-in-out 0.15s;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 0;
+    border: none;
+  }
+
+  &:hover,
+  &.active {
+    color: $menu_item_active_color;
+    background: $menu_item_active_bg;
+
+    .f-menu-icon {
+      color: $menu_icon_active_color;
+    }
+  }
+}
+
+.f-menu-icon {
+  color: $menu_icon_color;
+  transition: all ease-in-out 0.15s;
+}
+
+.f-menu-icons {
+  margin-left: auto;
+}
+
+.f-icons-item {
+  width: px-to-rem(24px);
+  height: px-to-rem(24px);
+  margin-right: px-to-rem(8px);
+  border-radius: px-to-rem(3px);
+  box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $menu_icons_shadow;
+
+  &:last-child {
+    margin: 0;
+  }
+}

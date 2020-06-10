@@ -1,0 +1,92 @@
+@import 'loyaut';
+@import 'menu';
+@import 'card';
+
+.f-sidebar .f-wallet-pay-button {
+  margin-bottom: px-to-rem(32px);
+}
+
+.f-center .f-wallet-pay-button {
+  margin-bottom: px-to-rem(24px);
+}
+
+.f-title {
+  margin-bottom: px-to-rem(16px);
+  font-weight: 300;
+}
+
+.f-payment-method-card {
+  max-width: 360px;
+  margin: auto;
+}
+
+.f-merchant-name {
+  margin-bottom: px-to-rem(8px);
+  font-family: $font-family-inter;
+  font-weight: 500;
+  color: $merchant_name_color;
+}
+
+.f-order-desc {
+  margin-bottom: px-to-rem(8px);
+  color: $order_desc_color;
+}
+
+.f-merchant-url {
+  margin-bottom: px-to-rem(8px);
+}
+
+.f-amount {
+  font-size: px-to-rem(28px);
+  color: $amount_color;
+
+  @include media-breakpoint-up(ss) {
+    font-size: px-to-rem(32px);
+  }
+}
+
+.f-currency {
+  font-size: px-to-rem(20px);
+  color: lighten($currency_color, 40%);
+
+  @include media-breakpoint-up(ss) {
+    font-size: px-to-rem(22px);
+  }
+}
+
+.f-icons-title {
+  margin-right: px-to-rem(16px);
+  font-weight: 300;
+  letter-spacing: px-to-rem(-0.3px);
+}
+
+$bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'><path d='M1 1L5.64645 5.64645C5.84171 5.84171 6.15829 5.84171 6.35355 5.64645L11 1' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'></path></svg>");
+.f-lang {
+  display: inline-block;
+  padding: px-to-rem(8px) px-to-rem(12px) px-to-rem(8px) px-to-rem(8px);
+  color: $container_color;
+  vertical-align: middle;
+  background: #fff escape-svg($bg) no-repeat right center;
+  border: none;
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.f-center-error {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  min-width: 100%;
+  margin-left: calc(-100vw / 2);
+
+  @include media-breakpoint-up(sm) {
+    min-width: 360px;
+    margin-left: -180px;
+  }
+}
