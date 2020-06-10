@@ -1,11 +1,9 @@
 <template>
   <div v-if="show" class="f-offer">
-    <div class="f-block-sm">
-      <input-checkbox name="offer" :validate="'required'">
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <span v-html="html" />
-      </input-checkbox>
-    </div>
+    <input-checkbox name="offer" :validate="'required'">
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <span v-html="html" />
+    </input-checkbox>
   </div>
 </template>
 

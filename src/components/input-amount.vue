@@ -1,25 +1,23 @@
 <template>
-  <div :class="['f-form-group', hasError ? css.he : '']">
-    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{
-      label_
-    }}</label>
-    <div :class="[css.ig, classReadonly]">
-      <input
-        :id="name_"
-        v-model="amount"
-        v-validate="'required|decimal:2'"
-        :data-vv-as="label_"
-        :data-vv-name="name_"
-        type="tel"
-        :class="[css.fc, css.igi, hasError ? css.ie : '', classReadonly]"
-        :placeholder="placeholder_"
-        :readonly="readonly"
-        :disabled="readonly"
-        inputmode="numeric"
-        @keyup.enter="onEnter"
-      />
-      <span v-t="currency" :class="css.iga" />
-    </div>
+  <div :class="classGroupName">
+    <input
+      :id="name_"
+      v-model="amount"
+      v-validate="'required|decimal:2'"
+      :data-vv-as="label_"
+      :data-vv-name="name_"
+      type="tel"
+      :class="className"
+      :placeholder="placeholder_"
+      :readonly="readonly"
+      :disabled="readonly"
+      inputmode="numeric"
+      @keyup.enter="onEnter"
+      @focus="focus"
+      @blur="blur"
+    />
+    <label :class="classLabel" :for="name_">{{ label_ }}</label>
+    <span v-t="currency" />
     <f-tooltip
       v-if="tooltip"
       :text="errors.first(name_)"

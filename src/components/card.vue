@@ -1,120 +1,105 @@
 <template>
-  <div class="f-card">
-    <div class="f-block">
-      <div class="f-block-sm">
-        <input-text
-          name="card_number"
-          :validate="validCardNumber"
-          :mask="maskCardNumber"
-          :masked="false"
-          :maxlength="23"
-          :group="isCards"
-          :readonly="readonly"
-          type="tel"
-          inputmode="numeric"
-          @input="inputCardNumber"
-        >
-          <span
-            v-if="!isCards"
-            :class="[css.fcf, 'f-icon', 'f-i-card-empty']"
-          />
-          <template #group>
-            <f-dropdown :class="[css.igb]">
-              <button
-                type="button"
-                :class="[css.btn, css.bd, 'f-dropdown-toggle']"
-                data-role="trigger"
-              >
-                <span class="f-caret" />
-              </button>
-              <template #dropdown>
-                <li
-                  v-for="card in cards"
-                  :key="card.card_number"
-                  :class="{ active: hasActive(card) }"
-                >
-                  <a role="button" @click="setCardNumber(card)">{{
-                    card.card_number
-                  }}</a>
-                </li>
-              </template>
-            </f-dropdown>
-          </template>
-        </input-text>
-        <div class="f-row">
-          <div class="f-col-xs-7">
-            <input-text
-              ref="expiry_date"
-              name="expiry_date"
-              :validate="validExpiryDate"
-              :mask="maskExpiryDate"
-              :masked="true"
-              :readonly="readonly"
-              type="tel"
-              inputmode="numeric"
-              placement="top"
-              @input="inputExpiryDate"
-            />
-          </div>
-          <div class="f-col-xs-5">
-            <input-text
-              ref="cvv2"
-              name="cvv2"
-              :validate="validCvv"
-              type="tel"
-              inputmode="numeric"
-              :mask="maskCvv"
-              :readonly="need_verify_code"
-              :maxlength="digitsCvv"
+  <div>
+    <div class="f-card">
+      <input-text
+        class="f-card-group f-mr-0"
+        name="card_number"
+        :validate="validCardNumber"
+        :mask="maskCardNumber"
+        :masked="false"
+        :maxlength="23"
+        :readonly="readonly"
+        type="tel"
+        inputmode="numeric"
+        @input="inputCardNumber"
+      >
+        <span :class="[css.fcf]" />
+
+        <f-dropdown v-if="isCards" :class="[css.igb]">
+          <button
+            type="button"
+            :class="[css.btn, css.bd, 'f-dropdown-toggle']"
+            data-role="trigger"
+          >
+            <span class="f-caret" />
+          </button>
+          <template #dropdown>
+            <li
+              v-for="card in cards"
+              :key="card.card_number"
+              :class="{ active: hasActive(card) }"
             >
-              <span :class="[css.fcf, 'f-icon', 'f-i-question']" />
-              <f-tooltip
-                :text="$t('cvv2_question', [digitsCvv])"
-                trigger="hover"
-                theme="default"
-                target=".f-i-question"
-              />
-            </input-text>
-          </div>
-        </div>
-        <input-text
-          v-if="email"
-          name="checkout-email"
-          field="email"
-          label="email"
-          validate="required|email"
-          autocomplete="email"
+              <a role="button" @click="setCardNumber(card)">{{
+                card.card_number
+              }}</a>
+            </li>
+          </template>
+        </f-dropdown>
+      </input-text>
+      <input-text
+        ref="expiry_date"
+        class="f-card-group"
+        name="expiry_date"
+        :validate="validExpiryDate"
+        :mask="maskExpiryDate"
+        :masked="true"
+        :readonly="readonly"
+        type="tel"
+        inputmode="numeric"
+        placement="top"
+        @input="inputExpiryDate"
+      />
+      <input-text
+        ref="cvv2"
+        class="f-card-group"
+        name="cvv2"
+        :validate="validCvv"
+        type="tel"
+        inputmode="numeric"
+        :mask="maskCvv"
+        :readonly="need_verify_code"
+        :maxlength="digitsCvv"
+      >
+        <span :class="[css.fcf, 'f-icon', 'f-i-question']" />
+        <f-tooltip
+          :text="$t('cvv2_question', [digitsCvv])"
+          trigger="hover"
+          theme="default"
+          target=".f-i-question"
         />
-        <input-text
-          v-if="isVerificationCode"
-          name="code"
-          :validate="validCode"
-          type="tel"
-          :maxlength="4"
-          label="verification_code"
-          placeholder="verification_code_p"
-        />
-        <input-text
-          v-if="isVerificationAmount"
-          name="code"
-          :validate="validAmount"
-          type="text"
-          label="verification_amount"
-          placeholder="verification_amount_p"
-        />
-        <f-customer-fields />
-        <f-regular />
-      </div>
+      </input-text>
     </div>
+    <input-text
+      v-if="email"
+      name="checkout-email"
+      field="email"
+      label="email"
+      validate="required|email"
+      autocomplete="email"
+    />
+    <input-text
+      v-if="isVerificationCode"
+      name="code"
+      :validate="validCode"
+      type="tel"
+      :maxlength="4"
+      label="verification_code"
+      placeholder="verification_code_p"
+    />
+    <input-text
+      v-if="isVerificationAmount"
+      name="code"
+      :validate="validAmount"
+      type="text"
+      label="verification_amount"
+      placeholder="verification_amount_p"
+    />
+    <f-customer-fields />
+    <f-fields />
+    <f-regular />
     <f-offer />
-    <div class="f-block">
-      <div class="f-block-sm">
-        <f-button-pay />
-        <f-button-pay-wallet position="bottom" :tab="method" />
-        <f-button-cancel />
-        <i class="f-icon f-icon-block f-i-security f-hidden-desktop" />
-      </div>
-    </div>
+    <f-button-pay />
+    <f-button-cancel />
   </div>
 </template>
 
@@ -127,6 +112,7 @@ import FRegular from '@/components/regular'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
+import FFields from '@/components/fields'
 
 export default {
   inject: ['$validator'],
@@ -136,6 +122,7 @@ export default {
     FOffer,
     FButtonPay,
     FButtonCancel,
+    FFields,
   },
   data() {
     return {

@@ -1,57 +1,7 @@
 <template>
-  <div
-    :class="[
-      'f-form-group',
-      hasError ? css.he : '',
-      hasDefaultSlot ? css.hf : '',
-    ]"
-  >
-    <label :class="[css.cl, hasError ? css.le : '']" :for="name_">{{
-      label_
-    }}</label>
-    <input
-      v-if="readonly"
-      :id="name_"
-      v-model="params[field_]"
-      :type="type"
-      :class="[css.fc, classReadonly]"
-      :readonly="readonly"
-      :disabled="readonly"
-    />
+  <div :class="classGroupName">
     <f-mask
-      v-else-if="readonly && mask"
-      :id="name_"
-      v-model="params[field_]"
-      :type="type"
-      :class="[css.fc, classReadonly]"
-      :mask="mask"
-      :masked="masked"
-      :readonly="readonly"
-      :disabled="readonly"
-    />
-    <div v-else-if="group && mask" :class="[css.ig]">
-      <f-mask
-        :id="name_"
-        ref="input"
-        v-model="params[field_]"
-        v-validate="validate"
-        :data-vv-as="label_"
-        :data-vv-name="name_"
-        :type="type"
-        :class="[css.fc, hasError ? css.ie : '']"
-        :maxlength="maxlength"
-        :placeholder="placeholder_"
-        :inputmode="inputmode"
-        :mask="mask"
-        :masked="masked"
-        @blur.native="blur"
-        @keyup.native.enter="onEnter"
-        v-on="$listeners"
-      />
-      <slot name="group" />
-    </div>
-    <f-mask
-      v-else-if="mask"
+      v-if="mask"
       :id="name_"
       ref="input"
       v-model="params[field_]"
@@ -59,13 +9,15 @@
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, hasError ? css.ie : '']"
+      :class="className"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
       :mask="mask"
       :masked="masked"
-      @blur.native="blur"
+      :readonly="readonly"
+      :disabled="readonly"
+      @blur.native="blurNative"
       @keyup.native.enter="onEnter"
       v-on="$listeners"
     />
@@ -75,17 +27,23 @@
       ref="input"
       v-model="params[field_]"
       v-validate="validate"
+      :value="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"
-      :class="[css.fc, hasError ? css.ie : '']"
+      :class="className"
       :maxlength="maxlength"
       :placeholder="placeholder_"
       :inputmode="inputmode"
       :autocomplete="autocomplete"
+      :readonly="readonly"
+      :disabled="readonly"
       @keyup.enter="onEnter"
       v-on="$listeners"
+      @focus="focus"
+      @blur="blur"
     />
+    <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <slot />
     <f-tooltip
       v-if="tooltip"
@@ -119,15 +77,9 @@ export default {
       default: null,
     },
     masked: Boolean,
-    group: Boolean,
-  },
-  computed: {
-    hasDefaultSlot() {
-      return !!this.$slots.default
-    },
   },
   methods: {
-    blur() {
+    blurNative() {
       this.$refs.input.$emit('blur')
     },
   },

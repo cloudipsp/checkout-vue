@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="f-form-group">
     <input
       :id="id"
       class="f-checkbox-swipe"

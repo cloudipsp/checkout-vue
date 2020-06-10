@@ -6,7 +6,7 @@
     :disabled="disabled"
     @click="click"
   >
-    <span v-t="{ path: 'pay', args: args }" />
+    <span v-t="{ path: 'pay', args: args }" />{{ enable_btn_success_gradient }}
   </button>
 </template>
 
@@ -18,6 +18,7 @@ export default {
     ...mapState(['css', 'submit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
+    ...mapState('css_variable', ['enable_btn_success_gradient']),
     className() {
       return [
         this.css.btn,
@@ -26,6 +27,9 @@ export default {
         'f-btn-block',
         this.css.submit,
         'f-button-pay',
+        {
+          'f-enable-gradient': this.enable_btn_success_gradient,
+        },
       ]
     },
     disabled() {

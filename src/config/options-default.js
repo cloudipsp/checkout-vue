@@ -1,5 +1,4 @@
 import configLocales from '@/config/locales'
-import configMethods from '@/config/methods'
 import configCss from '@/config/css'
 import css_varisble from '@/config/css-varisble'
 
@@ -31,7 +30,6 @@ const options = {
     default_country: '',
     countries: [],
     lang: true,
-    wallet_pay_button: {},
     css: '',
   },
   popup: {
@@ -104,15 +102,6 @@ const options = {
 configLocales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
-})
-
-configMethods.concat('menu').forEach(function(method) {
-  options.options.wallet_pay_button[method] = {
-    position: 'bottom',
-    display: method === 'card' || method === 'wallets',
-    theme: 'dark',
-    text: false,
-  }
 })
 
 export default options

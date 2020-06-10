@@ -37,6 +37,7 @@
         position: fixed;
         left: 0;
         bottom: 0;
+        display: none;
       }
     </style>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -100,7 +101,7 @@
         var options = {
           max: {
             options: {
-              methods: ['card', 'emoney', 'ibank', 'cash', 'sepa'],
+              methods: ['card', 'trustly'],
               ibank: ['p24', 'platba24', 'raiffeisen'],
               emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
               cash: ['liqpay'],
@@ -108,17 +109,17 @@
               cardIcons: [
                 'mastercard',
                 'visa',
-                'mir',
-                'prostir',
-                'diners-club',
-                'american-express',
+                // 'mir',
+                // 'prostir',
+                // 'diners-club',
+                // 'american-express',
               ],
               fields: true,
               title: 'my_title',
               link: 'https://fondy.eu',
               fullScreen: true,
               button: true,
-              cancel: true,
+              // cancel: true,
               locales: ['ru', 'en', 'uk'],
               email: true,
               tooltip: true,
@@ -126,15 +127,10 @@
               fee: true,
               //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
               activeTab: 'card',
-              logoUrl:
-                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              // logoUrl:
+              //   'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               offertaUrl:
-                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-              wallet_pay_button: {
-                menu: {
-                  display: true
-                }
-              }
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png'
             },
             regular: {
               insert: true,
@@ -142,12 +138,15 @@
               period: ['week', 'month'],
             },
             params: {
-              merchant_id: 900187,
+              currency: 'EUR',
+              merchant_id: 900238,
+              amount: 500,
+              // merchant_id: 900187,
               //    verification_type: 'code',
               //    required_rectoken: 'y',
               //    verification: 'y',
-              currency: 'AZN',
-                 amount: 500,
+              // currency: 'AZN',
+              //    amount: 500,
               order_desc: 'my_desc',
               //    response_url: 'https://www.fondy.eu',
               //     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
@@ -169,7 +168,7 @@
               ru: {
                 field_11: 'field_11_ru',
                 field_5: 'Номер договора',
-                card_number: 'edit Номер карты',
+                // card_number: 'edit Номер карты',
                 my_amount: 'Сума к оплате',
                 my_email: 'Эл. адрес',
                 my_title: 'Назначение платежа',
@@ -178,8 +177,8 @@
               },
               en: {
                 UAH: 'гривна',
-                card_number: 'edit Card number',
-                card_number_p: 'Card number',
+                // card_number: 'edit Card number',
+                // card_number_p: 'Card number',
                 my_amount: 'Sum to pay',
                 my_email: 'Email',
                 my_title: 'Purpose of payment',
@@ -252,8 +251,8 @@
             },
             params: {
               amount: 100,
-              currency: 'USD',
-              merchant_id: 900158,
+              currency: 'EUR',
+              merchant_id: 900238,
             },
           },
           token: {
@@ -293,27 +292,19 @@
           },
           wallet: {
             options: {
-              methods: ['card', 'wallets', 'sepa'],
-              api_domain: 'api.dev.fondy.eu',
-              wallet_pay_button: {
-                menu: {
-                  position: 'top',
-                  display: true,
-                  theme: 'light',
-                  text: true
-                }
-              }
+              methods: ['card', 'sepa'],
+              api_domain: 'api.dev.fondy.eu'
             },
             params: {
-              // currency: 'RUB',
-              // merchant_id: 900234,
-              // amount: 500,
-              token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
+              currency: 'RUB',
+              merchant_id: 900234,
+              amount: 500,
+              // token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
             },
           },
         }
 
-        var app = render('wallet')
+        var app = render('max')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()

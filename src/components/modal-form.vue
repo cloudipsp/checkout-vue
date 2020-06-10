@@ -12,7 +12,9 @@
     </template>
 
     <template #footer="{ toggle }">
-      <button v-t="'confirm'" :class="classButton" @click="click(toggle)" />
+      <button :class="classButton" @click="click(toggle)">
+        <span v-t="'confirm'" />
+      </button>
     </template>
   </f-modal>
 </template>

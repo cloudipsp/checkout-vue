@@ -1,9 +1,12 @@
 <template>
-  <div v-if="show" class="f-methods" :class="openClass">
-    <f-button-pay-wallet class="f-block-hr f-block" position="top" tab="menu" />
-    <f-menu />
-    <f-fast-access />
-    <f-button-pay-wallet class="f-block" position="bottom" tab="menu" />
+  <div v-if="show" class="f-sidebar">
+    <div class="f-sidebar-content">
+      <f-info />
+      <f-button-pay-wallet />
+      <f-menu />
+      <f-fast-access />
+      <f-security />
+    </div>
   </div>
 </template>
 
@@ -11,12 +14,16 @@
 import EventBus from '@/event-bus'
 import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
+import FSecurity from '@/components/security'
+import FInfo from '@/components/info'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FFastAccess,
     FMenu,
+    FSecurity,
+    FInfo,
   },
   props: {
     inProgress: {
@@ -24,11 +31,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['showModalMethods']),
     ...mapState('options', ['methods']),
-    openClass() {
-      return { 'f-open': this.showModalMethods }
-    },
     onlyCard() {
       return this.methods.length === 1 && this.methods[0] === 'card'
     },

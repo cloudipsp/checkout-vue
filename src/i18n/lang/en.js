@@ -4,11 +4,11 @@ import { messages as validateMessages } from 'vee-validate/dist/locale/en'
 export const messages = Object.assign({}, countries, {
   card: 'Payment by card',
   card_number: 'Card number',
-  card_number_p: 'XXXX XXXX XXXX XXXX',
-  expiry_date: 'Expiry date',
-  expiry_date_p: 'MM/YY',
-  cvv2: 'CVV2',
-  cvv2_p: 'XXX',
+  card_number_p: '0000 0000 0000 0000',
+  expiry_date: 'MM/YY',
+  expiry_date_p: '00/00',
+  cvv2: 'CVV/CVC',
+  cvv2_p: '000',
   cvv2_question: '{0} digits on the back of the card',
   email: 'Email',
   email_p: 'please enter your email',
@@ -36,7 +36,6 @@ export const messages = Object.assign({}, countries, {
   load_more: 'Load more...',
   cash: 'Cash',
   cash_t: 'What will you pay?',
-  wallets: 'Apple/Google Pay',
   apple_pay: 'Buy with',
 
   sepa: 'SEPA Direct Debit',
@@ -50,12 +49,7 @@ export const messages = Object.assign({}, countries, {
   iban: 'IBAN',
   iban_p: '',
 
-  info: 'Order information',
-  amount: 'Order amount:',
   fee: 'Commission:',
-  methods: 'Payment methods',
-  methods_m: 'Select a payment method',
-  fast: 'Quick access to payment methods:',
   offer: 'offer',
   offer_t:
     'I agree with the <a href="{0}" target="_blank">offer conditions </a>',

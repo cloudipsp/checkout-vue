@@ -1,17 +1,13 @@
 <template>
   <div class="f-info">
-    <div v-t="'info'" class="f-block-hr f-title f-visible-desktop" />
-    <div v-if="show" class="f-block f-block-hr">
-      <div v-if="title" v-t="title" class="f-block-title" />
-      <div v-if="order_desc" v-t="order_desc" />
-      <div v-if="link">
+    <div v-if="show">
+      <div v-if="title" v-t="title" class="f-merchant-name" />
+      <div v-if="order_desc" v-t="order_desc" class="f-order-desc" />
+      <div v-if="link" class="f-merchant-url">
         <a :href="link" target="_blank">{{ link }}</a>
       </div>
     </div>
-    <f-fee class="f-block f-block-hr" />
-    <div class="f-visible-desktop">
-      <i class="f-icon f-icon-block f-i-security" />
-    </div>
+    <f-fee />
   </div>
 </template>
 

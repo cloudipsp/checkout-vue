@@ -114,22 +114,6 @@ locales.forEach(function(locale) {
   }
 })
 
-let wallet_pay_button = {
-  type: 'object',
-  fields: {},
-}
-methods.concat('menu').forEach(function(method) {
-  wallet_pay_button.fields[method] = {
-    type: 'object',
-    fields: {
-      position: { type: 'enum', enum: ['top', 'bottom'] },
-      display: { type: 'boolean' },
-      theme: { type: 'enum', enum: ['dark', 'light'] },
-      text: { type: 'boolean' },
-    },
-  }
-})
-
 let css_variable = validatorObject(Object.keys(cssVarisble))
 
 Object.keys(cssVarisble).forEach(item => {
@@ -166,7 +150,6 @@ export default {
       cancel: { type: 'boolean' },
       default_country: { type: 'enum', enum: configCountries },
       countries: validatorArray(configCountries),
-      wallet_pay_button,
     },
   },
   popup: {

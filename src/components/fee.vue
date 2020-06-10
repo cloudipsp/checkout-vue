@@ -1,6 +1,9 @@
 <template>
   <div v-if="show" class="f-fee">
-    <div>{{ amountString }}</div>
+    <div class="f-mb-3">
+      <span class="f-amount">{{ amountString }}</span>
+      <span class="f-currency">{{ currencyTranslate }}</span>
+    </div>
     <div v-if="feeAmount">{{ feeString }}</div>
   </div>
 </template>
@@ -15,11 +18,7 @@ export default {
     ...mapState('options', { show: 'fee' }),
     ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
     amountString() {
-      return [
-        this.$t('amount'),
-        this.amount / 100,
-        this.currencyTranslate,
-      ].join(' ')
+      return this.amount / 100
     },
     feeAmount() {
       if (!this.amount) return

@@ -1,8 +1,8 @@
 <template>
   <div class="f-success" :data-e2e-status="order.order_status">
-    <div class="f-block f-block-hr">
+    <div>
       <div class="f-form-group">
-        <div class="f-block f-title3">
+        <div>
           <f-svg
             v-if="isApproved"
             class="f-text-success"

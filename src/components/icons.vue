@@ -1,5 +1,6 @@
 <template>
   <div v-if="show" class="f-icons">
+    <span v-if="title" class="f-icons-title">Or pay with card</span>
     <img
       v-for="icon in list"
       :key="icon"
@@ -12,6 +13,10 @@
 <script>
 export default {
   props: {
+    title: {
+      type: Boolean,
+      default: false,
+    },
     list: {
       type: Array,
       default() {

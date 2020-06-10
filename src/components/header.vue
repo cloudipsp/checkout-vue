@@ -1,23 +1,19 @@
 <template>
   <div class="f-header">
+    <div class="f-header-logo">
+      <div class="f-logo" :style="styleLogo" />
+    </div>
     <div class="f-header-menu">
-      <select
-        v-if="showLang"
-        :value="lang"
-        :class="classLang"
-        @input="changeLang"
-      >
+      <select v-if="showLang" :value="lang" class="f-lang" @input="changeLang">
         <option v-for="item in locales" :key="item" v-t="item" :value="item" />
       </select>
       <button
         v-if="showButtonMethods"
         v-t="'other'"
         type="button"
-        :class="classButtonMethods"
         @click="toggleModalMethods"
       />
     </div>
-    <div class="f-logo" :style="styleLogo" />
   </div>
 </template>
 
@@ -50,25 +46,14 @@ export default {
       return this.optionsLang && this.locales.length > 1
     },
     showButtonMethods() {
-      return !this.min
-    },
-    classLang() {
-      return [this.css.fc, 'f-input-sm', 'f-visible-inline-block']
-    },
-    classButtonMethods() {
-      return [
-        this.css.btn,
-        this.css.bd,
-        this.css.btnSm,
-        'f-visible-mobile-inline-block',
-      ]
+      return false && !this.min
     },
   },
-  watch: {
-    showModalMethods(show) {
-      this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
-    },
-  },
+  // watch: {
+  //   showModalMethods(show) {
+  //     this.$root.$el.style.overflow = show ? 'hidden' : 'visible'
+  //   },
+  // },
   methods: {
     changeLang($event) {
       this.store.changeLang($event.target.value)
@@ -76,13 +61,13 @@ export default {
     toggleModalMethods() {
       this.store.toggleModalMethods()
     },
-    resize() {
-      if (window.innerWidth >= 768) {
-        this.$root.$el.style.overflow = 'visible'
-      } else if (this.showModalMethods) {
-        this.$root.$el.style.overflow = 'hidden'
-      }
-    },
+    // resize() {
+    //   if (window.innerWidth >= 992) {
+    //     this.$root.$el.style.overflow = 'visible'
+    //   } else if (this.showModalMethods) {
+    //     this.$root.$el.style.overflow = 'hidden'
+    //   }
+    // },
   },
 }
 </script>

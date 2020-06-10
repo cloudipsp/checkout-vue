@@ -1,5 +1,5 @@
 <template>
-  <div :class="['f-form-group', hasError ? css.he : '']">
+  <div :class="classGroupName">
     <input
       :id="name_"
       v-model="value_"

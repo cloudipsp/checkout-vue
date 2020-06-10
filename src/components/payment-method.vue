@@ -1,13 +1,9 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <f-button-pay-wallet
-      class="f-block-hr f-block"
-      position="top"
-      :tab="method"
-    />
-    <f-fields />
+    <f-info />
+    <f-button-pay-wallet />
     <transition name="fade">
-      <f-icons class="f-block f-block-hr f-text-center" :list="icons" />
+      <f-icons class="f-mb-3" :list="icons" title />
     </transition>
     <transition name="fade">
       <!--card emoney ibank trustly cash sepa-->
@@ -23,10 +19,9 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
-import Wallets from '@/components/wallets'
-import FFields from '@/components/fields'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
+import FInfo from '@/components/info'
 
 export default {
   components: {
@@ -36,9 +31,8 @@ export default {
     Trustly,
     Cash,
     Sepa,
-    Wallets,
-    FFields,
     FIcons,
+    FInfo,
   },
   computed: {
     ...mapState('router', ['method']),

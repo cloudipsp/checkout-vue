@@ -1,17 +1,13 @@
 <template>
   <div v-if="show" class="f-fast-access">
-    <div v-t="'fast'" class="f-block-hr f-title f-hidden-mobile" />
-    <div v-t="'fast'" class="f-block f-title3 f-visible-mobile" />
-    <div class="f-block f-block-hr">
-      <div
-        v-for="item in list"
-        :key="item.system"
-        class="f-icon"
-        :class="className(item)"
-        :style="style(item.system)"
-        @click="click(item)"
-      />
-    </div>
+    <div
+      v-for="item in list"
+      :key="item.system"
+      class="f-icon"
+      :class="className(item)"
+      :style="style(item.system)"
+      @click="click(item)"
+    />
   </div>
 </template>
 

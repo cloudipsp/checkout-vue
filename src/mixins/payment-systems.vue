@@ -1,46 +1,42 @@
 <template>
   <div :class="['f-' + method]">
-    <div class="f-block">
-      <div class="f-block-sm">
-        <input-select
-          v-if="showCountry"
-          name="default_country"
-          :list="country"
-          :model="options"
-          validate="required"
-          @input="clear"
-        />
-        <input-text
-          v-if="showSearch"
-          name="search"
-          label="system_search"
-          type="text"
-          :model="form"
-          placeholder="system_search_p"
-        />
+    <div>
+      <input-select
+        v-if="showCountry"
+        name="default_country"
+        :list="country"
+        :model="options"
+        validate="required"
+        @input="clear"
+      />
+      <input-text
+        v-if="showSearch"
+        name="search"
+        label="system_search"
+        type="text"
+        :model="form"
+        placeholder="system_search_p"
+      />
+    </div>
+    <div v-if="showTitle" v-t="method + '_t'" />
+    <div class="f-text-center" :class="'f-ps-' + list.length">
+      <div
+        v-for="bank in listMin"
+        :key="bank.id"
+        class="f-ps"
+        @click="locationSystem(bank)"
+      >
+        <f-icon :name="bank.bank_logo" />
+        <div v-t="bank.name" />
+        <div class="f-iban">
+          {{ bank.iban }}
+        </div>
       </div>
-      <div v-if="showTitle" v-t="method + '_t'" class="f-block f-title2" />
-      <div class="f-text-center" :class="'f-ps-' + list.length">
-        <div
-          v-for="bank in listMin"
-          :key="bank.id"
-          class="f-ps"
-          @click="locationSystem(bank)"
-        >
-          <div class="f-wrapper-icon">
-            <f-icon :name="bank.bank_logo" />
-          </div>
-          <div v-t="bank.name" />
-          <div class="f-iban">
-            {{ bank.iban }}
-          </div>
+      <div v-if="showMore" class="f-ps" @click="loadMore">
+        <div class="f-wrapper-icon">
+          <f-svg name="redo" size="3x" :spin="spin" />
         </div>
-        <div v-if="showMore" class="f-ps" @click="loadMore">
-          <div class="f-wrapper-icon">
-            <f-svg name="redo" size="3x" :spin="spin" />
-          </div>
-          <div v-t="'load_more'" />
-        </div>
+        <div v-t="'load_more'" />
       </div>
     </div>
     <f-modal-form-bank

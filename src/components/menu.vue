@@ -1,47 +1,49 @@
 <template>
   <div class="f-menu">
-    <div v-t="'methods'" class="f-block-hr f-title f-hidden-mobile" />
-    <div v-t="'methods_m'" class="f-block f-title3 f-visible-mobile" />
-    <div class="f-block-hr">
-      <template v-for="item in methods">
-        <f-button-pay-wallet
-          v-if="show(item)"
-          :key="item"
-          tab="wallets"
-          position="bottom"
-        >
-          <template #default="{ open, classButton }">
-            <div v-t="item" :class="className(item)" @click="open" />
-            <div style="display: none" :class="classButton" />
-          </template>
-        </f-button-pay-wallet>
-        <div
-          v-else
-          :key="item"
-          v-t="item"
-          :class="className(item)"
-          @click="click(item)"
-        />
-      </template>
-    </div>
+    <div class="f-title">Or use another payment method</div>
+    <template v-for="method in methods">
+      <div :key="method" :class="className(method)" @click="click(method)">
+        <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />
+        <span v-t="method" />
+        <f-icons class="f-menu-icons" :list="icons(method)" />
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
+import FIcons from '@/components/icons'
 
 export default {
+  components: {
+    FIcons,
+  },
+  data() {
+    return {
+      icon: {
+        card: 'card',
+        emoney: 'wallet',
+        ibank: 'bank',
+        trustly: 'bank',
+        cash: 'local',
+        sepa: 'local',
+        banklinks_eu: 'bank',
+      },
+    }
+  },
   computed: {
     ...mapState('options', ['methods']),
     ...mapState('router', ['method']),
-    show() {
-      return function(item) {
-        return item === 'wallets'
+    ...mapState(['options']),
+    icons() {
+      return function(method) {
+        return this.options[method + '_icons']
       }
     },
     className() {
       return function(item) {
-        return ['f-item', 'f-i-' + item, { active: this.method === item }]
+        return ['f-menu-item', { active: this.method === item }]
       }
     },
   },

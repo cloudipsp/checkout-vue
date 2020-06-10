@@ -51,6 +51,9 @@ export default function(variables) {
   variables = fromEntries(
     Object.entries(variables).reduce((acc, [n, v]) => {
       let name = `${prefix}${n}`
+
+      if (v === true || v === false) return acc
+
       let nameh = `${name}-h`
       let names = `${name}-s`
       let namel = `${name}-l`

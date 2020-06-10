@@ -50,6 +50,11 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      active: false,
+    }
+  },
   computed: {
     ...mapState(['css', 'submit']),
     ...mapState('options', ['tooltip']),
@@ -70,8 +75,11 @@ export default {
     flag() {
       return this.$validator.flags[this.name_] || {}
     },
+    isError() {
+      return this.errors.has(this.name_)
+    },
     hasError() {
-      return this.errors.has(this.name_) && (this.flag.touched || this.submit)
+      return this.isError && (this.flag.touched || this.submit)
     },
     value_: {
       get() {
@@ -83,6 +91,22 @@ export default {
     },
     classReadonly() {
       return { 'f-form-control-text': this.readonly }
+    },
+    classError() {
+      return this.hasError ? this.css.ie : ''
+    },
+    className() {
+      return [this.css.fc, this.classReadonly, this.classError]
+    },
+    classLabel() {
+      return [
+        this.css.cl,
+        this.hasError ? this.css.le : '',
+        { active: this.active },
+      ]
+    },
+    classGroupName() {
+      return ['f-form-group', this.hasError ? this.css.he : '']
     },
   },
   created() {
@@ -100,10 +124,18 @@ export default {
     if (this.value) {
       this.params[this.field_] = this.value
     }
+
+    this.active = this.params[this.field_]
   },
   methods: {
     onEnter() {
       this.$root.$emit('submit')
+    },
+    focus() {
+      this.active = true
+    },
+    blur() {
+      this.active = this.params[this.field_]
     },
   },
 }

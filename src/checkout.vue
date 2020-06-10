@@ -3,7 +3,7 @@
     <div
       v-if="!error.errors.length"
       class="f-container"
-      :class="{ 'f-min': min }"
+      :class="[{ 'f-min': min }, openClass]"
     >
       <f-header :min="min" />
       <payment :min="min" />
@@ -40,7 +40,11 @@ export default {
     }
   },
   computed: {
+    ...mapState(['showModalMethods']),
     ...mapState(['error']),
+    openClass() {
+      return { 'f-open': this.showModalMethods }
+    },
   },
   created: function() {
     this.store.setOptions(this.optionsUser)

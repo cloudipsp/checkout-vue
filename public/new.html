@@ -17,7 +17,7 @@
       height: 100%;
       padding: 20px;
     }
-    #app {
+    #f {
       position: relative;
       height: 100%;
       display: flex;
@@ -29,18 +29,23 @@
       top: 0;
       left: 0;
     }
-    .wrapper {
+    .f-container {
       display: flex;
       width: 100%;
       max-width: 1280px;
-      height: 686px;
+      max-height: 686px;
+      height: calc(100vh - 40px);
       background: var(--bg);
       box-shadow: 0 24px 40px rgba(200, 207, 213, 0.6);
       border-radius: 16px;
       border-top: 2px solid var(--main);
       color: var(--text);
+      overflow: auto;
+      margin: auto;
     }
-    .sidebar{
+    .f-sidebar{
+      position: sticky;
+      top: 0;
       flex: 0 0 450px;
       border-right: 2px solid var(--bg2);
       padding: 24px 60px;
@@ -53,9 +58,9 @@
       position: relative;
     }
     .main{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      /*display: flex;*/
+      /*flex-direction: column;*/
+      /*justify-content: center;*/
       height: 100%;
       width: 360px;
       margin: auto;
@@ -136,6 +141,7 @@
     .item:hover .count, .item.active .count{
       background: var(--bg);
     }
+
     .lang {
       position: absolute;
       right: 24px;
@@ -248,6 +254,7 @@
       padding: 12px;
       display: block;
       position: relative;
+      width: 100%;
     }
     .button span {
       position: relative;
@@ -277,10 +284,17 @@
       background: linear-gradient(130.84deg, hsl(var(--main-h), calc(var(--main-s) + 15%), calc(var(--main-l) - 5%)) 29.74%, hsl(var(--main-h), calc(var(--main-s) + 10%), calc(var(--main-l) - 15%)) 74.06%);
       border-radius: 8px;
     }
+    .item-bank{
+      width: 100px;
+      height: 100px;
+      background: #2a2a2a;
+      display: inline-block;
+      margin: 0 10px 10px 0;
+    }
   </style>
 </head>
 <body>
-<div id="app">
+<div id="f">
   <div class="colors">
     <template v-for="(color, name) in themes">
       <input type="color" v-model="themes[name]" @input="initVariable">{{name}}
@@ -288,8 +302,8 @@
     <button v-if="theme !== 'dark'" class="btn btn-secondary" @click="setDark">set dark</button>
     <button v-if="theme !== 'light'" class="btn btn-secondary" @click="setLight">set light</button>
   </div>
-  <div class="wrapper">
-    <div class="sidebar">
+  <div class="f-container">
+    <div class="f-sidebar">
       <div class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="140" height="50" viewBox="0 0 140 50" fill="none">
           <path d="M40.4838 17.6337V15.1836H33.6621H32.0103H30.9355V31.4155H33.6621V24.6834H39.8403V22.2333H33.6621V17.6337H40.4838Z" fill="currentColor"/>
@@ -654,13 +668,16 @@
           <label class="label">Email</label>
         </div>
         <button class="button"><span>Pay 25 GBP</span></button>
+        <div class="d-flex flex-wrap">
+          <div v-for="item in Array.from({length: 100})" class="item-bank">bank</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <script>
   new Vue({
-    el: '#app',
+    el: '#f',
     data: {
       themes: {},
       theme: ''

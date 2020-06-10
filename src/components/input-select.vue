@@ -1,22 +1,18 @@
 <template>
-  <div :class="['f-form-group', hasError ? css.he : '']">
-    <label
-      v-t="label_"
-      :class="[css.cl, hasError ? css.le : '']"
-      :for="name_"
-      >{{ label_ }}</label
-    >
+  <div :class="classGroupName">
     <select
       :id="name_"
       v-model="params[field_]"
       v-validate="validate"
       :data-vv-as="label_"
       :data-vv-name="name_"
-      :class="[css.fc, hasError ? css.ie : '', classReadonly]"
+      :class="className"
       :readonly="readonly"
       :disabled="readonly"
       :autocomplete="autocomplete"
       @input="input"
+      @focus="focus"
+      @blur="blur"
     >
       <option
         v-for="item in list"
@@ -25,6 +21,7 @@
         :value="item.id || item"
       />
     </select>
+    <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <f-tooltip
       v-if="tooltip"
       :text="errors.first(name_)"

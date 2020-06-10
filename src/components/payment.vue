@@ -1,8 +1,13 @@
 <template>
   <div class="f-wrapper" :data-e2e-ready="ready">
-    <info ref="info" />
-    <f-methods :in-progress="inProgress" />
+    <f-sidebar :in-progress="inProgress" />
     <div ref="center" class="f-center">
+      <div class="f-center-top" />
+      <div class="f-btn-methods">
+        <a href="#" @click="toggleModalMethods">
+          Back to Payment Methods
+        </a>
+      </div>
       <!--payment-method success pending-->
       <component :is="page" :order="order" />
       <div v-if="loading">
@@ -15,6 +20,7 @@
         :duration.sync="duration3ds"
         @submit3ds="submit3ds"
       />
+      <f-security />
     </div>
   </div>
 </template>
@@ -23,14 +29,13 @@
 import Success from '@/components/success'
 import Pending from '@/components/pending'
 import PaymentMethod from '@/components/payment-method'
-import FMethods from '@/components/methods'
+import FSidebar from '@/components/sidebar'
 import FError from '@/components/error'
+import FSecurity from '@/components/security'
 
-import Info from '@/components/info'
 import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
 import Submit3ds from '@/components/submit3ds'
-import Resize from '@/mixins/resize'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
 
@@ -46,12 +51,11 @@ export default {
     Success,
     Pending,
     PaymentMethod,
-    FMethods,
-    Info,
+    FSidebar,
     Submit3ds,
     FError,
+    FSecurity,
   },
-  mixins: [Resize],
   inject: ['$validator'],
   props: {
     min: {
@@ -71,7 +75,6 @@ export default {
   computed: {
     ...mapState(['loading']),
     ...mapState('router', ['page']),
-    ...mapState('options', ['full_screen']),
     ...mapState('params', ['token']),
 
     ...mapStateGetSet([
@@ -108,14 +111,6 @@ export default {
       return this.token ? { token: this.token } : this.store.formParams()
     },
   },
-  watch: {
-    'store.state.regular.open': 'nextResize',
-    email: 'nextResize',
-    router: {
-      handler: 'nextResize',
-      deep: true,
-    },
-  },
   created() {
     this.createdEvent()
 
@@ -140,9 +135,6 @@ export default {
       .catch(e => {
         if (e instanceof Error) console.log(e)
       })
-  },
-  mounted() {
-    this.nextResize()
   },
   methods: {
     submit() {
@@ -338,36 +330,11 @@ export default {
         $firstErrorField.focus()
       })
     },
-    resize() {
-      if (!this.full_screen) return
-
-      let $container = document.querySelector('.f-container')
-      this.$refs.center.style.minHeight = 'auto'
-      $container.style.paddingTop = '0'
-
-      let width = window.innerWidth
-      let height = document.documentElement.clientHeight
-      let wraperH = this.$el.offsetHeight
-      let centerH = this.$refs.center.offsetHeight
-      let infoH = this.$refs.info.$el.offsetHeight
-      let containerH = $container.offsetHeight
-
-      if (width >= 992) {
-        this.$refs.center.style.minHeight =
-          centerH < wraperH ? wraperH + 'px' : 'auto'
-        if (containerH < height) {
-          $container.style.paddingTop = (height - containerH) / 2 + 'px'
-        }
-      } else if (width >= 768 && !this.min) {
-        this.$refs.center.style.minHeight =
-          centerH < wraperH - infoH ? wraperH - infoH + 'px' : 'auto'
-      }
-    },
-    nextResize() {
-      this.$nextTick(this.resize)
-    },
     submit3ds() {
       model3ds.submit3dsForm()
+    },
+    toggleModalMethods() {
+      this.store.toggleModalMethods()
     },
   },
 }
