@@ -25,6 +25,20 @@
     .f-menu-icon {
       color: $menu_icon_active_color;
     }
+
+    .f-icons-count {
+      color: $menu_count_active_color;
+      background: $menu_count_active_bg;
+    }
+
+    .f-icon {
+      opacity: 1;
+    }
+  }
+
+  .f-icon {
+    opacity: 0.3;
+    transition: all ease-in-out 0.15s;
   }
 }
 
@@ -35,16 +49,4 @@
 
 .f-menu-icons {
   margin-left: auto;
-}
-
-.f-icons-item {
-  width: px-to-rem(24px);
-  height: px-to-rem(24px);
-  margin-right: px-to-rem(8px);
-  border-radius: px-to-rem(3px);
-  box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $menu_icons_shadow;
-
-  &:last-child {
-    margin: 0;
-  }
 }

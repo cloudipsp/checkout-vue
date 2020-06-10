@@ -11,6 +11,7 @@ const options = {
     cash: [],
     fast: [],
     card_icons: ['mastercard', 'visa'],
+    trustly_icons: [],
     title: '',
     full_screen: true,
     link: '',

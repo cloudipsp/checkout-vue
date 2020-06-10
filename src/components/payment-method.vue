@@ -3,10 +3,15 @@
     <f-info />
     <f-button-pay-wallet />
     <transition name="fade">
-      <f-icons class="f-mb-3" :list="icons" title />
+      <f-icons
+        class="f-mb-3"
+        title="Or pay with card"
+        :type="method"
+        :count="5"
+      />
     </transition>
     <transition name="fade">
-      <!--card emoney ibank trustly cash sepa-->
+      <!--card trustly sepa-->
       <component :is="method" :key="method" :payment-systems="paymentSystems" />
     </transition>
   </div>
@@ -37,9 +42,6 @@ export default {
   computed: {
     ...mapState('router', ['method']),
     ...mapState(['options']),
-    icons() {
-      return this.options[this.method + '_icons']
-    },
     paymentSystems() {
       return this.options[this.method]
     },

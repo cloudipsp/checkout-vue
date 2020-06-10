@@ -15,8 +15,11 @@ let cardIcons = [
   'visa',
   'mir',
   'prostir',
-  'diners-club',
-  'american-express',
+  'diners',
+  'american_express',
+  'jcb',
+  'maestro',
+  'union_pay',
 ]
 let locales = configLocales
 let period = ['day', 'week', 'month']

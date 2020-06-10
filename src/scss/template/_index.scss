@@ -90,3 +90,30 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
     margin-left: -180px;
   }
 }
+
+.f-icons {
+  display: flex;
+  align-items: center;
+
+  .f-icon {
+    margin-right: px-to-rem(8px);
+    border-radius: px-to-rem(3px);
+    box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $menu_icons_shadow;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.f-icons-count {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+  line-height: 24px;
+  color: $menu_count_color;
+  text-align: center;
+  background: $menu_count_bg;
+  border-radius: px-to-rem(3px);
+  transition: all ease-in-out 0.15s;
+}

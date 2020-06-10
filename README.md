@@ -35,7 +35,7 @@ Name                  | Type        | Default                 | Description     
 `emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.                                    |
 `cash`                | Array       |                         | support `liqpay`.                                                                   |
 `fast`                | Array       |                         | support .                                                                           |
-`card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners-club`, `american-express`.  |
+`card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners`, `american_express` , `jcb`, `maestro`, `union_pay`.|
 `title`               | String      |                         |                                                                                     | options or server
 `link`                | String      |                         | format url                                                                          | server or options
 `full_screen`         | Boolean     | true                    |                                                                                     |

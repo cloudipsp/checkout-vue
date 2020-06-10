@@ -5,7 +5,7 @@
       <div :key="method" :class="className(method)" @click="click(method)">
         <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />
         <span v-t="method" />
-        <f-icons class="f-menu-icons" :list="icons(method)" />
+        <f-icons class="f-menu-icons" :type="method" />
       </div>
     </template>
   </div>
@@ -36,11 +36,6 @@ export default {
     ...mapState('options', ['methods']),
     ...mapState('router', ['method']),
     ...mapState(['options']),
-    icons() {
-      return function(method) {
-        return this.options[method + '_icons']
-      }
-    },
     className() {
       return function(item) {
         return ['f-menu-item', { active: this.method === item }]

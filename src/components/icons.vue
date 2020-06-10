@@ -1,37 +1,55 @@
 <template>
   <div v-if="show" class="f-icons">
-    <span v-if="title" class="f-icons-title">Or pay with card</span>
-    <img
-      v-for="icon in list"
-      :key="icon"
-      class="f-icons-item"
-      :src="path(icon)"
+    <span v-if="title" class="f-icons-title">{{ title }}</span>
+    <f-icon
+      v-for="item in listFirst"
+      :key="item"
+      size="sm"
+      :name="item"
+      :type="type"
     />
+    <div v-if="showCount" class="f-icons-count">+{{ countLast }}</div>
   </div>
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   props: {
     title: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: '',
     },
-    list: {
-      type: Array,
-      default() {
-        return []
-      },
+    type: {
+      type: String,
+      default: 'card',
+      validator: value => ['card', 'trustly'].includes(value),
+    },
+    count: {
+      type: Number,
+      default: 3,
     },
   },
   computed: {
+    ...mapState(['options']),
+    list() {
+      return this.options[this.type + '_icons'] || []
+    },
+    listFirst() {
+      return this.list.slice(0, this.count)
+    },
+    listLast() {
+      return this.list.slice(this.count)
+    },
     show() {
       return this.list.length
     },
-    path() {
-      return function(id) {
-        return require('../assets/img/' + id + '.svg')
-      }
+    showCount() {
+      return this.list.length > this.count
+    },
+    countLast() {
+      return this.list.length - this.count
     },
   },
 }

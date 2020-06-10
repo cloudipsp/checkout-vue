@@ -16,12 +16,28 @@ export default {
       default: 'md',
       validator: value => ['sm', 'md', 'lg'].includes(value),
     },
+    type: {
+      type: String,
+      default: 'card',
+      validator: value => ['card', 'trustly'].includes(value),
+    },
+  },
+  data() {
+    return {
+      map: {
+        card: 'card_system',
+        trustly: 'banks',
+        xz: 'digital_wallet',
+      },
+    }
   },
   computed: {
     ...mapState(['cdn']),
     style() {
       return {
-        'background-image': `url(${this.cdn}banks/${this.name}.svg)`,
+        'background-image': `url(${this.cdn}${this.map[this.type]}/${
+          this.name
+        }.svg)`,
       }
     },
     className() {

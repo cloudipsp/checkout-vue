@@ -11,7 +11,7 @@ const ash_700 = '#BAC1CA' // 212 13 76
 const grey_1 = '#9CA7B3' // 212 13 66
 const grey_2 = '#818C99' // 212 11 55
 // const grey_3 = '#5A6470' // 212 11 40
-// const grey_4 = '#484F57' // 212 9  31
+const grey_4 = '#484F57' // 212 9  31
 const grey_9 = '#313539' // 212 8  21
 
 const black = '#3D3D3D' // 0 0 24
@@ -41,6 +41,10 @@ export default {
   menu_icon_color: ash_500,
   menu_icon_active_color: 'menu_item_active_color',
   menu_icons_shadow: '#cacfd6',
+  menu_count_color: grey_2,
+  menu_count_active_color: grey_4,
+  menu_count_bg: ash_200,
+  menu_count_active_bg: white,
   merchant_name_color: ash_700,
   order_desc_color: 'container_color',
   amount_color: black,
