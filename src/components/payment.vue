@@ -38,6 +38,7 @@ import { isExist } from '@/utils/typeof'
 import Submit3ds from '@/components/submit3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
+import { methods, tabs } from '@/utils/compatibility'
 
 let model3ds
 
@@ -210,10 +211,10 @@ export default {
         model.attr('tabs_order') &&
         model.attr('tabs_order').length
       ) {
-        this.methods = model.attr('tabs_order')
+        this.methods = methods(model.attr('tabs_order'))
         this.store.initLocation()
       }
-      this.tabs = model.attr('tabs')
+      this.tabs = tabs(model.attr('tabs'))
       this.default_country =
         this.store.attr('user.options.default_country') ||
         model.attr('default_country')

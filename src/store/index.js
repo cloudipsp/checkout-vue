@@ -19,6 +19,7 @@ import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
+import { methods } from '@/utils/compatibility'
 
 Vue.use(store)
 
@@ -98,16 +99,11 @@ export default {
     }
   },
   initBanklinks() {
-    let methods = this.state.options.methods
-    let index = methods.indexOf('banklinks_eu')
+    let list = this.state.options.methods
 
-    if (!methods.length) return
-    if (index === -1) return
+    if (!list.length) return
 
-    methods[index] = 'trustly'
-    this.state.options.methods = methods.filter(
-      (item, key, self) => self.indexOf(item) === key
-    )
+    this.state.options.methods = methods(list)
   },
   initLang() {
     let lang

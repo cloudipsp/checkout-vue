@@ -14,6 +14,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import configMethods from '@/config/methods'
 
 export default {
   props: {
@@ -24,7 +25,7 @@ export default {
     type: {
       type: String,
       default: 'card',
-      validator: value => ['card', 'trustly'].includes(value),
+      validator: value => configMethods.includes(value),
     },
     count: {
       type: Number,

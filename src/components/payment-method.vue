@@ -11,15 +11,15 @@
       />
     </transition>
     <transition name="fade">
-      <!--card trustly sepa-->
-      <component :is="method" :key="method" :payment-systems="paymentSystems" />
+      <!--card banklinks_eu sepa-->
+      <component :is="method" :key="method" />
     </transition>
   </div>
 </template>
 
 <script>
 import Card from '@/components/card'
-import Trustly from '@/components/trustly'
+import Banklinks_eu from '@/components/banklinks_eu'
 import Sepa from '@/components/sepa'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
@@ -28,17 +28,13 @@ import FInfo from '@/components/info'
 export default {
   components: {
     Card,
-    Trustly,
+    Banklinks_eu,
     Sepa,
     FIcons,
     FInfo,
   },
   computed: {
     ...mapState('router', ['method']),
-    ...mapState(['options']),
-    paymentSystems() {
-      return this.options[this.method]
-    },
   },
 }
 </script>

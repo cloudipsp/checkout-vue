@@ -19,7 +19,6 @@ let cardIcons = [
 let locales = configLocales
 let period = ['day', 'week', 'month']
 let css = ['bootstrap3', 'bootstrap4', 'foundation6']
-// let currency = ['UAH', 'RUB', 'USD', 'EUR', 'GBP', 'CZK']
 let YN = ['Y', 'N', 'y', 'n']
 let verificationType = ['amount', 'code']
 
@@ -167,7 +166,6 @@ export default {
       merchant_id: { type: 'integer', max: 999999999999 },
       order_desc: { type: 'string', max: 1024 },
       amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
-      // currency: { type: 'enum', enum: currency },
       currency: [
         { type: 'string' },
         validatorToken(),

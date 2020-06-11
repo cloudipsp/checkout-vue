@@ -1,7 +1,7 @@
 <template>
   <f-modal-form v-bind="$attrs" :title="title" :list="list" v-on="$listeners">
     <template #icon>
-      <f-icon size="lg" :name="logo" />
+      <f-icon size="lg" :name="logo" type="banklinks_eu" />
     </template>
   </f-modal-form>
 </template>

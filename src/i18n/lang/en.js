@@ -24,8 +24,7 @@ export const messages = Object.assign({}, countries, {
   week: 'Week',
   month: 'Month',
 
-  trustly: 'Internet banks',
-  trustly_t: 'Select your bank:',
+  banklinks_eu: 'Internet banks',
   default_country: 'Choose your country or region',
   system_search: 'or start typing your',
   system_search_p: "bank's name, IBAN, BLZ",

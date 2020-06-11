@@ -4,6 +4,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import configMethods from '@/config/methods'
 
 export default {
   props: {
@@ -19,14 +20,14 @@ export default {
     type: {
       type: String,
       default: 'card',
-      validator: value => ['card', 'trustly'].includes(value),
+      validator: value => configMethods.includes(value),
     },
   },
   data() {
     return {
       map: {
         card: 'card_system',
-        trustly: 'banks',
+        banklinks_eu: 'banks',
         xz: 'digital_wallet',
       },
     }
