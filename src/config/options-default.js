@@ -5,10 +5,7 @@ import css_varisble from '@/config/css-varisble'
 const options = {
   options: {
     methods: ['card'],
-    ibank: [],
     trustly: [],
-    emoney: [],
-    cash: [],
     fast: [],
     card_icons: ['mastercard', 'visa'],
     trustly_icons: [],
@@ -82,7 +79,7 @@ const options = {
   },
   router: {
     page: '', // payment-method success pending
-    method: '', // card emoney ibank trustly cash sepa
+    method: '', // card trustly sepa
     system: '',
   },
   css: configCss.default,

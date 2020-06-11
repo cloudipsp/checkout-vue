@@ -30,10 +30,7 @@ npm run build
 ### options
 Name                  | Type        | Default                 | Description                                                                         | Priority
 ---                   | ---         | ---                     | ---                                                                                 | ---
-`methods`             | Array       | ['card']                | support `card`, `emoney`, `ibank`, `cash`, `sepa`, `banklinks_eu`.                                  |
-`ibank`               | Array       |                         | support `p24`, `platba24`, `raiffeisen`.                                            |
-`emoney`              | Array       |                         | support `paypal`, `qiwi`, `webmoney`, `yamoney`.                                    |
-`cash`                | Array       |                         | support `liqpay`.                                                                   |
+`methods`             | Array       | ['card']                | support `card`, `sepa`, `banklinks_eu`.                                  |
 `fast`                | Array       |                         | support .                                                                           |
 `card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners`, `american_express` , `jcb`, `maestro`, `union_pay`.|
 `title`               | String      |                         |                                                                                     | options or server
@@ -42,7 +39,7 @@ Name                  | Type        | Default                 | Description     
 `locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
-`active_tab`          | String      | 'card'                  | support `card`, `emoney`, `ibank`, `cash`, `sepa`.                                  | server or options
+`active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                  | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
@@ -145,7 +142,7 @@ app.submit()
 app.$emit('submit')
 
 app.location({method}, {system})
-app.$emit('location', {method}, {system}) method support `card`, `emoney`, `ibank`, `cash`, `sepa`
+app.$emit('location', {method}, {system}) method support `card`, `sepa`, `banklinks_eu`
 
 app.setParams({params})
 app.$emit('setParams', {params})

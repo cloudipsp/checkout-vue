@@ -23,10 +23,7 @@ export default {
     return {
       icon: {
         card: 'card',
-        emoney: 'wallet',
-        ibank: 'bank',
         trustly: 'bank',
-        cash: 'local',
         sepa: 'local',
         banklinks_eu: 'bank',
       },

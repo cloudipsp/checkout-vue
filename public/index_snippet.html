@@ -25,7 +25,7 @@
     options: {
       api_domain: 'api.dev.fondy.eu',
       locales: ['ru'],
-      methods: ['ibank', 'card']
+      methods: ['sepa', 'card']
     },
     params: {
     currency: 'UAH',
@@ -41,8 +41,8 @@
     .$on('ready', function(model) {
       console.log('ready', model)
     })
-    .$emit('location', 'ibank')
-    .location('ibank')
+    .$emit('location', 'sepa')
+    .location('sepa')
 
   app.$on('ready', function(model) {
     console.log('ready2', model)

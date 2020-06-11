@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 import optionsDefault from '@/config/options-default'
 import configCss from '@/config/css'
-import configPaymentSystems from '@/config/payment-systems'
 import notSet from '@/config/not-set'
 import {
   getCookie,
@@ -68,7 +67,6 @@ export default {
       optionsUser.css
     )
     this.initBanklinks()
-    this.initFast()
     this.initLang()
     this.initLocation()
     this.initError()
@@ -110,20 +108,6 @@ export default {
     this.state.options.methods = methods.filter(
       (item, key, self) => self.indexOf(item) === key
     )
-  },
-  initFast() {
-    let fast = []
-    this.state.options.fast.forEach(function(system) {
-      Object.keys(configPaymentSystems).forEach(function(method) {
-        if (this.state.options[method].indexOf(system) > -1) {
-          fast.push({
-            method: method,
-            system: system,
-          })
-        }
-      }, this)
-    }, this)
-    this.state.options.fast = fast
   },
   initLang() {
     let lang

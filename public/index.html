@@ -54,7 +54,7 @@
         <option value="token">token</option>
       </select>
       <button class="render">render</button>
-      <button class="go-ibank">go ibank</button>
+      <button class="go-sepa">go sepa</button>
       <button class="go-card">go card</button>
       <button class="set-params">set params</button>
       <button class="submit">submit 1</button>
@@ -102,9 +102,6 @@
           max: {
             options: {
               methods: ['card', 'trustly'],
-              ibank: ['p24', 'platba24', 'raiffeisen'],
-              emoney: ['paypal', 'qiwi', 'webmoney', 'yamoney'],
-              cash: ['liqpay'],
               fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
               cardIcons: [
                 'mastercard',
@@ -331,9 +328,9 @@
             app.location('card')
           })
         document
-          .querySelector('.go-ibank')
+          .querySelector('.go-sepa')
           .addEventListener('click', function() {
-            app.location('ibank')
+            app.location('sepa')
           })
         document
           .querySelector('.set-params')

@@ -24,18 +24,12 @@ export const messages = Object.assign({}, countries, {
   week: 'Week',
   month: 'Month',
 
-  emoney: 'Emoney',
-  emoney_t: 'Choose the payment service from the list:',
-  ibank: 'Internet banks',
-  ibank_t: 'Select your bank:',
   trustly: 'Internet banks',
   trustly_t: 'Select your bank:',
   default_country: 'Choose your country or region',
   system_search: 'or start typing your',
   system_search_p: "bank's name, IBAN, BLZ",
   load_more: 'Load more...',
-  cash: 'Cash',
-  cash_t: 'What will you pay?',
   apple_pay: 'Buy with',
 
   sepa: 'SEPA Direct Debit',

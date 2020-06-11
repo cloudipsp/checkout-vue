@@ -19,10 +19,7 @@
 
 <script>
 import Card from '@/components/card'
-import Emoney from '@/components/emoney'
-import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
-import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
@@ -31,10 +28,7 @@ import FInfo from '@/components/info'
 export default {
   components: {
     Card,
-    Emoney,
-    Ibank,
     Trustly,
-    Cash,
     Sepa,
     FIcons,
     FInfo,

@@ -22,15 +22,6 @@ export const messages = Object.assign({}, countries, {
   week: 'Тиждень',
   month: 'Місяць',
 
-  emoney: 'Електронні гроші',
-  emoney_t: 'Виберіть платіжний сервіс зі списку:',
-
-  ibank: 'Інтернет-банки',
-  ibank_t: 'Виберіть ваш банк:',
-
-  cash: 'Готівкові',
-  cash_t: 'Чим платити будете?',
-
   sepa: 'SEPA Direct Debit',
   sepa_t: 'Введіть реквізити вашого рахунку',
   sender_name: "Ім'я",

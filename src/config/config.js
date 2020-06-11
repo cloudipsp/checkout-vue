@@ -1,15 +1,10 @@
 import configLocales from '@/config/locales'
-import configPaymentSystems from '@/config/payment-systems'
 import configMethods from '@/config/methods'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 
 let methods = configMethods
-let ibank = Object.keys(configPaymentSystems.ibank)
-let emoney = Object.keys(configPaymentSystems.emoney)
-let cash = Object.keys(configPaymentSystems.cash)
-let fast = [].concat(ibank, emoney, cash)
 let cardIcons = [
   'mastercard',
   'visa',
@@ -131,10 +126,6 @@ export default {
     type: 'object',
     fields: {
       methods: validatorArray(methods),
-      ibank: validatorArray(ibank),
-      emoney: validatorArray(emoney),
-      cash: validatorArray(cash),
-      fast: validatorArray(fast),
       card_icons: validatorArray(cardIcons),
       fields: { type: 'boolean' },
       title: { type: 'string' },
