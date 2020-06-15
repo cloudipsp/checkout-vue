@@ -28,6 +28,7 @@
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^1.11.2",
     "axios": "^0.19.2",
+    "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.4",
     "css-vars-ponyfill": "^2.2.1",
     "ipsp-js-sdk": "^1.0.34",
