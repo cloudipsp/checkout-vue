@@ -16,6 +16,7 @@ const grey_9 = '#313539' // 212 8  21
 
 const black = '#3D3D3D' // 0 0 24
 const white = '#ffffff' // 0 0 100
+const error = '#DE4761'
 
 const theme = {
   green: '#4ed962', // 129 65 58
@@ -66,12 +67,15 @@ export default {
   input_border: ash_500,
   input_hover_border: ash_700,
   input_focus_border: grey_2,
-  input_error_color: '#DE4761',
-  input_error_border: '#DE4761',
+  input_error_color: error,
+  input_error_border: error,
   label_color: grey_1,
   label_hover_color: grey_2,
   label_focus_color: grey_2,
   link_color: main,
+  tooltip_bg: white,
+  tooltip_color: error,
+  tooltip_shadow: '#b6b9bf',
   // card_bg:
   // success: '#62ba46',
   // btn_success: 'success',

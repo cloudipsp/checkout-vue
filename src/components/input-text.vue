@@ -47,8 +47,8 @@
     <slot />
     <f-tooltip
       v-if="tooltip"
-      :text="errors.first(name_)"
-      :enable="hasError"
+      :title="errors.first(name_)"
+      :show="hasError"
       :placement="placement"
       :target="'#' + name_"
     />
