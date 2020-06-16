@@ -1,4 +1,4 @@
-$header-height: 50px + 24px + 2px;
+$header-height: 50px + 24px /*+ 2px*/;
 
 // stylelint-disable-next-line selector-max-id
 #f {
@@ -36,7 +36,6 @@ $header-height: 50px + 24px + 2px;
 .f-header {
   display: flex;
   background: $container_bg;
-  border-top: 2px solid $container_border;
 
   @include media-breakpoint-up(lg) {
     @include sticky-top();
@@ -197,7 +196,7 @@ $header-height: 50px + 24px + 2px;
 }
 
 .f-button-pay {
-  @include sticky-bottom(0, 1021);
+  //@include sticky-bottom(0, 1021);
   margin-bottom: px-to-rem(16px);
 }
 

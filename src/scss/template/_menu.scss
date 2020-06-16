@@ -6,6 +6,7 @@
   padding: 0 px-to-rem(18px) 0 px-to-rem(9px);
   margin-bottom: px-to-rem(12px);
   font-size: px-to-rem(17px);
+  font-weight: 300;
   color: $menu_item_color;
   cursor: pointer;
   border: 1px solid $menu_item_border;
@@ -13,12 +14,13 @@
   transition: all ease-in-out 0.15s;
 
   @include media-breakpoint-up(lg) {
-    margin-bottom: 0;
+    margin-bottom: px-to-rem(4px);
     border: none;
   }
 
   &:hover,
   &.active {
+    font-weight: 400;
     color: $menu_item_active_color;
     background: $menu_item_active_bg;
 

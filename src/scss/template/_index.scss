@@ -33,10 +33,12 @@
 }
 
 .f-merchant-url {
-  margin-bottom: px-to-rem(8px);
+  margin-bottom: px-to-rem(16px);
 }
 
 .f-amount {
+  display: inline-block;
+  margin-right: px-to-rem(12px);
   font-size: px-to-rem(28px);
   color: $amount_color;
 
@@ -46,6 +48,7 @@
 }
 
 .f-currency {
+  display: inline-block;
   font-size: px-to-rem(20px);
   color: lighten($currency_color, 40%);
 
@@ -116,4 +119,16 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   background: $menu_count_bg;
   border-radius: px-to-rem(3px);
   transition: all ease-in-out 0.15s;
+}
+
+.f-security-content {
+  font-weight: 300;
+  color: $security_color;
+  cursor: pointer;
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    font-weight: 400;
+    color: $security_hover_color;
+  }
 }

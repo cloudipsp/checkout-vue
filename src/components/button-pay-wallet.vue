@@ -1,6 +1,9 @@
 <template>
-  <div v-show="show" class="f-wallet-pay-button" :class="classButton" />
-</template>
+  <div v-show="show">
+    <div class="f-wallet-pay-button" :class="classButton" />
+    <div class="f-title">Or use another payment method</div>
+  </div></template
+>
 
 <script>
 import $checkout from 'ipsp-js-sdk/dist/checkout'

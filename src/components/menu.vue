@@ -1,6 +1,5 @@
 <template>
   <div class="f-menu">
-    <div class="f-title">Or use another payment method</div>
     <template v-for="method in methods">
       <div :key="method" :class="className(method)" @click="click(method)">
         <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />

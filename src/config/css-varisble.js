@@ -6,11 +6,11 @@ const ash_400 = '#E5E8EB' // 212 13 91
 const ash_500 = '#D5DAE0' // 212 14 97
 const ash_600 = '#C8CED5' // 212 13 81
 const ash_700 = '#BAC1CA' // 212 13 76
-// const ash_800 = '#A9B2BD' // 212 13 70
+const ash_800 = '#A9B2BD' // 212 13 70
 
 const grey_1 = '#9CA7B3' // 212 13 66
 const grey_2 = '#818C99' // 212 11 55
-// const grey_3 = '#5A6470' // 212 11 40
+const grey_3 = '#5A6470' // 212 11 40
 const grey_4 = '#484F57' // 212 9  31
 const grey_9 = '#313539' // 212 8  21
 
@@ -32,7 +32,6 @@ export default {
   main_bg: ash_400,
   container_color: grey_2,
   container_bg: white,
-  container_border: main,
   container_box_shadow: ash_600,
   sidebar_border: ash_400,
   menu_item_color: 'container_color',
@@ -76,6 +75,8 @@ export default {
   tooltip_bg: white,
   tooltip_color: error,
   tooltip_shadow: '#b6b9bf',
+  security_color: ash_800,
+  security_hover_color: grey_3,
   // card_bg:
   // success: '#62ba46',
   // btn_success: 'success',

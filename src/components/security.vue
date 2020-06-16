@@ -1,5 +1,7 @@
 <template>
   <div class="f-security">
-    <f-svg name="security" size="lg" /> Strong Customer Authentication
+    <span class="f-security-content"
+      ><f-svg name="security" size="lg" /> Strong Customer Authentication</span
+    >
   </div>
 </template>

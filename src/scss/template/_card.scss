@@ -123,6 +123,6 @@
 @supports (-webkit-text-security: disc) {
   // stylelint-disable-next-line selector-max-id
   #f-cvv2 {
-    font-family: inherit;
+    font-family: $font-family-ocr-a-std;
   }
 }

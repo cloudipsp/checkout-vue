@@ -2,10 +2,10 @@
   <div class="f-info">
     <div v-if="show">
       <div v-if="title" v-t="title" class="f-merchant-name" />
-      <div v-if="order_desc" v-t="order_desc" class="f-order-desc" />
       <div v-if="link" class="f-merchant-url">
         <a :href="link" target="_blank">{{ link }}</a>
       </div>
+      <div v-if="order_desc" v-t="order_desc" class="f-order-desc" />
     </div>
     <f-fee />
   </div>

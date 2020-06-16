@@ -9,13 +9,14 @@
   height: px-to-rem(56px);
   padding: px-to-rem(26px) px-to-rem(12px) px-to-rem(10px);
   //font-size: 16px;
+  font-family: $font-family-inter;
   font-weight: 500;
   //line-height: px-to-rem(20px);
   color: $input_color;
   background: $input_bg;
   border: 1px solid $input_border;
   border-radius: px-to-rem(8px);
-  transition: all ease-in-out 0.15s;
+  transition: color ease-in-out 0.15s;
 
   &:hover {
     border-color: $input_hover_border;
@@ -52,6 +53,7 @@
 }
 
 .f-control-label {
+  font-family: $font-family-inter;
   font-size: 16px;
   color: $label_color;
 }
