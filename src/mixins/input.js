@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       active: false,
+      focused: false,
     }
   },
   computed: {
@@ -128,7 +129,7 @@ export default {
       this.params[this.field_] = this.value
     }
 
-    this.active = this.params[this.field_]
+    this.active = Boolean(this.params[this.field_])
   },
   methods: {
     onEnter() {
@@ -136,9 +137,11 @@ export default {
     },
     focus() {
       this.active = true
+      this.focused = true
     },
     blur() {
-      this.active = this.params[this.field_]
+      this.active = Boolean(this.params[this.field_])
+      this.focused = false
     },
   },
 }

@@ -8,11 +8,15 @@
       :data-vv-name="name_"
       type="checkbox"
       class="f-checkbox"
+      @focus="focus"
+      @blur="blur"
     />
     <label :class="[css.cl]" :for="name_"><slot /></label>
-    <div v-if="!tooltip && hasError" class="f-error">
-      {{ errors.first(name_) }}
-    </div>
+    <transition name="slide-fade">
+      <div v-if="!tooltip && hasError && focused" class="f-error">
+        {{ errors.first(name_) }}
+      </div>
+    </transition>
   </div>
 </template>
 

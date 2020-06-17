@@ -18,9 +18,11 @@
     />
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <span v-t="currency" />
-    <div v-if="!tooltip && hasError" class="f-error">
-      {{ errors.first(name_) }}
-    </div>
+    <transition name="slide-fade">
+      <div v-if="!tooltip && hasError && focused" class="f-error">
+        {{ errors.first(name_) }}
+      </div>
+    </transition>
   </div>
 </template>
 
