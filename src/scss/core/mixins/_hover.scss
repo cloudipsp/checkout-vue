@@ -37,3 +37,12 @@
     @content;
   }
 }
+
+@mixin plain-hover-focus-active() {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
