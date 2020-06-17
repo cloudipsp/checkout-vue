@@ -49,6 +49,10 @@ export default {
       type: String,
       default: null,
     },
+    tooltip: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -57,7 +61,6 @@ export default {
   },
   computed: {
     ...mapState(['css', 'submit']),
-    ...mapState('options', ['tooltip']),
     name_() {
       return 'f-' + this.name
     },

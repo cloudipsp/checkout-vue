@@ -45,7 +45,6 @@ Name                  | Type        | Default                 | Description     
 `button`              | Boolean     | true                    |                                                                                     |
 `cancel`              | Boolean     | true                    |                                                                                     |
 `fee`                 | Boolean     | true                    |                                                                                     |
-`tooltip`             | Boolean     | true                    |                                                                                     |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `fields`              | Boolean     | false                   |                                                                                     |
 `default_country`     | String      |                         |                                                                                     |

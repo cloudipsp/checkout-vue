@@ -134,7 +134,6 @@ export default {
       locales: validatorArray(locales),
       email: { type: 'boolean' },
       css: { type: 'enum', enum: css },
-      tooltip: { type: 'boolean' },
       api_domain: { type: 'string' },
       fee: { type: 'boolean' },
       active_tab: { type: 'enum', enum: methods },
