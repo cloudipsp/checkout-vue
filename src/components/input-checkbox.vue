@@ -10,13 +10,6 @@
       class="f-checkbox"
     />
     <label :class="[css.cl]" :for="name_"><slot /></label>
-    <f-tooltip
-      v-if="tooltip"
-      :text="errors.first(name_)"
-      :enable="hasError"
-      :placement="placement"
-      :target="'#' + name_"
-    />
     <div v-if="!tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>

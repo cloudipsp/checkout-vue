@@ -11,6 +11,7 @@
         :readonly="readonly"
         type="tel"
         inputmode="numeric"
+        tooltip
         @input="inputCardNumber"
       >
         <span :class="[css.fcf]" />
@@ -46,7 +47,7 @@
         :readonly="readonly"
         type="tel"
         inputmode="numeric"
-        placement="top"
+        tooltip
         @input="inputExpiryDate"
       />
       <input-text
@@ -59,15 +60,8 @@
         :mask="maskCvv"
         :readonly="need_verify_code"
         :maxlength="digitsCvv"
-      >
-        <span :class="[css.fcf, 'f-icon', 'f-i-question']" />
-        <f-tooltip
-          :text="$t('cvv2_question', [digitsCvv])"
-          trigger="hover"
-          theme="default"
-          target=".f-i-question"
-        />
-      </input-text>
+        tooltip
+      />
     </div>
     <input-text
       v-if="email"

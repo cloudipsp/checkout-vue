@@ -49,7 +49,6 @@
       v-if="tooltip"
       :title="errors.first(name_)"
       :show="hasError"
-      :placement="placement"
       :target="'#' + name_"
     />
     <div v-if="!tooltip && hasError" class="f-error">

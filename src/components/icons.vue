@@ -8,7 +8,22 @@
       :name="item"
       :type="type"
     />
-    <div v-if="showCount" class="f-icons-count">+{{ countLast }}</div>
+    <div v-if="showCount" ref="last" class="f-icons-count">
+      +{{ countLast }}
+    </div>
+    <f-tooltip-default
+      custom-class="f-tooltip-icons"
+      placement="topleft"
+      :target="() => $refs.last"
+    >
+      <f-icon
+        v-for="item in listLast"
+        :key="item"
+        size="sm"
+        :name="item"
+        :type="type"
+      />
+    </f-tooltip-default>
   </div>
 </template>
 

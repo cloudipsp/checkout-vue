@@ -22,13 +22,6 @@
       />
     </select>
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
-    <f-tooltip
-      v-if="tooltip"
-      :text="errors.first(name_)"
-      :enable="hasError"
-      :placement="placement"
-      :target="'#' + name_"
-    />
     <div v-if="!tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>

@@ -18,13 +18,6 @@
     />
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <span v-t="currency" />
-    <f-tooltip
-      v-if="tooltip"
-      :text="errors.first(name_)"
-      :enable="hasError"
-      :placement="placement"
-      :target="'#' + name_"
-    />
     <div v-if="!tooltip && hasError" class="f-error">
       {{ errors.first(name_) }}
     </div>
