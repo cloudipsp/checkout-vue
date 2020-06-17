@@ -90,6 +90,24 @@
       line-height: px-to-rem(25px);
     }
 
+    &:-webkit-autofill {
+      @include plain-hover-focus-active() {
+        transition: background-color 99999s;
+        // stylelint-disable-next-line
+        -webkit-text-fill-color: $card_input_color;
+      }
+      &::first-line {
+        font-family: $font-family-ocr-a-std;
+        font-size: px-to-rem(10px);
+        line-height: px-to-rem(18px);
+
+        @include media-breakpoint-up(ss) {
+          font-size: px-to-rem(21px);
+          line-height: px-to-rem(25px);
+        }
+      }
+    }
+
     &::placeholder {
       font-family: $font-family-ocr-a-std;
       opacity: fade($card_input_color, 30%);
