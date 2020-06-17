@@ -36,7 +36,15 @@
   }
 
   & + .active {
-    transform: translateY(-9px) scale(0.75);
+    transform: translateY(-12px) scale(0.75);
+  }
+
+  & + .f-control-label {
+    position: absolute;
+    top: 17px;
+    left: 12px;
+    transition: all ease-in-out 0.15s;
+    transform-origin: 0 100%;
   }
 
   .f-has-error & {
@@ -44,16 +52,20 @@
     border: 2px solid $input_error_border;
   }
 }
-.f-form-control + .f-control-label {
-  position: absolute;
-  top: 17px;
-  left: 12px;
-  transition: all ease-in-out 0.15s;
-  transform-origin: 0 100%;
+
+// stylelint-disable-next-line selector-no-qualifying-type
+select.f-form-control {
+  padding-left: px-to-rem(8px);
 }
 
 .f-control-label {
   font-family: $font-family-inter;
   font-size: 16px;
   color: $label_color;
+}
+
+.f-error {
+  font-family: $font-family-inter;
+  font-weight: 500;
+  color: $form_error_color;
 }
