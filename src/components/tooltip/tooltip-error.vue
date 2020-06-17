@@ -1,23 +1,19 @@
 <template>
-  <tooltip v-bind="attrs" v-on="$listeners">
+  <f-tooltip-base v-bind="attrs" v-on="$listeners">
     <slot />
-  </tooltip>
+  </f-tooltip-base>
 </template>
 
 <script>
-import Tooltip from './tooltip'
-
 export default {
-  components: {
-    Tooltip,
-  },
   inheritAttrs: false,
   computed: {
     attrs() {
       return {
-        ...this.$attrs,
         triggers: 'focus',
-        placement: 'right',
+        placement: 'bottom',
+        variant: 'error',
+        ...this.$attrs,
       }
     },
   },

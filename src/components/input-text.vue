@@ -45,7 +45,7 @@
     />
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <slot />
-    <f-tooltip
+    <f-tooltip-error
       v-if="tooltip"
       :title="errors.first(name_)"
       :show="hasError"

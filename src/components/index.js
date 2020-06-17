@@ -5,7 +5,9 @@ import FSvg from '@/components/svg'
 import FMask from '@/components/mask'
 import FPopover from '@/components/popover'
 import FModal from '@/components/modal'
-import FTooltip from '@/components/tooltip/tooltip.vue'
+import FTooltipBase from '@/components/tooltip/tooltip-base'
+import FTooltipError from '@/components/tooltip/tooltip-error'
+import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FDropdown from '@/components/dropdown'
 import InputText from '@/components/input-text'
 import InputAmount from '@/components/input-amount'
@@ -21,7 +23,9 @@ const components = {
   FMask,
   FPopover,
   FModal,
-  FTooltip,
+  FTooltipBase,
+  FTooltipError,
+  FTooltipDefault,
   FDropdown,
   InputText,
   InputAmount,
