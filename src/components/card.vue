@@ -2,7 +2,7 @@
   <div>
     <div class="f-card">
       <input-text
-        class="f-card-group f-mr-0"
+        class="f-form-group-card f-form-group-card-number"
         name="card_number"
         :validate="validCardNumber"
         :mask="maskCardNumber"
@@ -39,7 +39,7 @@
       </input-text>
       <input-text
         ref="expiry_date"
-        class="f-card-group"
+        class="f-form-group-card"
         name="expiry_date"
         :validate="validExpiryDate"
         :mask="maskExpiryDate"
@@ -52,7 +52,7 @@
       />
       <input-text
         ref="cvv2"
-        class="f-card-group"
+        class="f-form-group-card"
         name="cvv2"
         :validate="validCvv"
         type="tel"

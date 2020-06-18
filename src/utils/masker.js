@@ -1,6 +1,6 @@
 const tokens = {
   '#': { pattern: /\d/ },
-  X: { pattern: /[0-9a-zA-Z]/ },
+  X: { pattern: /[0-9X]/ },
   S: { pattern: /[a-zA-Z]/ },
   A: { pattern: /[a-zA-Z]/, transform: v => v.toLocaleUpperCase() },
   a: { pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase() },

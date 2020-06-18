@@ -43,7 +43,7 @@
   }
 }
 
-.f-card-group {
+.f-form-group-card {
   position: relative;
   z-index: 1;
   display: flex;
@@ -73,7 +73,7 @@
   .f-form-control {
     height: px-to-rem(18px);
     padding: 0;
-    font-family: $font-family-ocr-a-std;
+    font-family: $font-family-card-number;
     font-size: px-to-rem(15px);
     font-weight: 400;
     line-height: px-to-rem(18px);
@@ -86,7 +86,7 @@
 
     @include media-breakpoint-up(ss) {
       height: px-to-rem(25px);
-      font-size: px-to-rem(21px);
+      font-size: px-to-rem(20px);
       line-height: px-to-rem(25px);
     }
 
@@ -97,7 +97,7 @@
         -webkit-text-fill-color: $card_input_color;
       }
       &::first-line {
-        font-family: $font-family-ocr-a-std;
+        font-family: $font-family-card-number;
         font-size: px-to-rem(10px);
         line-height: px-to-rem(18px);
 
@@ -109,7 +109,7 @@
     }
 
     &::placeholder {
-      font-family: $font-family-ocr-a-std;
+      font-family: $font-family-card-number;
       opacity: fade($card_input_color, 30%);
     }
 
@@ -126,21 +126,18 @@
   }
 }
 
+.f-form-group-card-number {
+  width: 100%;
+  margin-right: 0;
+}
+
 // stylelint-disable-next-line selector-max-id
 #f-expiry_date {
-  width: 75px;
+  width: 80px;
 }
 
 // stylelint-disable-next-line selector-max-id
 #f-cvv2 {
   width: 75px;
-  font-family: $font-family-text-security-disc;
-  -webkit-text-security: disc;
-}
-
-@supports (-webkit-text-security: disc) {
-  // stylelint-disable-next-line selector-max-id
-  #f-cvv2 {
-    font-family: $font-family-ocr-a-std;
-  }
+  font-family: $font-family-cvv;
 }
