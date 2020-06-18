@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Tooltip from './tooltip'
+import Tooltip from './helpers/tooltip'
 
 export default {
   components: {
