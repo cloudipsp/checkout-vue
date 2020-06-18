@@ -2,7 +2,7 @@
   <div v-if="show" class="f-sidebar">
     <div class="f-sidebar-content">
       <f-info />
-      <f-button-pay-wallet />
+      <f-button-pay-wallet title />
       <f-menu />
       <f-fast-access />
       <f-security />

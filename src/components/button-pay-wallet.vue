@@ -1,7 +1,7 @@
 <template>
   <div v-show="show">
     <div class="f-wallet-pay-button" :class="classButton" />
-    <div class="f-title">Or use another payment method</div>
+    <div v-if="title" class="f-title">Or use another payment method</div>
   </div></template
 >
 
@@ -14,6 +14,12 @@ import id from '@/mixins/id'
 export default {
   mixins: [id],
   inject: ['formRequest'],
+  props: {
+    title: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       timeout: null,
