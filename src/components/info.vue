@@ -5,7 +5,25 @@
       <div v-if="link" class="f-merchant-url">
         <a :href="link" target="_blank">{{ link }}</a>
       </div>
-      <div v-if="order_desc" v-t="order_desc" class="f-order-desc" />
+      <div v-if="order_desc" class="f-order-desc">
+        <div ref="wrapper" class="f-order-desc-text">
+          <span ref="desc">{{ order_desc_translation }}</span>
+        </div>
+        <a
+          v-if="showMore"
+          class="f-order-desc-more"
+          href="#"
+          @click="clickMore"
+        >
+          <span v-t="'see_more'" /> <f-svg name="angle-right" />
+        </a>
+      </div>
+      <f-modal-base v-model="modalMore" size="lg">
+        <template #modal-title>
+          <span v-t="title" />
+        </template>
+        <span v-t="order_desc" />
+      </f-modal-base>
     </div>
     <f-fee />
   </div>
@@ -14,16 +32,45 @@
 <script>
 import { mapState } from '@/utils/store'
 import FFee from '@/components/fee'
+import Resize from '@/mixins/resize'
 
 export default {
   components: {
     FFee,
   },
+  mixins: [Resize],
+  data() {
+    return {
+      showMore: false,
+      modalMore: false,
+    }
+  },
   computed: {
     ...mapState('options', ['title', 'link']),
     ...mapState('params', ['order_desc']),
+    order_desc_translation() {
+      this.nextResize()
+      return this.$t(this.order_desc)
+    },
     show() {
       return !!(this.title || this.order_desc || this.link)
+    },
+  },
+  methods: {
+    clickMore() {
+      this.modalMore = true
+    },
+    nextResize() {
+      this.$nextTick().then(() => {
+        this.resize()
+      })
+    },
+    resize() {
+      if (!this.$refs.wrapper) return
+      if (!this.$refs.desc) return
+      if (this.$refs.wrapper.offsetHeight > this.$refs.desc.offsetHeight) return
+
+      this.showMore = true
     },
   },
 }

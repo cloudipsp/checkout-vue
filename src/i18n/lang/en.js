@@ -98,6 +98,7 @@ export const messages = Object.assign({}, countries, {
   submit3ds_wait: 'payment will be repeated in {0} sec.',
 
   confirm: 'Confirm',
+  see_more: 'See more',
 })
 
 export const validate = Object.assign({}, validateMessages, {
