@@ -14,7 +14,7 @@
         <div class="f-loading" />
         <div class="f-loading-i" />
       </div>
-      <f-error />
+      <f-modal-error />
       <submit3ds
         v-model="show3ds"
         :duration.sync="duration3ds"
@@ -30,7 +30,7 @@ import Success from '@/components/success'
 import Pending from '@/components/pending'
 import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
-import FError from '@/components/error'
+import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
 
 import { sendRequest } from '@/utils/helpers'
@@ -54,7 +54,7 @@ export default {
     PaymentMethod,
     FSidebar,
     Submit3ds,
-    FError,
+    FModalError,
     FSecurity,
   },
   inject: ['$validator'],

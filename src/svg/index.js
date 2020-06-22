@@ -1,11 +1,13 @@
 import SvgVerifiedByVisa from '@/svg/verified-by-visa'
 import SvgMasterCardSecureCode from '@/svg/master-card-secure-code'
 import SvgPciDss from '@/svg/pci-dss'
+import SvgDecline from '@/svg/decline'
 
 const components = {
   SvgVerifiedByVisa,
   SvgMasterCardSecureCode,
   SvgPciDss,
+  SvgDecline,
 }
 
 const install = Vue => {
