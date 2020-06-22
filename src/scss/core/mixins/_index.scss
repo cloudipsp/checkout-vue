@@ -16,3 +16,37 @@
     z-index: $zindex;
   }
 }
+
+@mixin clip() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clip-row($background, $row: 2) {
+  position: relative;
+  display: block;
+  max-height: $line-height-base * $font-size-base * $row;
+  overflow: hidden;
+  line-height: $line-height-base;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
+  background: $background;
+
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: inherit;
+  }
+
+  &::before {
+    position: absolute;
+    top: $line-height-base * $font-size-base * ($row - 1);
+    right: 0;
+    content: '...';
+    background-color: inherit;
+  }
+}

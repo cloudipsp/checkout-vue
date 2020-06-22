@@ -21,19 +21,42 @@
 }
 
 .f-merchant-name {
-  margin-bottom: px-to-rem(8px);
+  margin-bottom: px-to-rem(4px);
   font-family: $font-family-inter;
   font-weight: 500;
   color: $merchant_name_color;
 }
 
-.f-order-desc {
-  margin-bottom: px-to-rem(8px);
-  color: $order_desc_color;
-}
-
 .f-merchant-url {
   margin-bottom: px-to-rem(16px);
+
+  a {
+    color: $merchant_url_color;
+
+    @include hover() {
+      color: darken($merchant_url_color, 20%);
+    }
+  }
+}
+
+.f-order-desc {
+  margin-bottom: px-to-rem(8px);
+}
+
+.f-order-desc-text {
+  color: $order_desc_color;
+
+  @include clip-row($container_bg);
+}
+
+.f-order-desc-more {
+  font-family: $font-family-inter;
+  font-weight: 600;
+  color: $order_desc_more_color;
+
+  @include hover() {
+    color: darken($order_desc_more_color, 20%);
+  }
 }
 
 .f-amount {
@@ -76,21 +99,6 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 
   &:focus {
     outline: none;
-  }
-}
-
-.f-center-error {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  z-index: -1;
-  min-width: 100%;
-  margin-left: calc(-100vw / 2);
-
-  @include media-breakpoint-up(sm) {
-    min-width: 360px;
-    margin-left: -180px;
   }
 }
 

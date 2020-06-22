@@ -6,7 +6,7 @@ $header-height: 50px + 24px /*+ 2px*/;
   //min-height: 100%;
   font-family: $font-family-greenwich;
   font-size: $font-size-base;
-  line-height: 1.4;
+  line-height: $line-height-base;
   background-color: $main_bg;
 
   @include media-breakpoint-up(xl) {
