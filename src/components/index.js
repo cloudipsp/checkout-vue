@@ -3,7 +3,6 @@
 import FButtonPayWallet from '@/components/button-pay-wallet'
 import FSvg from '@/components/svg'
 import FMask from '@/components/mask'
-import FPopover from '@/components/popover'
 import FModal from '@/components/modal'
 import FModalBase from '@/components/modal/modal-base'
 import FTooltipBase from '@/components/tooltip/tooltip-base'
@@ -22,7 +21,6 @@ const components = {
   FButtonPayWallet,
   FSvg,
   FMask,
-  FPopover,
   FModal,
   FModalBase,
   FTooltipBase,
