@@ -5,6 +5,7 @@ import FSvg from '@/components/svg'
 import FMask from '@/components/mask'
 import FPopover from '@/components/popover'
 import FModal from '@/components/modal'
+import FModalBase from '@/components/modal/modal-base'
 import FTooltipBase from '@/components/tooltip/tooltip-base'
 import FTooltipError from '@/components/tooltip/tooltip-error'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
@@ -23,6 +24,7 @@ const components = {
   FMask,
   FPopover,
   FModal,
+  FModalBase,
   FTooltipBase,
   FTooltipError,
   FTooltipDefault,

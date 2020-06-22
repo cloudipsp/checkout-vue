@@ -81,4 +81,7 @@ export default {
   security_color: ash_800,
   security_hover_color: grey_3,
   close_color: white,
+  modal_backdrop_bg: '#32353A',
+  modal_content_color: grey_3,
+  modal_content_bg: white,
 }
