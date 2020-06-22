@@ -19,6 +19,7 @@ export default Vue.extend({
     },
   },
   methods: {
+    checkModalOverflow() {},
     makeModal(h) {
       // Modal header
       let $header = h()
