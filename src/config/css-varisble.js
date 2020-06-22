@@ -80,15 +80,5 @@ export default {
   tooltip_default_bg: grey_9,
   security_color: ash_800,
   security_hover_color: grey_3,
-  // card_bg:
-  // success: '#62ba46',
-  // btn_success: 'success',
-  // btn_success_bg: 'btn_success',
-  // btn_success_border: 'bn_success',
-  // danger: '#a94442',
-  // text: '#3d3d3d',
-  // bg: '#ffffff',
-  // bg2: '#fcfeff',
-  // red: '#f3f3f3',
-  // blue: '#d5dde0',
+  close_color: white,
 }
