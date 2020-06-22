@@ -41,6 +41,31 @@ html {
     }
   }
 
+  .f-modal-security-title {
+    margin-bottom: px-to-rem(32px);
+    color: $modal_security_title_color;
+
+    svg {
+      color: $modal_security_title_svg_color;
+    }
+  }
+
+  .f-modal-security-content {
+    margin-bottom: px-to-rem(32px);
+    font-weight: 300;
+
+    p {
+      margin: px-to-rem(8px) 0;
+    }
+  }
+
+  .f-modal-security-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    opacity: 0.5;
+  }
+
   .f-tooltip-icons {
     .f-tooltip-inner {
       padding: px-to-rem(12px);
