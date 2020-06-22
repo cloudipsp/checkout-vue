@@ -1,16 +1,9 @@
 $modal-dialog-margin: 2rem;
-$modal-dialog-margin-y-sm-up: 1.75rem;
-$modal-content-border-radius: 16px;
 
 $modal-sm: 300px;
 $modal-md: 427px;
 $modal-lg: 800px;
 $modal-xl: 1140px;
-
-$modal-fade-transform: translate(0, -50px);
-$modal-show-transform: none;
-$modal-transition: transform 0.3s ease-out;
-$modal-scale-transform: scale(1.02);
 
 html {
   .modal-open {
@@ -41,18 +34,18 @@ html {
 
     // When fading in the modal, animate it to slide down
     &.fade .f-modal-dialog {
-      transition: $modal-transition;
-      transform: $modal-fade-transform;
+      transition: transform 0.3s ease-out;
+      transform: translate3d(0, 25%, 0);
     }
 
     // When fading in the modal, animate it to slide down
     &.show .f-modal-dialog {
-      transform: $modal-show-transform;
+      transform: none;
     }
 
     // When trying to close, animate focus to scale
     .f-modal.modal-static .f-modal-dialog {
-      transform: $modal-scale-transform;
+      transform: scale(1.02);
     }
   }
 
@@ -60,7 +53,7 @@ html {
   .f-modal-dialog {
     position: relative;
     width: auto;
-    margin: $modal-dialog-margin;
+    margin: 0;
     // allow clicks to pass through for custom click handling to close modal
     pointer-events: none;
   }
@@ -79,8 +72,8 @@ html {
 
   .f-modal-dialog-centered {
     display: flex;
-    align-items: center;
-    min-height: subtract(100%, $modal-dialog-margin * 2);
+    align-items: flex-end;
+    min-height: 100%;
   }
 
   // Actual modal
@@ -89,13 +82,15 @@ html {
     display: flex;
     flex-direction: column;
     width: 100%; // Ensure `.f-modal-content` extends the full width of the parent `.f-modal-dialog`
-    padding: px-to-rem(40px) 0 0;
+    padding: px-to-rem(20px) 0 0;
+    margin-top: px-to-rem(64px);
+    font-size: px-to-rem(14px);
     // counteract the pointer-events: none; in the .f-modal-dialog
     color: $modal_content_color;
     pointer-events: auto;
     background-color: $modal_content_bg;
     background-clip: padding-box;
-    border-radius: $modal-content-border-radius;
+    border-radius: px-to-rem(12px) px-to-rem(12px) 0 0;
     // Remove focus outline from opened modal
     outline: 0;
     box-shadow: 0 20px 30px rgba(57, 64, 75, 0.3);
@@ -125,14 +120,14 @@ html {
   // Top section of the modal w/ title and dismiss
   .f-modal-header {
     position: relative;
-    padding: 0 px-to-rem(50px) px-to-rem(16px);
-    border-radius: $modal-content-border-radius $modal-content-border-radius 0 0;
+    padding: 0 px-to-rem(20px) px-to-rem(16px);
 
     .f-close {
       position: absolute;
-      top: px-to-rem(-60px);
-      right: px-to-rem(-44px);
+      top: px-to-rem(-80px);
+      right: px-to-rem(4px);
       padding: px-to-rem(16px);
+      font-size: px-to-rem(32px);
     }
   }
 
@@ -152,7 +147,7 @@ html {
     // Enable `flex-grow: 1` so that the body take up as much space as possible
     // when there should be a fixed height on `.f-modal-dialog`.
     flex: 1 1 auto;
-    padding: 0 px-to-rem(50px) px-to-rem(40px);
+    padding: 0 px-to-rem(20px) px-to-rem(20px);
     font-family: $font-family-inter;
     line-height: 1.5;
   }
@@ -164,8 +159,7 @@ html {
     flex-shrink: 0;
     align-items: center; // vertically center
     justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-    padding: 0 px-to-rem(50px) px-to-rem(40px);
-    border-radius: 0 0 $modal-content-border-radius $modal-content-border-radius;
+    padding: 0 px-to-rem(20px) px-to-rem(20px);
   }
 
   // Measure scrollbar width for padding body during modal show/hide
@@ -178,19 +172,47 @@ html {
   }
 
   // Scale up the modal
-  @include media-breakpoint-up(sm) {
-    // Automatically set modal's width for larger viewports
-    .f-modal-dialog {
-      max-width: $modal-md;
-      margin: $modal-dialog-margin-y-sm-up auto;
+  @include media-breakpoint-up(md) {
+    .f-modal {
+      &.fade .f-modal-dialog {
+        transform: translate(0, -50px);
+      }
+      &.show .f-modal-dialog {
+        transform: none;
+      }
     }
 
-    .f-modal-dialog-scrollable {
-      max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    .f-modal-dialog {
+      max-width: $modal-md;
+      margin: $modal-dialog-margin auto;
+    }
+
+    .f-modal-content {
+      margin-top: 0;
+      font-size: px-to-rem(16px);
+      border-radius: px-to-rem(16px);
     }
 
     .f-modal-dialog-centered {
-      min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+      align-items: center;
+      min-height: subtract(100%, $modal-dialog-margin * 2);
+    }
+
+    .f-modal-header {
+      padding: 0 px-to-rem(50px) px-to-rem(16px);
+
+      .f-close {
+        top: px-to-rem(-60px);
+        right: px-to-rem(-44px);
+      }
+    }
+
+    .f-modal-body {
+      padding: 0 px-to-rem(50px) px-to-rem(40px);
+    }
+
+    .f-modal-footer {
+      padding: 0 px-to-rem(50px) px-to-rem(40px);
     }
 
     .f-modal-sm {
