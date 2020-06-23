@@ -23,6 +23,7 @@ import Ibank from '@/components/ibank'
 import Trustly from '@/components/trustly'
 import Cash from '@/components/cash'
 import Sepa from '@/components/sepa'
+import Wallets from '@/components/wallets'
 import FFields from '@/components/fields'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
@@ -35,6 +36,7 @@ export default {
     Trustly,
     Cash,
     Sepa,
+    Wallets,
     FFields,
     FIcons,
   },

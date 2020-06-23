@@ -22,17 +22,17 @@
       <div v-if="showTitle" v-t="method + '_t'" class="f-block f-title2" />
       <div class="f-text-center" :class="'f-ps-' + list.length">
         <div
-          v-for="item in listMin"
-          :key="item.id"
+          v-for="bank in listMin"
+          :key="bank.id"
           class="f-ps"
-          @click="locationSystem(item)"
+          @click="locationSystem(bank)"
         >
           <div class="f-wrapper-icon">
-            <f-icon :name="item.bank_logo" />
+            <f-icon :name="bank.bank_logo" />
           </div>
-          <div v-t="item.name" />
+          <div v-t="bank.name" />
           <div class="f-iban">
-            {{ item.iban }}
+            {{ bank.iban }}
           </div>
         </div>
         <div v-if="showMore" class="f-ps" @click="loadMore">
