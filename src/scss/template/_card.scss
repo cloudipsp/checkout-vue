@@ -62,6 +62,7 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
     opacity: 0.7;
+    transform: none;
 
     @include media-breakpoint-up(ss) {
       margin-bottom: px-to-rem(8px);
@@ -120,7 +121,6 @@
     &:focus {
       & + .f-control-label {
         color: $card_label_color;
-        transform: none;
       }
     }
   }
@@ -140,4 +140,48 @@
 #f-cvv2 {
   width: 75px;
   font-family: $font-family-cvv;
+}
+
+.f-control-label-card-list {
+  cursor: pointer;
+}
+
+html {
+  .f-modal-header-card-list {
+    padding: 0;
+  }
+
+  .f-modal-body-card-list {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .f-card-list-item {
+    display: block;
+    padding: px-to-rem(8px) px-to-rem(20px);
+    margin-bottom: px-to-rem(16px);
+    font-family: $font-family-inter;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color ease-in-out 0.15s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &.active {
+      background-color: #eef0f2;
+    }
+  }
+
+  .f-card-list-number {
+    font-weight: 500;
+    color: #3d3d3d;
+  }
+
+  .f-card-list-expiry-date {
+    font-size: 12px;
+    color: #818c99;
+  }
 }

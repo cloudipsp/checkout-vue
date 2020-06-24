@@ -158,6 +158,16 @@ html {
     }
   }
 
+  .f-tooltip-card {
+    @include tooltip-variant($tooltip_card_color, $tooltip_card_bg);
+
+    .f-tooltip-inner {
+      padding: px-to-rem(16px) 0;
+      font-size: px-to-rem(16px);
+      box-shadow: 0 8px 32px fade($tooltip_card_shadow, 50%);
+    }
+  }
+
   .f-tooltip-default {
     @include tooltip-variant($tooltip_default_color, $tooltip_default_bg);
 
