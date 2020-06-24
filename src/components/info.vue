@@ -68,7 +68,8 @@ export default {
     resize() {
       if (!this.$refs.wrapper) return
       if (!this.$refs.desc) return
-      if (this.$refs.wrapper.offsetHeight > this.$refs.desc.offsetHeight) return
+      if (this.$refs.wrapper.offsetHeight >= this.$refs.desc.offsetHeight)
+        return
 
       this.showMore = true
     },

@@ -12,7 +12,6 @@ export default {
     btnLg: 'f-btn-lg',
     submit: 'f-submit',
     hf: 'f-has-feedback',
-    fcf: 'f-form-control-feedback',
     cl: 'f-control-label',
   },
   bootstrap3: {
@@ -27,7 +26,6 @@ export default {
     btnSm: 'btn-sm',
     btnLg: 'btn-lg',
     hf: 'has-feedback',
-    fcf: 'form-control-feedback',
     cl: 'control-label',
   },
   bootstrap4: {
@@ -43,7 +41,6 @@ export default {
     btnSm: 'btn-sm',
     btnLg: 'btn-lg',
     hf: 'f-has-feedback',
-    fcf: 'f-form-control-feedback',
     // cl: 'col-form-label'
   },
   foundation6: {
@@ -59,6 +56,5 @@ export default {
     btnSm: 'small',
     btnLg: 'large',
     hf: 'f-has-feedback',
-    fcf: 'f-form-control-feedback',
   },
 }

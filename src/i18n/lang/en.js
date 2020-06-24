@@ -103,6 +103,7 @@ export const messages = Object.assign({}, countries, {
   security_text:
     '<p>Validated PCI DSS Compliance</p><p>Listed on Visa Global Registry and verified by Mastercard</p>',
   expires_on: 'Expires on',
+  back_to_payment_methods: 'Back to Payment Methods',
 })
 
 export const validate = Object.assign({}, validateMessages, {

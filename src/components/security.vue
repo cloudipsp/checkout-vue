@@ -30,7 +30,7 @@
       </a>
       <f-tooltip-default
         :show.sync="showTooltip"
-        :target="() => $refs.security.$el"
+        :target="() => $refs.security && $refs.security.$el"
       >
         <div class="f-tooltip-security-icons">
           <svg-verified-by-visa />
