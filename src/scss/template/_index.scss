@@ -118,6 +118,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 }
 
 .f-icons-count {
+  display: block;
   width: 24px;
   height: 24px;
   font-size: 10px;
@@ -127,6 +128,11 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   background: $menu_count_bg;
   border-radius: px-to-rem(3px);
   transition: all ease-in-out 0.15s;
+
+  @include hover() {
+    color: darken($menu_count_color, 20%);
+    text-decoration: none;
+  }
 }
 
 .f-title-security {
@@ -137,5 +143,6 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 
   &:hover {
     color: $security_hover_color;
+    text-decoration: none;
   }
 }
