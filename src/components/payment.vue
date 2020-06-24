@@ -4,8 +4,9 @@
     <div ref="center" class="f-center">
       <div class="f-center-top" />
       <div class="f-btn-methods">
-        <a href="#" @click="toggleModalMethods">
-          Back to Payment Methods
+        <a href="#" @click.prevent="toggleModalMethods">
+          <f-svg name="angle-left" />
+          <span v-t="'back_to_payment_methods'" />
         </a>
       </div>
       <!--payment-method success pending-->

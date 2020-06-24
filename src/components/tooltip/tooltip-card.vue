@@ -10,7 +10,7 @@ export default {
   computed: {
     attrs() {
       return {
-        triggers: 'click blur',
+        triggers: 'click focus blur',
         placement: 'bottom',
         variant: 'card',
         ...this.$attrs,

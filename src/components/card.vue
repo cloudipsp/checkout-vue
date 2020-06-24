@@ -19,7 +19,7 @@
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
-              @click="showCard = true"
+              @click.prevent="showCard = true"
             >
               {{ label_ }} <f-svg name="angle-down" size="lg" />
             </a>
@@ -33,7 +33,7 @@
                 :key="item.card_number"
                 href="#"
                 :class="['f-card-list-item', { active: hasActive(item) }]"
-                @click="setCardNumber(item)"
+                @click.prevent="setCardNumber(item)"
               >
                 <div class="f-card-list-number">{{ item.card_number }}</div>
                 <div class="f-card-list-expiry-date">
@@ -46,11 +46,12 @@
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
-              @click="showCard = true"
+              tabindex="-1"
+              @click.prevent="showCard = true"
               @blur="showCard = false"
             >
               {{ label_ }}
-              <f-svg ref="label" tabindex="-1" name="angle-down" size="lg" />
+              <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
             </a>
             <f-tooltip-card
               :show.sync="showCard"
@@ -62,7 +63,7 @@
                 :key="item.card_number"
                 href="#"
                 :class="['f-card-list-item', { active: hasActive(item) }]"
-                @click="setCardNumber(item)"
+                @click.prevent="setCardNumber(item)"
               >
                 <div class="f-card-list-number">{{ item.card_number }}</div>
                 <div class="f-card-list-expiry-date">

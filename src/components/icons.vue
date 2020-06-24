@@ -8,9 +8,15 @@
       :name="item"
       :type="type"
     />
-    <div v-if="showCount" ref="last" class="f-icons-count">
+    <a
+      v-if="showCount"
+      ref="last"
+      href="#"
+      class="f-icons-count"
+      @click.prevent
+    >
       +{{ countLast }}
-    </div>
+    </a>
     <f-tooltip-default
       custom-class="f-tooltip-icons"
       placement="topleft"

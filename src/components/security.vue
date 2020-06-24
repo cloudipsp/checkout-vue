@@ -1,10 +1,10 @@
 <template>
   <div class="f-security">
     <template v-if="isMobile">
-      <span class="f-title-security" @click="open">
+      <a href="#" class="f-title-security" @click.prevent="open">
         <f-svg ref="security" name="security" size="lg" />
         <span v-t="'security_title'" />
-      </span>
+      </a>
       <f-modal-base v-model="showModal">
         <div class="f-modal-security-title">
           <f-svg name="security" size="lg" />
@@ -20,14 +20,14 @@
       </f-modal-base>
     </template>
     <template v-else>
-      <span class="f-title-security">
-        <f-svg ref="security" name="security" size="lg" />
+      <a href="#" class="f-title-security" tabindex="-1" @click.prevent>
+        <f-svg ref="security" name="security" size="lg" tabindex="0" />
         <span
           v-t="'security_title'"
           @mouseenter="mouseenter"
           @mouseleave="mouseleave"
         />
-      </span>
+      </a>
       <f-tooltip-default
         :show.sync="showTooltip"
         :target="() => $refs.security.$el"

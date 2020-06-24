@@ -13,7 +13,7 @@
           v-if="showMore"
           class="f-order-desc-more"
           href="#"
-          @click="clickMore"
+          @click.prevent="clickMore"
         >
           <span v-t="'see_more'" /> <f-svg name="angle-right" />
         </a>

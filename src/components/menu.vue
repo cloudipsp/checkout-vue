@@ -1,11 +1,16 @@
 <template>
   <div class="f-menu">
     <template v-for="method in methods">
-      <div :key="method" :class="className(method)" @click="click(method)">
+      <a
+        :key="method"
+        href="#"
+        :class="className(method)"
+        @click.prevent="click(method)"
+      >
         <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />
         <span v-t="method" />
         <f-icons class="f-menu-icons" :type="method" />
-      </div>
+      </a>
     </template>
   </div>
 </template>
