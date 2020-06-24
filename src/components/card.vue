@@ -42,6 +42,34 @@
               </a>
             </f-modal-base>
           </template>
+          <template v-else>
+            <a
+              href="#"
+              :class="[classLabel, 'f-control-label-card-list']"
+              @click="showCard = true"
+              @blur="showCard = false"
+            >
+              {{ label_ }}
+              <f-svg ref="label" tabindex="-1" name="angle-down" size="lg" />
+            </a>
+            <f-tooltip-card
+              :show.sync="showCard"
+              :target="() => $refs.label && $refs.label.$el"
+            >
+              <a
+                v-for="item in cards"
+                :key="item.card_number"
+                href="#"
+                :class="['f-card-list-item', { active: hasActive(item) }]"
+                @click="setCardNumber(item)"
+              >
+                <div class="f-card-list-number">{{ item.card_number }}</div>
+                <div class="f-card-list-expiry-date">
+                  <span v-t="'expires_on'" /> {{ item.expiry_date }}
+                </div>
+              </a>
+            </f-tooltip-card>
+          </template>
         </template>
       </input-text>
       <input-text
