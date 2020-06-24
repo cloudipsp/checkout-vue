@@ -43,7 +43,9 @@
       @focus="focus"
       @blur="blur"
     />
-    <label :class="classLabel" :for="name_">{{ label_ }}</label>
+    <slot name="label" :classLabel="classLabel" :name_="name_" :label_="label_">
+      <label :class="classLabel" :for="name_">{{ label_ }}</label>
+    </slot>
     <slot />
     <f-tooltip-error
       v-if="tooltip"

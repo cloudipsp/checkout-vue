@@ -14,28 +14,35 @@
         tooltip
         @input="inputCardNumber"
       >
-        <span :class="[css.fcf]" />
-
-        <f-dropdown v-if="isCards" :class="[css.igb]">
-          <button
-            type="button"
-            :class="[css.btn, css.bd, 'f-dropdown-toggle']"
-            data-role="trigger"
-          >
-            <span class="f-caret" />
-          </button>
-          <template #dropdown>
-            <li
-              v-for="card in cards"
-              :key="card.card_number"
-              :class="{ active: hasActive(card) }"
+        <template v-if="isCards" #label="{ classLabel, label_ }">
+          <template v-if="isMobile">
+            <a
+              href="#"
+              :class="[classLabel, 'f-control-label-card-list']"
+              @click="showCard = true"
             >
-              <a role="button" @click="setCardNumber(card)">{{
-                card.card_number
-              }}</a>
-            </li>
+              {{ label_ }} <f-svg name="angle-down" size="lg" />
+            </a>
+            <f-modal-base
+              v-model="showCard"
+              header-class="f-modal-header-card-list"
+              body-class="f-modal-body-card-list"
+            >
+              <a
+                v-for="item in cards"
+                :key="item.card_number"
+                href="#"
+                :class="['f-card-list-item', { active: hasActive(item) }]"
+                @click="setCardNumber(item)"
+              >
+                <div class="f-card-list-number">{{ item.card_number }}</div>
+                <div class="f-card-list-expiry-date">
+                  <span v-t="'expires_on'" /> {{ item.expiry_date }}
+                </div>
+              </a>
+            </f-modal-base>
           </template>
-        </f-dropdown>
+        </template>
       </input-text>
       <input-text
         ref="expiry_date"
@@ -107,6 +114,7 @@ import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FFields from '@/components/fields'
+import Resize from '@/mixins/resize'
 
 export default {
   inject: ['$validator'],
@@ -118,11 +126,13 @@ export default {
     FButtonCancel,
     FFields,
   },
+  mixins: [Resize],
   data() {
     return {
       maskExpiryDate: '##/##',
       maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
       maskCvv: '####',
+      showCard: false,
     }
   },
   computed: {
@@ -221,6 +231,7 @@ export default {
       return card.card_number.replace(/ /g, '') === this.card_number
     },
     setCardNumber(card) {
+      this.showCard = false
       this.store.setCardNumber(card)
       this.$nextTick(() => {
         this.$validator.validateAll()
