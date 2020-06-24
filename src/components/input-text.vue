@@ -52,6 +52,7 @@
       :title="errors.first(name_)"
       :show="hasError"
       :target="'#' + name_"
+      under-sticky
     />
     <transition name="slide-fade">
       <div v-if="!tooltip && hasError && focused" class="f-error">

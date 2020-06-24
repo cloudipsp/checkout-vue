@@ -8,6 +8,7 @@
         title="Or pay with card"
         :type="method"
         :count="5"
+        under-sticky
       />
     </transition>
     <transition name="fade">

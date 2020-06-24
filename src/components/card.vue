@@ -55,6 +55,7 @@
             <f-tooltip-card
               :show.sync="showCard"
               :target="() => $refs.label && $refs.label.$el"
+              under-sticky
             >
               <a
                 v-for="item in cards"

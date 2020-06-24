@@ -116,7 +116,7 @@ $header-height: 50px + 24px /*+ 2px*/;
   transform: translateX(-100%);
 
   .f-open & {
-    z-index: 1070;
+    z-index: $zindex-sidebar;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform: translateX(0);
   }

@@ -40,6 +40,10 @@ html {
     }
   }
 
+  .f-tooltip-under-sticky {
+    z-index: $zindex-tooltip-under-sticky;
+  }
+
   .f-tooltip-top {
     padding: $tooltip-arrow-height 0;
 

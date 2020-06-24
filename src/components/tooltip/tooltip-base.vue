@@ -12,10 +12,23 @@ export default {
     Tooltip,
   },
   inheritAttrs: false,
+  props: {
+    underSticky: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
+    customClass() {
+      return [
+        this.$attrs['custom-class'],
+        this.underSticky ? 'f-tooltip-under-sticky' : '',
+      ].join(' ')
+    },
     attrs() {
       return {
         ...this.$attrs,
+        'custom-class': this.customClass,
       }
     },
   },

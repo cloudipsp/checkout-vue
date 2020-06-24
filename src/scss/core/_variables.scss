@@ -34,7 +34,7 @@ $escaped-characters: (
   ('#', '%23'),
   ('(', '%28'),
   (')', '%29')
-) !default;
+);
 
 // Typography
 $font-family-greenwich: greenwich, sans-serif;
@@ -46,13 +46,15 @@ $line-height-base: 1.4;
 $headings-margin-bottom: $spacer / 2;
 
 //== Z-index master list
-$zindex-dropdown: 1000 !default;
-$zindex-sticky: 1020 !default;
-$zindex-fixed: 1030 !default;
-$zindex-modal-backdrop: 1040 !default;
-$zindex-modal: 1050 !default;
-$zindex-popover: 1060 !default;
-$zindex-tooltip: 1070 !default;
+$zindex-sidebar: 990;
+$zindex-dropdown: 1000;
+$zindex-tooltip-under-sticky: 1019;
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+$zindex-modal-backdrop: 1040;
+$zindex-modal: 1050;
+$zindex-popover: 1060;
+$zindex-tooltip: 1070;
 
 //== Modals
 $modal-padding: 15px;
