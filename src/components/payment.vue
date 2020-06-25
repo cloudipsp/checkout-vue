@@ -1,5 +1,5 @@
 <template>
-  <div class="f-wrapper" :data-e2e-ready="ready">
+  <div class="f-wrapper" :data-e2e-ready="ready" @scroll="$emit('scroll')">
     <f-sidebar :in-progress="inProgress" />
     <div ref="center" class="f-center">
       <div class="f-center-top" />

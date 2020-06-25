@@ -145,6 +145,7 @@ import FButtonPay from '@/components/button-pay'
 import FButtonCancel from '@/components/button-cancel'
 import FFields from '@/components/fields'
 import Resize from '@/mixins/resize'
+import timeout from '@/mixins/timeout'
 
 export default {
   inject: ['$validator'],
@@ -156,13 +157,15 @@ export default {
     FButtonCancel,
     FFields,
   },
-  mixins: [Resize],
+  mixins: [Resize, timeout],
   data() {
     return {
       maskExpiryDate: '##/##',
       maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
       maskCvv: '####',
       showCard: false,
+      wrapper: null,
+      activeElement: null,
     }
   },
   computed: {
@@ -255,6 +258,13 @@ export default {
         })
     },
   },
+  mounted() {
+    this.wrapper = this.$parent.$parent
+    this.wrapper.$on('scroll', this.scroll)
+  },
+  destroyed() {
+    this.wrapper.$off('scroll', this.scroll)
+  },
   methods: {
     cardTypeFeeSuccess() {},
     hasActive(card) {
@@ -288,6 +298,30 @@ export default {
         .catch(e => {
           if (e instanceof Error) console.log(e)
         })
+    },
+    scroll() {
+      if (!this.activeElement) {
+        this.activeElement = document.activeElement
+
+        this.activeElement.blur()
+      }
+
+      this.timeout('focusActiveElement', 200)
+    },
+    focusActiveElement() {
+      if (this.activeElement.tagName !== 'INPUT')
+        return (this.activeElement = null)
+
+      let rectWrapper = this.wrapper.$el.getBoundingClientRect()
+      let rectActiveElement = this.activeElement.getBoundingClientRect()
+
+      if (rectActiveElement.top < rectWrapper.top)
+        return (this.activeElement = null)
+      if (rectActiveElement.bottom > rectWrapper.bottom)
+        return (this.activeElement = null)
+
+      this.activeElement.focus()
+      this.activeElement = null
     },
   },
 }
