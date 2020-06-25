@@ -94,13 +94,12 @@
     &:-webkit-autofill {
       @include plain-hover-focus-active() {
         transition: background-color 99999s;
-        // stylelint-disable-next-line
-        -webkit-text-fill-color: $card_input_color;
       }
       &::first-line {
         font-family: $font-family-card-number;
         font-size: px-to-rem(10px);
         line-height: px-to-rem(18px);
+        color: $card_input_color;
 
         @include media-breakpoint-up(ss) {
           font-size: px-to-rem(21px);
