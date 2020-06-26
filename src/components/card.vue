@@ -81,7 +81,21 @@
         :readonly="need_verify_code"
         :maxlength="digitsCvv"
         tooltip
-      />
+      >
+        <template v-if="isCards" #label="{ classLabel, name_, label_ }">
+          <label :class="classLabel" :for="name_">
+            <span ref="label_cvv">{{ label_ }}</span>
+          </label>
+
+          <f-tooltip-default
+            placement="top"
+            :target="() => $refs.label_cvv"
+            under-sticky
+          >
+            <span v-t="{ path: 'cvv2_question', args: [digitsCvv] }" />
+          </f-tooltip-default>
+        </template>
+      </input-text>
     </div>
     <input-text
       v-if="email"

@@ -37,6 +37,7 @@
 
   &:focus {
     border-color: $input_focus_border;
+    border-width: px-to-rem(1.5px);
     outline: none;
 
     & + .f-control-label {
@@ -60,6 +61,11 @@
   .f-has-error & {
     color: $input_error_color;
     border: 2px solid $input_error_border;
+
+    &:focus {
+      border-color: $input_focus_border;
+      border-width: px-to-rem(1.5px);
+    }
   }
 }
 
