@@ -146,6 +146,10 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
     color: $security_hover_color;
     text-decoration: none;
   }
+
+  .f-svg {
+    margin-right: px-to-rem(10px);
+  }
 }
 
 .f-loading {
