@@ -5,10 +5,13 @@ export default {
   methods: {
     timeout(callback, time) {
       if (!this.timeout.data) this.timeout.data = {}
-      clearTimeout(this.timeout.data[callback])
+      this.clearTimeout(callback)
       delete this.timeout.data[callback]
       this.timeout.data[callback] = setTimeout(this.proxy(callback), time)
       return this
+    },
+    clearTimeout(callback) {
+      clearTimeout(this.timeout.data[callback])
     },
   },
   beforeDestroy() {
