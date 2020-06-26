@@ -13,10 +13,60 @@
   }
 }
 
+@mixin button-variant(
+  $background,
+  $color,
+  $shadow,
+  $background-hover: darken($background, 20%),
+  $color-hover: $color,
+  $shadow-hover: $shadow,
+  $background-active: darken($background, 40%),
+  $color-active: $color,
+  $shadow-active: $shadow
+) {
+  color: $color;
+
+  &::before {
+    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow, 60%);
+  }
+  &::after {
+    background: $background;
+  }
+
+  &:hover {
+    color: $color-hover;
+
+    &::before {
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-hover, 60%);
+    }
+    &::after {
+      background: $background-hover;
+    }
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 0.2rem fade($background, 50%);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: $color-active;
+
+    &::before {
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-active, 60%);
+    }
+
+    &::after {
+      background: $background-active;
+    }
+  }
+}
+
 .f-btn {
   position: relative;
   display: inline-block;
-  padding: px-to-rem(16px);
+  padding: px-to-rem(10px) px-to-rem(32px);
   font-size: px-to-rem(18px);
   font-weight: 600;
   line-height: px-to-rem(24px);
@@ -61,40 +111,19 @@
     outline: 0;
   }
 
+  @include disabled();
+
   :not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }
 
 .f-btn-success {
-  color: $btn_success_color;
-
-  &::before {
-    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($btn_success_shadow, 60%);
-  }
-  &::after {
-    background: $btn_success_bg;
-  }
-
-  &:hover {
-    &::after {
-      background: darken($btn_success_bg, 20%);
-    }
-  }
-
-  &:focus,
-  &.focus {
-    box-shadow: 0 0 0 0.2rem fade($btn_success_bg, 50%);
-  }
-
-  @include disabled();
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
-    &::after {
-      background: darken($btn_success_bg, 40%);
-    }
-  }
+  @include button-variant(
+    $btn_success_bg,
+    $btn_success_color,
+    $btn_success_shadow
+  );
 
   &.f-enable-gradient {
     &::after,
@@ -135,7 +164,26 @@
   }
 }
 
+.f-btn-secondary {
+  font-weight: 400;
+  @include button-variant(
+    $btn_secondary_bg,
+    $btn_secondary_color,
+    $btn_secondary_shadow,
+    $btn_secondary_hover_bg,
+    $btn_secondary_hover_color,
+    $btn_secondary_hover_shadow,
+    $btn_secondary_active_bg,
+    $btn_secondary_active_color,
+    $btn_secondary_active_shadow
+  );
+}
+
 .f-btn-block {
   display: block;
   width: 100%;
+}
+
+.f-btn-lg {
+  padding: px-to-rem(16px) px-to-rem(32px);
 }
