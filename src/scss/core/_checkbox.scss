@@ -1,0 +1,55 @@
+.f-checkbox {
+  position: absolute;
+  z-index: 1;
+  width: px-to-rem(20px);
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    padding: 0 0 0 px-to-rem(30px);
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      top: px-to-rem(1px);
+      left: 0;
+      width: px-to-rem(20px);
+      height: px-to-rem(20px);
+      content: '';
+      background-color: $input_bg;
+      border: 1.5px solid $checkbox_border;
+      border-radius: px-to-rem(4px);
+      transition: background-color ease-in-out 0.15s;
+
+      .f-has-error & {
+        border-color: $input_error_border;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      top: px-to-rem(6px);
+      left: px-to-rem(5px);
+      width: px-to-rem(10px);
+      height: px-to-rem(7px);
+      content: '';
+      background: transparent;
+      border: 2px solid $checkbox_enabled_color;
+      border-top: none;
+      border-right: none;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:checked + label {
+    &::before {
+      background-color: $checkbox_enabled_bg;
+      border: none;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
