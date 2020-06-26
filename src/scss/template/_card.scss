@@ -145,16 +145,7 @@
   cursor: pointer;
 }
 
-html {
-  .f-modal-header-card-list {
-    padding: 0;
-  }
-
-  .f-modal-body-card-list {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
+@mixin card-list() {
   .f-card-list-item {
     display: block;
     padding: px-to-rem(8px) px-to-rem(20px);
@@ -170,6 +161,7 @@ html {
 
     &:hover,
     &.active {
+      text-decoration: none;
       background-color: #eef0f2;
     }
   }
@@ -184,3 +176,9 @@ html {
     color: #818c99;
   }
 }
+
+html {
+  @include card-list();
+}
+
+@include card-list();

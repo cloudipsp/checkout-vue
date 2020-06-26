@@ -19,42 +19,25 @@
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
-              @click.prevent="showCard = true"
+              @click.prevent="showModalCard = true"
             >
               {{ label_ }} <f-svg name="angle-down" size="lg" />
             </a>
-            <f-modal-base
-              v-model="showCard"
-              header-class="f-modal-header-card-list"
-              body-class="f-modal-body-card-list"
-            >
-              <a
-                v-for="item in cards"
-                :key="item.card_number"
-                href="#"
-                :class="['f-card-list-item', { active: hasActive(item) }]"
-                @click.prevent="setCardNumber(item)"
-              >
-                <div class="f-card-list-number">{{ item.card_number }}</div>
-                <div class="f-card-list-expiry-date">
-                  <span v-t="'expires_on'" /> {{ item.expiry_date }}
-                </div>
-              </a>
-            </f-modal-base>
           </template>
           <template v-else>
             <a
+              ref="tooltip"
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
               tabindex="-1"
-              @click.prevent="showCard = true"
-              @blur="showCard = false"
+              @click.prevent="showTooltipCard = true"
+              @blur="showTooltipCard = false"
             >
               {{ label_ }}
               <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
             </a>
             <f-tooltip-card
-              :show.sync="showCard"
+              :show.sync="showTooltipCard"
               :target="() => $refs.label && $refs.label.$el"
               under-sticky
             >
@@ -131,6 +114,24 @@
     <f-offer />
     <f-button-pay />
     <f-button-cancel />
+    <f-modal-base
+      v-model="showModalCard"
+      header-class="f-modal-header-card-list"
+      body-class="f-modal-body-card-list"
+    >
+      <a
+        v-for="item in cards"
+        :key="item.card_number"
+        href="#"
+        :class="['f-card-list-item', { active: hasActive(item) }]"
+        @click.prevent="setCardNumber(item)"
+      >
+        <div class="f-card-list-number">{{ item.card_number }}</div>
+        <div class="f-card-list-expiry-date">
+          <span v-t="'expires_on'" /> {{ item.expiry_date }}
+        </div>
+      </a>
+    </f-modal-base>
   </div>
 </template>
 
@@ -163,7 +164,8 @@ export default {
       maskExpiryDate: '##/##',
       maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
       maskCvv: '####',
-      showCard: false,
+      showModalCard: false,
+      showTooltipCard: false,
       wrapper: null,
       activeElement: null,
     }
@@ -271,7 +273,8 @@ export default {
       return card.card_number.replace(/ /g, '') === this.card_number
     },
     setCardNumber(card) {
-      this.showCard = false
+      this.showModalCard = false
+      this.showTooltipCard = false
       this.store.setCardNumber(card)
       this.$nextTick(() => {
         this.$validator.validateAll()
