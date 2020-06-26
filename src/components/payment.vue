@@ -16,7 +16,7 @@
         <div class="f-loading-i" />
       </div>
       <f-modal-error />
-      <submit3ds
+      <f-modal-3ds
         v-model="show3ds"
         :duration.sync="duration3ds"
         @submit3ds="submit3ds"
@@ -36,7 +36,7 @@ import FSecurity from '@/components/security'
 
 import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
-import Submit3ds from '@/components/submit3ds'
+import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
 import { methods, tabs } from '@/utils/compatibility'
@@ -54,7 +54,7 @@ export default {
     Pending,
     PaymentMethod,
     FSidebar,
-    Submit3ds,
+    FModal3ds,
     FModalError,
     FSecurity,
   },

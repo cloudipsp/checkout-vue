@@ -6,7 +6,7 @@ export default {
     igb: 'f-input-group-btn',
     he: 'f-has-error',
     btn: 'f-btn',
-    bd: 'f-btn-default',
+    bd: 'f-btn-secondary',
     bs: 'f-btn-success',
     btnSm: 'f-btn-sm',
     btnLg: 'f-btn-lg',
