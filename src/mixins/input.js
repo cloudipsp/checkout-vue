@@ -106,7 +106,7 @@ export default {
       return [
         this.css.cl,
         this.hasError ? this.css.le : '',
-        { active: this.active },
+        { 'f-active': this.active },
       ]
     },
     classGroupName() {

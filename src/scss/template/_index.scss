@@ -162,3 +162,19 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   background-color: $modal_backdrop_bg;
   opacity: $modal-backdrop-opacity;
 }
+
+.f-form-group-currency {
+  position: absolute;
+  top: 17px;
+  right: 12px;
+  font-family: $font-family-inter;
+  font-size: 16px;
+  font-weight: 500;
+  color: $label_color;
+  transition: all ease-in-out 0.15s;
+  transform-origin: 0 0;
+
+  .f-active + & {
+    transform: translateY(7px);
+  }
+}
