@@ -146,3 +146,14 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
     text-decoration: none;
   }
 }
+
+.f-loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+  background-color: $modal_backdrop_bg;
+  opacity: $modal-backdrop-opacity;
+}

@@ -1,39 +1,37 @@
-html {
-  .f-close {
-    font-size: px-to-rem(24px);
-    font-weight: 600;
-    line-height: 1;
+.f-close {
+  font-size: px-to-rem(24px);
+  font-weight: 600;
+  line-height: 1;
+  color: $close_color;
+  cursor: pointer;
+  outline: 0;
+  opacity: 1;
+
+  // Override <a>'s hover style
+  &:hover {
     color: $close_color;
-    cursor: pointer;
-    outline: 0;
-    opacity: 1;
-
-    // Override <a>'s hover style
-    &:hover {
-      color: $close_color;
-      text-decoration: none;
-    }
-
-    &:hover,
-    &:focus {
-      opacity: 0.75;
-    }
-
-    &:disabled,
-    &.disabled {
-      pointer-events: none;
-    }
+    text-decoration: none;
   }
 
-  // Additional properties for button version
-  // iOS requires the button element instead of an anchor tag.
-  // If you want the anchor version, it requires `href="#"`.
-  // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
-  // stylelint-disable-next-line selector-no-qualifying-type
-  button.f-close {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
+  &:hover,
+  &:focus {
+    opacity: 0.75;
   }
+
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+// stylelint-disable-next-line selector-no-qualifying-type
+button.f-close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
 }
