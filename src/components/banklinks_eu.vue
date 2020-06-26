@@ -38,26 +38,22 @@
         <div v-t="'load_more'" />
       </div>
     </div>
-    <f-modal-form-bank
-      v-if="item"
-      v-model="open"
-      :config="item"
-      @submit="submit"
-    />
+    <!--<f-modal-form-bank-->
+    <!--v-if="item"-->
+    <!--v-model="open"-->
+    <!--:config="item"-->
+    <!--@submit="submit"-->
+    <!--/>-->
   </div>
 </template>
 
 <script>
 import { sort } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import FModalFormBank from '@/components/modal-form-bank'
 import { isObject } from '@/utils/typeof'
 
 export default {
   inject: ['formRequest'],
-  components: {
-    FModalFormBank,
-  },
   data() {
     return {
       form: {
