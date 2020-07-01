@@ -67,6 +67,10 @@ $header-height: 50px + 24px /*+ 2px*/;
     padding: px-to-rem(24px) 0 0 px-to-rem(60px);
     border-right: 2px solid $sidebar_border;
   }
+
+  .f-min & {
+    border-right: none;
+  }
 }
 
 .f-header-menu {
@@ -208,7 +212,8 @@ $header-height: 50px + 24px /*+ 2px*/;
     display: none;
   }
 
-  .f-open & {
+  .f-open &,
+  .f-min & {
     display: none;
   }
 }
@@ -232,6 +237,10 @@ $header-height: 50px + 24px /*+ 2px*/;
     @include media-breakpoint-up(lg) {
       display: none;
     }
+  }
+
+  .f-min & {
+    display: none;
   }
 }
 

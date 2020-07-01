@@ -2,6 +2,7 @@
 @import 'menu';
 @import 'card';
 @import 'modal';
+@import 'success';
 
 .f-sidebar .f-wallet-pay-button {
   margin-bottom: px-to-rem(32px);
@@ -11,14 +12,14 @@
   margin-bottom: px-to-rem(24px);
 }
 
-.f-title {
+.f-wallet-pay-title {
   margin-bottom: px-to-rem(16px);
   font-weight: 300;
 }
 
 .f-payment-method-card {
   max-width: 360px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .f-merchant-name {
@@ -159,7 +160,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   bottom: 0;
   left: 0;
   z-index: $zindex-modal-backdrop;
-  background-color: $modal_backdrop_bg;
+  background-color: $container_bg;
   opacity: $modal-backdrop-opacity;
 }
 

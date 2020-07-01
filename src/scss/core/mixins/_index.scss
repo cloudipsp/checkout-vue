@@ -1,5 +1,6 @@
 @import 'breakpoints';
 @import 'hover';
+@import 'grid';
 
 @mixin sticky-top($top: 0, $zindex: $zindex-sticky) {
   @supports (position: sticky) {

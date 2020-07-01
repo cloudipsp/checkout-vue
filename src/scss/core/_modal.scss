@@ -134,11 +134,11 @@ html {
 
 // Title text within header
 .f-modal-title {
-  margin: 0;
-  font-size: px-to-rem(22px);
-  font-weight: 400;
-  color: #3d3d3d;
-  text-align: center;
+  margin-bottom: 0;
+
+  svg {
+    margin: px-to-rem(-16px) 0;
+  }
 }
 
 // Modal body
