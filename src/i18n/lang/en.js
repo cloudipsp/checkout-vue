@@ -48,7 +48,7 @@ export const messages = Object.assign({}, countries, {
     'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
   other: 'Other methods',
   declined: 'Payment is declined',
-  approved: 'Payment is approved',
+  approved: 'Thank you! Your payment was approved',
   pending: 'Your payment is being processed',
   number_payment: '№ of payment in {0}:',
   payment_system: 'payment system',

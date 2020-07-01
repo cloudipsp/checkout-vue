@@ -24,7 +24,6 @@ import Banklinks_eu from '@/components/banklinks_eu'
 import Sepa from '@/components/sepa'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
-import FInfo from '@/components/info'
 
 export default {
   components: {
@@ -32,7 +31,6 @@ export default {
     Banklinks_eu,
     Sepa,
     FIcons,
-    FInfo,
   },
   computed: {
     ...mapState('router', ['method']),

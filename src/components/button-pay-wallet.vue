@@ -1,7 +1,9 @@
 <template>
   <div v-show="show">
     <div class="f-wallet-pay-button" :class="classButton" />
-    <div v-if="title" class="f-title">Or use another payment method</div>
+    <div v-if="title" class="f-wallet-pay-title">
+      Or use another payment method
+    </div>
   </div></template
 >
 
