@@ -1,7 +1,10 @@
+import configMethods from '@/config/methods'
+
 export function methods(arr) {
   return arr
     .map(item => (item === 'trustly' ? 'banklinks_eu' : item))
     .filter((item, key, self) => self.indexOf(item) === key)
+    .filter(item => configMethods.includes(item))
 }
 
 export function tabs(arr) {
