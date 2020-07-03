@@ -217,7 +217,7 @@
 
 .f-card {
   @include media-breakpoint-up(ss) {
-    padding: px-to-rem(96px) 0 px-to-rem(16px) px-to-rem(16px);
+    padding: px-to-rem(80px) 0 px-to-rem(16px) px-to-rem(16px);
   }
 }
 
@@ -240,7 +240,7 @@
     &:-webkit-autofill {
       &::first-line {
         @include media-breakpoint-up(ss) {
-          font-size: px-to-rem(21px);
+          font-size: px-to-rem(20px);
           line-height: px-to-rem(25px);
         }
       }

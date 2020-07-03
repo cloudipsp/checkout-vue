@@ -45,7 +45,10 @@
     }
   }
 
-  & + .f-active,
+  & + .f-active {
+    transform: translateY(-8px) scale(0.75);
+  }
+
   &:-webkit-autofill + .f-control-label {
     transform: translateY(-8px) scale(0.75);
   }
