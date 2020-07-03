@@ -46,7 +46,7 @@ export const messages = Object.assign({}, countries, {
   offer: 'offer',
   offer_t:
     'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
-  other: 'Other methods',
+  other_payment_method: 'Or use another payment method',
   declined: 'Payment is declined',
   approved: 'Thank you! Your payment was approved',
   pending: 'Your payment is being processed',
@@ -104,6 +104,7 @@ export const messages = Object.assign({}, countries, {
     '<p>Validated PCI DSS Compliance</p><p>Listed on Visa Global Registry and verified by Mastercard</p>',
   expires_on: 'Expires on',
   back_to_payment_methods: 'Back to Payment Methods',
+  or_pay_with_card: 'Or pay with card',
 })
 
 export const validate = Object.assign({}, validateMessages, {

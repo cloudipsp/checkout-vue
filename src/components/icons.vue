@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-icons">
-    <span v-if="title" class="f-icons-title">{{ title }}</span>
+    <span v-if="showTitle" v-t="title" class="f-icons-title" />
     <f-icon
       v-for="item in listFirst"
       :key="item"
@@ -37,9 +37,16 @@
 <script>
 import { mapState } from '@/utils/store'
 import configMethods from '@/config/methods'
+import Resize from '@/mixins/resize'
 
 export default {
+  mixins: [Resize],
   props: {
+    position: {
+      type: String,
+      required: true,
+      validator: value => ['sidebar', 'center'].includes(value),
+    },
     title: {
       type: String,
       default: '',
@@ -59,7 +66,10 @@ export default {
     },
   },
   computed: {
-    ...mapState(['options']),
+    ...mapState(['options', 'isOnlyCard']),
+    showTitle() {
+      return this.position === 'center'
+    },
     list() {
       return this.options[this.type + '_icons'] || []
     },
@@ -71,6 +81,10 @@ export default {
     },
     show() {
       return this.list.length
+        ? this.position === 'center'
+          ? this.isOnlyCard && this.isTablet
+          : true
+        : false
     },
     showCount() {
       return this.list.length > this.count

@@ -9,7 +9,7 @@
       >
         <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />
         <span v-t="method" />
-        <f-icons class="f-menu-icons" :type="method" />
+        <f-icons class="f-menu-icons" :type="method" position="sidebar" />
       </a>
     </template>
   </div>

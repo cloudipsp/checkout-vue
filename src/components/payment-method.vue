@@ -1,14 +1,15 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <f-info />
-    <f-button-pay-wallet />
+    <f-info position="center" />
+    <f-button-pay-wallet position="center" />
     <transition name="fade">
       <f-icons
         class="f-mb-3"
-        title="Or pay with card"
+        title="or_pay_with_card"
         :type="method"
         :count="5"
         under-sticky
+        position="center"
       />
     </transition>
     <transition name="fade">

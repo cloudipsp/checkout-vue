@@ -1,8 +1,14 @@
+import { mapState } from '@/utils/store'
+
 export default {
   data() {
     return {
-      isMobile: false,
+      isMobile: true,
+      isTablet: false,
     }
+  },
+  computed: {
+    ...mapState('options', ['full_screen']),
   },
   mounted: function() {
     window.addEventListener('resize', this.afterResize)
@@ -13,9 +19,10 @@ export default {
   },
   methods: {
     afterResize() {
-      let width = document.documentElement.clientWidth
+      let width = window.innerWidth
 
-      this.isMobile = width < 768
+      this.isMobile = this.full_screen ? width < 768 : true
+      this.isTablet = this.full_screen ? width < 992 : true
 
       this.resize()
     },

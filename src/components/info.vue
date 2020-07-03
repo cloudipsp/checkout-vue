@@ -1,30 +1,28 @@
 <template>
-  <div class="f-info">
-    <div v-if="show">
-      <div v-if="title" v-t="title" class="f-merchant-name" />
-      <div v-if="link" class="f-merchant-url">
-        <a :href="link" target="_blank">{{ link }}</a>
-      </div>
-      <div v-if="order_desc" class="f-order-desc">
-        <div ref="wrapper" class="f-order-desc-text">
-          <span ref="desc">{{ order_desc_translation }}</span>
-        </div>
-        <a
-          v-if="showMore"
-          class="f-order-desc-more"
-          href="#"
-          @click.prevent="clickMore"
-        >
-          <span v-t="'see_more'" /> <f-svg name="angle-right" />
-        </a>
-      </div>
-      <f-modal-base v-model="modalMore" size="lg">
-        <template #modal-title>
-          <span v-t="title" />
-        </template>
-        <span v-t="order_desc" />
-      </f-modal-base>
+  <div v-if="show" class="f-info">
+    <div v-if="title" v-t="title" class="f-merchant-name" />
+    <div v-if="link" class="f-merchant-url">
+      <a :href="link" target="_blank">{{ link }}</a>
     </div>
+    <div v-if="order_desc" class="f-order-desc">
+      <div ref="wrapper" class="f-order-desc-text">
+        <span ref="desc">{{ order_desc_translation }}</span>
+      </div>
+      <a
+        v-if="showMore"
+        class="f-order-desc-more"
+        href="#"
+        @click.prevent="clickMore"
+      >
+        <span v-t="'see_more'" /> <f-svg name="angle-right" />
+      </a>
+    </div>
+    <f-modal-base v-model="modalMore" size="lg">
+      <template #modal-title>
+        <span v-t="title" />
+      </template>
+      <span v-t="order_desc" />
+    </f-modal-base>
     <f-fee />
   </div>
 </template>
@@ -39,6 +37,13 @@ export default {
     FFee,
   },
   mixins: [Resize],
+  props: {
+    position: {
+      type: String,
+      required: true,
+      validator: value => ['sidebar', 'center', 'success'].includes(value),
+    },
+  },
   data() {
     return {
       showMore: false,
@@ -46,6 +51,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['region', 'isOnlyCard']),
     ...mapState('options', ['title', 'link']),
     ...mapState('params', ['order_desc']),
     order_desc_translation() {
@@ -53,7 +59,13 @@ export default {
       return this.$t(this.order_desc)
     },
     show() {
-      return !!(this.title || this.order_desc || this.link)
+      return (
+        (this.position === 'sidebar' &&
+          (this.isTablet || this.region === 'UA')) ||
+        this.position === 'success' ||
+        (this.position === 'center' &&
+          (this.region === 'UA' && this.isOnlyCard ? this.isTablet : true))
+      )
     },
   },
   methods: {
@@ -66,6 +78,8 @@ export default {
       })
     },
     resize() {
+      this.showMore = false
+
       if (!this.$refs.wrapper) return
       if (!this.$refs.desc) return
       if (this.$refs.wrapper.offsetHeight >= this.$refs.desc.offsetHeight)

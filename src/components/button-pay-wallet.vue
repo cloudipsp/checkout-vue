@@ -1,39 +1,53 @@
 <template>
-  <div v-show="show">
+  <div v-show="show" class="f-btn-pay-wallet">
     <div class="f-wallet-pay-button" :class="classButton" />
-    <div v-if="title" class="f-wallet-pay-title">
-      Or use another payment method
-    </div>
-  </div></template
->
+    <div
+      v-if="showTitle"
+      v-t="'other_payment_method'"
+      class="f-wallet-pay-title"
+    />
+  </div>
+</template>
 
 <script>
 import $checkout from 'ipsp-js-sdk/dist/checkout'
 import { api } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import id from '@/mixins/id'
+import Resize from '@/mixins/resize'
 
 export default {
-  mixins: [id],
+  mixins: [id, Resize],
   inject: ['formRequest'],
   props: {
-    title: {
-      type: Boolean,
-      default: false,
+    position: {
+      type: String,
+      required: true,
+      validator: value => ['sidebar', 'center'].includes(value),
     },
   },
   data() {
     return {
       timeout: null,
-      show: false,
+      init: false,
     }
   },
   computed: {
-    ...mapState(['css']),
+    ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['amount']),
     ...mapState('options', ['api_domain']),
     classButton() {
       return 'f-wallet-pay-button-' + this.id
+    },
+    showTitle() {
+      return this.position === 'sidebar'
+    },
+    show() {
+      return this.init
+        ? this.position === 'center'
+          ? this.isOnlyCard && this.isTablet
+          : true
+        : false
     },
   },
   watch: {
@@ -66,10 +80,10 @@ export default {
         })
         .process(this.process)
         .on('show', () => {
-          this.show = true
+          this.init = true
         })
         .on('hide', () => {
-          this.show = false
+          this.init = false
         })
     },
     update() {

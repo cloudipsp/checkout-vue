@@ -3,12 +3,7 @@
     <f-sidebar :in-progress="inProgress" />
     <div ref="center" class="f-center">
       <div class="f-center-top" />
-      <div class="f-btn-methods">
-        <a href="#" @click.prevent="toggleModalMethods">
-          <f-svg name="angle-left" />
-          <span v-t="'back_to_payment_methods'" />
-        </a>
-      </div>
+      <f-button-methods />
       <!--payment-method success pending-->
       <component :is="page" :order="order" />
       <div v-if="loading">
@@ -33,6 +28,7 @@ import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
+import FButtonMethods from '@/components/button/button-methods'
 
 import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
@@ -57,14 +53,9 @@ export default {
     FModal3ds,
     FModalError,
     FSecurity,
+    FButtonMethods,
   },
   inject: ['$validator'],
-  props: {
-    min: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data() {
     return {
       timeoutId: 0,
@@ -86,6 +77,7 @@ export default {
       'verification_type',
       'need_verify_code',
       'validate_expdate',
+      'region',
     ]),
     ...mapStateGetSet('options', [
       'email',
@@ -206,6 +198,7 @@ export default {
       this.title = this.title || model.attr('merchant.localized_name')
       this.logo_url = this.logo_url || model.attr('merchant.logo_url')
       this.offerta_url = this.offerta_url || model.attr('merchant.offerta_url')
+      this.region = model.attr('merchant.country')
 
       if (
         !this.store.attr('user.options.methods.length') &&
@@ -214,6 +207,7 @@ export default {
       ) {
         this.methods = methods(model.attr('tabs_order'))
         this.store.initLocation()
+        this.store.initOnlyCard()
       }
       this.tabs = tabs(model.attr('tabs'))
       this.default_country =
@@ -334,9 +328,6 @@ export default {
     },
     submit3ds() {
       model3ds.submit3dsForm()
-    },
-    toggleModalMethods() {
-      this.store.toggleModalMethods()
     },
   },
 }

@@ -94,6 +94,8 @@ const options = {
   showModalMethods: false,
   fields: [],
   validate_expdate: true,
+  isOnlyCard: true,
+  region: '',
 }
 
 configLocales.forEach(function(locale) {

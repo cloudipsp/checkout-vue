@@ -75,6 +75,7 @@ export default {
     this.initOrigin()
     this.initReferrer()
     this.initCssDevice()
+    this.initOnlyCard()
     initCssVariable(this.state.css_variable)
   },
   optionsFormat(options) {
@@ -138,8 +139,12 @@ export default {
   initCssDevice() {
     if (!this.state.options.full_screen) return
 
-    // require('@/scss/style-sm.scss?no-extract')
-    // require('@/scss/style-md.scss?no-extract')
+    require('@/scss/style-adaptive.scss?no-extract')
+  },
+  initOnlyCard() {
+    this.state.isOnlyCard =
+      this.state.options.methods.length === 1 &&
+      this.state.options.methods[0] === 'card'
   },
   setButtonParams(options) {
     deepMerge(this.state, options)

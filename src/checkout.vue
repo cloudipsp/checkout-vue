@@ -1,12 +1,8 @@
 <template>
   <div id="f">
-    <div
-      v-if="!error.errors.length"
-      class="f-container"
-      :class="[{ 'f-min': min }, openClass]"
-    >
-      <f-header :min="min" />
-      <payment :min="min" />
+    <div v-if="!error.errors.length" class="f-container" :class="className">
+      <f-header />
+      <payment />
     </div>
     <ul v-else>
       <li v-for="item in error.errors" :key="item.message">
@@ -18,7 +14,6 @@
 
 <script>
 import Payment from '@/components/payment'
-import EventBus from '@/event-bus'
 import FHeader from '@/components/header'
 import { mapState } from '@/utils/store'
 
@@ -34,27 +29,19 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      min: true,
-    }
-  },
   computed: {
+    ...mapState(['isOnlyCard']),
     ...mapState(['showModalMethods']),
     ...mapState(['error']),
-    openClass() {
-      return { 'f-open': this.showModalMethods }
+    className() {
+      return {
+        'f-only-card': this.isOnlyCard,
+        'f-open': this.showModalMethods,
+      }
     },
   },
   created: function() {
     this.store.setOptions(this.optionsUser)
-
-    EventBus.$on('checkout-min', this.setMin)
-  },
-  methods: {
-    setMin: function(min) {
-      this.min = min
-    },
   },
 }
 </script>
