@@ -14,7 +14,12 @@
         tooltip
         @input="inputCardNumber"
       >
-        <template v-if="isCards" #label="{ classLabel, label_ }">
+        <template v-if="need_verify_code" #label="{ classLabel, label_ }">
+          <label :class="classLabel">
+            {{ label_ }} <f-svg name="lock" size="lg" />
+          </label>
+        </template>
+        <template v-else-if="isCards" #label="{ classLabel, label_ }">
           <template v-if="isMobile">
             <a
               href="#"
