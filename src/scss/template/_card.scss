@@ -6,10 +6,6 @@
   padding: px-to-rem(63px) 0 px-to-rem(16px) px-to-rem(16px);
   margin-bottom: px-to-rem(32px);
 
-  @include media-breakpoint-up(ss) {
-    padding: px-to-rem(96px) 0 px-to-rem(16px) px-to-rem(16px);
-  }
-
   &::before {
     position: absolute;
     bottom: 0;
@@ -63,12 +59,6 @@
     letter-spacing: 0.03em;
     opacity: 0.7;
     transform: none;
-
-    @include media-breakpoint-up(ss) {
-      margin-bottom: px-to-rem(8px);
-      font-size: px-to-rem(11px);
-      line-height: px-to-rem(13px);
-    }
   }
 
   .f-form-control {
@@ -85,12 +75,6 @@
     border: none;
     border-radius: 0;
 
-    @include media-breakpoint-up(ss) {
-      height: px-to-rem(25px);
-      font-size: px-to-rem(20px);
-      line-height: px-to-rem(25px);
-    }
-
     &:-webkit-autofill {
       @include plain-hover-focus-active() {
         transition: background-color 99999s;
@@ -100,11 +84,6 @@
         font-size: px-to-rem(10px);
         line-height: px-to-rem(18px);
         color: $card_input_color;
-
-        @include media-breakpoint-up(ss) {
-          font-size: px-to-rem(21px);
-          line-height: px-to-rem(25px);
-        }
       }
     }
 

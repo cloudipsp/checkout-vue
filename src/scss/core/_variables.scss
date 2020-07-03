@@ -58,3 +58,13 @@ $zindex-tooltip: 1070;
 
 $grid-columns: 12 !default;
 $grid-gutter-width: 30px !default;
+
+$header-height: 50px + 24px /*+ 2px*/;
+
+$modal-dialog-margin: 2rem;
+$modal-backdrop-opacity: 0.7;
+
+$modal-sm: 300px;
+$modal-md: 427px;
+$modal-lg: 800px;
+$modal-xl: 1140px;

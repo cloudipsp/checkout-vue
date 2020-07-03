@@ -1,0 +1,14 @@
+.f-wallet-pay-button {
+  .f-sidebar & {
+    margin-bottom: px-to-rem(32px);
+  }
+
+  .f-center & {
+    margin-bottom: px-to-rem(24px);
+  }
+}
+
+.f-wallet-pay-title {
+  margin-bottom: px-to-rem(16px);
+  font-weight: 300;
+}

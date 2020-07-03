@@ -13,11 +13,6 @@
   border-radius: px-to-rem(8px);
   transition: all ease-in-out 0.15s;
 
-  @include media-breakpoint-up(lg) {
-    margin-bottom: px-to-rem(4px);
-    border: none;
-  }
-
   &:hover,
   &.active {
     font-weight: 400;

@@ -3,22 +3,10 @@
 @import 'card';
 @import 'modal';
 @import 'success';
-
-.f-sidebar .f-wallet-pay-button {
-  margin-bottom: px-to-rem(32px);
-}
-
-.f-center .f-wallet-pay-button {
-  margin-bottom: px-to-rem(24px);
-}
-
-.f-wallet-pay-title {
-  margin-bottom: px-to-rem(16px);
-  font-weight: 300;
-}
+@import 'button-pay-wallet';
 
 .f-payment-method-card {
-  max-width: 360px;
+  max-width: 280px;
   margin: 0 auto;
 }
 
@@ -66,20 +54,12 @@
   margin-right: px-to-rem(12px);
   font-size: px-to-rem(28px);
   color: $amount_color;
-
-  @include media-breakpoint-up(ss) {
-    font-size: px-to-rem(32px);
-  }
 }
 
 .f-currency {
   display: inline-block;
   font-size: px-to-rem(20px);
   color: lighten($currency_color, 40%);
-
-  @include media-breakpoint-up(ss) {
-    font-size: px-to-rem(22px);
-  }
 }
 
 .f-icons-title {

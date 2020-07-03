@@ -1,0 +1,279 @@
+@import 'core/functions';
+@import 'core/colors';
+@import 'core/variables';
+@import 'core/mixins/index';
+
+// stylelint-disable-next-line selector-max-id
+#f {
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.f-container {
+  @include media-breakpoint-up(xl) {
+    max-width: 1140px;
+    height: 100vh;
+    max-height: 686px;
+    margin: auto;
+    border-radius: px-to-rem(16px);
+    box-shadow: 0 24px 40px fade($container_box_shadow, 60%);
+  }
+}
+
+.f-header {
+  @include media-breakpoint-up(lg) {
+    @include sticky-top();
+  }
+
+  @include media-breakpoint-up(xl) {
+    border-radius: px-to-rem(16px) px-to-rem(16px) 0 0;
+  }
+}
+
+.f-header-logo {
+  @include media-breakpoint-up(md) {
+    padding: px-to-rem(24px) 0 0 px-to-rem(40px);
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: px-to-rem(24px) 0 0 px-to-rem(40px);
+  }
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 410px;
+    padding: px-to-rem(24px) 0 0 px-to-rem(40px);
+    border-right: 2px solid $sidebar_border;
+  }
+  @include media-breakpoint-up(xl) {
+    flex: 0 0 450px;
+    padding: px-to-rem(24px) 0 0 px-to-rem(60px);
+    border-right: 2px solid $sidebar_border;
+  }
+}
+
+.f-header-menu {
+  @include media-breakpoint-up(md) {
+    padding: px-to-rem(24px) px-to-rem(24px) 0 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex: 1;
+    padding: px-to-rem(24px) px-to-rem(24px) 0 0;
+  }
+
+  @include media-breakpoint-up(xl) {
+    flex: 1;
+    padding: px-to-rem(24px) px-to-rem(24px) 0 0;
+  }
+}
+
+.f-wrapper {
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    flex-wrap: wrap;
+    // TODO js
+    height: calc(100% - #{$header-height});
+    overflow: auto;
+  }
+}
+
+.f-sidebar {
+  @include media-breakpoint-up(lg) {
+    position: inherit;
+    flex: 0 0 410px;
+    height: calc(100vh - #{$header-height});
+    padding: px-to-rem(24px) px-to-rem(40px) 0 px-to-rem(40px);
+    border-right: 2px solid $sidebar_border;
+    transform: translateX(0);
+    @include sticky-top(calc(#{$header-height}));
+  }
+  @include media-breakpoint-up(xl) {
+    @include sticky-top();
+    flex: 0 0 450px;
+    height: 100%;
+    padding: px-to-rem(24px) px-to-rem(60px) 0 px-to-rem(60px);
+    border-right: 2px solid $sidebar_border;
+    border-radius: 0 0 0 px-to-rem(16px);
+  }
+}
+
+.f-sidebar-content {
+  @include media-breakpoint-up(lg) {
+    max-width: inherit;
+  }
+}
+
+.f-center-top {
+  @include media-breakpoint-up(lg) {
+    height: px-to-rem(24px);
+    background-image: linear-gradient(
+      to bottom,
+      $container_bg,
+      fade($container_bg, 0)
+    );
+    @include sticky-top(calc(#{$header-height}));
+  }
+  @include media-breakpoint-up(xl) {
+    @include sticky-top(0);
+    height: 20px;
+  }
+}
+
+.f-center {
+  @include media-breakpoint-up(md) {
+    padding: px-to-rem(24px) px-to-rem(40px) 0 px-to-rem(40px);
+  }
+  @include media-breakpoint-up(lg) {
+    flex: 1;
+    min-height: inherit;
+    padding: 0 px-to-rem(24px) px-to-rem(24px);
+  }
+  @include media-breakpoint-up(xl) {
+    flex: 1;
+    padding: px-to-rem(24px);
+  }
+}
+
+.f-security {
+  @include media-breakpoint-up(ss) {
+    padding-bottom: (24px);
+  }
+
+  .f-center & {
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .f-modal {
+    &.fade .f-modal-dialog {
+      transform: translate(0, -50px);
+    }
+    &.show .f-modal-dialog {
+      transform: none;
+    }
+  }
+
+  .f-modal-dialog {
+    max-width: $modal-md;
+    margin: $modal-dialog-margin auto;
+  }
+
+  .f-modal-content {
+    padding: px-to-rem(40px) 0 0;
+    margin-top: 0;
+    font-size: px-to-rem(16px);
+    border-radius: px-to-rem(16px);
+  }
+
+  .f-modal-dialog-centered {
+    align-items: center;
+    min-height: subtract(100%, $modal-dialog-margin * 2);
+  }
+
+  .f-modal-header {
+    padding: 0 px-to-rem(50px) px-to-rem(16px);
+
+    .f-close {
+      top: px-to-rem(-60px);
+      right: px-to-rem(-44px);
+    }
+  }
+
+  .f-modal-body {
+    padding: 0 px-to-rem(50px) px-to-rem(40px);
+  }
+
+  .f-modal-footer {
+    padding: 0 px-to-rem(50px) px-to-rem(40px);
+  }
+
+  .f-modal-sm {
+    max-width: $modal-sm;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .f-modal-lg,
+  .f-modal-xl {
+    max-width: $modal-lg;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .f-modal-xl {
+    max-width: $modal-xl;
+  }
+}
+
+.f-card {
+  @include media-breakpoint-up(ss) {
+    padding: px-to-rem(96px) 0 px-to-rem(16px) px-to-rem(16px);
+  }
+}
+
+.f-form-group-card {
+  .f-control-label {
+    @include media-breakpoint-up(ss) {
+      margin-bottom: px-to-rem(8px);
+      font-size: px-to-rem(11px);
+      line-height: px-to-rem(13px);
+    }
+  }
+
+  .f-form-control {
+    @include media-breakpoint-up(ss) {
+      height: px-to-rem(25px);
+      font-size: px-to-rem(20px);
+      line-height: px-to-rem(25px);
+    }
+
+    &:-webkit-autofill {
+      &::first-line {
+        @include media-breakpoint-up(ss) {
+          font-size: px-to-rem(21px);
+          line-height: px-to-rem(25px);
+        }
+      }
+    }
+  }
+}
+
+.f-amount {
+  @include media-breakpoint-up(ss) {
+    font-size: px-to-rem(32px);
+  }
+}
+
+.f-currency {
+  @include media-breakpoint-up(ss) {
+    font-size: px-to-rem(22px);
+  }
+}
+
+.f-menu-item {
+  @include media-breakpoint-up(lg) {
+    margin-bottom: px-to-rem(4px);
+    border: none;
+  }
+}
+
+.f-sidebar-content,
+.f-payment-method-card {
+  @include media-breakpoint-up(ss) {
+    max-width: 335px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    max-width: 360px;
+  }
+}
