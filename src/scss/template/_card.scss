@@ -124,12 +124,12 @@
 
 // stylelint-disable-next-line selector-max-id
 #f-expiry_date {
-  width: 80px;
+  width: px-to-rem(80px);
 }
 
 // stylelint-disable-next-line selector-max-id
 #f-cvv2 {
-  width: 75px;
+  width: px-to-rem(75px);
   font-family: $font-family-cvv;
 }
 
@@ -154,18 +154,18 @@
     &:hover,
     &.active {
       text-decoration: none;
-      background-color: #eef0f2;
+      background-color: $card_list_item_active_bg;
     }
   }
 
   .f-card-list-number {
     font-weight: 500;
-    color: #3d3d3d;
+    color: $card_list_number_color;
   }
 
   .f-card-list-expiry-date {
-    font-size: 12px;
-    color: #818c99;
+    font-size: px-to-rem(12px);
+    color: $card_list_expiry_date_color;
   }
 }
 
