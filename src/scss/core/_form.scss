@@ -72,9 +72,19 @@
   }
 }
 
-// stylelint-disable-next-line selector-no-qualifying-type
-select.f-form-control {
+.f-form-control-select {
+  position: relative;
+  z-index: 1;
   padding-left: px-to-rem(8px);
+  background-color: transparent;
+
+  & + .f-control-label {
+    z-index: 0;
+  }
+
+  .f-has-error & {
+    color: $input_color;
+  }
 }
 
 .f-control-label {

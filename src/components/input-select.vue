@@ -6,7 +6,7 @@
       v-validate="validate"
       :data-vv-as="label_"
       :data-vv-name="name_"
-      :class="className"
+      :class="[className, 'f-form-control-select']"
       :readonly="readonly"
       :disabled="readonly"
       :autocomplete="autocomplete"
