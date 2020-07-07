@@ -79,6 +79,7 @@ export default {
   input_focus_border: grey_2,
   input_error_color: error,
   input_error_border: error,
+  input_prepend_color: black,
   checkbox_border: ash_800,
   checkbox_enabled_bg: grey_2,
   checkbox_enabled_color: white,

@@ -88,3 +88,22 @@ select.f-form-control {
   font-weight: 500;
   color: $form_error_color;
 }
+
+.f-form-control-prepend {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: $input_prepend_color;
+
+  & + .f-form-control {
+    padding-left: px-to-rem(40px);
+  }
+
+  & ~ .f-control-label {
+    left: px-to-rem(40px);
+  }
+}

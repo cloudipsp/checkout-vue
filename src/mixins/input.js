@@ -53,6 +53,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    inputClass: {
+      type: String,
+      default: null,
+    },
+    prepend: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -100,7 +108,7 @@ export default {
       return this.hasError ? this.css.ie : ''
     },
     className() {
-      return [this.css.fc, this.classReadonly, this.classError]
+      return [this.css.fc, this.classReadonly, this.classError, this.inputClass]
     },
     classLabel() {
       return [

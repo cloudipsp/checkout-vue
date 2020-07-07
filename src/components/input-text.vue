@@ -1,5 +1,8 @@
 <template>
   <div :class="classGroupName">
+    <label v-if="prepend" :for="name_" class="f-form-control-prepend">
+      <f-svg :name="prepend" fw />
+    </label>
     <f-mask
       v-if="mask"
       :id="name_"
