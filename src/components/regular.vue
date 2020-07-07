@@ -3,7 +3,7 @@
     <input-swipe v-model="open" label="regular" />
     <template v-if="open">
       <div class="f-row">
-        <div class="f-col-xs-6">
+        <div class="f-col">
           <input-text
             name="regular_every"
             field="every"
@@ -15,7 +15,7 @@
             :readonly="readonly"
           />
         </div>
-        <div class="f-col-xs-6">
+        <div class="f-col">
           <input-select
             :list="periods"
             name="regular_period"

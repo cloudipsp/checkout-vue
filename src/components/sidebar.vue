@@ -1,6 +1,6 @@
 <template>
   <div class="f-sidebar">
-    <div class="f-sidebar-content">
+    <div class="f-sidebar-content f-container-sm">
       <f-info position="sidebar" />
       <f-button-pay-wallet position="sidebar" />
       <f-menu />

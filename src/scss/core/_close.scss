@@ -1,9 +1,12 @@
 .f-close {
+  padding: 0;
   font-size: px-to-rem(24px);
   font-weight: 600;
   line-height: 1;
   color: $close_color;
   cursor: pointer;
+  background-color: transparent;
+  border: 0;
   outline: 0;
   opacity: 1;
 
@@ -22,16 +25,4 @@
   &.disabled {
     pointer-events: none;
   }
-}
-
-// Additional properties for button version
-// iOS requires the button element instead of an anchor tag.
-// If you want the anchor version, it requires `href="#"`.
-// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
-// stylelint-disable-next-line selector-no-qualifying-type
-button.f-close {
-  padding: 0;
-  background-color: transparent;
-  border: 0;
 }

@@ -55,9 +55,7 @@
 .f-sidebar-content {
   display: flex;
   flex-direction: column;
-  max-width: 280px;
   height: 100%;
-  margin: 0 auto;
 }
 
 .f-center {
@@ -69,7 +67,7 @@
 }
 
 .f-logo {
-  height: 50px;
+  height: px-to-rem(50px);
   background: url('../assets/logo.svg') no-repeat 0 50%;
   background-size: contain;
 }

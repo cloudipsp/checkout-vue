@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { BModal, BButton } from 'bootstrap-vue'
-import BButtonClose from '../../button/button-close'
+import FButtonClose from '../../button/button-close'
 import { htmlOrText } from 'bootstrap-vue/src/utils/html'
 import BVTransition from 'bootstrap-vue/src/utils/bv-transition'
 
@@ -30,7 +30,7 @@ export default Vue.extend({
           let $closeButton = h()
           if (!this.hideHeaderClose) {
             $closeButton = h(
-              BButtonClose,
+              FButtonClose,
               {
                 props: {
                   content: this.headerCloseContent,

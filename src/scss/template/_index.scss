@@ -5,6 +5,7 @@
 @import 'success';
 @import 'button-pay-wallet';
 
+.f-container-sm,
 .f-payment-method-card {
   max-width: 280px;
   margin: 0 auto;
@@ -101,10 +102,10 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 
 .f-icons-count {
   display: block;
-  width: 24px;
-  height: 24px;
-  font-size: 10px;
-  line-height: 24px;
+  width: px-to-rem(24px);
+  height: px-to-rem(24px);
+  font-size: px-to-rem(10px);
+  line-height: px-to-rem(24px);
   color: $menu_count_color;
   text-align: center;
   background: $menu_count_bg;
@@ -146,10 +147,10 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 
 .f-form-group-currency {
   position: absolute;
-  top: 17px;
-  right: 12px;
+  top: px-to-rem(17px);
+  right: px-to-rem(12px);
   font-family: $font-family-inter;
-  font-size: 16px;
+  font-size: px-to-rem(16px);
   font-weight: 500;
   color: $label_color;
   transition: all ease-in-out 0.15s;

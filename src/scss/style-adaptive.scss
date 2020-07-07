@@ -104,12 +104,6 @@
   }
 }
 
-.f-sidebar-content {
-  @include media-breakpoint-up(lg) {
-    max-width: inherit;
-  }
-}
-
 .f-center-top {
   @include media-breakpoint-up(lg) {
     height: px-to-rem(24px);
@@ -122,7 +116,7 @@
   }
   @include media-breakpoint-up(xl) {
     @include sticky-top(0);
-    height: 20px;
+    height: px-to-rem(20px);
   }
 }
 
@@ -267,7 +261,7 @@
   }
 }
 
-.f-sidebar-content,
+.f-container-sm,
 .f-payment-method-card {
   @include media-breakpoint-up(ss) {
     max-width: 335px;

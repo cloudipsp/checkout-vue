@@ -5,10 +5,10 @@
     <input-text name="sender_name" validate="required|alpha" />
     <input-text name="sender_familyName" validate="required|alpha" />
     <div class="f-row">
-      <div class="f-col-xs-6">
+      <div class="f-col">
         <input-text name="bic" validate="required" placement="bottom" />
       </div>
-      <div class="f-col-xs-6">
+      <div class="f-col">
         <input-text name="iban" validate="required" />
       </div>
     </div>

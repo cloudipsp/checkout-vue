@@ -7,13 +7,13 @@
   display: block;
   width: 100%;
   height: px-to-rem(56px);
-  padding: px-to-rem(26px) px-to-rem(12px) px-to-rem(10px);
+  padding: px-to-rem(26px) px-to-rem(12px) px-to-rem(8px);
   font-family: $font-family-inter;
   font-size: px-to-rem(16px);
   font-weight: 500;
   //line-height: px-to-rem(20px);
   color: $input_color;
-  background: $input_bg;
+  background-color: $input_bg;
   border: 1px solid $input_border;
   border-radius: px-to-rem(8px);
   transition: color ease-in-out 0.15s;
@@ -55,10 +55,12 @@
 
   & + .f-control-label {
     position: absolute;
-    top: 17px;
-    left: 12px;
-    transition: all ease-in-out 0.15s;
+    top: px-to-rem(17px);
+    right: 0;
+    left: px-to-rem(12px);
+    transition: transform ease-in-out 0.15s;
     transform-origin: 0 0;
+    @include text-truncate();
   }
 
   .f-has-error & {
@@ -87,9 +89,18 @@
   }
 }
 
+.f-control-sm {
+  height: px-to-rem(44px);
+  padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
+
+  & + .f-control-label {
+    top: px-to-rem(12px);
+  }
+}
+
 .f-control-label {
   font-family: $font-family-inter;
-  font-size: 16px;
+  font-size: px-to-rem(16px);
   color: $label_color;
 }
 

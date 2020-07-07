@@ -117,7 +117,6 @@
       type="tel"
       :maxlength="4"
       label="verification_code"
-      placeholder="verification_code_p"
     />
     <input-text
       v-if="isVerificationAmount"
@@ -125,14 +124,12 @@
       :validate="validAmount"
       type="text"
       label="verification_amount"
-      placeholder="verification_amount_p"
     />
     <f-customer-fields />
     <f-fields />
     <f-regular />
     <f-offer />
     <f-button-pay />
-    <f-button-cancel />
     <f-modal-base
       v-model="showModalCard"
       header-class="f-modal-header-card-list"
@@ -158,24 +155,14 @@
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { sendRequest } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
-import FCustomerFields from '@/components/customer-fields'
 import FRegular from '@/components/regular'
-import FOffer from '@/components/offer'
-import FButtonPay from '@/components/button-pay'
-import FButtonCancel from '@/components/button-cancel'
-import FFields from '@/components/fields'
 import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
 
 export default {
   inject: ['$validator'],
   components: {
-    FCustomerFields,
     FRegular,
-    FOffer,
-    FButtonPay,
-    FButtonCancel,
-    FFields,
   },
   mixins: [Resize, timeout],
   data() {
