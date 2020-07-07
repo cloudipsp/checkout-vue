@@ -34,7 +34,11 @@ export default {
   },
   computed: {
     ...mapState(['cdn']),
+    skip() {
+      return this.name === 'no_logo'
+    },
     style() {
+      if (this.skip) return {}
       return {
         'background-image': `url(${this.cdn}${this.map[this.type]}/${
           this.name
@@ -42,7 +46,7 @@ export default {
       }
     },
     className() {
-      return ['f-icon', `f-icon-${this.size}`]
+      return ['f-icon', `f-icon-${this.size}`, `f-icon-${this.name}`]
     },
   },
 }
@@ -85,6 +89,10 @@ html {
     width: 64px;
     height: 64px;
     background-size: contain;
+  }
+
+  .f-icon-no_logo {
+    background-image: url('../assets/no_logo.svg');
   }
 }
 </style>
