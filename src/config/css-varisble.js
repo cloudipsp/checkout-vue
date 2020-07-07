@@ -108,4 +108,11 @@ export default {
   modal_content_bg: white,
   modal_security_title_color: grey_3,
   modal_security_title_svg_color: grey_1,
+  bank_item_color: 'container_color',
+  bank_item_hover_color: grey_4,
+  bank_icon_shadow: '#CACFD6',
+  bank_view_icon_active_bg: ash_200,
+  bank_select_bg: ash_300,
+  bank_select_close_color: black,
+  bank_select_close_hover_color: black,
 }

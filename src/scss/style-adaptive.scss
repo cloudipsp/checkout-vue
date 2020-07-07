@@ -271,3 +271,33 @@
     max-width: 360px;
   }
 }
+
+.f-bank-item {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  @include media-breakpoint-up(md) {
+    flex: 0 0 33.3%;
+    max-width: 33.3%;
+  }
+}
+
+.f-bank-country {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 px-to-rem(180px);
+  }
+}
+
+.f-bank-search {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 calc(100% - #{px-to-rem(280px)});
+  }
+}
+
+.f-bank-view {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 px-to-rem(100px);
+  }
+}

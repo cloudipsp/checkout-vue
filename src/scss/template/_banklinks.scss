@@ -1,0 +1,125 @@
+$bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
+
+.f-bank-item {
+  display: flex;
+  flex: 0 0 100%;
+  align-items: center;
+  margin-bottom: px-to-rem(24px);
+  color: $bank_item_color;
+  cursor: pointer;
+
+  &:hover {
+    color: $bank_item_hover_color;
+    transition: all ease-in-out 0.15s;
+  }
+}
+
+.f-bank-item-list {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.f-bank-item-DE {
+  align-items: flex-start;
+}
+
+.f-bank-item-wrapper-list {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.f-bank-icon {
+  min-width: px-to-rem(48px);
+  margin-right: px-to-rem(12px);
+  border-radius: px-to-rem(8px);
+  box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $bank_icon_shadow;
+}
+
+.f-bank-icon-list {
+  min-width: px-to-rem(24px);
+  border-radius: px-to-rem(3px);
+  box-shadow: none;
+}
+
+.f-bank-name {
+  font-family: $font-family-inter;
+  font-size: px-to-rem(14px);
+  word-wrap: break-word;
+}
+
+.f-bank-country,
+.f-bank-search,
+.f-bank-view {
+  flex: 0 0 100%;
+}
+
+.f-bank-view-wrapper {
+  display: flex;
+  align-items: stretch;
+  height: px-to-rem(44px);
+  border: 1px solid $input_border;
+  border-radius: px-to-rem(8px);
+}
+
+.f-bank-view-icon {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-right: 1px solid $input_border;
+
+  &.f-active,
+  &:hover {
+    background-color: $bank_view_icon_active_bg;
+  }
+
+  &:first-child {
+    border-radius: $bank-inner-border-radius 0 0 $bank-inner-border-radius;
+  }
+
+  &:last-child {
+    border: none;
+    border-radius: 0 $bank-inner-border-radius $bank-inner-border-radius 0;
+  }
+}
+
+.f-bank-footer {
+  text-align: center;
+}
+
+.f-bank-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: px-to-rem(12px);
+  margin-bottom: px-to-rem(24px);
+  background-color: $bank_select_bg;
+  border-radius: px-to-rem(8px);
+}
+
+.f-bank-select-icon {
+  margin-right: px-to-rem(12px);
+  border-radius: px-to-rem(8px);
+}
+
+.f-bank-select-name {
+  margin-right: px-to-rem(12px);
+}
+
+.f-bank-select-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: px-to-rem(20px);
+  font-size: px-to-rem(28px);
+  color: $bank_select_close_color;
+
+  &:hover {
+    color: $bank_select_close_hover_color;
+  }
+}
