@@ -1,49 +1,90 @@
 <template>
-  <div>
-    <div>
-      <input-select
-        v-if="showCountry"
-        name="default_country"
-        :list="country"
-        :model="options"
-        validate="required"
-        @input="clear"
-      />
-      <input-text
-        v-if="showSearch"
-        name="search"
-        label="system_search"
-        type="text"
-        :model="form"
-        placeholder="system_search_p"
-      />
-    </div>
-    <div class="f-text-center" :class="'f-ps-' + list.length">
-      <div
-        v-for="bank in listMin"
-        :key="bank.id"
-        class="f-ps"
-        @click="locationSystem(bank)"
-      >
-        <f-icon :name="bank.bank_logo" type="banklinks_eu" />
-        <div v-t="bank.name" />
-        <div class="f-iban">
-          {{ bank.iban }}
+  <div v-if="show" :class="className">
+    <transition name="fade">
+      <div v-if="open">
+        <div class="f-bank-select">
+          <f-icon
+            :name="select.bank_logo"
+            type="banklinks_eu"
+            class="f-bank-select-icon"
+          />
+          <div class="f-bank-select-name">{{ select.name }}</div>
+
+          <div>{{ select.iban }}</div>
+          <f-button-close class="f-bank-select-close" @click="open = false" />
+        </div>
+        <div class="f-container-sm">
+          <f-customer-fields />
+          <f-fields />
+          <f-fields-bank v-if="showFieldsBank" :fields="select.form.fields" />
+          <f-offer />
+          <f-button-pay />
         </div>
       </div>
-      <div v-if="showMore" class="f-ps" @click="loadMore">
-        <div class="f-wrapper-icon">
-          <f-svg name="redo" size="3x" :spin="spin" />
+    </transition>
+    <transition name="fade">
+      <div v-if="!open">
+        <div class="f-row">
+          <div v-if="showCountry" class="f-col f-bank-country">
+            <input-select
+              name="default_country"
+              :list="country"
+              :model="options"
+              validate="required"
+              input-class="f-control-sm"
+              @input="clear"
+            />
+          </div>
+          <div v-if="showSearch" class="f-col f-bank-search">
+            <input-text
+              name="search"
+              label="system_search"
+              type="text"
+              :model="form"
+              input-class="f-control-sm"
+              prepend="search"
+            />
+          </div>
+          <div v-if="showView" class="f-col f-bank-view">
+            <div class="f-form-group f-bank-view-wrapper">
+              <div :class="classBankViewBar" @click="setView('bar')">
+                <f-svg name="bar" size="lg" />
+              </div>
+              <div :class="classBankViewList" @click="setView('list')">
+                <f-svg name="list" size="lg" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div v-t="'load_more'" />
+        <div class="f-row f-bank-list">
+          <div
+            v-for="bank in listMin"
+            :key="bank.id"
+            :class="classBankItem"
+            @click="selectBank(bank)"
+          >
+            <f-icon
+              :name="bank.bank_logo"
+              type="banklinks_eu"
+              :class="classBankIcon"
+              :size="sizeBankIcon"
+            />
+            <div :class="classBankItemWrapper">
+              <div v-t="bank.name" class="f-bank-name" />
+              <div v-if="isGermany" class="f-bank-iban">
+                {{ bank.iban }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="f-bank-footer">
+          <button v-if="showMore" :class="[css.btn, css.bd]" @click="loadMore">
+            <span><f-svg name="redo" size="lg" :spin="spin" fw/></span>
+            <span v-t="'load_more'" />
+          </button>
+        </div>
       </div>
-    </div>
-    <!--<f-modal-form-bank-->
-    <!--v-if="item"-->
-    <!--v-model="open"-->
-    <!--:config="item"-->
-    <!--@submit="submit"-->
-    <!--/>-->
+    </transition>
   </div>
 </template>
 
@@ -51,9 +92,13 @@
 import { sort } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { isObject } from '@/utils/typeof'
+import FFieldsBank from '@/components/fields-bank'
 
 export default {
   inject: ['formRequest'],
+  components: {
+    FFieldsBank,
+  },
   data() {
     return {
       form: {
@@ -63,12 +108,12 @@ export default {
       more: 24,
       spin: false,
       open: false,
-      item: null,
+      select: null,
+      view: 'bar',
     }
   },
   computed: {
-    ...mapState(['options']),
-    ...mapState(['ready']),
+    ...mapState(['ready', 'options', 'css']),
     ...mapState('tabs', ['banklinks_eu']),
     ...mapState('options', ['countries']),
     ...mapStateGetSet('options', ['default_country']),
@@ -127,17 +172,55 @@ export default {
     listMin() {
       return this.list.slice(0, this.more)
     },
+    show() {
+      return this.listFull.length
+    },
     showCountry() {
       return this.country.length > 1
     },
     showSearch() {
       return this.listSelect.length > 10
     },
+    showView() {
+      return this.isGermany
+    },
     showTitle() {
       return this.list.length > 1
     },
     showMore() {
       return this.list.length > this.more
+    },
+    showFieldsBank() {
+      return isObject(this.select.form)
+    },
+    className() {
+      return ['f-bank']
+    },
+    classBankItem() {
+      return [
+        'f-col',
+        'f-bank-item',
+        `f-bank-item-${this.options.default_country}`,
+        `f-bank-item-${this.view}`,
+      ]
+    },
+    classBankViewBar() {
+      return [{ 'f-active': this.view === 'bar' }, 'f-bank-view-icon']
+    },
+    classBankViewList() {
+      return [{ 'f-active': this.view === 'list' }, 'f-bank-view-icon']
+    },
+    classBankIcon() {
+      return ['f-bank-icon', `f-bank-icon-${this.view}`]
+    },
+    classBankItemWrapper() {
+      return ['f-bank-item-wrapper', `f-bank-item-wrapper-${this.view}`]
+    },
+    isGermany() {
+      return this.options.default_country === 'DE'
+    },
+    sizeBankIcon() {
+      return this.view === 'list' ? 'sm' : 'md'
     },
   },
   watch: {
@@ -156,21 +239,14 @@ export default {
     }
   },
   methods: {
-    locationSystem(item) {
-      this.store.locationSystem(item.id)
-
-      if (isObject(item.form)) {
-        this.open = true
-        this.item = item
-      } else {
-        this.formRequest()
-      }
-    },
-    submit(form) {
-      this.formRequest(form)
+    selectBank(bank) {
+      this.store.locationSystem(bank.id)
+      this.open = true
+      this.select = bank
     },
     clear() {
       this.form.search = ''
+      this.setView('bar')
     },
     loadMore() {
       this.spin = true
@@ -178,6 +254,9 @@ export default {
         this.more += this.count
         this.spin = false
       }, 300)
+    },
+    setView(view) {
+      this.view = view
     },
   },
 }

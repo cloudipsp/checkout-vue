@@ -1,22 +1,18 @@
 <template>
-  <f-modal-form v-bind="$attrs" :title="title" :list="list" v-on="$listeners">
-    <template #icon>
-      <f-icon size="lg" :name="logo" type="banklinks_eu" />
-    </template>
-  </f-modal-form>
+  <f-form-fields v-bind="attrs" v-on="$listeners" />
 </template>
 
 <script>
-import FModalForm from '@/components/modal-form'
+import FFormFields from '@/components/form/fields'
 
 export default {
   components: {
-    FModalForm,
+    FFormFields,
   },
   props: {
-    config: {
-      type: Object,
-      required: true,
+    fields: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -25,14 +21,11 @@ export default {
     }
   },
   computed: {
-    title() {
-      return this.config.form.name
-    },
-    logo() {
-      return this.config.bank_logo
-    },
-    list() {
-      return this.parseFields(this.config.form.fields)
+    attrs() {
+      return {
+        fields: this.parseFields(this.fields),
+        ...this.$attrs,
+      }
     },
   },
   methods: {
