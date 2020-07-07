@@ -2,7 +2,14 @@ import countries from '@umpirsky/country-list/data/en/country.json'
 import { messages as validateMessages } from 'vee-validate/dist/locale/en'
 
 export const messages = Object.assign({}, countries, {
+  other_payment_method: 'Or use another payment method',
   card: 'Payment by card',
+  banklinks_eu: 'Internet banks',
+
+  back_to_payment_methods: 'Back to Payment Methods',
+  fee: 'Commission:',
+  see_more: 'See more',
+
   card_number: 'Card number',
   card_number_p: '0000 0000 0000 0000',
   expiry_date: 'MM/YY',
@@ -10,68 +17,45 @@ export const messages = Object.assign({}, countries, {
   cvv2: 'CVV/CVC',
   cvv2_p: '000',
   cvv2_question: '{0} digits on the back of the card',
+  expires_on: 'Expires on',
   email: 'Email',
-  email_p: 'please enter your email',
+
+  verification_t: 'Card verification',
+  verification_code_d: 'Amount is hold on your credit card account',
+  verification_code: 'Please enter verification code',
+  verification_amount_d:
+    'a random amount has been temporarily blocked on your card. To confirm that you are owner of the card - contact the bank, that issued it, to clarify this amount or check it by yourself through the online-banking service',
+  verification_amount: 'Enter the verification amount',
 
   regular: 'Regular payment',
   regular_every: 'Periodicity',
-  regular_every_p: '',
   regular_period: 'Interval',
   regular_amount: 'Regular payment amount',
-  regular_amount_p: '',
   regular_start_time: 'Begin with',
   day: 'Day',
   week: 'Week',
   month: 'Month',
 
-  banklinks_eu: 'Internet banks',
   default_country: 'Choose your country or region',
-  system_search: 'or start typing your',
-  system_search_p: "bank's name, IBAN, BLZ",
+  system_search: "bank's name, IBAN, BLZ",
   load_more: 'Load more...',
-  apple_pay: 'Buy with',
 
   sepa: 'SEPA Direct Debit',
   sepa_t: 'Provide your bank account details',
   sender_name: 'Name',
-  sender_name_p: '',
   sender_familyName: 'Surname',
-  sender_familyName_p: '',
   bic: 'BIC',
-  bic_p: '',
   iban: 'IBAN',
-  iban_p: '',
 
-  fee: 'Commission:',
-  offer: 'offer',
-  offer_t:
-    'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
-  other_payment_method: 'Or use another payment method',
   declined: 'Payment is declined',
   approved: 'Thank you! Your payment was approved',
   pending: 'Your payment is being processed',
   number_payment: '№ of payment in {0}:',
   payment_system: 'payment system',
-  continue: 'Continue',
-  cancel: 'Cancel',
-  verification_t: 'Card verification',
-  verification_code_d: 'Amount is hold on your credit card account',
-  verification_code: 'Please enter verification code',
-  verification_code_p: '',
-  verification_amount_d:
-    'a random amount has been temporarily blocked on your card. To confirm that you are owner of the card - contact the bank, that issued it, to clarify this amount or check it by yourself through the online-banking service',
-  verification_amount: 'Enter the verification amount',
-  verification_amount_p: '',
-  pay: 'Pay now {0} {1}',
 
-  p24: 'Приват24',
-  platba24: 'Platba24',
-  raiffeisen: 'Raiffeisen Bank Aval',
-  paypal: 'PayPal',
-  qiwi: 'QIWI',
-  webmoney: 'WebMoney',
-  yamoney: 'Yandex.Money',
-  liqpay: 'LiqPay',
+  offer_t:
+    'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
+  pay: 'Pay now {0} {1}',
 
   ru: 'Русский',
   en: 'English',
@@ -91,19 +75,18 @@ export const messages = Object.assign({}, countries, {
   customer_phonemobile: 'Phone mobile',
   customer_email: 'Email',
 
-  back: 'Back',
   submit3ds_title: 'Payment was not completed successfully',
   submit3ds_text: 'Please try again',
   submit3ds_submit: 'Repeat payment',
   submit3ds_wait: 'payment will be repeated in {0} sec.',
 
-  confirm: 'Confirm',
-  see_more: 'See more',
   security_title: 'Strong Customer Authentication',
   security_text:
     '<p>Validated PCI DSS Compliance</p><p>Listed on Visa Global Registry and verified by Mastercard</p>',
-  expires_on: 'Expires on',
-  back_to_payment_methods: 'Back to Payment Methods',
+
+  confirm: 'Confirm',
+  cancel: 'Cancel',
+
   or_pay_with_card: 'Or pay with card',
 })
 

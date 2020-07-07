@@ -11,7 +11,6 @@ export const messages = Object.assign({}, countries, {
   cvv2_p: '000',
   cvv2_question: '{0} цифри з оборотного боку карти',
   email: 'Email',
-  email_p: 'Ваш email',
 
   regular: 'Регулярний платіж',
   regular_every: 'Періодичність',
