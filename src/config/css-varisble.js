@@ -34,6 +34,7 @@ export default {
   container_bg: white,
   container_box_shadow: ash_600,
   sidebar_border: ash_400,
+  title_color: black,
   menu_item_color: 'container_color',
   menu_item_active_color: black,
   menu_item_active_bg: ash_200,
