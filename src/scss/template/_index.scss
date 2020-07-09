@@ -76,7 +76,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   padding: px-to-rem(8px) px-to-rem(12px) px-to-rem(8px) px-to-rem(8px);
   color: $container_color;
   vertical-align: middle;
-  background: #fff escape-svg($bg) no-repeat right center;
+  background: $container_bg escape-svg($bg) no-repeat right center;
   border: none;
   // stylelint-disable-next-line property-no-vendor-prefix
   -webkit-appearance: none;

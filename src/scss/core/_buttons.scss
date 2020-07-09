@@ -44,10 +44,10 @@
     }
   }
 
-  &:focus,
-  &.focus {
-    box-shadow: 0 0 0 0.2rem fade($background, 50%);
-  }
+  //&:focus,
+  //&.focus {
+  //  box-shadow: 0 0 0 0.2rem fade($background, 50%);
+  //}
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
@@ -61,6 +61,8 @@
       background: $background-active;
     }
   }
+
+  @include disabled();
 }
 
 .f-btn {
@@ -116,8 +118,6 @@
     outline: 0;
   }
 
-  @include disabled();
-
   :not(:disabled):not(.disabled) {
     cursor: pointer;
   }
@@ -158,14 +158,14 @@
       }
     }
 
-    @include disabled();
-
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active {
       &::after {
         background-position: 100% 100%;
       }
     }
+
+    @include disabled();
   }
 }
 

@@ -6,7 +6,7 @@
     :disabled="disabled"
     @click="click"
   >
-    <span v-t="{ path: 'pay', args: args }" />{{ enable_btn_success_gradient }}
+    <span v-t="{ path: 'pay', args: args }" />
   </button>
 </template>
 

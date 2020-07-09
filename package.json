@@ -131,9 +131,7 @@
     }
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "ie >= 9"
+    "defaults"
   ],
   "jest": {
     "moduleFileExtensions": [
