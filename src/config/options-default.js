@@ -1,6 +1,5 @@
 import configLocales from '@/config/locales'
 import configCss from '@/config/css'
-import css_varisble from '@/config/css-varisble'
 
 const options = {
   options: {
@@ -28,6 +27,10 @@ const options = {
     countries: [],
     lang: true,
     css: '',
+    theme: {
+      type: 'light',
+      preset: 'fondy',
+    },
   },
   popup: {
     append_to: 'body',
@@ -67,7 +70,7 @@ const options = {
   template: {},
   messages: {},
   validate: {},
-  css_variable: css_varisble,
+  css_variable: {},
 
   // not config
   error: {

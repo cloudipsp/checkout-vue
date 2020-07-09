@@ -30,9 +30,9 @@
     content: '';
     background: linear-gradient(
       180deg,
-      custom($card_bg, -10%, 20%) 0%,
+      custom($card_bg, +6%, +8%) 0%,
       $card_bg 35%,
-      custom($card_bg, 40%, -30%) 100%
+      custom($card_bg, -0%, -8%) 100%
     );
     border-bottom: 3px solid $card_border;
     border-radius: px-to-rem(16px);
