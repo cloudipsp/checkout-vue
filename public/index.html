@@ -35,8 +35,11 @@
       }
       .btns {
         position: fixed;
+        z-index: 1021;
         left: 0;
         bottom: 0;
+      }
+      .hide {
         display: none;
       }
     </style>
@@ -48,16 +51,19 @@
     <div id="app"></div>
     <div class="btns">
       <select class="options">
-        <option value="min">min</option>
         <option value="max">max</option>
+        <option value="min">min</option>
+        <option value="verification">verification</option>
         <option value="banklinks_eu">banklinks_eu</option>
         <option value="token">token</option>
+        <option value="wallet">wallet</option>
+        <option value="dark">dark</option>
       </select>
       <button class="render">render</button>
-      <button class="go-sepa">go sepa</button>
-      <button class="go-card">go card</button>
-      <button class="set-params">set params</button>
-      <button class="submit">submit 1</button>
+      <button class="go-sepa hide">go sepa</button>
+      <button class="go-card hide">go card</button>
+      <button class="set-params hide">set params</button>
+      <button class="submit hide">submit 1</button>
     </div>
     <div>
       <div class="coll"></div>
@@ -270,14 +276,14 @@
             options: {
               methods: ['banklinks_eu'],
               api_domain: 'api.dev.fondy.eu',
-              // active_tab: 'banklinks_eu',
-              default_country: 'PL',
+              active_tab: 'banklinks_eu',
+              default_country: 'DE',
               // countries: ['PL'],
             },
             params: {
               amount: 100,
               currency: 'EUR',
-              merchant_id: 900238,
+              merchant_id: 900158,
             },
           },
           token: {
@@ -301,9 +307,63 @@
               // token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
             },
           },
+          dark: {
+            options: {
+              methods: ['card', 'banklinks_eu'],
+              card_icons: [
+                'mastercard',
+                'visa',
+                'mir',
+                'prostir',
+                'diners',
+                'american_express',
+                'jcb',
+                'maestro',
+                'union_pay',
+              ],
+              banklinks_eu_icons: [
+                'bank_of_ireland',
+                'danske_bank',
+                'lloyds',
+                'mizuho',
+                'monzo',
+                'nationwide',
+                'rbs',
+                'revolut',
+                'sofort',
+                'starling',
+              ],
+              fields: true,
+              link: 'https://fondy.eu',
+              locales: ['ru', 'en', 'uk'],
+              email: true,
+              api_domain: 'api.dev.fondy.eu',
+              logo_url:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              offerta_url:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              theme: {
+                type: 'dark',
+                preset: 'light_sky_blue',
+              },
+            },
+            params: {
+              currency: 'EUR',
+              merchant_id: 900238,
+              amount: 500,
+              order_desc: 'Charitable assistance (to a child or a department of hematology, or to a department of planned surgery with oncological beds of the Dnipropetrovsk regional children\'s clinical hospital)',
+              recurring_data: {
+                every: 2,
+                period: 'week',
+                amount: 100,
+                end_time: '2020-11-14',
+                start_time: '2019-11-11',
+              },
+            },
+          },
         }
 
-        var app = render('max')
+        var app = render('dark')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()

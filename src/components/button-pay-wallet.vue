@@ -35,7 +35,7 @@ export default {
   computed: {
     ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['amount']),
-    ...mapState('options', ['api_domain']),
+    ...mapState('options', ['api_domain', 'theme']),
     classButton() {
       return 'f-wallet-pay-button-' + this.id
     },
@@ -48,6 +48,16 @@ export default {
           ? this.isOnlyCard && this.isTablet
           : true
         : false
+    },
+    color() {
+      let result = ''
+      if (this.theme.type === 'light') {
+        result = 'black'
+      }
+      if (this.theme.type === 'dark') {
+        result = 'white'
+      }
+      return result
     },
   },
   watch: {
@@ -73,7 +83,7 @@ export default {
           origin: 'https://' + this.api_domain,
           style: {
             type: 'short', // short long
-            color: 'black', // black white
+            color: this.color,
             height: 44,
           },
           data: this.store.formParams(),

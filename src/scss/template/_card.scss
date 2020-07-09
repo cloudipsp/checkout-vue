@@ -34,7 +34,8 @@
       $card_bg 35%,
       custom($card_bg, -0%, -8%) 100%
     );
-    border-bottom: 3px solid $card_border;
+    background-clip: padding-box;
+    border-bottom: 3px solid fade($card_border, 80%);
     border-radius: px-to-rem(16px);
   }
 }
