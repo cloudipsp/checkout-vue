@@ -1,0 +1,59 @@
+$switch-width: px-to-rem(40px);
+$switch-height: px-to-rem(22px);
+$switch-indicator-size: px-to-rem(16px);
+// stylelint-disable-next-line scss/operator-no-newline-after
+$switch-indicator-transform: $switch-width - $switch-indicator-size -
+  ($switch-height - $switch-indicator-size);
+
+.f-switch {
+  position: absolute;
+  left: 0;
+  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  width: $switch-indicator-size;
+  height: ($font-size-base * $line-height-base + $switch-indicator-size) / 2;
+  opacity: 0;
+
+  &:checked + .f-switch-label {
+    &::before {
+      background-color: $switch_enabled_bg;
+    }
+
+    &::after {
+      transform: translateX($switch-indicator-transform);
+    }
+  }
+}
+
+.f-switch-label {
+  position: relative;
+  display: block;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: ($font-size-base * $line-height-base - $switch-height) / 2;
+    right: 0;
+    display: block;
+    width: $switch-width;
+    height: $switch-height;
+    pointer-events: all;
+    content: '';
+    background-color: $switch_bg;
+    border-radius: 15px;
+  }
+
+  &::after {
+    position: absolute;
+    top: ($font-size-base * $line-height-base - $switch-indicator-size) / 2;
+    // stylelint-disable-next-line scss/operator-no-newline-after
+    right: $switch-width - $switch-indicator-size -
+      ($switch-height - $switch-indicator-size) / 2;
+    width: $switch-indicator-size;
+    height: $switch-indicator-size;
+    content: '';
+    background-color: $switch_indicator_bg;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    transition: transform ease-in-out 0.15s;
+  }
+}

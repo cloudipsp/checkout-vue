@@ -2,12 +2,12 @@
   <div class="f-form-group">
     <input
       :id="id"
-      class="f-checkbox-swipe"
+      class="f-switch"
       type="checkbox"
       :checked="value"
       @input="input"
     />
-    <label v-t="label" :class="[css.cl]" :for="id" />
+    <label v-t="label" :class="[css.cl, 'f-switch-label']" :for="id" />
   </div>
 </template>
 

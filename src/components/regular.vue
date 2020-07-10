@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-regular">
-    <input-swipe v-model="open" label="regular" />
+    <input-switch v-model="open" label="regular" />
     <template v-if="open">
       <div class="f-row">
         <div class="f-col">
