@@ -8,17 +8,26 @@ html {
   }
 }
 
-.fade-enter {
-  opacity: 0;
+.collapse-enter-active,
+.collapse-leave-active {
+  max-height: 100vh;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+.collapse-enter,
+.collapse-leave-to {
+  max-height: 0;
+  overflow: hidden;
 }
 
 .fade-enter-active {
   transition: opacity 0.3s;
 }
-
+.fade-enter {
+  opacity: 0;
+}
 //.fade-enter-to {
 //}
-
 .fade-leave {
   display: none;
 }
