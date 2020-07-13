@@ -61,6 +61,10 @@ export default {
       type: String,
       default: null,
     },
+    hideError: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -92,6 +96,11 @@ export default {
     },
     hasError() {
       return this.isError && (this.flag.touched || this.submit)
+    },
+    showError() {
+      let showError = !this.tooltip && this.hasError && this.focused
+      this.$emit('show-error', showError, this.errors.first(this.name_))
+      return showError && !this.hideError
     },
     value_: {
       get() {

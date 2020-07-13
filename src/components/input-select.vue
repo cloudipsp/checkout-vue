@@ -23,7 +23,7 @@
     </select>
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <transition name="slide-fade">
-      <div v-if="!tooltip && hasError && focused" class="f-error">
+      <div v-if="showError" class="f-error">
         {{ errors.first(name_) }}
       </div>
     </transition>
