@@ -1,0 +1,58 @@
+.f-regular {
+  margin-top: px-to-rem(32px);
+}
+
+.f-regular-wrapper {
+  margin-bottom: px-to-rem(16px);
+}
+
+.f-regular-amount {
+  max-width: 220px;
+}
+
+.f-regular-row {
+  margin: 0;
+}
+
+.f-regular-col {
+  flex-grow: 2;
+  padding: 0;
+  margin: 0;
+
+  &::after {
+    position: absolute;
+    top: px-to-rem(8px);
+    right: 0;
+    bottom: px-to-rem(8px);
+    width: 1px;
+    content: '';
+    background-color: $input_border;
+  }
+
+  &:first-child {
+    flex-grow: 1;
+  }
+
+  &.f-has-error,
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.f-form-control-every {
+  border-right: none;
+  border-radius: px-to-rem(8px) 0 0 px-to-rem(8px);
+}
+
+.f-form-control-period {
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+}
+
+.f-form-control-start-time {
+  border-left: none;
+  border-radius: 0 px-to-rem(8px) px-to-rem(8px) 0;
+}

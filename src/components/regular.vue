@@ -1,10 +1,18 @@
 <template>
   <div v-if="show" class="f-regular">
     <input-switch v-model="open" label="regular" />
-    <template v-if="open">
-      <div class="f-row">
-        <div class="f-col">
+    <transition name="collapse">
+      <div v-if="open" class="f-regular-wrapper">
+        <input-amount
+          class="f-regular-amount"
+          name="regular_amount"
+          field="amount"
+          recurring
+          :readonly="readonly"
+        />
+        <div class="f-row f-regular-row">
           <input-text
+            class="f-col f-regular-col"
             name="regular_every"
             field="every"
             validate="required|numeric"
@@ -13,34 +21,43 @@
             inputmode="numeric"
             recurring
             :readonly="readonly"
+            :hide-error="true"
+            :input-class="'f-form-control-every'"
+            @show-error="onShowError"
           />
-        </div>
-        <div class="f-col">
+
           <input-select
+            class="f-col f-regular-col"
             :list="periods"
             name="regular_period"
             field="period"
             validate="required"
             recurring
             :readonly="readonly"
+            :hide-error="true"
+            :input-class="'f-form-control-period'"
+            @show-error="onShowError"
+          />
+          <input-text
+            class="f-col f-regular-col"
+            name="regular_start_time"
+            field="start_time"
+            validate="required"
+            type="date"
+            recurring
+            :readonly="readonly"
+            :hide-error="true"
+            :input-class="'f-form-control-start-time'"
+            @show-error="onShowError"
           />
         </div>
+        <transition name="slide-fade">
+          <div v-if="error" class="f-error">
+            {{ error }}
+          </div>
+        </transition>
       </div>
-      <input-amount
-        name="regular_amount"
-        field="amount"
-        recurring
-        :readonly="readonly"
-      />
-      <input-text
-        name="regular_start_time"
-        field="start_time"
-        validate="required"
-        type="date"
-        recurring
-        :readonly="readonly"
-      />
-    </template>
+    </transition>
   </div>
 </template>
 
@@ -48,6 +65,11 @@
 import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
+  data() {
+    return {
+      error: '',
+    }
+  },
   computed: {
     ...mapState('regular', {
       periods: 'period',
@@ -130,6 +152,9 @@ export default {
       let d = new Date()
       d.setFullYear(d.getFullYear() + 5)
       return this.getDateFormat(d)
+    },
+    onShowError(show, error) {
+      this.error = show && error
     },
   },
 }
