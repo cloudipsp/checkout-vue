@@ -25,12 +25,12 @@ export default {
   container_box_shadow: '#262a2d',
   sidebar_border: '#222528',
   title_color: black, //
-  menu_item_color: 'container_color',
+  menu_item_color: '&container_color',
   menu_item_active_color: white,
   menu_item_active_bg: '#46494D',
   menu_item_border: ash_400, //
   menu_icon_color: '#6F7274',
-  menu_icon_active_color: 'menu_item_active_color',
+  menu_icon_active_color: '&menu_item_active_color',
   menu_icons_shadow: '#46494D',
   menu_count_color: '#CECFD0',
   menu_count_active_color: '#D8D8D9',
@@ -39,20 +39,20 @@ export default {
   merchant_name_color: '#838688',
   merchant_url_color: ash_800, //
   order_desc_color: white,
-  order_desc_more_color: 'main', //
+  order_desc_more_color: '&main', //
   amount_color: white,
   currency_color: '#838688',
   card_shadow: '#000000',
-  card_bg: 'main',
+  card_bg: '&main',
   card_label_color: white,
   card_input_color: white,
   card_input_shadow: '#000000',
-  card_border: 'main',
+  card_border: '&main',
   card_list_item_active_bg: '#eef0f2', //
   card_list_number_color: black, //
   card_list_expiry_date_color: grey_2, //
   btn_success_color: white,
-  btn_success_bg: 'main',
+  btn_success_bg: '&main',
   btn_success_shadow: '#000000',
   btn_secondary_color: grey_3, //
   btn_secondary_bg: ash_500, //
@@ -83,7 +83,7 @@ export default {
   label_color: '#838688',
   label_hover_color: grey_2, //
   label_focus_color: grey_2, //
-  link_color: 'main', //
+  link_color: '&main', //
   tooltip_error_color: error, //
   tooltip_error_bg: white, //
   tooltip_error_shadow: '#b6b9bf', //
@@ -100,7 +100,7 @@ export default {
   modal_content_bg: white, //
   modal_security_title_color: grey_3, //
   modal_security_title_svg_color: grey_1, //
-  bank_item_color: 'container_color', //
+  bank_item_color: '&container_color', //
   bank_item_hover_color: grey_4, //
   bank_icon_shadow: '#CACFD6', //
   bank_view_icon_active_bg: ash_200, //

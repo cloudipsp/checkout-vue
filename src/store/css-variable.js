@@ -1,4 +1,3 @@
-import { fromEntries } from '@/utils/helpers'
 import cssVars from 'css-vars-ponyfill'
 
 function hexToHSL(H) {
@@ -48,11 +47,13 @@ function hexToHSL(H) {
 const prefix = '--fondy-'
 
 export default function(variables) {
-  variables = fromEntries(
+  variables = Object.fromEntries(
     Object.entries(variables).reduce((acc, [n, v]) => {
       let name = `${prefix}${n}`
 
-      if (v === true || v === false) return acc
+      if (!/[#&]/.test(v)) return acc.concat([[name, v]])
+
+      v = v.replace('&', '')
 
       let nameh = `${name}-h`
       let names = `${name}-s`
