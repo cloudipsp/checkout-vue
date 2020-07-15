@@ -3,6 +3,7 @@ import { BModal, BButton } from 'bootstrap-vue'
 import FButtonClose from '../../button/button-close'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
 import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
+import { BTransporterSingle } from 'bootstrap-vue/esm/utils/transporter'
 
 export default Vue.extend({
   extends: BModal,
@@ -262,5 +263,22 @@ export default Vue.extend({
         [$modal, $backdrop]
       )
     },
+  },
+  render(h) {
+    if (this.static) {
+      return this.lazy && this.isHidden ? h() : this.makeModal(h)
+    } else {
+      return this.isHidden
+        ? h()
+        : h(
+            BTransporterSingle,
+            {
+              props: {
+                container: this.$root.$el,
+              },
+            },
+            [this.makeModal(h)]
+          )
+    }
   },
 })
