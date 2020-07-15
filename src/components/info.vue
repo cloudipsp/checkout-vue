@@ -51,8 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['region', 'isOnlyCard']),
-    ...mapState('options', ['title', 'link']),
+    ...mapState('options', ['title', 'link', 'region']),
     ...mapState('params', ['order_desc']),
     order_desc_translation() {
       this.nextResize()
@@ -61,10 +60,9 @@ export default {
     show() {
       return (
         (this.position === 'sidebar' &&
-          (this.isTablet || this.region === 'UA')) ||
+          (this.isTablet || this.region !== 'eu')) ||
         this.position === 'success' ||
-        (this.position === 'center' &&
-          (this.region === 'UA' && this.isOnlyCard ? this.isTablet : true))
+        (this.position === 'center' && (this.isTablet || this.region === 'eu'))
       )
     },
   },

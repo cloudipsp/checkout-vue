@@ -31,6 +31,7 @@ const options = {
       type: 'light',
       preset: 'fondy',
     },
+    region: 'ua',
   },
   popup: {
     append_to: 'body',
@@ -98,7 +99,6 @@ const options = {
   fields: [],
   validate_expdate: true,
   isOnlyCard: true,
-  region: '',
 }
 
 configLocales.forEach(function(locale) {
