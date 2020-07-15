@@ -213,38 +213,29 @@ export default {
     },
   },
   watch: {
-    card_number(newVal, oldVal) {
-      newVal = newVal.replace(/ /g, '')
-      oldVal = oldVal.replace(/ /g, '')
-      let newFirst = newVal && newVal[0]
-      let oldFirst = oldVal && oldVal[0]
-      let newBin = newVal && newVal.slice(0, 6)
-      let oldBin = oldVal && oldVal.slice(0, 6)
-      if (newFirst && newFirst !== oldFirst) {
-        sendRequest(
-          'api.checkout.card_type_fee',
-          'get',
-          {
-            token: this.token,
-            first_card_digit: newFirst,
-          },
-          { cached: true }
-        )
-      }
-      if (newBin.length === 6 && newBin !== oldBin) {
-        sendRequest(
-          'api.checkout.card_bin',
-          'get',
-          {
-            token: this.token,
-            card_bin: newBin,
-          },
-          { cached: true }
-        )
-      }
+    card_number(value) {
+      if (!value) return
+
+      value = value.replace(/ /g, '').slice(0, 6)
+      let card_bin = value.length === 6 ? value : value[0]
+
+      sendRequest(
+        'api.checkout.card_type_fee',
+        'get',
+        {
+          token: this.token,
+          card_bin,
+        },
+        { cached: true }
+      )
+        .then(this.cardTypeFeeSuccess)
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
   },
   methods: {
+    cardTypeFeeSuccess() {},
     hasActive(card) {
       return card.card_number.replace(/ /g, '') === this.card_number
     },
