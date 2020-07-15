@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { BModal, BButton } from 'bootstrap-vue'
 import FButtonClose from '../../button/button-close'
-import { htmlOrText } from 'bootstrap-vue/src/utils/html'
-import BVTransition from 'bootstrap-vue/src/utils/bv-transition'
+import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
+import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
 
 export default Vue.extend({
   extends: BModal,

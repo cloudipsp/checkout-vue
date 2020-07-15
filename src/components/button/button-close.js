@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import { BButtonClose } from 'bootstrap-vue'
 import { mergeData } from 'vue-functional-data-merge'
-import { isEvent } from 'bootstrap-vue/src/utils/inspect'
+import { isEvent } from 'bootstrap-vue/esm/utils/inspect'
 import {
   hasNormalizedSlot,
   normalizeSlot,
-} from 'bootstrap-vue/src/utils/normalize-slot'
+} from 'bootstrap-vue/esm/utils/normalize-slot'
 
 export default Vue.extend({
   extends: BButtonClose,
