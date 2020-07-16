@@ -1,5 +1,20 @@
 import { mapState } from '@/utils/store'
 
+function init() {
+  let width = window.innerWidth
+
+  // let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+  this.isMobile = this.full_screen ? width < 768 : true
+  this.isTablet = this.full_screen ? width < 992 : true
+}
+
+function resize() {
+  init.apply(this)
+  this.resize()
+}
+
+let resizeBind
+
 export default {
   data() {
     return {
@@ -11,21 +26,14 @@ export default {
     ...mapState('options', ['full_screen']),
   },
   mounted: function() {
-    window.addEventListener('resize', this.afterResize)
-    this.afterResize()
+    resizeBind = resize.bind(this)
+    window.addEventListener('resize', resizeBind)
+    init.apply(this)
   },
   beforeDestroy: function() {
-    window.removeEventListener('resize', this.afterResize)
+    window.removeEventListener('resize', resizeBind)
   },
   methods: {
-    afterResize() {
-      let width = window.innerWidth
-
-      this.isMobile = this.full_screen ? width < 768 : true
-      this.isTablet = this.full_screen ? width < 992 : true
-
-      this.resize()
-    },
     resize() {},
   },
 }
