@@ -1,5 +1,5 @@
 <template>
-  <div id="f">
+  <div id="f" :style="style">
     <div v-if="!error.errors.length" class="f-container" :class="className">
       <f-header />
       <payment />
@@ -15,7 +15,8 @@
 <script>
 import Payment from '@/components/payment'
 import FHeader from '@/components/header'
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
+import Resize from '@/mixins/resize'
 
 export default {
   name: 'FCheckout',
@@ -23,6 +24,7 @@ export default {
     FHeader,
     Payment,
   },
+  mixins: [Resize],
   props: {
     optionsUser: {
       type: Object,
@@ -31,7 +33,7 @@ export default {
   },
   computed: {
     ...mapState(['isOnlyCard']),
-    ...mapState(['showModalMethods']),
+    ...mapStateGetSet(['showModalMethods']),
     ...mapState(['error']),
     className() {
       return {
@@ -39,9 +41,20 @@ export default {
         'f-open': this.showModalMethods,
       }
     },
+    style() {
+      return {
+        // .f-sidebar transform: translateX(0);
+        overflow: this.showModalMethods && this.isTablet ? 'hidden' : 'visible',
+      }
+    },
   },
   created: function() {
     this.store.setOptions(this.optionsUser)
+  },
+  methods: {
+    resize() {
+      this.showModalMethods = false
+    },
   },
 }
 </script>

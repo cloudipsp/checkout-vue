@@ -43,7 +43,7 @@
   left: 0;
   padding: px-to-rem(24px) px-to-rem(20px) 0 px-to-rem(20px);
   background-color: $container_bg;
-  transform: translateX(-100%);
+  transform: translateX(-1000%);
 
   .f-open & {
     z-index: $zindex-sidebar;
