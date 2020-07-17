@@ -18,7 +18,10 @@ export default {
     ...mapState(['css', 'submit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
-    ...mapState('css_variable', ['enable_btn_success_gradient']),
+    ...mapState('css_variable', [
+      'btn_success_gradient_enable',
+      'btn_success_gradient_custom',
+    ]),
     className() {
       return [
         this.css.btn,
@@ -28,7 +31,12 @@ export default {
         this.css.submit,
         'f-button-pay',
         {
-          'f-enable-gradient': this.enable_btn_success_gradient,
+          'f-btn-gradient':
+            this.btn_success_gradient_enable &&
+            !this.btn_success_gradient_custom,
+          'f-btn-gradient-custom':
+            this.btn_success_gradient_custom &&
+            !this.btn_success_gradient_enable,
         },
       ]
     },

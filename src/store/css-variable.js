@@ -51,7 +51,7 @@ export default function(variables) {
     Object.entries(variables).reduce((acc, [n, v]) => {
       let name = `${prefix}${n}`
 
-      if (!/[#&]/.test(v)) return acc.concat([[name, v]])
+      if (!/^[#&]/.test(v)) return acc.concat([[name, v]])
 
       v = v.replace('&', '')
 

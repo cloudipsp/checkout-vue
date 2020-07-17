@@ -129,44 +129,69 @@
     $btn_success_color,
     $btn_success_shadow
   );
+}
 
-  &.f-enable-gradient {
-    &::after,
-    &:hover::after,
-    &:not(:disabled):not(.disabled):active::after,
-    &:not(:disabled):not(.disabled).active::after {
-      background: linear-gradient(
-        130deg,
-        custom($btn_success_bg, 30%, -10%) 11%,
-        custom($btn_success_bg, 20%, -30%) 22%,
-        32%,
-        custom($btn_success_bg, 30%, -30%) 33%,
-        44%,
-        custom($btn_success_bg, 20%, -50%) 55%,
-        65%,
-        custom($btn_success_bg, 30%, -50%) 66%,
-        77%,
-        custom($btn_success_bg, 20%, -70%) 88%
-      );
-      background-position: 0 0;
-      background-size: 300% 300%;
-    }
-
-    &:hover {
-      &::after {
-        background-position: 50% 50%;
-      }
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-      &::after {
-        background-position: 100% 100%;
-      }
-    }
-
-    @include disabled();
+.f-btn-gradient {
+  &::after,
+  &:hover::after,
+  &:not(:disabled):not(.disabled):active::after,
+  &:not(:disabled):not(.disabled).active::after {
+    background: linear-gradient(
+      130deg,
+      custom($btn_success_bg, 30%, -10%) 11%,
+      custom($btn_success_bg, 20%, -30%) 22%,
+      32%,
+      custom($btn_success_bg, 30%, -30%) 33%,
+      44%,
+      custom($btn_success_bg, 20%, -50%) 55%,
+      65%,
+      custom($btn_success_bg, 30%, -50%) 66%,
+      77%,
+      custom($btn_success_bg, 20%, -70%) 88%
+    );
+    background-position: 0 0;
+    background-size: 300% 300%;
   }
+
+  &:hover {
+    &::after {
+      background-position: 50% 50%;
+    }
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    &::after {
+      background-position: 100% 100%;
+    }
+  }
+
+  @include disabled();
+}
+
+.f-btn-gradient-custom {
+  &::after,
+  &:hover::after,
+  &:not(:disabled):not(.disabled):active::after,
+  &:not(:disabled):not(.disabled).active::after {
+    background: $btn_success_gradient_custom;
+    background-size: 120% 100%;
+  }
+
+  &:hover {
+    &::after {
+      background-position-x: 50%;
+    }
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    &::after {
+      background-position-x: 100%;
+    }
+  }
+
+  @include disabled();
 }
 
 .f-btn-secondary {

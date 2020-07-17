@@ -5,44 +5,50 @@
   width: 100%;
   padding: px-to-rem(63px) 0 px-to-rem(16px) px-to-rem(16px);
   margin-bottom: px-to-rem(32px);
+}
 
-  &::before {
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    z-index: 0;
-    width: 80%;
-    height: px-to-rem(32px);
-    content: '';
-    border-radius: px-to-rem(16px);
-    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($card_shadow, 60%);
-  }
+.f-card-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: px-to-rem(32px);
+  content: '';
+  border-radius: px-to-rem(16px);
+  box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($card_shadow, 60%);
+}
 
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    background: linear-gradient(
-      180deg,
-      custom($card_bg, +6%, +8%) 0%,
-      $card_bg 35%,
-      custom($card_bg, -0%, -8%) 100%
-    );
-    background-clip: padding-box;
-    border-bottom: 3px solid fade($card_border, 80%);
-    border-radius: px-to-rem(16px);
-  }
+.f-card-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: linear-gradient(
+    180deg,
+    custom($card_bg, +6%, +8%) 0%,
+    $card_bg 35%,
+    custom($card_bg, -0%, -8%) 100%
+  );
+  background-clip: padding-box;
+  border-bottom: $card_border_width solid fade($card_border, 80%);
+  border-radius: px-to-rem(16px);
+  box-shadow: $card_shadow_custom;
+}
+
+.f-card-img {
+  background: $card_img no-repeat 0 0 / 100% 100%;
+}
+
+.f-card-gradient-custom {
+  background: $card_gradient_custom;
 }
 
 .f-form-group-card {
   position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   margin: 0 px-to-rem(20px) 0 0;

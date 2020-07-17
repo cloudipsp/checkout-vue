@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="f-card">
+      <div class="f-card-shadow" />
+      <div :class="classCardBg" />
       <input-text
         class="f-form-group-card f-form-group-card-number"
         name="card_number"
@@ -183,6 +185,7 @@ export default {
       'need_verify_code',
       'verification_type',
       'cards',
+      'css_variable',
     ]),
     ...mapState('router', ['method']),
     ...mapState('options', ['email']),
@@ -242,6 +245,19 @@ export default {
     },
     isVerificationCode() {
       return this.need_verify_code && this.verification_type !== 'amount'
+    },
+    classCardBg() {
+      return [
+        'f-card-bg',
+        {
+          'f-card-img':
+            this.css_variable.card_img &&
+            !this.css_variable.card_gradient_custom,
+          'f-card-gradient-custom':
+            this.css_variable.card_gradient_custom &&
+            !this.css_variable.card_img,
+        },
+      ]
     },
   },
   watch: {
