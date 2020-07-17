@@ -52,11 +52,6 @@ Name                  | Type        | Default                 | Description     
 `lang`                | Boolean     | true                    |                                                                                     |
 `region`              | String      | 'ua'                    | support `ua`, `ru`, `eu`,                                                           |
 
-### popup
-Name                  | Type        | Default                 | Description
----                   | ---         | ---                     | ---
-`append_to`           | String      | 'body'                  |
-
 ### regular
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---

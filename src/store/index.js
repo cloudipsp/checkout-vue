@@ -60,7 +60,6 @@ export default {
     Object.assign(this.state.regular, optionsUser.regular)
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
-    Object.assign(this.state.popup, optionsUser.popup)
     Object.assign(
       this.state.css_variable,
       cssVarisble(this.state.options.theme),
