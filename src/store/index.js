@@ -5,13 +5,13 @@ import configCss from '@/config/css'
 import notSet from '@/config/not-set'
 import cssVarisble from '@/config/css-varisble'
 import {
+  initApi,
   getCookie,
   setCookie,
   deepMerge,
   validate,
   sendRequest,
   findGetParameter,
-  api,
 } from '@/utils/helpers'
 import { isObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
@@ -75,7 +75,7 @@ export default {
     this.initLocation()
     this.initError()
     this.initToken()
-    this.initOrigin()
+    this.initApi()
     this.initReferrer()
     this.initCssDevice()
     this.initOnlyCard()
@@ -156,8 +156,11 @@ export default {
     if (!value) return
     object[key] = value
   },
-  initOrigin() {
-    api.setOrigin('https://' + this.state.options.api_domain)
+  initApi() {
+    initApi({
+      origin: 'https://' + this.state.options.api_domain,
+      endpoint: this.state.options.endpoint,
+    })
   },
   initReferrer() {
     this.state.params.referrer = document.referrer

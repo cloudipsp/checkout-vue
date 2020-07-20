@@ -35,7 +35,7 @@ export default {
   computed: {
     ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['amount']),
-    ...mapState('options', ['api_domain', 'theme']),
+    ...mapState('options', ['api_domain', 'endpoint', 'theme']),
     classButton() {
       return 'f-wallet-pay-button-' + this.id
     },
@@ -81,6 +81,7 @@ export default {
           api,
           element: '.' + this.classButton,
           origin: 'https://' + this.api_domain,
+          endpoint: this.endpoint,
           style: {
             type: 'short', // short long
             color: this.color,

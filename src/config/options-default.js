@@ -14,6 +14,10 @@ const options = {
     locales: [],
     messages: {},
     api_domain: 'api.fondy.eu',
+    endpoint: {
+      gateway: '/checkout/v2/index.html',
+      button: '/checkout/v2/button/index.html',
+    },
     customer_fields: [],
     active_tab: 'card',
     logo_url: '',

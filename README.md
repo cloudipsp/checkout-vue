@@ -38,6 +38,7 @@ Name                  | Type        | Default                 | Description     
 `full_screen`         | Boolean     | true                    |                                                                                     |
 `locales`             | Array       |                         | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
+`endpoint`            | Object      |                         |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
 `active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                  | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
@@ -51,6 +52,12 @@ Name                  | Type        | Default                 | Description     
 `countries`           | Array       |                         |                                                                                     |
 `lang`                | Boolean     | true                    |                                                                                     |
 `region`              | String      | 'ua'                    | support `ua`, `ru`, `eu`,                                                           |
+
+### endpoint
+Name                  | Type        | Default                          | Description
+---                   | ---         | ---                              | ---
+`gateway`             | String      | '/checkout/v2/index.html'        |
+`button`              | String      | '/checkout/v2/button/index.html' |
 
 ### regular
 Name                  | Type        | Default                 | Description
