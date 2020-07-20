@@ -21,7 +21,7 @@ function setI18nLanguage(lang) {
   return lang
 }
 
-export function loadLanguageAsync(lang) {
+export const loadLanguageAsync = lang => {
   return import(
     /* webpackChunkName: "i18n/[request]" */
     `./lang/${lang}`

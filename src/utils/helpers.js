@@ -7,7 +7,7 @@ import i18n from '@/i18n/index'
 export let api
 let cache = {}
 
-export function initApi(option) {
+export const initApi = option => {
   api = $checkout('Api', option)
 
   api.on('modal.close', function() {
@@ -15,7 +15,7 @@ export function initApi(option) {
   })
 }
 
-export function sendRequest(name, method, params = {}, cached = {}) {
+export const sendRequest = (name, method, params = {}, cached = {}) => {
   let id = [name, method, JSON.stringify(cached.params || params)].join('_')
   if (cached.cached && cache[id]) return cache[id]
   cache[id] = new Promise(function(resolve, reject) {
@@ -46,7 +46,7 @@ export function sendRequest(name, method, params = {}, cached = {}) {
   return cache[id]
 }
 
-export function getCookie(name) {
+export const getCookie = name => {
   let matches = document.cookie.match(
     new RegExp(
       '(?:^|; )' +
@@ -57,7 +57,7 @@ export function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
-export function setCookie(name, value, options) {
+export const setCookie = (name, value, options) => {
   options = options || {}
 
   let expires = options.expires
@@ -86,7 +86,7 @@ export function setCookie(name, value, options) {
   document.cookie = updatedCookie
 }
 
-export function deleteCookie(name) {
+export const deleteCookie = name => {
   setCookie(name, '', {
     expires: -1,
   })
@@ -94,8 +94,8 @@ export function deleteCookie(name) {
 
 // TODO https://github.com/TehShrike/deepmerge
 
-export function deepMerge() {
-  let extended = arguments[0]
+export const deepMerge = (...args) => {
+  let extended = args[0]
 
   let merge = function(obj) {
     for (let prop in obj) {
@@ -109,21 +109,21 @@ export function deepMerge() {
     }
   }
 
-  for (let i = 1; i < arguments.length; i++) {
-    merge(arguments[i])
+  for (let i = 1; i < args.length; i++) {
+    merge(args[i])
   }
 
   return extended
 }
 
-export function validate(options) {
+export const validate = options => {
   new Schema(config).validate(options, errors => {
     if (!errors) return
     store.setError(errors)
   })
 }
 
-export function findGetParameter(parameterName) {
+export const findGetParameter = parameterName => {
   let result = null
   let tmp = []
   location.search
@@ -136,7 +136,7 @@ export function findGetParameter(parameterName) {
   return result
 }
 
-export function sort(arr, field, reverse) {
+export const sort = (arr, field, reverse) => {
   reverse = reverse ? -1 : 1
   return arr.sort((a, b) => {
     if (String.prototype.localeCompare) {

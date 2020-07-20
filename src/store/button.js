@@ -89,7 +89,7 @@ function parseField(attrs) {
   }
 }
 
-export function getLabel(name) {
+export const getLabel = name => {
   if (!config.fields) return
   if (!config.fields[name]) return
   return config.fields[name].label

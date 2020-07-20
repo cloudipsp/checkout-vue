@@ -1,23 +1,12 @@
-export function isExist(obj) {
-  return typeof obj !== 'undefined' && obj !== null
-}
+export const isExist = obj => typeof obj !== 'undefined' && obj !== null
 
-export function isFunction(obj) {
-  return typeof obj === 'function'
-}
+export const isFunction = obj => typeof obj === 'function'
 
-export function isNumber(obj) {
-  return typeof obj === 'number'
-}
+export const isNumber = obj => typeof obj === 'number'
 
-export function isString(obj) {
-  return typeof obj === 'string'
-}
+export const isString = obj => typeof obj === 'string'
 
-export function isBoolean(obj) {
-  return typeof obj === 'boolean'
-}
+export const isBoolean = obj => typeof obj === 'boolean'
 
-export function isObject(obj) {
-  return obj !== null && !Array.isArray(obj) && typeof obj === 'object'
-}
+export const isObject = obj =>
+  obj !== null && !Array.isArray(obj) && typeof obj === 'object'
