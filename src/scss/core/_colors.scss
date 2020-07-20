@@ -3,8 +3,8 @@ $prefix: --fondy-;
 $white: #fff;
 $black: #000;
 
-$main-bg: var(#{$prefix}main_bg);
-$container_color: var(#{$prefix}container_color);
+$main_bg: var(#{$prefix}main_bg);
+$main_color: var(#{$prefix}main_color);
 $container_bg: var(#{$prefix}container_bg);
 $container_box_shadow: var(#{$prefix}container_box_shadow);
 $sidebar_border: var(#{$prefix}sidebar_border);

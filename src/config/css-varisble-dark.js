@@ -20,12 +20,12 @@ const error = '#DE4761'
 
 export default {
   main_bg: '#1C1F22',
-  container_color: '#989A9C',
+  main_color: '#989A9C',
   container_bg: grey_9,
   container_box_shadow: '#262a2d',
   sidebar_border: '#222528',
   title_color: black, //
-  menu_item_color: '&container_color',
+  menu_item_color: '&main_color',
   menu_item_active_color: white,
   menu_item_active_bg: '#46494D',
   menu_item_border: ash_400, //
@@ -101,7 +101,7 @@ export default {
   modal_content_bg: white, //
   modal_security_title_color: grey_3, //
   modal_security_title_svg_color: grey_1, //
-  bank_item_color: '&container_color', //
+  bank_item_color: '&main_color', //
   bank_item_hover_color: grey_4, //
   bank_icon_shadow: '#CACFD6', //
   bank_view_icon_active_bg: ash_200, //

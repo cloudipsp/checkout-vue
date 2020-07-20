@@ -5,13 +5,13 @@
   font-family: $font-family-greenwich;
   font-size: $font-size-base;
   line-height: $line-height-base;
+  color: $main_color;
   background-color: $main_bg;
 }
 
 .f-container {
   width: 100%;
   height: 100%;
-  color: $container_color;
   background: $container_bg;
 }
 

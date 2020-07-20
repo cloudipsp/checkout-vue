@@ -1,5 +1,3 @@
-import img from './card-bg'
-
 const fondy = '#4ed962'
 const steel_blue = '#6493DE'
 const light_sky_blue = '#5DABE3'
@@ -55,30 +53,25 @@ export default {
   },
   gradient_indigo: {
     main: '#3E72C8',
-    card_img: img.indigo,
     btn_success_gradient_custom:
       'linear-gradient(80deg, #EF7656 0, #EA5D5E 27%, #C95D9D 56%, #3E72C8 83%)',
     card_border_width: 0,
   },
   gradient_grey_violet: {
     main: '#576A9C',
-    card_img: img.grey_violet,
     btn_success_gradient_custom:
       'linear-gradient(80deg, #7F8A9F 0, #938392 45%, #7B6399 64%, #576A9C 83%)',
   },
   gradient_gold_green: {
     main: '#2B8D60',
-    card_img: img.gold_green,
     btn_success_gradient_custom:
       'linear-gradient(80deg, #B78529 25%, #2B8D60 83%)',
   },
   gradient_grey: {
     main: '#313539',
-    card_img: img.grey,
   },
   gradient_gold: {
     main: '#313539',
-    card_img: img.gold,
     card_shadow: '#B98B3C',
   },
 }

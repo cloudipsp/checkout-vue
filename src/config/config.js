@@ -4,8 +4,8 @@ import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 
-let methods = configMethods
-let cardIcons = [
+const methods = configMethods
+const cardIcons = [
   'mastercard',
   'visa',
   'mir',
@@ -16,12 +16,19 @@ let cardIcons = [
   'maestro',
   'union_pay',
 ]
-let locales = configLocales
-let period = ['day', 'week', 'month']
-let css = ['bootstrap3', 'bootstrap4', 'foundation6']
-let YN = ['Y', 'N', 'y', 'n']
-let verificationType = ['amount', 'code']
+const locales = configLocales
+const period = ['day', 'week', 'month']
+const css = ['bootstrap3', 'bootstrap4', 'foundation6']
+const YN = ['Y', 'N', 'y', 'n']
+const verificationType = ['amount', 'code']
 const theme = ['light', 'dark']
+const presetGradient = [
+  'gradient_indigo',
+  'gradient_grey_violet',
+  'gradient_gold_green',
+  'gradient_grey',
+  'gradient_gold',
+]
 const preset = [
   'fondy',
   'steel_blue',
@@ -31,15 +38,11 @@ const preset = [
   'red',
   'black',
   'white',
-  'gradient_indigo',
-  'gradient_grey_violet',
-  'gradient_gold_green',
-  'gradient_grey',
-  'gradient_gold',
+  ...presetGradient,
 ]
 const region = ['ua', 'ru', 'eu']
 
-function validatorArray(array) {
+function enumArray(array) {
   return {
     type: 'array',
     validator(rule, value, callback, source, options) {
@@ -66,7 +69,7 @@ function validatorArray(array) {
   }
 }
 
-function validatorObject(array) {
+function enumObject(array) {
   return {
     type: 'object',
     fields: {},
@@ -110,12 +113,28 @@ function validatorCurrencyRequired() {
   return {
     validator(rule, value, callback, source) {
       let errors = []
-      if (!source.token && !source[rule.field]) {
+      if (!source.token && !value) {
         errors.push([rule.fullField, 'is required'].join(' '))
       }
       callback(errors)
     },
   }
+}
+
+function validatorCardImg() {
+  return [
+    { type: 'string' },
+    { pattern: /^url\(data:image/ },
+    {
+      validator(rule, value, callback, source) {
+        let errors = []
+        if (presetGradient.includes(source.preset) && !value) {
+          errors.push([rule.fullField, 'is required'].join(' '))
+        }
+        callback(errors)
+      },
+    },
+  ]
 }
 
 let i18n = {
@@ -135,7 +154,7 @@ const cssVarisbleKeys = Object.keys(
   })
 )
 
-let css_variable = validatorObject(cssVarisbleKeys)
+let css_variable = enumObject(cssVarisbleKeys)
 
 cssVarisbleKeys.forEach(item => {
   css_variable.fields[item] = {
@@ -148,14 +167,14 @@ export default {
   options: {
     type: 'object',
     fields: {
-      methods: validatorArray(methods),
-      card_icons: validatorArray(cardIcons),
+      methods: enumArray(methods),
+      card_icons: enumArray(cardIcons),
       fields: { type: 'boolean' },
       title: { type: 'string' },
       link: { type: 'url' },
       full_screen: { type: 'boolean' },
       button: { type: 'boolean' },
-      locales: validatorArray(locales),
+      locales: enumArray(locales),
       email: { type: 'boolean' },
       css: { type: 'enum', enum: css },
       api_domain: { type: 'string' },
@@ -172,12 +191,13 @@ export default {
       offerta_url: { type: 'url' },
       cancel: { type: 'boolean' },
       default_country: { type: 'enum', enum: configCountries },
-      countries: validatorArray(configCountries),
+      countries: enumArray(configCountries),
       theme: {
         type: 'object',
         fields: {
           type: { type: 'enum', enum: theme },
           preset: { type: 'enum', enum: preset },
+          card_img: validatorCardImg(),
         },
       },
       region: {
@@ -192,7 +212,7 @@ export default {
       insert: { type: 'boolean' },
       open: { type: 'boolean' },
       hide: { type: 'boolean' },
-      period: validatorArray(period),
+      period: enumArray(period),
     },
   },
   params: {

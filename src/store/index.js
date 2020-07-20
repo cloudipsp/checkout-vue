@@ -63,7 +63,8 @@ export default {
     Object.assign(
       this.state.css_variable,
       cssVarisble(this.state.options.theme),
-      optionsUser.css_variable
+      optionsUser.css_variable,
+      this.state.options.theme
     )
     Object.assign(
       this.state.css,
