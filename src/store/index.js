@@ -13,7 +13,7 @@ import {
   sendRequest,
   findGetParameter,
 } from '@/utils/helpers'
-import { isObject } from '@/utils/typeof'
+import { isPlainObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
 import store from './setup'
@@ -84,7 +84,7 @@ export default {
   optionsFormat(options) {
     let regex = /[A-Z]+/g
 
-    if (!isObject(options)) return
+    if (!isPlainObject(options)) return
 
     for (let prop in options) {
       if (options.hasOwnProperty(prop)) {

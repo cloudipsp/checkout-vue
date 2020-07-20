@@ -8,5 +8,5 @@ export const isString = obj => typeof obj === 'string'
 
 export const isBoolean = obj => typeof obj === 'boolean'
 
-export const isObject = obj =>
-  obj !== null && !Array.isArray(obj) && typeof obj === 'object'
+export const isPlainObject = obj =>
+  Object.prototype.toString.call(obj) === '[object Object]'

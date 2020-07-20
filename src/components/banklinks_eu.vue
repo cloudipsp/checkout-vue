@@ -91,7 +91,7 @@
 <script>
 import { sort } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { isObject } from '@/utils/typeof'
+import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
 
 export default {
@@ -191,7 +191,7 @@ export default {
       return this.list.length > this.more
     },
     showFieldsBank() {
-      return isObject(this.select.form)
+      return isPlainObject(this.select.form)
     },
     className() {
       return ['f-bank']

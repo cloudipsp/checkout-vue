@@ -12,7 +12,7 @@
 import Vue from 'vue'
 import Checkout from '@/checkout'
 import i18n from '@/i18n/index'
-import { isString, isObject } from '@/utils/typeof'
+import { isString, isPlainObject } from '@/utils/typeof'
 import components from '@/components/index'
 import svg from '@/svg/index'
 import store from '@/store/index'
@@ -30,7 +30,8 @@ const install = function(Vue) {
   window.fondy = function(el, optionsUser) {
     optionsUser = optionsUser || {}
     if (!isString(el)) return console.error('Selector not a string')
-    if (!isObject(optionsUser)) return console.error('Options not an object')
+    if (!isPlainObject(optionsUser))
+      return console.error('Options not an object')
     let node = document.querySelector(el)
     if (!node) return console.error(['Selector', el, 'not found'].join(' '))
 
