@@ -116,6 +116,7 @@ export default {
     ...mapState(['ready', 'options', 'css']),
     ...mapState('tabs', ['banklinks_eu']),
     ...mapState('options', ['countries']),
+    ...mapState('router', ['system']),
     ...mapStateGetSet('options', ['default_country']),
     // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
     config() {
@@ -229,6 +230,17 @@ export default {
         if (item.length === 1) {
           this.default_country = item[0].id
         }
+      },
+      immediate: true,
+    },
+    system: {
+      handler(newValue, oldValue) {
+        if (newValue === oldValue) return
+
+        let bank = this.listFull.filter(item => item.id === newValue)[0]
+        if (!bank) return
+
+        this.selectBank(bank)
       },
       immediate: true,
     },

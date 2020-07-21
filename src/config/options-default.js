@@ -5,7 +5,6 @@ const options = {
   options: {
     methods: ['card'],
     banklinks_eu: [],
-    fast: [],
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
     title: '',
