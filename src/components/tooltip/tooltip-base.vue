@@ -27,6 +27,7 @@ export default {
     },
     attrs() {
       return {
+        container: this.$root,
         ...this.$attrs,
         'custom-class': this.customClass,
       }

@@ -1,0 +1,31 @@
+.f-tooltip-security-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: px-to-rem(16px);
+  opacity: 0.5;
+}
+
+.f-tooltip-security-content {
+  p {
+    margin: px-to-rem(8px) 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.f-tooltip-icons {
+  .f-tooltip-inner {
+    padding: px-to-rem(12px);
+  }
+
+  .f-icon {
+    margin-right: px-to-rem(8px);
+    border-radius: px-to-rem(3px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

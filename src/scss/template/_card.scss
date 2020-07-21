@@ -144,40 +144,32 @@
   cursor: pointer;
 }
 
-@mixin card-list() {
-  .f-card-list-item {
-    display: block;
-    padding: px-to-rem(8px) px-to-rem(20px);
-    margin-bottom: px-to-rem(16px);
-    font-family: $font-family-inter;
+.f-card-list-item {
+  display: block;
+  padding: px-to-rem(8px) px-to-rem(20px);
+  margin-bottom: px-to-rem(16px);
+  font-family: $font-family-inter;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover,
+  &.active {
     text-decoration: none;
-    cursor: pointer;
-    transition: background-color ease-in-out 0.15s;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &:hover,
-    &.active {
-      text-decoration: none;
-      background-color: $card_list_item_active_bg;
-    }
-  }
-
-  .f-card-list-number {
-    font-weight: 500;
-    color: $card_list_number_color;
-  }
-
-  .f-card-list-expiry-date {
-    font-size: px-to-rem(12px);
-    color: $card_list_expiry_date_color;
+    background-color: $card_list_item_active_bg;
   }
 }
 
-html {
-  @include card-list();
+.f-card-list-number {
+  font-weight: 500;
+  color: $card_list_number_color;
 }
 
-@include card-list();
+.f-card-list-expiry-date {
+  font-size: px-to-rem(12px);
+  color: $card_list_expiry_date_color;
+}

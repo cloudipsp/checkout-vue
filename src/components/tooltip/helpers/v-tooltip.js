@@ -8,5 +8,10 @@ export default Vue.extend({
     getTemplate() {
       return VTooltipTemplate
     },
+    getContainer() {
+      return this.container
+        ? this.container.$el || this.container
+        : document.body
+    },
   },
 })
