@@ -1,0 +1,11 @@
+.f-fast-access {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.f-fast-access-icon {
+  margin: 0 22px px-to-rem(20px) 0; // 328px
+  cursor: pointer;
+  border-radius: px-to-rem(8px);
+  box-shadow: 0 1px 4px $bank_icon_shadow;
+}

@@ -6,11 +6,17 @@
 @import 'button-pay-wallet';
 @import 'banklinks';
 @import 'regular';
+@import 'fast-access';
 
 .f-container-sm,
 .f-payment-method-card {
   max-width: 280px;
   margin: 0 auto;
+}
+
+.f-info {
+  min-height: 185px;
+  margin-bottom: px-to-rem(16px);
 }
 
 .f-merchant-name {

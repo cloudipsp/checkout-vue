@@ -301,3 +301,21 @@
     flex: 0 0 px-to-rem(100px);
   }
 }
+
+.f-fast-access-icon {
+  @include media-breakpoint-up(ss) {
+    margin-right: 23px; // 335px
+
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 30px; // 360px
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-right: 22px; // 328px
+  }
+}
