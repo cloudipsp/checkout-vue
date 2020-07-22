@@ -51,9 +51,8 @@
     </slot>
     <slot />
     <f-tooltip-error
-      v-if="tooltip"
       :title="errors.first(name_)"
-      :show="hasError"
+      :show="showErrorTooltip"
       :target="'#' + name_"
       under-sticky
     />

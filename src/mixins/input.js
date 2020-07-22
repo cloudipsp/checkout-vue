@@ -97,6 +97,9 @@ export default {
     hasError() {
       return this.isError && (this.flag.touched || this.submit)
     },
+    showErrorTooltip() {
+      return this.tooltip && this.hasError && this.focused
+    },
     showError() {
       let showError = !this.tooltip && this.hasError && this.focused
       this.$emit('show-error', showError, this.errors.first(this.name_))
