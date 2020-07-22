@@ -144,11 +144,19 @@
   cursor: pointer;
 }
 
+.f-card-list {
+  font-weight: 500;
+}
+
+.f-card-list-add,
 .f-card-list-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  height: px-to-rem(60px);
   padding: px-to-rem(8px) px-to-rem(20px);
-  margin-bottom: px-to-rem(16px);
+  margin-bottom: px-to-rem(13px);
   font-family: $font-family-inter;
+  color: $main_color;
   text-decoration: none;
   cursor: pointer;
   transition: background-color ease-in-out 0.15s;
@@ -164,12 +172,24 @@
   }
 }
 
+.f-card-list-add {
+  &:hover {
+    color: $main_color;
+  }
+}
+
+.f-card-list-icon {
+  width: px-to-rem(40px);
+  margin-right: px-to-rem(4px);
+  color: $icon_color;
+}
+
 .f-card-list-number {
-  font-weight: 500;
   color: $card_list_number_color;
 }
 
 .f-card-list-expiry-date {
   font-size: px-to-rem(12px);
+  font-weight: 400;
   color: $card_list_expiry_date_color;
 }

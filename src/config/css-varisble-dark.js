@@ -93,7 +93,7 @@ export default {
   tooltip_card_shadow: '#b6b9bf', //
   tooltip_default_color: white, //
   tooltip_default_bg: grey_9, //
-  security_color: '#797C7E',
+  icon_color: '#797C7E',
   security_hover_color: grey_3, //
   close_color: white, //
   modal_backdrop_bg: '#32353A', //
