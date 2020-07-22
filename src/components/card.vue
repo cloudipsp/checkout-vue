@@ -4,6 +4,7 @@
       <div class="f-card-shadow" />
       <div :class="classCardBg" />
       <input-text
+        ref="card_number"
         class="f-form-group-card f-form-group-card-number"
         name="card_number"
         :validate="validCardNumber"
@@ -18,7 +19,7 @@
       >
         <template v-if="need_verify_code" #label="{ classLabel, label_ }">
           <label :class="classLabel">
-            {{ label_ }} <f-svg name="lock" size="lg" />
+            {{ label_ }} <f-svg name="lock-alt" size="lg" />
           </label>
         </template>
         <template v-else-if="isCards" #label="{ classLabel, label_ }">
@@ -38,7 +39,7 @@
               :class="[classLabel, 'f-control-label-card-list']"
               tabindex="-1"
               @click.prevent="showTooltipCard = true"
-              @blur="showTooltipCard = false"
+              @blur="blurTooltipCard"
             >
               {{ label_ }}
               <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
@@ -48,18 +49,7 @@
               :target="() => $refs.label && $refs.label.$el"
               under-sticky
             >
-              <a
-                v-for="item in cards"
-                :key="item.card_number"
-                href="#"
-                :class="['f-card-list-item', { active: hasActive(item) }]"
-                @click.prevent="setCardNumber(item)"
-              >
-                <div class="f-card-list-number">{{ item.card_number }}</div>
-                <div class="f-card-list-expiry-date">
-                  <span v-t="'expires_on'" /> {{ item.expiry_date }}
-                </div>
-              </a>
+              <f-card-list @input="setCardNumber" @add="addCardNumber" />
             </f-tooltip-card>
           </template>
         </template>
@@ -89,7 +79,7 @@
         :maxlength="digitsCvv"
         tooltip
       >
-        <template v-if="isCards" #label="{ classLabel, name_, label_ }">
+        <template #label="{ classLabel, name_, label_ }">
           <label :class="classLabel" :for="name_">
             <span ref="label_cvv">{{ label_ }}</span>
           </label>
@@ -134,21 +124,12 @@
     <f-button-pay />
     <f-modal-base
       v-model="showModalCard"
+      content-class="f-modal-content-card-list"
       header-class="f-modal-header-card-list"
       body-class="f-modal-body-card-list"
+      :return-focus="returnFocus"
     >
-      <a
-        v-for="item in cards"
-        :key="item.card_number"
-        href="#"
-        :class="['f-card-list-item', { active: hasActive(item) }]"
-        @click.prevent="setCardNumber(item)"
-      >
-        <div class="f-card-list-number">{{ item.card_number }}</div>
-        <div class="f-card-list-expiry-date">
-          <span v-t="'expires_on'" /> {{ item.expiry_date }}
-        </div>
-      </a>
+      <f-card-list @input="setCardNumber" @add="addCardNumber" />
     </f-modal-base>
   </div>
 </template>
@@ -158,6 +139,7 @@
 import { sendRequest } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FRegular from '@/components/regular'
+import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
 
@@ -165,6 +147,7 @@ export default {
   inject: ['$validator'],
   components: {
     FRegular,
+    FCardList,
   },
   mixins: [Resize, timeout],
   data() {
@@ -176,6 +159,7 @@ export default {
       showTooltipCard: false,
       wrapper: null,
       activeElement: null,
+      returnFocus: null,
     }
   },
   computed: {
@@ -291,16 +275,27 @@ export default {
   },
   methods: {
     cardTypeFeeSuccess() {},
-    hasActive(card) {
-      return card.card_number.replace(/ /g, '') === this.card_number
+    setCardNumber() {
+      this.returnFocus = this.$refs.cvv2.$refs.input.$el
+      this.hide()
     },
-    setCardNumber(card) {
+    addCardNumber() {
+      this.returnFocus = this.$refs.card_number.$refs.input.$el
+      this.hide()
+    },
+    hide() {
       this.showModalCard = false
       this.showTooltipCard = false
-      this.store.setCardNumber(card)
-      this.$nextTick(() => {
-        this.$validator.validateAll()
-      })
+      // for focus after hiding the tooltip
+      setTimeout(() => {
+        this.returnFocus.focus()
+      }, 100)
+    },
+    blurTooltipCard() {
+      // TODO to volunteer the event setCardNumber addCardNumber
+      setTimeout(() => {
+        this.showTooltipCard = false
+      }, 100)
     },
     inputCardNumber(value) {
       if (value.length !== 16 && value.length !== 19) return

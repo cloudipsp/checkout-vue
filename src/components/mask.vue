@@ -31,9 +31,7 @@ export default {
   },
   watch: {
     value(newValue) {
-      if (newValue !== this.lastValue) {
-        this.display = newValue
-      }
+      this.display = newValue
     },
     masked() {
       this.refresh(this.display)

@@ -88,6 +88,7 @@ export const messages = Object.assign({}, countries, {
   cancel: 'Cancel',
 
   or_pay_with_card: 'Or pay with card',
+  use_other_card: 'Use other card',
 })
 
 export const validate = Object.assign({}, validateMessages, {
