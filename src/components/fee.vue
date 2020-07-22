@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-fee">
-    <div class="f-mb-3">
+    <div>
       <span class="f-amount">{{ amountString }}</span>
       <span class="f-currency">{{ currencyTranslate }}</span>
     </div>

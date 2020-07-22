@@ -219,7 +219,7 @@ export default {
     type: 'object',
     fields: {
       merchant_id: { type: 'integer', max: 999999999999 },
-      order_desc: { type: 'string', max: 1024 },
+      order_desc: { type: 'string', required: true, max: 1024 },
       amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
       currency: [
         { type: 'string' },

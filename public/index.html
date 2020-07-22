@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>checkout-vue</title>
+    <link href="https://pay.fondy.eu/icons/dist/png/32/favicon/fondy.png" rel="icon" type="image/x-icon" />
+
     <style>
       html {
         height: 100%;
@@ -251,7 +253,7 @@
               //    merchant_id: 1396424,
               merchant_id: 900187,
               //    lang: 'ru',
-              order_desc: '3ds',
+              order_desc: 'order_desc',
               //    verification_type: 'code',
               //    required_rectoken: 'y',
               //    verification: 'y',
@@ -262,6 +264,7 @@
             options: {
               api_domain: 'api.dev.fondy.eu',
               fullScreen: true,
+              link: 'https://fondy.eu',
             },
             params: {
               amount: 200,
@@ -270,6 +273,7 @@
               email: 'test@test.test',
               verification_type: 'code',
               verification: 'y',
+              order_desc:'order_desc'
             },
           },
           banklinks_eu: {
@@ -278,32 +282,38 @@
               api_domain: 'api.dev.fondy.eu',
               active_tab: 'banklinks_eu',
               default_country: 'DE',
+              link: 'https://fondy.eu',
               // countries: ['PL'],
             },
             params: {
               amount: 100,
               currency: 'EUR',
               merchant_id: 900158,
+              order_desc: 'order_desc',
             },
           },
           token: {
             options: {
               api_domain: 'api.dev.fondy.eu',
               fullScreen: false,
+              link: 'https://fondy.eu',
             },
             params: {
               token: 'd7de461a3d8051d4207f073ae0c63afd1c9aeafb',
+              order_desc: 'order_desc',
             },
           },
           wallet: {
             options: {
               methods: ['card', 'sepa'],
-              api_domain: 'api.dev.fondy.eu'
+              api_domain: 'api.dev.fondy.eu',
+              link: 'https://fondy.eu',
             },
             params: {
               currency: 'RUB',
               merchant_id: 900234,
               amount: 500,
+              order_desc: 'order_desc',
               // token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
             },
           },
