@@ -1,0 +1,49 @@
+.f-svg {
+  display: inline-block;
+  height: 1em;
+  overflow: visible;
+  font-size: inherit;
+  vertical-align: -0.125em;
+}
+
+@for $i from 2 through 20 {
+  .f-svg-w-#{$i} {
+    width: $i * 0.0625em;
+  }
+}
+
+.f-svg-lg {
+  font-size: 1.5em;
+  line-height: 0.75em;
+  vertical-align: -35%;
+}
+.f-svg-xs {
+  font-size: 0.75em;
+}
+.f-svg-sm {
+  font-size: 0.875em;
+}
+
+@for $i from 1 through 10 {
+  .f-svg-#{$i}x {
+    font-size: $i * 1em;
+  }
+}
+
+.f-svg-spin {
+  animation: f-svg-spin 2s infinite linear;
+}
+
+.f-svg-fw {
+  width: 2.5rem;
+}
+
+@keyframes f-svg-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -47,6 +47,22 @@
   background: $card_gradient_custom;
 }
 
+.f-card-brand {
+  position: absolute;
+  top: px-to-rem(14px);
+  right: px-to-rem(14px);
+  width: px-to-rem(84px);
+  height: px-to-rem(40px);
+  background-color: #fff;
+  border-radius: px-to-rem(6px);
+}
+
+.f-card-brand-icon {
+  width: px-to-rem(84px);
+  height: px-to-rem(40px);
+  border-radius: px-to-rem(6px);
+}
+
 .f-form-group-card {
   position: relative;
   display: flex;
@@ -151,9 +167,8 @@
 .f-card-list-add,
 .f-card-list-item {
   display: flex;
-  align-items: center;
   height: px-to-rem(60px);
-  padding: px-to-rem(8px) px-to-rem(20px);
+  padding: px-to-rem(11px) px-to-rem(20px);
   margin-bottom: px-to-rem(13px);
   font-family: $font-family-inter;
   color: $main_color;
@@ -180,8 +195,10 @@
 
 .f-card-list-icon {
   width: px-to-rem(40px);
+  height: px-to-rem(20px);
   margin-right: px-to-rem(4px);
   color: $icon_color;
+  border-radius: px-to-rem(6px);
 }
 
 .f-card-list-number {
