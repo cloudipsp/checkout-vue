@@ -1,5 +1,4 @@
 import countries from '@umpirsky/country-list/data/en/country.json'
-import { messages as validateMessages } from 'vee-validate/dist/locale/en'
 
 export const messages = Object.assign({}, countries, {
   other_payment_method: 'Or use another payment method',
@@ -91,11 +90,34 @@ export const messages = Object.assign({}, countries, {
   use_other_card: 'Use other card',
 })
 
-export const validate = Object.assign({}, validateMessages, {
-  customer_name: () => `Enter both Surname and Name`,
-  customer_field: () => `Please type only Latin characters`,
-  customer_field_utf8: () => `Invalid characters`,
-  phone: field => `The ${field} field format is invalid.`,
-  numrange: () => `Transfer amount limit exceeded.`,
-  ccard: field => `The ${field} field format is invalid.`,
-})
+export const validate = Object.assign(
+  {},
+  {
+    _default: field => `The ${field} value is not valid`,
+    after: (field, [target, inclusion]) =>
+      `The ${field} must be after ${inclusion ? 'or equal to ' : ''}${target}`,
+    alpha: field => `The ${field} field may only contain alphabetic characters`,
+    date_format: (field, [format]) =>
+      `The ${field} must be in the format ${format}`,
+    decimal: (field, [decimals = '*'] = []) =>
+      `The ${field} field must be numeric and may contain${
+        !decimals || decimals === '*' ? '' : ' ' + decimals
+      } decimal points`,
+    digits: (field, [length]) =>
+      `The ${field} field must be numeric and contains exactly ${length} digits`,
+    email: field => `The ${field} field must be a valid email`,
+    max: (field, [length]) =>
+      `The ${field} field may not be greater than ${length} characters`,
+    min: (field, [length]) =>
+      `The ${field} field must be at least ${length} characters`,
+    numeric: field => `The ${field} field may only contain numeric characters`,
+    required: field => `The ${field} field is required`,
+
+    customer_name: () => `Enter both Surname and Name`,
+    customer_field: () => `Please type only Latin characters`,
+    customer_field_utf8: () => `Invalid characters`,
+    phone: field => `The ${field} field format is invalid.`,
+    numrange: () => `Transfer amount limit exceeded.`,
+    ccard: field => `The ${field} field format is invalid.`,
+  }
+)
