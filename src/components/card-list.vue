@@ -11,7 +11,12 @@
       :class="['f-card-list-item', { active: hasActive(item) }]"
       @click.prevent="setCardNumber(item)"
     >
-      <div class="f-card-list-icon" />
+      <f-icon
+        v-if="item.card_brand"
+        type="card_system/max"
+        :name="item.card_brand"
+        class="f-card-list-icon"
+      />
       <div>
         <div class="f-card-list-number">{{ item.card_number }}</div>
         <div class="f-card-list-expiry-date">

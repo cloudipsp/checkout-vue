@@ -36,6 +36,7 @@ import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
 import { methods, tabs } from '@/utils/compatibility'
+import getCardBrand from '@/utils/card-brand'
 
 let model3ds
 
@@ -176,16 +177,24 @@ export default {
     },
     cardsSuccess(model) {
       if (this.need_verify_code || !Array.isArray(model.data)) return
+      if (!model.data.length) return
 
-      this.cards = model.data
+      this.cards = this.cardsParse(model.data)
 
-      if (this.cards.length) {
-        //          this.$validator.detach('f-card_number')
-        this.store.setCardNumber(this.cards[0])
-        this.$nextTick(() => {
-          this.$validator.validateAll()
-        })
-      }
+      this.store.setCardNumber(this.cards[0])
+    },
+    cardsParse(data) {
+      return data.map(item => {
+        let card_number = item.card_number.replace(/ /g, '')
+        let expiry_date = item.expiry_date.replace(/ /g, '')
+
+        return {
+          ...item,
+          card_number,
+          expiry_date,
+          card_brand: getCardBrand(card_number),
+        }
+      })
     },
     infoSuccess(model) {
       if (isExist(model.attr('validate_expdate'))) {

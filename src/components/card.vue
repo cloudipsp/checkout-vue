@@ -3,6 +3,14 @@
     <div class="f-card">
       <div class="f-card-shadow" />
       <div :class="classCardBg" />
+      <div class="f-card-brand">
+        <f-icon
+          v-if="cardBrand"
+          type="card_system/max"
+          :name="cardBrand"
+          class="f-card-brand-icon"
+        />
+      </div>
       <input-text
         ref="card_number"
         class="f-form-group-card f-form-group-card-number"
@@ -142,6 +150,7 @@ import FRegular from '@/components/regular'
 import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
+import getCardBrand from '@/utils/card-brand'
 
 export default {
   inject: ['$validator'],
@@ -160,6 +169,7 @@ export default {
       wrapper: null,
       activeElement: null,
       returnFocus: null,
+      cardBrand: '',
     }
   },
   computed: {
@@ -280,6 +290,7 @@ export default {
       this.hide()
     },
     addCardNumber() {
+      this.cardBrand = ''
       this.returnFocus = this.$refs.card_number.$refs.input.$el
       this.hide()
     },
@@ -298,6 +309,8 @@ export default {
       }, 100)
     },
     inputCardNumber(value) {
+      this.cardBrand = getCardBrand(value)
+
       if (value.length !== 16 && value.length !== 19) return
       this.focus('f-card_number', value, 'expiry_date')
     },
