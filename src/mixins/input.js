@@ -70,6 +70,7 @@ export default {
     return {
       active: false,
       focused: false,
+      showErrorTooltipFlag: false,
     }
   },
   computed: {
@@ -98,7 +99,9 @@ export default {
       return this.isError && (this.flag.touched || this.submit)
     },
     showErrorTooltip() {
-      return this.tooltip && this.hasError && this.focused
+      let result = this.tooltip && this.hasError && this.focused
+      this.showErrorTooltipFlag = result
+      return result
     },
     showError() {
       let showError = !this.tooltip && this.hasError && this.focused

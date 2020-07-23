@@ -23,6 +23,7 @@
       @blur.native="blurNative"
       @keyup.native.enter="onEnter"
       v-on="$listeners"
+      @focus.native="focus"
     />
     <input
       v-else
@@ -51,8 +52,9 @@
     </slot>
     <slot />
     <f-tooltip-error
+      v-if="showErrorTooltip"
       :title="errors.first(name_)"
-      :show="showErrorTooltip"
+      :show.sync="showErrorTooltipFlag"
       :target="'#' + name_"
       under-sticky
     />
@@ -85,8 +87,10 @@ export default {
     masked: Boolean,
   },
   methods: {
+    // TODO for this.flag.touched
     blurNative() {
       this.$refs.input.$emit('blur')
+      this.blur()
     },
   },
 }
