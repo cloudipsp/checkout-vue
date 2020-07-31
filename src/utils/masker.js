@@ -8,7 +8,9 @@ const tokens = {
 }
 
 export default function maskit(value, mask, masked = true) {
-  value = value || ''
+  if (!mask) return value
+
+  value = String(value) || ''
   mask = mask || ''
   let iMask = 0
   let iValue = 0
