@@ -53,7 +53,7 @@
   right: px-to-rem(14px);
   width: px-to-rem(84px);
   height: px-to-rem(40px);
-  background-color: #fff;
+  background-color: $white;
   border-radius: px-to-rem(6px);
 }
 
@@ -70,9 +70,6 @@
   margin: 0 px-to-rem(20px) 0 0;
 
   .f-control-label {
-    position: relative;
-    top: auto;
-    left: auto;
     order: -1;
     margin-bottom: px-to-rem(6px);
     font-size: px-to-rem(10px);
@@ -81,7 +78,6 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
     opacity: 0.7;
-    transform: none;
   }
 
   .f-form-control {
@@ -108,25 +104,11 @@
         line-height: px-to-rem(18px);
         color: $card_input_color;
       }
-
-      & + .f-control-label {
-        transform: none;
-      }
     }
 
     &::placeholder {
       font-family: $font-family-card-number;
       color: fade($card_input_color, 30%);
-    }
-
-    &:hover + .f-control-label {
-      color: $card_label_color;
-    }
-
-    &:focus {
-      & + .f-control-label {
-        color: $card_label_color;
-      }
     }
 
     &[readonly] {
