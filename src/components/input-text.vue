@@ -1,5 +1,9 @@
 <template>
-  <div :class="classGroupName">
+  <div
+    :class="classGroupName"
+    @mouseenter="mouseenter"
+    @mouseleave="mouseleave"
+  >
     <label v-if="prepend" :for="name_" class="f-form-control-prepend">
       <f-svg :name="prepend" fw />
     </label>

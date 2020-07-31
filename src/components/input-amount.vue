@@ -1,5 +1,9 @@
 <template>
-  <div :class="classGroupName">
+  <div
+    :class="classGroupName"
+    @mouseenter="mouseenter"
+    @mouseleave="mouseleave"
+  >
     <input
       :id="name_"
       v-model="amount"

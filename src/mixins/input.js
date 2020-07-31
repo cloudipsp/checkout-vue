@@ -16,6 +16,10 @@ export default {
       type: String,
       default: '',
     },
+    labelClass: {
+      type: String,
+      default: 'f-control-label-p',
+    },
     validate: {
       type: [String, Object],
       default: null,
@@ -68,8 +72,8 @@ export default {
   },
   data() {
     return {
-      active: false,
       focused: false,
+      hover: false,
       showErrorTooltipFlag: false,
     }
   },
@@ -128,8 +132,11 @@ export default {
     classLabel() {
       return [
         this.css.cl,
+        this.labelClass,
         this.hasError ? this.css.le : '',
-        { 'f-active': this.active },
+        { 'f-control-label-active': this.params[this.field_] || this.focused },
+        { 'f-control-label-hover': this.hover },
+        { 'f-control-label-focused': this.focused },
       ]
     },
     classGroupName() {
@@ -151,20 +158,22 @@ export default {
     if (this.value) {
       this.params[this.field_] = this.value
     }
-
-    this.active = Boolean(this.params[this.field_])
   },
   methods: {
     onEnter() {
       this.$root.$emit('submit')
     },
     focus() {
-      this.active = true
       this.focused = true
     },
     blur() {
-      this.active = Boolean(this.params[this.field_])
       this.focused = false
+    },
+    mouseenter() {
+      this.hover = true
+    },
+    mouseleave() {
+      this.hover = false
     },
   },
 }

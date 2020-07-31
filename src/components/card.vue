@@ -23,6 +23,7 @@
         type="tel"
         inputmode="numeric"
         tooltip
+        label-class
         @input="inputCardNumber"
       >
         <template v-if="need_verify_code" #label="{ classLabel, label_ }">
@@ -73,6 +74,7 @@
         type="tel"
         inputmode="numeric"
         tooltip
+        label-class
         @input="inputExpiryDate"
       />
       <input-text
@@ -86,6 +88,7 @@
         :readonly="need_verify_code"
         :maxlength="digitsCvv"
         tooltip
+        label-class
       >
         <template #label="{ classLabel, name_, label_ }">
           <label :class="classLabel" :for="name_">
