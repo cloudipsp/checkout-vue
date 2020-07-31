@@ -3,7 +3,6 @@ import { mapState } from '@/utils/store'
 function init() {
   let width = window.innerWidth
 
-  // let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
   this.isMobile = this.full_screen ? width < 768 : true
   this.isTablet = this.full_screen ? width < 992 : true
 }
