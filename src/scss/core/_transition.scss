@@ -41,3 +41,18 @@
   opacity: 0;
   transform: translateX(10px);
 }
+
+.f-datepicker-zoom-in-down-enter-active,
+.f-datepicker-zoom-in-down-leave-active {
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: scaleY(1);
+  transform-origin: center top;
+}
+
+.f-datepicker-zoom-in-down-enter,
+.f-datepicker-zoom-in-down-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+}
