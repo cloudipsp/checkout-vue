@@ -38,13 +38,13 @@
             :input-class="'f-form-control-period'"
             @show-error="onShowError"
           />
-          <input-text
+          <f-form-group
+            v-model="start_time"
+            component="date"
             class="f-col f-regular-col"
             name="regular_start_time"
-            field="start_time"
-            validate="required"
+            rules="required"
             type="date"
-            recurring
             :readonly="readonly"
             :hide-error="true"
             :input-class="'f-form-control-start-time'"

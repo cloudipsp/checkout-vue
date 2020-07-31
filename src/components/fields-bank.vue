@@ -1,31 +1,28 @@
 <template>
-  <f-form-fields v-bind="attrs" v-on="$listeners" />
+  <div class="f-form-fields">
+    <f-form-group
+      v-for="field in list"
+      :key="field.name"
+      v-model="params[field.name]"
+      v-bind="field"
+    />
+  </div>
 </template>
 
 <script>
-import FFormFields from '@/components/form/fields'
+import { mapState } from '@/utils/store'
 
 export default {
-  components: {
-    FFormFields,
-  },
   props: {
     fields: {
       type: Array,
       default: () => [],
     },
   },
-  data() {
-    return {
-      model: {},
-    }
-  },
   computed: {
-    attrs() {
-      return {
-        fields: this.parseFields(this.fields),
-        ...this.$attrs,
-      }
+    ...mapState(['params']),
+    list() {
+      return this.parseFields(this.fields)
     },
   },
   methods: {
@@ -35,8 +32,8 @@ export default {
     parseField(attrs) {
       return {
         ...attrs,
-        component: 'input-text',
-        validate: this.parseValidate(attrs.validate),
+        component: attrs.type === 'date' ? 'date' : 'input',
+        rules: this.parseValidate(attrs.validate),
         autocomplete: 'on',
       }
     },
