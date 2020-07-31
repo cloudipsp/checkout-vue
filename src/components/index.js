@@ -21,6 +21,10 @@ import FFields from '@/components/fields'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button-pay'
 import FButtonClose from '@/components/button/button-close'
+import FFormItem from '@/components/form/item'
+import FFormGroup from '@/components/form/group'
+import FFormItemInput from '@/components/form/item/input'
+import FFormItemDate from '@/components/form/item/date'
 
 const components = {
   FButtonPayWallet,
@@ -44,6 +48,10 @@ const components = {
   FOffer,
   FButtonPay,
   FButtonClose,
+  FFormItem,
+  FFormGroup,
+  FFormItemInput,
+  FFormItemDate,
 }
 
 const install = Vue => {

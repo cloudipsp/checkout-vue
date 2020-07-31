@@ -108,4 +108,14 @@ export default {
   bank_select_bg: ash_300, //
   bank_select_close_color: black, //
   bank_select_close_hover_color: black, //
+  datepicker_shadow: '#b6b9bf', //
+  datepicker_bg: white, //
+  datepicker_cell_active_color: grey_3, //
+  datepicker_cell_active_bg: ash_300, //
+  datepicker_cell_hover_color: grey_3, //
+  datepicker_cell_hover_bg: ash_500, //
+  datepicker_cell_disabled_color: ash_500, //
+  datepicker_cell_not_current_month_color: ash_500, //
+  datepicker_th_color: ash_700, //
+  datepicker_btn_text_color: black, //
 }

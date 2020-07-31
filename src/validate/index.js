@@ -16,6 +16,7 @@ import {
   regex,
 } from 'vee-validate/dist/rules.esm.js'
 import { validate as messages } from '@/i18n/lang/en'
+import { ValidationProvider } from 'vee-validate'
 
 const install = Vue => {
   const REGEX_CUSTOMER_FIELD = /^(?!\s)[0-9A-Za-z-\/\.,\s]+$/
@@ -86,6 +87,8 @@ const install = Vue => {
     inject: false,
     events: 'change|input|blur',
   })
+
+  Vue.component('ValidationProvider', ValidationProvider)
 }
 
 export default { install }

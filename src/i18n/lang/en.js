@@ -1,4 +1,5 @@
 import countries from '@umpirsky/country-list/data/en/country.json'
+import datepicker from 'vue2-datepicker/locale/en'
 
 export const messages = Object.assign({}, countries, {
   other_payment_method: 'Or use another payment method',
@@ -88,6 +89,8 @@ export const messages = Object.assign({}, countries, {
 
   or_pay_with_card: 'Or pay with card',
   use_other_card: 'Use other card',
+
+  datepicker,
 })
 
 export const validate = Object.assign(
