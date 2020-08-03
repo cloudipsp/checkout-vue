@@ -92,7 +92,7 @@ const options = {
   read_only: false,
   need_verify_code: false,
   verification_type: '',
-  cdn: 'https://pay.fondy.eu/icons/dist/svg/',
+  cdn: 'https://pay.fondy.eu/icons/dist/',
   tabs: {},
   ready: false,
   showModalMethods: false,

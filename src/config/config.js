@@ -3,6 +3,7 @@ import configMethods from '@/config/methods'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
+import presetGradient from '@/config/preset-gradient'
 
 const methods = configMethods
 const cardIcons = [
@@ -22,13 +23,6 @@ const css = ['bootstrap3', 'bootstrap4', 'foundation6']
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
 const theme = ['light', 'dark']
-const presetGradient = [
-  'gradient_indigo',
-  'gradient_grey_violet',
-  'gradient_gold_green',
-  'gradient_grey',
-  'gradient_gold',
-]
 const preset = [
   'fondy',
   'steel_blue',
@@ -121,22 +115,6 @@ function validatorCurrencyRequired() {
   }
 }
 
-function validatorCardImg() {
-  return [
-    { type: 'string' },
-    { pattern: /^url\(data:image/ },
-    {
-      validator(rule, value, callback, source) {
-        let errors = []
-        if (presetGradient.includes(source.preset) && !value) {
-          errors.push([rule.fullField, 'is required'].join(' '))
-        }
-        callback(errors)
-      },
-    },
-  ]
-}
-
 let i18n = {
   type: 'object',
   fields: {},
@@ -197,7 +175,6 @@ export default {
         fields: {
           type: { type: 'enum', enum: theme },
           preset: { type: 'enum', enum: preset },
-          card_img: validatorCardImg(),
         },
       },
       region: {

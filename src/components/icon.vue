@@ -40,7 +40,7 @@ export default {
     style() {
       if (this.skip) return {}
       return {
-        'background-image': `url(${this.cdn}${this.map[this.type] ||
+        'background-image': `url(${this.cdn}svg/${this.map[this.type] ||
           this.type}/${this.name}.svg)`,
       }
     },
