@@ -291,7 +291,7 @@ export default {
       } else if (model.inProgress()) {
         this.inProgress = true
         this.order = model.attr('order_data')
-        this.store.location('success')
+        this.store.location('success', this.order.order_status)
       }
     },
     locationPending() {

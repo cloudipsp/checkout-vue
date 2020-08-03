@@ -15,12 +15,15 @@ export default {
   mixins: [Resize],
   computed: {
     ...mapState(['isOnlyCard', 'showModalMethods']),
+    ...mapState('router', ['method', 'page']),
     show() {
       return !this.isOnlyCard && !this.showModalMethods && this.isTablet
     },
   },
   methods: {
     toggleModalMethods() {
+      if (this.page === 'success' && this.method === 'approved') return
+
       this.store.toggleModalMethods()
     },
   },

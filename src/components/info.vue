@@ -61,7 +61,8 @@ export default {
       return (
         (this.position === 'sidebar' &&
           (this.isTablet || this.region !== 'eu')) ||
-        this.position === 'success' ||
+        (this.position === 'success' &&
+          (this.isTablet || this.region === 'eu')) ||
         (this.position === 'center' && (this.isTablet || this.region === 'eu'))
       )
     },
