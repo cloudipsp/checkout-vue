@@ -34,7 +34,6 @@ const options = {
       type: 'light',
       preset: 'fondy',
     },
-    region: 'ua',
   },
   regular: {
     insert: false,

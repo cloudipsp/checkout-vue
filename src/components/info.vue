@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="f-info">
+  <div class="f-info">
     <div v-if="title" v-t="title" class="f-merchant-name" />
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
@@ -23,27 +23,20 @@
       </template>
       <span v-t="order_desc" />
     </f-modal-base>
-    <f-fee />
+    <f-price />
   </div>
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
-import FFee from '@/components/fee'
+import FPrice from '@/components/price'
 import Resize from '@/mixins/resize'
 
 export default {
   components: {
-    FFee,
+    FPrice,
   },
   mixins: [Resize],
-  props: {
-    position: {
-      type: String,
-      required: true,
-      validator: value => ['sidebar', 'center', 'success'].includes(value),
-    },
-  },
   data() {
     return {
       showMore: false,
@@ -51,20 +44,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('options', ['title', 'link', 'region']),
+    ...mapState('options', ['title', 'link']),
     ...mapState('params', ['order_desc']),
     order_desc_translation() {
       this.nextResize()
       return this.$t(this.order_desc)
-    },
-    show() {
-      return (
-        (this.position === 'sidebar' &&
-          (this.isTablet || this.region !== 'eu')) ||
-        (this.position === 'success' &&
-          (this.isTablet || this.region === 'eu')) ||
-        (this.position === 'center' && (this.isTablet || this.region === 'eu'))
-      )
     },
   },
   methods: {

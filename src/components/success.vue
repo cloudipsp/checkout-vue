@@ -6,8 +6,6 @@
       <div v-t="order.order_status" class="f-title" />
     </div>
 
-    <f-info position="success" />
-
     <div class="f-success-form-group">
       <div class="f-row f-mb-2">
         <div

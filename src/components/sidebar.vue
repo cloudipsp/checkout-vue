@@ -1,7 +1,7 @@
 <template>
   <div class="f-sidebar">
     <div class="f-sidebar-content f-container-sm">
-      <f-info position="sidebar" />
+      <f-info />
       <f-button-pay-wallet position="sidebar" />
       <f-menu />
       <f-fast-access />

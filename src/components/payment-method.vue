@@ -1,6 +1,6 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <f-info position="center" />
+    <f-price />
     <f-button-pay-wallet position="center" />
     <transition name="fade">
       <f-icons
@@ -25,6 +25,7 @@ import Banklinks_eu from '@/components/banklinks_eu'
 import Sepa from '@/components/sepa'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
+import FPrice from '@/components/price'
 
 export default {
   components: {
@@ -32,6 +33,7 @@ export default {
     Banklinks_eu,
     Sepa,
     FIcons,
+    FPrice,
   },
   computed: {
     ...mapState('router', ['method']),

@@ -50,7 +50,6 @@ Name                  | Type        | Default                 | Description     
 `default_country`     | String      |                         |                                                                                     |
 `countries`           | Array       |                         |                                                                                     |
 `lang`                | Boolean     | true                    |                                                                                     |
-`region`              | String      | 'ua'                    | support `ua`, `ru`, `eu`,                                                           |
 
 ### endpoint
 Name                  | Type        | Default                          | Description
