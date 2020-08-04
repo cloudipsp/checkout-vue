@@ -29,3 +29,22 @@
     }
   }
 }
+
+.f-tooltip-error {
+  .f-tooltip-inner {
+    color: $tooltip_error_color;
+  }
+}
+
+.f-tooltip-card {
+  .f-tooltip-inner {
+    padding: px-to-rem(8px) 0;
+    color: $tooltip_card_color;
+  }
+}
+
+.f-tooltip-cvv {
+  .f-tooltip-inner {
+    color: $tooltip_cvv_color;
+  }
+}

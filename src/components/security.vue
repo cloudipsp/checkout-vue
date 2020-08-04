@@ -32,13 +32,18 @@
         :show.sync="showTooltip"
         :target="() => $refs.security && $refs.security.$el"
       >
-        <div class="f-tooltip-security-icons">
-          <svg-verified-by-visa />
-          <svg-master-card-secure-code />
-          <svg-pci-dss />
+        <div>
+          <div class="f-tooltip-security-icons">
+            <svg-verified-by-visa />
+            <svg-master-card-secure-code />
+            <svg-pci-dss />
+          </div>
+          <!--eslint-disable vue/no-v-html-->
+          <div
+            class="f-tooltip-security-content"
+            v-html="$t('security_text')"
+          />
         </div>
-        <!--eslint-disable-next-line vue/no-v-html-->
-        <div class="f-tooltip-security-content" v-html="$t('security_text')" />
       </f-tooltip-default>
     </template>
   </div>

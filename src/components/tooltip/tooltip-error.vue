@@ -12,7 +12,8 @@ export default {
       return {
         triggers: 'focus',
         placement: 'bottom',
-        variant: 'error',
+        'custom-class': 'f-tooltip-error',
+        variant: 'light',
         ...this.$attrs,
       }
     },

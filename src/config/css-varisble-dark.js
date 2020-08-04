@@ -86,13 +86,12 @@ export default {
   label_focus_color: grey_2, //
   link_color: '&main', //
   tooltip_error_color: error, //
-  tooltip_error_bg: white, //
-  tooltip_error_shadow: '#b6b9bf', //
   tooltip_card_color: grey_2, //
-  tooltip_card_bg: white, //
-  tooltip_card_shadow: '#b6b9bf', //
-  tooltip_default_color: white, //
-  tooltip_default_bg: grey_9, //
+  tooltip_cvv_color: grey_3, //
+  tooltip_light_bg: white, //
+  tooltip_light_shadow: '#b6b9bf', //
+  tooltip_dark_color: white, //
+  tooltip_dark_bg: grey_9, //
   icon_color: '#797C7E',
   security_hover_color: grey_3, //
   close_color: white, //

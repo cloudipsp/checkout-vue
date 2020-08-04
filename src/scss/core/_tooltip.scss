@@ -117,15 +117,20 @@ $tooltip-arrow-height: px-to-rem(7px);
 }
 
 .f-tooltip-inner {
+  display: flex;
+  align-items: center;
   max-width: 300px;
   padding: px-to-rem(16px);
   font-family: $font-family-inter;
-  font-size: px-to-rem(14px);
   font-weight: 500;
   border-radius: $tooltip-border-radius;
+
+  .f-svg {
+    margin-right: px-to-rem(8px);
+  }
 }
 
-@mixin tooltip-variant($color, $bg) {
+@mixin tooltip-variant($bg) {
   // stylelint-disable-next-line selector-no-qualifying-type
   &.f-tooltip-top .f-tooltip-arrow::before {
     border-top-color: $bg;
@@ -147,35 +152,24 @@ $tooltip-arrow-height: px-to-rem(7px);
   }
 
   .f-tooltip-inner {
-    color: $color;
     background-color: $bg;
   }
 }
 
-.f-tooltip-error {
-  @include tooltip-variant($tooltip_error_color, $tooltip_error_bg);
+.f-tooltip-dark {
+  @include tooltip-variant($tooltip_dark_bg);
 
   .f-tooltip-inner {
-    font-size: px-to-rem(16px);
-    box-shadow: 0 8px 32px fade($tooltip_error_shadow, 50%);
-  }
-}
-
-.f-tooltip-card {
-  @include tooltip-variant($tooltip_card_color, $tooltip_card_bg);
-
-  .f-tooltip-inner {
-    padding: px-to-rem(8px) 0;
-    font-size: px-to-rem(16px);
-    box-shadow: 0 8px 32px fade($tooltip_card_shadow, 50%);
-  }
-}
-
-.f-tooltip-default {
-  @include tooltip-variant($tooltip_default_color, $tooltip_default_bg);
-
-  .f-tooltip-inner {
+    color: $tooltip_dark_color;
     border-radius: px-to-rem(6px);
     opacity: 0.95;
+  }
+}
+
+.f-tooltip-light {
+  @include tooltip-variant($tooltip_light_bg);
+
+  .f-tooltip-inner {
+    box-shadow: 0 8px 32px fade($tooltip_light_shadow, 50%);
   }
 }

@@ -86,13 +86,12 @@ export default {
   label_focus_color: grey_2,
   link_color: '&main',
   tooltip_error_color: error,
-  tooltip_error_bg: white,
-  tooltip_error_shadow: '#b6b9bf',
   tooltip_card_color: grey_2,
-  tooltip_card_bg: white,
-  tooltip_card_shadow: '#b6b9bf',
-  tooltip_default_color: white,
-  tooltip_default_bg: grey_9,
+  tooltip_cvv_color: grey_3,
+  tooltip_light_bg: white,
+  tooltip_light_shadow: '#b6b9bf',
+  tooltip_dark_color: white,
+  tooltip_dark_bg: grey_9,
   icon_color: ash_800,
   security_hover_color: grey_3,
   close_color: white,
@@ -108,14 +107,14 @@ export default {
   bank_select_bg: ash_300,
   bank_select_close_color: black,
   bank_select_close_hover_color: black,
-  datepicker_shadow: '#b6b9bf', //
-  datepicker_bg: white, //
-  datepicker_cell_active_color: grey_3, //
-  datepicker_cell_active_bg: ash_300, //
-  datepicker_cell_hover_color: grey_3, //
-  datepicker_cell_hover_bg: ash_500, //
-  datepicker_cell_disabled_color: ash_500, //
-  datepicker_cell_not_current_month_color: ash_500, //
-  datepicker_th_color: ash_700, //
-  datepicker_btn_text_color: black, //
+  datepicker_shadow: '#b6b9bf',
+  datepicker_bg: white,
+  datepicker_cell_active_color: grey_3,
+  datepicker_cell_active_bg: ash_300,
+  datepicker_cell_hover_color: grey_3,
+  datepicker_cell_hover_bg: ash_500,
+  datepicker_cell_disabled_color: ash_500,
+  datepicker_cell_not_current_month_color: ash_500,
+  datepicker_th_color: ash_700,
+  datepicker_btn_text_color: black,
 }

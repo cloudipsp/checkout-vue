@@ -57,11 +57,13 @@
     <slot />
     <f-tooltip-error
       v-if="showErrorTooltip"
-      :title="errors.first(name_)"
       :show.sync="showErrorTooltipFlag"
       :target="'#' + name_"
       under-sticky
-    />
+    >
+      <f-svg name="warning" />
+      {{ errors.first(name_) }}
+    </f-tooltip-error>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">
         {{ errors.first(name_) }}

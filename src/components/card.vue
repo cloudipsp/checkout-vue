@@ -96,10 +96,13 @@
           </label>
 
           <f-tooltip-default
+            custom-class="f-tooltip-cvv"
             placement="top"
             :target="() => $refs.label_cvv"
+            variant="light"
             under-sticky
           >
+            <f-svg name="info-circle" />
             <span v-t="{ path: 'cvv2_question', args: [digitsCvv] }" />
           </f-tooltip-default>
         </template>
