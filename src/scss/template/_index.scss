@@ -15,22 +15,17 @@
   margin: 0 auto;
 }
 
-.f-info {
-  min-height: 185px;
-  margin-bottom: px-to-rem(16px);
-}
-
 .f-merchant-name {
-  margin-bottom: px-to-rem(4px);
   font-family: $font-family-inter;
   font-weight: 500;
   color: $merchant_name_color;
 }
 
 .f-merchant-url {
-  margin-bottom: px-to-rem(16px);
+  margin-bottom: px-to-rem(12px);
 
   a {
+    font-weight: 500;
     color: $merchant_url_color;
 
     @include hover() {
@@ -40,7 +35,7 @@
 }
 
 .f-order-desc {
-  margin-bottom: px-to-rem(8px);
+  margin-bottom: px-to-rem(12px);
 }
 
 .f-order-desc-text {
@@ -59,10 +54,15 @@
   }
 }
 
+.f-price {
+  margin-bottom: px-to-rem(24px);
+}
+
 .f-amount {
   display: inline-block;
-  margin-right: px-to-rem(12px);
+  margin-right: px-to-rem(8px);
   font-size: px-to-rem(28px);
+  line-height: 1.2;
   color: $amount_color;
 }
 
@@ -78,11 +78,11 @@
   letter-spacing: px-to-rem(-0.3px);
 }
 
-$bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'><path d='M1 1L5.64645 5.64645C5.84171 5.84171 6.15829 5.84171 6.35355 5.64645L11 1' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'></path></svg>");
+$bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'><path d='M1 1L5.64645 5.64645C5.84171 5.84171 6.15829 5.84171 6.35355 5.64645L11 1' stroke='#9CA7B3' stroke-width='1.5' stroke-linecap='round'></path></svg>");
 .f-lang {
   display: inline-block;
   padding: px-to-rem(8px) px-to-rem(12px) px-to-rem(8px) px-to-rem(8px);
-  color: $main_color;
+  color: $btn_link_color;
   vertical-align: middle;
   background: $container_bg escape-svg($bg) no-repeat right center;
   border: none;
@@ -128,10 +128,12 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 }
 
 .f-title-security {
-  font-weight: 300;
-  color: $icon_color;
+  font-family: $font-family-inter;
+  font-size: px-to-rem(12px);
+  color: $security_color;
+  text-align: center;
   cursor: pointer;
-  transition: all ease-in-out 0.15s;
+  transition: color ease-in-out 0.15s;
 
   &:hover {
     color: $security_hover_color;
@@ -141,6 +143,11 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   .f-svg {
     margin-right: px-to-rem(10px);
   }
+}
+
+.f-svg-security {
+  color: $security_icon_color;
+  vertical-align: middle;
 }
 
 .f-loading {
