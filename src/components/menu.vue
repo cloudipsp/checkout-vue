@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     ...mapState('options', ['methods']),
-    ...mapState('router', ['method', 'page']),
+    ...mapState('router', ['method']),
     ...mapState(['options']),
     className() {
       return function(item) {
@@ -44,8 +44,6 @@ export default {
   },
   methods: {
     click(method) {
-      if (this.page === 'success' && this.method === 'approved') return
-
       this.store.location('payment-method', method)
     },
   },

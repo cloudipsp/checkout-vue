@@ -1,9 +1,8 @@
 <template>
   <div class="f-wrapper" :data-e2e-ready="ready" @scroll="$emit('scroll')">
-    <f-sidebar :in-progress="inProgress" />
+    <f-sidebar v-if="showSidebar" />
     <div ref="center" class="f-center">
       <div class="f-center-top" />
-      <f-button-methods />
       <!--payment-method success pending-->
       <component :is="page" :order="order" />
       <div v-if="loading">
@@ -16,7 +15,7 @@
         :duration.sync="duration3ds"
         @submit3ds="submit3ds"
       />
-      <f-security />
+      <f-security class="f-center-security" />
     </div>
   </div>
 </template>
@@ -28,7 +27,6 @@ import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
-import FButtonMethods from '@/components/button/button-methods'
 
 import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
@@ -54,7 +52,6 @@ export default {
     FModal3ds,
     FModalError,
     FSecurity,
-    FButtonMethods,
   },
   inject: ['$validator'],
   data() {
@@ -68,7 +65,7 @@ export default {
   },
   computed: {
     ...mapState(['loading']),
-    ...mapState('router', ['page']),
+    ...mapState('router', ['page', 'method']),
     ...mapState('params', ['token']),
 
     ...mapStateGetSet([
@@ -103,6 +100,9 @@ export default {
     ]),
     createdFormParams() {
       return this.token ? { token: this.token } : this.store.formParams()
+    },
+    showSidebar() {
+      return !(this.page === 'success' && this.method === 'approved')
     },
   },
   created() {

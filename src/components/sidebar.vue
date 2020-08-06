@@ -5,7 +5,7 @@
       <f-button-pay-wallet position="sidebar" />
       <f-menu />
       <f-fast-access />
-      <f-security />
+      <f-security class="f-sidebar-security" />
     </div>
   </div>
 </template>

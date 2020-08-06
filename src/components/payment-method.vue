@@ -1,6 +1,6 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <f-price />
+    <f-price v-if="isTablet" />
     <f-button-pay-wallet position="center" />
     <transition name="fade">
       <f-icons
@@ -26,6 +26,7 @@ import Sepa from '@/components/sepa'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
 import FPrice from '@/components/price'
+import Resize from '@/mixins/resize'
 
 export default {
   components: {
@@ -35,6 +36,7 @@ export default {
     FIcons,
     FPrice,
   },
+  mixins: [Resize],
   computed: {
     ...mapState('router', ['method']),
   },

@@ -5,7 +5,7 @@
       <svg-decline v-if="isDeclined" />
       <div v-t="order.order_status" class="f-title" />
     </div>
-
+    <f-info />
     <div class="f-success-form-group">
       <div class="f-row f-mb-2">
         <div

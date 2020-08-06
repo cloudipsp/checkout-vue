@@ -39,14 +39,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isOnlyCard']),
+    ...mapState(['isOnlyCard', 'error']),
     ...mapStateGetSet(['showModalMethods']),
-    ...mapState(['error']),
+    ...mapState('router', ['page', 'method']),
     className() {
-      return {
-        'f-only-card': this.isOnlyCard,
-        'f-open': this.showModalMethods,
-      }
+      return [
+        {
+          'f-only-card': this.isOnlyCard,
+          'f-open': this.showModalMethods,
+        },
+        `f-page-${this.page}-${this.method}`,
+      ]
     },
     style() {
       return {

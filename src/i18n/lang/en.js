@@ -6,7 +6,6 @@ export const messages = Object.assign({}, countries, {
   card: 'Payment by card',
   banklinks_eu: 'Internet banks',
 
-  back_to_payment_methods: 'Back to Payment Methods',
   fee: 'Commission:',
   see_more: 'See more',
 

@@ -94,6 +94,8 @@ export default {
   tooltip_dark_color: white, //
   tooltip_dark_bg: grey_9, //
   icon_color: '#797C7E',
+  security_icon_color: ash_600, //
+  security_color: ash_800, //
   security_hover_color: grey_3, //
   close_color: white, //
   modal_backdrop_bg: '#32353A', //

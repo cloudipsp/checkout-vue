@@ -2,7 +2,7 @@
   <div class="f-security">
     <template v-if="isMobile">
       <a href="#" class="f-title-security" @click.prevent="open">
-        <f-svg ref="security" name="security" size="lg" />
+        <f-svg ref="security" name="security" size="2x" />
         <span v-t="'security_title'" />
       </a>
       <f-modal-base v-model="showModal">
@@ -21,7 +21,7 @@
     </template>
     <template v-else>
       <a href="#" class="f-title-security" tabindex="-1" @click.prevent>
-        <f-svg ref="security" name="security" size="lg" tabindex="0" />
+        <f-svg ref="security" name="security" size="2x" tabindex="0" />
         <span
           v-t="'security_title'"
           @mouseenter="mouseenter"
