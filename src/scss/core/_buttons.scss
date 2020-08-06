@@ -217,3 +217,14 @@
 .f-btn-lg {
   padding: px-to-rem(16px) px-to-rem(32px);
 }
+
+.f-btn-link {
+  padding-right: 0;
+  padding-left: 0;
+  color: $btn_link_color;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
