@@ -101,6 +101,7 @@ export default {
   modal_backdrop_bg: '#32353A',
   modal_content_color: grey_3,
   modal_content_bg: white,
+  modal_title_color: black,
   modal_security_title_color: grey_3,
   modal_security_title_svg_color: grey_1,
   bank_item_color: '&main_color',

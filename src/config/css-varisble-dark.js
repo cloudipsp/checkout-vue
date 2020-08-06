@@ -24,22 +24,23 @@ export default {
   container_bg: grey_9,
   container_box_shadow: '#262a2d',
   sidebar_border: '#222528',
-  title_color: black, //
+  // page success title;
+  title_color: '&main_color',
   menu_item_color: '&main_color',
   menu_item_active_color: white,
   menu_item_active_bg: '#46494D',
   menu_item_border: ash_400, //
   menu_icon_color: '#6F7274',
-  menu_icon_active_color: '&menu_item_active_color',
+  menu_icon_active_color: black,
   menu_icons_shadow: '#46494D',
   menu_count_color: '#CECFD0',
   menu_count_active_color: '#D8D8D9',
   menu_count_bg: '#5A5D61',
   menu_count_active_bg: '#626468',
-  merchant_name_color: '#838688',
-  merchant_url_color: ash_800, //
+  merchant_name_color: white,
+  merchant_url_color: '#838688',
   order_desc_color: white,
-  order_desc_more_color: '&main', //
+  order_desc_more_color: '#CBCCCD',
   amount_color: white,
   currency_color: '#838688',
   card_shadow: '#000000',
@@ -49,9 +50,9 @@ export default {
   card_input_shadow: '#000000',
   card_border: '&main',
   card_border_width: '3px',
-  card_list_item_active_bg: '#eef0f2', //
-  card_list_number_color: black, //
-  card_list_expiry_date_color: grey_2, //
+  card_list_item_active_bg: '#eef0f2',
+  card_list_number_color: black,
+  card_list_expiry_date_color: grey_2,
   btn_success_color: white,
   btn_success_bg: '&main',
   btn_success_shadow: '#000000',
@@ -86,26 +87,27 @@ export default {
   label_hover_color: grey_2, //
   label_focus_color: grey_2, //
   link_color: '&main', //
-  tooltip_error_color: error, //
+  tooltip_error_color: error,
   tooltip_card_color: grey_2, //
   tooltip_cvv_color: grey_3, //
-  tooltip_light_bg: white, //
-  tooltip_light_shadow: '#b6b9bf', //
-  tooltip_dark_color: white, //
-  tooltip_dark_bg: grey_9, //
-  icon_color: '#797C7E',
-  security_icon_color: ash_600, //
-  security_color: ash_800, //
-  security_hover_color: grey_3, //
+  tooltip_light_bg: white,
+  tooltip_light_shadow: '#b6b9bf',
+  tooltip_dark_color: grey_2,
+  tooltip_dark_bg: white,
+  icon_color: '#A9B2BD',
+  security_icon_color: '#797C7E',
+  security_color: '#797C7E',
+  security_hover_color: '#CBCCCD',
   close_color: white, //
   modal_backdrop_bg: '#32353A', //
   modal_content_color: grey_3, //
-  modal_content_bg: white, //
+  modal_content_bg: white,
+  modal_title_color: black,
   modal_security_title_color: grey_3, //
   modal_security_title_svg_color: grey_1, //
   bank_item_color: '&main_color', //
   bank_item_hover_color: grey_4, //
-  bank_icon_shadow: '#CACFD6', //
+  bank_icon_shadow: '#313539',
   bank_view_icon_active_bg: ash_200, //
   bank_select_bg: ash_300, //
   bank_select_close_color: black, //

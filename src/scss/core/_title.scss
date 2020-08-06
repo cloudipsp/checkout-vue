@@ -1,8 +1,4 @@
 .f-title {
-  margin: 0;
-  margin-bottom: px-to-rem(32px);
-  font-size: px-to-rem(22px);
-  font-weight: 400;
+  @include title();
   color: $title_color;
-  text-align: center;
 }

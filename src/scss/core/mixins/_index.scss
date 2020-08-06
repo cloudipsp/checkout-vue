@@ -52,3 +52,11 @@
     background-color: inherit;
   }
 }
+
+@mixin title() {
+  margin: 0;
+  margin-bottom: px-to-rem(32px);
+  font-size: px-to-rem(22px);
+  font-weight: 400;
+  text-align: center;
+}

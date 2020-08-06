@@ -138,6 +138,10 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   &:hover {
     color: $security_hover_color;
     text-decoration: none;
+
+    .f-svg-security {
+      color: $security_hover_color;
+    }
   }
 
   .f-svg {
@@ -148,6 +152,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 .f-svg-security {
   color: $security_icon_color;
   vertical-align: middle;
+  transition: color ease-in-out 0.15s;
 }
 
 .f-loading {

@@ -28,7 +28,6 @@ export default {
       return {
         centered: true,
         hideFooter: true,
-        titleClass: 'f-title',
         ...this.$attrs,
       }
     },

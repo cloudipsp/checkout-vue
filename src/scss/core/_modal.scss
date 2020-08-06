@@ -126,7 +126,9 @@ html {
 
 // Title text within header
 .f-modal-title {
+  @include title();
   margin-bottom: 0;
+  color: $modal_title_color;
 
   svg {
     margin: px-to-rem(-16px) 0;
