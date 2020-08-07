@@ -8,6 +8,7 @@ import FTooltipBase from '@/components/tooltip/tooltip-base'
 import FTooltipError from '@/components/tooltip/tooltip-error'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FTooltipCard from '@/components/tooltip/tooltip-card'
+import FAlertBase from '@/components/alert/alert-base'
 import InputText from '@/components/input-text'
 import InputAmount from '@/components/input-amount'
 import InputHidden from '@/components/input-hidden'
@@ -35,6 +36,7 @@ const components = {
   FTooltipError,
   FTooltipDefault,
   FTooltipCard,
+  FAlertBase,
   InputText,
   InputAmount,
   InputHidden,
