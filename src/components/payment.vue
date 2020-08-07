@@ -16,6 +16,7 @@
         @submit3ds="submit3ds"
       />
       <f-security class="f-center-security" />
+      <f-alert-gdpr v-model="showGdprFrame" />
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@ import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
+import FAlertGdpr from '@/components/alert/alert-gdpr'
 
 import { sendRequest } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
@@ -52,6 +54,7 @@ export default {
     FModal3ds,
     FModalError,
     FSecurity,
+    FAlertGdpr,
   },
   inject: ['$validator'],
   data() {
@@ -61,6 +64,7 @@ export default {
       inProgress: false,
       show3ds: false,
       duration3ds: 0,
+      showGdprFrame: false,
     }
   },
   computed: {
@@ -233,6 +237,8 @@ export default {
       }
 
       this.store.setRecurringData(model.attr('order.recurring_data'))
+
+      this.showGdprFrame = model.attr('show_gdpr_frame')
 
       this.store.showError(
         model.attr('order.error_code'),

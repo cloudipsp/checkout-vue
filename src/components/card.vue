@@ -139,7 +139,7 @@
     <f-modal-base
       v-model="showModalCard"
       content-class="f-modal-content-card-list"
-      header-class="f-modal-header-card-list"
+      header-class="f-p-0"
       body-class="f-modal-body-card-list"
       :return-focus="returnFocus"
     >

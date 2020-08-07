@@ -89,6 +89,11 @@ export const messages = Object.assign({}, countries, {
   or_pay_with_card: 'Or pay with card',
   use_other_card: 'Use other card',
 
+  modal_gdpr_text: 'modal_gdpr_text',
+  alert_gdpr_text:
+    'We use cookies on this site to enhance your user experience.',
+  learn_more: 'Learn more',
+
   datepicker,
 })
 
