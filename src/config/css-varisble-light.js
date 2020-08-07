@@ -121,4 +121,6 @@ export default {
   datepicker_cell_not_current_month_color: ash_500,
   datepicker_th_color: ash_700,
   datepicker_btn_text_color: black,
+  alert_info_color: white,
+  alert_info_bg: grey_3,
 }

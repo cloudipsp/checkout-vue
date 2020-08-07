@@ -1,0 +1,37 @@
+.f-alert {
+  position: relative;
+  padding: px-to-rem(22px) px-to-rem(20px);
+  margin-bottom: px-to-rem(16px);
+  font-size: px-to-rem(18px);
+  font-weight: 300;
+  border-radius: px-to-rem(16px);
+
+  a {
+    font-weight: 500;
+  }
+}
+
+.f-alert-dismissible {
+  padding-right: px-to-rem(70px);
+
+  .f-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: px-to-rem(22px) px-to-rem(20px);
+    color: inherit;
+  }
+}
+
+@mixin alert-variant($background, $color) {
+  color: $color;
+  background-color: $background;
+
+  a {
+    color: $color;
+  }
+}
+
+.f-alert-info {
+  @include alert-variant($alert_info_bg, $alert_info_color);
+}
