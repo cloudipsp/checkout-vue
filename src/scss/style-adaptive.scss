@@ -341,3 +341,12 @@
     margin-right: 22px; // 328px
   }
 }
+
+.f-gdpr-frame {
+  @include media-breakpoint-up(xl) {
+    bottom: px-to-rem(20px);
+    max-width: 940px;
+    margin: 0 auto;
+    border-radius: px-to-rem(16px);
+  }
+}

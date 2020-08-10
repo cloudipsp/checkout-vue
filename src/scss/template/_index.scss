@@ -181,3 +181,13 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
     transform: translateY(7px);
   }
 }
+
+.f-gdpr-frame {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-fixed;
+  margin-bottom: 0;
+  border-radius: px-to-rem(0);
+}

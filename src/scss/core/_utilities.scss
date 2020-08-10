@@ -1,23 +1,28 @@
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $size, $length in $spacers {
     .f-#{$abbrev}-#{$size} {
-      #{$prop}: $length;
+      // stylelint-disable-next-line declaration-no-important
+      #{$prop}: $length !important;
     }
     .f-#{$abbrev}t-#{$size},
     .f-#{$abbrev}y-#{$size} {
-      #{$prop}-top: $length;
+      // stylelint-disable-next-line declaration-no-important
+      #{$prop}-top: $length !important;
     }
     .f-#{$abbrev}r-#{$size},
     .f-#{$abbrev}x-#{$size} {
-      #{$prop}-right: $length;
+      // stylelint-disable-next-line declaration-no-important
+      #{$prop}-right: $length !important;
     }
     .f-#{$abbrev}b-#{$size},
     .f-#{$abbrev}y-#{$size} {
-      #{$prop}-bottom: $length;
+      // stylelint-disable-next-line declaration-no-important
+      #{$prop}-bottom: $length !important;
     }
     .f-#{$abbrev}l-#{$size},
     .f-#{$abbrev}x-#{$size} {
-      #{$prop}-left: $length;
+      // stylelint-disable-next-line declaration-no-important
+      #{$prop}-left: $length !important;
     }
   }
 }
