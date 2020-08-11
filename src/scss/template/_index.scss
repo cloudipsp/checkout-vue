@@ -16,7 +16,6 @@
 }
 
 .f-merchant-name {
-  font-family: $font-family-inter;
   font-weight: 500;
   color: $merchant_name_color;
 }
@@ -45,7 +44,6 @@
 }
 
 .f-order-desc-more {
-  font-family: $font-family-inter;
   font-weight: 600;
   color: $order_desc_more_color;
 
@@ -128,7 +126,6 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 }
 
 .f-title-security {
-  font-family: $font-family-inter;
   font-size: px-to-rem(12px);
   color: $security_color;
   text-align: center;
@@ -170,7 +167,6 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   position: absolute;
   top: px-to-rem(17px);
   right: px-to-rem(12px);
-  font-family: $font-family-inter;
   font-size: px-to-rem(16px);
   font-weight: 500;
   color: $label_color;
