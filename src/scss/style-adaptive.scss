@@ -78,13 +78,10 @@
   @include media-breakpoint-up(lg) {
     display: flex;
     flex-wrap: wrap;
+    height: calc(100vh - #{$header-height});
   }
   @include media-breakpoint-up(xl) {
-    display: flex;
-    flex-wrap: wrap;
-    // TODO js
     height: calc(100% - #{$header-height});
-    overflow: auto;
   }
 }
 
@@ -92,50 +89,44 @@
   @include media-breakpoint-up(lg) {
     position: inherit;
     flex: 0 0 410px;
-    height: calc(100vh - #{$header-height});
-    padding: px-to-rem(24px) px-to-rem(40px) 0 px-to-rem(40px);
+    height: 100%;
     border-right: 2px solid $sidebar_border;
     transform: translateX(0);
-    @include sticky-top(calc(#{$header-height}));
   }
   @include media-breakpoint-up(xl) {
-    @include sticky-top();
     flex: 0 0 450px;
-    height: 100%;
-    padding: px-to-rem(24px) px-to-rem(60px) 0 px-to-rem(60px);
-    border-right: 2px solid $sidebar_border;
     border-radius: 0 0 0 px-to-rem(16px);
   }
 }
 
-.f-center-top {
+.f-sidebar-wrap {
   @include media-breakpoint-up(lg) {
-    height: px-to-rem(24px);
-    background-image: linear-gradient(
-      to bottom,
-      $container_bg,
-      fade($container_bg, 0)
-    );
-    @include sticky-top(calc(#{$header-height}));
+    padding: 0 px-to-rem(40px);
   }
   @include media-breakpoint-up(xl) {
-    @include sticky-top(0);
-    height: px-to-rem(20px);
+    padding: 0 px-to-rem(60px);
   }
 }
 
 .f-center {
-  @include media-breakpoint-up(md) {
-    padding: px-to-rem(24px) px-to-rem(40px) 0 px-to-rem(40px);
-  }
   @include media-breakpoint-up(lg) {
     flex: 1;
+  }
+}
+
+.f-center-wrap {
+  @include media-breakpoint-up(md) {
+    padding: 0 px-to-rem(40px);
+  }
+  @include media-breakpoint-up(lg) {
+    min-height: auto;
     padding: 0 px-to-rem(24px);
   }
-  @include media-breakpoint-up(xl) {
-    flex: 1;
-    min-height: inherit;
-    padding: px-to-rem(24px) px-to-rem(24px) 0;
+}
+
+.f-security {
+  @include media-breakpoint-up(lg) {
+    @include sticky-bottom();
   }
 }
 
@@ -149,6 +140,7 @@
   @include media-breakpoint-up(lg) {
     display: flex;
     justify-content: flex-end;
+    width: 90px;
     margin-left: auto;
   }
 }
