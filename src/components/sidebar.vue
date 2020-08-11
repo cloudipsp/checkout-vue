@@ -1,12 +1,15 @@
 <template>
   <div class="f-sidebar">
-    <div class="f-sidebar-content f-container-sm">
-      <f-info />
-      <f-button-pay-wallet position="sidebar" />
-      <f-menu />
-      <f-fast-access />
-      <f-security class="f-sidebar-security" />
-    </div>
+    <f-scrollbar-vertical wrap-class="f-sidebar-wrap">
+      <div class="f-sidebar-content f-container-sm">
+        <div class="f-top">&nbsp;</div>
+        <f-info />
+        <f-button-pay-wallet position="sidebar" />
+        <f-menu />
+        <f-fast-access />
+        <f-security class="f-sidebar-security" />
+      </div>
+    </f-scrollbar-vertical>
   </div>
 </template>
 
@@ -22,11 +25,6 @@ export default {
     FMenu,
     FSecurity,
     FInfo,
-  },
-  props: {
-    inProgress: {
-      type: Boolean,
-    },
   },
 }
 </script>

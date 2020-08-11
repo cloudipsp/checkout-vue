@@ -1,22 +1,24 @@
 <template>
-  <div class="f-wrapper" :data-e2e-ready="ready" @scroll="$emit('scroll')">
+  <div class="f-wrapper" :data-e2e-ready="ready">
     <f-sidebar v-if="showSidebar" />
     <div ref="center" class="f-center">
-      <div class="f-center-top" />
-      <!--payment-method success pending-->
-      <component :is="page" :order="order" />
-      <div v-if="loading">
-        <div class="f-loading" />
-        <div class="f-loading-i" />
-      </div>
-      <f-modal-error />
-      <f-modal-3ds
-        v-model="show3ds"
-        :duration.sync="duration3ds"
-        @submit3ds="submit3ds"
-      />
-      <f-security class="f-center-security" />
-      <f-alert-gdpr v-model="showGdprFrame" />
+      <f-scrollbar-vertical wrap-class="f-center-wrap">
+        <div class="f-top">&nbsp;</div>
+        <!--payment-method success pending-->
+        <component :is="page" :order="order" />
+        <div v-if="loading">
+          <div class="f-loading" />
+          <div class="f-loading-i" />
+        </div>
+        <f-modal-error />
+        <f-modal-3ds
+          v-model="show3ds"
+          :duration.sync="duration3ds"
+          @submit3ds="submit3ds"
+        />
+        <f-security class="f-center-security" />
+        <f-alert-gdpr v-model="showGdprFrame" />
+      </f-scrollbar-vertical>
     </div>
   </div>
 </template>
@@ -61,7 +63,6 @@ export default {
     return {
       timeoutId: 0,
       order: {},
-      inProgress: false,
       show3ds: false,
       duration3ds: 0,
       showGdprFrame: false,
@@ -292,10 +293,8 @@ export default {
         this.cvv2 = ''
         this.store.location('payment-method', 'card')
       } else if (model.inProgress() && model.waitForResponse()) {
-        this.inProgress = true
         this.locationPending()
       } else if (model.inProgress()) {
-        this.inProgress = true
         this.order = model.attr('order_data')
         this.store.location('success', this.order.order_status)
       }
