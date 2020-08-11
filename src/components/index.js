@@ -26,6 +26,7 @@ import FFormItem from '@/components/form/item'
 import FFormGroup from '@/components/form/group'
 import FFormItemInput from '@/components/form/item/input'
 import FFormItemDate from '@/components/form/item/date'
+import FScrollbarVertical from '@/components/scrollbar-vertical'
 
 const components = {
   FButtonPayWallet,
@@ -54,6 +55,7 @@ const components = {
   FFormGroup,
   FFormItemInput,
   FFormItemDate,
+  FScrollbarVertical,
 }
 
 const install = Vue => {
