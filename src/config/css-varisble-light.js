@@ -123,4 +123,5 @@ export default {
   datepicker_btn_text_color: black,
   alert_info_color: white,
   alert_info_bg: grey_3,
+  scrollbar_thumb_bg: grey_2,
 }

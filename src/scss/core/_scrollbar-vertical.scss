@@ -1,0 +1,36 @@
+.f-scrollbar {
+  height: 100%;
+
+  &:hover {
+    .f-scrollbar-track {
+      opacity: 1;
+    }
+  }
+}
+
+.f-scrollbar-wrap {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.f-scrollbar-track {
+  position: absolute;
+  top: px-to-rem(2px);
+  right: px-to-rem(2px);
+  bottom: px-to-rem(2px);
+  z-index: 1;
+  width: px-to-rem(6px);
+  border-radius: px-to-rem(4px);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.f-scrollbar-thumb {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  cursor: pointer;
+  background-color: fade($scrollbar_thumb_bg, 30%);
+  border-radius: inherit;
+}
