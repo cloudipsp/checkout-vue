@@ -95,7 +95,6 @@ import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
 
 export default {
-  inject: ['formRequest'],
   components: {
     FFieldsBank,
   },

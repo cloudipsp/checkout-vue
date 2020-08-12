@@ -46,6 +46,7 @@ export default {
   provide() {
     return {
       formRequest: this.formRequest,
+      submit: this.submit,
     }
   },
   components: {
@@ -137,13 +138,13 @@ export default {
   },
   methods: {
     submit() {
-      this.$validator.validateAll().then(isValid => {
+      return this.$validator.validateAll().then(isValid => {
         this.store.state.submit = true
         // this.errors.items this.fields this.errors.clear() this.errors.count()
 
         if (!isValid) return this.autoFocus()
 
-        this.formRequest()
+        return this.formRequest()
       })
     },
     formRequest(data) {
@@ -169,6 +170,8 @@ export default {
 
       this.location(model.instance(model.alt('order', model.data)))
       this.submit3dsSuccess(model)
+
+      return model
     },
     submitError(model) {
       this.$root.$emit('error', model)
@@ -337,6 +340,8 @@ export default {
       setTimeout(() => {
         $firstErrorField.focus()
       })
+
+      return Promise.reject()
     },
     submit3ds() {
       model3ds.submit3dsForm()

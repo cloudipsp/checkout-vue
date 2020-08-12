@@ -7,7 +7,12 @@
         :class="className(method)"
         @click.prevent="click(method)"
       >
-        <f-svg class="f-menu-icon" :name="icon[method]" size="lg" fw />
+        <f-svg
+          class="f-menu-icon"
+          :name="icon[method] || method"
+          size="lg"
+          fw
+        />
         <span v-t="method" />
         <f-icons class="f-menu-icons" :type="method" position="sidebar" />
       </a>
@@ -26,7 +31,6 @@ export default {
   data() {
     return {
       icon: {
-        card: 'card',
         sepa: 'local',
         banklinks_eu: 'bank',
       },

@@ -12,5 +12,8 @@
         <input-text name="iban" validate="required" />
       </div>
     </div>
+
+    <f-offer />
+    <f-button-pay />
   </div>
 </template>

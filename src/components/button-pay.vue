@@ -13,9 +13,10 @@
 <script>
 import { mapState } from '@/utils/store'
 export default {
-  inject: ['$validator'],
+  inject: ['$validator', 'submit'],
   computed: {
-    ...mapState(['css', 'submit']),
+    ...mapState({ isSubmit: 'submit' }),
+    ...mapState(['css']),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     ...mapState('css_variable', [
@@ -41,7 +42,7 @@ export default {
       ]
     },
     disabled() {
-      return !!this.errors.items.length && this.submit
+      return !!this.errors.items.length && this.isSubmit
     },
     fullAmount() {
       if (!this.amount) {
@@ -55,7 +56,13 @@ export default {
   },
   methods: {
     click() {
-      this.$root.$emit('submit')
+      this.submit()
+        .then(model => {
+          this.$emit('success', model)
+        })
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
   },
 }
