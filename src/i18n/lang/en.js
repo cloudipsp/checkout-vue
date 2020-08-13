@@ -5,6 +5,7 @@ export const messages = Object.assign({}, countries, {
   other_payment_method: 'Or use another payment method',
   card: 'Payment by card',
   banklinks_eu: 'Internet banks',
+  receipt: 'Receipt',
 
   fee: 'Commission:',
   see_more: 'See more',
@@ -93,6 +94,27 @@ export const messages = Object.assign({}, countries, {
   alert_gdpr_text:
     'We use cookies on this site to enhance your user experience.',
   learn_more: 'Learn more',
+
+  mfo_title: 'Реквізити для сплати рахунку № {0}',
+  ibox_title: 'Реквізити до сплати рахунку у системі iBox',
+  receiver: 'Отримувач платежу',
+  current_bill: 'Поточний рахунок',
+  usreou: 'Код ЄДРПОУ',
+  bank: 'Установа банку',
+  mfo: 'МФО Банку',
+  purpose: 'Призначення',
+  receipt_id: 'Номер замовлення',
+  end_date: 'Кiнцева дата платежу',
+  amount: 'Сума',
+  save_receipt: 'Зберегти квитанцію',
+  ibox_desc:
+    '<p>Ви можете знайти найближче відділення iBox за посиланням <a href="https://ibox.ua/ru/map" target="_blank">ibox.ua/ru/map</a></p>' +
+    '<h3>Важливо!</h3>' +
+    '<ul>' +
+    '<li>З детальною інструкцією ви можете ознайомитись на сайт <a href="https://ibox.ua/" target="_blank">ibox.ua</a>.</li>' +
+    '<li>Сплата повинна бути не пізніше кінцевої дати платежу.</li>' +
+    '<li>Сплатити замовлення можливо лише в системі iBox.</li>' +
+    '</ul>',
 
   datepicker,
 })

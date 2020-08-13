@@ -1,1 +1,1 @@
-export default ['card', 'trustly', 'sepa', 'banklinks_eu']
+export default ['card', 'trustly', 'sepa', 'banklinks_eu', 'receipt']

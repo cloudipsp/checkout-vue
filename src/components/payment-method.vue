@@ -13,7 +13,7 @@
       />
     </transition>
     <transition name="fade">
-      <!--card banklinks_eu sepa-->
+      <!--card banklinks_eu sepa receipt -->
       <component :is="method" :key="method" />
     </transition>
   </div>
@@ -23,6 +23,7 @@
 import Card from '@/components/card'
 import Banklinks_eu from '@/components/banklinks_eu'
 import Sepa from '@/components/sepa'
+import Receipt from '@/components/receipt'
 import FIcons from '@/components/icons'
 import { mapState } from '@/utils/store'
 import FPrice from '@/components/price'
@@ -33,6 +34,7 @@ export default {
     Card,
     Banklinks_eu,
     Sepa,
+    Receipt,
     FIcons,
     FPrice,
   },
