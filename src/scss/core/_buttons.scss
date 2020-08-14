@@ -44,13 +44,13 @@
     }
   }
 
-  //&:focus,
-  //&.focus {
-  //  box-shadow: 0 0 0 0.2rem fade($background, 50%);
-  //}
+  &:focus {
+    &::before {
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow, 60%);
+    }
+  }
 
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:not(:disabled):not(.disabled):active {
     color: $color-active;
 
     &::before {
@@ -70,7 +70,7 @@
   display: inline-block;
   padding: px-to-rem(10px) px-to-rem(32px);
   font-size: px-to-rem(18px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: px-to-rem(24px);
   text-align: center;
   background: none;
@@ -109,8 +109,11 @@
   }
 
   &:not(:disabled):not(.disabled):hover {
-    transition: transform 0.15s ease-in-out;
-    transform: translate3d(0, px-to-rem(-2px), 0);
+    transform: translateY(px-to-rem(-2px));
+  }
+
+  &:not(:disabled):not(.disabled):active {
+    transform: translateY(0);
   }
 
   &:focus,
@@ -195,7 +198,9 @@
 }
 
 .f-btn-secondary {
-  font-weight: 400;
+  font-size: px-to-rem(16px);
+  font-weight: 500;
+
   @include button-variant(
     $btn_secondary_bg,
     $btn_secondary_color,
@@ -207,6 +212,10 @@
     $btn_secondary_active_color,
     $btn_secondary_active_shadow
   );
+
+  &::before {
+    box-shadow: none;
+  }
 }
 
 .f-btn-block {
@@ -219,12 +228,17 @@
 }
 
 .f-btn-link {
-  padding-right: 0;
-  padding-left: 0;
-  color: $btn_link_color;
   text-align: left;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
   outline: none;
+}
+
+.f-btn-link-default {
+  color: $btn_link_color;
+}
+
+.f-btn-link-secondary {
+  color: $btn_link_secondary_color;
 }

@@ -67,6 +67,7 @@ export default {
   btn_disabled_color: ash_700, //
   btn_disabled_bg: ash_300, //
   btn_link_color: grey_1, //
+  btn_link_secondary_color: white, //
   input_bg: grey_9,
   input_color: white,
   input_border: '#5A5D61',
