@@ -178,12 +178,27 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   }
 }
 
-.f-gdpr-frame {
+.f-gdpr {
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: $zindex-fixed;
+  padding-bottom: px-to-rem(32px);
   margin-bottom: 0;
-  border-radius: px-to-rem(0);
+  border-radius: px-to-rem(12px) px-to-rem(12px) px-to-rem(0) px-to-rem(0);
+
+  .f-checkbox-label {
+    &::after {
+      border-color: #6a747e;
+    }
+  }
+}
+
+.f-gdpr-content {
+  line-height: px-to-rem(20px);
+}
+
+.f-gdpr-buttons {
+  text-align: center;
 }

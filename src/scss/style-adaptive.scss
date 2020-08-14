@@ -334,11 +334,58 @@
   }
 }
 
-.f-gdpr-frame {
-  @include media-breakpoint-up(xl) {
-    bottom: px-to-rem(20px);
+.f-gdpr {
+  @include media-breakpoint-up(md) {
+    right: px-to-rem(32px);
+    bottom: px-to-rem(32px);
+    left: px-to-rem(32px);
+    display: flex;
+    padding-bottom: px-to-rem(24px);
+    border-radius: px-to-rem(16px);
+  }
+
+  @include media-breakpoint-up(lg) {
     max-width: 940px;
     margin: 0 auto;
-    border-radius: px-to-rem(16px);
+  }
+
+  @include media-breakpoint-up(xl) {
+    align-items: center;
+  }
+}
+
+.f-gdpr-content {
+  @include media-breakpoint-up(md) {
+    flex-grow: 1;
+
+    .f-form-group:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.f-gdpr-buttons {
+  @include media-breakpoint-up(md) {
+    .f-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+
+      &:first-child {
+        margin-top: px-to-rem(-10px);
+        margin-bottom: px-to-rem(12px);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .f-btn {
+      display: inline-block;
+      width: auto;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
   }
 }
