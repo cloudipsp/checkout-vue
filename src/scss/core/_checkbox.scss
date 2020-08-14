@@ -1,25 +1,26 @@
-.f-checkbox {
-  position: absolute;
-  z-index: 1;
-  width: px-to-rem(20px);
-  opacity: 0;
+@mixin checkbox-variant(
+  $bg,
+  $border,
+  $enabled_bg,
+  $enabled_color,
+  $label_color
+) {
+  &:checked + .f-checkbox-label {
+    &::before {
+      background-color: $enabled_bg;
+    }
 
-  & + label {
-    position: relative;
-    padding: 0 0 0 px-to-rem(30px);
-    cursor: pointer;
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  + .f-checkbox-label {
+    color: $label_color;
 
     &::before {
-      position: absolute;
-      top: px-to-rem(1px);
-      left: 0;
-      width: px-to-rem(20px);
-      height: px-to-rem(20px);
-      content: '';
-      background-color: $input_bg;
-      border: 1.5px solid $checkbox_border;
-      border-radius: px-to-rem(4px);
-      transition: background-color ease-in-out 0.15s;
+      background-color: $bg;
+      border-color: $border;
 
       .f-has-error & {
         border-color: $input_error_border;
@@ -27,24 +28,19 @@
     }
 
     &::after {
-      position: absolute;
-      top: px-to-rem(6px);
-      left: px-to-rem(5px);
-      width: px-to-rem(10px);
-      height: px-to-rem(7px);
-      content: '';
-      background: transparent;
-      border: 2px solid $checkbox_enabled_color;
-      border-top: none;
-      border-right: none;
-      opacity: 0;
-      transform: rotate(-45deg);
+      border-color: $enabled_color;
     }
   }
+}
 
-  &:checked + label {
+.f-checkbox {
+  position: absolute;
+  z-index: 1;
+  width: px-to-rem(20px);
+  opacity: 0;
+
+  &:checked + .f-checkbox-label {
     &::before {
-      background-color: $checkbox_enabled_bg;
       border: none;
     }
 
@@ -52,4 +48,60 @@
       opacity: 1;
     }
   }
+}
+
+.f-checkbox-label {
+  position: relative;
+  padding: 0 0 0 px-to-rem(30px);
+  font-size: px-to-rem(16px);
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: px-to-rem(1px);
+    left: 0;
+    width: px-to-rem(20px);
+    height: px-to-rem(20px);
+    content: '';
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: px-to-rem(4px);
+    transition: background-color ease-in-out 0.15s;
+  }
+
+  &::after {
+    position: absolute;
+    top: px-to-rem(6px);
+    left: px-to-rem(5px);
+    width: px-to-rem(10px);
+    height: px-to-rem(7px);
+    content: '';
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-top: none;
+    border-right: none;
+    opacity: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+.f-checkbox-default {
+  @include checkbox-variant(
+    $input_bg,
+    $checkbox_default_border,
+    $checkbox_default_enabled_bg,
+    $checkbox_default_enabled_color,
+    $label_color
+  );
+}
+
+.f-checkbox-secondary {
+  @include checkbox-variant(
+    $input_bg,
+    $checkbox_secondary_border,
+    $checkbox_secondary_enabled_bg,
+    $checkbox_secondary_enabled_color,
+    $checkbox_secondary_label_color
+  );
 }

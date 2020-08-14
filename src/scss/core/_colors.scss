@@ -64,9 +64,15 @@ $input_focus_border: var(#{$prefix}input_focus_border);
 $input_error_color: var(#{$prefix}input_error_color);
 $input_error_border: var(#{$prefix}input_error_border);
 $input_prepend_color: var(#{$prefix}input_prepend_color);
-$checkbox_border: var(#{$prefix}checkbox_border);
-$checkbox_enabled_bg: var(#{$prefix}checkbox_enabled_bg);
-$checkbox_enabled_color: var(#{$prefix}checkbox_enabled_color);
+$checkbox_default_border: var(#{$prefix}checkbox_default_border);
+$checkbox_default_enabled_bg: var(#{$prefix}checkbox_default_enabled_bg);
+$checkbox_default_enabled_color: var(#{$prefix}checkbox_default_enabled_color);
+$checkbox_secondary_border: var(#{$prefix}checkbox_secondary_border);
+$checkbox_secondary_enabled_bg: var(#{$prefix}checkbox_default_enabled_color);
+$checkbox_secondary_enabled_color: var(
+  #{$prefix}checkbox_secondary_enabled_color
+);
+$checkbox_secondary_label_color: var(#{$prefix}checkbox_secondary_label_color);
 $switch_bg: var(#{$prefix}switch_bg);
 $switch_indicator_bg: var(#{$prefix}switch_indicator_bg);
 $switch_enabled_bg: var(#{$prefix}switch_enabled_bg);

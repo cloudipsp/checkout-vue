@@ -75,9 +75,13 @@ export default {
   input_error_color: error, //
   input_error_border: error, //
   input_prepend_color: white, //
-  checkbox_border: ash_800, //
-  checkbox_enabled_bg: grey_2, //
-  checkbox_enabled_color: white, //
+  checkbox_default_border: ash_800, //
+  checkbox_default_enabled_bg: grey_2, //
+  checkbox_default_enabled_color: white, //
+  checkbox_secondary_border: white, //
+  checkbox_secondary_enabled_bg: white, //
+  checkbox_secondary_enabled_color: '#67707C', //
+  checkbox_secondary_label_color: white, //
   switch_bg: ash_400, //
   switch_indicator_bg: white, //
   switch_enabled_bg: grey_2, //
