@@ -81,6 +81,7 @@ export default {
       'verification_type',
       'need_verify_code',
       'validate_expdate',
+      'region',
     ]),
     ...mapStateGetSet('options', [
       'email',
@@ -214,6 +215,7 @@ export default {
       this.title = this.title || model.attr('merchant.localized_name')
       this.logo_url = this.logo_url || model.attr('merchant.logo_url')
       this.offerta_url = this.offerta_url || model.attr('merchant.offerta_url')
+      this.region = model.attr('merchant.country').toLowerCase()
 
       if (
         !this.store.attr('user.options.methods.length') &&

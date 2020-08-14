@@ -20,6 +20,7 @@ import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import { methods } from '@/utils/compatibility'
+import { localStorage } from '@/utils/store'
 
 Vue.use(store)
 
@@ -247,6 +248,8 @@ export default {
   formParams() {
     // copy params
     let params = JSON.parse(JSON.stringify(this.state.params))
+
+    params.save_card = Boolean(localStorage.get('save_card'))
 
     params.custom = Object.fromEntries(
       Object.entries(params.custom).map(([name, value]) => {

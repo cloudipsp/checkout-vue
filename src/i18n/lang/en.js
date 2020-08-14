@@ -90,10 +90,21 @@ export const messages = Object.assign({}, countries, {
   or_pay_with_card: 'Or pay with card',
   use_other_card: 'Use other card',
 
-  modal_gdpr_text: 'modal_gdpr_text',
-  alert_gdpr_text:
+  gdpr_modal_text_ua: 'gdpr_modal_text_ua',
+  gdpr_modal_text_ru: 'gdpr_modal_text_ru',
+  gdpr_modal_text_eu: 'gdpr_modal_text_eu',
+  gdpr_alert_text_ua:
     'We use cookies on this site to enhance your user experience.',
+  gdpr_alert_text_ru:
+    'We use cookies on this site to enhance your user experience.',
+  gdpr_alert_text_eu:
+    'We use cookies on this site to enhance your user experience.',
+  gdpr_modal_safe: 'gdpr_modal_safe',
   learn_more: 'Learn more',
+  save_card: 'Save my card for future payments.',
+  its_safe: 'It’s safe',
+  close: 'Close',
+  accept: 'Accept',
 
   mfo_title: 'Реквізити для сплати рахунку № {0}',
   ibox_title: 'Реквізити до сплати рахунку у системі iBox',

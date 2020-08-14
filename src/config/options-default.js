@@ -66,6 +66,7 @@ const options = {
     custom: {},
     customer_data: {},
     order_id: '',
+    save_card: true,
   },
   template: {},
   messages: {},
@@ -98,6 +99,7 @@ const options = {
   fields: [],
   validate_expdate: true,
   isOnlyCard: true,
+  region: '',
 }
 
 configLocales.forEach(function(locale) {
