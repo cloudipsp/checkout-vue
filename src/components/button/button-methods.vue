@@ -1,11 +1,7 @@
 <template>
-  <button
-    class="f-btn-methods f-btn f-btn-link f-btn-block"
-    type="button"
-    @click="toggleModalMethods"
-  >
+  <f-btn-link class="f-btn-methods" @click="toggleModalMethods">
     <f-svg name="back" size="lg" />
-  </button>
+  </f-btn-link>
 </template>
 
 <script>
