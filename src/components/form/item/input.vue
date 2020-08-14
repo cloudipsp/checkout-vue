@@ -6,7 +6,7 @@
       :class="classInput"
       v-bind="attrs"
       v-on="$listeners"
-      @keyup="onEnter"
+      @keyup.enter="onEnter"
     />
   </ValidationProvider>
 </template>
