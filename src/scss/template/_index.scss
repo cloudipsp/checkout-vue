@@ -158,7 +158,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-modal-backdrop;
+  z-index: $zindex-loading;
   background-color: $container_bg;
   opacity: $modal-backdrop-opacity;
 }
