@@ -15,7 +15,7 @@
 <script>
 import Payment from '@/components/payment'
 import FHeader from '@/components/header'
-import { mapState, mapStateGetSet } from '@/utils/store'
+import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
 import loadCardImg from '@/store/card-img'
@@ -40,13 +40,13 @@ export default {
   },
   computed: {
     ...mapState(['isOnlyCard', 'error']),
-    ...mapStateGetSet(['showModalMethods']),
+    ...mapState('options', ['show_menu_first']),
     ...mapState('router', ['page', 'method']),
     className() {
       return [
         {
           'f-only-card': this.isOnlyCard,
-          'f-open': this.showModalMethods,
+          'f-open': this.show_menu_first,
         },
         `f-page-${this.page}-${this.method}`,
       ]
@@ -54,7 +54,7 @@ export default {
     style() {
       return {
         // .f-sidebar transform: translateX(0);
-        overflow: this.showModalMethods && this.isTablet ? 'hidden' : 'visible',
+        overflow: this.show_menu_first && this.isTablet ? 'hidden' : 'visible',
       }
     },
     show() {
@@ -73,11 +73,6 @@ export default {
       .catch(e => {
         if (e instanceof Error) console.log(e)
       })
-  },
-  methods: {
-    resize() {
-      this.showModalMethods = false
-    },
   },
 }
 </script>

@@ -50,6 +50,7 @@ Name                  | Type        | Default                 | Description     
 `default_country`     | String      |                         |                                                                                     |
 `countries`           | Array       |                         |                                                                                     |
 `lang`                | Boolean     | true                    |                                                                                     |
+`show_menu_first`     | Boolean     | true                    |                                                                                     |
 
 ### endpoint
 Name                  | Type        | Default                          | Description

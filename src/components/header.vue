@@ -27,17 +27,17 @@ export default {
   },
   mixins: [Resize],
   computed: {
-    ...mapState(['css', 'isOnlyCard', 'showModalMethods']),
+    ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['lang']),
     ...mapState('router', ['page']),
-    ...mapState('options', ['locales', 'logo_url']),
+    ...mapState('options', ['locales', 'logo_url', 'show_menu_first']),
     ...mapState('options', {
       optionsLang: 'lang',
     }),
     showBack() {
       return (
         !this.isOnlyCard &&
-        !this.showModalMethods &&
+        !this.show_menu_first &&
         this.isTablet &&
         this.page !== 'success'
       )

@@ -181,7 +181,8 @@ export default {
     let methods = this.state.options.methods
     let active_tab = this.state.options.active_tab
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
-    this.location('payment-method', method)
+    this.state.router.page = 'payment-method'
+    this.state.router.method = method
   },
   setCardNumber(card) {
     this.state.params.card_number = card.card_number || ''
@@ -211,7 +212,7 @@ export default {
       })
   },
   location(page, method, system) {
-    this.state.showModalMethods = false
+    this.state.options.show_menu_first = false
     this.state.router.page = page
     this.state.router.method = method
     this.state.router.system = system
@@ -287,7 +288,7 @@ export default {
     Object.assign(this.state.params.recurring_data, recurring_data)
     this.state.regular.insert = true
   },
-  toggleModalMethods() {
-    this.state.showModalMethods = !this.state.showModalMethods
+  toggleMenu() {
+    this.state.options.show_menu_first = !this.state.options.show_menu_first
   },
 }

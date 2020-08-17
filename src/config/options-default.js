@@ -34,6 +34,7 @@ const options = {
       type: 'light',
       preset: 'fondy',
     },
+    show_menu_first: true,
   },
   regular: {
     insert: false,
@@ -95,7 +96,6 @@ const options = {
   cdn: 'https://pay.fondy.eu/icons/dist/',
   tabs: {},
   ready: false,
-  showModalMethods: false,
   fields: [],
   validate_expdate: true,
   isOnlyCard: true,
