@@ -51,7 +51,6 @@ export default {
       if (!validate) return ''
 
       const map = {
-        reqired: 'required',
         min_length: 'min',
         max_length: 'max',
       }
@@ -60,7 +59,7 @@ export default {
         .map(item => {
           let [name] = item.split(':')
 
-          return item.replace(new RegExp(name), map[name])
+          return item.replace(name, map[name] || name)
         })
         .join('|')
     },
