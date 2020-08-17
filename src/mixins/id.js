@@ -5,6 +5,6 @@ export default {
     }
   },
   mounted() {
-    this.id = String(this._uid)
+    this.id = 'fondy-' + String(this._uid)
   },
 }
