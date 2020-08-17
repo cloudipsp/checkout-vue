@@ -1,10 +1,11 @@
 import isMounted from '@/mixins/is_mounted'
+import id from '@/mixins/id'
 import { isExist } from '@/utils/typeof'
 import { mapState } from '@/utils/store'
 
 export default {
   inheritAttrs: false,
-  mixins: [isMounted],
+  mixins: [isMounted, id],
   props: {
     value: {
       type: [String, Number, Boolean],
@@ -26,7 +27,7 @@ export default {
       return 'f-' + this.$attrs.name
     },
     _id() {
-      return this.$attrs.id || this._name
+      return this.$attrs.id || this.$attrs.name ? this._name : this.id
     },
     error() {
       if (!this.isMounted) return null
