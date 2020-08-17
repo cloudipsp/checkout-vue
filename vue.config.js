@@ -81,7 +81,14 @@ module.exports = {
             })
             .end()
           .plugin('banner')
-            .use(webpack.BannerPlugin, [argv.version + ' parent commithash ' + gitRevisionPlugin.commithash()])
+            .use(webpack.BannerPlugin, [[
+              (argv.version ?
+                `npm ${argv.version} parent` :
+                'build'),
+              'commithash',
+              gitRevisionPlugin.commithash(),
+              new Date().getTime(),
+            ].join(' ')])
             .end()
       })
       .when(process.env.NODE_ENV !== 'production', config => {
