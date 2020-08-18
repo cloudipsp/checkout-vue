@@ -186,6 +186,7 @@ export default {
       'verification_type',
       'cards',
       'css_variable',
+      'submited',
     ]),
     ...mapState('router', ['method']),
     ...mapState('options', ['email']),
@@ -210,7 +211,11 @@ export default {
       return {
         rules: {
           required: true,
-          ccard: !/\d{6}X/.test(this.card_number),
+          ccard:
+            !/\d{6}X/.test(this.card_number) &&
+            (this.card_number.length === 16 ||
+              this.card_number.length === 19 ||
+              this.submited),
         },
       }
     },
@@ -325,8 +330,11 @@ export default {
     },
     focus(name, value, next) {
       if (!this.fields[name]) return
-      this.$validator
-        .validate(name, value)
+      // wait for computed property validCardNumber
+      this.$nextTick()
+        .then(() => {
+          return this.$validator.validate(name, value)
+        })
         .then(valid => {
           if (!valid) return Promise.reject()
           return this.$nextTick()

@@ -82,6 +82,7 @@ export default {
       'need_verify_code',
       'validate_expdate',
       'region',
+      'submited',
     ]),
     ...mapStateGetSet('options', [
       'email',
@@ -139,14 +140,23 @@ export default {
   },
   methods: {
     submit() {
-      return this.$validator.validateAll().then(isValid => {
-        this.store.state.submit = true
-        // this.errors.items this.fields this.errors.clear() this.errors.count()
+      this.submited = true
+      return this.$nextTick()
+        .then(() => this.$validator.validateAll())
+        .then(isValid => {
+          this.store.state.submit = true
+          // this.errors.items this.fields this.errors.clear() this.errors.count()
 
-        if (!isValid) return this.autoFocus()
+          if (!isValid) return this.autoFocus()
 
-        return this.formRequest()
-      })
+          return this.formRequest()
+        })
+        .finally(() => {
+          this.submited = false
+        })
+        .catch(e => {
+          if (e instanceof Error) console.log(e)
+        })
     },
     formRequest(data) {
       if (this.loading) return
