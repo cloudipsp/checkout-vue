@@ -11,6 +11,7 @@
 
 .f-container-sm,
 .f-payment-method-card {
+  width: 100%;
   max-width: 280px;
   margin: 0 auto;
 }
@@ -86,6 +87,9 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   border: none;
   // stylelint-disable-next-line property-no-vendor-prefix
   -webkit-appearance: none;
+  &::-ms-expand {
+    display: none;
+  }
 
   &:focus {
     outline: none;

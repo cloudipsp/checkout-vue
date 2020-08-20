@@ -25,6 +25,7 @@
   flex: 0 0 50%;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 50%;
   height: px-to-rem(74px);
   padding: px-to-rem(24px) 0 0 px-to-rem(20px);
 }
@@ -34,6 +35,7 @@
   flex: 0 0 50%;
   align-items: center;
   justify-content: flex-end;
+  max-width: 50%;
   padding: px-to-rem(24px) px-to-rem(20px) 0 0;
 }
 

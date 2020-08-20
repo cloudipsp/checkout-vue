@@ -118,6 +118,7 @@ $tooltip-arrow-height: px-to-rem(7px);
 
 .f-tooltip-inner {
   display: flex;
+  width: 100%;
   max-width: 300px;
   padding: px-to-rem(16px);
   font-weight: 500;
