@@ -5,7 +5,7 @@
       class="f-switch"
       type="checkbox"
       :checked="value"
-      @input="input"
+      @change="input"
     />
     <label v-t="label" :class="[css.cl, 'f-switch-label']" :for="id" />
   </div>
@@ -13,7 +13,10 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import id from '@/mixins/id'
+
 export default {
+  mixins: [id],
   props: {
     label: {
       type: String,
@@ -23,16 +26,8 @@ export default {
       type: Boolean,
     },
   },
-  data() {
-    return {
-      id: null,
-    }
-  },
   computed: {
     ...mapState(['css']),
-  },
-  mounted() {
-    this.id = this._uid
   },
   methods: {
     input($event) {

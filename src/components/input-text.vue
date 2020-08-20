@@ -35,7 +35,6 @@
       ref="input"
       v-model="params[field_]"
       v-validate="validate"
-      :value="params[field_]"
       :data-vv-as="label_"
       :data-vv-name="name_"
       :type="type"

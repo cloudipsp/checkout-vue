@@ -14,7 +14,7 @@
       :readonly="readonly"
       :disabled="readonly"
       :autocomplete="autocomplete"
-      @input="input"
+      @change="input"
       @focus="focus"
       @blur="blur"
     >
