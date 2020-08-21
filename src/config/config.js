@@ -164,7 +164,10 @@ export default {
       },
       fee: { type: 'boolean' },
       active_tab: { type: 'enum', enum: methods },
-      logo_url: { type: 'url' },
+      logo_url: {
+        type: 'string',
+        pattern: /^(http(s)?:\/\/|data:image\/\w+?;base64,)/,
+      },
       offerta_url: { type: 'url' },
       cancel: { type: 'boolean' },
       default_country: { type: 'enum', enum: configCountries },
