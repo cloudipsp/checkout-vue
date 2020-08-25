@@ -143,13 +143,11 @@
       130deg,
       custom($btn_success_bg, 30%, -10%) 11%,
       custom($btn_success_bg, 20%, -30%) 22%,
-      32%,
+      custom($btn_success_bg, 20%, -30%) 32%,
       custom($btn_success_bg, 30%, -30%) 33%,
-      44%,
       custom($btn_success_bg, 20%, -50%) 55%,
-      65%,
+      custom($btn_success_bg, 20%, -50%) 65%,
       custom($btn_success_bg, 30%, -50%) 66%,
-      77%,
       custom($btn_success_bg, 20%, -70%) 88%
     );
     background-position: 0 0;
