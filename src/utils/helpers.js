@@ -149,3 +149,10 @@ export const sort = (arr, field, reverse) => {
 
 export const isMobile = window.matchMedia('only screen and (max-width: 768px)')
   .matches
+
+export const loadStyle = css => {
+  const style = document.createElement('style')
+  style.type = 'text/css'
+  style.appendChild(document.createTextNode(css))
+  document.head.appendChild(style)
+}

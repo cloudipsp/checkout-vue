@@ -1,4 +1,7 @@
 import cssVars from 'css-vars-ponyfill'
+import { loadStyle } from '@/utils/helpers'
+import calculator from '@/utils/calculator'
+import { hasCssVariableSupport } from '@/utils/env'
 
 function hexToHSL(H) {
   // Convert hex to RGB first
@@ -76,28 +79,37 @@ export default function(variables) {
       ])
     }, [])
   )
-  console.log(variables)
+
+  let css =
+    Object.entries(variables).reduce(
+      (acc, [n, v]) => (acc += `${n}:${getValue(v)};`),
+      hasCssVariableSupport ? '#f{' : ':root{'
+    ) + '}'
+
+  loadStyle(css)
+
   cssVars({
     include: 'link[href*="checkout.css"],style',
-    variables,
     onSuccess,
   })
 
   function onSuccess(cssText) {
     const reg = new RegExp(
-      `calc\\((var\\(${prefix}[\\w-]+\\))[ ]?(\\*)[ ]?([\\d\\.]+)\\)`,
+      `calc\\((var\\(${prefix}[\\w-]+\\))[ ]?([+-/*])[ ]?([\\d.+-]+)([%]?)\\)`,
       'g'
     )
-    return cssText.replace(reg, (match, ref, operation, y) => {
+    return cssText.replace(reg, (match, ref, operation, y, yUnit) => {
       // eslint-disable-next-line no-unused-vars
-      let [full, x, unit] = /([\d\.]+)(%)/.exec(getValue(ref))
-      return (x * y).toFixed(1) + unit
+      let [full, x, xUnit] = /([\d\\.]+)([%]?)/.exec(getValue(ref))
+      return calculator(operation, x, y).toFixed(1) + (xUnit || yUnit)
     })
   }
 
   function getValue(value) {
-    const isVariableRef = /var\((--[\w-]+)\)/
-    return value.replace(isVariableRef, (match, prop) =>
+    const isVariableRef = /var\(--[\w-]+\)/
+    const regexp = /var\((--[\w-]+)\)/g
+    if (!isVariableRef.test(value)) return value
+    return value.replace(regexp, (match, prop) =>
       isVariableRef.test(variables[prop])
         ? getValue(variables[prop])
         : variables[prop]
