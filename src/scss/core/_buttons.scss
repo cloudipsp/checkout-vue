@@ -17,12 +17,12 @@
   $background,
   $color,
   $shadow,
-  $background-hover: darken($background, 20%),
-  $color-hover: $color,
-  $shadow-hover: $shadow,
-  $background-active: darken($background, 40%),
-  $color-active: $color,
-  $shadow-active: $shadow
+  $background-hover,
+  $color-hover,
+  $shadow-hover,
+  $background-active,
+  $color-active,
+  $shadow-active
 ) {
   color: $color;
 
@@ -57,6 +57,22 @@
       box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-active, 60%);
     }
 
+    &::after {
+      background: $background-active;
+    }
+  }
+
+  @include disabled();
+}
+
+@mixin button-bg-lighten($background-hover, $background-active) {
+  &:hover {
+    &::after {
+      background: $background-hover;
+    }
+  }
+
+  &:not(:disabled):not(.disabled):active {
     &::after {
       background: $background-active;
     }
@@ -130,7 +146,20 @@
   @include button-variant(
     $btn_success_bg,
     $btn_success_color,
+    $btn_success_shadow,
+    darken($btn_success_bg, 20%),
+    $btn_success_color,
+    $btn_success_shadow,
+    darken($btn_success_bg, 40%),
+    $btn_success_color,
     $btn_success_shadow
+  );
+}
+
+.f-btn-success-bg-lighten {
+  @include button-bg-lighten(
+    lighten($btn_success_bg, 20%),
+    lighten($btn_success_bg, 40%)
   );
 }
 

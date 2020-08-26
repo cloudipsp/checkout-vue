@@ -39,6 +39,15 @@
   box-shadow: $card_shadow_custom;
 }
 
+.f-card-bg-lighten {
+  background: linear-gradient(
+    180deg,
+    custom($card_bg, +6%, +16%) 0%,
+    custom($card_bg, +0%, +8%) 35%,
+    $card_bg 100%
+  );
+}
+
 .f-card-img {
   background: $card_img no-repeat 0 0 / 100% 100%;
 }
