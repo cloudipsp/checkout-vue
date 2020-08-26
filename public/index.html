@@ -368,6 +368,35 @@
               },
             },
           },
+          receipt: {
+            options: {
+              methods: ['card', 'receipt', 'sepa'],
+              api_domain: 'api.dev.fondy.eu',
+              link: 'https://fondy.eu',
+              offerta_url:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+            },
+            params: {
+              currency: 'UAH',
+              merchant_id: 900231,
+              amount: 500,
+              order_desc: 'order_desc',
+            },
+          },
+          preset: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              theme: {
+                preset: 'steel_blue' // обнулить css переменные
+              },
+            },
+            params: {
+              token: 'd1a9c7d64110c34e3d204a043398d785ab7a8d6c'
+            },
+            css_variable: {
+              main: '#080043', // обязательный
+            }
+          }
         }
 
         var app = render('dark')

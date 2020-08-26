@@ -22,6 +22,7 @@ export default {
     ...mapState('css_variable', [
       'btn_success_gradient_enable',
       'btn_success_gradient_custom',
+      'btn_success_bg_lighten',
     ]),
     className() {
       return [
@@ -38,6 +39,7 @@ export default {
           'f-btn-gradient-custom':
             this.btn_success_gradient_custom &&
             !this.btn_success_gradient_enable,
+          'f-btn-success-bg-lighten': this.btn_success_bg_lighten,
         },
       ]
     },

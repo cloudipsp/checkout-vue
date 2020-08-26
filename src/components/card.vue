@@ -191,6 +191,7 @@ export default {
     ...mapState('router', ['method']),
     ...mapState('options', ['email']),
     ...mapState('params', ['card_number', 'code', 'token']),
+    ...mapState('css_variable', ['card_bg_lighten']),
     readonly() {
       return this.read_only || this.need_verify_code
     },
@@ -261,6 +262,7 @@ export default {
           'f-card-gradient-custom':
             this.css_variable.card_gradient_custom &&
             !this.css_variable.card_img,
+          'f-card-bg-lighten': this.card_bg_lighten,
         },
       ]
     },

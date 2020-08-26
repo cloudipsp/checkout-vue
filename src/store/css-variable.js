@@ -49,9 +49,9 @@ function hexToHSL(H) {
 
 const prefix = '--fondy-'
 
-export default function(variables) {
-  variables = Object.fromEntries(
-    Object.entries(variables).reduce((acc, [n, v]) => {
+export default function(variablesLink) {
+  let variables = Object.fromEntries(
+    Object.entries(variablesLink).reduce((acc, [n, v]) => {
       let name = `${prefix}${n}`
 
       if (!/^[#&]/.test(v)) return acc.concat([[name, v]])
@@ -79,6 +79,10 @@ export default function(variables) {
       ])
     }, [])
   )
+
+  variablesLink['btn_success_bg_lighten'] =
+    getValueNumber('btn_success_bg-l') < 30
+  variablesLink['card_bg_lighten'] = getValueNumber('card_bg-l') < 30
 
   let css =
     Object.entries(variables).reduce(
@@ -114,5 +118,9 @@ export default function(variables) {
         ? getValue(variables[prop])
         : variables[prop]
     )
+  }
+
+  function getValueNumber(value) {
+    return Number(getValue(`var(${prefix}${value})`).replace('%', ''))
   }
 }
