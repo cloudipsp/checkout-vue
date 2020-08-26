@@ -6,7 +6,6 @@ import configPaymentSystems from '@/config/payment-systems'
 import notSet from '@/config/not-set'
 import {
   getCookie,
-  setCookie,
   deepMerge,
   validate,
   sendRequest,
@@ -20,6 +19,7 @@ import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
+import { sessionStorage } from '@/utils/store'
 
 Vue.use(store)
 
@@ -129,9 +129,15 @@ export default {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.full_screen) {
-      lang = getCookie('lang') || this.state.params.lang
+      lang =
+        sessionStorage.get('lang') ||
+        getCookie('lang') ||
+        this.state.params.lang
     } else {
-      lang = this.state.params.lang || getCookie('lang')
+      lang =
+        this.state.params.lang ||
+        sessionStorage.get('lang') ||
+        getCookie('lang')
     }
     if (locales.length) {
       if (locales.indexOf(lang) < 0) {
@@ -178,10 +184,7 @@ export default {
     loadLanguageAsync(lang).then(() => {
       this.state.params.lang = lang
 
-      setCookie('lang', lang, {
-        path: '/',
-        expires: 3600,
-      })
+      sessionStorage.set('lang', lang)
     })
   },
   initLocation() {
