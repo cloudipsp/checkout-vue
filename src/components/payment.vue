@@ -6,10 +6,7 @@
         <div class="f-top">&nbsp;</div>
         <!--payment-method success pending-->
         <component :is="page" :order="order" />
-        <div v-if="loading">
-          <div class="f-loading" />
-          <div class="f-loading-i" />
-        </div>
+        <f-loading v-if="loading" backdrop />
         <f-modal-error />
         <f-modal-3ds
           v-model="show3ds"
