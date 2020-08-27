@@ -44,10 +44,6 @@ export default {
     },
     show() {
       return this.init
-        ? this.position === 'center'
-          ? this.isOnlyCard && this.isTablet
-          : true
-        : false
     },
     color() {
       let result = ''

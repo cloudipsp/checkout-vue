@@ -81,6 +81,7 @@ export default {
     this.initReferrer()
     this.initCssDevice()
     this.initOnlyCard()
+    this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
   },
   optionsFormat(options) {
@@ -150,6 +151,10 @@ export default {
     this.state.isOnlyCard =
       this.state.options.methods.length === 1 &&
       this.state.options.methods[0] === 'card'
+  },
+  initShowMenuFirst() {
+    this.state.options.show_menu_first =
+      this.state.options.show_menu_first && !this.state.isOnlyCard
   },
   setButtonParams(options) {
     deepMerge(this.state, options)

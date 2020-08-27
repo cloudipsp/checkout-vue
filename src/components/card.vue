@@ -1,5 +1,20 @@
 <template>
   <div>
+    <template v-if="isTablet && isOnlyCard">
+      <f-info />
+      <f-button-pay-wallet position="center" />
+      <f-icons
+        class="f-mb-3"
+        title="or_pay_with_card"
+        :type="method"
+        :count="5"
+        under-sticky
+        position="center"
+      />
+    </template>
+    <template v-if="isTablet && !isOnlyCard">
+      <f-price />
+    </template>
     <div class="f-card">
       <div class="f-card-shadow" />
       <div :class="classCardBg" />
@@ -157,12 +172,16 @@ import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
 import getCardBrand from '@/utils/card-brand'
+import FIcons from '@/components/icons'
+import FPrice from '@/components/price'
 
 export default {
   inject: ['$validator'],
   components: {
     FRegular,
     FCardList,
+    FIcons,
+    FPrice,
   },
   mixins: [Resize, timeout],
   data() {
@@ -187,6 +206,7 @@ export default {
       'cards',
       'css_variable',
       'submited',
+      'isOnlyCard',
     ]),
     ...mapState('router', ['method']),
     ...mapState('options', ['email']),

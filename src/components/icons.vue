@@ -81,10 +81,6 @@ export default {
     },
     show() {
       return this.list.length
-        ? this.position === 'center'
-          ? this.isOnlyCard && this.isTablet
-          : true
-        : false
     },
     showCount() {
       return this.list.length > this.count
