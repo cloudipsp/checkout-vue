@@ -18,7 +18,7 @@
       </input-checkbox>
     </div>
     <div class="f-gdpr-buttons">
-      <f-btn-link v-t="'close'" variant="secondary" @click="close" />
+      <f-button-link v-t="'close'" variant="secondary" @click="close" />
       <button class="f-btn f-btn-secondary" type="button" @click="accept">
         <span v-t="'accept'" />
       </button>

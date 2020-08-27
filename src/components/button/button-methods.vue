@@ -1,7 +1,7 @@
 <template>
-  <f-btn-link class="f-btn-methods" @click="toggleMenu">
+  <f-button-link class="f-btn-methods" @click="toggleMenu">
     <f-svg name="back" size="lg" />
-  </f-btn-link>
+  </f-button-link>
 </template>
 
 <script>
