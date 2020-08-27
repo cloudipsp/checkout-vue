@@ -20,7 +20,7 @@ import FInfo from '@/components/info'
 import FCustomerFields from '@/components/customer-fields'
 import FFields from '@/components/fields'
 import FOffer from '@/components/offer'
-import FButtonPay from '@/components/button-pay'
+import FButtonPay from '@/components/button/button-pay'
 import FButtonClose from '@/components/button/button-close'
 import FFormItem from '@/components/form/item'
 import FFormGroup from '@/components/form/group'
@@ -28,6 +28,7 @@ import FFormItemInput from '@/components/form/item/input'
 import FFormItemDate from '@/components/form/item/date'
 import FScrollbarVertical from '@/components/scrollbar-vertical'
 import FButtonLink from '@/components/button/button-link'
+import FButton from '@/components/button/button'
 
 const components = {
   FButtonPayWallet,
@@ -58,6 +59,7 @@ const components = {
   FFormItemDate,
   FScrollbarVertical,
   FButtonLink,
+  FButton,
 }
 
 const install = Vue => {

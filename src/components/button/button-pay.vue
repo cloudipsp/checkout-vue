@@ -1,13 +1,13 @@
 <template>
-  <button
+  <f-button
     v-if="show"
-    type="button"
-    :class="className"
+    class="f-button-pay"
     :disabled="disabled"
+    size="lg"
+    block
+    :text="{ path: 'pay', args: args }"
     @click="click"
-  >
-    <span v-t="{ path: 'pay', args: args }" />
-  </button>
+  />
 </template>
 
 <script>
@@ -16,33 +16,8 @@ export default {
   inject: ['$validator', 'submit'],
   computed: {
     ...mapState({ isSubmit: 'submit' }),
-    ...mapState(['css']),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
-    ...mapState('css_variable', [
-      'btn_success_gradient_enable',
-      'btn_success_gradient_custom',
-      'btn_success_bg_lighten',
-    ]),
-    className() {
-      return [
-        this.css.btn,
-        this.css.bs,
-        this.css.btnLg,
-        'f-btn-block',
-        this.css.submit,
-        'f-button-pay',
-        {
-          'f-btn-gradient':
-            this.btn_success_gradient_enable &&
-            !this.btn_success_gradient_custom,
-          'f-btn-gradient-custom':
-            this.btn_success_gradient_custom &&
-            !this.btn_success_gradient_enable,
-          'f-btn-success-bg-lighten': this.btn_success_bg_lighten,
-        },
-      ]
-    },
     disabled() {
       return !!this.errors.items.length && this.isSubmit
     },
