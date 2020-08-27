@@ -50,7 +50,7 @@
     }
   }
 
-  &:not(:disabled):not(.disabled):active {
+  &:active {
     color: $color-active;
 
     &::before {
@@ -72,7 +72,7 @@
     }
   }
 
-  &:not(:disabled):not(.disabled):active {
+  &:active {
     &::after {
       background: $background-active;
     }
@@ -124,16 +124,16 @@
     transition: all ease-in-out 0.15s;
   }
 
-  &:not(:disabled):not(.disabled):hover {
+  &:hover {
+    text-decoration: none;
     transform: translateY(px-to-rem(-2px));
   }
 
-  &:not(:disabled):not(.disabled):active {
+  &:active {
     transform: translateY(0);
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     outline: 0;
   }
 
@@ -163,11 +163,10 @@
   );
 }
 
-.f-btn-gradient {
+.f-btn-success-gradient {
   &::after,
   &:hover::after,
-  &:not(:disabled):not(.disabled):active::after,
-  &:not(:disabled):not(.disabled).active::after {
+  &:active::after {
     background: linear-gradient(
       130deg,
       custom($btn_success_bg, 30%, -10%) 11%,
@@ -189,8 +188,7 @@
     }
   }
 
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:active {
     &::after {
       background-position: 100% 100%;
     }
@@ -199,11 +197,10 @@
   @include disabled();
 }
 
-.f-btn-gradient-custom {
+.f-btn-success-gradient-custom {
   &::after,
   &:hover::after,
-  &:not(:disabled):not(.disabled):active::after,
-  &:not(:disabled):not(.disabled).active::after {
+  &:active::after {
     background: $btn_success_gradient_custom;
     background-size: 120% 100%;
   }
@@ -214,8 +211,7 @@
     }
   }
 
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:active {
     &::after {
       background-position-x: 100%;
     }
