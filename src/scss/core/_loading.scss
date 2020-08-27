@@ -1,0 +1,42 @@
+.f-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-loading-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-loading;
+}
+
+.f-loading-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $container_bg;
+  opacity: $modal-backdrop-opacity;
+}
+
+.f-loading-loader {
+  width: px-to-rem(64px);
+  height: px-to-rem(64px);
+  border: px-to-rem(3px) solid $input_border;
+  border-top: px-to-rem(3px) solid $main;
+  border-radius: 50%;
+  animation: f-loading 2s linear infinite;
+}
+
+@keyframes f-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
