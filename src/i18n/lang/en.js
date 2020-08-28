@@ -118,14 +118,14 @@ export const messages = Object.assign({}, countries, {
   end_date: 'Кiнцева дата платежу',
   amount: 'Сума',
   save_receipt: 'Зберегти квитанцію',
+  save_qr_code: 'Зберегти на смартфон',
   ibox_desc:
-    '<p>Ви можете знайти найближче відділення iBox за посиланням <a href="https://ibox.ua/ru/map" target="_blank">ibox.ua/ru/map</a></p>' +
-    '<h3>Важливо!</h3>' +
-    '<ul>' +
-    '<li>З детальною інструкцією ви можете ознайомитись на сайт <a href="https://ibox.ua/" target="_blank">ibox.ua</a>.</li>' +
-    '<li>Сплата повинна бути не пізніше кінцевої дати платежу.</li>' +
-    '<li>Сплатити замовлення можливо лише в системі iBox.</li>' +
-    '</ul>',
+    '<p>Ви можете знайти найближче відділення iBox за посиланням <a href="https://ibox.ua/ru/map" target="_blank">ibox.ua/ru/map</a></p>',
+  ibox_info:
+    '<p>З детальною інструкцією ви можете ознайомитись на сайт <a href="https://ibox.ua/" target="_blank">ibox.ua</a>.</p>' +
+    '<p>Сплата повинна бути не пізніше кінцевої дати платежу.</p>' +
+    '<p>Сплатити замовлення можливо лише в системі iBox.</p>',
+  qr_code_text: 'Відскануйте цей код, щоб зберегти квитанцію на ваш смартфон',
 
   datepicker,
 })

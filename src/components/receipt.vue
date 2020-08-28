@@ -2,92 +2,147 @@
   <div class="f-receipt">
     <span v-t />
     <transition name="fade">
-      <div v-if="!model">
-        тут может быть иконка квитанции
-
-        <f-offer />
-        <f-button-pay @success="success" />
-      </div>
-    </transition>
-    <transition name="fade">
       <div v-if="model">
-        <img :src="qrCode" />
         <div
           v-if="model.send_data.mfo"
           v-t="{ path: 'mfo_title', args: [model.send_data.receipt_orig] }"
-          class="f-title"
+          class="f-title f-title-lg"
         />
-        <div v-else v-t="'ibox_title'" class="f-title" />
+        <div
+          v-else
+          v-t="'ibox_title'"
+          class="f-title f-title-lg f-receipt-title"
+        />
 
-        <div class="f-row">
-          <div v-t="'receiver'" class="f-col" />
-          <div class="f-col">{{ model.send_data.receiver }}</div>
-        </div>
-        <div v-if="model.send_data.current_bill" class="f-row">
-          <div v-t="'current_bill'" class="f-col" />
-          <div class="f-col">{{ model.send_data.current_bill }}</div>
-        </div>
-        <div v-if="model.send_data.usreou" class="f-row">
-          <div v-t="'usreou'" class="f-col" />
-          <div class="f-col">{{ model.send_data.usreou }}</div>
-        </div>
-        <div v-if="model.send_data.bank" class="f-row">
-          <div v-t="'bank'" class="f-col" />
-          <div class="f-col">{{ model.send_data.bank }}</div>
-        </div>
-        <div v-if="model.send_data.mfo" class="f-row">
-          <div v-t="'mfo'" class="f-col" />
-          <div class="f-col">{{ model.send_data.mfo }}</div>
-        </div>
-        <template v-if="model.send_data.mfo">
-          <div v-if="model.send_data.receipt_id" class="f-row">
-            <div v-t="'purpose'" class="f-col" />
-            <div class="f-col">{{ model.send_data.receipt_id }}</div>
+        <div class="f-receipt-props">
+          <div v-if="model.send_data.amount" class="f-receipt-row">
+            <div v-t="'amount'" class="f-receipt-key" />
+            <div class="f-receipt-value">
+              {{ model.send_data.amount }} <span v-t="'UAH'" />
+            </div>
           </div>
-        </template>
-        <template v-else>
-          <div v-if="model.send_data.receipt_orig" class="f-row">
-            <div v-t="'receipt_id'" class="f-col" />
-            <div class="f-col">№ {{ model.send_data.receipt_orig }}</div>
+          <div class="f-receipt-row">
+            <div v-t="'receiver'" class="f-receipt-key" />
+            <div class="f-receipt-value">{{ model.send_data.receiver }}</div>
           </div>
-        </template>
-        <div v-if="model.send_data.end_date" class="f-row">
-          <div v-t="'end_date'" class="f-col" />
-          <div class="f-col">{{ model.send_data.end_date }}</div>
+          <div v-if="model.send_data.current_bill" class="f-receipt-row">
+            <div v-t="'current_bill'" class="f-receipt-key" />
+            <div class="f-receipt-value">
+              {{ model.send_data.current_bill }}
+            </div>
+          </div>
+          <div v-if="model.send_data.usreou" class="f-receipt-row">
+            <div v-t="'usreou'" class="f-receipt-key" />
+            <div class="f-receipt-value">{{ model.send_data.usreou }}</div>
+          </div>
+          <div v-if="model.send_data.bank" class="f-receipt-row">
+            <div v-t="'bank'" class="f-receipt-key" />
+            <div class="f-receipt-value">{{ model.send_data.bank }}</div>
+          </div>
+          <div v-if="model.send_data.mfo" class="f-receipt-row">
+            <div v-t="'mfo'" class="f-receipt-key" />
+            <div class="f-receipt-value">{{ model.send_data.mfo }}</div>
+          </div>
+          <template v-if="model.send_data.mfo">
+            <div v-if="model.send_data.receipt_id" class="f-receipt-row">
+              <div v-t="'purpose'" class="f-receipt-key" />
+              <div class="f-receipt-value">
+                {{ model.send_data.receipt_id }}
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <div v-if="model.send_data.receipt_orig" class="f-receipt-row">
+              <div v-t="'receipt_id'" class="f-receipt-key" />
+              <div class="f-receipt-value">
+                № {{ model.send_data.receipt_orig }}
+              </div>
+            </div>
+          </template>
+          <div v-if="model.send_data.end_date" class="f-receipt-row">
+            <div v-t="'end_date'" class="f-receipt-key" />
+            <div class="f-receipt-value">{{ model.send_data.end_date }}</div>
+          </div>
         </div>
-        <div v-if="model.send_data.amount" class="f-row">
-          <div v-t="'amount'" class="f-col" />
+
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-if="!model.send_data.mfo" v-html="$t('ibox_desc')" />
+
+        <div class="f-row f-receipt-buttons">
           <div class="f-col">
-            {{ model.send_data.amount }} <span v-t="'UAH'" />
+            <f-button
+              :href="model.url"
+              tag="a"
+              target="_blank"
+              size="lg"
+              block
+              text="save_receipt"
+            />
           </div>
+          <template v-if="!isTablet">
+            <div class="f-col">
+              <f-button
+                variant="secondary"
+                size="lg"
+                block
+                text="save_qr_code"
+                @click="click"
+              />
+              <f-modal-base v-model="showQrCode" size="sm">
+                <f-loading v-if="loadingQrCode" />
+                <div class="f-qr-code-img">
+                  <img :src="qrCode" @load="loadQrCode" />
+                </div>
+                <div
+                  v-if="!loadingQrCode"
+                  v-t="'qr_code_text'"
+                  class="f-qr-code-text"
+                />
+              </f-modal-base>
+            </div>
+          </template>
         </div>
-        <template v-if="!model.send_data.mfo">
+
+        <div v-if="!model.send_data.mfo" class="f-receipt-ibox-info">
+          <f-svg name="warning" />
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <div v-html="$t('ibox_desc')" />
-        </template>
-        <a :href="model.url" target="_blank" class="f-btn f-btn-secondary">
-          <span v-t="'save_receipt'" />
-        </a>
+          <div v-html="$t('ibox_info')" />
+        </div>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+import Resize from '@/mixins/resize'
+
 export default {
+  inject: ['submit'],
+  mixins: [Resize],
   data() {
     return {
       model: null,
+      showQrCode: false,
+      loadingQrCode: false,
     }
   },
   computed: {
     qrCode() {
-      return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${this.model.url}`
+      return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${this.model.url}`
     },
   },
-  methods: {
-    success(model) {
+  created() {
+    this.submit().then(model => {
       this.model = model.data
+    })
+  },
+  methods: {
+    click() {
+      this.showQrCode = true
+      this.loadingQrCode = true
+    },
+    loadQrCode() {
+      this.loadingQrCode = false
     },
   },
 }
