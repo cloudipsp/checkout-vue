@@ -153,6 +153,7 @@ export default {
         })
         .catch(e => {
           if (e instanceof Error) console.log(e)
+          return Promise.reject()
         })
     },
     formRequest(data) {
@@ -170,6 +171,7 @@ export default {
         .then(this.submitSuccess, this.submitError)
         .catch(e => {
           if (e instanceof Error) console.log(e)
+          return Promise.reject()
         })
     },
     submitSuccess(model) {
