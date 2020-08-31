@@ -55,8 +55,8 @@
 
 @mixin title() {
   margin: 0;
-  margin-bottom: px-to-rem(32px);
-  font-size: px-to-rem(22px);
-  font-weight: 400;
+  margin-bottom: px-to-rem(20px);
+  font-size: px-to-rem(20px);
+  font-weight: 500;
   text-align: center;
 }

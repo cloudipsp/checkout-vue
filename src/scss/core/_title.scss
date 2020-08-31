@@ -2,3 +2,8 @@
   @include title();
   color: $title_color;
 }
+
+.f-title-lg {
+  font-size: px-to-rem(24px);
+  font-weight: 600;
+}

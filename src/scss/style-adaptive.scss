@@ -399,3 +399,38 @@
     }
   }
 }
+
+.f-payment-method-receipt {
+  @include media-breakpoint-up(xl) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.f-receipt-props {
+  @include media-breakpoint-up(md) {
+    padding-right: px-to-rem(40px);
+    padding-left: px-to-rem(40px);
+    margin-right: px-to-rem(-40px);
+    margin-left: px-to-rem(-40px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: px-to-rem(20px);
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: px-to-rem(8px);
+  }
+}
+
+.f-receipt-row {
+  @include media-breakpoint-up(sm) {
+    display: flex;
+  }
+}
+
+.f-receipt-key {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 160px;
+  }
+}

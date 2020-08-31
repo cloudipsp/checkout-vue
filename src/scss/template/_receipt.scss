@@ -1,0 +1,53 @@
+.f-receipt-title {
+  text-align: left;
+}
+
+.f-receipt-props {
+  padding: px-to-rem(16px) px-to-rem(20px);
+  margin: 0 px-to-rem(-20px) px-to-rem(12px);
+  background: $receipt_props_bg;
+}
+
+.f-receipt-row {
+  margin-bottom: px-to-rem(18px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.f-receipt-key {
+  font-size: px-to-rem(14px);
+}
+
+.f-receipt-value {
+  color: $receipt_value_color;
+
+  .f-theme-light & {
+    font-weight: 600;
+  }
+}
+
+.f-receipt-buttons {
+  margin-top: px-to-rem(24px);
+  margin-bottom: px-to-rem(34px);
+}
+
+.f-receipt-ibox-info {
+  display: flex;
+
+  svg {
+    margin: px-to-rem(10px) px-to-rem(12px) 0 0;
+  }
+}
+
+.f-qr-code-img {
+  margin-bottom: px-to-rem(24px);
+  text-align: center;
+}
+
+.f-qr-code-text {
+  margin: 0 px-to-rem(-32px);
+  font-size: px-to-rem(14px);
+  text-align: center;
+}

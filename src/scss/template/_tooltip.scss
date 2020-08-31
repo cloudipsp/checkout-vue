@@ -6,12 +6,8 @@
 }
 
 .f-tooltip-security-content {
-  p {
-    margin: px-to-rem(8px) 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 

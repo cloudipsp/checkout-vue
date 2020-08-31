@@ -1,5 +1,5 @@
 // const ash_50 = '#FBFBFC' // 212 14 99
-// const ash_100 = '#F7F8F9' // 212 14 97
+const ash_100 = '#F7F8F9' // 212 14 97
 const ash_200 = '#F2F3F5' // 212 13 95
 const ash_300 = '#EEF0F2' // 212 13 94
 const ash_400 = '#E5E8EB' // 212 13 91
@@ -128,4 +128,6 @@ export default {
   alert_info_color: white,
   alert_info_bg: grey_3,
   scrollbar_thumb_bg: grey_2,
+  receipt_props_bg: ash_100,
+  receipt_value_color: black,
 }

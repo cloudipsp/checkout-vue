@@ -41,6 +41,7 @@ export default {
   computed: {
     ...mapState(['isOnlyCard', 'error']),
     ...mapState('options', ['show_menu_first']),
+    ...mapState('options.theme', ['type']),
     ...mapState('router', ['page', 'method']),
     className() {
       return [
@@ -49,6 +50,7 @@ export default {
           'f-open': this.show_menu_first,
         },
         `f-page-${this.page}-${this.method}`,
+        `f-theme-${this.type}`,
       ]
     },
     style() {

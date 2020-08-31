@@ -129,4 +129,6 @@ export default {
   alert_info_color: white, //
   alert_info_bg: grey_3, //
   scrollbar_thumb_bg: grey_2, //
+  receipt_props_bg: '#3B3F43',
+  receipt_value_color: white,
 }
