@@ -305,10 +305,10 @@
               }
             },
             params: {
-              // currency: 'RUB',
-              // merchant_id: 900234,
-              // amount: 500,
-              token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
+              currency: 'RUB',
+              merchant_id: 900234,
+              amount: 500,
+              // token: 'ed22d79ca470542e65958e877ddfcc11ad682f0b'
             },
           },
         }
@@ -362,6 +362,9 @@
             .$on('ready', function(model) {
               console.log('ready', model)
             }))
+            .$on('show-pay', function() {
+              console.log('show-pay')
+            })
             // .$on('callback', function(model) {
             //   console.log('callback', model);
             // })

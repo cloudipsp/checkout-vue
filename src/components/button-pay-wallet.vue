@@ -128,6 +128,7 @@ export default {
         })
         .process(this.process)
         .on('show', () => {
+          this.$root.$emit('show-pay')
           this.show = true
         })
         .on('hide', () => {
