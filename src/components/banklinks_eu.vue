@@ -103,8 +103,8 @@ export default {
       form: {
         search: '',
       },
-      count: 24,
-      more: 24,
+      count: 15,
+      more: 15,
       spin: false,
       open: false,
       select: null,
