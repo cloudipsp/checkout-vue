@@ -154,7 +154,9 @@ export default {
     },
     // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
     listSelect() {
-      return this.listFull.filter(item => item.country === this.default_country)
+      return this.listFull
+        .filter(this.listSelectFilter)
+        .sort(this.listSelectSort)
     },
     list() {
       let search = this.form.search.toLowerCase()
@@ -268,6 +270,12 @@ export default {
     },
     setView(view) {
       this.view = view
+    },
+    listSelectFilter(item) {
+      return item.country === this.default_country
+    },
+    listSelectSort(a, b) {
+      return a.user_priority < b.user_priority ? 1 : -1
     },
   },
 }
