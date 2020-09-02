@@ -49,14 +49,20 @@ export default {
     },
     list() {
       return this.listFull
-        .filter(item => !item.quick_method && item.bank_logo !== 'no_logo')
-        .sort((a, b) => (a['user_priority'] < b['user_priority'] ? 1 : -1))
+        .filter(this.listFilter)
+        .sort(this.listSort)
         .slice(0, this.count)
     },
   },
   methods: {
     click(bank) {
       this.store.location('payment-method', 'banklinks_eu', bank.id)
+    },
+    listFilter(item) {
+      return item.quick_method && item.bank_logo !== 'no_logo'
+    },
+    listSort(a, b) {
+      return a.user_priority < b.user_priority ? 1 : -1
     },
   },
 }
