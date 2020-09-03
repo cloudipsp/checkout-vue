@@ -32,6 +32,7 @@ export default {
     parseField(attrs) {
       return {
         ...attrs,
+        placeholder: '',
         component: attrs.type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(attrs.validate),
         autocomplete: 'on',
