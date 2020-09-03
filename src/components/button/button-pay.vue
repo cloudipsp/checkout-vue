@@ -12,6 +12,8 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import { errorHandler } from '@/utils/helpers'
+
 export default {
   inject: ['$validator', 'submit'],
   computed: {
@@ -37,9 +39,7 @@ export default {
         .then(model => {
           this.$emit('success', model)
         })
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
+        .catch(errorHandler)
     },
   },
 }

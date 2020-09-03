@@ -29,7 +29,7 @@ import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
 import FAlertGdpr from '@/components/alert/alert-gdpr'
 
-import { sendRequest } from '@/utils/helpers'
+import { sendRequest, errorHandler } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
@@ -131,9 +131,7 @@ export default {
         this.store.formLoading(false)
       })
       .then(this.appSuccess)
-      .catch(e => {
-        if (e instanceof Error) console.log(e)
-      })
+      .catch(errorHandler)
   },
   methods: {
     submit() {
@@ -151,10 +149,6 @@ export default {
         .finally(() => {
           this.submited = false
         })
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-          return Promise.reject()
-        })
     },
     formRequest(data) {
       if (this.loading) return
@@ -169,10 +163,6 @@ export default {
           this.store.formLoading(false)
         })
         .then(this.submitSuccess, this.submitError)
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-          return Promise.reject()
-        })
     },
     submitSuccess(model) {
       if (!model) return
@@ -185,6 +175,7 @@ export default {
     },
     submitError(model) {
       this.$root.$emit('error', model)
+      return Promise.reject(model)
     },
     appSuccess(model) {
       this.ready = true
@@ -322,9 +313,7 @@ export default {
             this.store.formLoading(false)
           })
           .then(this.orderSuccess)
-          .catch(e => {
-            if (e instanceof Error) console.log(e)
-          })
+          .catch(errorHandler)
       }, 15 * 1000)
       if (!this.processingClear) {
         this.processingClear = setTimeout(() => {

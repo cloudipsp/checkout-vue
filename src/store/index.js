@@ -12,6 +12,7 @@ import {
   validate,
   sendRequest,
   findGetParameter,
+  errorHandler,
 } from '@/utils/helpers'
 import { isPlainObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
@@ -212,9 +213,7 @@ export default {
           model.attr('amount_with_fee')
         )
       })
-      .catch(e => {
-        if (e instanceof Error) console.log(e)
-      })
+      .catch(errorHandler)
   },
   location(page, method, system) {
     this.state.options.show_menu_first = false

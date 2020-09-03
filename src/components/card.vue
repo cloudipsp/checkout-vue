@@ -165,7 +165,7 @@
 
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
-import { sendRequest } from '@/utils/helpers'
+import { sendRequest, errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FRegular from '@/components/regular'
 import FCardList from '@/components/card-list'
@@ -304,9 +304,7 @@ export default {
         { cached: true }
       )
         .then(this.cardTypeFeeSuccess)
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
+        .catch(errorHandler)
     },
   },
   mounted() {
@@ -364,9 +362,7 @@ export default {
         .then(() => {
           this.$refs[next].$refs.input.$el.focus()
         })
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
+        .catch(errorHandler)
     },
     scroll() {
       if (!this.activeElement) {

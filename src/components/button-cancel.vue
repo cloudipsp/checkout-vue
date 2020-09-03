@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { sendRequest } from '@/utils/helpers'
+import { sendRequest, errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -26,9 +26,7 @@ export default {
           this.store.formLoading(false)
         })
         .then(this.location, this.location)
-        .catch(e => {
-          if (e instanceof Error) console.log(e)
-        })
+        .catch(errorHandler)
     },
     location(model) {
       if (!model.submitToMerchant()) {

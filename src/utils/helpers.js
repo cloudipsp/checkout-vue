@@ -156,3 +156,7 @@ export const loadStyle = css => {
   style.appendChild(document.createTextNode(css))
   document.head.appendChild(style)
 }
+
+export const errorHandler = error => {
+  if (error instanceof Error) console.log(error)
+}

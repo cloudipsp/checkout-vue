@@ -115,6 +115,7 @@
 
 <script>
 import Resize from '@/mixins/resize'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   inject: ['submit'],
@@ -132,9 +133,11 @@ export default {
     },
   },
   created() {
-    this.submit().then(model => {
-      this.model = model.data
-    })
+    this.submit()
+      .then(model => {
+        this.model = model.data
+      })
+      .catch(errorHandler)
   },
   methods: {
     click() {

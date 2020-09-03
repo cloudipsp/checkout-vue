@@ -19,6 +19,7 @@ import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
 import loadCardImg from '@/store/card-img'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   name: 'FCheckout',
@@ -72,9 +73,7 @@ export default {
         this.load = true
         this.store.setOptions(this.optionsUser)
       })
-      .catch(e => {
-        if (e instanceof Error) console.log(e)
-      })
+      .catch(errorHandler)
   },
 }
 </script>
