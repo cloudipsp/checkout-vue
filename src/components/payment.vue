@@ -217,11 +217,7 @@ export default {
       this.offerta_url = this.offerta_url || model.attr('merchant.offerta_url')
       this.region = model.attr('merchant.country').toLowerCase()
 
-      if (
-        !this.store.attr('user.options.methods.length') &&
-        model.attr('tabs_order') &&
-        model.attr('tabs_order').length
-      ) {
+      if (model.attr('tabs_order') && model.attr('tabs_order').length) {
         this.methods = methods(model.attr('tabs_order'))
         this.store.initLocation()
         this.store.initOnlyCard()
