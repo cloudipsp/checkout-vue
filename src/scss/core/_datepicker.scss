@@ -86,20 +86,30 @@
     padding: 0;
   }
 
+  .not-current-month {
+    color: $datepicker_cell_not_current_month_color;
+  }
+
+  .today {
+    color: $datepicker_cell_today_color;
+    background-color: $datepicker_cell_today_bg;
+  }
+
   .cell {
     height: px-to-rem(40px);
     cursor: pointer;
     border-radius: 50%;
     transition: all ease-in-out 0.15s;
 
-    &.active {
-      color: $datepicker_cell_active_color;
-      background-color: $datepicker_cell_active_bg;
-    }
-
     &:hover {
       color: $datepicker_cell_hover_color;
       background-color: $datepicker_cell_hover_bg;
+    }
+
+    &:active,
+    &.active {
+      color: $datepicker_cell_active_color;
+      background-color: $datepicker_cell_active_bg;
     }
 
     &.disabled {
@@ -115,19 +125,6 @@
     font-size: px-to-rem(10px);
     color: $datepicker_th_color;
     text-transform: uppercase;
-  }
-
-  .today {
-    color: $main;
-  }
-
-  .cell.not-current-month {
-    color: $datepicker_cell_not_current_month_color;
-
-    &:hover {
-      color: $datepicker_cell_hover_color;
-      background-color: $datepicker_cell_hover_bg;
-    }
   }
 }
 

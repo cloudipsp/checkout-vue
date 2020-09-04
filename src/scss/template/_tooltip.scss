@@ -19,6 +19,7 @@
   .f-icon {
     margin-right: px-to-rem(8px);
     border-radius: px-to-rem(3px);
+    box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $tooltip_icons_shadow;
 
     &:last-child {
       margin-right: 0;

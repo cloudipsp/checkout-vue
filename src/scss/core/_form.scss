@@ -11,12 +11,15 @@
   font-size: px-to-rem(16px);
   font-weight: 500;
   color: $input_color;
-  background-color: $input_bg;
+  background-color: inherit;
   border: 1px solid $input_border;
   border-radius: px-to-rem(8px);
   transition: color ease-in-out 0.15s;
 
   &:-webkit-autofill {
+    @include plain-hover-focus-active() {
+      transition: background-color 99999s;
+    }
     &::first-line {
       font-size: px-to-rem(16px);
       font-weight: 500;
@@ -25,6 +28,7 @@
   }
 
   &:hover {
+    background-color: $input_hover_bg;
     border-color: $input_hover_border;
   }
 
@@ -54,6 +58,10 @@
   z-index: 1;
   padding-left: px-to-rem(8px);
   background-color: transparent;
+
+  &:hover {
+    background-color: inherit;
+  }
 
   & + .f-control-label-p {
     z-index: 0;
@@ -102,7 +110,7 @@
 
 .f-error {
   font-weight: 500;
-  color: $form_error_color;
+  color: $text_error_color;
 }
 
 .f-form-control-prepend {

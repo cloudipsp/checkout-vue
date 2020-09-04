@@ -75,7 +75,9 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
 
   &.f-active,
   &:hover {
+    color: $bank_view_icon_active_color;
     background-color: $bank_view_icon_active_bg;
+    transition: all ease-in-out 0.15s;
   }
 
   &:first-child {

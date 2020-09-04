@@ -1,6 +1,6 @@
 // const ash_50 = '#FBFBFC' // 212 14 99
 // const ash_100 = '#F7F8F9' // 212 14 97
-const ash_200 = '#F2F3F5' // 212 13 95
+// const ash_200 = '#F2F3F5' // 212 13 95
 const ash_300 = '#EEF0F2' // 212 13 94
 const ash_400 = '#E5E8EB' // 212 13 91
 const ash_500 = '#D5DAE0' // 212 14 97
@@ -18,46 +18,52 @@ const black = '#3D3D3D' // 0 0 24
 const white = '#ffffff' // 0 0 100
 const error = '#DE4761'
 
+// const white_02 = '#5A5D61'
+// const white_03 = '#6F7274'
+const white_04 = '#838688'
+const white_05 = '#989A9C'
+const white_06 = '#ADAEB0'
+
+const inherit = 'inherit'
+
 export default {
   main_bg: '#1C1F22',
-  main_color: '#989A9C',
+  main_color: white_05,
   container_bg: grey_9,
   container_box_shadow: '#262a2d',
   sidebar_border: '#222528',
-  // page success title;
-  title_color: '&main_color',
+  title_color: white,
   menu_item_color: '&main_color',
   menu_item_active_color: white,
   menu_item_active_bg: '#46494D',
-  menu_item_border: ash_400, //
+  menu_item_border: grey_9,
   menu_icon_color: '#6F7274',
-  menu_icon_active_color: black,
+  menu_icon_active_color: white,
   menu_icons_shadow: '#46494D',
   menu_count_color: '#CECFD0',
   menu_count_active_color: '#D8D8D9',
   menu_count_bg: '#5A5D61',
   menu_count_active_bg: '#626468',
-  merchant_name_color: white,
-  merchant_url_color: '#838688',
+  merchant_name_color: white_04,
+  merchant_url_color: white_04,
   order_desc_color: white,
   order_desc_more_color: '#CBCCCD',
   amount_color: white,
-  currency_color: '#838688',
+  currency_color: white_04,
   card_shadow: '#000000',
   card_bg: '&main',
   card_label_color: white,
   card_input_color: white,
   card_input_shadow: '#000000',
   card_border: '&main',
-  card_list_item_active_bg: '#eef0f2',
+  card_list_item_active_bg: ash_300,
   card_list_number_color: black,
   card_list_expiry_date_color: grey_2,
   btn_success_color: white,
   btn_success_bg: '&main',
   btn_success_shadow: '#000000',
-  btn_secondary_color: grey_3, //
-  btn_secondary_bg: ash_500, //
-  btn_secondary_shadow: ash_600, //
+  btn_secondary_color: white,
+  btn_secondary_bg: white_04,
   btn_secondary_hover_color: grey_4, //
   btn_secondary_hover_bg: ash_600, //
   btn_secondary_hover_shadow: ash_600, //
@@ -71,61 +77,74 @@ export default {
   input_bg: grey_9,
   input_color: white,
   input_border: '#5A5D61',
-  input_hover_border: ash_700, //
-  input_focus_border: grey_2, //
-  input_error_color: error, //
-  input_error_border: error, //
-  input_prepend_color: white, //
-  checkbox_default_border: ash_800, //
-  checkbox_default_enabled_bg: grey_2, //
-  checkbox_default_enabled_color: white, //
+  input_hover_bg: '#3B3F43',
+  input_hover_border: '#898C8E',
+  input_focus_border: white_06,
+  input_error_color: error,
+  input_error_border: error,
+  input_prepend_color: grey_9,
+  checkbox_default_border: white_04,
+  checkbox_default_hover_bg: '#585B5F',
+  checkbox_default_hover_border: white_04,
+  checkbox_default_hover_color: '#46494D',
+  checkbox_default_checked_bg: white,
+  checkbox_default_checked_color: grey_9,
   checkbox_secondary_border: white, //
-  checkbox_secondary_enabled_bg: white, //
-  checkbox_secondary_enabled_color: '#67707C', //
+  checkbox_secondary_hover_bg: white, //
+  checkbox_secondary_hover_border: white, //
+  checkbox_secondary_hover_color: white, //
+  checkbox_secondary_checked_bg: white, //
+  checkbox_secondary_checked_color: '#67707C', //
   checkbox_secondary_label_color: white, //
-  switch_bg: ash_400, //
-  switch_indicator_bg: white, //
-  switch_enabled_bg: grey_2, //
-  form_error_color: error, //
-  label_color: '#838688',
-  label_hover_color: grey_2, //
-  label_focus_color: grey_2, //
+  switch_bg: '#5A5D61',
+  switch_indicator_bg: grey_9,
+  switch_hover_bg: '#6F7274',
+  switch_checked_bg: white_06,
+  text_error_color: error,
+  label_color: white_04,
+  label_hover_color: '#B1B2B4',
+  label_focus_color: white_04,
   link_color: '&main', //
   tooltip_error_color: error,
-  tooltip_card_color: grey_2, //
-  tooltip_cvv_color: grey_3, //
+  tooltip_card_color: grey_2,
+  tooltip_cvv_color: grey_3,
   tooltip_light_bg: white,
   tooltip_light_shadow: '#b6b9bf',
   tooltip_dark_color: grey_2,
   tooltip_dark_bg: white,
+  tooltip_icons_shadow: '#CACFD6',
   icon_color: '#A9B2BD',
   security_icon_color: '#797C7E',
   security_color: '#797C7E',
   security_hover_color: '#CBCCCD',
-  close_color: white, //
-  modal_backdrop_bg: '#32353A', //
-  modal_content_color: grey_3, //
+  close_color: white,
+  modal_backdrop_bg: '#32353A',
+  modal_content_color: grey_3,
   modal_content_bg: white,
   modal_title_color: black,
   modal_security_title_color: grey_3, //
   modal_security_title_svg_color: grey_1, //
-  bank_item_color: '&main_color', //
-  bank_item_hover_color: grey_4, //
-  bank_icon_shadow: '#313539',
-  bank_view_icon_active_bg: ash_200, //
+  bank_item_color: white_06,
+  bank_item_hover_color: white_05, //
+  bank_icon_shadow: grey_9,
+  bank_view_icon_active_bg: inherit,
+  bank_view_icon_active_color: white,
   bank_select_bg: ash_300, //
   bank_select_close_color: black, //
   bank_select_close_hover_color: black, //
-  datepicker_shadow: '#b6b9bf', //
-  datepicker_bg: white, //
-  datepicker_cell_active_color: grey_3, //
-  datepicker_cell_active_bg: ash_300, //
-  datepicker_cell_hover_color: grey_3, //
-  datepicker_cell_hover_bg: ash_500, //
-  datepicker_cell_disabled_color: ash_500, //
-  datepicker_cell_not_current_month_color: ash_500, //
-  datepicker_th_color: ash_700, //
-  datepicker_btn_text_color: black, //
+  datepicker_shadow: grey_9,
+  datepicker_bg: white,
+  datepicker_cell_color: grey_2,
+  datepicker_cell_today_color: grey_3,
+  datepicker_cell_today_bg: ash_300,
+  datepicker_cell_hover_color: grey_3,
+  datepicker_cell_hover_bg: ash_500,
+  datepicker_cell_active_color: white,
+  datepicker_cell_active_bg: ash_800,
+  datepicker_cell_disabled_color: ash_400,
+  datepicker_cell_not_current_month_color: ash_500,
+  datepicker_th_color: ash_700,
+  datepicker_btn_text_color: black,
   alert_info_color: white, //
   alert_info_bg: grey_3, //
   scrollbar_thumb_bg: grey_2, //

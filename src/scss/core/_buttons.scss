@@ -17,6 +17,7 @@
   $background,
   $color,
   $shadow,
+  $shadow-focus,
   $background-hover,
   $color-hover,
   $shadow-hover,
@@ -26,9 +27,12 @@
 ) {
   color: $color;
 
-  &::before {
-    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow, 60%);
+  @if $shadow {
+    &::before {
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow, 60%);
+    }
   }
+
   &::after {
     background: $background;
   }
@@ -44,9 +48,11 @@
     }
   }
 
-  &:focus {
-    &::before {
-      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow, 60%);
+  @if $shadow-focus {
+    &:focus {
+      &::before {
+        box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-focus, 60%);
+      }
     }
   }
 
@@ -147,6 +153,7 @@
     $btn_success_bg,
     $btn_success_color,
     $btn_success_shadow,
+    $btn_success_shadow,
     darken($btn_success_bg, 20%),
     $btn_success_color,
     $btn_success_shadow,
@@ -227,7 +234,8 @@
   @include button-variant(
     $btn_secondary_bg,
     $btn_secondary_color,
-    $btn_secondary_shadow,
+    null,
+    null,
     $btn_secondary_hover_bg,
     $btn_secondary_hover_color,
     $btn_secondary_hover_shadow,

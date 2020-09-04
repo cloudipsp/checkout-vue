@@ -15,10 +15,11 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
 
   &:checked + .f-switch-label {
     &::before {
-      background-color: $switch_enabled_bg;
+      background-color: $switch_checked_bg;
     }
 
     &::after {
+      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgba(0, 0, 0, 0.25);
       transform: translateX($switch-indicator-transform);
     }
   }
@@ -40,6 +41,7 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
     content: '';
     background-color: $switch_bg;
     border-radius: 15px;
+    transition: background-color ease-in-out 0.15s;
   }
 
   &::after {
@@ -54,6 +56,15 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
     background-color: $switch_indicator_bg;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    transition: transform ease-in-out 0.15s;
+    transition: transform ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+
+  &:hover {
+    &::before {
+      background-color: $switch_hover_bg;
+    }
+    &::after {
+      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgba(0, 0, 0, 0.25);
+    }
   }
 }
