@@ -82,7 +82,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
 .f-lang {
   display: inline-block;
   padding: px-to-rem(8px) px-to-rem(12px) px-to-rem(8px) px-to-rem(8px);
-  color: $btn_link_color;
+  color: $btn_link_default_color;
   vertical-align: middle;
   background: $container_bg escape-svg($bg) no-repeat right center;
   border: none;
@@ -147,7 +147,7 @@ $bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' 
   }
 
   .f-svg {
-    margin-right: px-to-rem(10px);
+    width: px-to-rem(40px);
   }
 }
 

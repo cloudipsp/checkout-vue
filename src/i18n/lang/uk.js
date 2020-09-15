@@ -37,7 +37,6 @@ export const messages = Object.assign({}, countries, {
   number_payment: '№ платежу в {0}:',
   payment_system: 'платіжній системі',
   continue: 'Продовжити',
-  cancel: 'Скасувати',
   code: 'Код перевірки',
   pay: 'Оплатити {0} {1}',
 
@@ -67,8 +66,6 @@ export const messages = Object.assign({}, countries, {
   customer_state: 'Область',
   customer_phonemobile: 'Номер телефону',
   customer_email: 'Email',
-
-  confirm: 'Підтвердити',
 
   mfo_title: 'Реквізити для сплати рахунку № {0}',
   ibox_title: 'Реквізити до сплати рахунку у системі iBox',

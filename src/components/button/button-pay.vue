@@ -2,6 +2,7 @@
   <f-button
     v-if="show"
     class="f-button-pay"
+    variant="success"
     :disabled="disabled"
     size="lg"
     block

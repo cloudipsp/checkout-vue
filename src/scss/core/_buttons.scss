@@ -15,13 +15,15 @@
 
 @mixin button-variant(
   $background,
+  $border,
   $color,
   $shadow,
-  $shadow-focus,
   $background-hover,
+  $border-hover,
   $color-hover,
   $shadow-hover,
   $background-active,
+  $border-active,
   $color-active,
   $shadow-active
 ) {
@@ -35,23 +37,24 @@
 
   &::after {
     background: $background;
+    @if $border {
+      border: 1px solid $border;
+    }
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $color-hover;
 
-    &::before {
-      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-hover, 60%);
+    @if $shadow-hover {
+      &::before {
+        box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-hover, 60%);
+      }
     }
     &::after {
       background: $background-hover;
-    }
-  }
-
-  @if $shadow-focus {
-    &:focus {
-      &::before {
-        box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-focus, 60%);
+      @if $border-hover {
+        border: 1px solid $border-hover;
       }
     }
   }
@@ -59,20 +62,39 @@
   &:active {
     color: $color-active;
 
-    &::before {
-      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-active, 60%);
+    @if $shadow-active {
+      &::before {
+        box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-active, 60%);
+      }
     }
 
     &::after {
       background: $background-active;
+      @if $border-active {
+        border: 1px solid $border-active;
+      }
     }
   }
 
   @include disabled();
 }
 
+@mixin button-link-variant($color, $color-hover, $color-active) {
+  color: $color;
+
+  &:hover,
+  &:focus {
+    color: $color-hover;
+  }
+
+  &:active {
+    color: $color-active;
+  }
+}
+
 @mixin button-bg-lighten($background-hover, $background-active) {
-  &:hover {
+  &:hover,
+  &:focus {
     &::after {
       background: $background-hover;
     }
@@ -130,7 +152,8 @@
     transition: all ease-in-out 0.15s;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     transform: translateY(px-to-rem(-2px));
   }
@@ -151,13 +174,15 @@
 .f-btn-success {
   @include button-variant(
     $btn_success_bg,
+    null,
     $btn_success_color,
     $btn_success_shadow,
-    $btn_success_shadow,
     darken($btn_success_bg, 20%),
+    null,
     $btn_success_color,
     $btn_success_shadow,
     darken($btn_success_bg, 40%),
+    null,
     $btn_success_color,
     $btn_success_shadow
   );
@@ -173,6 +198,7 @@
 .f-btn-success-gradient {
   &::after,
   &:hover::after,
+  &:focus::after,
   &:active::after {
     background: linear-gradient(
       130deg,
@@ -189,7 +215,8 @@
     background-size: 300% 300%;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     &::after {
       background-position: 50% 50%;
     }
@@ -207,12 +234,14 @@
 .f-btn-success-gradient-custom {
   &::after,
   &:hover::after,
+  &:focus::after,
   &:active::after {
     background: $btn_success_gradient_custom;
     background-size: 120% 100%;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     &::after {
       background-position-x: 50%;
     }
@@ -227,26 +256,64 @@
   @include disabled();
 }
 
+.f-btn-default {
+  font-size: px-to-rem(16px);
+  font-weight: 500;
+
+  @include button-variant(
+    $btn_default_bg,
+    null,
+    $btn_default_color,
+    null,
+    $btn_default_hover_bg,
+    null,
+    $btn_default_hover_color,
+    $btn_default_hover_shadow,
+    $btn_default_active_bg,
+    null,
+    $btn_default_active_color,
+    $btn_default_active_shadow
+  );
+}
+
 .f-btn-secondary {
   font-size: px-to-rem(16px);
   font-weight: 500;
 
   @include button-variant(
     $btn_secondary_bg,
+    null,
     $btn_secondary_color,
     null,
-    null,
     $btn_secondary_hover_bg,
+    null,
     $btn_secondary_hover_color,
     $btn_secondary_hover_shadow,
     $btn_secondary_active_bg,
+    null,
     $btn_secondary_active_color,
     $btn_secondary_active_shadow
   );
+}
 
-  &::before {
-    box-shadow: none;
-  }
+.f-btn-outline {
+  font-size: px-to-rem(14px);
+  font-weight: 500;
+
+  @include button-variant(
+    $btn_outline_bg,
+    $btn_outline_border,
+    $btn_outline_color,
+    null,
+    $btn_outline_hover_bg,
+    $btn_outline_hover_border,
+    $btn_outline_hover_color,
+    null,
+    $btn_outline_active_bg,
+    $btn_outline_active_border,
+    $btn_outline_active_color,
+    null
+  );
 }
 
 .f-btn-block {
@@ -267,9 +334,17 @@
 }
 
 .f-btn-link-default {
-  color: $btn_link_color;
+  @include button-link-variant(
+    $btn_link_default_color,
+    $btn_link_default_hover_color,
+    $btn_link_default_active_color
+  );
 }
 
 .f-btn-link-secondary {
-  color: $btn_link_secondary_color;
+  @include button-link-variant(
+    $btn_link_secondary_color,
+    $btn_link_secondary_hover_color,
+    $btn_link_secondary_active_color
+  );
 }

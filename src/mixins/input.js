@@ -1,8 +1,9 @@
 import { mapState } from '@/utils/store'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   inheritAttrs: false,
-  inject: ['$validator'],
+  inject: ['$validator', 'submit'],
   props: {
     name: {
       type: String,
@@ -161,7 +162,7 @@ export default {
   },
   methods: {
     onEnter() {
-      this.$root.$emit('submit')
+      this.submit().catch(errorHandler)
     },
     focus() {
       this.focused = true

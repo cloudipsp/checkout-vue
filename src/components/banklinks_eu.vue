@@ -78,10 +78,10 @@
           </div>
         </div>
         <div class="f-bank-footer">
-          <button v-if="showMore" :class="[css.btn, css.bd]" @click="loadMore">
+          <f-button v-if="showMore" variant="outline" @click="loadMore">
             <span><f-svg name="redo" size="lg" :spin="spin" fw/></span>
             <span v-t="'load_more'" />
-          </button>
+          </f-button>
         </div>
       </div>
     </transition>

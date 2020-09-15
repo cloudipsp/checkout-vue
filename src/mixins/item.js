@@ -2,6 +2,7 @@ import isMounted from '@/mixins/is_mounted'
 import id from '@/mixins/id'
 import { isExist } from '@/utils/typeof'
 import { mapState } from '@/utils/store'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   inheritAttrs: false,
@@ -84,7 +85,7 @@ export default {
       this.innerValue = newValue
     },
     onEnter() {
-      this.$root.$emit('submit')
+      this.submit().catch(errorHandler)
     },
   },
 }

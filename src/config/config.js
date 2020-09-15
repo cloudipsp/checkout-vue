@@ -169,7 +169,6 @@ export default {
         pattern: /^(http(s)?:\/\/|data:image\/\w+?;base64,)/,
       },
       offerta_url: { type: 'url' },
-      cancel: { type: 'boolean' },
       default_country: { type: 'enum', enum: configCountries },
       countries: enumArray(configCountries),
       theme: {

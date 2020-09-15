@@ -23,8 +23,9 @@ export default {
     },
     variant: {
       type: String,
-      default: 'success',
-      validator: value => ['success', 'secondary'].includes(value),
+      default: 'default',
+      validator: value =>
+        ['success', 'default', 'secondary', 'outline'].includes(value),
     },
     size: {
       type: String,

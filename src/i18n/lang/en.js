@@ -84,9 +84,6 @@ export const messages = Object.assign({}, countries, {
   security_text:
     '<p>Validated PCI DSS Compliance</p><p>Listed on Visa Global Registry and verified by Mastercard</p>',
 
-  confirm: 'Confirm',
-  cancel: 'Cancel',
-
   or_pay_with_card: 'Or pay with card',
   use_other_card: 'Use other card',
 

@@ -19,9 +19,7 @@
     </div>
     <div class="f-gdpr-buttons">
       <f-button-link v-t="'close'" variant="secondary" @click="close" />
-      <button class="f-btn f-btn-secondary" type="button" @click="accept">
-        <span v-t="'accept'" />
-      </button>
+      <f-button variant="secondary" text="accept" @click="accept" />
     </div>
   </f-alert-base>
 </template>

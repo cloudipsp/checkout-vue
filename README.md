@@ -43,7 +43,6 @@ Name                  | Type        | Default                 | Description     
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
-`cancel`              | Boolean     | true                    |                                                                                     |
 `fee`                 | Boolean     | true                    |                                                                                     |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `fields`              | Boolean     | false                   |                                                                                     |

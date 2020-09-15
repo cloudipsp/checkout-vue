@@ -38,7 +38,6 @@ export const messages = Object.assign({}, countries, {
   number_payment: '№ платежа в {0}:',
   payment_system: 'платежной системе',
   continue: 'Продолжить',
-  cancel: 'Отменить',
   code: 'Проверочный код',
   pay: 'Оплатить {0} {1}',
 
@@ -68,8 +67,6 @@ export const messages = Object.assign({}, countries, {
   customer_state: 'Область/район/округ',
   customer_phonemobile: 'Номер телефона',
   customer_email: 'Email',
-
-  confirm: 'Подтвердить',
 })
 
 export const validate = Object.assign({}, validateMessages, {

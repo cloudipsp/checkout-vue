@@ -72,6 +72,7 @@
           <div class="f-col">
             <f-button
               :href="model.url"
+              variant="success"
               tag="a"
               target="_blank"
               size="lg"
@@ -81,13 +82,7 @@
           </div>
           <template v-if="!isTablet">
             <div class="f-col">
-              <f-button
-                variant="secondary"
-                size="lg"
-                block
-                text="save_qr_code"
-                @click="click"
-              />
+              <f-button size="lg" block text="save_qr_code" @click="click" />
               <f-modal-base v-model="showQrCode" size="sm">
                 <f-loading v-if="loadingQrCode" />
                 <div class="f-qr-code-img">

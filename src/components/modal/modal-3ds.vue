@@ -5,14 +5,12 @@
     </template>
     <span v-t="'submit3ds_text'" />
     <template #modal-footer="{ ok, cancel }">
-      <button
+      <f-button
         ref="submit"
-        type="button"
-        :class="[css.btn, css.bd]"
+        variant="secondary"
+        text="submit3ds_submit"
         @click="submit(ok)"
-      >
-        <span v-t="'submit3ds_submit'" />
-      </button>
+      />
       <div class="f-w-100" />
       <div v-t="{ path: 'submit3ds_wait', args: [duration] }" />
     </template>
@@ -53,7 +51,7 @@ export default {
       cb()
     },
     run() {
-      if (!this.duration) return this.$refs.submit.click()
+      if (!this.duration) return this.$refs.submit.$el.click()
 
       this.timeout('tick', 1000)
     },
