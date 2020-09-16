@@ -96,7 +96,7 @@ export default {
   btn_link_secondary_color: grey_2,
   btn_link_secondary_hover_color: grey_4,
   btn_link_secondary_active_color: ash_600,
-  input_bg: grey_9,
+  input_bg: inherit,
   input_color: white,
   input_border: '#5A5D61',
   input_hover_bg: '#3B3F43',
@@ -111,13 +111,13 @@ export default {
   checkbox_default_hover_color: white_01,
   checkbox_default_checked_bg: white,
   checkbox_default_checked_color: grey_9,
-  checkbox_secondary_border: white, //
-  checkbox_secondary_hover_bg: white, //
-  checkbox_secondary_hover_border: white, //
-  checkbox_secondary_hover_color: white, //
-  checkbox_secondary_checked_bg: white, //
-  checkbox_secondary_checked_color: '#67707C', //
-  checkbox_secondary_label_color: white, //
+  checkbox_secondary_border: ash_800,
+  checkbox_secondary_hover_bg: '#EEF0F2',
+  checkbox_secondary_hover_border: '#A9B2BD',
+  checkbox_secondary_hover_color: '#D5DAE0',
+  checkbox_secondary_checked_bg: grey_2,
+  checkbox_secondary_checked_color: white,
+  checkbox_secondary_label_color: grey_2,
   switch_bg: '#5A5D61',
   switch_indicator_bg: grey_9,
   switch_hover_bg: '#6F7274',
@@ -144,16 +144,16 @@ export default {
   modal_content_color: grey_3,
   modal_content_bg: white,
   modal_title_color: black,
-  modal_security_title_color: grey_3, //
-  modal_security_title_svg_color: grey_1, //
+  modal_security_title_color: grey_3,
+  modal_security_title_svg_color: grey_1,
   bank_item_color: white_06,
-  bank_item_hover_color: white_05, //
+  bank_item_hover_color: white,
   bank_icon_shadow: grey_9,
   bank_view_icon_active_bg: inherit,
   bank_view_icon_active_color: white,
-  bank_select_bg: ash_300, //
-  bank_select_close_color: black, //
-  bank_select_close_hover_color: black, //
+  bank_select_bg: '#414549',
+  bank_select_close_color: '#8D8F92',
+  bank_select_close_hover_color: white,
   datepicker_shadow: grey_9,
   datepicker_bg: white,
   datepicker_cell_color: grey_2,
@@ -167,9 +167,9 @@ export default {
   datepicker_cell_not_current_month_color: ash_500,
   datepicker_th_color: ash_700,
   datepicker_btn_text_color: black,
-  alert_info_color: white, //
-  alert_info_bg: grey_3, //
-  scrollbar_thumb_bg: grey_2, //
+  alert_info_color: grey_2,
+  alert_info_bg: white,
+  scrollbar_thumb_bg: white_02,
   receipt_props_bg: '#3B3F43',
   receipt_value_color: white,
 }

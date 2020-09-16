@@ -120,6 +120,7 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   bottom: 0;
   padding: px-to-rem(20px);
   font-size: px-to-rem(28px);
+  font-weight: 300;
   color: $bank_select_close_color;
 
   &:hover {

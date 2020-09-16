@@ -14,23 +14,19 @@
 }
 
 .f-svg-lg {
-  min-width: 1.5em;
   font-size: 1.5em;
   line-height: 0.75em;
   vertical-align: -35%;
 }
 .f-svg-xs {
-  min-width: 0.75em;
   font-size: 0.75em;
 }
 .f-svg-sm {
-  min-width: 0.875em;
   font-size: 0.875em;
 }
 
 @for $i from 1 through 10 {
   .f-svg-#{$i}x {
-    min-width: $i * 1em;
     font-size: $i * 1em;
   }
 }

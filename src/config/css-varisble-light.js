@@ -89,7 +89,7 @@ export default {
   btn_link_secondary_color: ash_500,
   btn_link_secondary_hover_color: white,
   btn_link_secondary_active_color: ash_800,
-  input_bg: white,
+  input_bg: inherit,
   input_color: black,
   input_border: ash_500,
   input_hover_bg: inherit,
@@ -104,12 +104,12 @@ export default {
   checkbox_default_hover_color: '#D5DAE0',
   checkbox_default_checked_bg: grey_2,
   checkbox_default_checked_color: white,
-  checkbox_secondary_border: white,
-  checkbox_secondary_hover_bg: white, //
-  checkbox_secondary_hover_border: white, //
-  checkbox_secondary_hover_color: white, //
+  checkbox_secondary_border: ash_500,
+  checkbox_secondary_hover_bg: '#818C99',
+  checkbox_secondary_hover_border: ash_500,
+  checkbox_secondary_hover_color: '#9CA7B3',
   checkbox_secondary_checked_bg: white,
-  checkbox_secondary_checked_color: '#67707C',
+  checkbox_secondary_checked_color: '#6A747E',
   checkbox_secondary_label_color: white,
   switch_bg: ash_400,
   switch_indicator_bg: white,
