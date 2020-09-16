@@ -128,6 +128,7 @@ export default {
         return sendRequest('api.checkout', 'app', this.createdFormParams)
       })
       .finally(() => {
+        this.ready = true
         this.store.formLoading(false)
       })
       .then(this.appSuccess)
@@ -151,7 +152,7 @@ export default {
         })
     },
     formRequest(data) {
-      if (this.loading) return
+      if (this.loading) return Promise.reject()
       this.store.formLoading(true)
 
       return sendRequest(
@@ -178,7 +179,6 @@ export default {
       return Promise.reject(model)
     },
     appSuccess(model) {
-      this.ready = true
       this.$root.$emit('ready', model)
       this.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))

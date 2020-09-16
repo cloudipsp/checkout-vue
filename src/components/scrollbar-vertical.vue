@@ -61,7 +61,7 @@ export default {
     document.addEventListener('mouseup', this.handleDragend)
   },
   mounted() {
-    this.$nextTick(this.getThumbSize)
+    this.$nextTick().then(this.getThumbSize)
   },
   methods: {
     resize() {

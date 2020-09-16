@@ -178,6 +178,7 @@ export default {
           preset: { type: 'enum', enum: preset },
         },
       },
+      disable_request: { type: 'boolean' },
     },
   },
   regular: {

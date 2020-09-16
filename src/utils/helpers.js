@@ -16,6 +16,8 @@ export const initApi = option => {
 }
 
 export const sendRequest = (name, method, params = {}, cached = {}) => {
+  if (store.state.options.disable_request) return Promise.reject()
+
   let id = [name, method, JSON.stringify(cached.params || params)].join('_')
   if (cached.cached && cache[id]) return cache[id]
   cache[id] = new Promise(function(resolve, reject) {

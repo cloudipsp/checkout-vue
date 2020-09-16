@@ -35,7 +35,12 @@ export default {
   computed: {
     ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['amount']),
-    ...mapState('options', ['api_domain', 'endpoint', 'theme']),
+    ...mapState('options', [
+      'api_domain',
+      'endpoint',
+      'theme',
+      'disable_request',
+    ]),
     classButton() {
       return 'f-wallet-pay-button-' + this.id
     },
@@ -66,12 +71,12 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(function() {
-      this.initButton()
-    })
+    this.$nextTick().then(this.initButton)
   },
   methods: {
     initButton() {
+      if (this.disable_request) return
+
       this.button = $checkout
         .get('PaymentButton', {
           api,
