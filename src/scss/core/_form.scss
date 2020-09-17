@@ -98,6 +98,10 @@
   &.f-control-label-active {
     transform: translateY(-8px) scale(0.75);
   }
+
+  .f-form-group-amount & {
+    padding-right: px-to-rem(40px);
+  }
 }
 
 .f-control-label-hover {

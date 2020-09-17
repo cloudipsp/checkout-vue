@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classGroupName"
+    :class="[classGroupName, 'f-form-group-amount']"
     @mouseenter="mouseenter"
     @mouseleave="mouseleave"
   >
