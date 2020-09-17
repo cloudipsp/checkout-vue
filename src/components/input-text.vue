@@ -73,9 +73,10 @@
 
 <script>
 import Input from '@/mixins/input'
+import remove_add_event_listener from '@/mixins/remove_add_event_listener'
 
 export default {
-  mixins: [Input],
+  mixins: [Input, remove_add_event_listener],
   props: {
     type: {
       type: String,
