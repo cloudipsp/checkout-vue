@@ -57,7 +57,7 @@ $zindex-popover: 1060;
 $zindex-tooltip: 1070;
 
 $grid-columns: 12;
-$grid-gutter-width: 16px;
+$grid-gutter-width: px-to-rem(16px);
 
 $header-height: px-to-rem(50px) + px-to-rem(24px) /*+ 2px*/;
 

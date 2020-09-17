@@ -13,17 +13,15 @@
 
 .f-tooltip-icons {
   .f-tooltip-inner {
-    padding: px-to-rem(12px);
+    flex-wrap: wrap;
+    max-width: px-to-rem(304px);
+    padding: px-to-rem(12px) px-to-rem(4px) px-to-rem(4px) px-to-rem(12px);
   }
 
   .f-icon {
-    margin-right: px-to-rem(8px);
+    margin: 0 px-to-rem(8px) px-to-rem(8px) 0;
     border-radius: px-to-rem(3px);
     box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $tooltip_icons_shadow;
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 }
 

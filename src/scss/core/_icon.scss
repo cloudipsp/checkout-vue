@@ -18,20 +18,20 @@
 }
 
 .f-icon-sm {
-  width: 24px;
-  height: 24px;
+  width: px-to-rem(24px);
+  height: px-to-rem(24px);
   background-size: contain;
 }
 
 .f-icon-md {
-  width: 48px;
-  height: 48px;
+  width: px-to-rem(48px);
+  height: px-to-rem(48px);
   background-size: contain;
 }
 
 .f-icon-lg {
-  width: 64px;
-  height: 64px;
+  width: px-to-rem(64px);
+  height: px-to-rem(64px);
   background-size: contain;
 }
 

@@ -40,7 +40,7 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
     pointer-events: all;
     content: '';
     background-color: $switch_bg;
-    border-radius: 15px;
+    border-radius: px-to-rem(15px);
     transition: background-color ease-in-out 0.15s;
   }
 

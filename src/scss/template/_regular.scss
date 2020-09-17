@@ -25,7 +25,7 @@
     top: px-to-rem(8px);
     right: 0;
     bottom: px-to-rem(8px);
-    width: 1px;
+    width: px-to-rem(1px);
     content: '';
     background-color: $input_border;
   }
