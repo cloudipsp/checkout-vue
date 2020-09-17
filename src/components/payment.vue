@@ -140,7 +140,7 @@ export default {
       return this.$nextTick()
         .then(() => this.$validator.validateAll())
         .then(isValid => {
-          this.store.state.submit = true
+          this.store.state.isSubmit = true
           // this.errors.items this.fields this.errors.clear() this.errors.count()
 
           if (!isValid) return this.autoFocus()

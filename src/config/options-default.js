@@ -88,7 +88,7 @@ const options = {
   css: configCss.default,
   loading: false,
   cards: [],
-  submit: false,
+  isSubmit: false,
   submited: false,
   read_only: false,
   need_verify_code: false,

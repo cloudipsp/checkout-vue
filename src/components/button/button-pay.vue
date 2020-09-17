@@ -18,8 +18,7 @@ import { errorHandler } from '@/utils/helpers'
 export default {
   inject: ['$validator', 'submit'],
   computed: {
-    ...mapState(['verification_type']),
-    ...mapState({ isSubmit: 'submit' }),
+    ...mapState(['verification_type', 'isSubmit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     disabled() {

@@ -79,7 +79,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['css', 'submit']),
+    ...mapState(['css', 'isSubmit']),
     name_() {
       return 'f-' + this.name
     },
@@ -101,7 +101,7 @@ export default {
       return this.errors.has(this.name_)
     },
     hasError() {
-      return this.isError && (this.flag.touched || this.submit)
+      return this.isError && (this.flag.touched || this.isSubmit)
     },
     showErrorTooltip() {
       let result = this.tooltip && this.hasError && this.focused
