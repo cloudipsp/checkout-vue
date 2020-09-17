@@ -289,9 +289,10 @@ export default {
   },
   watch: {
     card_number(value) {
+      this.cardBrand = getCardBrand(value)
       if (!value) return
 
-      value = value.replace(/ /g, '').slice(0, 6)
+      value = value.slice(0, 6)
       let card_bin = value.length === 6 ? value : value[0]
 
       sendRequest(
@@ -321,7 +322,6 @@ export default {
       this.hide()
     },
     addCardNumber() {
-      this.cardBrand = ''
       this.returnFocus = this.$refs.card_number.$refs.input.$el
       this.hide()
     },
@@ -340,8 +340,6 @@ export default {
       }, 100)
     },
     inputCardNumber(value) {
-      this.cardBrand = getCardBrand(value)
-
       if (value.length !== 16 && value.length !== 19) return
       this.focus('f-card_number', value, 'expiry_date')
     },

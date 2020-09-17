@@ -36,7 +36,7 @@ export default {
     ...mapState(['cards']),
     ...mapState('params', ['card_number']),
     hasActive() {
-      return card => card.card_number.replace(/ /g, '') === this.card_number
+      return card => card.card_number === this.card_number
     },
   },
   methods: {
