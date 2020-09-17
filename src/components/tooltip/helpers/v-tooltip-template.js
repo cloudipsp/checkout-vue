@@ -21,6 +21,35 @@ export default Vue.extend({
         this.customClass,
       ]
     },
+    popperConfig() {
+      const placement = this.placement
+      return {
+        placement: this.getAttachment(placement),
+        modifiers: {
+          offset: { offset: this.getOffset(placement) },
+          flip: { behavior: this.fallbackPlacement },
+          // `arrow.element` can also be a reference to an HTML Element
+          // maybe we should make this a `$ref` in the templates?
+          arrow: { element: this.$refs.arrow },
+          preventOverflow: {
+            padding: this.boundaryPadding,
+            boundariesElement: this.boundary,
+          },
+        },
+        onCreate: data => {
+          this.updatePopper()
+          // Handle flipping arrow classes
+          if (data.originalPlacement !== data.placement) {
+            /* istanbul ignore next: can't test in JSDOM */
+            this.popperPlacementChange(data)
+          }
+        },
+        onUpdate: data => {
+          // Handle flipping arrow classes
+          this.popperPlacementChange(data)
+        },
+      }
+    },
   },
   methods: {
     renderTemplate(h) {
@@ -44,7 +73,7 @@ export default Vue.extend({
           on: this.templateListeners,
         },
         [
-          h('div', { ref: 'arrow', staticClass: 'arrow f-tooltip-arrow' }),
+          h('div', { ref: 'arrow', staticClass: 'f-tooltip-arrow' }),
           h('div', { staticClass: 'f-tooltip-inner', domProps }, [$title]),
         ]
       )
