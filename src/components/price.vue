@@ -15,12 +15,17 @@ let cacheFeeAmount = 0
 
 export default {
   computed: {
-    ...mapState('options', { show: 'fee' }),
+    ...mapState(['verification_type']),
+    ...mapState('options', { showFee: 'fee' }),
     ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
+    show() {
+      return this.verification_type !== 'amount'
+    },
     amountString() {
       return this.amount / 100
     },
     feeAmount() {
+      if (!this.showFee) return
       if (!this.amount) return
       if (!this.amount_with_fee) return
       if (this.amount_with_fee - this.amount < 0) return cacheFeeAmount

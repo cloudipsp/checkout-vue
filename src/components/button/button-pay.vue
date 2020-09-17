@@ -18,6 +18,7 @@ import { errorHandler } from '@/utils/helpers'
 export default {
   inject: ['$validator', 'submit'],
   computed: {
+    ...mapState(['verification_type']),
     ...mapState({ isSubmit: 'submit' }),
     ...mapState('options', { show: 'button' }),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
@@ -31,7 +32,11 @@ export default {
       return (this.amount_with_fee || this.amount) / 100
     },
     args() {
-      return this.fullAmount ? [this.fullAmount, this.$t(this.currency)] : []
+      if (this.verification_type === 'amount') return []
+
+      if (!this.fullAmount) return []
+
+      return [this.fullAmount, this.$t(this.currency)]
     },
   },
   methods: {
