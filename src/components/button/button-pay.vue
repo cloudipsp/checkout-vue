@@ -6,9 +6,11 @@
     :disabled="disabled"
     size="lg"
     block
-    :text="{ path: 'pay', args: args }"
     @click="click"
-  />
+  >
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <span v-html="$t('pay', args)" />
+  </f-button>
 </template>
 
 <script>
@@ -25,15 +27,10 @@ export default {
       return !!this.errors.items.length && this.isSubmit
     },
     fullAmount() {
-      if (!this.amount) {
-        return false
-      }
       return (this.amount_with_fee || this.amount) / 100
     },
     args() {
       if (this.verification_type === 'amount') return []
-
-      if (!this.fullAmount) return []
 
       return [this.fullAmount, this.$t(this.currency)]
     },

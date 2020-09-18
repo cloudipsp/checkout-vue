@@ -7,7 +7,8 @@ export const messages = Object.assign({}, countries, {
   banklinks_eu: 'Internet banks',
   receipt: 'Receipt',
 
-  fee: 'Commission:',
+  total_amount: 'Total amount',
+  fee: 'Commission',
   see_more: 'See more',
 
   card_number: 'Card number',
@@ -55,7 +56,7 @@ export const messages = Object.assign({}, countries, {
 
   offer_t:
     'I agree with the <a href="{0}" target="_blank">offer conditions </a>',
-  pay: 'Pay now {0} {1}',
+  pay: 'Pay now <b>{0}</b> {1}',
 
   ru: 'Русский',
   en: 'English',
