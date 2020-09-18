@@ -62,14 +62,24 @@
   display: inline-block;
   margin-right: px-to-rem(8px);
   font-size: px-to-rem(28px);
+  font-weight: 600;
   line-height: 1.2;
   color: $amount_color;
+
+  sup {
+    font-size: px-to-rem(16px);
+  }
 }
 
 .f-currency {
   display: inline-block;
   font-size: px-to-rem(20px);
-  color: lighten($currency_color, 40%);
+  color: $currency_color;
+}
+
+.f-fee-key {
+  flex: 0 0 px-to-rem(120px);
+  max-width: px-to-rem(120px);
 }
 
 .f-icons-title {
