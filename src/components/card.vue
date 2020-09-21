@@ -120,7 +120,7 @@
             under-sticky
           >
             <f-svg name="info-circle" />
-            <span v-t="{ path: 'cvv2_question', args: [digitsCvv] }" />
+            {{ $t('cvv2_question', [digitsCvv]) }}
           </f-tooltip-default>
         </template>
       </input-text>
