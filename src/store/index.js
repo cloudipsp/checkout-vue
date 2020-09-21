@@ -286,11 +286,11 @@ export default {
   setError(errors) {
     this.state.error.errors = errors
   },
-  setRecurringData(recurring_data) {
-    if (!recurring_data) return
+  setRecurring(order) {
+    if (!order) return
 
-    Object.assign(this.state.params.recurring_data, recurring_data)
-    this.state.regular.insert = true
+    Object.assign(this.state.params.recurring_data, order.recurring_data)
+    this.state.regular.insert = order.subscription
   },
   toggleMenu() {
     this.state.options.show_menu_first = !this.state.options.show_menu_first

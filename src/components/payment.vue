@@ -238,7 +238,7 @@ export default {
         this.order_desc = 'verification_' + this.verification_type + '_d'
       }
 
-      this.store.setRecurringData(model.attr('order.recurring_data'))
+      this.store.setRecurring(model.attr('order'))
 
       this.showGdprFrame = model.attr('show_gdpr_frame')
 
