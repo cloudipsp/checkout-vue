@@ -18,16 +18,23 @@
   overflow: hidden;
 }
 
-.fade-enter-active {
-  transition: opacity 0.3s;
+.fade-enter-enter-active {
+  transition: opacity ease-in-out 0.3s;
 }
-.fade-enter {
+.fade-enter-enter {
   opacity: 0;
 }
-//.fade-enter-to {
-//}
-.fade-leave {
+.fade-enter-leave-active {
   display: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity ease-in-out 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .slide-fade-enter-active {

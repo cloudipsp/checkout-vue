@@ -1,6 +1,6 @@
 <template>
   <div :class="['f-payment-method', 'f-payment-method-' + method]">
-    <transition name="fade">
+    <transition name="fade-enter">
       <!--card banklinks_eu sepa receipt -->
       <component :is="method" :key="method" />
     </transition>

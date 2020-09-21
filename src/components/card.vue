@@ -19,12 +19,14 @@
       <div class="f-card-shadow" />
       <div :class="classCardBg" />
       <div class="f-card-brand">
-        <f-icon
-          v-if="cardBrand"
-          type="card_system/max"
-          :name="cardBrand"
-          class="f-card-brand-icon"
-        />
+        <transition name="fade">
+          <f-icon
+            v-if="cardBrand"
+            type="card_system/max"
+            :name="cardBrand"
+            class="f-card-brand-icon"
+          />
+        </transition>
       </div>
       <input-text
         ref="card_number"

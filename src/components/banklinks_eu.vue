@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" :class="className">
-    <transition name="fade">
-      <div v-if="open">
+    <transition name="fade-enter">
+      <div v-if="open" key="item">
         <div class="f-bank-select">
           <f-icon
             :name="select.bank_logo"
@@ -21,9 +21,7 @@
           <f-button-pay />
         </div>
       </div>
-    </transition>
-    <transition name="fade">
-      <div v-if="!open">
+      <div v-else key="list">
         <div class="f-row">
           <div v-if="showCountry" class="f-col f-bank-country">
             <input-select

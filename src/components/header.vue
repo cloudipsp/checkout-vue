@@ -1,11 +1,9 @@
 <template>
   <div class="f-header">
     <div class="f-header-logo">
-      <transition name="fade">
-        <f-button-methods v-if="showBack" />
-      </transition>
-      <transition name="fade">
-        <div v-if="!showBack" class="f-logo" :style="styleLogo" />
+      <transition name="fade-enter">
+        <div v-if="showBack" key="back"><f-button-methods /></div>
+        <div v-else key="logo" class="f-logo" :style="styleLogo" />
       </transition>
     </div>
     <div class="f-header-menu">
