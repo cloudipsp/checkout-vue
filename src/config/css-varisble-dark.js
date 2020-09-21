@@ -34,11 +34,14 @@ export default {
   container_box_shadow: '#262a2d',
   sidebar_border: '#222528',
   title_color: white,
-  menu_item_color: '&main_color',
+  menu_item_color: white_05, //
+  menu_item_lg_color: white_05,
+  menu_item_border: grey_9,
+  menu_icon_color: '#6F7274', //
+  menu_icon_lg_color: '#6F7274',
+  menu_item_hover_bg: white, //
   menu_item_active_color: white,
   menu_item_active_bg: white_01,
-  menu_item_border: grey_9,
-  menu_icon_color: '#6F7274',
   menu_icon_active_color: white,
   menu_icons_shadow: white_01,
   menu_count_color: '#CECFD0',

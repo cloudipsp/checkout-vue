@@ -275,8 +275,24 @@
 
 .f-menu-item {
   @include media-breakpoint-up(lg) {
+    height: px-to-rem(60px);
+    padding: 0 px-to-rem(16px) 0 px-to-rem(8px);
     margin-bottom: px-to-rem(4px);
+    color: $menu_item_lg_color;
     border: none;
+  }
+
+  .f-icon {
+    @include media-breakpoint-up(lg) {
+      opacity: 0.3;
+      transition: all ease-in-out 0.15s;
+    }
+  }
+}
+
+.f-menu-icon {
+  @include media-breakpoint-up(lg) {
+    color: $menu_icon_lg_color;
   }
 }
 

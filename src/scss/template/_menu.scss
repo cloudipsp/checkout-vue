@@ -5,23 +5,25 @@
 .f-menu-item {
   display: flex;
   align-items: center;
-  //justify-content: space-between;
-  height: px-to-rem(60px);
-  padding: 0 px-to-rem(18px) 0 px-to-rem(9px);
+  height: px-to-rem(72px);
+  padding: 0 px-to-rem(15px) 0 px-to-rem(7px);
   margin-bottom: px-to-rem(12px);
-  font-size: px-to-rem(17px);
-  font-weight: 300;
+  font-weight: 400;
   color: $menu_item_color;
   cursor: pointer;
   border: 1px solid $menu_item_border;
   border-radius: px-to-rem(8px);
-  transition: all ease-in-out 0.15s;
+  transition: background ease-in-out 0.15s, color ease-in-out 0.15s;
 
-  &:hover,
+  &:hover {
+    padding: 0 px-to-rem(16px) 0 px-to-rem(8px);
+    background: $menu_item_hover_bg;
+    border: none;
+  }
+
   &.active {
-    font-weight: 400;
+    font-weight: 500;
     color: $menu_item_active_color;
-    text-decoration: none;
     background: $menu_item_active_bg;
 
     .f-menu-icon {
@@ -38,9 +40,9 @@
     }
   }
 
-  .f-icon {
-    opacity: 0.3;
-    transition: all ease-in-out 0.15s;
+  &:hover,
+  &.active {
+    text-decoration: none;
   }
 }
 

@@ -23,11 +23,13 @@
 <script>
 import { mapState } from '@/utils/store'
 import FIcons from '@/components/icons'
+import resize from '@/mixins/resize'
 
 export default {
   components: {
     FIcons,
   },
+  mixins: [resize],
   data() {
     return {
       icon: {
@@ -42,7 +44,10 @@ export default {
     ...mapState(['options']),
     className() {
       return function(item) {
-        return ['f-menu-item', { active: this.method === item }]
+        return [
+          'f-menu-item',
+          { active: this.method === item && !this.isBreakpointMd },
+        ]
       }
     },
   },
