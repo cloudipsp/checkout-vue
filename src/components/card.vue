@@ -170,7 +170,6 @@ import { mapState } from '@/utils/store'
 import FRegular from '@/components/regular'
 import FCardList from '@/components/card-list'
 import mobile from '@/mixins/mobile'
-import timeout from '@/mixins/timeout'
 import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
 import FPrice from '@/components/price'
@@ -183,7 +182,7 @@ export default {
     FIcons,
     FPrice,
   },
-  mixins: [mobile, timeout],
+  mixins: [mobile],
   data() {
     return {
       maskExpiryDate: '##/##',
@@ -192,7 +191,6 @@ export default {
       showModalCard: false,
       showTooltipCard: false,
       wrapper: null,
-      activeElement: null,
       returnFocus: null,
       cardBrand: '',
     }
@@ -363,28 +361,21 @@ export default {
         .catch(errorHandler)
     },
     scroll() {
-      if (!this.activeElement) {
-        this.activeElement = document.activeElement
+      let activeElement = document.activeElement
 
-        this.activeElement.blur()
+      if (activeElement.tagName !== 'INPUT') return
+
+      activeElement.blur()
+
+      if (this.isDesktop) {
+        let rectWrapper = this.wrapper.$el.getBoundingClientRect()
+        let rectActiveElement = activeElement.getBoundingClientRect()
+
+        if (rectActiveElement.top < rectWrapper.top) return
+        if (rectActiveElement.bottom > rectWrapper.bottom) return
       }
 
-      this.timeout('focusActiveElement', 200)
-    },
-    focusActiveElement() {
-      if (this.activeElement.tagName !== 'INPUT')
-        return (this.activeElement = null)
-
-      let rectWrapper = this.wrapper.$el.getBoundingClientRect()
-      let rectActiveElement = this.activeElement.getBoundingClientRect()
-
-      if (rectActiveElement.top < rectWrapper.top)
-        return (this.activeElement = null)
-      if (rectActiveElement.bottom > rectWrapper.bottom)
-        return (this.activeElement = null)
-
-      this.activeElement.focus()
-      this.activeElement = null
+      activeElement.focus()
     },
   },
 }
