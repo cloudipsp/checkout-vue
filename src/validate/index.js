@@ -21,8 +21,8 @@ import { ValidationProvider } from 'vee-validate'
 const install = Vue => {
   const REGEX_CUSTOMER_FIELD = /^(?!\s)[0-9A-Za-z-\/\.,\s]+$/
   const REGEX_CUSTOMER_FIELD_UTF8 = /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\s]+$/
-  const REGEX_CUSTOMER_NAME = /^([\u00BF-\u1FFF\u2C00-\uD7FF\w]+(\s|$)){2,}$/
-  const REGEX_RTRIM = /.+?\S+$/
+  const REGEX_CUSTOMER_NAME = /^([a-zA-Z]+(\s|$)){2,}$/
+  const REGEX_RTRIM = /\S+$/
 
   Validator.extend('required', required)
   Validator.extend('email', email)
