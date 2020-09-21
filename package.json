@@ -32,6 +32,7 @@
     "core-js": "^3.6.5",
     "css-vars-ponyfill": "^2.3.2",
     "ipsp-js-sdk": "^1.0.34",
+    "ismobilejs": "^1.1.1",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "vee-validate": "^2.2.7",
