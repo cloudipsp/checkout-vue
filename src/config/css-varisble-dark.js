@@ -142,6 +142,7 @@ export default {
   security_icon_color: '#797C7E',
   security_color: '#797C7E',
   security_hover_color: '#CBCCCD',
+  security_icon_hover_color: '#CBCCCD', //
   close_color: white,
   modal_backdrop_bg: '#32353A',
   modal_content_color: grey_3,

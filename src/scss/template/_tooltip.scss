@@ -6,6 +6,9 @@
 }
 
 .f-tooltip-security-content {
+  font-size: px-to-rem(14px);
+  font-weight: 400;
+
   p:last-child {
     margin-bottom: 0;
   }

@@ -158,9 +158,13 @@
     text-align: left;
 
     .f-svg {
-      min-width: px-to-rem(28px);
-      margin-right: px-to-rem(6px);
-      font-size: 3.5em;
+      min-width: px-to-rem(32px);
+      margin-right: px-to-rem(2px);
+      font-size: px-to-rem(32px);
+    }
+
+    span {
+      padding-top: px-to-rem(1px);
     }
   }
 }
