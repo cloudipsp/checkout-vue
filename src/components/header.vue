@@ -9,7 +9,13 @@
       </transition>
     </div>
     <div class="f-header-menu">
-      <select v-if="showLang" :value="lang" class="f-lang" @change="changeLang">
+      <select
+        v-if="showLang"
+        :value="lang"
+        class="f-lang"
+        dir="rtl"
+        @change="changeLang"
+      >
         <option v-for="item in locales" :key="item" v-t="item" :value="item" />
       </select>
     </div>
