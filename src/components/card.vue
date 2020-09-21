@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="isTablet && isOnlyCard">
+    <template v-if="isBreakpointMd && isOnlyCard">
       <f-info />
       <f-button-pay-wallet position="center" />
       <f-icons
@@ -12,7 +12,7 @@
         position="center"
       />
     </template>
-    <template v-if="isTablet && !isOnlyCard">
+    <template v-if="isBreakpointMd && !isOnlyCard">
       <f-price />
     </template>
     <div class="f-card">
@@ -47,7 +47,7 @@
           </label>
         </template>
         <template v-else-if="isCards" #label="{ classLabel, label_ }">
-          <template v-if="isMobile">
+          <template v-if="isPhone">
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
@@ -169,7 +169,7 @@ import { sendRequest, errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FRegular from '@/components/regular'
 import FCardList from '@/components/card-list'
-import Resize from '@/mixins/resize'
+import mobile from '@/mixins/mobile'
 import timeout from '@/mixins/timeout'
 import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
@@ -183,7 +183,7 @@ export default {
     FIcons,
     FPrice,
   },
-  mixins: [Resize, timeout],
+  mixins: [mobile, timeout],
   data() {
     return {
       maskExpiryDate: '##/##',

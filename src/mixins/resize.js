@@ -3,8 +3,8 @@ import { mapState } from '@/utils/store'
 function init() {
   let width = window.innerWidth
 
-  this.isMobile = this.full_screen ? width < 768 : true
-  this.isTablet = this.full_screen ? width < 992 : true
+  this.isBreakpointMd = this.full_screen ? width < 992 : true
+  this.isWidthSm = width < 768
 }
 
 function resize() {
@@ -17,8 +17,8 @@ let resizeBind
 export default {
   data() {
     return {
-      isMobile: true,
-      isTablet: false,
+      isBreakpointMd: false,
+      isWidthSm: false,
     }
   },
   computed: {

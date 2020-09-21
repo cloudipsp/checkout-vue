@@ -1,6 +1,6 @@
 <template>
   <div class="f-security">
-    <template v-if="isMobile">
+    <template v-if="isPhone">
       <a href="#" class="f-title-security" @click.prevent="open">
         <f-svg ref="security" name="security" size="2x" />
         <span v-t="'security_title'" />
@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import Resize from '@/mixins/resize'
+import mobile from '@/mixins/mobile'
 
 export default {
-  mixins: [Resize],
+  mixins: [mobile],
   data() {
     return {
       showTooltip: false,

@@ -37,10 +37,8 @@
 <script>
 import { mapState } from '@/utils/store'
 import configMethods from '@/config/methods'
-import Resize from '@/mixins/resize'
 
 export default {
-  mixins: [Resize],
   props: {
     position: {
       type: String,

@@ -80,7 +80,7 @@
               text="save_receipt"
             />
           </div>
-          <template v-if="!isTablet">
+          <template v-if="isDesktop">
             <div class="f-col">
               <f-button size="lg" block text="save_qr_code" @click="click" />
               <f-modal-base v-model="showQrCode" size="sm">
@@ -109,12 +109,12 @@
 </template>
 
 <script>
-import Resize from '@/mixins/resize'
+import mobile from '@/mixins/mobile'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
   inject: ['submit'],
-  mixins: [Resize],
+  mixins: [mobile],
   data() {
     return {
       model: null,

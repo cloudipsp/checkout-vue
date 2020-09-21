@@ -25,8 +25,8 @@
 
 <script>
 import item from '@/mixins/item'
+import mobile from '@/mixins/mobile'
 import DatePicker from './helpers/date-picker'
-import { isMobile } from '@/utils/helpers'
 import FormInput from './helpers/form-input'
 
 export default {
@@ -34,7 +34,7 @@ export default {
     DatePicker,
     FormInput,
   },
-  mixins: [item],
+  mixins: [item, mobile],
   computed: {
     attrsDatepicker() {
       return {
@@ -50,9 +50,6 @@ export default {
         'prefix-class': 'f-datepicker',
         'append-to-body': false,
       }
-    },
-    isMobile() {
-      return isMobile
     },
   },
 }

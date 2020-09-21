@@ -57,7 +57,8 @@ export default {
     style() {
       return {
         // .f-sidebar transform: translateX(0);
-        overflow: this.show_menu_first && this.isTablet ? 'hidden' : 'visible',
+        overflow:
+          this.show_menu_first && this.isBreakpointMd ? 'hidden' : 'visible',
       }
     },
     show() {

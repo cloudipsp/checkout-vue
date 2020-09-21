@@ -30,13 +30,11 @@
 <script>
 import { mapState } from '@/utils/store'
 import FPrice from '@/components/price'
-import Resize from '@/mixins/resize'
 
 export default {
   components: {
     FPrice,
   },
-  mixins: [Resize],
   data() {
     return {
       showMore: false,

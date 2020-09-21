@@ -38,7 +38,7 @@ export default {
       return (
         !this.isOnlyCard &&
         !this.show_menu_first &&
-        this.isTablet &&
+        this.isBreakpointMd &&
         this.page !== 'success'
       )
     },

@@ -14,10 +14,9 @@ import $checkout from 'ipsp-js-sdk/dist/checkout'
 import { api } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import id from '@/mixins/id'
-import Resize from '@/mixins/resize'
 
 export default {
-  mixins: [id, Resize],
+  mixins: [id],
   inject: ['formRequest'],
   props: {
     position: {
