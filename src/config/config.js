@@ -3,8 +3,8 @@ import configMethods from '@/config/methods'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
-import presetGradient from '@/config/preset-gradient'
 import configCardBrands from '@/config/card-brands'
+import configPresets from '@/config/presets'
 
 const methods = configMethods
 const cardIcons = Object.keys(configCardBrands)
@@ -14,17 +14,7 @@ const css = ['bootstrap3', 'bootstrap4', 'foundation6']
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
 const theme = ['light', 'dark']
-const preset = [
-  'fondy',
-  'steel_blue',
-  'light_sky_blue',
-  'dark_cyan',
-  'light_coral',
-  'red',
-  'black',
-  'white',
-  ...presetGradient,
-]
+const preset = Object.keys(configPresets)
 
 function enumArray(array) {
   return {
