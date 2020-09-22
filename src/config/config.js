@@ -4,19 +4,10 @@ import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 import presetGradient from '@/config/preset-gradient'
+import configCardBrands from '@/config/card-brands'
 
 const methods = configMethods
-const cardIcons = [
-  'mastercard',
-  'visa',
-  'mir',
-  'prostir',
-  'diners',
-  'american_express',
-  'jcb',
-  'maestro',
-  'union_pay',
-]
+const cardIcons = Object.keys(configCardBrands)
 const locales = configLocales
 const period = ['day', 'week', 'month']
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']

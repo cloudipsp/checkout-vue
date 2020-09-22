@@ -1,5 +1,5 @@
 export default {
-  diners_club_international: [
+  diners: [
     390000,
     36,
     339,
