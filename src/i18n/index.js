@@ -3,7 +3,6 @@ import VueI18n from 'vue-i18n'
 import { messages } from './lang/en'
 import store from '@/store'
 import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
-import axios from 'axios'
 
 Vue.use(VueI18n)
 
@@ -16,34 +15,18 @@ const i18n = new VueI18n({
   },
 })
 
-function setI18nLanguage(lang) {
-  i18n.locale = lang
-  document.querySelector('html').setAttribute('lang', lang)
-  return lang
-}
-
-function appendScript(text, id) {
-  let el = document.createElement('script')
-  el.setAttribute(`data-fondy-${id}`, '')
-  el.textContent = String(text)
-  document.getElementsByTagName('head')[0].appendChild(el)
-}
-
 export const loadLanguageAsync = lang => {
   return Promise.resolve()
     .then(() => {
-      return store.state.cdn &&
-        lang !== 'en' &&
-        !document.querySelector(`script[data-fondy-i18-${lang}]`)
+      let url = getUrl(lang)
+      let id = getId(url)
+      return store.state.cdn && lang !== 'en' && !document.getElementById(id)
         ? Promise.reject()
         : Promise.resolve()
     })
     .catch(() => {
-      return axios
-        .get(`${store.state.cdn}/i18n/${lang}.js`)
-        .then(({ data }) => {
-          appendScript(data, `i18-${lang}`)
-        })
+      let url = getUrl(lang)
+      return loadScript(url)
     })
     .then(() => {
       return import(
@@ -71,3 +54,32 @@ export const loadLanguageAsync = lang => {
 }
 
 export default i18n
+
+function setI18nLanguage(lang) {
+  i18n.locale = lang
+  document.querySelector('html').setAttribute('lang', lang)
+  return lang
+}
+
+function loadScript(url) {
+  return new Promise(function(resolve, reject) {
+    let id = getId(url)
+    let el = document.createElement('script')
+    el.setAttribute('id', id)
+    el.setAttribute('src', url)
+    el.addEventListener('load', resolve)
+    el.addEventListener('error', () => {
+      el.remove()
+      reject()
+    })
+    document.getElementsByTagName('head')[0].appendChild(el)
+  })
+}
+
+function getUrl(lang) {
+  return `${store.state.cdn}/i18n/${lang}.js`
+}
+
+function getId(url) {
+  return url.replace(/\W/g, '_')
+}

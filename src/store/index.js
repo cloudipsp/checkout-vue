@@ -184,14 +184,16 @@ export default {
     this.state.params.referrer = document.referrer
   },
   changeLang(lang) {
-    loadLanguageAsync(lang).then(() => {
-      this.state.params.lang = lang
+    loadLanguageAsync(lang)
+      .then(() => {
+        this.state.params.lang = lang
 
-      setCookie('lang', lang, {
-        path: '/',
-        expires: 3600,
+        setCookie('lang', lang, {
+          path: '/',
+          expires: 3600,
+        })
       })
-    })
+      .catch(errorHandler)
   },
   initLocation() {
     let methods = this.state.options.methods

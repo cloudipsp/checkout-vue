@@ -64,7 +64,7 @@
       <button class="go-sepa hide">go sepa</button>
       <button class="go-card hide">go card</button>
       <button class="set-params hide">set params</button>
-      <button class="submit hide">submit 1</button>
+      <button class="submit">submit 1</button>
     </div>
     <div>
       <div class="coll"></div>
@@ -147,7 +147,13 @@
               // logoUrl:
               //   'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               offertaUrl:
-                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png'
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              // theme: {
+              //   type: 'dark',
+              //   preset: 'gradient_indigo'
+              // },
+              show_menu_first: true,
+              disable_request: true,
             },
             regular: {
               insert: true,
@@ -156,8 +162,8 @@
             },
             params: {
               currency: 'EUR',
-              merchant_id: 900238,
-              amount: 500,
+              merchant_id: 900001,
+              amount: 50415,
               // merchant_id: 900187,
               //    verification_type: 'code',
               //    required_rectoken: 'y',
@@ -167,7 +173,7 @@
               order_desc: 'my_desc',
               //    response_url: 'https://www.fondy.eu',
               //     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
-              lang: 'ru',
+              // lang: 'ru',
               recurring_data: {
                 every: 2,
                 period: 'week',
@@ -193,6 +199,7 @@
                   'Благотворительная помощь (ребенку или отделению гематологии, или отделению плановой хирургии с онкологическими койками днепропетровской областной детской клинической больницы)',
               },
               en: {
+                banklinks_eu:'asdasd',
                 UAH: 'гривна',
                 // card_number: 'edit Card number',
                 // card_number_p: 'Card number',
@@ -244,6 +251,12 @@
               link: 'https://fondy.eu',
               fullScreen: false,
               //    fee: true,
+              offertaUrl:
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              theme: {
+                type: 'dark',
+                preset: 'gradient_indigo'
+              },
             },
             params: {
               amount: 200,
@@ -274,14 +287,46 @@
               order_desc:'order_desc'
             },
           },
+          rectoken1: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              fullScreen: false,
+            },
+            params: {
+              amount: 200,
+              currency: 'UAH',
+              merchant_id: 1396424,
+              email: 'test@test.test',
+              required_rectoken: 'y',
+              response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+            },
+          },
+          rectoken2: {
+            options: {
+              api_domain: 'api.dev.fondy.eu',
+              fullScreen: false,
+            },
+            params: {
+              // amount: 200,
+              // currency: 'UAH',
+              // merchant_id: 1396424,
+              email: 'test@test.test',
+              token: '83435a7289e11563e36b5e43cb80a088d4863ca4'
+            },
+          },
           banklinks_eu: {
             options: {
               methods: ['banklinks_eu'],
               api_domain: 'api.dev.fondy.eu',
               active_tab: 'banklinks_eu',
-              default_country: 'DE',
+              default_country: 'FI',
               link: 'https://fondy.eu',
               // countries: ['PL'],
+              show_menu_first: false,
+              theme: {
+                type: 'dark',
+                preset: 'gradient_indigo'
+              },
             },
             params: {
               amount: 100,
@@ -292,18 +337,21 @@
           },
           token: {
             options: {
+              methods: ['card', 'sepa'],
               api_domain: 'api.dev.fondy.eu',
-              fullScreen: false,
+              fullScreen: true,
               link: 'https://fondy.eu',
             },
             params: {
-              token: 'd7de461a3d8051d4207f073ae0c63afd1c9aeafb',
+              // currency: 'EUR',
+              // merchant_id: 900001,
+              token: 'd198fdadc5545c42516896ebda8e016488ffe298',
               order_desc: 'order_desc',
             },
           },
           wallet: {
             options: {
-              methods: ['card', 'sepa'],
+              methods: ['card'],
               api_domain: 'api.dev.fondy.eu',
               link: 'https://fondy.eu',
             },
@@ -351,7 +399,7 @@
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               theme: {
                 type: 'dark',
-                preset: 'light_sky_blue',
+                preset: 'gradient_indigo',
               },
             },
             params: {
@@ -375,8 +423,12 @@
               link: 'https://fondy.eu',
               offerta_url:
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-              active_tab: 'receipt',
+              active_tab: 'card',
               show_menu_first: false,
+              theme: {
+                type: 'dark',
+                preset: 'gradient_indigo',
+              },
             },
             params: {
               currency: 'UAH',
@@ -401,7 +453,7 @@
           }
         }
 
-        var app = render('dark')
+        window.app = render('max')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()
