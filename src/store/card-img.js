@@ -6,6 +6,6 @@ export default function(preset) {
   if (!presetGradient.includes(preset)) return Promise.reject()
 
   return axios
-    .get(`${optionsDefault.cdn}json/preset/${preset}.json`)
+    .get(`${optionsDefault.cdnIcons}json/preset/${preset}.json`)
     .then(response => response.data)
 }

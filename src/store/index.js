@@ -73,6 +73,7 @@ export default {
       configCss[this.state.options.css],
       optionsUser.css
     )
+    this.initCdn()
     this.initBanklinks()
     this.initLang()
     this.initLocation()
@@ -105,6 +106,15 @@ export default {
         }
       }
     }
+  },
+  initCdn() {
+    let scriptFondyEl = [
+      ...document.querySelectorAll('script[src$="checkout.js"]'),
+    ].filter(item => /fondy/.test(item.src))[0]
+
+    if (!scriptFondyEl) return
+
+    this.state.cdn = scriptFondyEl.src.replace('/checkout.js', '')
   },
   initBanklinks() {
     let list = this.state.options.methods

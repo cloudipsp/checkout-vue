@@ -33,14 +33,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cdn']),
+    ...mapState(['cdnIcons']),
     skip() {
       return this.name === 'no_logo'
     },
     style() {
       if (this.skip) return {}
       return {
-        'background-image': `url(${this.cdn}svg/${this.map[this.type] ||
+        'background-image': `url(${this.cdnIcons}svg/${this.map[this.type] ||
           this.type}/${this.name}.svg)`,
       }
     },
