@@ -1,4 +1,4 @@
-import configLocales from '@/config/locales'
+import configLocales from '@/config/locales.json'
 import configCss from '@/config/css'
 
 const options = {

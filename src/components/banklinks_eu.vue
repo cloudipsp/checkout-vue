@@ -13,9 +13,8 @@
           <div>{{ select.iban }}</div>
           <f-button-close class="f-bank-select-close" @click="open = false" />
         </div>
+        <div v-t="'bank_desc'" class="f-bank-desc" />
         <div class="f-container-sm">
-          <f-customer-fields />
-          <f-fields />
           <f-fields-bank v-if="showFieldsBank" :fields="select.form.fields" />
           <f-offer />
           <f-button-pay />
@@ -115,7 +114,7 @@ export default {
     ...mapState('options', ['countries']),
     ...mapState('router', ['system']),
     ...mapStateGetSet('options', ['default_country']),
-    // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
+    // {147209: {country: 'PL', name: '', bank_logo: 'mbank'}}
     config() {
       return (this.banklinks_eu && this.banklinks_eu.payment_systems) || {}
     },
@@ -123,11 +122,11 @@ export default {
     keys() {
       return Object.keys(this.config)
     },
-    // [{country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    // [{country: 'PL', name: '', bank_logo: 'mbank'}]
     values() {
       return Object.values(this.config)
     },
-    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listFull() {
       return this.values.map((item, i) => ({
         ...item,
@@ -136,7 +135,7 @@ export default {
         iban: this.keys[i].split('|')[1] || '',
       }))
     },
-    // [{id: 'PL', name: 'Poland'}]
+    // [{id: 'PL', name:''}]
     country() {
       let result =
         this.countries && this.countries.length
@@ -150,7 +149,7 @@ export default {
       }))
       return sort(result, 'name')
     },
-    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listSelect() {
       return this.listFull
         .filter(this.listSelectFilter)

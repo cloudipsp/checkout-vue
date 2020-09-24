@@ -22,7 +22,6 @@ import loadCardImg from '@/store/card-img'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  name: 'FCheckout',
   components: {
     FHeader,
     Payment,

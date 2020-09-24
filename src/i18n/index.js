@@ -38,7 +38,7 @@ export const loadLanguageAsync = lang => {
       Validator.localize(lang, {
         messages: Object.assign(
           {},
-          Validator.dictionary.container['en'].messages,
+          lang !== 'en' ? Validator.dictionary.container['en'] : {},
           msgs.validate,
           store.state.validate[lang]
         ),

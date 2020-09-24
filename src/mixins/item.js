@@ -63,9 +63,7 @@ export default {
       return [this.css.fc, this.inputClass]
     },
     placeholder() {
-      const key = this.name + '_p'
-
-      return this.$te(key) ? this.$t(key) : this.$t(this.$attrs.placeholder)
+      return this.$t(this.$attrs.placeholder)
     },
   },
   watch: {

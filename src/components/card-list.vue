@@ -1,7 +1,7 @@
 <template>
   <div class="f-card-list">
     <a href="#" :class="['f-card-list-add']" @click.prevent="addCardNumber()">
-      <f-svg class="f-card-list-icon" name="plus-circle" size="lg" fw />
+      <f-svg name="plus-circle" class="f-card-list-icon" size="lg" fw />
       <div v-t="'use_other_card'" />
     </a>
     <a

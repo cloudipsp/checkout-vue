@@ -90,9 +90,7 @@ export default {
       return this.$t(this.label || this.name)
     },
     placeholder_() {
-      const key = this.name + '_p'
-
-      return this.$te(key) ? this.$t(key) : this.$t(this.placeholder)
+      return this.$t(this.placeholder)
     },
     flag() {
       return this.$validator.flags[this.name_] || {}

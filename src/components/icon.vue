@@ -4,7 +4,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import configMethods from '@/config/methods'
+import configMethods from '@/config/methods.json'
 
 export default {
   props: {

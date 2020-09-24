@@ -1,4 +1,4 @@
-import configMethods from '@/config/methods'
+import configMethods from '@/config/methods.json'
 
 export const methods = arr => {
   return arr

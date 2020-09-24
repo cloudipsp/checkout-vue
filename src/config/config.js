@@ -1,15 +1,13 @@
-import configLocales from '@/config/locales'
-import configMethods from '@/config/methods'
+import locales from '@/config/locales.json'
+import methods from '@/config/methods.json'
+import period from '@/config/regular-period.json'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
 
-const methods = configMethods
 const cardIcons = Object.keys(configCardBrands)
-const locales = configLocales
-const period = ['day', 'week', 'month']
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']

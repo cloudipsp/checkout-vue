@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     ...mapState('tabs', ['banklinks_eu']),
-    // {147209: {country: 'PL', name: 'mBank', bank_logo: 'mbank'}}
+    // {147209: {country: 'PL', name: '', bank_logo: 'mbank'}}
     config() {
       return (this.banklinks_eu && this.banklinks_eu.payment_systems) || {}
     },
@@ -31,11 +31,11 @@ export default {
     keys() {
       return Object.keys(this.config)
     },
-    // [{country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    // [{country: 'PL', name: '', bank_logo: 'mbank'}]
     values() {
       return Object.values(this.config)
     },
-    // [{id: 147209, country: 'PL', name: 'mBank', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listFull() {
       return this.values.map((item, i) => ({
         ...item,
