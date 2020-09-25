@@ -3,7 +3,7 @@
     <f-form-group
       v-for="field in list"
       :key="field.name"
-      v-model="params[field.name]"
+      v-model="params.form[field.name]"
       v-bind="field"
     />
   </div>
