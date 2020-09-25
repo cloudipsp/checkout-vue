@@ -99,7 +99,7 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   display: flex;
   align-items: center;
   padding: px-to-rem(12px);
-  margin-bottom: px-to-rem(24px);
+  margin-bottom: px-to-rem(12px);
   background-color: $bank_select_bg;
   border-radius: px-to-rem(8px);
 }
@@ -126,4 +126,8 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   &:hover {
     color: $bank_select_close_hover_color;
   }
+}
+
+.f-bank-desc {
+  margin-bottom: px-to-rem(20px);
 }
