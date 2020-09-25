@@ -50,6 +50,8 @@ export default {
 
       if (amount % 100 === 0) {
         result = result + this.separator + '00'
+      } else if (amount % 10 === 0) {
+        result = result + '0'
       }
 
       return result
