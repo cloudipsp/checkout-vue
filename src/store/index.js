@@ -197,7 +197,7 @@ export default {
   },
   initLocation() {
     let methods = this.state.options.methods
-    let active_tab = this.state.options.active_tab
+    let active_tab = this.state.router.method
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
     this.state.router.page = 'payment-method'
     this.state.router.method = method
