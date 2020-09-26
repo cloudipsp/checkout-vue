@@ -33,8 +33,6 @@
     "css-vars-ponyfill": "^2.3.2",
     "ipsp-js-sdk": "^1.0.34",
     "ismobilejs": "^1.1.1",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
     "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-i18n": "^8.21.1",
@@ -62,7 +60,9 @@
     "lint-staged": "^9.5.0",
     "minimist": "^1.2.5",
     "node-gettext-generator": "^0.2.12",
+    "node-sass": "^4.14.1",
     "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2",
     "stylelint-config-prettier": "^5.3.0",
     "stylelint-config-twbs-bootstrap": "^0.4.0",
     "vue-template-compiler": "^2.6.11"
