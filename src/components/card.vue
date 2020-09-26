@@ -170,7 +170,7 @@
 
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
-import { sendRequest, errorHandler } from '@/utils/helpers'
+import { errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FRegular from '@/components/regular'
 import FCardList from '@/components/card-list'
@@ -299,15 +299,16 @@ export default {
       value = value.slice(0, 6)
       let card_bin = value.length === 6 ? value : value[0]
 
-      sendRequest(
-        'api.checkout.card_type_fee',
-        'get',
-        {
-          token: this.token,
-          card_bin,
-        },
-        { cached: true }
-      )
+      this.store
+        .sendRequest(
+          'api.checkout.card_type_fee',
+          'get',
+          {
+            token: this.token,
+            card_bin,
+          },
+          { cached: true }
+        )
         .then(this.cardTypeFeeSuccess)
         .catch(errorHandler)
     },

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import { messages } from './lang/en'
-import store from '@/store'
+import { messages } from '@/i18n/lang/en'
 import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
 
 Vue.use(VueI18n)
@@ -15,17 +14,17 @@ const i18n = new VueI18n({
   },
 })
 
-export const loadLanguageAsync = lang => {
+export const loadLanguageAsync = (lang, store) => {
   return Promise.resolve()
     .then(() => {
-      let url = getUrl(lang)
+      let url = getUrl(lang, store)
       let id = getId(url)
       return store.state.cdn && lang !== 'en' && !document.getElementById(id)
         ? Promise.reject()
         : Promise.resolve()
     })
     .catch(() => {
-      let url = getUrl(lang)
+      let url = getUrl(lang, store)
       return loadScript(url)
     })
     .then(() => {
@@ -76,7 +75,7 @@ function loadScript(url) {
   })
 }
 
-function getUrl(lang) {
+function getUrl(lang, store) {
   return `${store.state.cdn}/i18n/${lang}.js`
 }
 

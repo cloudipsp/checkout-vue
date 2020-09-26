@@ -9,7 +9,7 @@
 <script>
 import config from '@/config/customer-fields'
 import countries from '@/config/countries'
-import { sort } from '@/utils/helpers'
+import { sort } from '@/utils/sort'
 import { mapState } from '@/utils/store'
 
 export default {

@@ -1,13 +1,13 @@
-const webpack = require('webpack');
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
-const gitRevisionPlugin = new GitRevisionPlugin();
-const increaseSpecificity = require('./build/postcss-increase-specificity');
-const argv = require('minimist')(process.argv.slice(2));
+const webpack = require('webpack')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const gitRevisionPlugin = new GitRevisionPlugin()
+const increaseSpecificity = require('./build/postcss-increase-specificity')
+const argv = require('minimist')(process.argv.slice(2))
 
 function addF (options) {
   options.plugins = () => [
     increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
-  ];
+  ]
   return options
 }
 
@@ -100,6 +100,17 @@ module.exports = {
                 .end()
               .end()
             .end()
+          .plugin('stylelint')
+            .use('stylelint-webpack-plugin',[{
+              files: 'src/**/*.scss'
+            }])
+            .end()
+          .plugin('circular-dependency-plugin')
+            .use('circular-dependency-plugin',[{
+              exclude: /node_modules/,
+              cwd: process.cwd(),
+            }])
+            .end()
       })
 
     config
@@ -171,7 +182,7 @@ module.exports = {
         .rule('images')
           .use('url-loader')
             .tap(options => {
-              delete options.limit;
+              delete options.limit
               return options
             })
             .end()
@@ -190,14 +201,6 @@ module.exports = {
             .loader('image-webpack-loader')
             .end()
           .end()
-        .end()
-      .plugin('stylelint')
-        .use('stylelint-webpack-plugin')
-        .tap(() => {
-          return [{
-            files: 'src/**/*.scss'
-          }]
-        })
         .end()
   }
 }

@@ -5,15 +5,13 @@ import configCss from '@/config/css'
 import notSet from '@/config/not-set'
 import cssVarisble from '@/config/css-varisble'
 import {
-  initApi,
   getCookie,
   setCookie,
   deepMerge,
-  validate,
-  sendRequest,
   findGetParameter,
   errorHandler,
 } from '@/utils/helpers'
+import { initApi, sendRequest } from '@/utils/api'
 import { isPlainObject } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
@@ -22,6 +20,8 @@ import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import { methods } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
+import config from '@/config/config'
+import Schema from 'async-validator'
 
 Vue.use(store)
 
@@ -49,13 +49,24 @@ export default {
       data[prop] = value
     }
   },
+  sendRequest(...args) {
+    if (this.state.options.disable_request) return Promise.reject()
+
+    return sendRequest(...args).catch(model => {
+      this.showError(
+        String(model.attr('error.code')),
+        model.attr('error.message')
+      )
+      return Promise.reject(model)
+    })
+  },
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   },
   default: optionsDefault,
   setOptions(optionsUser) {
     this.optionsFormat(optionsUser)
-    validate(optionsUser)
+    this.validate(optionsUser)
     this.user = optionsUser
     deepMerge(this.state.params, optionsUser.params, notSet.params)
     deepMerge(this.state.options, optionsUser.options, notSet.options)
@@ -106,6 +117,12 @@ export default {
         }
       }
     }
+  },
+  validate(options) {
+    new Schema(config).validate(options, errors => {
+      if (!errors) return
+      this.setError(errors)
+    })
   },
   initCdn() {
     let scriptFondyEl = [
@@ -175,16 +192,21 @@ export default {
     object[key] = value
   },
   initApi() {
-    initApi({
-      origin: 'https://' + this.state.options.api_domain,
-      endpoint: this.state.options.endpoint,
-    })
+    initApi(
+      {
+        origin: 'https://' + this.state.options.api_domain,
+        endpoint: this.state.options.endpoint,
+      },
+      () => {
+        this.formLoading(false)
+      }
+    )
   },
   initReferrer() {
     this.state.params.referrer = document.referrer
   },
   changeLang(lang) {
-    loadLanguageAsync(lang)
+    loadLanguageAsync(lang, this)
       .then(() => {
         this.state.params.lang = lang
 
@@ -213,7 +235,7 @@ export default {
   getAmountWithFee() {
     if (!this.state.params.amount) return
     if (!this.state.params.fee) return
-    return sendRequest('api.checkout.fee', 'get', this.state.params, {
+    return this.sendRequest('api.checkout.fee', 'get', this.state.params, {
       cached: true,
       params: {
         amount: this.state.params.amount,
@@ -257,7 +279,7 @@ export default {
       )
       return
     }
-    validate({ params: params })
+    this.validate({ params: params })
     if (!this.state.error.errors.length) {
       deepMerge(this.state.params, params, notSet.params)
     }

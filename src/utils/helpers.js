@@ -1,53 +1,3 @@
-import $checkout from 'ipsp-js-sdk/dist/checkout'
-import store from '@/store'
-import config from '@/config/config'
-import Schema from 'async-validator'
-import i18n from '@/i18n/index'
-
-export let api
-let cache = {}
-
-export const initApi = option => {
-  api = $checkout('Api', option)
-
-  api.on('modal.close', function() {
-    store.formLoading(false)
-  })
-}
-
-export const sendRequest = (name, method, params = {}, cached = {}) => {
-  if (store.state.options.disable_request) return Promise.reject()
-
-  let id = [name, method, JSON.stringify(cached.params || params)].join('_')
-  if (cached.cached && cache[id]) return cache[id]
-  cache[id] = new Promise(function(resolve, reject) {
-    api.scope(function() {
-      this.request(name, method, params)
-        .then(
-          function(model) {
-            console.log('done', { name, method, params, model })
-            resolve(model)
-            if (cached.clear || !cached.cached) delete cache[id]
-          },
-          function(model) {
-            console.log('fail', { name, method, params, model })
-            store.showError(
-              String(model.attr('error.code')),
-              model.attr('error.message')
-            )
-            reject(model)
-            if (cached.clear || !cached.cached) delete cache[id]
-          }
-        )
-        .progress(function(model) {
-          resolve(model)
-          if (cached.clear || !cached.cached) delete cache[id]
-        })
-    })
-  })
-  return cache[id]
-}
-
 export const getCookie = name => {
   let matches = document.cookie.match(
     new RegExp(
@@ -118,13 +68,6 @@ export const deepMerge = (...args) => {
   return extended
 }
 
-export const validate = options => {
-  new Schema(config).validate(options, errors => {
-    if (!errors) return
-    store.setError(errors)
-  })
-}
-
 export const findGetParameter = parameterName => {
   let result = null
   let tmp = []
@@ -136,17 +79,6 @@ export const findGetParameter = parameterName => {
       if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1])
     })
   return result
-}
-
-export const sort = (arr, field, reverse) => {
-  reverse = reverse ? -1 : 1
-  return arr.sort((a, b) => {
-    if (String.prototype.localeCompare) {
-      return a[field].localeCompare(b[field], i18n.locale) * reverse
-    } else {
-      return (a[field] < b[field] ? -1 : 1) * reverse
-    }
-  })
 }
 
 export const loadStyle = css => {

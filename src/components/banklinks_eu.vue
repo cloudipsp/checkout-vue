@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { sort } from '@/utils/helpers'
+import { sort } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'

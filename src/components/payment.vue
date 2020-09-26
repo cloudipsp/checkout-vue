@@ -29,7 +29,7 @@ import FModalError from '@/components/modal/modal-error'
 import FSecurity from '@/components/security'
 import FAlertGdpr from '@/components/alert/alert-gdpr'
 
-import { sendRequest, errorHandler } from '@/utils/helpers'
+import { errorHandler } from '@/utils/helpers'
 import { isExist } from '@/utils/typeof'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
@@ -127,7 +127,11 @@ export default {
         () => {}
       )
       .then(() => {
-        return sendRequest('api.checkout', 'app', this.createdFormParams)
+        return this.store.sendRequest(
+          'api.checkout',
+          'app',
+          this.createdFormParams
+        )
       })
       .finally(() => {
         this.ready = true
@@ -157,11 +161,12 @@ export default {
       if (this.loading) return Promise.reject()
       this.store.formLoading(true)
 
-      return sendRequest(
-        'api.checkout.form',
-        'request',
-        Object.assign(this.store.formParams(), data)
-      )
+      return this.store
+        .sendRequest(
+          'api.checkout.form',
+          'request',
+          Object.assign(this.store.formParams(), data)
+        )
         .finally(() => {
           this.store.formLoading(false)
         })
@@ -309,7 +314,8 @@ export default {
       if (this.loading) return
       this.store.formLoading(true)
       this.processingTimeout = setTimeout(() => {
-        sendRequest('api.checkout.order', 'get', this.store.formParams())
+        this.store
+          .sendRequest('api.checkout.order', 'get', this.store.formParams())
           .finally(() => {
             this.store.formLoading(false)
           })
