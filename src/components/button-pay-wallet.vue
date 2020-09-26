@@ -14,9 +14,10 @@ import $checkout from 'ipsp-js-sdk/dist/checkout'
 import { api } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import id from '@/mixins/id'
+import timeout from '@/mixins/timeout'
 
 export default {
-  mixins: [id],
+  mixins: [id, timeout],
   inject: ['formRequest'],
   props: {
     position: {
@@ -27,7 +28,6 @@ export default {
   },
   data() {
     return {
-      timeout: null,
       init: false,
     }
   },
@@ -64,9 +64,7 @@ export default {
     amount() {
       if (!this.show) return
 
-      clearTimeout(this.timeout)
-
-      this.timeout = setTimeout(this.update, 100)
+      this.timeout(this.update, 100)
     },
   },
   mounted() {

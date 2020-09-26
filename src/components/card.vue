@@ -178,6 +178,7 @@ import mobile from '@/mixins/mobile'
 import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
 import FPrice from '@/components/price'
+import timeout from '@/mixins/timeout'
 
 export default {
   inject: ['$validator'],
@@ -187,7 +188,7 @@ export default {
     FIcons,
     FPrice,
   },
-  mixins: [mobile],
+  mixins: [mobile, timeout],
   data() {
     return {
       maskExpiryDate: '##/##',
@@ -332,13 +333,13 @@ export default {
       this.showModalCard = false
       this.showTooltipCard = false
       // for focus after hiding the tooltip
-      setTimeout(() => {
+      this.timeout(() => {
         this.returnFocus.focus()
       }, 100)
     },
     blurTooltipCard() {
       // TODO to volunteer the event setCardNumber addCardNumber
-      setTimeout(() => {
+      this.timeout(() => {
         this.showTooltipCard = false
       }, 100)
     },

@@ -36,6 +36,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
 import { methods, tabs } from '@/utils/compatibility'
 import getCardBrand from '@/utils/card-brand'
+import timeout from '@/mixins/timeout'
 
 let model3ds
 
@@ -56,6 +57,7 @@ export default {
     FSecurity,
     FAlertGdpr,
   },
+  mixins: [timeout],
   inject: ['$validator'],
   data() {
     return {
@@ -336,7 +338,7 @@ export default {
         '#' + this.errors.items[0].field
       )
       $firstErrorField.scrollIntoView()
-      setTimeout(() => {
+      this.timeout(() => {
         $firstErrorField.focus()
       })
 

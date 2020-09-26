@@ -90,11 +90,13 @@ import { sort } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
+import timeout from '@/mixins/timeout'
 
 export default {
   components: {
     FFieldsBank,
   },
+  mixins: [timeout],
   data() {
     return {
       form: {
@@ -260,7 +262,7 @@ export default {
     },
     loadMore() {
       this.spin = true
-      setTimeout(() => {
+      this.timeout(() => {
         this.more += this.count
         this.spin = false
       }, 300)
