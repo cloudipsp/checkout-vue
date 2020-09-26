@@ -91,3 +91,10 @@ export const loadStyle = css => {
 export const errorHandler = error => {
   if (error instanceof Error) console.log(error)
 }
+
+export const clearEmptyValue = object => {
+  return Object.fromEntries(
+    // eslint-disable-next-line no-unused-vars
+    Object.entries(object).filter(([k, v]) => v !== '' && v !== null)
+  )
+}

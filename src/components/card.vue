@@ -5,7 +5,7 @@
       <f-button-pay-wallet position="center" />
       <f-icons
         class="f-mb-3"
-        title="or_pay_with_card"
+        title="pay_with_card"
         :type="method"
         :count="5"
         under-sticky
@@ -123,7 +123,7 @@
             under-sticky
           >
             <f-svg name="info-circle" />
-            {{ $t('cvv2_question', [digitsCvv]) }}
+            {{ $t('cvv2_help', [digitsCvv]) }}
           </f-tooltip-default>
         </template>
       </input-text>

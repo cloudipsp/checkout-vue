@@ -1,0 +1,467 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: src/i18n/process/templates.js:13
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-26 03:38+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/i18n/process/methods.js:1
+msgid "card"
+msgstr ""
+
+#: src/i18n/process/methods.js:2
+msgid "trustly"
+msgstr ""
+
+#: src/i18n/process/methods.js:3
+msgid "sepa"
+msgstr ""
+
+#: src/i18n/process/methods.js:4
+msgid "banklinks_eu"
+msgstr ""
+
+#: src/i18n/process/methods.js:5
+msgid "receipt"
+msgstr ""
+
+#: src/i18n/process/regular-period.js:1
+msgid "day"
+msgstr ""
+
+#: src/i18n/process/regular-period.js:2
+msgid "week"
+msgstr ""
+
+#: src/i18n/process/regular-period.js:3
+msgid "month"
+msgstr ""
+
+#: src/i18n/process/templates.js:1
+msgid "gdpr_alert_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:2
+msgid "learn_more"
+msgstr ""
+
+#: src/i18n/process/templates.js:3
+msgid "save_card"
+msgstr ""
+
+#: src/i18n/process/templates.js:4
+msgid "its_safe"
+msgstr ""
+
+#: src/i18n/process/templates.js:5
+msgid "gdpr_modal_safe"
+msgstr ""
+
+#: src/i18n/process/templates.js:6
+msgid "close"
+msgstr ""
+
+#: src/i18n/process/templates.js:7
+msgid "accept"
+msgstr ""
+
+#: src/i18n/process/templates.js:8
+msgid "bank_desc"
+msgstr ""
+
+#: src/i18n/process/templates.js:9
+msgid "default_country"
+msgstr ""
+
+#: src/i18n/process/templates.js:10
+msgid "search"
+msgstr ""
+
+#: src/i18n/process/templates.js:11
+msgid "system_search"
+msgstr ""
+
+#: src/i18n/process/templates.js:12
+msgid "load_more"
+msgstr ""
+
+#: src/i18n/process/templates.js:14
+msgid "other_payment_method"
+msgstr ""
+
+#: src/i18n/process/templates.js:15
+msgid "pay"
+msgstr ""
+
+#: src/i18n/process/templates.js:16
+msgid "use_other_card"
+msgstr ""
+
+#: src/i18n/process/templates.js:17
+msgid "expires_on"
+msgstr ""
+
+#: src/i18n/process/templates.js:18
+msgid "pay_with_card"
+msgstr ""
+
+#: src/i18n/process/templates.js:19
+msgid "card_number"
+msgstr ""
+
+#: src/i18n/process/templates.js:20
+msgid "card_number_p"
+msgstr ""
+
+#: src/i18n/process/templates.js:21
+msgid "angle-down"
+msgstr ""
+
+#: src/i18n/process/templates.js:22
+msgid "expiry_date"
+msgstr ""
+
+#: src/i18n/process/templates.js:23
+msgid "expiry_date_p"
+msgstr ""
+
+#: src/i18n/process/templates.js:24
+msgid "cvv2"
+msgstr ""
+
+#: src/i18n/process/templates.js:25
+msgid "cvv2_p"
+msgstr ""
+
+#: src/i18n/process/templates.js:26
+msgid "cvv2_help"
+msgstr ""
+
+#: src/i18n/process/templates.js:27
+msgid "checkout-email"
+msgstr ""
+
+#: src/i18n/process/templates.js:28
+msgid "email"
+msgstr ""
+
+#: src/i18n/process/templates.js:29
+msgid "code"
+msgstr ""
+
+#: src/i18n/process/templates.js:30
+msgid "verification_code"
+msgstr ""
+
+#: src/i18n/process/templates.js:31
+msgid "verification_amount"
+msgstr ""
+
+#: src/i18n/process/templates.js:32
+msgid "datepicker"
+msgstr ""
+
+#: src/i18n/process/templates.js:33
+msgid "see_more"
+msgstr ""
+
+#: src/i18n/process/templates.js:34
+msgid "show"
+msgstr ""
+
+#: src/i18n/process/templates.js:35
+msgid "submit3ds_title"
+msgstr ""
+
+#: src/i18n/process/templates.js:36
+msgid "submit3ds_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:37
+msgid "submit3ds_submit"
+msgstr ""
+
+#: src/i18n/process/templates.js:38
+msgid "submit3ds_wait"
+msgstr ""
+
+#: src/i18n/process/templates.js:39
+msgid "offer"
+msgstr ""
+
+#: src/i18n/process/templates.js:40
+msgid "offer_t"
+msgstr ""
+
+#: src/i18n/process/templates.js:41
+msgid "pending"
+msgstr ""
+
+#: src/i18n/process/templates.js:42
+msgid "total_amount"
+msgstr ""
+
+#: src/i18n/process/templates.js:43
+msgid "fee"
+msgstr ""
+
+#: src/i18n/process/templates.js:44
+msgid "mfo_title"
+msgstr ""
+
+#: src/i18n/process/templates.js:45
+msgid "ibox_title"
+msgstr ""
+
+#: src/i18n/process/templates.js:46
+msgid "amount"
+msgstr ""
+
+#: src/i18n/process/templates.js:47
+msgid "UAH"
+msgstr ""
+
+#: src/i18n/process/templates.js:48
+msgid "receiver"
+msgstr ""
+
+#: src/i18n/process/templates.js:49
+msgid "current_bill"
+msgstr ""
+
+#: src/i18n/process/templates.js:50
+msgid "usreou"
+msgstr ""
+
+#: src/i18n/process/templates.js:51
+msgid "bank"
+msgstr ""
+
+#: src/i18n/process/templates.js:52
+msgid "mfo"
+msgstr ""
+
+#: src/i18n/process/templates.js:53
+msgid "purpose"
+msgstr ""
+
+#: src/i18n/process/templates.js:54
+msgid "receipt_id"
+msgstr ""
+
+#: src/i18n/process/templates.js:55
+msgid "end_date"
+msgstr ""
+
+#: src/i18n/process/templates.js:56
+msgid "ibox_desc"
+msgstr ""
+
+#: src/i18n/process/templates.js:57
+msgid "save_receipt"
+msgstr ""
+
+#: src/i18n/process/templates.js:58
+msgid "save_qr_code"
+msgstr ""
+
+#: src/i18n/process/templates.js:59
+msgid "qr_code_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:60
+msgid "ibox_info"
+msgstr ""
+
+#: src/i18n/process/templates.js:61
+msgid "regular"
+msgstr ""
+
+#: src/i18n/process/templates.js:62
+msgid "regular_amount"
+msgstr ""
+
+#: src/i18n/process/templates.js:63
+msgid "regular_every"
+msgstr ""
+
+#: src/i18n/process/templates.js:64
+msgid "regular_period"
+msgstr ""
+
+#: src/i18n/process/templates.js:65
+msgid "regular_start_time"
+msgstr ""
+
+#: src/i18n/process/templates.js:66
+msgid "security"
+msgstr ""
+
+#: src/i18n/process/templates.js:67
+msgid "security_title"
+msgstr ""
+
+#: src/i18n/process/templates.js:68
+msgid "security_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:69
+msgid "sepa_t"
+msgstr ""
+
+#: src/i18n/process/templates.js:70
+msgid "sender_name"
+msgstr ""
+
+#: src/i18n/process/templates.js:71
+msgid "sender_familyName"
+msgstr ""
+
+#: src/i18n/process/templates.js:72
+msgid "bic"
+msgstr ""
+
+#: src/i18n/process/templates.js:73
+msgid "iban"
+msgstr ""
+
+#: src/i18n/process/templates.js:74
+msgid "payment_id"
+msgstr ""
+
+#: src/i18n/process/templates.js:75
+msgid "customer_name"
+msgstr ""
+
+#: src/i18n/process/templates.js:76
+msgid "customer_name_utf8"
+msgstr ""
+
+#: src/i18n/process/templates.js:77
+msgid "customer_address"
+msgstr ""
+
+#: src/i18n/process/templates.js:78
+msgid "customer_zip"
+msgstr ""
+
+#: src/i18n/process/templates.js:79
+msgid "customer_city"
+msgstr ""
+
+#: src/i18n/process/templates.js:80
+msgid "customer_country"
+msgstr ""
+
+#: src/i18n/process/templates.js:81
+msgid "customer_state"
+msgstr ""
+
+#: src/i18n/process/templates.js:82
+msgid "customer_phonemobile"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
+msgid "customer_email"
+msgstr ""
+
+#: src/i18n/process/translate.js:1
+msgid "declined"
+msgstr ""
+
+#: src/i18n/process/translate.js:2
+msgid "approved"
+msgstr ""
+
+#: src/i18n/process/translate.js:4
+msgid "verification_t"
+msgstr ""
+
+#: src/i18n/process/translate.js:5
+msgid "verification_d"
+msgstr ""
+
+#: src/i18n/process/translate.js:7
+msgid "rule_default"
+msgstr ""
+
+#: src/i18n/process/translate.js:8
+msgid "rule_after"
+msgstr ""
+
+#: src/i18n/process/translate.js:9
+msgid "rule_alpha"
+msgstr ""
+
+#: src/i18n/process/translate.js:10
+msgid "rule_date_format"
+msgstr ""
+
+#: src/i18n/process/translate.js:11
+msgid "rule_decimal"
+msgstr ""
+
+#: src/i18n/process/translate.js:12
+msgid "rule_digits"
+msgstr ""
+
+#: src/i18n/process/translate.js:13
+msgid "rule_email"
+msgstr ""
+
+#: src/i18n/process/translate.js:14
+msgid "rule_max"
+msgstr ""
+
+#: src/i18n/process/translate.js:15
+msgid "rule_min"
+msgstr ""
+
+#: src/i18n/process/translate.js:16
+msgid "rule_numeric"
+msgstr ""
+
+#: src/i18n/process/translate.js:17
+msgid "rule_required"
+msgstr ""
+
+#: src/i18n/process/translate.js:18
+msgid "rule_regex"
+msgstr ""
+
+#: src/i18n/process/translate.js:20
+msgid "rule_customer_name"
+msgstr ""
+
+#: src/i18n/process/translate.js:21
+msgid "rule_customer_field"
+msgstr ""
+
+#: src/i18n/process/translate.js:22
+msgid "rule_customer_field_utf8"
+msgstr ""
+
+#: src/i18n/process/translate.js:23
+msgid "rule_phone"
+msgstr ""
+
+#: src/i18n/process/translate.js:24
+msgid "rule_numrange"
+msgstr ""
+
+#: src/i18n/process/translate.js:25
+msgid "rule_ccard"
+msgstr ""

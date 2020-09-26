@@ -1,4 +1,4 @@
-import locales from '@/config/locales.json'
+import configLocales from '@/config/locales.json'
 import methods from '@/config/methods.json'
 import period from '@/config/regular-period.json'
 import configCountries from '@/config/countries'
@@ -13,6 +13,7 @@ const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
 const theme = ['light', 'dark']
 const preset = Object.keys(configPresets)
+const locales = Object.keys(configLocales)
 
 function enumArray(array) {
   return {

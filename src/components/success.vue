@@ -7,22 +7,10 @@
     </div>
     <f-info />
     <div class="f-success-form-group">
-      <div class="f-row f-mb-2">
-        <div
-          v-t="{ path: 'number_payment', args: [$t('payment_system')] }"
-          class="f-col"
-        />
+      <div class="f-row">
+        <div v-t="'payment_id'" class="f-col" />
         <div class="f-col f-text-right">
           {{ order.payment_id }}
-        </div>
-      </div>
-      <div class="f-row">
-        <div
-          v-t="{ path: 'number_payment', args: [$t(title)] }"
-          class="f-col"
-        />
-        <div class="f-col f-text-right">
-          {{ order.order_id }}
         </div>
       </div>
     </div>
@@ -30,8 +18,6 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
-
 export default {
   props: {
     order: {
@@ -40,7 +26,6 @@ export default {
     },
   },
   computed: {
-    ...mapState('options', ['title']),
     isApproved() {
       return this.order.order_status === 'approved'
     },

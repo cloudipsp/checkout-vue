@@ -2,7 +2,7 @@
   <f-alert-base v-if="show" ref="alert" v-bind="attrs" v-on="$listeners">
     <div class="f-gdpr-content">
       <div class="f-form-group">
-        <span v-t="`gdpr_alert_text_${region}`" />&nbsp;
+        <span v-t="'gdpr_alert_text'" />&nbsp;
         <a v-t="'learn_more'" href="#" @click="showGdprText = true" />
         <f-modal-base v-model="showGdprText" header-class="f-p-0">
           <span v-t="`gdpr_modal_text_${region}`" />
@@ -13,7 +13,8 @@
         <span v-t="'save_card'" />&nbsp;
         <a v-t="'its_safe'" href="#" @click="showGdprSafe = true" />
         <f-modal-base v-model="showGdprSafe" header-class="f-p-0">
-          <span v-t="'gdpr_modal_safe'" />
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div v-html="$t('gdpr_modal_safe')" />
         </f-modal-base>
       </input-checkbox>
     </div>

@@ -1,6 +1,8 @@
 import configLocales from '@/config/locales.json'
 import configCss from '@/config/css'
 
+const locales = Object.keys(configLocales)
+
 const options = {
   options: {
     methods: ['card'],
@@ -10,7 +12,7 @@ const options = {
     title: '',
     full_screen: true,
     link: '',
-    locales: configLocales,
+    locales,
     messages: {},
     api_domain: 'api.fondy.eu',
     endpoint: {
@@ -105,7 +107,7 @@ const options = {
   disable_request: false,
 }
 
-configLocales.forEach(function(locale) {
+locales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
 })

@@ -25,3 +25,10 @@ yarn-error.log*
 
 .firebase
 /public/buttons/*.json
+
+*.mo
+*.po~
+/src/i18n/**/*.json
+/src/i18n/process/*
+!/src/i18n/process/translate.js
+
