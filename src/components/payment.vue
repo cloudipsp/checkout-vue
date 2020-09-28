@@ -4,7 +4,7 @@
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
         <div class="f-top">&nbsp;</div>
-        <!--payment-method success pending-->
+        <!--payment-method success-->
         <component :is="page" :order="order" />
         <f-loading v-if="loading" backdrop />
         <f-modal-error />
@@ -22,7 +22,6 @@
 
 <script>
 import Success from '@/components/success'
-import Pending from '@/components/pending'
 import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
@@ -49,7 +48,6 @@ export default {
   },
   components: {
     Success,
-    Pending,
     PaymentMethod,
     FSidebar,
     FModal3ds,
@@ -325,8 +323,6 @@ export default {
           clearTimeout(this.processingTimeout)
         }, 2 * 30 * 1000)
       }
-
-      this.store.location('pending')
     },
     createdEvent() {
       this.$root.$on('submit', this.submit)

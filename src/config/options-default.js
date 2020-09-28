@@ -85,7 +85,7 @@ const options = {
     errors: [], // ошибки валидации конфига
   },
   router: {
-    page: '', // payment-method success pending
+    page: '', // payment-method success
     method: '', // card banklinks_eu sepa
     system: '',
   },
