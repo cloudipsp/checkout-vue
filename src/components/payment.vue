@@ -241,7 +241,7 @@ export default {
       if (model.attr('order.verification')) {
         this.verification_type = model.attr('verification_type')
         this.title = 'verification_t'
-        this.order_desc = 'verification_d'
+        this.order_desc = 'verification_' + this.verification_type + '_d'
       }
 
       this.store.setRecurring(model.attr('order'))
@@ -292,7 +292,7 @@ export default {
         this.need_verify_code = true
         this.verification_type = model.attr('verification_type')
         this.title = 'verification_t'
-        this.order_desc = 'verification_d'
+        this.order_desc = 'verification_' + this.verification_type + '_d'
         this.card_number = model.attr('order_data.masked_card')
         this.expiry_date = model.attr('order_data.expiry_date')
         this.cvv2 = ''

@@ -17,10 +17,7 @@
         <span v-t="'see_more'" /> <f-svg name="angle-right" />
       </a>
     </div>
-    <f-modal-base v-model="modalMore" size="lg">
-      <template #modal-title>
-        <span v-t="title" />
-      </template>
+    <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-t="order_desc" />
     </f-modal-base>
     <f-price />

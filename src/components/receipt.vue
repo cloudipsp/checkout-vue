@@ -8,11 +8,12 @@
           v-t="{ path: 'mfo_title', args: [model.send_data.receipt_orig] }"
           class="f-title f-title-lg"
         />
-        <div
-          v-else
-          v-t="'ibox_title'"
-          class="f-title f-title-lg f-receipt-title"
-        />
+        <template v-if="isIbox">
+          <div v-t="'ibox_title'" class="f-title f-title-lg f-receipt-title" />
+
+          <div v-t="'full_requesites'" />
+          <div v-t="'full_requesites_explain'" />
+        </template>
 
         <div class="f-receipt-props">
           <div v-if="model.send_data.amount" class="f-receipt-row">
@@ -66,7 +67,7 @@
         </div>
 
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-if="!model.send_data.mfo" v-html="$t('ibox_desc')" />
+        <div v-if="isIbox" v-html="$t('ibox_desc')" />
 
         <div class="f-row f-receipt-buttons">
           <div class="f-col">
@@ -98,7 +99,7 @@
           </template>
         </div>
 
-        <div v-if="!model.send_data.mfo" class="f-receipt-ibox-info">
+        <div v-if="isIbox" class="f-receipt-ibox-info">
           <f-svg name="warning" />
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="$t('ibox_info')" />
@@ -126,11 +127,15 @@ export default {
     qrCode() {
       return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${this.model.url}`
     },
+    isIbox() {
+      return !this.model.send_data.mfo
+    },
   },
   created() {
     this.submit()
       .then(model => {
         this.model = model.data
+        this.model.send_data.mfo = null
       })
       .catch(errorHandler)
   },
