@@ -6,6 +6,7 @@ const locales = Object.keys(configLocales)
 const options = {
   options: {
     methods: ['card'],
+    methods_disabled: [],
     banklinks_eu: [],
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],

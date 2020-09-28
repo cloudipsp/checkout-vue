@@ -1,10 +1,8 @@
-import configMethods from '@/config/methods.json'
-
-export const methods = arr => {
-  return arr
+export const methods = (methods, methods_disabled) => {
+  return methods
     .map(item => (item === 'trustly' ? 'banklinks_eu' : item))
     .filter((item, key, self) => self.indexOf(item) === key)
-    .filter(item => configMethods.includes(item))
+    .filter(item => !methods_disabled.includes(item))
 }
 
 export const tabs = arr => {

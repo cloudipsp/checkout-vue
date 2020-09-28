@@ -125,6 +125,7 @@ export default {
     type: 'object',
     fields: {
       methods: enumArray(methods),
+      methods_disabled: enumArray(methods),
       card_icons: enumArray(cardIcons),
       fields: { type: 'boolean' },
       title: { type: 'string' },

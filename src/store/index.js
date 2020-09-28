@@ -85,7 +85,7 @@ export default {
       optionsUser.css
     )
     this.initCdn()
-    this.initBanklinks()
+    this.initMethods()
     this.initLang()
     this.initLocation()
     this.initError()
@@ -133,12 +133,11 @@ export default {
 
     this.state.cdn = scriptFondyEl.src.replace('/checkout.js', '')
   },
-  initBanklinks() {
-    let list = this.state.options.methods
-
-    if (!list.length) return
-
-    this.state.options.methods = methods(list)
+  initMethods() {
+    this.state.options.methods = methods(
+      this.state.options.methods,
+      this.state.options.methods_disabled
+    )
   },
   initLang() {
     let lang
