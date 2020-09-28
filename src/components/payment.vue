@@ -249,11 +249,6 @@ export default {
       this.store.setRecurring(model.attr('order'))
 
       this.showGdprFrame = model.attr('show_gdpr_frame')
-
-      this.store.showError(
-        model.attr('order.error_code'),
-        model.attr('order.error_description')
-      )
     },
     orderSuccess(model) {
       let order_data = model.attr('order_data')

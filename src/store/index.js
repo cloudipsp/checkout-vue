@@ -53,10 +53,7 @@ export default {
     if (this.state.options.disable_request) return Promise.reject()
 
     return sendRequest(...args).catch(model => {
-      this.showError(
-        String(model.attr('error.code')),
-        model.attr('error.message')
-      )
+      this.showError(model.attr('error.code'), model.attr('error.message'))
       return Promise.reject(model)
     })
   },
@@ -258,11 +255,9 @@ export default {
     this.state.router.system = system
   },
   showError(code, message) {
-    if (code || message) {
-      this.state.error.code = code
-      this.state.error.message = message
-      this.state.error.show = true
-    }
+    this.state.error.code = code
+    this.state.error.message = message
+    this.state.error.show = true
   },
   formLoading(loading) {
     if (loading) {
