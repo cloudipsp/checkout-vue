@@ -18,6 +18,7 @@ const black = '#3D3D3D' // 0 0 24
 const white = '#ffffff' // 0 0 100
 const error = '#DE4761'
 
+const white_005 = '#3B3F43'
 const white_01 = '#46494D'
 const white_02 = '#5A5D61'
 // const white_03 = '#6F7274'
@@ -39,7 +40,7 @@ export default {
   menu_item_border: white_02,
   menu_icon_color: white_04,
   menu_icon_lg_color: '#6F7274',
-  menu_item_hover_bg: white, //
+  menu_item_hover_bg: white_005,
   menu_item_active_color: white,
   menu_item_active_bg: white_01,
   menu_icon_active_color: white,
@@ -102,7 +103,7 @@ export default {
   input_bg: inherit,
   input_color: white,
   input_border: '#5A5D61',
-  input_hover_bg: '#3B3F43',
+  input_hover_bg: white_005,
   input_hover_border: '#898C8E',
   input_focus_border: white_06,
   input_error_color: error,
@@ -174,6 +175,6 @@ export default {
   alert_info_color: grey_2,
   alert_info_bg: white,
   scrollbar_thumb_bg: white_02,
-  receipt_props_bg: '#3B3F43',
+  receipt_props_bg: white_005,
   receipt_value_color: white,
 }
