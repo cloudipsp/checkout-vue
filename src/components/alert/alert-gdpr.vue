@@ -12,7 +12,12 @@
       <input-checkbox name="save_card" variant="secondary">
         <span v-t="'save_card'" />&nbsp;
         <a v-t="'its_safe'" href="#" @click="showGdprSafe = true" />
-        <f-modal-base v-model="showGdprSafe" header-class="f-p-0">
+        <f-modal-base v-model="showGdprSafe" size="lg">
+          <template #modal-title>
+            <svg-safe />
+            <h5 v-t="'gdpr_modal_safe_title'" class="f-modal-title" />
+          </template>
+
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="$t('gdpr_modal_safe')" />
         </f-modal-base>
