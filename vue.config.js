@@ -57,9 +57,7 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
   runtimeCompiler: true,
   productionSourceMap: false,
-  publicPath: process.env.NODE_ENV === 'production'
-    ? ''
-    : '/',
+  publicPath: '/',
   pluginOptions: {},
   chainWebpack: config => {
     const normalRule = config.module.rule('scss').oneOfs.get('normal')
@@ -86,6 +84,15 @@ module.exports = {
               gitRevisionPlugin.commithash(),
               new Date().getTime(),
             ].join(' ')])
+            .end()
+          .module
+            .rule('scss')
+              .oneOf('normal')
+                .use('extract-css-loader')
+                  .tap(options => ({...options,  publicPath: ''}))
+                  .end()
+                .end()
+              .end()
             .end()
       })
       .when(process.env.NODE_ENV !== 'production', config => {
