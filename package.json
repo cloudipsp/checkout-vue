@@ -30,7 +30,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "css-vars-ponyfill": "^2.2.1",
-    "ipsp-js-sdk": "^1.0.35",
+    "ipsp-js-sdk": "^1.0.36",
     "vee-validate": "^2.2.7",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3"
