@@ -3,7 +3,13 @@
     <div class="f-header-logo">
       <transition name="fade-enter">
         <div v-if="showBack" key="back"><f-button-methods /></div>
-        <div v-else key="logo" class="f-logo" :style="styleLogo" />
+        <div
+          v-else-if="logo_url"
+          key="logo-custom"
+          class="f-logo"
+          :style="styleLogo"
+        />
+        <div v-else key="logo-svg" class="f-logo"><svg-logo /></div>
       </transition>
     </div>
     <div class="f-header-menu">
@@ -47,7 +53,6 @@ export default {
       )
     },
     styleLogo() {
-      if (!this.logo_url) return {}
       return {
         'background-image': `url(${this.logo_url})`,
       }

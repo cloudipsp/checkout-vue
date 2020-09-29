@@ -5,6 +5,7 @@ import SvgMasterCardSecureCode from '@/svg/master-card-secure-code'
 import SvgPciDss from '@/svg/pci-dss'
 import SvgDecline from '@/svg/decline'
 import SvgApproved from '@/svg/approved'
+import SvgLogo from '@/svg/logo'
 
 const components = {
   SvgServerTrouble,
@@ -14,6 +15,7 @@ const components = {
   SvgPciDss,
   SvgDecline,
   SvgApproved,
+  SvgLogo,
 }
 
 const install = Vue => {

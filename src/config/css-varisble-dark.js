@@ -177,4 +177,5 @@ export default {
   scrollbar_thumb_bg: white_02,
   receipt_props_bg: white_005,
   receipt_value_color: white,
+  logo_color: white,
 }

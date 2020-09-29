@@ -92,10 +92,18 @@
 }
 
 .f-logo {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background: url('../assets/logo.svg') no-repeat 0 50%;
+  color: $logo_color;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
   background-size: contain;
+
+  svg {
+    height: px-to-rem(23px);
+  }
 }
 
 .f-button-pay {

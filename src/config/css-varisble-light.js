@@ -169,4 +169,5 @@ export default {
   scrollbar_thumb_bg: grey_2,
   receipt_props_bg: ash_100,
   receipt_value_color: black,
+  logo_color: '#000',
 }
