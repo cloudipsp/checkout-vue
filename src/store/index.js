@@ -6,7 +6,6 @@ import notSet from '@/config/not-set'
 import cssVarisble from '@/config/css-varisble'
 import {
   getCookie,
-  setCookie,
   deepMerge,
   findGetParameter,
   errorHandler,
@@ -18,6 +17,7 @@ import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
+import { sessionStorage } from '@/utils/store'
 import { methods } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
 import config from '@/config/config'
@@ -140,9 +140,15 @@ export default {
     let lang
     let locales = this.state.options.locales
     if (this.state.options.full_screen) {
-      lang = getCookie('lang') || this.state.params.lang
+      lang =
+        sessionStorage.get('lang') ||
+        getCookie('lang') ||
+        this.state.params.lang
     } else {
-      lang = this.state.params.lang || getCookie('lang')
+      lang =
+        this.state.params.lang ||
+        sessionStorage.get('lang') ||
+        getCookie('lang')
     }
     if (locales.length) {
       if (locales.indexOf(lang) < 0) {
@@ -206,10 +212,7 @@ export default {
       .then(() => {
         this.state.params.lang = lang
 
-        setCookie('lang', lang, {
-          path: '/',
-          expires: 3600,
-        })
+        sessionStorage.set('lang', lang)
       })
       .catch(errorHandler)
   },

@@ -216,7 +216,6 @@ export default {
         this.validate_expdate = model.attr('validate_expdate')
       }
       this.link = model.attr('merchant_url') || this.link
-      this.lang = model.attr('lang') || this.lang
       this.email = model.attr('checkout_email_required') || this.email
       this.title = this.title || model.attr('merchant.localized_name')
       this.logo_url = this.logo_url || model.attr('merchant.logo_url')
