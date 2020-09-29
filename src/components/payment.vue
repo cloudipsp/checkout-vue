@@ -340,7 +340,11 @@ export default {
       let $firstErrorField = this.$el.querySelector(
         '#' + this.errors.items[0].field
       )
-      $firstErrorField.scrollIntoView()
+
+      if (this.full_screen) {
+        $firstErrorField.scrollIntoView()
+      }
+
       setTimeout(() => {
         $firstErrorField.focus()
       })
