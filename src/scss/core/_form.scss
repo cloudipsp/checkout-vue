@@ -53,6 +53,15 @@
   }
 }
 
+.f-control-sm {
+  height: px-to-rem(44px);
+  padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
+
+  & + .f-control-label-p {
+    top: px-to-rem(12px);
+  }
+}
+
 .f-form-control-select {
   position: relative;
   z-index: 1;
@@ -69,15 +78,6 @@
 
   & > option {
     color: initial;
-  }
-}
-
-.f-control-sm {
-  height: px-to-rem(44px);
-  padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
-
-  & + .f-control-label-p {
-    top: px-to-rem(12px);
   }
 }
 
