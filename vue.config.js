@@ -103,6 +103,11 @@ module.exports = {
                 .end()
               .end()
             .end()
+          .plugin('stylelint')
+            .use('stylelint-webpack-plugin',[{
+              files: 'src/**/*.less'
+            }])
+            .end()
       })
 
     config
@@ -206,13 +211,12 @@ module.exports = {
             .end()
           .end()
         .end()
-      .plugin('stylelint')
-        .use('stylelint-webpack-plugin')
-        .tap(() => {
-          return [{
-            files: 'src/**/*.less'
-          }]
-        })
+      .plugin('define-plugin')
+        .use(webpack.DefinePlugin,[{
+          'VERSION': JSON.stringify(gitRevisionPlugin.version()),
+          'COMMITHASH': JSON.stringify(gitRevisionPlugin.commithash()),
+          'BRANCH': JSON.stringify(gitRevisionPlugin.branch()),
+        }])
         .end()
   }
 }
