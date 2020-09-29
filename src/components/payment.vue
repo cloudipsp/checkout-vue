@@ -192,15 +192,23 @@ export default {
     cardsSuccess(model) {
       if (this.need_verify_code || !Array.isArray(model.data)) return
 
-      this.cards = model.data
+      if (!model.data.length) return
 
-      if (this.cards.length) {
-        //          this.$validator.detach('f-card_number')
-        this.store.setCardNumber(this.cards[0])
-        this.$nextTick(() => {
-          this.$validator.validateAll()
-        })
-      }
+      this.cards = this.cardsParse(model.data)
+
+      this.store.setCardNumber(this.cards[0])
+    },
+    cardsParse(data) {
+      return data.map(item => {
+        let card_number = item.card_number.replace(/ /g, '')
+        let expiry_date = item.expiry_date.replace(/ /g, '')
+
+        return {
+          ...item,
+          card_number,
+          expiry_date,
+        }
+      })
     },
     infoSuccess(model) {
       if (isExist(model.attr('validate_expdate'))) {

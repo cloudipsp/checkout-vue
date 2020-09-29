@@ -194,12 +194,16 @@ export default {
     this.location('payment-method', method)
   },
   setCardNumber(card) {
-    this.state.params.card_number = card.card_number.replace(/ /g, '')
-    this.state.params.expiry_date = card.expiry_date.replace(/ /g, '')
+    this.state.params.card_number = card.card_number || ''
+    this.state.params.expiry_date = card.expiry_date || ''
     this.state.params.email = card.email || this.state.params.email
     this.state.params.hash = card.hash
     this.state.params.cvv2 = ''
     this.state.read_only = card.read_only
+
+    setTimeout(() => {
+      document.getElementById('f-cvv2').focus()
+    }, 100)
   },
   getAmountWithFee() {
     if (!this.state.params.amount) return

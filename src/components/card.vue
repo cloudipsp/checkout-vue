@@ -216,7 +216,7 @@ export default {
     card_number(value) {
       if (!value) return
 
-      value = value.replace(/ /g, '').slice(0, 6)
+      value = value.slice(0, 6)
       let card_bin = value.length === 6 ? value : value[0]
 
       sendRequest(
@@ -237,13 +237,10 @@ export default {
   methods: {
     cardTypeFeeSuccess() {},
     hasActive(card) {
-      return card.card_number.replace(/ /g, '') === this.card_number
+      return card.card_number === this.card_number
     },
     setCardNumber(card) {
       this.store.setCardNumber(card)
-      this.$nextTick(() => {
-        this.$validator.validateAll()
-      })
     },
     inputCardNumber(value) {
       if (value.length !== 16 && value.length !== 19) return
@@ -254,8 +251,9 @@ export default {
     },
     focus(name, value, next) {
       if (!this.fields[name]) return
-      this.$validator
-        .validate(name, value)
+      // wait for computed property validCardNumber
+      this.$nextTick()
+        .then(() => this.$validator.validate(name, value))
         .then(valid => {
           if (!valid) return Promise.reject()
           return this.$nextTick()
