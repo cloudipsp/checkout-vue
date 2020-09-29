@@ -355,9 +355,7 @@ export default {
       if (!this.fields[name]) return
       // wait for computed property validCardNumber
       this.$nextTick()
-        .then(() => {
-          return this.$validator.validate(name, value)
-        })
+        .then(() => this.$validator.validate(name, value))
         .then(valid => {
           if (!valid) return Promise.reject()
           return this.$nextTick()

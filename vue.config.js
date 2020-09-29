@@ -209,5 +209,12 @@ module.exports = {
             .end()
           .end()
         .end()
+      .plugin('define-plugin')
+        .use(webpack.DefinePlugin,[{
+          'VERSION': JSON.stringify(gitRevisionPlugin.version()),
+          'COMMITHASH': JSON.stringify(gitRevisionPlugin.commithash()),
+          'BRANCH': JSON.stringify(gitRevisionPlugin.branch()),
+        }])
+        .end()
   }
 }

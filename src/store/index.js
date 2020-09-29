@@ -230,6 +230,10 @@ export default {
     this.state.params.hash = card.hash
     this.state.params.cvv2 = ''
     this.state.read_only = card.read_only
+
+    setTimeout(() => {
+      document.getElementById('f-cvv2').focus()
+    }, 100)
   },
   getAmountWithFee() {
     if (!this.state.params.amount) return
