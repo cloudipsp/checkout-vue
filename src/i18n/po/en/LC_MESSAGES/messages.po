@@ -4,19 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #: src/i18n/process/templates.js:14
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 23:03+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-29 20:16+0300\n"
+"PO-Revision-Date: 2020-09-29 20:12+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: src/i18n/process/methods.js:1
 msgid "card"
@@ -187,11 +187,11 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:31
 msgid "verification_code"
-msgstr "Enter verification code"
+msgstr "Confirmation code"
 
 #: src/i18n/process/templates.js:32
 msgid "verification_amount"
-msgstr "Enter amount of verification fee"
+msgstr "Verification amount"
 
 #: src/i18n/process/templates.js:33
 msgid "datepicker"
@@ -211,19 +211,21 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:37
 msgid "submit3ds_title"
-msgstr "Payment was not completed successfully"
+msgstr "Payment was not completed"
 
 #: src/i18n/process/templates.js:38
 msgid "submit3ds_text"
-msgstr "Please try again"
+msgstr "Please enter another confirmation code"
 
 #: src/i18n/process/templates.js:39
 msgid "submit3ds_submit"
-msgstr "Repeat payment"
+msgstr "Try again"
 
 #: src/i18n/process/templates.js:40
 msgid "submit3ds_wait"
-msgstr "payment will be repeated in {0} sec."
+msgstr ""
+"You will be redirected to the bank's website again to complete your payment "
+"in {0} seconds"
 
 #: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
 msgid "declined"
@@ -235,13 +237,13 @@ msgstr "You may return to the website and make another order."
 
 #: src/i18n/process/templates.js:43
 msgid "server_trouble_title"
-msgstr "Our server is in trouble"
+msgstr "Oops.."
 
 #: src/i18n/process/templates.js:44
 msgid "server_trouble_desc"
 msgstr ""
-"Sorry, our server is experiencing some problems. But we’re already working "
-"on a solution, please try later."
+"Something is not right, but we are already on it. Please get back to a few "
+"steps prior and make a payment again."
 
 #: src/i18n/process/templates.js:45
 msgid "offer"
@@ -261,7 +263,7 @@ msgstr "Comission"
 
 #: src/i18n/process/templates.js:49
 msgid "mfo_title"
-msgstr "Payment details {0}"
+msgstr "Payment details for order # {0}"
 
 #: src/i18n/process/templates.js:50
 msgid "ibox_title"
@@ -279,7 +281,7 @@ msgstr ""
 
 #: src/i18n/process/templates.js:53
 msgid "amount"
-msgstr "Total (to pay)"
+msgstr "Total"
 
 #: src/i18n/process/templates.js:54
 msgid "UAH"
@@ -303,7 +305,7 @@ msgstr "Bank name"
 
 #: src/i18n/process/templates.js:59
 msgid "mfo"
-msgstr "Bank MFO (Bank code?)"
+msgstr "Bank code (MFO)"
 
 #: src/i18n/process/templates.js:60
 msgid "purpose"
@@ -319,7 +321,9 @@ msgstr "Payment deadline"
 
 #: src/i18n/process/templates.js:63
 msgid "ibox_desc"
-msgstr "All iBox terminals that accept payments are tagged on the map"
+msgstr ""
+"All iBox terminals that accept payments are tagged on the <a href=\\"
+"\"https://ibox.ua/map\\\" target=\\\"_blank\\\"> map</a>"
 
 #: src/i18n/process/templates.js:64
 msgid "save_receipt"
@@ -453,12 +457,12 @@ msgstr ""
 msgid "verification_amount_d"
 msgstr ""
 "A small fee will be held on your bank account for 15 minutes to verify the "
-"ownership of the card. To do this, enter the amount indicated in the "
-"notification from the bank."
+"ownership of the card. Please enter the verification amount held on your "
+"account."
 
 #: src/i18n/process/translate.js:8
 msgid "rule_default"
-msgstr "Value is not valid"
+msgstr "The {_field_} value is not valid"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
@@ -466,23 +470,23 @@ msgstr "Valid thru date may not be after {_target_}"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
-msgstr "Please use letters (A-Z) only"
+msgstr "Please use letters only"
 
 #: src/i18n/process/translate.js:11
 msgid "rule_date_format"
-msgstr "Please enter valid thru date as it indicated on your card"
+msgstr "Please enter month/year"
 
 #: src/i18n/process/translate.js:12
 msgid "rule_decimal"
-msgstr "Field must be numeric and may contain {_decimals_} decimal points"
+msgstr "Please use digits (0-9), periods (.) or commas (,)"
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr "Field must be numeric and contains exactly {_length_} digits"
+msgstr "Please enter {_length_} digits"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
-msgstr "Field must be a valid email"
+msgstr "Please enter {_length_} characters max."
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
@@ -494,7 +498,7 @@ msgstr "Please enter {_length_} characters min."
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
-msgstr "Field may only contain numeric characters"
+msgstr "Please use digits (0-9) only"
 
 #: src/i18n/process/translate.js:18
 msgid "rule_required"
@@ -502,27 +506,27 @@ msgstr "Please fill in this field"
 
 #: src/i18n/process/translate.js:19
 msgid "rule_regex"
-msgstr "Field format is invalid."
+msgstr "Invalid format"
 
 #: src/i18n/process/translate.js:21
 msgid "rule_customer_name"
-msgstr "Enter both Surname and Name"
+msgstr "Please enter both name and last name, use letters (A-Za-z)"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_field"
-msgstr "Please use letters (A-Z) only"
+msgstr "Please use letters (A-Za-z) and digits (0-9)"
 
 #: src/i18n/process/translate.js:23
 msgid "rule_customer_field_utf8"
-msgstr "Invalid characters"
+msgstr "Please don't use special characters here"
 
 #: src/i18n/process/translate.js:24
 msgid "rule_phone"
-msgstr "Field format is invalid."
+msgstr "Please enter at least 7 digits (0-9)"
 
 #: src/i18n/process/translate.js:25
 msgid "rule_numrange"
-msgstr "Transfer amount limit exceeded."
+msgstr "You entered too many digits"
 
 #: src/i18n/process/translate.js:26
 msgid "rule_ccard"
@@ -536,14 +540,22 @@ msgstr "Incorrect expiry date"
 msgid "rule_cvv"
 msgstr "Incorrect CVV2/CVC2"
 
-#: src/i18n/process/translate.js:30
+#: src/i18n/process/translate.js:29
+msgid "rule_one"
+msgstr "This value cannot be less than 1"
+
+#: src/i18n/process/translate.js:31
 msgid "price"
 msgstr "Price"
 
-#: src/i18n/process/translate.js:31
+#: src/i18n/process/translate.js:32
 msgid "shipping"
 msgstr "Shipping"
 
-#: src/i18n/process/translate.js:32
+#: src/i18n/process/translate.js:33
 msgid "vat"
 msgstr "VAT"
+
+#: src/i18n/process/translate.js:34
+msgid "arbitrary_amount"
+msgstr ""

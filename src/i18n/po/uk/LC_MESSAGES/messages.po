@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 23:03+0300\n"
+"POT-Creation-Date: 2020-09-29 20:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -514,14 +514,22 @@ msgstr ""
 msgid "rule_cvv"
 msgstr ""
 
-#: src/i18n/process/translate.js:30
-msgid "price"
+#: src/i18n/process/translate.js:29
+msgid "rule_one"
 msgstr ""
 
 #: src/i18n/process/translate.js:31
-msgid "shipping"
+msgid "price"
 msgstr ""
 
 #: src/i18n/process/translate.js:32
+msgid "shipping"
+msgstr ""
+
+#: src/i18n/process/translate.js:33
 msgid "vat"
+msgstr ""
+
+#: src/i18n/process/translate.js:34
+msgid "arbitrary_amount"
 msgstr ""
