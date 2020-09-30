@@ -4,532 +4,559 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #: src/i18n/process/templates.js:14
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-29 20:16+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-30 13:24+0300\n"
+"PO-Revision-Date: 2020-09-30 12:49+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: src/i18n/process/methods.js:1
 msgid "card"
-msgstr ""
+msgstr "Банковская карта"
 
 #: src/i18n/process/methods.js:2
 msgid "trustly"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/methods.js:3
 msgid "sepa"
-msgstr ""
+msgstr "SEPA Direct Debit"
 
 #: src/i18n/process/methods.js:4
 msgid "banklinks_eu"
-msgstr ""
+msgstr "Интернет-банкинг"
 
 #: src/i18n/process/methods.js:5
 msgid "receipt"
-msgstr ""
+msgstr "Банковский перевод"
 
 #: src/i18n/process/methods.js:6
 msgid "emoney"
-msgstr ""
+msgstr "Электронный кошелек"
 
 #: src/i18n/process/methods.js:7
 msgid "local_banks"
-msgstr ""
+msgstr "Локальные способы оплаты"
 
 #: src/i18n/process/methods.js:8
 msgid "ibox_ua"
-msgstr ""
+msgstr "Наличные в терминале"
 
 #: src/i18n/process/regular-period.js:1
 msgid "day"
-msgstr ""
+msgstr "День"
 
 #: src/i18n/process/regular-period.js:2
 msgid "week"
-msgstr ""
+msgstr "Неделя"
 
 #: src/i18n/process/regular-period.js:3
 msgid "month"
-msgstr ""
+msgstr "Месяц"
 
 #: src/i18n/process/templates.js:1
 msgid "gdpr_alert_text"
 msgstr ""
+"На этом сайте работают куки, чтобы вам было приятно и удобно совершать "
+"оплаты."
 
 #: src/i18n/process/templates.js:2
 msgid "learn_more"
-msgstr ""
+msgstr " Подробнее."
 
 #: src/i18n/process/templates.js:3
 msgid "save_card"
-msgstr ""
+msgstr "Запоминать карту для быстрой повторной оплаты."
 
 #: src/i18n/process/templates.js:4
 msgid "its_safe"
-msgstr ""
+msgstr "Это безопасно."
 
 #: src/i18n/process/templates.js:5
 msgid "gdpr_modal_safe_title"
-msgstr ""
+msgstr "Сохранять карту — безопасно и удобно"
 
 #: src/i18n/process/templates.js:6
 msgid "gdpr_modal_safe"
 msgstr ""
+"<p>Мы не фиксируем данные вашей карты в том виде, в котором вы их вводите, а "
+"мгновенно шифруем и сохраняем их в формате случайных комбинаций символов — "
+"«токенов».<p>При каждой оплате платежный сервис Fondy использует токен "
+"вместо данных карты, поэтому потенциальный злоумышленник не сможет их "
+"перехватить. Перехватывать данные токена не имеет смысла, потому что токены "
+"не имеют никакой ценности вне платежного сервиса Fondy."
 
 #: src/i18n/process/templates.js:7
 msgid "close"
-msgstr ""
+msgstr "Не сейчас"
 
 #: src/i18n/process/templates.js:8
 msgid "accept"
-msgstr ""
+msgstr "Разрешаю"
 
 #: src/i18n/process/templates.js:9
 msgid "bank_desc"
-msgstr ""
+msgstr "Мы перенаправим вас на сайт банка для завершения платежа"
 
 #: src/i18n/process/templates.js:10
 msgid "default_country"
-msgstr ""
+msgstr "Поиск по стране"
 
 #: src/i18n/process/templates.js:11
 msgid "search"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:12
 msgid "system_search"
-msgstr ""
+msgstr "Поиск по названию банка, IBAN или BLZ"
 
 #: src/i18n/process/templates.js:13
 msgid "load_more"
-msgstr ""
+msgstr "Показать еще…"
 
 #: src/i18n/process/templates.js:15
 msgid "other_payment_method"
-msgstr ""
+msgstr "Другие способы оплаты"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr ""
+msgstr "Оплатить <b>{0}</b> {1}"
 
 #: src/i18n/process/templates.js:17
 msgid "use_other_card"
-msgstr ""
+msgstr "Ввести другую карту"
 
 #: src/i18n/process/templates.js:18
 msgid "expires_on"
-msgstr ""
+msgstr "Действует до"
 
 #: src/i18n/process/templates.js:19
 msgid "pay_with_card"
-msgstr ""
+msgstr "Оплатить картой"
 
 #: src/i18n/process/templates.js:20
 msgid "card_number"
-msgstr ""
+msgstr "Номер карты"
 
 #: src/i18n/process/templates.js:21
 msgid "card_number_p"
-msgstr ""
+msgstr "0000 0000 0000 0000"
 
 #: src/i18n/process/templates.js:22
 msgid "angle-down"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:23
 msgid "expiry_date"
-msgstr ""
+msgstr "ММ/ГГ"
 
 #: src/i18n/process/templates.js:24
 msgid "expiry_date_p"
-msgstr ""
+msgstr "00/00"
 
 #: src/i18n/process/templates.js:25
 msgid "cvv2"
-msgstr ""
+msgstr "CVV2/CVC2"
 
 #: src/i18n/process/templates.js:26
 msgid "cvv2_p"
-msgstr ""
+msgstr "000"
 
 #: src/i18n/process/templates.js:27
 msgid "cvv2_help"
-msgstr ""
+msgstr "{0}-значный код на обороте карты"
 
 #: src/i18n/process/templates.js:28
 msgid "checkout-email"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:29
 msgid "email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: src/i18n/process/templates.js:30
 msgid "code"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:31
 msgid "verification_code"
-msgstr ""
+msgstr "Код подтверждения от банка"
 
 #: src/i18n/process/templates.js:32
 msgid "verification_amount"
-msgstr ""
+msgstr "Замороженная сумма"
 
 #: src/i18n/process/templates.js:33
 msgid "datepicker"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:34
 msgid "see_more"
-msgstr ""
+msgstr "Показать полностью"
 
 #: src/i18n/process/templates.js:35
 msgid "order_details"
-msgstr ""
+msgstr "Полное описание заказа"
 
 #: src/i18n/process/templates.js:36
 msgid "show"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:37
 msgid "submit3ds_title"
-msgstr ""
+msgstr "Оплата не завершена"
 
 #: src/i18n/process/templates.js:38
 msgid "submit3ds_text"
-msgstr ""
+msgstr "Введите новый код подтверждения от банка"
 
 #: src/i18n/process/templates.js:39
 msgid "submit3ds_submit"
-msgstr ""
+msgstr "Попробовать еще раз"
 
 #: src/i18n/process/templates.js:40
 msgid "submit3ds_wait"
 msgstr ""
+"Мы перенаправим вас на сайт банка снова для завершения платежа через {0} "
+"секунд"
 
 #: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
 msgid "declined"
-msgstr ""
+msgstr "Увы…Мы не смогли принять ваш платеж."
 
 #: src/i18n/process/templates.js:42
 msgid "declined_desc"
-msgstr ""
+msgstr "Вы можете вернуться на сайт и оформить заказ заново."
 
 #: src/i18n/process/templates.js:43
 msgid "server_trouble_title"
-msgstr ""
+msgstr "Увы…"
 
 #: src/i18n/process/templates.js:44
 msgid "server_trouble_desc"
 msgstr ""
+"Что-то пошло не по плану, но мы уже решаем эту проблему. Пожалуйста, "
+"вернитесь на несколько шагов назад и попробуйте провести платеж заново."
 
 #: src/i18n/process/templates.js:45
 msgid "offer"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:46
 msgid "offer_t"
-msgstr ""
+msgstr "Я принимаю <a href=\"{0}\" target=\"_blank\">условия оферты</a>"
 
 #: src/i18n/process/templates.js:47
 msgid "total_amount"
-msgstr ""
+msgstr "Сумма к оплате"
 
 #: src/i18n/process/templates.js:48
 msgid "fee"
-msgstr ""
+msgstr "С учетом комиссии"
 
 #: src/i18n/process/templates.js:49
 msgid "mfo_title"
-msgstr ""
+msgstr "Реквизиты для оплаты счета № {0}"
 
 #: src/i18n/process/templates.js:50
 msgid "ibox_title"
-msgstr ""
+msgstr "Оплата в терминале iBox"
 
 #: src/i18n/process/templates.js:51
 msgid "full_requesites"
-msgstr ""
+msgstr "Полные реквизиты получателя платежа"
 
 #: src/i18n/process/templates.js:52
 msgid "full_requesites_explain"
 msgstr ""
+"Вам не нужно будет их вводить во время оплаты, но вы можете их сохранить для "
+"сверки."
 
 #: src/i18n/process/templates.js:53
 msgid "amount"
-msgstr ""
+msgstr "К оплате"
 
 #: src/i18n/process/templates.js:54
 msgid "UAH"
-msgstr ""
+msgstr "грн"
 
 #: src/i18n/process/templates.js:55
 msgid "receiver"
-msgstr ""
+msgstr "Получатель платежа"
 
 #: src/i18n/process/templates.js:56
 msgid "current_bill"
-msgstr ""
+msgstr "Текущий счет (IBAN)"
 
 #: src/i18n/process/templates.js:57
 msgid "usreou"
-msgstr ""
+msgstr "Код ЕГРПОУ"
 
 #: src/i18n/process/templates.js:58
 msgid "bank"
-msgstr ""
+msgstr "Название банка"
 
 #: src/i18n/process/templates.js:59
 msgid "mfo"
-msgstr ""
+msgstr "МФО банка"
 
 #: src/i18n/process/templates.js:60
 msgid "purpose"
-msgstr ""
+msgstr "Назначение"
 
 #: src/i18n/process/templates.js:61
 msgid "receipt_id"
-msgstr ""
+msgstr "Номер заказа"
 
 #: src/i18n/process/templates.js:62
 msgid "end_date"
-msgstr ""
+msgstr "Крайний срок оплаты"
 
 #: src/i18n/process/templates.js:63
 msgid "ibox_desc"
 msgstr ""
+"Все терминалы iBox, в которых можно провести платеж, отмечены на<a href="
+"\\»https://ibox.ua/ru/map\\» target=\\\"_blank\\\"> карте</a>"
 
 #: src/i18n/process/templates.js:64
 msgid "save_receipt"
-msgstr ""
+msgstr "Сохранить квитанцию"
 
 #: src/i18n/process/templates.js:65
 msgid "save_qr_code"
-msgstr ""
+msgstr "Сохранить на смартфон"
 
 #: src/i18n/process/templates.js:66
 msgid "qr_code_text"
-msgstr ""
+msgstr "Отсканируйте этот QR-код, чтобы сохранить квитанцию на свой смартфон"
 
 #: src/i18n/process/templates.js:67
 msgid "ibox_info"
 msgstr ""
+"<p>Чтобы оплатить заказ, найдите платежный сервис Fondy через “Поиск” в "
+"терминале приема платежей iBox.<p>По истечению срока оплаты ваш заказ "
+"аннулируется. <p>Оплата в терминалах других платежных сервисов не "
+"принимается."
 
 #: src/i18n/process/templates.js:68
 msgid "regular"
-msgstr ""
+msgstr "Повторять платеж автоматически"
 
 #: src/i18n/process/templates.js:69
 msgid "regular_amount"
-msgstr ""
+msgstr "Сумма регулярного платежа"
 
 #: src/i18n/process/templates.js:70
 msgid "regular_every"
-msgstr ""
+msgstr "Частота"
 
 #: src/i18n/process/templates.js:71
 msgid "regular_period"
-msgstr ""
+msgstr "Период"
 
 #: src/i18n/process/templates.js:72
 msgid "regular_start_time"
-msgstr ""
+msgstr "Первая оплата"
 
 #: src/i18n/process/templates.js:73
 msgid "security"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:74
 msgid "security_title"
-msgstr ""
+msgstr "Данные покупателя защищены"
 
 #: src/i18n/process/templates.js:75
 msgid "security_text"
 msgstr ""
+"<p>Согласно международному стандарту безопасности платежей PCI "
+"DSS<p>Регулируется международными платежными системами Visa и Mastercard"
 
 #: src/i18n/process/templates.js:76
 msgid "sepa_t"
-msgstr ""
+msgstr "Укажите реквизиты банковского счета"
 
 #: src/i18n/process/templates.js:77
 msgid "sender_name"
-msgstr ""
+msgstr "Имя"
 
 #: src/i18n/process/templates.js:78
 msgid "sender_familyName"
-msgstr ""
+msgstr "Фамилия"
 
 #: src/i18n/process/templates.js:79
 msgid "bic"
-msgstr ""
+msgstr "BIC/ Swift"
 
 #: src/i18n/process/templates.js:80
 msgid "iban"
-msgstr ""
+msgstr "IBAN"
 
 #: src/i18n/process/templates.js:81
 msgid "payment_id"
-msgstr ""
+msgstr "ID платежа"
 
 #: src/i18n/process/templates.js:82
 msgid "customer_name"
-msgstr ""
+msgstr "Имя на карте (латиницей)"
 
 #: src/i18n/process/templates.js:83
 msgid "customer_name_utf8"
-msgstr ""
+msgstr "Полное имя"
 
 #: src/i18n/process/templates.js:84
 msgid "customer_address"
-msgstr ""
+msgstr "Адрес (улица, дом, квартира)"
 
 #: src/i18n/process/templates.js:85
 msgid "customer_zip"
-msgstr ""
+msgstr "Почтовый индекс"
 
 #: src/i18n/process/templates.js:86
 msgid "customer_city"
-msgstr ""
+msgstr "Населенный пункт"
 
 #: src/i18n/process/templates.js:87
 msgid "customer_country"
-msgstr ""
+msgstr "Страна"
 
 #: src/i18n/process/templates.js:88
 msgid "customer_state"
-msgstr ""
+msgstr "Область, регион"
 
 #: src/i18n/process/templates.js:89
 msgid "customer_phonemobile"
-msgstr ""
+msgstr "Телефон"
 
 #: src/i18n/process/templates.js:90
 msgid "customer_email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: src/i18n/process/translate.js:2
 msgid "approved"
-msgstr ""
+msgstr "Спасибо, ваш платеж принят"
 
 #: src/i18n/process/translate.js:4
 msgid "verification_t"
-msgstr ""
+msgstr "Проверка карты"
 
 #: src/i18n/process/translate.js:5
 msgid "verification_code_d"
 msgstr ""
+"Для проверки вашей карты мы заморозим небольшую сумму на вашем счету на 15 "
+"минут."
 
 #: src/i18n/process/translate.js:6
 msgid "verification_amount_d"
 msgstr ""
+"Мы заморозим небольшую сумму на вашем счету на 15 минут, чтобы убедиться, "
+"что карта принадлежит вам. Для этого введите сумму, указанную в уведомлении "
+"от банка."
 
 #: src/i18n/process/translate.js:8
 msgid "rule_default"
-msgstr ""
+msgstr "Неверное значение для поля {_field_}"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
-msgstr ""
+msgstr "Срок действия карты не может быть позже {_target_}"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
-msgstr ""
+msgstr "Введите только буквы"
 
 #: src/i18n/process/translate.js:11
 msgid "rule_date_format"
-msgstr ""
+msgstr "Введите дату в формате \"месяц/год\""
 
 #: src/i18n/process/translate.js:12
 msgid "rule_decimal"
-msgstr ""
+msgstr "Для ввода используйте только цифры (0-9), точку (.) или запятую (,)"
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr ""
+msgstr "Введите {_length_} цифры"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
-msgstr ""
+msgstr "Введите рабочую электронную почту"
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
-msgstr ""
+msgstr "Введите максимум {_length_} символов"
 
 #: src/i18n/process/translate.js:16
 msgid "rule_min"
-msgstr ""
+msgstr "Введите минимум {_length_} символов"
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
-msgstr ""
+msgstr "Введите только цифры (0-9)"
 
 #: src/i18n/process/translate.js:18
 msgid "rule_required"
-msgstr ""
+msgstr "Заполните это поле"
 
 #: src/i18n/process/translate.js:19
 msgid "rule_regex"
-msgstr ""
+msgstr "Неверный формат"
 
 #: src/i18n/process/translate.js:21
 msgid "rule_customer_name"
-msgstr ""
+msgstr "Введите имя и фамилию латинскими буквами (A-Za-z)"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_field"
-msgstr ""
+msgstr "Используйте латинские буквы (A-Za-z) и цифры (0-9)"
 
 #: src/i18n/process/translate.js:23
 msgid "rule_customer_field_utf8"
-msgstr ""
+msgstr "Пожалуйста, не используйте специальные символы"
 
 #: src/i18n/process/translate.js:24
 msgid "rule_phone"
-msgstr ""
+msgstr "Введите минимум 7 цифр (0-9)"
 
 #: src/i18n/process/translate.js:25
 msgid "rule_numrange"
-msgstr ""
+msgstr "Вы ввели слишком много цифр"
 
 #: src/i18n/process/translate.js:26
 msgid "rule_ccard"
-msgstr ""
+msgstr "Неверный номер карты"
 
 #: src/i18n/process/translate.js:27
 msgid "rule_expiry_date"
-msgstr ""
+msgstr "Неверный срок действия"
 
 #: src/i18n/process/translate.js:28
 msgid "rule_cvv"
-msgstr ""
+msgstr "Неверный CVV2/CVC2"
 
 #: src/i18n/process/translate.js:29
 msgid "rule_one"
-msgstr ""
+msgstr "Значение не может быть меньше 1"
 
 #: src/i18n/process/translate.js:31
 msgid "price"
-msgstr ""
+msgstr "Стоимость"
 
 #: src/i18n/process/translate.js:32
 msgid "shipping"
-msgstr ""
+msgstr "Доставка"
 
 #: src/i18n/process/translate.js:33
 msgid "vat"
-msgstr ""
+msgstr "НДС"
 
 #: src/i18n/process/translate.js:34
 msgid "arbitrary_amount"
-msgstr ""
+msgstr "Сумма"

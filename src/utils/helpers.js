@@ -63,3 +63,15 @@ export const clearEmptyValue = object => {
     Object.entries(object).filter(([k, v]) => v !== '' && v !== null)
   )
 }
+
+export const generateValidateMessage = translation =>
+  Object.fromEntries(
+    Object.entries(translation)
+      .filter(([k]) => /^rule_/.test(k))
+      .map(([k, v]) => [
+        k.replace('rule_', ''),
+        (field, params) => {
+          return v.replace(/({_\w+_})/, (params && params[0]) || '')
+        },
+      ])
+  )
