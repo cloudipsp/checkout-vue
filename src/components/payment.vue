@@ -69,6 +69,7 @@ export default {
   computed: {
     ...mapState(['loading']),
     ...mapState('router', ['page', 'method']),
+    ...mapState('options', ['full_screen']),
     ...mapState('params', ['token']),
 
     ...mapStateGetSet([
@@ -334,7 +335,11 @@ export default {
       let $firstErrorField = this.$el.querySelector(
         '#' + this.errors.items[0].field
       )
-      $firstErrorField.scrollIntoView()
+
+      if (this.full_screen) {
+        $firstErrorField.scrollIntoView()
+      }
+
       this.timeout(() => {
         $firstErrorField.focus()
       })

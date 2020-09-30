@@ -223,17 +223,20 @@ export default {
     this.state.router.page = 'payment-method'
     this.state.router.method = method
   },
-  setCardNumber(card) {
-    this.state.params.card_number = card.card_number || ''
-    this.state.params.expiry_date = card.expiry_date || ''
-    this.state.params.email = card.email || this.state.params.email
-    this.state.params.hash = card.hash
+  setCardNumber({ card_number, expiry_date, email, hash, read_only } = {}) {
+    this.state.params.card_number = card_number || ''
+    this.state.params.expiry_date = expiry_date || ''
+    this.state.params.email = email || this.state.params.email
+    this.state.params.hash = hash
     this.state.params.cvv2 = ''
-    this.state.read_only = card.read_only
+    this.state.read_only = read_only
 
-    setTimeout(() => {
-      document.getElementById('f-cvv2').focus()
-    }, 100)
+    let el = document.getElementById('f-cvv2')
+    if (card_number && expiry_date && el) {
+      setTimeout(() => {
+        el && el.focus()
+      }, 100)
+    }
   },
   getAmountWithFee() {
     if (!this.state.params.amount) return
