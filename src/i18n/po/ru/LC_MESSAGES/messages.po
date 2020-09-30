@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 13:24+0300\n"
+"POT-Creation-Date: 2020-09-30 20:24+0300\n"
 "PO-Revision-Date: 2020-09-30 12:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,16 +39,8 @@ msgid "receipt"
 msgstr "Банковский перевод"
 
 #: src/i18n/process/methods.js:6
-msgid "emoney"
-msgstr "Электронный кошелек"
-
-#: src/i18n/process/methods.js:7
-msgid "local_banks"
+msgid "local_methods"
 msgstr "Локальные способы оплаты"
-
-#: src/i18n/process/methods.js:8
-msgid "ibox_ua"
-msgstr "Наличные в терминале"
 
 #: src/i18n/process/regular-period.js:1
 msgid "day"
@@ -233,112 +225,108 @@ msgid "declined"
 msgstr "Увы…Мы не смогли принять ваш платеж."
 
 #: src/i18n/process/templates.js:42
-msgid "declined_desc"
-msgstr "Вы можете вернуться на сайт и оформить заказ заново."
-
-#: src/i18n/process/templates.js:43
 msgid "server_trouble_title"
 msgstr "Увы…"
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:43
 msgid "server_trouble_desc"
 msgstr ""
 "Что-то пошло не по плану, но мы уже решаем эту проблему. Пожалуйста, "
 "вернитесь на несколько шагов назад и попробуйте провести платеж заново."
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:44
 msgid "offer"
 msgstr "-"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:45
 msgid "offer_t"
 msgstr "Я принимаю <a href=\"{0}\" target=\"_blank\">условия оферты</a>"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:46
 msgid "total_amount"
 msgstr "Сумма к оплате"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:47
 msgid "fee"
 msgstr "С учетом комиссии"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:48
 msgid "mfo_title"
 msgstr "Реквизиты для оплаты счета № {0}"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:49
 msgid "ibox_title"
 msgstr "Оплата в терминале iBox"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:50
 msgid "full_requesites"
 msgstr "Полные реквизиты получателя платежа"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:51
 msgid "full_requesites_explain"
 msgstr ""
 "Вам не нужно будет их вводить во время оплаты, но вы можете их сохранить для "
 "сверки."
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:52
 msgid "amount"
 msgstr "К оплате"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:53
 msgid "UAH"
 msgstr "грн"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:54
 msgid "receiver"
 msgstr "Получатель платежа"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:55
 msgid "current_bill"
 msgstr "Текущий счет (IBAN)"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:56
 msgid "usreou"
 msgstr "Код ЕГРПОУ"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:57
 msgid "bank"
 msgstr "Название банка"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:58
 msgid "mfo"
 msgstr "МФО банка"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:59
 msgid "purpose"
 msgstr "Назначение"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:60
 msgid "receipt_id"
 msgstr "Номер заказа"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:61
 msgid "end_date"
 msgstr "Крайний срок оплаты"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:62
 msgid "ibox_desc"
 msgstr ""
 "Все терминалы iBox, в которых можно провести платеж, отмечены на<a href="
 "\\»https://ibox.ua/ru/map\\» target=\\\"_blank\\\"> карте</a>"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:63
 msgid "save_receipt"
 msgstr "Сохранить квитанцию"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:64
 msgid "save_qr_code"
 msgstr "Сохранить на смартфон"
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:65
 msgid "qr_code_text"
 msgstr "Отсканируйте этот QR-код, чтобы сохранить квитанцию на свой смартфон"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:66
 msgid "ibox_info"
 msgstr ""
 "<p>Чтобы оплатить заказ, найдите платежный сервис Fondy через “Поиск” в "
@@ -346,97 +334,97 @@ msgstr ""
 "аннулируется. <p>Оплата в терминалах других платежных сервисов не "
 "принимается."
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:67
 msgid "regular"
 msgstr "Повторять платеж автоматически"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:68
 msgid "regular_amount"
 msgstr "Сумма регулярного платежа"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:69
 msgid "regular_every"
 msgstr "Частота"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:70
 msgid "regular_period"
 msgstr "Период"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:71
 msgid "regular_start_time"
 msgstr "Первая оплата"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:72
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:73
 msgid "security_title"
 msgstr "Данные покупателя защищены"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:74
 msgid "security_text"
 msgstr ""
 "<p>Согласно международному стандарту безопасности платежей PCI "
 "DSS<p>Регулируется международными платежными системами Visa и Mastercard"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:75
 msgid "sepa_t"
 msgstr "Укажите реквизиты банковского счета"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:76
 msgid "sender_name"
 msgstr "Имя"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:77
 msgid "sender_familyName"
 msgstr "Фамилия"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:78
 msgid "bic"
 msgstr "BIC/ Swift"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:79
 msgid "iban"
 msgstr "IBAN"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:80
 msgid "payment_id"
 msgstr "ID платежа"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:81
 msgid "customer_name"
 msgstr "Имя на карте (латиницей)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:82
 msgid "customer_name_utf8"
 msgstr "Полное имя"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:83
 msgid "customer_address"
 msgstr "Адрес (улица, дом, квартира)"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:84
 msgid "customer_zip"
 msgstr "Почтовый индекс"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:85
 msgid "customer_city"
 msgstr "Населенный пункт"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:86
 msgid "customer_country"
 msgstr "Страна"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:87
 msgid "customer_state"
 msgstr "Область, регион"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:88
 msgid "customer_phonemobile"
 msgstr "Телефон"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:89
 msgid "customer_email"
 msgstr "Электронная почта"
 
@@ -560,3 +548,17 @@ msgstr "НДС"
 #: src/i18n/process/translate.js:34
 msgid "arbitrary_amount"
 msgstr "Сумма"
+
+#: src/i18n/process/translate.js:36
+msgid "emoney"
+msgstr "Электронный кошелек"
+
+#: src/i18n/process/translate.js:37
+msgid "ibox_ua"
+msgstr "Наличные в терминале"
+
+#~ msgid "local_banks"
+#~ msgstr "Локальные способы оплаты"
+
+#~ msgid "declined_desc"
+#~ msgstr "Вы можете вернуться на сайт и оформить заказ заново."

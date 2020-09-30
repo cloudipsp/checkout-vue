@@ -34,5 +34,4 @@ _('vat')
 _('arbitrary_amount')
 
 _('emoney')
-_('local_banks')
 _('ibox_ua')
