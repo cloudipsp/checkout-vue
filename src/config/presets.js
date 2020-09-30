@@ -9,7 +9,6 @@ const black = '#444749'
 // card_shadow_custom
 // card_img
 // card_gradient_custom
-// card_border
 
 // btn_success_gradient_enable
 // btn_success_gradient_custom
@@ -55,7 +54,6 @@ export default {
     main: '#3E72C8',
     btn_success_gradient_custom:
       'linear-gradient(80deg, #EF7656 0, #EA5D5E 27%, #C95D9D 56%, #3E72C8 83%)',
-    card_border: '#B33F34',
   },
   gradient_grey_violet: {
     main: '#576A9C',

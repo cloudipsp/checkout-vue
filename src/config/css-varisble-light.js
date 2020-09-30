@@ -52,7 +52,6 @@ export default {
   card_label_color: white,
   card_input_color: white,
   card_input_shadow: '#000000',
-  card_border: '#BEC1C5',
   card_list_item_active_bg: ash_300,
   card_list_number_color: black,
   card_list_expiry_date_color: grey_2,
