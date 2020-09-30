@@ -10,6 +10,7 @@ const options = {
     banklinks_eu: [],
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
+    local_methods_icons: [],
     title: '',
     full_screen: true,
     link: '',
@@ -86,7 +87,7 @@ const options = {
   },
   router: {
     page: '', // payment-method success
-    method: '', // card banklinks_eu sepa
+    method: '', // card banklinks_eu local_methods sepa
     system: '',
   },
   css: configCss.default,

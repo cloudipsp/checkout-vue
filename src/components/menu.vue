@@ -35,6 +35,7 @@ export default {
       icon: {
         sepa: 'local',
         banklinks_eu: 'bank',
+        local_methods: 'local',
       },
     }
   },

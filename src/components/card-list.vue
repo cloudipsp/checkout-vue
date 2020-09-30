@@ -44,9 +44,6 @@ export default {
       this.$emit('input')
 
       this.store.setCardNumber(card)
-      // this.$nextTick(() => {
-      //   this.$validator.validateAll()
-      // })
     },
     addCardNumber() {
       this.$emit('add')
