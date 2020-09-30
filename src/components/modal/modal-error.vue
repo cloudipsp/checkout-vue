@@ -12,7 +12,6 @@
     <p>
       <b>{{ code }}</b> {{ message }}
     </p>
-    <p v-t="'declined_desc'" />
   </f-modal-base>
   <f-modal-base v-else v-model="show" v-bind="attrs" v-on="$listeners">
     <template #modal-title>
