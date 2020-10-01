@@ -15,6 +15,7 @@ const verificationType = ['amount', 'code']
 const theme = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
+const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
 
 function enumArray(array) {
   return {
@@ -114,8 +115,15 @@ const cssVarisbleKeys = Object.keys(
 
 let css_variable = enumObject(cssVarisbleKeys)
 
+const configCssVariable = {
+  card_img: {
+    type: 'string',
+    pattern: patternUrlImg,
+  },
+}
+
 cssVarisbleKeys.forEach(item => {
-  css_variable.fields[item] = {
+  css_variable.fields[item] = configCssVariable[item] || {
     type: 'string',
     pattern: /^#[0-9a-fA-F]{6}$/,
   }
@@ -148,7 +156,7 @@ export default {
       active_tab: { type: 'enum', enum: methods },
       logo_url: {
         type: 'string',
-        pattern: /^(http(s)?:\/\/|data:image\/\w+?;base64,)/,
+        pattern: patternUrlImg,
       },
       offerta_url: { type: 'url' },
       default_country: { type: 'enum', enum: configCountries },

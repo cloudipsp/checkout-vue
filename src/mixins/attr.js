@@ -7,7 +7,7 @@ export default {
       let len = arguments.length
 
       name.forEach(item => {
-        if (data) {
+        if (data && item in data) {
           data = data[item]
         } else if (len === 2) {
           data = data[item] = {}

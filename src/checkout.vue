@@ -68,7 +68,7 @@ export default {
   created: function() {
     loadCardImg(this.getPreset())
       .then(card_img => {
-        this.attr('optionsUser.options.theme.card_img', `url(${card_img})`)
+        this.attr('optionsUser.css_variable.card_img', `url(${card_img})`)
       })
       .finally(() => {
         this.load = true
