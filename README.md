@@ -44,7 +44,7 @@ Name                  | Type        | Default                 | Description     
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
-`fee`                 | Boolean     | true                    |                                                                                     |
+`fee`                 | Boolean     | false                    |                                                                                     |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `fields`              | Boolean     | false                   |                                                                                     |
 `default_country`     | String      |                         |                                                                                     |
