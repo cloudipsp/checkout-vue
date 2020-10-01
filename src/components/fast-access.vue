@@ -13,6 +13,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import { filterDuplicate } from '@/utils/helpers'
 
 export default {
   data() {
@@ -22,41 +23,34 @@ export default {
     }
   },
   computed: {
-    ...mapState('tabs', ['banklinks_eu']),
-    // {147209: {country: 'PL', name: '', bank_logo: 'mbank'}}
-    config() {
-      return (this.banklinks_eu && this.banklinks_eu.payment_systems) || {}
-    },
-    // [147209]
-    keys() {
-      return Object.keys(this.config)
-    },
+    ...mapState('tabs', ['banklinks_eu', 'local_methods']),
     // [{country: 'PL', name: '', bank_logo: 'mbank'}]
     values() {
-      return Object.values(this.config)
-    },
-    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
-    listFull() {
-      return this.values.map((item, i) => ({
-        ...item,
-        id: this.keys[i],
-        bank_logo: item.bank_logo || 'no_logo',
-        iban: this.keys[i].split('|')[1] || '',
-      }))
+      return this.getValues(['banklinks_eu', 'local_methods'])
     },
     show() {
       return this.list.length
     },
     list() {
-      return this.listFull
+      return this.values
         .filter(this.listFilter)
         .sort(this.listSort)
+        .filter(filterDuplicate)
         .slice(0, this.count)
     },
   },
   methods: {
+    getValues(list) {
+      return list.reduce(
+        (accum, method) =>
+          accum.concat(
+            Object.values((this[method] && this[method].payment_systems) || {})
+          ),
+        []
+      )
+    },
     click(bank) {
-      this.store.location('payment-method', 'banklinks_eu', bank.id)
+      this.store.location('payment-method', bank.method, bank.id)
     },
     listFilter(item) {
       return item.quick_method && item.bank_logo !== 'no_logo'

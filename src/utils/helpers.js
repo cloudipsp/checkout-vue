@@ -75,3 +75,5 @@ export const generateValidateMessage = translation =>
         },
       ])
   )
+
+export const filterDuplicate = (item, key, self) => self.indexOf(item) === key

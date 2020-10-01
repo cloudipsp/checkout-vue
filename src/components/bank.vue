@@ -88,6 +88,7 @@
 <script>
 import { sort } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
+import { filterDuplicate } from '@/utils/helpers'
 import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
 import timeout from '@/mixins/timeout'
@@ -126,31 +127,16 @@ export default {
     ...mapState('options', ['countries']),
     ...mapState('router', ['system']),
     ...mapStateGetSet('options', ['default_country']),
-    // [147209]
-    keys() {
-      return Object.keys(this.config)
-    },
-    // [{country: 'PL', name: '', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     values() {
       return Object.values(this.config)
-    },
-    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
-    listFull() {
-      return this.values.map((item, i) => ({
-        ...item,
-        id: this.keys[i],
-        bank_logo: item.bank_logo || 'no_logo',
-        iban: this.keys[i].split('|')[1] || '',
-      }))
     },
     // [{id: 'PL', name:''}]
     country() {
       let result =
         this.countries && this.countries.length
           ? this.countries
-          : this.values
-              .map(item => item.country)
-              .filter((item, key, self) => self.indexOf(item) === key)
+          : this.values.map(item => item.country).filter(filterDuplicate)
       result = result.map(item => ({
         id: item,
         name: this.$t(item),
@@ -159,9 +145,7 @@ export default {
     },
     // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listSelect() {
-      return this.listFull
-        .filter(this.listSelectFilter)
-        .sort(this.listSelectSort)
+      return this.values.filter(this.listSelectFilter).sort(this.listSelectSort)
     },
     list() {
       let search = this.form.search.toLowerCase()
@@ -180,7 +164,7 @@ export default {
       return this.list.slice(0, this.more)
     },
     show() {
-      return this.listFull.length
+      return this.values.length
     },
     showCountry() {
       return this.country.length > 1
@@ -243,7 +227,7 @@ export default {
       handler(newValue, oldValue) {
         if (newValue === oldValue) return
 
-        let bank = this.listFull.filter(item => item.id === newValue)[0]
+        let bank = this.values.filter(item => item.id === newValue)[0]
         if (!bank) return
 
         this.selectBank(bank)
