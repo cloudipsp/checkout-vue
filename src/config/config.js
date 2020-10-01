@@ -6,12 +6,13 @@ import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
+import configTheme from '@/config/theme'
 
 const cardIcons = Object.keys(configCardBrands)
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
-const theme = ['light', 'dark']
+const theme = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
 
@@ -107,7 +108,7 @@ locales.forEach(function(locale) {
 const cssVarisbleKeys = Object.keys(
   cssVarisble({
     type: 'light',
-    preset: 'fondy',
+    preset: configTheme['light'],
   })
 )
 

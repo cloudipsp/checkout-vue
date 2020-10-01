@@ -1,7 +1,10 @@
 export default [
-  'gradient_indigo',
-  'gradient_grey_violet',
-  'gradient_gold_green',
-  'gradient_grey',
-  'gradient_gold',
+  'silver',
+  'vibrant_silver',
+  'vibrant_gold',
+  'euphoric_pink',
+  'heated_steel',
+  'nude_pink',
+  'tropical_gold',
+  'navy_shimmer',
 ]

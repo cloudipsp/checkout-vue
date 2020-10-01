@@ -20,6 +20,7 @@ import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
 import loadCardImg from '@/store/card-img'
 import { errorHandler } from '@/utils/helpers'
+import configTheme from '@/config/theme'
 
 export default {
   components: {
@@ -65,7 +66,7 @@ export default {
     },
   },
   created: function() {
-    loadCardImg(this.attr('optionsUser.options.theme.preset'))
+    loadCardImg(this.getPreset())
       .then(card_img => {
         this.attr('optionsUser.options.theme.card_img', `url(${card_img})`)
       })
@@ -74,6 +75,19 @@ export default {
         this.store.setOptions(this.optionsUser)
       })
       .catch(errorHandler)
+  },
+  methods: {
+    getPreset() {
+      const userPreset = this.attr('optionsUser.options.theme.preset')
+      const userTheme = this.attr('optionsUser.options.theme.type')
+
+      if (userPreset) {
+        return userPreset
+      } else if (userTheme) {
+        this.attr('optionsUser.options.theme.preset', configTheme[userTheme])
+        return configTheme[userTheme]
+      }
+    },
   },
 }
 </script>

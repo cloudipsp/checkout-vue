@@ -121,7 +121,7 @@ export default {
   label_color: grey_1,
   label_hover_color: grey_2,
   label_focus_color: grey_2,
-  link_color: '&main',
+  link_color: grey_2,
   tooltip_error_color: error,
   tooltip_card_color: grey_2,
   tooltip_cvv_color: grey_3,
