@@ -16,6 +16,10 @@
   content: '';
   border-radius: px-to-rem(16px);
   box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($card_shadow, 60%);
+
+  .f-theme-dark & {
+    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgba(0, 0, 0, 0.6);
+  }
 }
 
 .f-card-bg {

@@ -186,6 +186,12 @@
     $btn_success_color,
     $btn_success_shadow
   );
+
+  .f-theme-dark & {
+    &::before {
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgba(0, 0, 0, 0.6);
+    }
+  }
 }
 
 .f-btn-success-bg-lighten {
@@ -237,19 +243,19 @@
   &:focus::after,
   &:active::after {
     background: $btn_success_gradient_custom;
-    background-size: 120% 100%;
+    background-repeat: no-repeat;
   }
 
   &:hover,
   &:focus {
     &::after {
-      background-position-x: 50%;
+      background-position-x: -25px;
     }
   }
 
   &:active {
     &::after {
-      background-position-x: 100%;
+      background-position-x: -50px;
     }
   }
 
