@@ -90,7 +90,7 @@ export default {
         .process(this.process)
         .on('show', () => {
           this.$root.$emit('show-pay')
-          this.show = true
+          this.init = true
         })
         .on('hide', () => {
           this.init = false
