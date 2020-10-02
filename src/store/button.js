@@ -53,22 +53,11 @@ function parseOptions({
       insert: recurring_state,
       open: recurring_state,
     },
-    fields: parseFields(fields, amount_readonly),
+    fields: Object.values(fields).map(parseField),
+    amount_readonly: Boolean(amount_readonly),
   }
   // delete undefined property
   return JSON.parse(JSON.stringify(options))
-}
-
-function parseFields(fields, amount_readonly) {
-  let result = []
-  if (!amount_readonly) {
-    result.push({
-      component: 'input-amount',
-      name: 'amount',
-    })
-  }
-
-  return result.concat(Object.values(fields).map(parseField))
 }
 
 function parseField(attrs) {

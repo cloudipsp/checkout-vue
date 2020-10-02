@@ -49,6 +49,7 @@ export default {
         'value-type': 'YYYY-MM-DD',
         'prefix-class': 'f-datepicker',
         'append-to-body': false,
+        disabled: this.attrs.readonly,
       }
     },
   },

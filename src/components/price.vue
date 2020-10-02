@@ -1,11 +1,12 @@
 <template>
   <div v-if="show" class="f-price">
-    <div>
+    <div v-if="amount_readonly">
       <span class="f-amount"
         >{{ integerAmount }}<sup>{{ fractionalAmount }}</sup></span
       >
       <span v-t="currency" class="f-currency" />
     </div>
+    <input-amount v-else name="amount" />
     <div v-if="showFeeAmount">
       <div class="f-row">
         <div v-t="'total_amount'" class="f-col f-fee-key" />
@@ -31,7 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['verification_type']),
+    ...mapState(['verification_type', 'amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
     ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
     show() {
