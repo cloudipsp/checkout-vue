@@ -4,7 +4,8 @@
       <f-header />
       <payment />
     </div>
-    <ul v-else>
+    <ul v-else-if="isError">
+      <div>{{ COMMITHASH }} {{ BRANCH }}</div>
       <li v-for="item in error.errors" :key="item.message">
         {{ item.message }}
       </li>
@@ -37,6 +38,10 @@ export default {
   data() {
     return {
       load: false,
+      // eslint-disable-next-line no-undef
+      COMMITHASH,
+      // eslint-disable-next-line no-undef
+      BRANCH,
     }
   },
   computed: {
@@ -62,7 +67,10 @@ export default {
       }
     },
     show() {
-      return !this.error.errors.length && this.load
+      return !this.isError && this.load
+    },
+    isError() {
+      return this.error.errors.length
     },
   },
   created: function() {
