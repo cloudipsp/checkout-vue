@@ -199,7 +199,7 @@ export default {
   },
   computed: {
     icon() {
-      return this.icons[this.name]
+      return this.icons[this.name] || [512, 512, 16, '']
     },
     paths() {
       return this.icon[3]
