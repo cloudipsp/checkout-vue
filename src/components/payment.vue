@@ -1,6 +1,6 @@
 <template>
   <div class="f-wrapper" :data-e2e-ready="ready">
-    <f-sidebar v-if="showSidebar" />
+    <f-sidebar />
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
         <div class="f-top">&nbsp;</div>
@@ -107,9 +107,6 @@ export default {
     ]),
     createdFormParams() {
       return this.token ? { token: this.token } : this.store.formParams()
-    },
-    showSidebar() {
-      return !(this.page === 'success' && this.method === 'approved')
     },
   },
   created() {

@@ -24,7 +24,7 @@ export default {
   computed: {
     ...mapState('options', ['full_screen']),
   },
-  mounted: function() {
+  created: function() {
     resizeBind = resize.bind(this)
     window.addEventListener('resize', resizeBind)
     init.apply(this)

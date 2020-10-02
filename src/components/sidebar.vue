@@ -1,5 +1,5 @@
 <template>
-  <div class="f-sidebar">
+  <div v-if="show" class="f-sidebar">
     <f-scrollbar-vertical wrap-class="f-sidebar-wrap">
       <div class="f-sidebar-content f-container-sm">
         <div class="f-top">&nbsp;</div>
@@ -18,6 +18,8 @@ import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
 import FSecurity from '@/components/security'
 import FInfo from '@/components/info'
+import mobile from '@/mixins/mobile'
+import { mapState } from '@/utils/store'
 
 export default {
   components: {
@@ -25,6 +27,20 @@ export default {
     FMenu,
     FSecurity,
     FInfo,
+  },
+  mixins: [mobile],
+  computed: {
+    ...mapState(['isOnlyCard']),
+    ...mapState('router', ['page', 'method']),
+    show() {
+      return !this.hide
+    },
+    hide() {
+      return (
+        (this.page === 'success' && this.method === 'approved') ||
+        (this.isBreakpointMd && this.isOnlyCard)
+      )
+    },
   },
 }
 </script>

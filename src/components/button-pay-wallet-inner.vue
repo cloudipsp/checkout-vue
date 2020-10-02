@@ -1,12 +1,14 @@
 <template>
-  <div v-show="show" class="f-btn-pay-wallet">
-    <div class="f-wallet-pay-button" :class="classButton" />
-    <div
-      v-if="showTitle"
-      v-t="'other_payment_method'"
-      class="f-wallet-pay-title"
-    />
-  </div>
+  <transition name="fade-enter">
+    <div v-show="show" class="f-btn-pay-wallet">
+      <div class="f-wallet-pay-button" :class="classButton" />
+      <div
+        v-if="showTitle"
+        v-t="'other_payment_method'"
+        class="f-wallet-pay-title"
+      />
+    </div>
+  </transition>
 </template>
 
 <script>
