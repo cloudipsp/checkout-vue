@@ -76,7 +76,6 @@ const options = {
     order_id: '',
     save_card: true,
   },
-  template: {},
   messages: {},
   validate: {},
   css_variable: {},

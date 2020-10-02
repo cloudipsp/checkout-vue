@@ -51,9 +51,7 @@ export default {
       this.modalMore = true
     },
     nextResize() {
-      this.$nextTick().then(() => {
-        this.resize()
-      })
+      this.$nextTick().then(this.resize)
     },
     resize() {
       this.showMore = false
