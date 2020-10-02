@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import { filterDuplicate } from '@/utils/helpers'
+import { removeDuplicate } from '@/utils/helpers'
 
 export default {
   data() {
@@ -35,7 +35,7 @@ export default {
       return this.values
         .filter(this.listFilter)
         .sort(this.listSort)
-        .filter(filterDuplicate)
+        .filter(removeDuplicate)
         .slice(0, this.count)
     },
   },

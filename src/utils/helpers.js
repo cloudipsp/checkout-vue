@@ -76,4 +76,4 @@ export const generateValidateMessage = translation =>
       ])
   )
 
-export const filterDuplicate = (item, key, self) => self.indexOf(item) === key
+export const removeDuplicate = (item, key, self) => self.indexOf(item) === key

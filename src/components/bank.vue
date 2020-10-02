@@ -88,7 +88,7 @@
 <script>
 import { sort } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { filterDuplicate } from '@/utils/helpers'
+import { removeDuplicate } from '@/utils/helpers'
 import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
 import timeout from '@/mixins/timeout'
@@ -136,7 +136,7 @@ export default {
       let result =
         this.countries && this.countries.length
           ? this.countries
-          : this.values.map(item => item.country).filter(filterDuplicate)
+          : this.values.map(item => item.country).filter(removeDuplicate)
       result = result.map(item => ({
         id: item,
         name: this.$t(item),
