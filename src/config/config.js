@@ -7,6 +7,7 @@ import cssVarisble from '@/config/css-varisble'
 import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
+import configOptionsDefault from '@/config/options-default'
 
 const cardIcons = Object.keys(configCardBrands)
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
@@ -15,6 +16,18 @@ const verificationType = ['amount', 'code']
 const theme = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
+const options = Object.keys(configOptionsDefault.options)
+const endpoint = Object.keys(configOptionsDefault.options.endpoint)
+const regular = Object.keys(configOptionsDefault.regular)
+const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
+const config = [
+  'options',
+  'regular',
+  'params',
+  'messages',
+  'validate',
+  'css_variable',
+]
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
 
 function enumArray(array) {
@@ -96,10 +109,8 @@ function validatorCurrencyRequired() {
   }
 }
 
-let i18n = {
-  type: 'object',
-  fields: {},
-}
+let i18n = enumObject(locales)
+
 locales.forEach(function(locale) {
   i18n.fields[locale] = {
     type: 'object',
@@ -130,89 +141,94 @@ cssVarisbleKeys.forEach(item => {
 })
 
 export default {
-  options: {
-    type: 'object',
+  config: {
+    ...enumObject(config),
     fields: {
-      methods: enumArray(methods),
-      methods_disabled: enumArray(methods),
-      card_icons: enumArray(cardIcons),
-      fields: { type: 'boolean' },
-      title: { type: 'string' },
-      link: { type: 'url' },
-      full_screen: { type: 'boolean' },
-      button: { type: 'boolean' },
-      locales: enumArray(locales),
-      email: { type: 'boolean' },
-      css: { type: 'enum', enum: css },
-      api_domain: { type: 'string' },
-      endpoint: {
-        type: 'object',
+      options: {
+        ...enumObject(options),
         fields: {
-          gateway: { type: 'string' },
-          button: { type: 'string' },
+          methods: enumArray(methods),
+          methods_disabled: enumArray(methods),
+          card_icons: enumArray(cardIcons),
+          fields: { type: 'boolean' },
+          title: { type: 'string' },
+          link: { type: 'url' },
+          full_screen: { type: 'boolean' },
+          button: { type: 'boolean' },
+          locales: enumArray(locales),
+          email: { type: 'boolean' },
+          css: { type: 'enum', enum: css },
+          api_domain: { type: 'string' },
+          endpoint: {
+            ...enumObject(endpoint),
+            fields: {
+              gateway: { type: 'string' },
+              button: { type: 'string' },
+            },
+          },
+          fee: { type: 'boolean' },
+          active_tab: { type: 'enum', enum: methods },
+          logo_url: {
+            type: 'string',
+            pattern: patternUrlImg,
+          },
+          offerta_url: { type: 'url' },
+          default_country: { type: 'enum', enum: configCountries },
+          countries: enumArray(configCountries),
+          theme: {
+            ...enumObject(['type', 'preset']),
+            fields: {
+              type: { type: 'enum', enum: theme },
+              preset: { type: 'enum', enum: preset },
+            },
+          },
+          disable_request: { type: 'boolean' },
         },
       },
-      fee: { type: 'boolean' },
-      active_tab: { type: 'enum', enum: methods },
-      logo_url: {
-        type: 'string',
-        pattern: patternUrlImg,
-      },
-      offerta_url: { type: 'url' },
-      default_country: { type: 'enum', enum: configCountries },
-      countries: enumArray(configCountries),
-      theme: {
-        type: 'object',
+      regular: {
+        ...enumObject(regular),
         fields: {
-          type: { type: 'enum', enum: theme },
-          preset: { type: 'enum', enum: preset },
+          insert: { type: 'boolean' },
+          open: { type: 'boolean' },
+          hide: { type: 'boolean' },
+          period: enumArray(period),
         },
       },
-      disable_request: { type: 'boolean' },
-    },
-  },
-  regular: {
-    type: 'object',
-    fields: {
-      insert: { type: 'boolean' },
-      open: { type: 'boolean' },
-      hide: { type: 'boolean' },
-      period: enumArray(period),
-    },
-  },
-  params: {
-    type: 'object',
-    fields: {
-      merchant_id: { type: 'integer', max: 999999999999 },
-      order_desc: { type: 'string', max: 1024 },
-      amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
-      currency: [
-        { type: 'string' },
-        validatorToken(),
-        validatorCurrencyRequired(),
-      ],
-      response_url: { type: 'url' },
-      lang: { type: 'enum', enum: locales },
-      required_rectoken: { type: 'enum', enum: YN },
-      verification: { type: 'enum', enum: YN },
-      verification_type: { type: 'enum', enum: verificationType },
-      token: { type: 'string', len: 40 },
-      offer: { type: 'boolean' },
-      recurring_data: {
+      params: {
         type: 'object',
         fields: {
-          period: { type: 'enum', enum: period },
-          every: { type: 'integer' },
-          start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
-          end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
-          amount: { type: 'integer' },
+          merchant_id: { type: 'integer', max: 999999999999 },
+          order_desc: { type: 'string', max: 1024 },
+          amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
+          currency: [
+            { type: 'string' },
+            validatorToken(),
+            validatorCurrencyRequired(),
+          ],
+          response_url: { type: 'url' },
+          lang: { type: 'enum', enum: locales },
+          required_rectoken: { type: 'enum', enum: YN },
+          verification: { type: 'enum', enum: YN },
+          verification_type: { type: 'enum', enum: verificationType },
+          token: { type: 'string', len: 40 },
+          offer: { type: 'boolean' },
+          recurring_data: {
+            ...enumObject(recurring_data),
+            fields: {
+              period: { type: 'enum', enum: period },
+              every: { type: 'integer' },
+              start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
+              end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
+              amount: { type: 'integer' },
+            },
+          },
+          custom: { type: 'object' },
+          customer_data: { type: 'object' },
         },
       },
-      custom: { type: 'object' },
-      customer_data: { type: 'object' },
+      messages: i18n,
+      validate: i18n,
+      css_variable,
     },
   },
-  messages: i18n,
-  validate: i18n,
-  css_variable,
 }

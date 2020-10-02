@@ -115,7 +115,7 @@ export default {
     }
   },
   validate(options) {
-    new Schema(config).validate(options, errors => {
+    new Schema(config).validate({ config: options }, errors => {
       if (!errors) return
       this.setError(errors)
     })
