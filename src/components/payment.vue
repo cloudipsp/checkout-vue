@@ -122,6 +122,10 @@ export default {
     loadButton()
       .then(
         response => {
+          if (this.full_screen) {
+            document.title = response.options.title
+          }
+
           this.store.setButtonParams(response)
         },
         () => {}
