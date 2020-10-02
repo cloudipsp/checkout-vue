@@ -109,8 +109,7 @@
           max: {
             options: {
               methods: ['card', 'banklinks_eu'],
-              fast: ['p24', 'platba24', 'paypal', 'liqpay', 'qiwi'],
-              cardIcons: [
+              card_icons: [
                 'mastercard',
                 'visa',
                 'mir',
@@ -133,27 +132,35 @@
                 'sofort',
                 'starling',
               ],
-              fields: true,
+              local_methods_icons: [
+                'lloyds',
+                'mizuho',
+                'monzo',
+                'nationwide',
+                'rbs',
+                'revolut',
+                'sofort',
+                'starling',
+              ],
+              // fields: true,
               title: 'my_title',
               link: 'https://fondy.eu',
-              fullScreen: true,
+              full_screen: true,
               button: true,
               // cancel: true,
               email: true,
-              apiDomain: 'api.dev.fondy.eu',
-              fee: true,
+              api_domain: 'api.dev.fondy.eu',
               //  css: 'bootstrap4' // bootstrap3 bootstrap4 foundation6
-              activeTab: 'card',
-              // logoUrl:
-              //   'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-              offertaUrl:
+              active_tab: 'card',
+              // logoUrl: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+              offerta_url:
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-              // theme: {
-              //   type: 'dark',
-              //   preset: 'gradient_indigo'
-              // },
-              show_menu_first: true,
-              disable_request: true,
+              theme: {
+                type: 'dark',
+                preset: 'euphoric_pink'
+              },
+              show_menu_first: false,
+              // disable_request: true,
             },
             regular: {
               insert: true,
@@ -162,8 +169,8 @@
             },
             params: {
               currency: 'EUR',
-              merchant_id: 900001,
-              amount: 50415,
+              merchant_id: 1601211,
+              amount: 50400,
               // merchant_id: 900187,
               //    verification_type: 'code',
               //    required_rectoken: 'y',
@@ -249,14 +256,10 @@
             options: {
               api_domain: 'api.dev.fondy.eu',
               link: 'https://fondy.eu',
-              fullScreen: false,
+              full_screen: false,
               //    fee: true,
-              offertaUrl:
+              offerta_url:
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-              theme: {
-                type: 'dark',
-                preset: 'gradient_indigo'
-              },
             },
             params: {
               amount: 200,
@@ -274,7 +277,7 @@
           verification: {
             options: {
               api_domain: 'api.dev.fondy.eu',
-              fullScreen: true,
+              full_screen: true,
               link: 'https://fondy.eu',
             },
             params: {
@@ -290,7 +293,7 @@
           rectoken1: {
             options: {
               api_domain: 'api.dev.fondy.eu',
-              fullScreen: false,
+              full_screen: false,
             },
             params: {
               amount: 200,
@@ -304,7 +307,7 @@
           rectoken2: {
             options: {
               api_domain: 'api.dev.fondy.eu',
-              fullScreen: false,
+              full_screen: false,
             },
             params: {
               // amount: 200,
@@ -323,10 +326,6 @@
               link: 'https://fondy.eu',
               // countries: ['PL'],
               show_menu_first: false,
-              theme: {
-                type: 'dark',
-                preset: 'gradient_indigo'
-              },
             },
             params: {
               amount: 100,
@@ -335,11 +334,38 @@
               order_desc: 'order_desc',
             },
           },
+          local_methods: {
+            options: {
+              methods: ['local_methods'],
+              api_domain: 'api.dev.fondy.eu',
+              active_tab: 'local_methods',
+              // default_country: 'FI',
+              // countries: ['PL'],
+              show_menu_first: false,
+              local_methods_icons: [
+                'bank_of_ireland',
+                'danske_bank',
+                'lloyds',
+                'mizuho',
+                'monzo',
+                'nationwide',
+                'rbs',
+                'revolut',
+                'sofort',
+                'starling',
+              ],
+            },
+            params: {
+              amount: 100,
+              currency: 'EUR',
+              merchant_id: 900238,
+            },
+          },
           token: {
             options: {
               methods: ['card', 'sepa'],
               api_domain: 'api.dev.fondy.eu',
-              fullScreen: true,
+              full_screen: true,
               link: 'https://fondy.eu',
             },
             params: {
@@ -399,7 +425,7 @@
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               theme: {
                 type: 'dark',
-                preset: 'gradient_indigo',
+                preset: 'euphoric_pink',
               },
             },
             params: {
@@ -425,10 +451,6 @@
                 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
               active_tab: 'card',
               show_menu_first: false,
-              theme: {
-                type: 'dark',
-                preset: 'gradient_indigo',
-              },
             },
             params: {
               currency: 'UAH',
@@ -441,14 +463,14 @@
             options: {
               api_domain: 'api.dev.fondy.eu',
               theme: {
-                preset: 'steel_blue' // обнулить css переменные
+                preset: 'reset'
               },
             },
             params: {
               token: 'd1a9c7d64110c34e3d204a043398d785ab7a8d6c'
             },
             css_variable: {
-              main: '#080043', // обязательный
+              main: '#080043',
             }
           }
         }
