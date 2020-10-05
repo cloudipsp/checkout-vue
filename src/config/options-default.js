@@ -41,6 +41,7 @@ const options = {
       preset: configTheme[theme],
     },
     show_menu_first: true,
+    disable_request: false,
   },
   regular: {
     insert: false,
@@ -108,7 +109,6 @@ const options = {
   validate_expdate: true,
   isOnlyCard: true,
   region: '',
-  disable_request: false,
   amount_readonly: true,
 }
 
