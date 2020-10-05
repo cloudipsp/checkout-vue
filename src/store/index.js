@@ -17,6 +17,7 @@ import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
+import initFavicon from '@/store/favicon'
 import { sessionStorage } from '@/utils/store'
 import { methods } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
@@ -92,6 +93,7 @@ export default {
     this.initOnlyCard()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
+    initFavicon(this.state.cdnIcons, this.state.options.full_screen)
   },
   optionsFormat(options) {
     let regex = /[A-Z]+/g

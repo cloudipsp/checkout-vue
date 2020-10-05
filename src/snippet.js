@@ -77,7 +77,7 @@ function loadScript(src) {
       fondy.run()
     }
   })
-  document.getElementsByTagName('head')[0].appendChild(el)
+  document.head.appendChild(el)
 }
 
 function loadStyle(src) {
@@ -85,7 +85,7 @@ function loadStyle(src) {
   el.rel = 'stylesheet'
   el.type = 'text/css'
   el.href = `${cdn}${src}?${version}`
-  document.getElementsByTagName('head')[0].appendChild(el)
+  document.head.appendChild(el)
 }
 
 loadStyle(`checkout.css`)

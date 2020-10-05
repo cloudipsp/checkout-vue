@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { messages } from '@/i18n/lang/en'
 import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
+import { getId } from '@/utils/helpers'
 
 Vue.use(VueI18n)
 
@@ -77,8 +78,4 @@ function loadScript(url) {
 
 function getUrl(lang, store) {
   return `${store.state.cdn}/i18n/${lang}.js`
-}
-
-function getId(url) {
-  return url.replace(/\W/g, '_')
 }
