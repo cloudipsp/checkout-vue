@@ -8,19 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 13:27+0300\n"
-"PO-Revision-Date: 2020-09-30 10:39+0300\n"
+"POT-Creation-Date: 2020-10-06 13:21+0300\n"
+"PO-Revision-Date: 2020-10-05 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: lv\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: smartCAT.ai\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: src/i18n/process/methods.js:1
 msgid "card"
-msgstr "Karte"
+msgstr "카드"
 
 #: src/i18n/process/methods.js:2
 msgid "trustly"
@@ -32,11 +32,11 @@ msgstr "SEPA Direct Debit"
 
 #: src/i18n/process/methods.js:4
 msgid "banklinks_eu"
-msgstr "Interneta banka"
+msgstr "인터넷 뱅크"
 
 #: src/i18n/process/methods.js:5
 msgid "receipt"
-msgstr "Bankas pārskaitījums"
+msgstr "은행 송금"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
@@ -48,63 +48,62 @@ msgstr ""
 
 #: src/i18n/process/regular-period.js:1
 msgid "day"
-msgstr "Diena"
+msgstr "일"
 
 #: src/i18n/process/regular-period.js:2
 msgid "week"
-msgstr "Nedēļa"
+msgstr "주"
 
 #: src/i18n/process/regular-period.js:3
 msgid "month"
-msgstr "Mēnesis"
+msgstr "원"
 
 #: src/i18n/process/templates.js:1
 msgid "gdpr_alert_text"
 msgstr ""
-"Mēs izmantojam sīkdatnes šajā vietnē, lai uzlabotu jūsu pieredzi ar "
-"maksājumiem."
+"귀하가 당사의 웹사이트에 방문할 때 최상의 경험을 제공하기 위해 쿠키를 사용합"
+"니다."
 
 #: src/i18n/process/templates.js:2
 msgid "learn_more"
-msgstr "Uzzināt vairāk."
+msgstr "더 알아보기"
 
 #: src/i18n/process/templates.js:3
 msgid "save_card"
-msgstr "Saglabāt manu karti turpmākiem maksājumiem."
+msgstr "향후 결제를 위해 내 카드를 저장합니다."
 
 #: src/i18n/process/templates.js:4
 msgid "its_safe"
-msgstr "Tas ir droši."
+msgstr "안전합니다."
 
 #: src/i18n/process/templates.js:5
 msgid "gdpr_modal_safe_title"
-msgstr "Kartes saglabāšana ir droša un ērta"
+msgstr "카드 번호를 저장하는 것은 안전하고 편리한 방법입니다."
 
 #: src/i18n/process/templates.js:6
 msgid "gdpr_modal_safe"
 msgstr ""
-"<p>Mēs nesaglabājam jūsu kartes datus, kad Jūs tos ievadāt. Patiesībā mēs "
-"tos uzreiz šifrējam un saglabājam tokenu veidā. Tokeni ir nejauša ciparu un "
-"zīmju kombinācija.<p>Katru reizi, kad tiek veikts jauns maksājums, Fondy "
-"izmantos tokenus, nevis kartes datus, lai potenciālais krāpnieks tos "
-"nevarētu pārtvert. Pārtvert tokenu datus ir bezjēdzīgi, jo ārpus Fondy "
-"maksājumu pakalpojuma tiem nav nekādas vērtības."
+".<p>귀하가 카드 정보를 입력할 때 우리는 기록을 하지 않고 즉시 암호화하여 자"
+"와 문자의 무작위 조합인 토큰 형식으로 저장합니다.<p>잠재적인 사기꾼이 카드 정"
+"보를 받을 수 없도록 지불이 이루어질 때마다 Fondy는 카드 세부 정보 대신 토큰"
+"을 사용합니다. 토큰은 Fondy 결제 서비스 외부에서 아무 가치가 없기 때문에 토"
+"큰 데이터를 가로챌 필요가 없다는 뜻입니다."
 
 #: src/i18n/process/templates.js:7
 msgid "close"
-msgstr "Pajautāt vēlāk"
+msgstr "나중에 물어보기"
 
 #: src/i18n/process/templates.js:8
 msgid "accept"
-msgstr "Piekrītu"
+msgstr "동의합니다"
 
 #: src/i18n/process/templates.js:9
 msgid "bank_desc"
-msgstr "Maksājuma pabeigšanai jūs tiksiet pārvirzīti uz bankas vietni"
+msgstr "결제를 완료하기 위해 은행 웹 사이트로 리디렉션됩니다"
 
 #: src/i18n/process/templates.js:10
 msgid "default_country"
-msgstr "Meklēt pēc valsts"
+msgstr "나라별 검색"
 
 #: src/i18n/process/templates.js:11
 msgid "search"
@@ -112,35 +111,35 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:12
 msgid "system_search"
-msgstr "Meklēt pēc bankas nosaukuma, IBAN vai bankas koda"
+msgstr "은행 이름, 국제은행계좌번호 또는 독일 은행인식번호 (BLZ)별 검색합니다"
 
 #: src/i18n/process/templates.js:13
 msgid "load_more"
-msgstr "Ielādēt vairāk..."
+msgstr "더 많은 메시지를 로드합니다"
 
 #: src/i18n/process/templates.js:15
 msgid "other_payment_method"
-msgstr "Vai maksāt ar"
+msgstr "아니면 다른 방법으로 지불합니다"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr "Apmaksāt <b>{0}</b> {1}"
+msgstr "<b>{0}</b> {1}지불합니다"
 
 #: src/i18n/process/templates.js:17
 msgid "use_other_card"
-msgstr "Ievadiet citas kartes datus"
+msgstr "다른 카드 번호를 입력하십시오"
 
 #: src/i18n/process/templates.js:18
 msgid "expires_on"
-msgstr "Derīga līdz"
+msgstr "유효 기간"
 
 #: src/i18n/process/templates.js:19
 msgid "pay_with_card"
-msgstr "Apmaksāt ar karti"
+msgstr "카드로 지불합니다"
 
 #: src/i18n/process/templates.js:20
 msgid "card_number"
-msgstr "Kartes numurs"
+msgstr "카드 번호"
 
 #: src/i18n/process/templates.js:21
 msgid "card_number_p"
@@ -152,7 +151,7 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:23
 msgid "expiry_date"
-msgstr "MM/GG"
+msgstr "월/년"
 
 #: src/i18n/process/templates.js:24
 msgid "expiry_date_p"
@@ -168,7 +167,7 @@ msgstr "000"
 
 #: src/i18n/process/templates.js:27
 msgid "cvv2_help"
-msgstr "{0}-ciparu kods jūsu kartes aizmugurējā pusē"
+msgstr "귀하의 카드 뒷면에 표시되는 {0}-숫자 코드"
 
 #: src/i18n/process/templates.js:28
 msgid "checkout-email"
@@ -176,7 +175,7 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:29
 msgid "email"
-msgstr "E-pasts"
+msgstr "이메일 주소"
 
 #: src/i18n/process/templates.js:30
 msgid "code"
@@ -184,11 +183,11 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:31
 msgid "verification_code"
-msgstr "Apstiprinājuma kods"
+msgstr "확인 코드"
 
 #: src/i18n/process/templates.js:32
 msgid "verification_amount"
-msgstr "Verifikācijas summa"
+msgstr "검증 금액"
 
 #: src/i18n/process/templates.js:33
 msgid "datepicker"
@@ -196,11 +195,11 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:34
 msgid "see_more"
-msgstr "Vairāk"
+msgstr "더보기"
 
 #: src/i18n/process/templates.js:35
 msgid "order_details"
-msgstr "Sīkāka informācija par pasūtījumu"
+msgstr "주문 정보"
 
 #: src/i18n/process/templates.js:36
 msgid "show"
@@ -208,35 +207,32 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:37
 msgid "submit3ds_title"
-msgstr "Apmaksa nav pabeigta"
+msgstr "결제가 완료되지 않습니다"
 
 #: src/i18n/process/templates.js:38
 msgid "submit3ds_text"
-msgstr "Ievadiet citu apstiprinājuma kodu"
+msgstr "다른 확인 코드를 입력하십시오"
 
 #: src/i18n/process/templates.js:39
 msgid "submit3ds_submit"
-msgstr "Mēģināt vēlreiz"
+msgstr "다시 시도합니다"
 
 #: src/i18n/process/templates.js:40
 msgid "submit3ds_wait"
-msgstr ""
-"Lai pabeigtu maksājumu, jūs tiksiet pārvirzīts uz bankas vietni pēc {0} "
-"sekundēm"
+msgstr "결제를 완료하기 위해 {0}초 안에 은행 페이지로 리디렉션됩니다"
 
 #: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
 msgid "declined"
-msgstr "Diemžēl jūsu maksājums nav izdevies"
+msgstr "죄송하지만, 결제가 처리되지 않았습니다"
 
 #: src/i18n/process/templates.js:42
 msgid "server_trouble_title"
-msgstr "Ops.."
+msgstr "어뿔싸!"
 
 #: src/i18n/process/templates.js:43
 msgid "server_trouble_desc"
 msgstr ""
-"Kaut kas ir nogājis greizi, bet mēs jau pie tā strādājam. Atgriezieties "
-"dažus soļus atpakaļ un vēlreiz mēģiniet veikt maksājumu."
+"오류가 발생했지만 이미 작업 중입니다. 몇 단계 뒤로 가서 다시 결제 해보십시오."
 
 #: src/i18n/process/templates.js:44
 msgid "offer"
@@ -244,38 +240,35 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:45
 msgid "offer_t"
-msgstr ""
-"Es pieņemu <a href=\"{0}\" target=\"_blank\"> piedāvājuma nosacījumus </a>"
+msgstr "<a href=\"{0}\" target=\"_blank\">주문의 조건에 동의합니다.</a>"
 
 #: src/i18n/process/templates.js:46
 msgid "amount"
-msgstr "Kopā"
+msgstr "합계"
 
 #: src/i18n/process/templates.js:47
 msgid "total_amount"
-msgstr "Kopā"
+msgstr "합계"
 
 #: src/i18n/process/templates.js:48
 msgid "fee"
-msgstr "Komisija"
+msgstr "수수료"
 
 #: src/i18n/process/templates.js:49
 msgid "mfo_title"
-msgstr "Maksājuma detaļas pasūtījumam # {0}"
+msgstr "# {0}주문의 위한 운행정보"
 
 #: src/i18n/process/templates.js:50
 msgid "ibox_title"
-msgstr "Pasūtījuma ID numurs (maksājumam caur iBox)"
+msgstr "주문 ID (iBox를 통해 결제)"
 
 #: src/i18n/process/templates.js:51
 msgid "full_requesites"
-msgstr "Maksājuma saņēmēja bankas rekvizīti"
+msgstr "수취인의 세부정보"
 
 #: src/i18n/process/templates.js:52
 msgid "full_requesites_explain"
-msgstr ""
-"Jums tos nevajadzēs norādīt, veicot apmaksu, taču var būt noderīgi tos "
-"saglabāt uzziņām."
+msgstr "결제 시  입력할 필요가 없지만, 저장하면 도움이 될 수도 있습니다."
 
 #: src/i18n/process/templates.js:53
 msgid "UAH"
@@ -283,80 +276,79 @@ msgstr "UAH"
 
 #: src/i18n/process/templates.js:54
 msgid "receiver"
-msgstr "Maksājuma saņēmējs"
+msgstr "수취인"
 
 #: src/i18n/process/templates.js:55
 msgid "current_bill"
-msgstr "Bankas konta numurs (IBAN)"
+msgstr "국제은행계좌번호(IBAN)"
 
 #: src/i18n/process/templates.js:56
 msgid "usreou"
-msgstr "Nodokļu maksātāja identifikācijas numurs (NMIN)"
+msgstr "사업자등록번호 (TIN)"
 
 #: src/i18n/process/templates.js:57
 msgid "bank"
-msgstr "Bankas nosaukums"
+msgstr "은행이름"
 
 #: src/i18n/process/templates.js:58
 msgid "mfo"
-msgstr "Bankas kods (MFO)"
+msgstr "은행 코드"
 
 #: src/i18n/process/templates.js:59
 msgid "purpose"
-msgstr "Maksājuma mērķis"
+msgstr "지급내역"
 
 #: src/i18n/process/templates.js:60
 msgid "receipt_id"
-msgstr "Pasūtījuma ID numurs"
+msgstr "주문 ID"
 
 #: src/i18n/process/templates.js:61
 msgid "end_date"
-msgstr "Maksājuma beigu datums"
+msgstr "지불기한"
 
 #: src/i18n/process/templates.js:62
 msgid "ibox_desc"
 msgstr ""
-"Visi iBox termināļi, kas pieņem maksājumus, ir atzīmēti <a href=\"https://ibox.ua/map\" target=\"_blank\">kartē</a>"
+"결제를 허용하는 모든 iBox 터미널은 <a href=\"https://ibox.ua/map\" target=\"_blank\">карте</a> 지도에 표시됩니다"
 
 #: src/i18n/process/templates.js:63
 msgid "save_receipt"
-msgstr "Saglabāt kvīti"
+msgstr "영수증 저장"
 
 #: src/i18n/process/templates.js:64
 msgid "save_qr_code"
-msgstr "Saglabāt viedtālrunī"
+msgstr "스마트폰에 저장하기"
 
 #: src/i18n/process/templates.js:65
 msgid "qr_code_text"
-msgstr "Nolasiet šo QR kodu, lai saglabātu kvīti jūsu viedtālrunī"
+msgstr "스마트 폰에 영수증을 저장하려면이 QR 코드를 스캔하세요"
 
 #: src/i18n/process/templates.js:66
 msgid "ibox_info"
 msgstr ""
-"<p>Pasūtījuma apmaksai izmantojiet meklēšanas funkciju, lai atrastu Fondy "
-"maksājuma pakalpojumu iBox terminālī.<p>Jūsu pasūtījums tiks automātiski "
-"atcelts pēc norādītā termiņa beigām.<p>Mēs nepieņemam apmaksu par šo "
-"pasūtījumu caur citiem termināļiem, izņemot iBox."
+"<p>결제하려면 '검색' 옵션을 사용하여 iBox 터미널에서 Fondy 결제 서비스를 찾으"
+"십시오.<p>일정 기간동안 송금을 하지 않으면 자동으로 주문이 취소됩니다."
+"<p>iBox 이외의 단말기를 사용해서 하는 결제를 허용하지 않습니다."
 
 #: src/i18n/process/templates.js:67
 msgid "regular"
-msgstr "Automātiski atkārtot šo maksājumu"
+msgstr "반복 지급을 자동으로 수행합니다. "
 
 #: src/i18n/process/templates.js:68
 msgid "regular_amount"
-msgstr "Regulārā maksājuma summa"
+msgstr "반복 결제 금액"
 
 #: src/i18n/process/templates.js:69
 msgid "regular_every"
-msgstr "Katru"
+msgstr "...마다"
 
 #: src/i18n/process/templates.js:70
 msgid "regular_period"
-msgstr "Laika periods"
+msgstr "기간"
 
 #: src/i18n/process/templates.js:71
 msgid "regular_start_time"
-msgstr "No"
+msgstr "...부터 시작합니다"
 
 #: src/i18n/process/templates.js:72
 msgid "security"
@@ -364,205 +356,207 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:73
 msgid "security_title"
-msgstr "Droša klientu autentifikācija"
+msgstr "강력한 고객 인증"
 
 #: src/i18n/process/templates.js:74
 msgid "security_text"
 msgstr ""
-"<p>Atbilstoši maksājumu karšu nozares datu drošības standartam (PCI DSS),"
-"<p>kas norādīts globālā Visa reģistrā un pārbaudīts Mastercard"
+"<p>PCI DSS의 국제 결제 보안 표준에 맞춰<p>국제 결제 시스템인 Visa 및 "
+"Mastercard에 의해 규제됩니다"
 
 #: src/i18n/process/templates.js:75
 msgid "sepa_t"
-msgstr "Norādiet jūsu bankas konta rekvizītus"
+msgstr "은행 계좌 상세정보를 입력해주십시오"
 
 #: src/i18n/process/templates.js:76
 msgid "sender_name"
-msgstr "Vārds"
+msgstr "이름"
 
 #: src/i18n/process/templates.js:77
 msgid "sender_familyName"
-msgstr "Uzvārds"
+msgstr "성"
 
 #: src/i18n/process/templates.js:78
 msgid "bic"
-msgstr "BIC"
+msgstr "은행인식코드 (BIC)"
 
 #: src/i18n/process/templates.js:79
 msgid "iban"
-msgstr "IBAN"
+msgstr "국제은행계좌번호(IBAN)"
 
 #: src/i18n/process/templates.js:80
 msgid "payment_id"
-msgstr "Maksājuma ID"
+msgstr "결제 ID"
 
 #: src/i18n/process/templates.js:81
 msgid "customer_name"
-msgstr "Kartes īpašnieka vārds"
+msgstr "카드 소유자 이름"
 
 #: src/i18n/process/templates.js:82
 msgid "customer_name_utf8"
-msgstr "Vārds pilnībā"
+msgstr "성명"
 
 #: src/i18n/process/templates.js:83
 msgid "customer_address"
-msgstr "Adrese (iela, mājas numurs, dzīvoklis)"
+msgstr "주소 (거리, 동, 아파트)"
 
 #: src/i18n/process/templates.js:84
 msgid "customer_zip"
-msgstr "Pasta indekss"
+msgstr "우편 번호"
 
 #: src/i18n/process/templates.js:85
 msgid "customer_city"
-msgstr "Pilsēta"
+msgstr "도시"
 
 #: src/i18n/process/templates.js:86
 msgid "customer_country"
-msgstr "Valsts"
+msgstr "국가"
 
 #: src/i18n/process/templates.js:87
 msgid "customer_state"
-msgstr "Štats/novads/reģions"
+msgstr "주 / 지방 / 지역"
 
 #: src/i18n/process/templates.js:88
 msgid "customer_phonemobile"
-msgstr "Tālrunis"
+msgstr "전화번호"
 
 #: src/i18n/process/templates.js:89
 msgid "customer_email"
-msgstr "E-pasts"
+msgstr "이메일주소"
 
 #: src/i18n/process/translate.js:2
 msgid "approved"
-msgstr "Paldies! Jūsu maksājums ir pieņemts"
+msgstr "감사합니다. 지불이 승인되었습니다"
 
 #: src/i18n/process/translate.js:4
 msgid "verification_t"
-msgstr "Kartes verifikācija"
+msgstr "카드 승인"
 
 #: src/i18n/process/translate.js:5
 msgid "verification_code_d"
 msgstr ""
-"Lai pārbaudītu jūsu karti, mēs ieturēsim nelielu verifikācijas komisijas "
-"maksu jūsu bankas kontā uz 15 minūtēm."
+"귀하의 카드를 확인하기 위해 우리는 15분 동안 귀하의 은행 계좌에 소액을 동결하"
+"겠습니다."
 
 #: src/i18n/process/translate.js:6
 msgid "verification_amount_d"
 msgstr ""
-"Neliela komisijas maksa tiks ieturēta jūsu bankas kontā 15 minūšu laikā, lai "
-"apstiprinātu, ka jūs esat kartes īpašnieks. Ievadiet pārbaudes summu, kas "
-"redzama jūsu kontā."
+".<p>귀하가 카드 정보를 입력할 때 우리는 기록을 하지 않고 즉시 암호화하여자와 "
+"문자의 무작위 조합인 토큰 형식으로 저장합니다.<p>잠재적인 사기꾼이 카드 정보"
+"를 받을 수 없도록 지불이 이루어질 때마다 Fondy는 카드 세부 정보 대신 토큰을 "
+"사용합니다.토큰은 Fondy 결제 서비스 외부에서 아무 가치가 없기 때문에 토큰 데"
+"이터를 가로챌 필요가 없다는 뜻입니다."
 
 #: src/i18n/process/translate.js:8
 msgid "rule_default"
-msgstr "Vērtība {_field_} nav derīga"
+msgstr " {_field_} 값이 잘못되었습니다"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
-msgstr "Derīguma termiņš nevar būt vēlāk nekā {_target_}"
+msgstr "카드 유효 기간은 {_target_}이후이면 안 됩니다"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
-msgstr "Izmantojiet tikai burtus"
+msgstr "문자만 사용하십시오"
 
 #: src/i18n/process/translate.js:11
 msgid "rule_date_format"
-msgstr "Norādiet mēnesi/gadu"
+msgstr "년/월 입력하십시오"
 
 #: src/i18n/process/translate.js:12
 msgid "rule_decimal"
-msgstr "Izmantojiet ciparus (0-9), punktus (.) vai komatus (,)."
+msgstr "(0-9)숫자, (.)마침표나 (,)쉼표를 사용하십시오."
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr "Ievadiet {_length_} zīmes"
+msgstr "{_length_}문자를 입력하십시오"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
-msgstr "Norādiet derīgu e-pasta adresi"
+msgstr "올바른 이메일 주소를 입력하십시오"
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
-msgstr "Ievadiet ne vairāk kā {_length_} zīmes."
+msgstr "최대 {_length_}20 자 안으로 해주시기 바랍니다."
 
 #: src/i18n/process/translate.js:16
 msgid "rule_min"
-msgstr "Ievadiet ne mazāk par {_length_} zīmēm."
+msgstr "최소 {_length_} 자 안으로 해주시기 바랍니다."
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
-msgstr "Izmantojiet tikai ciparus (0-9)"
+msgstr "(0-9)숫자만 사용하십시오"
 
 #: src/i18n/process/translate.js:18
 msgid "rule_required"
-msgstr "Aizpildiet šo laukumu"
+msgstr "이 필드에 정보를 입력하십시오"
 
 #: src/i18n/process/translate.js:19
 msgid "rule_regex"
-msgstr "Nepieļaujams formāts"
+msgstr "형식이 잘못되었습니다"
 
 #: src/i18n/process/translate.js:21
 msgid "rule_customer_name"
-msgstr "Norādiet vārdu un uzvārdu, izmantojot burtus (A-Za-z)"
+msgstr "(A-Za-z) 문자만 사용하여 이름과 성을 입력해 주십시오"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_field"
-msgstr "Izmantojiet burtus (A-Za-z) un ciparus (0-9)"
+msgstr "문자(A-Z)와 (0-9)숫자만 사용하십시오"
 
 #: src/i18n/process/translate.js:23
 msgid "rule_customer_field_utf8"
-msgstr "Šajā laukā neizmantojiet īpašās zīmes"
+msgstr "이필드에  특수 문자를 사용하지 마십시오"
 
 #: src/i18n/process/translate.js:24
 msgid "rule_phone"
-msgstr "Norādiet vismaz 7 ciparus (0-9)"
+msgstr "최소 숫자의 (0-9)7개를 입력하십시오"
 
 #: src/i18n/process/translate.js:25
 msgid "rule_numrange"
-msgstr "Jūs ievadījāt pārāk daudz ciparu"
+msgstr "숫자를 너무 많이 입력하셨습니다"
 
 #: src/i18n/process/translate.js:26
 msgid "rule_ccard"
-msgstr "Nepareizs kartes numurs"
+msgstr "카드 번호가 잘못되었습니다"
 
 #: src/i18n/process/translate.js:27
 msgid "rule_expiry_date"
-msgstr "Nepareizs derīguma termiņš"
+msgstr "만료일이 잘못되었습니다"
 
 #: src/i18n/process/translate.js:28
 msgid "rule_cvv"
-msgstr "Nepareizi norādīts CVV2/CVC2"
+msgstr "CVV2 / CVC2 코드가 잘못되었습니다"
 
 #: src/i18n/process/translate.js:29
 msgid "rule_one"
-msgstr "Šī vērtība nevar būt mazāka par 1"
+msgstr " 이 값은 1이상이어야 합니다"
 
 #: src/i18n/process/translate.js:31
 msgid "price"
-msgstr "Cena"
+msgstr "가격"
 
 #: src/i18n/process/translate.js:32
 msgid "shipping"
-msgstr "Piegāde"
+msgstr "배송"
 
 #: src/i18n/process/translate.js:33
 msgid "vat"
-msgstr "PVN"
+msgstr "부가 가치세"
 
 #: src/i18n/process/translate.js:34
 msgid "arbitrary_amount"
-msgstr "Summa"
+msgstr "가격"
 
 #: src/i18n/process/translate.js:36
 msgid "emoney"
-msgstr "Digitālais maks"
+msgstr "디지털 지갑"
 
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
-msgstr "Skaidrā naudā caur termināli"
+msgstr "터미널을 통한 현금"
 
 #~ msgid "local_banks"
-#~ msgstr "Vietējās norēķinu formas"
+#~ msgstr "현지 결제 방법"
 
 #~ msgid "declined_desc"
-#~ msgstr "Jūs varat atgriezties vietnē un veikt citu pasūtījumu."
+#~ msgstr "웹 사이트로 돌아가서 다른 주문할 수 있습니다."

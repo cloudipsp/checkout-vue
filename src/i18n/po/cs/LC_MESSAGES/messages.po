@@ -4,528 +4,561 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #: src/i18n/process/templates.js:14
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:24+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-10-06 12:41+0300\n"
+"PO-Revision-Date: 2020-09-30 10:39+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: smartCAT.ai\n"
 
 #: src/i18n/process/methods.js:1
 msgid "card"
-msgstr ""
+msgstr "Karta"
 
 #: src/i18n/process/methods.js:2
 msgid "trustly"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/methods.js:3
 msgid "sepa"
-msgstr ""
+msgstr "SEPA Direct Debit"
 
 #: src/i18n/process/methods.js:4
 msgid "banklinks_eu"
-msgstr ""
+msgstr "Internetové bankovnictví"
 
 #: src/i18n/process/methods.js:5
 msgid "receipt"
-msgstr ""
+msgstr "Bankovní převod"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
+msgstr "Místní platební metody"
+
+#: src/i18n/process/methods.js:7
+msgid "wallets"
 msgstr ""
 
 #: src/i18n/process/regular-period.js:1
 msgid "day"
-msgstr ""
+msgstr "Den"
 
 #: src/i18n/process/regular-period.js:2
 msgid "week"
-msgstr ""
+msgstr "Týden"
 
 #: src/i18n/process/regular-period.js:3
 msgid "month"
-msgstr ""
+msgstr "Měsíc"
 
 #: src/i18n/process/templates.js:1
 msgid "gdpr_alert_text"
 msgstr ""
+"Na této webové stránce používáme cookies, abychom vylepšili vaši zkušenost s "
+"prováděním plateb."
 
 #: src/i18n/process/templates.js:2
 msgid "learn_more"
-msgstr ""
+msgstr "Více informací."
 
 #: src/i18n/process/templates.js:3
 msgid "save_card"
-msgstr ""
+msgstr "Uložit mou kartu pro budoucí platby."
 
 #: src/i18n/process/templates.js:4
 msgid "its_safe"
-msgstr ""
+msgstr "Je to bezpečné."
 
 #: src/i18n/process/templates.js:5
 msgid "gdpr_modal_safe_title"
-msgstr ""
+msgstr "Uložení karty je bezpečné a pohodlné"
 
 #: src/i18n/process/templates.js:6
 msgid "gdpr_modal_safe"
 msgstr ""
+"<p>Nezaznamenáváme údaje o vaší kartě ve formě, ve které je zadáváte, ale "
+"okamžitě je zašifrujeme a uložíme ve formátu náhodných kombinací znaků - "
+"tokenů.<p>Při každé platbě používá platební služba Fondy tokeny místo údajů "
+"o kartě, takže potenciální útočník je nemůže zachytit. Zachycení údajů "
+"tokenu nemá smysl, protože mimo platební službu Fondy nemají tokeny žádnou "
+"hodnotu."
 
 #: src/i18n/process/templates.js:7
 msgid "close"
-msgstr ""
+msgstr "Teď ne"
 
 #: src/i18n/process/templates.js:8
 msgid "accept"
-msgstr ""
+msgstr "Souhlasím"
 
 #: src/i18n/process/templates.js:9
 msgid "bank_desc"
-msgstr ""
+msgstr "Budete přesměrováni na web banky, abyste dokončili platbu"
 
 #: src/i18n/process/templates.js:10
 msgid "default_country"
-msgstr ""
+msgstr "Vyhledávání podle země"
 
 #: src/i18n/process/templates.js:11
 msgid "search"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:12
 msgid "system_search"
-msgstr ""
+msgstr "Vyhledávání podle názvu banky, IBAN nebo BLZ"
 
 #: src/i18n/process/templates.js:13
 msgid "load_more"
-msgstr ""
+msgstr "Načíst další..."
 
 #: src/i18n/process/templates.js:15
 msgid "other_payment_method"
-msgstr ""
+msgstr "Nebo zaplatit pomocí"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr ""
+msgstr "Zaplatit <b>{0}</b> {1}"
 
 #: src/i18n/process/templates.js:17
 msgid "use_other_card"
-msgstr ""
+msgstr "Zadejte jinou kartu"
 
 #: src/i18n/process/templates.js:18
 msgid "expires_on"
-msgstr ""
+msgstr "Platnost do"
 
 #: src/i18n/process/templates.js:19
 msgid "pay_with_card"
-msgstr ""
+msgstr "Zaplatit kartou"
 
 #: src/i18n/process/templates.js:20
 msgid "card_number"
-msgstr ""
+msgstr "Číslo karty"
 
 #: src/i18n/process/templates.js:21
 msgid "card_number_p"
-msgstr ""
+msgstr "0000 0000 0000 0000"
 
 #: src/i18n/process/templates.js:22
 msgid "angle-down"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:23
 msgid "expiry_date"
-msgstr ""
+msgstr "MM/RR"
 
 #: src/i18n/process/templates.js:24
 msgid "expiry_date_p"
-msgstr ""
+msgstr "00/00"
 
 #: src/i18n/process/templates.js:25
 msgid "cvv2"
-msgstr ""
+msgstr "CVV2/CVC2"
 
 #: src/i18n/process/templates.js:26
 msgid "cvv2_p"
-msgstr ""
+msgstr "000"
 
 #: src/i18n/process/templates.js:27
 msgid "cvv2_help"
-msgstr ""
+msgstr "{0}-číselný kód na zadní straně karty"
 
 #: src/i18n/process/templates.js:28
 msgid "checkout-email"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:29
 msgid "email"
-msgstr ""
+msgstr "E-mail"
 
 #: src/i18n/process/templates.js:30
 msgid "code"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:31
 msgid "verification_code"
-msgstr ""
+msgstr "Potvrzovací kód"
 
 #: src/i18n/process/templates.js:32
 msgid "verification_amount"
-msgstr ""
+msgstr "Ověřovací částka"
 
 #: src/i18n/process/templates.js:33
 msgid "datepicker"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:34
 msgid "see_more"
-msgstr ""
+msgstr "Zobrazit více"
 
 #: src/i18n/process/templates.js:35
 msgid "order_details"
-msgstr ""
+msgstr "Detaily objednávky"
 
 #: src/i18n/process/templates.js:36
 msgid "show"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:37
 msgid "submit3ds_title"
-msgstr ""
+msgstr "Platba nebyla dokončena"
 
 #: src/i18n/process/templates.js:38
 msgid "submit3ds_text"
-msgstr ""
+msgstr "Zadejte prosím jiný potvrzovací kód"
 
 #: src/i18n/process/templates.js:39
 msgid "submit3ds_submit"
-msgstr ""
+msgstr "Zkusit znovu"
 
 #: src/i18n/process/templates.js:40
 msgid "submit3ds_wait"
 msgstr ""
+"Budete znovu přesměrováni na web banky, abyste dokončili platbuza {0} sekund"
 
 #: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
 msgid "declined"
-msgstr ""
+msgstr "Vaše platba bohužel neproběhla úspěšně"
 
 #: src/i18n/process/templates.js:42
 msgid "server_trouble_title"
-msgstr ""
+msgstr "Jejda.."
 
 #: src/i18n/process/templates.js:43
 msgid "server_trouble_desc"
 msgstr ""
+"Něco není v pořádku, ale už na tom pracujeme. Vraťte se o několik kroků "
+"zpěta proveďte platbu znovu."
 
 #: src/i18n/process/templates.js:44
 msgid "offer"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:45
 msgid "offer_t"
-msgstr ""
+msgstr "Akceptuji <a href=\"{0}\" target=\"_blank\">podmínky nabídky </a>"
 
 #: src/i18n/process/templates.js:46
-msgid "total_amount"
-msgstr ""
+msgid "amount"
+msgstr "Celkem"
 
 #: src/i18n/process/templates.js:47
-msgid "fee"
-msgstr ""
+msgid "total_amount"
+msgstr "Celkem"
 
 #: src/i18n/process/templates.js:48
-msgid "mfo_title"
-msgstr ""
+msgid "fee"
+msgstr "Poplatek"
 
 #: src/i18n/process/templates.js:49
-msgid "ibox_title"
-msgstr ""
+msgid "mfo_title"
+msgstr "Platební údaje pro objednávku # {0}"
 
 #: src/i18n/process/templates.js:50
-msgid "full_requesites"
-msgstr ""
+msgid "ibox_title"
+msgstr "Číslo objednávky (pro platbu v terminálu iBox)"
 
 #: src/i18n/process/templates.js:51
-msgid "full_requesites_explain"
-msgstr ""
+msgid "full_requesites"
+msgstr "Bankovní údaje příjemce"
 
 #: src/i18n/process/templates.js:52
-msgid "amount"
+msgid "full_requesites_explain"
 msgstr ""
+"Při platbě je nebudete muset zadávat, ale můžete si jeuložit k ověření."
 
 #: src/i18n/process/templates.js:53
 msgid "UAH"
-msgstr ""
+msgstr "UAH"
 
 #: src/i18n/process/templates.js:54
 msgid "receiver"
-msgstr ""
+msgstr "Příjemce"
 
 #: src/i18n/process/templates.js:55
 msgid "current_bill"
-msgstr ""
+msgstr "Číslo bankovního účtu (IBAN)"
 
 #: src/i18n/process/templates.js:56
 msgid "usreou"
-msgstr ""
+msgstr "Daňové identifikační číslo (DIČ)"
 
 #: src/i18n/process/templates.js:57
 msgid "bank"
-msgstr ""
+msgstr "Název banky"
 
 #: src/i18n/process/templates.js:58
 msgid "mfo"
-msgstr ""
+msgstr "Kód banky (MFO)"
 
 #: src/i18n/process/templates.js:59
 msgid "purpose"
-msgstr ""
+msgstr "Účel platby"
 
 #: src/i18n/process/templates.js:60
 msgid "receipt_id"
-msgstr ""
+msgstr "Číslo objednávky"
 
 #: src/i18n/process/templates.js:61
 msgid "end_date"
-msgstr ""
+msgstr "Termín platby"
 
 #: src/i18n/process/templates.js:62
 msgid "ibox_desc"
 msgstr ""
+"Všechny terminály iBox, kde je možné provést platbu, jsou označeny na <a href=\"https://ibox.ua/map\" target=\"_blank\">mapě</a>"
 
 #: src/i18n/process/templates.js:63
 msgid "save_receipt"
-msgstr ""
+msgstr "Uložit účtenku"
 
 #: src/i18n/process/templates.js:64
 msgid "save_qr_code"
-msgstr ""
+msgstr "Uložit do smartphonu"
 
 #: src/i18n/process/templates.js:65
 msgid "qr_code_text"
-msgstr ""
+msgstr "Naskenujte tento QR kód pro uložení účtenky do smartphonu"
 
 #: src/i18n/process/templates.js:66
 msgid "ibox_info"
 msgstr ""
+"<p>Chcete-li zaplatit za objednávku, najděte platební službu Fondy "
+"prostřednictvím možnosti Hledat v platebním terminálu iBox.<p>Po uplynutí "
+"termínu platby bude vaše objednávka zrušena.<p>Nepřijmeme platbu za tuto "
+"objednávku prostřednictvím jiných terminálů než iBox."
 
 #: src/i18n/process/templates.js:67
 msgid "regular"
-msgstr ""
+msgstr "Opakovat platbu automaticky"
 
 #: src/i18n/process/templates.js:68
 msgid "regular_amount"
-msgstr ""
+msgstr "Částka opakované platby"
 
 #: src/i18n/process/templates.js:69
 msgid "regular_every"
-msgstr ""
+msgstr "Každý"
 
 #: src/i18n/process/templates.js:70
 msgid "regular_period"
-msgstr ""
+msgstr "Období"
 
 #: src/i18n/process/templates.js:71
 msgid "regular_start_time"
-msgstr ""
+msgstr "Počínaje dnem"
 
 #: src/i18n/process/templates.js:72
 msgid "security"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:73
 msgid "security_title"
-msgstr ""
+msgstr "Silné ověřování zákazníků"
 
 #: src/i18n/process/templates.js:74
 msgid "security_text"
 msgstr ""
+"<p>V souladu s mezinárodním bezpečnostním standardem PCI DSS<p>Je uveden v "
+"Globálním registru Visa a ověřen společností Mastercard"
 
 #: src/i18n/process/templates.js:75
 msgid "sepa_t"
-msgstr ""
+msgstr "Zadejte údaje o svém bankovním účtu"
 
 #: src/i18n/process/templates.js:76
 msgid "sender_name"
-msgstr ""
+msgstr "Jméno"
 
 #: src/i18n/process/templates.js:77
 msgid "sender_familyName"
-msgstr ""
+msgstr "Příjmení"
 
 #: src/i18n/process/templates.js:78
 msgid "bic"
-msgstr ""
+msgstr "BIC"
 
 #: src/i18n/process/templates.js:79
 msgid "iban"
-msgstr ""
+msgstr "IBAN"
 
 #: src/i18n/process/templates.js:80
 msgid "payment_id"
-msgstr ""
+msgstr "ID platby"
 
 #: src/i18n/process/templates.js:81
 msgid "customer_name"
-msgstr ""
+msgstr "Jméno držitele karty"
 
 #: src/i18n/process/templates.js:82
 msgid "customer_name_utf8"
-msgstr ""
+msgstr "Celé jméno"
 
 #: src/i18n/process/templates.js:83
 msgid "customer_address"
-msgstr ""
+msgstr "Adresa (ulice, č.p./č.o.)"
 
 #: src/i18n/process/templates.js:84
 msgid "customer_zip"
-msgstr ""
+msgstr "PSČ"
 
 #: src/i18n/process/templates.js:85
 msgid "customer_city"
-msgstr ""
+msgstr "Město/obec"
 
 #: src/i18n/process/templates.js:86
 msgid "customer_country"
-msgstr ""
+msgstr "Země"
 
 #: src/i18n/process/templates.js:87
 msgid "customer_state"
-msgstr ""
+msgstr "Kraj/okres"
 
 #: src/i18n/process/templates.js:88
 msgid "customer_phonemobile"
-msgstr ""
+msgstr "Telefon"
 
 #: src/i18n/process/templates.js:89
 msgid "customer_email"
-msgstr ""
+msgstr "E-mail"
 
 #: src/i18n/process/translate.js:2
 msgid "approved"
-msgstr ""
+msgstr "Děkujeme, vaše platba byla přijata"
 
 #: src/i18n/process/translate.js:4
 msgid "verification_t"
-msgstr ""
+msgstr "Ověření karty"
 
 #: src/i18n/process/translate.js:5
 msgid "verification_code_d"
 msgstr ""
+"Abychom ověřili vaši kartu, zablokujeme na vašem účtu maloučástku na 15 "
+"minut."
 
 #: src/i18n/process/translate.js:6
 msgid "verification_amount_d"
 msgstr ""
+"Na vašem účtu zablokujeme malou částku na 15 minut, abychom ověřili, že "
+"karta patří vám. Zadejte prosím ověřovací částku zablokovanou na vašem účtu."
 
 #: src/i18n/process/translate.js:8
 msgid "rule_default"
-msgstr ""
+msgstr "Hodnota {_field_} není platná"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
-msgstr ""
+msgstr "Platnost karty nemůže být pozdější než {_target_}"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
-msgstr ""
+msgstr "Používejte prosím pouze písmena"
 
 #: src/i18n/process/translate.js:11
 msgid "rule_date_format"
-msgstr ""
+msgstr "Zadejte prosím měsíc/rok"
 
 #: src/i18n/process/translate.js:12
 msgid "rule_decimal"
-msgstr ""
+msgstr "Použijte prosím číslice (0-9), tečky (.) nebo čárky (,)"
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr ""
+msgstr "Zadejte prosím {_length_} číslice"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
-msgstr ""
+msgstr "Zadejte prosím platný e-mail"
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
-msgstr ""
+msgstr "Zadejte prosím maximálně {_length_} znaků."
 
 #: src/i18n/process/translate.js:16
 msgid "rule_min"
-msgstr ""
+msgstr "Zadejte prosím minimálně {_length_} znaků."
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
-msgstr ""
+msgstr "Použijte prosím pouze číslice (0-9)"
 
 #: src/i18n/process/translate.js:18
 msgid "rule_required"
-msgstr ""
+msgstr "Vyplňte prosím toto pole"
 
 #: src/i18n/process/translate.js:19
 msgid "rule_regex"
-msgstr ""
+msgstr "Neplatný formát"
 
 #: src/i18n/process/translate.js:21
 msgid "rule_customer_name"
-msgstr ""
+msgstr "Zadejte prosím jméno i příjmení, použijte písmena (A-Za-z)"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_field"
-msgstr ""
+msgstr "Použijte prosím písmena (A-Za-z) a číslice (0-9)"
 
 #: src/i18n/process/translate.js:23
 msgid "rule_customer_field_utf8"
-msgstr ""
+msgstr "Prosím nepoužívejte zde speciální znaky"
 
 #: src/i18n/process/translate.js:24
 msgid "rule_phone"
-msgstr ""
+msgstr "Zadejte prosím alespoň 7 číslic (0-9)"
 
 #: src/i18n/process/translate.js:25
 msgid "rule_numrange"
-msgstr ""
+msgstr "Zadali jste příliš mnoho číslic"
 
 #: src/i18n/process/translate.js:26
 msgid "rule_ccard"
-msgstr ""
+msgstr "Nesprávné číslo karty"
 
 #: src/i18n/process/translate.js:27
 msgid "rule_expiry_date"
-msgstr ""
+msgstr "Nesprávné datum vypršení platnosti"
 
 #: src/i18n/process/translate.js:28
 msgid "rule_cvv"
-msgstr ""
+msgstr "Nesprávný CVV2/CVC2"
 
 #: src/i18n/process/translate.js:29
 msgid "rule_one"
-msgstr ""
+msgstr "Hodnota nesmí být menší než 1"
 
 #: src/i18n/process/translate.js:31
 msgid "price"
-msgstr ""
+msgstr "Cena"
 
 #: src/i18n/process/translate.js:32
 msgid "shipping"
-msgstr ""
+msgstr "Dodávka"
 
 #: src/i18n/process/translate.js:33
 msgid "vat"
-msgstr ""
+msgstr "DPH"
 
 #: src/i18n/process/translate.js:34
 msgid "arbitrary_amount"
-msgstr ""
+msgstr "Částka"
 
 #: src/i18n/process/translate.js:36
 msgid "emoney"
-msgstr ""
+msgstr "Elektronická peněženka"
 
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
-msgstr ""
+msgstr "Hotovost prostřednictvím terminálu"
+
+#~ msgid "local_banks"
+#~ msgstr "Místní platební metody"
+
+#~ msgid "declined_desc"
+#~ msgstr "Můžete se vrátit na web a zadat další objednávku."
