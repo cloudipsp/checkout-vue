@@ -42,6 +42,7 @@ const options = {
     },
     show_menu_first: true,
     disable_request: false,
+    show_button_amount: true,
   },
   regular: {
     insert: false,

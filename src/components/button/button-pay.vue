@@ -9,7 +9,7 @@
     @click="click"
   >
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <span v-html="$t('pay', args)" />
+    <span v-html="text" />
   </f-button>
 </template>
 
@@ -22,6 +22,7 @@ export default {
   computed: {
     ...mapState(['verification_type', 'isSubmit']),
     ...mapState('options', { show: 'button' }),
+    ...mapState('options', ['show_button_amount']),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     disabled() {
       return !!this.errors.items.length && this.isSubmit
@@ -29,10 +30,16 @@ export default {
     fullAmount() {
       return (this.amount_with_fee || this.amount) / 100
     },
+    text() {
+      return this.$t('pay', this.args)
+        .replace('<b></b>', '')
+        .trim()
+    },
     args() {
-      if (this.verification_type === 'amount') return []
-
-      return [this.fullAmount, this.$t(this.currency)]
+      return this.showAmount ? [this.fullAmount, this.$t(this.currency)] : []
+    },
+    showAmount() {
+      return this.verification_type !== 'amount' && this.show_button_amount
     },
   },
   methods: {
