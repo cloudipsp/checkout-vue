@@ -183,6 +183,7 @@ export default {
             },
           },
           disable_request: { type: 'boolean' },
+          show_button_amount: { type: 'boolean' },
         },
       },
       regular: {
