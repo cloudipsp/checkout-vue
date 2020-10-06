@@ -139,9 +139,6 @@ module.exports = {
       .entry('snippet')
         .add('./src/snippet.js')
         .end()
-      .entry('fonts')
-        .add('./src/scss/fonts.scss')
-        .end()
       .output
         .filename('[name].js')
         .chunkFilename('[name].js')
