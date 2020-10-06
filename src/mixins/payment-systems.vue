@@ -144,7 +144,7 @@ export default {
       }
     },
     submit(form) {
-      this.formRequest(form)
+      this.formRequest({ form })
     },
     clear() {
       this.form.search = ''

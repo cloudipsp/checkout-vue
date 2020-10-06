@@ -65,8 +65,9 @@ const options = {
     order_desc: '',
     offer: false,
     lang: 'en',
-    custom: {},
-    customer_data: {},
+    custom: {}, // users x-vue-template fields
+    customer_data: {}, // customer_required_data fields
+    form: {}, // bank form fields
     order_id: '',
   },
   template: {},
