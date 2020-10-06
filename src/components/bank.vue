@@ -133,15 +133,18 @@ export default {
     },
     // [{id: 'PL', name:''}]
     country() {
-      let result =
-        this.countries && this.countries.length
-          ? this.countries
-          : this.values.map(item => item.country).filter(removeDuplicate)
-      result = result.map(item => ({
+      return this.listCountry.map(this.parseCountry).sort(sort('name'))
+    },
+    listCountry() {
+      return this.countries && this.countries.length
+        ? this.countries
+        : this.values.map(item => item.country).filter(removeDuplicate)
+    },
+    parseCountry() {
+      return item => ({
         id: item,
         name: this.$t(item),
-      }))
-      return sort(result, 'name')
+      })
     },
     // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listSelect() {
@@ -167,7 +170,7 @@ export default {
       return this.values.length
     },
     showCountry() {
-      return this.country.length > 1
+      return this.listCountry.length > 1
     },
     showSearch() {
       return this.listSelect.length > 10

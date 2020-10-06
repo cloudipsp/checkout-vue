@@ -23,7 +23,7 @@ export default {
         .filter(name => name !== 'email' || !this.email)
         .filter(name => config[name])
         .reduce((result, field) => {
-          let list = config[field].dictionary && this.countries
+          let list = config[field].dictionary && this.country
           result.push({
             ...config[field],
             field,
@@ -34,12 +34,14 @@ export default {
           return result
         }, [])
     },
-    countries() {
-      let result = countries.map(item => ({
+    country() {
+      return countries.map(this.parseCountry).sort(sort('name'))
+    },
+    parseCountry() {
+      return item => ({
         id: item,
         name: this.$t(item),
-      }))
-      return sort(result, 'name')
+      })
     },
   },
 }

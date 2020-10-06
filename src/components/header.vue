@@ -20,7 +20,9 @@
         dir="rtl"
         @change="changeLang"
       >
-        <option v-for="item in locales" :key="item" v-t="item" :value="item" />
+        <option v-for="{ value, text } in locale" :key="value" :value="value">
+          {{ text }}
+        </option>
       </select>
     </div>
   </div>
@@ -30,6 +32,7 @@
 import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import FButtonMethods from '@/components/button/button-methods'
+import { sort } from '@/utils/sort'
 
 export default {
   components: {
@@ -44,6 +47,12 @@ export default {
     ...mapState('options', {
       optionsLang: 'lang',
     }),
+    locale() {
+      return this.locales.map(this.parseLocale).sort(sort('text'))
+    },
+    parseLocale() {
+      return item => ({ value: item, text: this.$t(item) })
+    },
     showBack() {
       return (
         !this.isOnlyCard &&
