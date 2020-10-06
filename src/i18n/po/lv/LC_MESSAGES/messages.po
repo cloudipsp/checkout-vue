@@ -40,7 +40,7 @@ msgstr "Bankas pārskaitījums"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
-msgstr ""
+msgstr "Vietējās norēķinu formas"
 
 #: src/i18n/process/methods.js:7
 msgid "wallets"

@@ -40,7 +40,7 @@ msgstr "Banküberweisung"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
-msgstr ""
+msgstr "Lokale Zahlungsmethoden"
 
 #: src/i18n/process/methods.js:7
 msgid "wallets"

@@ -40,7 +40,7 @@ msgstr "Bankový prevod"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
-msgstr ""
+msgstr "Miestne platobné metódy"
 
 #: src/i18n/process/methods.js:7
 msgid "wallets"

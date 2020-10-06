@@ -40,7 +40,7 @@ msgstr "Banki átutalás"
 
 #: src/i18n/process/methods.js:6
 msgid "local_methods"
-msgstr ""
+msgstr "Helyi fizetési módok"
 
 #: src/i18n/process/methods.js:7
 msgid "wallets"
