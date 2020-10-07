@@ -32,6 +32,8 @@ export default {
     parseField(attrs) {
       return {
         ...attrs,
+        description: attrs.label,
+        label: attrs.placeholder,
         placeholder: '',
         component: attrs.type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(attrs.validate),

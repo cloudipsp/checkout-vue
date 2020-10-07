@@ -1,16 +1,21 @@
 <template>
   <div :class="classGroup" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <f-form-item
-      v-bind="$attrs"
-      v-on="$listeners"
-      @error="onError"
-      @focus="focus"
-      @blur="blur"
-      @input="input"
-    />
-    <label v-if="label" :class="classLabel" :for="_id">
-      {{ $t(label) }}
-    </label>
+    <div v-if="description" class="f-form-control-description">
+      {{ description }}
+    </div>
+    <div class="f-form-group-inner">
+      <f-form-item
+        v-bind="$attrs"
+        v-on="$listeners"
+        @error="onError"
+        @focus="focus"
+        @blur="blur"
+        @input="input"
+      />
+      <label v-if="label" :class="classLabel" :for="_id">
+        {{ $t(label) }}
+      </label>
+    </div>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
     </transition>
@@ -25,6 +30,10 @@ import { isExist } from '@/utils/typeof'
 export default {
   inheritAttrs: false,
   props: {
+    description: {
+      type: String,
+      default: '',
+    },
     label: {
       type: String,
       default() {

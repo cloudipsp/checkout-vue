@@ -3,6 +3,10 @@
   margin-bottom: px-to-rem(16px);
 }
 
+.f-form-group-inner {
+  position: relative;
+}
+
 .f-form-control {
   display: block;
   width: 100%;
@@ -79,6 +83,11 @@
   & > option {
     color: initial;
   }
+}
+
+.f-form-control-description {
+  margin-bottom: px-to-rem(8px);
+  font-size: px-to-rem(14px);
 }
 
 .f-control-label {
