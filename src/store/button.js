@@ -71,6 +71,7 @@ function parseField(attrs) {
 
   return {
     ...attrs,
+    placeholder: '',
     component,
     custom: true,
     validate,
