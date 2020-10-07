@@ -89,7 +89,7 @@ class Store {
     this.initCdn()
     this.initMethods()
     this.initLang()
-    this.initLocation()
+    this.initLocation(this.state.options.active_tab)
     this.initError()
     this.initToken()
     this.initApi()
@@ -222,9 +222,9 @@ class Store {
       })
       .catch(errorHandler)
   }
-  initLocation() {
+  initLocation(active_method) {
     let methods = this.state.options.methods
-    let active_tab = this.state.router.method
+    let active_tab = active_method || this.state.router.method
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
     this.state.router.page = 'payment-method'
     this.state.router.method = method
