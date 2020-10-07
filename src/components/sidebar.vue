@@ -2,7 +2,7 @@
   <div v-if="show" class="f-sidebar">
     <f-scrollbar-vertical wrap-class="f-sidebar-wrap">
       <div class="f-sidebar-content f-container-sm">
-        <div class="f-top">&nbsp;</div>
+        <div v-if="full_screen" class="f-top">&nbsp;</div>
         <f-info />
         <f-button-pay-wallet position="sidebar" />
         <f-menu />
@@ -32,6 +32,7 @@ export default {
   computed: {
     ...mapState(['isOnlyCard']),
     ...mapState('router', ['page', 'method']),
+    ...mapState('options', ['full_screen']),
     show() {
       return !this.hide
     },

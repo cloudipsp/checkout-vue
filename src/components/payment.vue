@@ -3,7 +3,7 @@
     <f-sidebar />
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
-        <div class="f-top">&nbsp;</div>
+        <div v-if="full_screen" class="f-top">&nbsp;</div>
         <!--payment-method success-->
         <component :is="page" :order="order" />
         <f-loading v-if="loading" backdrop />

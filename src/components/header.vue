@@ -4,15 +4,17 @@
       <transition name="fade-enter">
         <div v-if="showBack" key="back"><f-button-methods /></div>
         <div
-          v-else-if="logo_url"
+          v-else-if="showLogoCustom"
           key="logo-custom"
           class="f-logo"
           :style="styleLogo"
         />
-        <div v-else key="logo-svg" class="f-logo"><svg-logo /></div>
+        <div v-else-if="showLogo" key="logo-svg" class="f-logo">
+          <svg-logo />
+        </div>
       </transition>
     </div>
-    <div class="f-header-menu">
+    <div v-if="full_screen" class="f-header-menu">
       <select
         v-if="showLang"
         :value="lang"
@@ -43,7 +45,12 @@ export default {
     ...mapState(['css', 'isOnlyCard']),
     ...mapState('params', ['lang']),
     ...mapState('router', ['page']),
-    ...mapState('options', ['locales', 'logo_url', 'show_menu_first']),
+    ...mapState('options', [
+      'locales',
+      'logo_url',
+      'show_menu_first',
+      'full_screen',
+    ]),
     ...mapState('options', {
       optionsLang: 'lang',
     }),
@@ -60,6 +67,12 @@ export default {
         this.isBreakpointMd &&
         this.page !== 'success'
       )
+    },
+    showLogoCustom() {
+      return this.logo_url && this.full_screen
+    },
+    showLogo() {
+      return this.full_screen
     },
     styleLogo() {
       return {
