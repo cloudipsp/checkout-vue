@@ -2,11 +2,9 @@
   <transition name="fade-enter">
     <div v-show="show" class="f-btn-pay-wallet">
       <div class="f-wallet-pay-button" :class="classButton" />
-      <div
-        v-if="showTitle"
-        v-t="'other_payment_method'"
-        class="f-wallet-pay-title"
-      />
+      <div v-if="showTitle" class="f-wallet-pay-title">
+        {{ $t('other_payment_method') }}
+      </div>
     </div>
   </transition>
 </template>
