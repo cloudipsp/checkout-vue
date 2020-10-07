@@ -1,6 +1,6 @@
 <template>
-  <div id="f" :style="style">
-    <div v-if="show" class="f-container" :class="className">
+  <div id="f" :style="style" :class="className">
+    <div v-if="show" class="f-container" :class="classNameContainer">
       <f-header />
       <payment />
     </div>
@@ -46,10 +46,13 @@ export default {
   },
   computed: {
     ...mapState(['isOnlyCard', 'error']),
-    ...mapState('options', ['show_menu_first']),
+    ...mapState('options', ['show_menu_first', 'full_screen']),
     ...mapState('options.theme', ['type']),
     ...mapState('router', ['page', 'method']),
     className() {
+      return { 'f-embed': !this.full_screen }
+    },
+    classNameContainer() {
       return [
         {
           'f-only-card': this.isOnlyCard,
@@ -63,7 +66,9 @@ export default {
       return {
         // .f-sidebar transform: translateX(0);
         overflow:
-          this.show_menu_first && this.isBreakpointMd ? 'hidden' : 'visible',
+          this.show_menu_first && (this.isBreakpointMd || !this.full_screen)
+            ? 'hidden'
+            : 'visible',
       }
     },
     show() {

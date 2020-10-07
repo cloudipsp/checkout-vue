@@ -19,7 +19,7 @@ import store from '@/store/index'
 import validate from '@/validate/index'
 
 const install = function(Vue) {
-  let instance
+  let instance = {}
 
   Vue.config.productionTip = false
 
@@ -35,12 +35,11 @@ const install = function(Vue) {
     let node = document.querySelector(el)
     if (!node) return console.error(['Selector', el, 'not found'].join(' '))
 
-    if (instance) instance.$destroy()
-    store.setStateDefault()
+    if (instance[el]) instance[el].$destroy()
 
-    instance = new Vue({
+    instance[el] = new Vue({
       i18n,
-      store,
+      store: store(el),
       components: { Checkout },
       data: {
         optionsUser: optionsUser,
@@ -68,8 +67,8 @@ const install = function(Vue) {
     while (node.firstChild) {
       node.removeChild(node.firstChild)
     }
-    node.appendChild(instance.$el)
-    return instance
+    node.appendChild(instance[el].$el)
+    return instance[el]
   }
 }
 
