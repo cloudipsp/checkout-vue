@@ -326,15 +326,15 @@
 
 .f-bank-country {
   @include media-breakpoint-up(sm) {
-    flex: 0 0 px-to-rem(180px);
-    max-width: px-to-rem(180px);
+    flex: 0 0 px-to-rem(220px);
+    max-width: px-to-rem(220px);
   }
 }
 
 .f-bank-search {
   @include media-breakpoint-up(sm) {
-    flex: 0 0 calc(100% - #{px-to-rem(280px)});
-    max-width: calc(100% - #{px-to-rem(280px)});
+    flex: 0 0 calc(100% - #{px-to-rem(320px)});
+    max-width: calc(100% - #{px-to-rem(320px)});
   }
 }
 
