@@ -13,8 +13,12 @@ export default {
   computed: {
     ...mapState(['ready']),
     ...mapState('params', ['token']),
+    ...mapState('options', ['methods_disabled']),
     show() {
-      return this.token ? this.ready : true
+      return (
+        !this.methods_disabled.includes('wallets') &&
+        (this.token ? this.ready : true)
+      )
     },
   },
 }
