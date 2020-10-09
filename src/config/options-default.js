@@ -109,6 +109,7 @@ const options = {
   fields: [],
   validate_expdate: true,
   isOnlyCard: true,
+  is_only_wallets: false,
   region: '',
   amount_readonly: true,
   show_gdpr_frame: false,

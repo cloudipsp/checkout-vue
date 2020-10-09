@@ -139,4 +139,8 @@ html #f.f-embed {
   padding-bottom: (20px);
   margin-top: auto;
   text-align: center;
+
+  .f-payment-method-wallets & {
+    display: none;
+  }
 }

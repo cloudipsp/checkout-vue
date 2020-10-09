@@ -13,7 +13,6 @@ export const methods = (user, server, disable) => {
     .filter(includes(server))
     .concat(server)
     .filter(onlyConfig)
-    .filter(removeWallets)
     .filter(removeDuplicate)
     .filter(excludes(disable))
 }
@@ -33,10 +32,6 @@ function includes(list) {
 
 function onlyConfig(item) {
   return configMethods.includes(item)
-}
-
-function removeWallets(item) {
-  return item !== 'wallets'
 }
 
 function mapped(item) {

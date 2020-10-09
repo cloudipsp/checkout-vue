@@ -1,6 +1,6 @@
 <template>
   <div class="f-menu">
-    <template v-for="method in methods">
+    <template v-for="method in list">
       <a
         :key="method"
         href="#"
@@ -24,6 +24,7 @@
 import { mapState } from '@/utils/store'
 import FIcons from '@/components/icons'
 import resize from '@/mixins/resize'
+import { removeWallets } from '@/utils/helpers'
 
 export default {
   components: {
@@ -50,6 +51,9 @@ export default {
           { active: this.method === item && !this.isBreakpointMd },
         ]
       }
+    },
+    list() {
+      return this.methods.filter(removeWallets)
     },
   },
   methods: {

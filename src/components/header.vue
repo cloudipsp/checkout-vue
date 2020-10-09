@@ -1,5 +1,5 @@
 <template>
-  <div class="f-header">
+  <div v-if="show" class="f-header">
     <div class="f-header-logo">
       <transition name="fade-enter">
         <div v-if="showBack" key="back"><f-button-methods /></div>
@@ -42,7 +42,7 @@ export default {
   },
   mixins: [Resize],
   computed: {
-    ...mapState(['css', 'isOnlyCard']),
+    ...mapState(['css', 'isOnlyCard', 'is_only_wallets']),
     ...mapState('params', ['lang']),
     ...mapState('router', ['page']),
     ...mapState('options', [
@@ -54,6 +54,9 @@ export default {
     ...mapState('options', {
       optionsLang: 'lang',
     }),
+    show() {
+      return !this.is_only_wallets
+    },
     locale() {
       return this.locales.map(this.parseLocale).sort(sort('text'))
     },

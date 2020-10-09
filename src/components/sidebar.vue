@@ -28,7 +28,7 @@ export default {
   },
   mixins: [mobile],
   computed: {
-    ...mapState(['isOnlyCard']),
+    ...mapState(['isOnlyCard', 'is_only_wallets']),
     ...mapState('router', ['page', 'method']),
     ...mapState('options', ['full_screen']),
     show() {
@@ -37,7 +37,8 @@ export default {
     hide() {
       return (
         (this.page === 'success' && this.method === 'approved') ||
-        (this.isBreakpointMd && this.isOnlyCard)
+        (this.isBreakpointMd && this.isOnlyCard) ||
+        this.is_only_wallets
       )
     },
   },

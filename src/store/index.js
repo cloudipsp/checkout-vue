@@ -9,6 +9,7 @@ import {
   deepMerge,
   findGetParameter,
   errorHandler,
+  removeWallets,
 } from '@/utils/helpers'
 import { initApi, sendRequest } from '@/utils/api'
 import { isPlainObject, isExist } from '@/utils/typeof'
@@ -96,6 +97,7 @@ class Store {
       )
       this.initLocation()
       this.initIsOnlyCard()
+      this.initIsOnlyWallets()
     }
     this.state.tabs = tabs(model.attr('tabs'))
     this.state.options.default_country =
@@ -154,6 +156,7 @@ class Store {
     this.initReferrer()
     this.initCssDevice()
     this.initIsOnlyCard()
+    this.initIsOnlyWallets()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
     initFavicon(this.state.cdnIcons, this.state.options.full_screen)
@@ -245,9 +248,13 @@ class Store {
     require('@/scss/style-adaptive.scss?no-extract')
   }
   initIsOnlyCard() {
-    this.state.isOnlyCard =
+    let methods = this.state.options.methods.filter(removeWallets)
+    this.state.isOnlyCard = methods.length === 1 && methods[0] === 'card'
+  }
+  initIsOnlyWallets() {
+    this.state.is_only_wallets =
       this.state.options.methods.length === 1 &&
-      this.state.options.methods[0] === 'card'
+      this.state.options.methods[0] === 'wallets'
   }
   initShowMenuFirst() {
     this.state.options.show_menu_first =
