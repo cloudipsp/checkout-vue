@@ -20,10 +20,10 @@ export const methods = (user, server, disable) => {
 
 export const tabs = arr => {
   return Object.fromEntries(
-    Object.entries(arr).map(([name, value]) => [
-      name === 'trustly' ? 'banklinks_eu' : name,
-      parse(value, name),
-    ])
+    Object.entries(arr).map(([name, value]) => {
+      name = mapped(name)
+      return [name, parse(value, name)]
+    })
   )
 }
 
