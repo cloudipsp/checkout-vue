@@ -14,7 +14,7 @@
           @submit3ds="submit3ds"
         />
         <f-security class="f-center-security" />
-        <f-alert-gdpr v-model="showGdprFrame" />
+        <f-alert-gdpr v-model="show_gdpr_frame" />
       </f-scrollbar-vertical>
     </div>
   </div>
@@ -29,11 +29,9 @@ import FSecurity from '@/components/security'
 import FAlertGdpr from '@/components/alert/alert-gdpr'
 
 import { errorHandler } from '@/utils/helpers'
-import { isExist } from '@/utils/typeof'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import loadButton from '@/store/button'
-import { methods, tabs } from '@/utils/compatibility'
 import getCardBrand from '@/utils/card-brand'
 import timeout from '@/mixins/timeout'
 
@@ -63,39 +61,24 @@ export default {
       order: {},
       show3ds: false,
       duration3ds: 0,
-      showGdprFrame: false,
     }
   },
   computed: {
     ...mapState(['loading']),
     ...mapState('router', ['page', 'method']),
     ...mapState('options', ['full_screen']),
-    ...mapState('params', ['token']),
+    ...mapState('params', ['token', 'lang']),
 
     ...mapStateGetSet([
       'ready',
       'cards',
-      'tabs',
       'verification_type',
       'need_verify_code',
-      'validate_expdate',
-      'region',
       'submited',
+      'show_gdpr_frame',
     ]),
-    ...mapStateGetSet('options', [
-      'email',
-      'link',
-      'title',
-      'logo_url',
-      'offerta_url',
-      'methods',
-      'methods_disabled',
-      'default_country',
-      'customer_fields',
-    ]),
+    ...mapStateGetSet('options', ['title']),
     ...mapStateGetSet('params', [
-      'lang',
-      'fee',
       'order_desc',
       'amount',
       'currency',
@@ -188,7 +171,7 @@ export default {
     },
     appSuccess(model) {
       this.$root.$emit('ready', model)
-      this.infoSuccess(model.instance(model.attr('info')))
+      this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
     },
@@ -212,46 +195,6 @@ export default {
           card_brand: getCardBrand(card_number),
         }
       })
-    },
-    infoSuccess(model) {
-      if (isExist(model.attr('validate_expdate'))) {
-        this.validate_expdate = model.attr('validate_expdate')
-      }
-      this.link = model.attr('merchant_url') || this.link
-      this.email = model.attr('checkout_email_required') || this.email
-      this.title = this.title || model.attr('merchant.localized_name')
-      this.logo_url = this.logo_url || model.attr('merchant.logo_url')
-      this.offerta_url = this.offerta_url || model.attr('merchant.offerta_url')
-      this.region = model.attr('merchant.country').toLowerCase()
-
-      if (model.attr('tabs_order') && model.attr('tabs_order').length) {
-        this.methods = methods(
-          this.methods,
-          model.attr('tabs_order'),
-          this.methods_disabled
-        )
-        this.store.initLocation()
-        this.store.initOnlyCard()
-      }
-      this.tabs = tabs(model.attr('tabs'))
-      this.default_country =
-        this.store.attr('user.options.default_country') ||
-        model.attr('default_country')
-
-      this.fee = model.attr('client_fee') || 0
-      this.customer_fields = model.attr('customer_required_data') || []
-
-      this.order_desc = this.order_desc || model.attr('order.order_desc')
-
-      if (model.attr('order.verification')) {
-        this.verification_type = model.attr('verification_type')
-        this.title = 'verification_t'
-        this.order_desc = 'verification_' + this.verification_type + '_d'
-      }
-
-      this.store.setRecurring(model.attr('order'))
-
-      this.showGdprFrame = model.attr('show_gdpr_frame')
     },
     orderSuccess(model) {
       let order_data = model.attr('order_data')

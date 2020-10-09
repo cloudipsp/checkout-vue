@@ -11,7 +11,7 @@ import {
   errorHandler,
 } from '@/utils/helpers'
 import { initApi, sendRequest } from '@/utils/api'
-import { isPlainObject } from '@/utils/typeof'
+import { isPlainObject, isExist } from '@/utils/typeof'
 import { loadLanguageAsync } from '@/i18n/index'
 import i18n from '@/i18n/index'
 import store from './setup'
@@ -19,7 +19,7 @@ import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import initFavicon from '@/store/favicon'
 import { sessionStorage } from '@/utils/store'
-import { methods } from '@/utils/compatibility'
+import { methods, tabs } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
@@ -64,6 +64,60 @@ class Store {
       return Promise.reject(model)
     })
   }
+  sendRequestInfo() {
+    this.sendRequest(
+      'api.checkout.info',
+      'get',
+      this.formParams()
+    ).then(model => this.infoSuccess(model))
+  }
+  infoSuccess(model) {
+    if (isExist(model.attr('validate_expdate'))) {
+      this.state.validate_expdate = model.attr('validate_expdate')
+    }
+    this.state.options.link =
+      model.attr('merchant_url') || this.state.options.link
+    this.state.options.email =
+      model.attr('checkout_email_required') || this.state.options.email
+    this.state.options.title =
+      this.state.options.title || model.attr('merchant.localized_name')
+    this.state.options.logo_url =
+      this.state.options.logo_url || model.attr('merchant.logo_url')
+    this.state.options.offerta_url =
+      this.state.options.offerta_url || model.attr('merchant.offerta_url')
+    this.state.region = model.attr('merchant.country').toLowerCase()
+
+    if (model.attr('tabs_order') && model.attr('tabs_order').length) {
+      this.state.options.methods = methods(
+        this.state.options.methods,
+        model.attr('tabs_order'),
+        this.state.options.methods_disabled
+      )
+      this.initLocation()
+      this.initIsOnlyCard()
+    }
+    this.state.tabs = tabs(model.attr('tabs'))
+    this.state.options.default_country =
+      this.state.options.default_country || model.attr('default_country')
+
+    this.state.params.fee = model.attr('client_fee') || 0
+    this.state.options.customer_fields =
+      model.attr('customer_required_data') || []
+
+    this.state.params.order_desc =
+      this.state.params.order_desc || model.attr('order.order_desc')
+
+    if (model.attr('order.verification')) {
+      this.state.verification_type = model.attr('verification_type')
+      this.state.options.title = 'verification_t'
+      this.state.params.order_desc =
+        'verification_' + this.state.verification_type + '_d'
+    }
+
+    this.setRecurring(model.attr('order'))
+
+    this.state.show_gdpr_frame = model.attr('show_gdpr_frame')
+  }
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
@@ -98,7 +152,7 @@ class Store {
     this.initApi()
     this.initReferrer()
     this.initCssDevice()
-    this.initOnlyCard()
+    this.initIsOnlyCard()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
     initFavicon(this.state.cdnIcons, this.state.options.full_screen)
@@ -187,7 +241,7 @@ class Store {
 
     require('@/scss/style-adaptive.scss?no-extract')
   }
-  initOnlyCard() {
+  initIsOnlyCard() {
     this.state.isOnlyCard =
       this.state.options.methods.length === 1 &&
       this.state.options.methods[0] === 'card'
@@ -218,13 +272,10 @@ class Store {
     this.state.params.referrer = document.referrer
   }
   changeLang(lang) {
-    loadLanguageAsync(lang, this)
-      .then(() => {
-        this.state.params.lang = lang
+    this.state.params.lang = lang
+    sessionStorage.set('lang', lang)
 
-        sessionStorage.set('lang', lang)
-      })
-      .catch(errorHandler)
+    loadLanguageAsync(lang, this).catch(errorHandler)
   }
   initLocation(active_method) {
     let methods = this.state.options.methods
