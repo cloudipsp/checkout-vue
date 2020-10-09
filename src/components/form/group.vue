@@ -1,8 +1,10 @@
 <template>
   <div :class="classGroup" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <div v-if="description" class="f-form-control-description">
-      {{ description }}
-    </div>
+    <div
+      v-if="description"
+      v-t="description"
+      class="f-form-control-description"
+    />
     <div class="f-form-group-inner">
       <f-form-item
         v-bind="$attrs"
@@ -12,9 +14,7 @@
         @blur="blur"
         @input="input"
       />
-      <label v-if="label" :class="classLabel" :for="_id">
-        {{ $t(label) }}
-      </label>
+      <label v-if="label" v-t="label" :class="classLabel" :for="_id" />
     </div>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
