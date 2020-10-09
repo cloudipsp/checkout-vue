@@ -15,7 +15,7 @@
   font-size: px-to-rem(16px);
   font-weight: 500;
   color: $input_color;
-  background-color: inherit;
+  background-color: $input_bg;
   border: 1px solid $input_border;
   border-radius: px-to-rem(8px);
   transition: color ease-in-out 0.15s;

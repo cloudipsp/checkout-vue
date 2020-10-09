@@ -99,7 +99,7 @@ export default {
   btn_link_secondary_color: grey_2,
   btn_link_secondary_hover_color: grey_4,
   btn_link_secondary_active_color: ash_600,
-  input_bg: inherit,
+  input_bg: white_005,
   input_color: white,
   input_border: '#5A5D61',
   input_hover_bg: white_005,
