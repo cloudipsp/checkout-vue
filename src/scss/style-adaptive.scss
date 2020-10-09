@@ -294,7 +294,7 @@
 }
 
 .f-container-sm,
-.f-payment-method-card {
+.f-payment-method-card-inner {
   @include media-breakpoint-up(ss) {
     width: 100%;
     max-width: 335px;

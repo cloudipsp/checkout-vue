@@ -31,6 +31,7 @@ import FButtonLink from '@/components/button/button-link'
 import FButton from '@/components/button/button'
 import FLoading from '@/components/loading'
 import FBank from '@/components/bank'
+import FSecurity from '@/components/security'
 
 const components = {
   FButtonPayWallet,
@@ -64,6 +65,7 @@ const components = {
   FButton,
   FLoading,
   FBank,
+  FSecurity,
 }
 
 const install = Vue => {

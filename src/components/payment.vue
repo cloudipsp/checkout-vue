@@ -13,7 +13,6 @@
           :duration.sync="duration3ds"
           @submit3ds="submit3ds"
         />
-        <f-security class="f-center-security" />
         <f-alert-gdpr v-model="show_gdpr_frame" />
       </f-scrollbar-vertical>
     </div>
@@ -25,7 +24,6 @@ import Success from '@/components/success'
 import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
-import FSecurity from '@/components/security'
 import FAlertGdpr from '@/components/alert/alert-gdpr'
 
 import { errorHandler } from '@/utils/helpers'
@@ -49,7 +47,6 @@ export default {
     FSidebar,
     FModal3ds,
     FModalError,
-    FSecurity,
     FAlertGdpr,
   },
   mixins: [timeout],

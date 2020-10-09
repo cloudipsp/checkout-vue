@@ -16,7 +16,6 @@
 <script>
 import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
-import FSecurity from '@/components/security'
 import FInfo from '@/components/info'
 import mobile from '@/mixins/mobile'
 import { mapState } from '@/utils/store'
@@ -25,7 +24,6 @@ export default {
   components: {
     FFastAccess,
     FMenu,
-    FSecurity,
     FInfo,
   },
   mixins: [mobile],

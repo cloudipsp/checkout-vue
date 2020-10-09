@@ -1,9 +1,10 @@
 <template>
-  <div :class="['f-payment-method', 'f-payment-method-' + method]">
+  <div :class="className">
     <transition name="fade-enter">
       <!--card banklinks_eu local_methods sepa receipt -->
-      <component :is="method" :key="method" />
+      <component :is="method" :key="method" :class="classNameInner" />
     </transition>
+    <f-security class="f-center-security" />
   </div>
 </template>
 
@@ -25,6 +26,12 @@ export default {
   },
   computed: {
     ...mapState('router', ['method']),
+    className() {
+      return ['f-payment-method', `f-payment-method-${this.method}`]
+    },
+    classNameInner() {
+      return `f-payment-method-${this.method}-inner`
+    },
   },
 }
 </script>
