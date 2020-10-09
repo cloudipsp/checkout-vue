@@ -17,6 +17,7 @@ import i18n from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
+import loadButton from '@/store/button'
 import initFavicon from '@/store/favicon'
 import { sessionStorage } from '@/utils/store'
 import { methods, tabs } from '@/utils/compatibility'
@@ -219,7 +220,9 @@ class Store {
         lang = locales[0]
       }
     }
-    this.changeLang(lang)
+
+    this.state.params.lang = lang
+    sessionStorage.set('lang', lang)
   }
   initError() {
     const token = findGetParameter('token')
@@ -250,9 +253,6 @@ class Store {
     this.state.options.show_menu_first =
       this.state.options.show_menu_first && !this.state.isOnlyCard
   }
-  setButtonParams(options) {
-    deepMerge(this.state, options)
-  }
   setParam(object, key, value) {
     if (!value) return
     object[key] = value
@@ -270,6 +270,25 @@ class Store {
   }
   initReferrer() {
     this.state.params.referrer = document.referrer
+  }
+  loadButton() {
+    return loadButton()
+      .then(
+        response => {
+          if (this.state.options.full_screen) {
+            document.title = response.options.title
+          }
+
+          this.setButtonParams(response)
+        },
+        () => {}
+      )
+      .then(() => {
+        this.changeLang(this.state.params.lang)
+      })
+  }
+  setButtonParams(options) {
+    deepMerge(this.state, options)
   }
   changeLang(lang) {
     this.state.params.lang = lang

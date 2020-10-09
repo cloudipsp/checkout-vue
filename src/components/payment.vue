@@ -31,7 +31,6 @@ import FAlertGdpr from '@/components/alert/alert-gdpr'
 import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import loadButton from '@/store/button'
 import getCardBrand from '@/utils/card-brand'
 import timeout from '@/mixins/timeout'
 
@@ -99,17 +98,8 @@ export default {
       this.store.formLoading(true)
     }
 
-    loadButton()
-      .then(
-        response => {
-          if (this.full_screen) {
-            document.title = response.options.title
-          }
-
-          this.store.setButtonParams(response)
-        },
-        () => {}
-      )
+    this.store
+      .loadButton()
       .then(() => {
         return this.store.sendRequest(
           'api.checkout',
