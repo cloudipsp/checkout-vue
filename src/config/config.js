@@ -109,6 +109,18 @@ function validatorCurrencyRequired() {
   }
 }
 
+function validatorNotEmpty() {
+  return {
+    validator(rule, value, callback) {
+      let errors = []
+      if (value === '' || value === null) {
+        errors.push(['Parameter', rule.fullField, "can't be empty."].join(' '))
+      }
+      callback(errors)
+    },
+  }
+}
+
 let i18n = enumObject(locales)
 
 locales.forEach(function(locale) {
@@ -134,10 +146,13 @@ const configCssVariable = {
 }
 
 cssVarisbleKeys.forEach(item => {
-  css_variable.fields[item] = configCssVariable[item] || {
-    type: 'string',
-    pattern: /^#[0-9a-fA-F]{6}$/,
-  }
+  css_variable.fields[item] = configCssVariable[item] || [
+    validatorNotEmpty(),
+    {
+      type: 'string',
+      pattern: /^#[0-9a-fA-F]{6}$/,
+    },
+  ]
 })
 
 export default {

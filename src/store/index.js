@@ -68,6 +68,9 @@ class Store {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
   setOptions(optionsUser) {
+    // delete undefined property
+    optionsUser = JSON.parse(JSON.stringify(optionsUser))
+
     this.optionsFormat(optionsUser)
     this.validate(optionsUser)
     this.user = optionsUser
