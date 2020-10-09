@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-price">
-    <div v-if="amount_readonly">
+    <div v-if="showAmountReadOnly">
       <span class="f-amount"
         >{{ integerAmount }}<sup>{{ fractionalAmount }}</sup></span
       >
@@ -35,11 +35,15 @@ export default {
     ...mapState(['verification_type', 'amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
     ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
+    ...mapState('router', ['page']),
     show() {
       return this.verification_type !== 'amount'
     },
     showFeeAmount() {
       return this.showFee && this.amount && this.amount_with_fee
+    },
+    showAmountReadOnly() {
+      return this.amount_readonly || this.page === 'success'
     },
     fullAmount() {
       let amount = this.amount_with_fee || this.amount
