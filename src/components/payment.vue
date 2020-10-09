@@ -225,7 +225,11 @@ export default {
       this.region = model.attr('merchant.country').toLowerCase()
 
       if (model.attr('tabs_order') && model.attr('tabs_order').length) {
-        this.methods = methods(model.attr('tabs_order'), this.methods_disabled)
+        this.methods = methods(
+          this.methods,
+          model.attr('tabs_order'),
+          this.methods_disabled
+        )
         this.store.initLocation()
         this.store.initOnlyCard()
       }

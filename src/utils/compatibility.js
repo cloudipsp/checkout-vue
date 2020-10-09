@@ -1,13 +1,21 @@
 import configMethods from '@/config/methods.json'
 import { removeDuplicate } from '@/utils/helpers'
 
-export const methods = (methods, methods_disabled) => {
-  return methods
+const config = {
+  trustly: 'banklinks_eu',
+}
+
+export const methods = (user, server, disable) => {
+  server = server.map(mapped)
+
+  return user
+    .map(mapped)
+    .filter(includes(server))
+    .concat(server)
     .filter(onlyConfig)
     .filter(removeWallets)
-    .map(renameTrustly)
     .filter(removeDuplicate)
-    .filter(applyDisabled(methods_disabled))
+    .filter(excludes(disable))
 }
 
 export const tabs = arr => {
@@ -19,6 +27,10 @@ export const tabs = arr => {
   )
 }
 
+function includes(list) {
+  return item => list.includes(item)
+}
+
 function onlyConfig(item) {
   return configMethods.includes(item)
 }
@@ -27,12 +39,12 @@ function removeWallets(item) {
   return item !== 'wallets'
 }
 
-function renameTrustly(item) {
-  return item === 'trustly' ? 'banklinks_eu' : item
+function mapped(item) {
+  return config[item] || item
 }
 
-function applyDisabled(methods_disabled) {
-  return item => !methods_disabled.includes(item)
+function excludes(list) {
+  return item => !list.includes(item)
 }
 
 function parse(value, method) {

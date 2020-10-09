@@ -139,6 +139,7 @@ class Store {
   initMethods() {
     this.state.options.methods = methods(
       this.state.options.methods,
+      this.state.options.methods,
       this.state.options.methods_disabled
     )
   }
