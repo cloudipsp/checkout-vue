@@ -12,6 +12,7 @@ export const methods = (user, server, disable) => {
     .map(mapped)
     .filter(includes(server))
     .concat(server)
+    .concat(['wallets'])
     .filter(onlyConfig)
     .filter(removeDuplicate)
     .filter(excludes(disable))
