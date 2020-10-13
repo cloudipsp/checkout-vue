@@ -1,9 +1,9 @@
 <template>
   <div class="f-menu">
     <template v-for="method in list">
-      <a
+      <button
         :key="method"
-        href="#"
+        type="button"
         :class="className(method)"
         @click.prevent="click(method)"
       >
@@ -15,7 +15,7 @@
         />
         <span v-t="method" />
         <f-icons class="f-menu-icons" :type="method" position="sidebar" />
-      </a>
+      </button>
     </template>
   </div>
 </template>

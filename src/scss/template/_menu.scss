@@ -5,12 +5,15 @@
 .f-menu-item {
   display: flex;
   align-items: center;
+  width: 100%;
   height: px-to-rem(72px);
   padding: 0 px-to-rem(15px) 0 px-to-rem(7px);
   margin-bottom: px-to-rem(12px);
   font-weight: 400;
   color: $menu_item_color;
+  text-align: left;
   cursor: pointer;
+  background-color: $container_bg;
   border: 1px solid $menu_item_border;
   border-radius: px-to-rem(8px);
   transition: background ease-in-out 0.15s, color ease-in-out 0.15s;
