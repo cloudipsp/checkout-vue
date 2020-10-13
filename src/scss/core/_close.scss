@@ -7,7 +7,6 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  outline: 0;
   opacity: 1;
 
   // Override <a>'s hover style
@@ -17,6 +16,7 @@
 
   &:hover,
   &:focus {
+    outline: 0;
     opacity: 0.75;
   }
 

@@ -39,7 +39,7 @@
   &:focus {
     border-color: $input_focus_border;
     border-width: px-to-rem(1.5px);
-    outline: none;
+    outline: 0;
   }
 
   &:-webkit-autofill + .f-control-label-p {
