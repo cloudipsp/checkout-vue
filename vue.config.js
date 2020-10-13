@@ -57,7 +57,9 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
   runtimeCompiler: true,
   productionSourceMap: false,
-  publicPath: '/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? ''
+    : '/',
   pluginOptions: {},
   chainWebpack: config => {
     const normalRule = config.module.rule('scss').oneOfs.get('normal')
