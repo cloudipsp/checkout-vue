@@ -119,6 +119,7 @@ html #f.f-embed {
   background-size: contain;
 
   svg {
+    width: px-to-rem(100px);
     height: px-to-rem(23px);
   }
 }
