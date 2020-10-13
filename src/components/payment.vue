@@ -1,5 +1,5 @@
 <template>
-  <div class="f-wrapper" :data-e2e-ready="ready">
+  <div class="f-wrapper" :style="style" :data-e2e-ready="ready">
     <f-sidebar />
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
@@ -31,6 +31,7 @@ import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import getCardBrand from '@/utils/card-brand'
 import timeout from '@/mixins/timeout'
+import Resize from '@/mixins/resize'
 
 let model3ds
 
@@ -49,7 +50,7 @@ export default {
     FModalError,
     FAlertGdpr,
   },
-  mixins: [timeout],
+  mixins: [timeout, Resize],
   inject: ['$validator'],
   data() {
     return {
@@ -57,6 +58,7 @@ export default {
       order: {},
       show3ds: false,
       duration3ds: 0,
+      height: null,
     }
   },
   computed: {
@@ -87,8 +89,14 @@ export default {
     createdFormParams() {
       return this.token ? { token: this.token } : this.store.formParams()
     },
+    style() {
+      return {
+        height: this.height,
+      }
+    },
   },
   created() {
+    this.initHeight()
     this.createdEvent()
 
     if (this.token) {
@@ -112,6 +120,14 @@ export default {
       .catch(errorHandler)
   },
   methods: {
+    initHeight() {
+      this.height = this.isBreakpointLg
+        ? `calc(${window.innerHeight}px - 4.625rem)`
+        : 'calc(100% - 4.625rem)'
+    },
+    resize() {
+      this.initHeight()
+    },
     submit() {
       this.submited = true
       return this.$nextTick()

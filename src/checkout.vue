@@ -42,6 +42,7 @@ export default {
       COMMITHASH,
       // eslint-disable-next-line no-undef
       BRANCH,
+      height: null,
     }
   },
   computed: {
@@ -64,6 +65,7 @@ export default {
     },
     style() {
       return {
+        height: this.height,
         // .f-sidebar transform: translateX(0);
         overflow:
           this.show_menu_first && (this.isBreakpointMd || !this.full_screen)
@@ -86,10 +88,17 @@ export default {
       .finally(() => {
         this.load = true
         this.store.setOptions(this.optionsUser)
+        this.initHeight()
       })
       .catch(errorHandler)
   },
   methods: {
+    initHeight() {
+      this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
+    },
+    resize() {
+      this.initHeight()
+    },
     getPreset() {
       const userPreset = this.attr('optionsUser.options.theme.preset')
       const userTheme = this.attr('optionsUser.options.theme.type')

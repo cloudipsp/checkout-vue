@@ -4,6 +4,7 @@ function init() {
   let width = window.innerWidth
 
   this.isBreakpointMd = this.full_screen ? width < 992 : true
+  this.isBreakpointLg = this.full_screen ? width < 1200 : true
   this.isWidthSm = width < 768
 }
 
@@ -18,6 +19,7 @@ export default {
   data() {
     return {
       isBreakpointMd: false,
+      isBreakpointLg: false,
       isWidthSm: false,
     }
   },

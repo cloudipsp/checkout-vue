@@ -75,9 +75,6 @@
     display: flex;
     flex-wrap: wrap;
   }
-  @include media-breakpoint-up(xl) {
-    height: calc(100% - #{$header-height});
-  }
 }
 
 .f-sidebar {
