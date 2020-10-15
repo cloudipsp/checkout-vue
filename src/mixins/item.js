@@ -6,6 +6,7 @@ import { errorHandler } from '@/utils/helpers'
 
 export default {
   inheritAttrs: false,
+  inject: ['submit'],
   mixins: [isMounted, id],
   props: {
     value: {
@@ -24,11 +25,8 @@ export default {
   },
   computed: {
     ...mapState(['css']),
-    _name() {
-      return 'f-' + this.$attrs.name
-    },
     _id() {
-      return this.$attrs.id || this.$attrs.name ? this._name : this.id
+      return this.$attrs.id || this.id
     },
     error() {
       if (!this.isMounted) return null
@@ -46,8 +44,10 @@ export default {
     },
     attrsValidation() {
       return {
-        vid: this._id,
-        name: this._id,
+        // Identifier used for target/cross-field based rules.
+        vid: this.$attrs.name,
+        // A string that will be used to replace {field} in error messages and for custom error messages.
+        name: this.$attrs.name,
         rules: this.rules,
         immediate: true,
         tag: 'div',
