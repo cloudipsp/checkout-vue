@@ -52,7 +52,7 @@ const install = function(Vue) {
           return this
         },
         setParams: function(params) {
-          this.$emit('setParams', params)
+          this.store.setParams(params)
           return this
         },
       },

@@ -334,7 +334,6 @@ export default {
       this.$root.$on('location', (method, system) => {
         this.store.location('payment-method', method, system)
       })
-      this.$root.$on('setParams', this.store.setParams)
     },
     autoFocus() {
       let $firstErrorField = this.$el.querySelector(

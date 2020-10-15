@@ -259,7 +259,7 @@ export default {
     }
     validate({ params: params })
     if (!this.state.error.errors.length) {
-      deepMerge(this.state.params, params, notSet.params)
+      deepMerge(this.state.params, params)
     }
   },
   formParams() {
