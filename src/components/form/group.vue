@@ -7,27 +7,30 @@
     />
     <div class="f-form-group-inner">
       <f-form-item
-        v-bind="$attrs"
+        v-bind="attrs"
         v-on="$listeners"
         @error="onError"
         @focus="focus"
         @blur="blur"
         @input="input"
-      />
+      >
+        <slot />
+      </f-form-item>
       <label v-if="label" v-t="label" :class="classLabel" :for="_id" />
     </div>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
     </transition>
-    <slot />
   </div>
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
 import { isExist } from '@/utils/typeof'
+import id from '@/mixins/id'
 
 export default {
+  mixins: [id],
   inheritAttrs: false,
   props: {
     description: {
@@ -37,7 +40,7 @@ export default {
     label: {
       type: String,
       default() {
-        return this.$attrs.name
+        return this.$attrs.name || ''
       },
     },
     labelClass: {
@@ -64,11 +67,14 @@ export default {
   },
   computed: {
     ...mapState(['css', 'isSubmit']),
-    _name() {
-      return 'f-' + this.$attrs.name
-    },
     _id() {
-      return this.$attrs.id || this._name
+      return this.$attrs.id || this.id
+    },
+    attrs() {
+      return {
+        ...this.$attrs,
+        id: this._id,
+      }
     },
     classGroup() {
       return ['f-form-group', this.hasError ? this.css.he : '']
