@@ -1,17 +1,18 @@
 <template>
   <div v-if="show" class="f-offer">
-    <input-checkbox name="offer" :validate="'required'">
+    <f-form-group v-model="offer" component="checkbox" rules="required:true">
       <!-- eslint-disable-next-line vue/no-v-html -->
       <span v-html="html" />
-    </input-checkbox>
+    </f-form-group>
   </div>
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
   computed: {
+    ...mapStateGetSet('params', ['offer']),
     ...mapState('options', ['offerta_url']),
     show() {
       return this.offerta_url

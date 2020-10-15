@@ -9,19 +9,24 @@
         </f-modal-base>
       </div>
 
-      <input-checkbox name="save_card" variant="secondary">
+      <f-form-group
+        v-model="save_card"
+        component="checkbox"
+        variant="secondary"
+      >
         <span v-t="'save_card'" />&nbsp;
         <a v-t="'its_safe'" href="#" @click="showGdprSafe = true" />
-        <f-modal-base v-model="showGdprSafe" size="lg">
-          <template #modal-title>
-            <svg-safe />
-            <h5 v-t="'gdpr_modal_safe_title'" class="f-modal-title" />
-          </template>
+      </f-form-group>
 
-          <!-- eslint-disable-next-line vue/no-v-html -->
-          <div v-html="$t('gdpr_modal_safe')" />
-        </f-modal-base>
-      </input-checkbox>
+      <f-modal-base v-model="showGdprSafe" size="lg">
+        <template #modal-title>
+          <svg-safe />
+          <h5 v-t="'gdpr_modal_safe_title'" class="f-modal-title" />
+        </template>
+
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-html="$t('gdpr_modal_safe')" />
+      </f-modal-base>
     </div>
     <div class="f-gdpr-buttons">
       <f-button-link v-t="'close'" variant="secondary" @click="close" />
@@ -31,7 +36,12 @@
 </template>
 
 <script>
-import { mapState, localStorage, sessionStorage } from '@/utils/store'
+import {
+  mapState,
+  mapStateGetSet,
+  localStorage,
+  sessionStorage,
+} from '@/utils/store'
 
 export default {
   model: {
@@ -46,7 +56,7 @@ export default {
   },
   computed: {
     ...mapState(['region']),
-    ...mapState('params', ['save_card']),
+    ...mapStateGetSet('params', ['save_card']),
     show() {
       if (localStorage.get('show_gdpr_frame')) return false
       return !sessionStorage.get('show_gdpr_frame')

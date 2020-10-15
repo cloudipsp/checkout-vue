@@ -13,7 +13,6 @@ import InputText from '@/components/input-text'
 import InputAmount from '@/components/input-amount'
 import InputHidden from '@/components/input-hidden'
 import InputSelect from '@/components/input-select'
-import InputCheckbox from '@/components/input-checkbox'
 import InputSwitch from '@/components/input-switch'
 import FIcon from '@/components/icon'
 import FInfo from '@/components/info'
@@ -48,7 +47,6 @@ const components = {
   InputAmount,
   InputHidden,
   InputSelect,
-  InputCheckbox,
   InputSwitch,
   FIcon,
   FInfo,
