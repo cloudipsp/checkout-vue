@@ -7,14 +7,14 @@
       :class="classInput"
       v-bind="attrs"
       v-on="$listeners"
-      @keyup="onEnter"
+      @keyup.enter="onEnter"
     />
     <date-picker
       v-else
       v-model="innerValue"
       v-bind="attrsDatepicker"
       v-on="$listeners"
-      @keyup="onEnter"
+      @keyup.enter="onEnter"
     >
       <template #icon-calendar>
         <f-svg name="angle-down" />
