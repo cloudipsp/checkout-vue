@@ -1,13 +1,8 @@
-// TODO свайп
-// TODO config fields payment systems
-// TODO create color template param
-// TODO support material
-// TODO field input v-if add identical :key
-
 // TODO $emit setParams затирает стейт параметрами notSet.params
 // TODO в fail приходят cards, их отображать?
 // vuepress
 // css class
+// vue-i18n-extensions
 
 import Vue from 'vue'
 import Checkout from '@/checkout'

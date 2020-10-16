@@ -71,7 +71,9 @@ export const generateValidateMessage = translation =>
       .map(([k, v]) => [
         k.replace('rule_', ''),
         (field, params) => {
-          return v.replace(/({_\w+_})/, (params && params[0]) || '')
+          return v
+            .replace(/({_field_})/, field)
+            .replace(/({_\w+_})/, (params && params[0]) || '')
         },
       ])
   )
