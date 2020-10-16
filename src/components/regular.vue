@@ -1,6 +1,8 @@
 <template>
   <div v-if="show" class="f-regular">
-    <input-switch v-model="open" label="regular" />
+    <f-form-group v-model="open" component="checkbox" switch>
+      <span v-t="'regular'" />
+    </f-form-group>
     <transition name="collapse">
       <div v-if="open" class="f-regular-wrapper">
         <input-amount
