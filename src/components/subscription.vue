@@ -1,21 +1,21 @@
 <template>
-  <div v-if="show" class="f-regular">
+  <div v-if="show" class="f-subscription">
     <f-form-group v-model="open" component="checkbox" switch>
-      <span v-t="'regular'" />
+      <span v-t="'subscription'" />
     </f-form-group>
     <transition name="collapse">
-      <div v-if="open" class="f-regular-wrapper">
+      <div v-if="open" class="f-subscription-wrapper">
         <input-amount
-          class="f-regular-amount"
-          name="regular_amount"
+          class="f-subscription-amount"
+          name="subscription_amount"
           field="amount"
           recurring
           :readonly="readonly"
         />
-        <div class="f-row f-regular-row">
+        <div class="f-row f-subscription-row">
           <input-text
-            class="f-col f-regular-col"
-            name="regular_every"
+            class="f-col f-subscription-col"
+            name="subscription_every"
             field="every"
             validate="required|numeric"
             placement="bottom"
@@ -29,9 +29,9 @@
           />
 
           <input-select
-            class="f-col f-regular-col"
+            class="f-col f-subscription-col"
             :list="periods"
-            name="regular_period"
+            name="subscription_period"
             field="period"
             validate="required"
             recurring
@@ -43,8 +43,8 @@
           <f-form-group
             v-model="start_time"
             component="date"
-            class="f-col f-regular-col"
-            name="regular_start_time"
+            class="f-col f-subscription-col"
+            name="subscription_start_time"
             rules="required"
             type="date"
             :readonly="readonly"
@@ -73,11 +73,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('regular', {
+    ...mapState('subscription', {
       periods: 'period',
       show: 'insert',
     }),
-    ...mapStateGetSet('regular', ['open']),
+    ...mapStateGetSet('subscription', ['open']),
     ...mapStateGetSet('params', ['recurring']),
     ...mapState('params.recurring_data', ['period', 'every', 'readonly']),
     ...mapStateGetSet('params.recurring_data', ['start_time', 'end_time']),

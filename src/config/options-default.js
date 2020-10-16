@@ -44,7 +44,7 @@ const options = {
     disable_request: false,
     show_button_amount: true,
   },
-  regular: {
+  subscription: {
     insert: false,
     open: false,
     period: ['day', 'week', 'month'],

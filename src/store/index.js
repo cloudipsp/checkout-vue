@@ -133,7 +133,7 @@ class Store {
     this.user = optionsUser
     deepMerge(this.state.params, optionsUser.params, notSet.params)
     deepMerge(this.state.options, optionsUser.options, notSet.options)
-    Object.assign(this.state.regular, optionsUser.regular)
+    Object.assign(this.state.subscription, optionsUser.subscription)
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
     Object.assign(
@@ -415,7 +415,7 @@ class Store {
     if (!order) return
 
     Object.assign(this.state.params.recurring_data, order.recurring_data)
-    this.state.regular.insert = order.subscription
+    this.state.subscription.insert = order.subscription
   }
   toggleMenu() {
     this.state.options.show_menu_first = !this.state.options.show_menu_first

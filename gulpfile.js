@@ -23,7 +23,10 @@ function process(src) {
 
 gulp.task('methods', process('./src/config/methods.json'))
 
-gulp.task('regular-period', process('./src/config/regular-period.json'))
+gulp.task(
+  'subscription-period',
+  process('./src/config/subscription-period.json')
+)
 
 gulp.task('po', function(done) {
   return nodeGettextGenerator
@@ -58,4 +61,4 @@ gulp.task('po', function(done) {
     })
 })
 
-gulp.task('locale', gulp.series('methods', 'regular-period', 'po'))
+gulp.task('locale', gulp.series('methods', 'subscription-period', 'po'))

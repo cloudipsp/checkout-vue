@@ -1,6 +1,6 @@
 import configLocales from '@/config/locales.json'
 import methods from '@/config/methods.json'
-import period from '@/config/regular-period.json'
+import period from '@/config/subscription-period.json'
 import configCountries from '@/config/countries'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
@@ -18,11 +18,11 @@ const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
 const options = Object.keys(configOptionsDefault.options)
 const endpoint = Object.keys(configOptionsDefault.options.endpoint)
-const regular = Object.keys(configOptionsDefault.regular)
+const subscription = Object.keys(configOptionsDefault.subscription)
 const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
 const config = [
   'options',
-  'regular',
+  'subscription',
   'params',
   'messages',
   'validate',
@@ -201,8 +201,8 @@ export default {
           show_button_amount: { type: 'boolean' },
         },
       },
-      regular: {
-        ...enumObject(regular),
+      subscription: {
+        ...enumObject(subscription),
         fields: {
           insert: { type: 'boolean' },
           open: { type: 'boolean' },

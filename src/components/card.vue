@@ -153,7 +153,7 @@
     />
     <f-customer-fields />
     <f-fields />
-    <f-regular />
+    <f-subscription />
     <f-offer />
     <f-button-pay />
     <f-modal-base
@@ -172,7 +172,7 @@
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
-import FRegular from '@/components/regular'
+import FSubscription from '@/components/subscription'
 import FCardList from '@/components/card-list'
 import mobile from '@/mixins/mobile'
 import getCardBrand from '@/utils/card-brand'
@@ -183,7 +183,7 @@ import timeout from '@/mixins/timeout'
 export default {
   inject: ['$validator'],
   components: {
-    FRegular,
+    FSubscription,
     FCardList,
     FIcons,
     FPrice,

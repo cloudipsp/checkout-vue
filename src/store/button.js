@@ -49,7 +49,7 @@ function parseOptions({
       },
       recurring: recurring_state ? 'y' : 'n',
     },
-    regular: {
+    subscription: {
       insert: recurring_state,
       open: recurring_state,
     },

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 13:21+0300\n"
+"POT-Creation-Date: 2020-10-16 15:43+0300\n"
 "PO-Revision-Date: 2020-10-05 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -46,15 +46,15 @@ msgstr "현지 결제 방법"
 msgid "wallets"
 msgstr ""
 
-#: src/i18n/process/regular-period.js:1
+#: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "일"
 
-#: src/i18n/process/regular-period.js:2
+#: src/i18n/process/subscription-period.js:2
 msgid "week"
 msgstr "주"
 
-#: src/i18n/process/regular-period.js:3
+#: src/i18n/process/subscription-period.js:3
 msgid "month"
 msgstr "원"
 
@@ -235,192 +235,189 @@ msgstr ""
 "오류가 발생했지만 이미 작업 중입니다. 몇 단계 뒤로 가서 다시 결제 해보십시오."
 
 #: src/i18n/process/templates.js:44
-msgid "offer"
-msgstr "-"
-
-#: src/i18n/process/templates.js:45
 msgid "offer_t"
 msgstr "<a href=\"{0}\" target=\"_blank\">주문의 조건에 동의합니다.</a>"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:45
 msgid "amount"
 msgstr "합계"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:46
 msgid "total_amount"
 msgstr "합계"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:47
 msgid "fee"
 msgstr "수수료"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:48
 msgid "mfo_title"
 msgstr "# {0}주문의 위한 운행정보"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:49
 msgid "ibox_title"
 msgstr "주문 ID (iBox를 통해 결제)"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:50
 msgid "full_requesites"
 msgstr "수취인의 세부정보"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:51
 msgid "full_requesites_explain"
 msgstr "결제 시  입력할 필요가 없지만, 저장하면 도움이 될 수도 있습니다."
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:52
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:53
 msgid "receiver"
 msgstr "수취인"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:54
 msgid "current_bill"
 msgstr "국제은행계좌번호(IBAN)"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:55
 msgid "usreou"
 msgstr "사업자등록번호 (TIN)"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:56
 msgid "bank"
 msgstr "은행이름"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:57
 msgid "mfo"
 msgstr "은행 코드"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:58
 msgid "purpose"
 msgstr "지급내역"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:59
 msgid "receipt_id"
 msgstr "주문 ID"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:60
 msgid "end_date"
 msgstr "지불기한"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:61
 msgid "ibox_desc"
 msgstr ""
-"결제를 허용하는 모든 iBox 터미널은 <a href=\"https://ibox.ua/map\" target=\"_blank\">карте</a> 지도에 표시됩니다"
+"결제를 허용하는 모든 iBox 터미널은 <a href=\"https://ibox.ua/map\" target="
+"\"_blank\">карте</a> 지도에 표시됩니다"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:62
 msgid "save_receipt"
 msgstr "영수증 저장"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:63
 msgid "save_qr_code"
 msgstr "스마트폰에 저장하기"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:64
 msgid "qr_code_text"
 msgstr "스마트 폰에 영수증을 저장하려면이 QR 코드를 스캔하세요"
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:65
 msgid "ibox_info"
 msgstr ""
 "<p>결제하려면 '검색' 옵션을 사용하여 iBox 터미널에서 Fondy 결제 서비스를 찾으"
 "십시오.<p>일정 기간동안 송금을 하지 않으면 자동으로 주문이 취소됩니다."
 "<p>iBox 이외의 단말기를 사용해서 하는 결제를 허용하지 않습니다."
 
-#: src/i18n/process/templates.js:67
-msgid "regular"
-msgstr "반복 지급을 자동으로 수행합니다. "
-
-#: src/i18n/process/templates.js:68
-msgid "regular_amount"
-msgstr "반복 결제 금액"
-
-#: src/i18n/process/templates.js:69
-msgid "regular_every"
-msgstr "...마다"
-
-#: src/i18n/process/templates.js:70
-msgid "regular_period"
-msgstr "기간"
-
-#: src/i18n/process/templates.js:71
-msgid "regular_start_time"
-msgstr "...부터 시작합니다"
-
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:66
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:67
 msgid "security_title"
 msgstr "강력한 고객 인증"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:68
 msgid "security_text"
 msgstr ""
 "<p>PCI DSS의 국제 결제 보안 표준에 맞춰<p>국제 결제 시스템인 Visa 및 "
 "Mastercard에 의해 규제됩니다"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:69
 msgid "sepa_t"
 msgstr "은행 계좌 상세정보를 입력해주십시오"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:70
 msgid "sender_name"
 msgstr "이름"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:71
 msgid "sender_familyName"
 msgstr "성"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:72
 msgid "bic"
 msgstr "은행인식코드 (BIC)"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:73
 msgid "iban"
 msgstr "국제은행계좌번호(IBAN)"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:74
+msgid "subscription"
+msgstr "반복 지급을 자동으로 수행합니다. "
+
+#: src/i18n/process/templates.js:75
+msgid "subscription_amount"
+msgstr "반복 결제 금액"
+
+#: src/i18n/process/templates.js:76
+msgid "subscription_every"
+msgstr "...마다"
+
+#: src/i18n/process/templates.js:77
+msgid "subscription_period"
+msgstr "기간"
+
+#: src/i18n/process/templates.js:78
+msgid "subscription_start_time"
+msgstr "...부터 시작합니다"
+
+#: src/i18n/process/templates.js:79
 msgid "payment_id"
 msgstr "결제 ID"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:80
 msgid "customer_name"
 msgstr "카드 소유자 이름"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:81
 msgid "customer_name_utf8"
 msgstr "성명"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:82
 msgid "customer_address"
 msgstr "주소 (거리, 동, 아파트)"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:83
 msgid "customer_zip"
 msgstr "우편 번호"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:84
 msgid "customer_city"
 msgstr "도시"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:85
 msgid "customer_country"
 msgstr "국가"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:86
 msgid "customer_state"
 msgstr "주 / 지방 / 지역"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:87
 msgid "customer_phonemobile"
 msgstr "전화번호"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:88
 msgid "customer_email"
 msgstr "이메일주소"
 
@@ -554,6 +551,9 @@ msgstr "디지털 지갑"
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
 msgstr "터미널을 통한 현금"
+
+#~ msgid "offer"
+#~ msgstr "-"
 
 #~ msgid "local_banks"
 #~ msgstr "현지 결제 방법"
