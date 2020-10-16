@@ -25,6 +25,7 @@ import { methods, tabs } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
+import configSubscription from '@/config/subscription'
 
 Vue.use(store)
 
@@ -117,7 +118,7 @@ class Store {
         'verification_' + this.state.verification_type + '_d'
     }
 
-    this.setRecurring(model.attr('order'))
+    this.setSubscription(model.attr('order'))
 
     this.state.show_gdpr_frame = model.attr('show_gdpr_frame')
   }
@@ -133,7 +134,10 @@ class Store {
     this.user = optionsUser
     deepMerge(this.state.params, optionsUser.params, notSet.params)
     deepMerge(this.state.options, optionsUser.options, notSet.options)
-    Object.assign(this.state.subscription, optionsUser.subscription)
+    Object.assign(
+      this.state.subscription,
+      configSubscription[this.state.options.subscription.type]
+    )
     Object.assign(this.state.messages, optionsUser.messages)
     Object.assign(this.state.validate, optionsUser.validate)
     Object.assign(
@@ -411,11 +415,12 @@ class Store {
   setError(errors) {
     this.state.error.errors = errors
   }
-  setRecurring(order) {
+  setSubscription(order) {
     if (!order) return
+    if (!order.subscription) return
 
     Object.assign(this.state.params.recurring_data, order.recurring_data)
-    this.state.subscription.insert = order.subscription
+    deepMerge(this.state.subscription, configSubscription.client_enabled)
   }
   toggleMenu() {
     this.state.options.show_menu_first = !this.state.options.show_menu_first

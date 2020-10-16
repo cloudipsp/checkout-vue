@@ -19,11 +19,10 @@ npm run build
 ``` js
 {
   options: {},
-  subscription: {},
   params: {},
-  popup: {},
   messages: {},
-  validate: {}
+  validate: {},
+  css_variable: {},
 }
 ```
 
@@ -33,38 +32,47 @@ Name                  | Type        | Default                 | Description     
 `methods`             | Array       | ['card']                | support `card`, `sepa`, `banklinks_eu`, `receipt`.                                  |
 `methods_disabled`    | Array       | []                      | support `card`, `sepa`, `banklinks_eu`, `receipt`.                                  |
 `card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners`, `american_express` , `jcb`, `maestro`, `union_pay`.|
+`banklinks_eu_icons`  | Array       | []                      |                                                                                     |
+`local_methods_icons` | Array       | []                      |                                                                                     |
 `title`               | String      |                         |                                                                                     | options or server
 `link`                | String      |                         | format url                                                                          | server or options
 `full_screen`         | Boolean     | true                    |                                                                                     |
-`locales`             | Array       | [all]                   | support `ru`, `en`, `uk`, `lv`, `fr`, `cs`, `sk`.                                   |
+`locales`             | Array       | [all]                   | support `cs`, `de`, `en`, `es`, `fr`, `hu`, `it`, `ko`, `lv`, `pl`, `ro`, `ru`, `sk`, `uk`.|
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
 `endpoint`            | Object      |                         |                                                                                     |
 `css`                 | String      |                         | support `bootstrap3`, `bootstrap4`, `foundation6`.                                  |
-`active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                  | server or options
+`active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                                             | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
-`fee`                 | Boolean     | false                    |                                                                                     |
+`fee`                 | Boolean     | false                   |                                                                                     |
 `email`               | Boolean     | false                   |                                                                                     | server or options
 `fields`              | Boolean     | false                   |                                                                                     |
 `default_country`     | String      |                         |                                                                                     |
 `countries`           | Array       |                         |                                                                                     |
 `lang`                | Boolean     | true                    |                                                                                     |
+`theme`               | Object      |                         |                                                                                     |
 `show_menu_first`     | Boolean     | true                    |                                                                                     |
 `disable_request`     | Boolean     | false                   | no requests are sent to the server                                                  |
-`show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                               |
+`show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
+`subscription`        | Object      |                         |                                                                                     |
 
 ### endpoint
-Name                  | Type        | Default                          | Description
----                   | ---         | ---                              | ---
-`gateway`             | String      | '/checkout/v2/index.html'        |
-`button`              | String      | '/checkout/v2/button/index.html' |
+Name                  | Type        | Default                                 | Description
+---                   | ---         | ---                                     | ---
+`gateway`             | String      | '/latest/checkout-v2/index.html'        |
+`button`              | String      | '/latest/checkout-v2/button/index.html' |
+
+### theme
+Name                  | Type        | Default                 | Description
+---                   | ---         | ---                     | ---
+`type`                | String      | 'light'                 | support `light`, `dark`.
+`preset`              | String      | 'black'                 | support `reset`, `black`, `silver`, `vibrant_silver`, `vibrant_gold`, `solid_black`, `black_and_white`, `euphoric_pink`, `heated_steel`, `nude_pink`, `tropical_gold`, `navy_shimmer`.
 
 ### subscription
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
-`insert`              | Boolean     | false                   |
-`open`                | Boolean     | false                   |
+`type`                | String      | 'disable'               | support ``, ``, ``, ``, ``
 `period`              | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
 
 ### params

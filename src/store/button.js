@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { findGetParameter } from '@/utils/helpers'
+import configSubscription from '@/config/subscription'
 
 let config = {}
 
@@ -49,12 +50,12 @@ function parseOptions({
       },
       recurring: recurring_state ? 'y' : 'n',
     },
-    subscription: {
-      insert: recurring_state,
-      open: recurring_state,
-    },
     fields: Object.values(fields).map(parseField),
     amount_readonly: Boolean(amount_readonly),
+  }
+
+  if (recurring_state) {
+    options.subscription = configSubscription.client_enabled
   }
   // delete undefined property
   return JSON.parse(JSON.stringify(options))

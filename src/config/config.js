@@ -8,6 +8,7 @@ import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
+import configSubscription from '@/config/subscription'
 
 const cardIcons = Object.keys(configCardBrands)
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
@@ -18,16 +19,10 @@ const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
 const options = Object.keys(configOptionsDefault.options)
 const endpoint = Object.keys(configOptionsDefault.options.endpoint)
-const subscription = Object.keys(configOptionsDefault.subscription)
+const subscription = Object.keys(configOptionsDefault.options.subscription)
 const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
-const config = [
-  'options',
-  'subscription',
-  'params',
-  'messages',
-  'validate',
-  'css_variable',
-]
+const subscriptionType = Object.keys(configSubscription)
+const config = ['options', 'params', 'messages', 'validate', 'css_variable']
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
 
 function enumArray(array) {
@@ -199,15 +194,13 @@ export default {
           },
           disable_request: { type: 'boolean' },
           show_button_amount: { type: 'boolean' },
-        },
-      },
-      subscription: {
-        ...enumObject(subscription),
-        fields: {
-          insert: { type: 'boolean' },
-          open: { type: 'boolean' },
-          hide: { type: 'boolean' },
-          period: enumArray(period),
+          subscription: {
+            ...enumObject(subscription),
+            fields: {
+              type: { type: 'enum', enum: subscriptionType },
+              period: enumArray(period),
+            },
+          },
         },
       },
       params: {

@@ -1,10 +1,16 @@
 <template>
   <div v-if="show" class="f-subscription">
-    <f-form-group v-model="open" component="checkbox" switch>
+    <f-form-group
+      v-if="show_switch"
+      v-model="enabled_switch"
+      component="checkbox"
+      switch
+    >
       <span v-t="'subscription'" />
     </f-form-group>
+    <div v-else v-t="'subscription'" class="f-form-group" />
     <transition name="collapse">
-      <div v-if="open" class="f-subscription-wrapper">
+      <div v-if="enabled_switch" class="f-subscription-wrapper">
         <input-amount
           class="f-subscription-amount"
           name="subscription_amount"
@@ -73,21 +79,26 @@ export default {
     }
   },
   computed: {
-    ...mapState('subscription', {
+    ...mapState('options.subscription', {
       periods: 'period',
-      show: 'insert',
     }),
-    ...mapStateGetSet('subscription', ['open']),
+    ...mapState('subscription', ['show', 'show_switch']),
+    ...mapStateGetSet('subscription', ['enabled', 'enabled_switch']),
     ...mapStateGetSet('params', ['recurring']),
     ...mapState('params.recurring_data', ['period', 'every', 'readonly']),
     ...mapStateGetSet('params.recurring_data', ['start_time', 'end_time']),
   },
   watch: {
-    open: {
+    enabled: {
       handler(value) {
         this.recurring = value ? 'y' : 'n'
       },
       immediate: true,
+    },
+    enabled_switch: {
+      handler(value) {
+        this.enabled = value
+      },
     },
   },
   created() {
