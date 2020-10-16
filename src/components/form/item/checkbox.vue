@@ -7,7 +7,7 @@
       v-on="$listeners"
       @keyup.enter="onEnter"
     />
-    <label class="f-checkbox-label" :for="_id"><slot /></label>
+    <label :class="classLabel" :for="_id"><slot /></label>
   </ValidationProvider>
 </template>
 
@@ -26,10 +26,27 @@ export default {
       default: 'default',
       validator: value => ['default', 'secondary'].includes(value),
     },
+    switch: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     classInput() {
-      return ['f-checkbox', `f-checkbox-${this.variant}`, this.inputClass]
+      return [
+        {
+          'f-switch': this.switch,
+          'f-checkbox': !this.switch,
+          [`f-checkbox-${this.variant}`]: !this.switch,
+        },
+        this.inputClass,
+      ]
+    },
+    classLabel() {
+      return {
+        'f-switch-label': this.switch,
+        'f-checkbox-label': !this.switch,
+      }
     },
   },
 }
