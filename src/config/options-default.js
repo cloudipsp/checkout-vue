@@ -19,7 +19,7 @@ const options = {
     link: '',
     locales,
     messages: {},
-    api_domain: 'api.fondy.eu',
+    api_domain: 'pay.fondy.eu',
     endpoint: {
       gateway: '/latest/checkout-v2/index.html',
       button: '/latest/checkout-v2/button/index.html',
