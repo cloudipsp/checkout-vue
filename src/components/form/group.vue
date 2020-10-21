@@ -5,7 +5,7 @@
       v-t="description"
       class="f-form-control-description"
     />
-    <div class="f-form-group-inner">
+    <div :class="classGroupInner">
       <f-form-item
         v-bind="attrs"
         v-on="$listeners"
@@ -78,6 +78,14 @@ export default {
     },
     classGroup() {
       return ['f-form-group', this.hasError ? this.css.he : '']
+    },
+    classGroupInner() {
+      return [
+        'f-form-group-inner',
+        {
+          'f-readonly': this.$attrs.readonly,
+        },
+      ]
     },
     classLabel() {
       return [
