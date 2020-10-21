@@ -1,6 +1,5 @@
 export default {
   options: {
-    // offerta_url: '',
     customer_fields: [],
   },
   params: {
@@ -10,7 +9,6 @@ export default {
     code: '',
     fee: 0,
     amount_with_fee: 0,
-    // email: '',
     recurring_data: {
       readonly: false,
     },

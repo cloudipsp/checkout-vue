@@ -3,6 +3,7 @@
     <f-form-group
       v-if="show_switch"
       v-model="enabled_switch"
+      class="f-mb-1"
       component="checkbox"
       switch
     >
@@ -10,7 +11,7 @@
     </f-form-group>
     <div v-else v-t="'subscription'" class="f-form-group" />
     <transition name="collapse">
-      <div v-if="enabled_switch" class="f-subscription-wrapper">
+      <div v-show="enabled_switch" class="f-subscription-wrapper">
         <input-amount
           class="f-subscription-amount"
           name="subscription_amount"
@@ -18,24 +19,58 @@
           recurring
           :readonly="readonly"
         />
-        <div class="f-row f-subscription-row">
-          <input-text
-            class="f-col f-subscription-col"
-            name="subscription_every"
-            field="every"
-            validate="required|numeric"
-            placement="bottom"
+        <f-form-group
+          v-if="showTrial"
+          key="trial"
+          :value="trial"
+          name="trial_period"
+          :readonly="true"
+        />
+        <div v-if="showQuantity" class="f-row">
+          <f-form-group
+            v-if="unlimited"
+            key="checked_unlimited"
+            value="∞"
+            class="f-col-7"
+            name="number_of_payments"
+            :readonly="true"
+          />
+          <f-form-group
+            v-else
+            key="quantity"
+            v-model="quantity"
+            class="f-col-7"
+            name="number_of_payments"
+            rules="required|numeric"
             type="tel"
             inputmode="numeric"
-            recurring
+            :readonly="readonly"
+          />
+          <f-form-group
+            key="unlimited"
+            v-model="unlimited"
+            component="checkbox"
+            class="f-col-5 f-subscription-unlimited"
+            :readonly="readonly"
+          >
+            <span v-t="'unlimited'" />
+          </f-form-group>
+        </div>
+        <div class="f-input-group">
+          <f-form-group
+            v-model="every"
+            class="f-col-3"
+            name="subscription_every"
+            rules="required|numeric"
+            type="tel"
+            inputmode="numeric"
             :readonly="readonly"
             :hide-error="true"
             :input-class="'f-form-control-every'"
             @show-error="onShowError"
           />
-
           <input-select
-            class="f-col f-subscription-col"
+            class="f-col-9"
             :list="periods"
             name="subscription_period"
             field="period"
@@ -46,24 +81,39 @@
             :input-class="'f-form-control-period'"
             @show-error="onShowError"
           />
-          <f-form-group
-            v-model="start_time"
-            component="date"
-            class="f-col f-subscription-col"
-            name="subscription_start_time"
-            rules="required"
-            type="date"
-            :readonly="readonly"
-            :hide-error="true"
-            :input-class="'f-form-control-start-time'"
-            @show-error="onShowError"
-          />
         </div>
-        <transition name="slide-fade">
-          <div v-if="error" class="f-error">
-            {{ error }}
-          </div>
-        </transition>
+        <div class="f-form-group">
+          <transition name="slide-fade">
+            <div v-if="error" class="f-error">
+              {{ error }}
+            </div>
+          </transition>
+        </div>
+        <f-form-group
+          v-model="start_time"
+          component="date"
+          name="subscription_start_time"
+          rules="required"
+          type="date"
+          :readonly="readonly"
+          :input-class="'f-form-control-start-time'"
+        />
+        <f-form-group
+          v-if="showEndTime"
+          key="end_time"
+          v-model="end_time"
+          component="date"
+          name="subscription_end_time"
+          rules="required"
+          type="date"
+          :readonly="readonly"
+          :input-class="'f-form-control-start-time'"
+        />
+        <div
+          v-if="showVerificationDesc"
+          v-t="'verification_desc'"
+          class="f-verification-desc"
+        />
       </div>
     </transition>
   </div>
@@ -80,13 +130,34 @@ export default {
   },
   computed: {
     ...mapState('options.subscription', {
-      periods: 'period',
+      showQuantity: 'quantity',
+      showTrial: 'trial',
     }),
+    ...mapState('options.subscription', ['periods']),
+    ...mapStateGetSet('options.subscription', ['unlimited']),
     ...mapState('subscription', ['show', 'show_switch']),
     ...mapStateGetSet('subscription', ['enabled', 'enabled_switch']),
     ...mapStateGetSet('params', ['recurring']),
-    ...mapState('params.recurring_data', ['period', 'every', 'readonly']),
-    ...mapStateGetSet('params.recurring_data', ['start_time', 'end_time']),
+    ...mapState('params.recurring_data', ['period', 'readonly']),
+    ...mapStateGetSet('params.recurring_data', [
+      'every',
+      'start_time',
+      'end_time',
+      'quantity',
+      'trial_period',
+      'trial_quantity',
+    ]),
+    ...mapState('params', ['amount']),
+    ...mapState(['amount_readonly']),
+    showEndTime() {
+      return !this.showQuantity && this.end_time
+    },
+    showVerificationDesc() {
+      return this.showTrial && this.amount <= 100 && this.amount_readonly
+    },
+    trial() {
+      return this.trial_quantity + ' ' + this.trial_period
+    },
   },
   watch: {
     enabled: {
@@ -139,8 +210,6 @@ export default {
     recurringEndTime() {
       if (this.end_time) {
         return this.recurringTime('end_time')
-      } else {
-        return this.getDefaultEndDate()
       }
     },
     getFuturePeriod(period, every) {
@@ -159,11 +228,6 @@ export default {
           d.setFullYear(d.getFullYear() + 1 * every)
           break
       }
-      return this.getDateFormat(d)
-    },
-    getDefaultEndDate() {
-      let d = new Date()
-      d.setFullYear(d.getFullYear() + 5)
       return this.getDateFormat(d)
     },
     onShowError(show, error) {

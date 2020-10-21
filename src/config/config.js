@@ -9,6 +9,8 @@ import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
+import configNotSet from '@/config/not-set'
+import { excludes } from '@/utils/helpers'
 
 const cardIcons = Object.keys(configCardBrands)
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
@@ -20,7 +22,13 @@ const locales = Object.keys(configLocales)
 const options = Object.keys(configOptionsDefault.options)
 const endpoint = Object.keys(configOptionsDefault.options.endpoint)
 const subscription = Object.keys(configOptionsDefault.options.subscription)
-const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
+const recurring_data_include = Object.keys(
+  configOptionsDefault.params.recurring_data
+)
+const recurring_data_exclude = Object.keys(configNotSet.params.recurring_data)
+const recurring_data = recurring_data_include.filter(
+  excludes(recurring_data_exclude)
+)
 const subscriptionType = Object.keys(configSubscription)
 const config = ['options', 'params', 'messages', 'validate', 'css_variable']
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
@@ -198,7 +206,10 @@ export default {
             ...enumObject(subscription),
             fields: {
               type: { type: 'enum', enum: subscriptionType },
-              period: enumArray(period),
+              periods: enumArray(period),
+              quantity: { type: 'boolean' },
+              trial: { type: 'boolean' },
+              unlimited: { type: 'boolean' },
             },
           },
         },
@@ -229,6 +240,9 @@ export default {
               start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
               end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
               amount: { type: 'integer' },
+              quantity: { type: 'integer' },
+              trial_period: { type: 'string' },
+              trial_quantity: { type: 'integer' },
             },
           },
           custom: { type: 'object' },

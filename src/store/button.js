@@ -30,12 +30,19 @@ function parseOptions({
   recurring = {},
   recurring_readonly,
   recurring_state,
+  recurring_trial,
+  recurring_type,
 }) {
   amount = amount * 100
-  let options = {
+  return {
     options: {
       api_domain: host,
       title: name,
+      subscription: {
+        quantity: recurring_type === 'quantity',
+        unlimited: recurring_type === 'period',
+        trial: recurring_trial,
+      },
     },
     params: {
       ...params,
@@ -52,13 +59,10 @@ function parseOptions({
     },
     fields: Object.values(fields).map(parseField),
     amount_readonly: Boolean(amount_readonly),
+    subscription: recurring_state
+      ? configSubscription.shown_edit_on
+      : undefined,
   }
-
-  if (recurring_state) {
-    options.subscription = configSubscription.client_enabled
-  }
-  // delete undefined property
-  return JSON.parse(JSON.stringify(options))
 }
 
 function parseField(attrs) {

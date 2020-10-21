@@ -5,25 +5,25 @@ export default {
     enabled_switch: false,
     show_switch: false,
   },
-  server: {
+  hidden: {
     enabled: true,
     show: false,
     enabled_switch: false,
     show_switch: false,
   },
-  client_enabled: {
+  shown_edit_on: {
     enabled: true,
     show: true,
     enabled_switch: true,
     show_switch: true,
   },
-  client_disable: {
+  shown_edit_off: {
     enabled: true,
     show: true,
     enabled_switch: false,
     show_switch: true,
   },
-  client_only_enabled: {
+  shown_readonly: {
     enabled: true,
     show: true,
     enabled_switch: true,
