@@ -42,6 +42,13 @@
     outline: 0;
   }
 
+  &[readonly],
+  &[disabled],
+  .f-readonly > & {
+    color: $input_readonly_color;
+    border-color: $input_border;
+  }
+
   &:-webkit-autofill + .f-control-label-p {
     transform: translateY(-8px) scale(0.75);
   }
@@ -74,6 +81,10 @@
 
   &:hover {
     background-color: inherit;
+  }
+
+  &[disabled] {
+    opacity: 1;
   }
 
   & + .f-control-label-p {
@@ -119,6 +130,11 @@
 
 .f-control-label-focused {
   color: $label_focus_color;
+}
+
+.f-form-control[readonly] + .f-control-label,
+.f-readonly > .f-control-label {
+  color: $label_color;
 }
 
 .f-error {

@@ -99,6 +99,7 @@ export default {
   input_focus_border: grey_2,
   input_error_color: error,
   input_error_border: error,
+  input_readonly_color: grey_1,
   input_prepend_color: black,
   checkbox_default_border: ash_800,
   checkbox_default_hover_bg: '#EEF0F2',
