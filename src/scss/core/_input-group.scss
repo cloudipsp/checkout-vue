@@ -1,0 +1,26 @@
+.f-input-group {
+  background-color: $input_bg;
+  @extend .f-row;
+  @extend .f-no-gutters;
+
+  .f-form-group {
+    margin: 0;
+
+    &::after {
+      position: absolute;
+      top: px-to-rem(8px);
+      right: 0;
+      bottom: px-to-rem(8px);
+      width: px-to-rem(1px);
+      content: '';
+      background-color: $input_border;
+    }
+
+    &.f-has-error,
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
