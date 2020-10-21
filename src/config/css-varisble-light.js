@@ -170,4 +170,5 @@ export default {
   receipt_props_bg: ash_100,
   receipt_value_color: black,
   logo_color: '#000',
+  subscription_bg: ash_200,
 }

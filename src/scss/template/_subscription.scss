@@ -1,44 +1,16 @@
 .f-subscription {
-  margin-top: px-to-rem(32px);
+  padding: px-to-rem(16px) px-to-rem(12px) px-to-rem(12px);
+  margin-top: px-to-rem(24px);
+  margin-bottom: px-to-rem(16px);
+  background-color: $subscription_bg;
+  border-radius: px-to-rem(8px);
 }
 
 .f-subscription-wrapper {
-  margin-bottom: px-to-rem(16px);
-}
+  margin-top: px-to-rem(12px);
 
-.f-subscription-amount {
-  width: 100%;
-  max-width: 220px;
-}
-
-.f-subscription-row {
-  margin: 0;
-}
-
-.f-subscription-col {
-  flex-grow: 2;
-  padding: 0;
-  margin: 0;
-
-  &::after {
-    position: absolute;
-    top: px-to-rem(8px);
-    right: 0;
-    bottom: px-to-rem(8px);
-    width: px-to-rem(1px);
-    content: '';
-    background-color: $input_border;
-  }
-
-  &:first-child {
-    flex-grow: 1;
-  }
-
-  &.f-has-error,
-  &:last-child {
-    &::after {
-      display: none;
-    }
+  & > :last-child {
+    margin: 0;
   }
 }
 
@@ -48,12 +20,14 @@
 }
 
 .f-form-control-period {
-  border-right: none;
-  border-left: none;
-  border-radius: 0;
-}
-
-.f-form-control-start-time {
   border-left: none;
   border-radius: 0 px-to-rem(8px) px-to-rem(8px) 0;
+}
+
+.f-subscription-unlimited {
+  padding-top: px-to-rem(16px);
+}
+
+.f-verification-desc {
+  font-size: px-to-rem(12px);
 }

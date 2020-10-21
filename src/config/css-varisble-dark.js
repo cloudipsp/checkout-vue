@@ -19,6 +19,7 @@ const white = '#ffffff' // 0 0 100
 const error = '#DE4761'
 
 const white_005 = '#3B3F43'
+const white_007 = '#3F4347'
 const white_01 = '#46494D'
 const white_02 = '#5A5D61'
 // const white_03 = '#6F7274'
@@ -178,4 +179,5 @@ export default {
   receipt_props_bg: white_005,
   receipt_value_color: white,
   logo_color: white,
+  subscription_bg: white_007,
 }
