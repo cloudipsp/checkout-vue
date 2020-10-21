@@ -83,3 +83,7 @@ export const removeDuplicate = (item, key, self) => self.indexOf(item) === key
 export const getId = url => url.replace(/\W/g, '_')
 
 export const removeWallets = item => item !== 'wallets'
+
+export const includes = list => item => list.includes(item)
+
+export const excludes = list => item => !list.includes(item)

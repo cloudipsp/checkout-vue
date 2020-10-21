@@ -1,5 +1,5 @@
 import configMethods from '@/config/methods.json'
-import { removeDuplicate } from '@/utils/helpers'
+import { removeDuplicate, includes, excludes } from '@/utils/helpers'
 
 const config = {
   trustly: 'banklinks_eu',
@@ -27,20 +27,12 @@ export const tabs = arr => {
   )
 }
 
-function includes(list) {
-  return item => list.includes(item)
-}
-
 function onlyConfig(item) {
   return configMethods.includes(item)
 }
 
 function mapped(item) {
   return config[item] || item
-}
-
-function excludes(list) {
-  return item => !list.includes(item)
 }
 
 function parse(value, method) {
