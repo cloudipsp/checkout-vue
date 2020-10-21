@@ -57,23 +57,26 @@ Name                  | Type        | Default                 | Description     
 `show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
 `subscription`        | Object      |                         |                                                                                     |
 
-### endpoint
+### options.endpoint
 Name                  | Type        | Default                                 | Description
 ---                   | ---         | ---                                     | ---
 `gateway`             | String      | '/latest/checkout-v2/index.html'        |
 `button`              | String      | '/latest/checkout-v2/button/index.html' |
 
-### theme
+### options.theme
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `type`                | String      | 'light'                 | support `light`, `dark`.
 `preset`              | String      | 'black'                 | support `reset`, `black`, `silver`, `vibrant_silver`, `vibrant_gold`, `solid_black`, `black_and_white`, `euphoric_pink`, `heated_steel`, `nude_pink`, `tropical_gold`, `navy_shimmer`.
 
-### subscription
+### options.subscription
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
-`type`                | String      | 'disable'               | support ``, ``, ``, ``, ``
-`period`              | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
+`type`                | String      | 'disable'               | support `disable`, `hidden`, `shown_edit_on`, `shown_edit_off`, `shown_readonly`
+`periods`             | Array       | ['day', 'week', 'month']| support `day`, `week`, `month`.
+`quantity`            | Boolean     | false                   |
+`trial`               | Boolean     | false                   |
+`unlimited`           | Boolean     | true                    |
 
 ### params
 Name                  | Type        | Default                 | Description                 | Priority
@@ -93,7 +96,7 @@ Name                  | Type        | Default                 | Description     
 `custom`              | Object      |                         |                             |
 `customer_data`       | Object      |                         |                             |
 
-#### recurring_data
+#### params.recurring_data
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `every`               | Integer     | 1                       |
@@ -101,8 +104,11 @@ Name                  | Type        | Default                 | Description
 `amount`              | Integer     | 0                       |
 `end_time`            | String      |                         | format YYYY-MM-DD
 `start_time`          | String      |                         | format YYYY-MM-DD
+`quantity`            | Integer     | 0                       |
+`trial_period`        | String      | ''                      |
+`trial_quantity`      | Integer     | 0                       |
 
-#### customer_data
+#### params.customer_data
 Name                  | Type        | Default                 | Description
 ---                   | ---         | ---                     | ---
 `customer_name`       | String      |                         |
