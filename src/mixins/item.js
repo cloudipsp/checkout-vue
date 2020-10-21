@@ -17,6 +17,10 @@ export default {
       type: String,
       default: '',
     },
+    rules: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -55,9 +59,6 @@ export default {
     },
     state() {
       return this.error ? false : null
-    },
-    rules() {
-      return this.$attrs.rules
     },
     classInput() {
       return [this.css.fc, this.inputClass]
