@@ -11,6 +11,7 @@ import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configNotSet from '@/config/not-set'
 import { excludes } from '@/utils/helpers'
+import configExcludeMessages from '@/config/exclude-messages'
 
 const cardIcons = Object.keys(configCardBrands)
 const css = ['bootstrap3', 'bootstrap4', 'foundation6']
@@ -82,6 +83,28 @@ function enumObject(array) {
   }
 }
 
+function excludeObject(array) {
+  return {
+    type: 'object',
+    fields: {},
+    validator(rule, value = {}, callback) {
+      let errors = []
+      Object.keys(value).forEach(item => {
+        if (!array.includes(item)) return
+        errors.push(
+          [
+            rule.fullField,
+            item,
+            'should not include one of',
+            array.join(', '),
+          ].join(' ')
+        )
+      })
+      callback(errors)
+    },
+  }
+}
+
 function validatorToken() {
   return {
     validator(rule, value, callback, source) {
@@ -124,10 +147,18 @@ function validatorNotEmpty() {
   }
 }
 
-let i18n = enumObject(locales)
+let messages = enumObject(locales)
 
 locales.forEach(function(locale) {
-  i18n.fields[locale] = {
+  messages.fields[locale] = {
+    ...excludeObject(configExcludeMessages),
+  }
+})
+
+let validate = enumObject(locales)
+
+locales.forEach(function(locale) {
+  validate.fields[locale] = {
     type: 'object',
   }
 })
@@ -249,8 +280,8 @@ export default {
           customer_data: { type: 'object' },
         },
       },
-      messages: i18n,
-      validate: i18n,
+      messages,
+      validate,
       css_variable,
     },
   },
