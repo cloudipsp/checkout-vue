@@ -89,12 +89,13 @@
 <script>
 import { sort } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { removeDuplicate } from '@/utils/helpers'
+import { removeDuplicate, errorHandler } from '@/utils/helpers'
 import { isPlainObject } from '@/utils/typeof'
 import FFieldsBank from '@/components/fields-bank'
 import timeout from '@/mixins/timeout'
 
 export default {
+  inject: ['submit'],
   components: {
     FFieldsBank,
   },
@@ -108,6 +109,10 @@ export default {
     config: {
       type: Object,
       required: true,
+    },
+    isBank: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
@@ -247,8 +252,12 @@ export default {
   methods: {
     selectBank(bank) {
       this.store.locationSystem(bank.id)
-      this.open = true
-      this.select = bank
+      if (this.isBank) {
+        this.open = true
+        this.select = bank
+      } else {
+        this.submit().catch(errorHandler)
+      }
     },
     clear() {
       this.form.search = ''
@@ -265,7 +274,7 @@ export default {
       this.view = view
     },
     listSelectFilter(item) {
-      return item.country === this.default_country
+      return this.isBank ? item.country === this.default_country : true
     },
     listSelectSort(a, b) {
       return a.user_priority < b.user_priority ? 1 : -1
