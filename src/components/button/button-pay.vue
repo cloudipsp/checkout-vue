@@ -8,8 +8,10 @@
     block
     @click="click"
   >
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <span v-html="text" />
+    <span v-t="'pay'" />
+    <span v-if="showAmount">
+      <b> {{ fullAmount }}</b> {{ $t(currency) }}
+    </span>
   </f-button>
 </template>
 
@@ -29,14 +31,6 @@ export default {
     },
     fullAmount() {
       return (this.amount_with_fee || this.amount) / 100
-    },
-    text() {
-      return this.$t('pay', this.args)
-        .replace('<b></b>', '')
-        .trim()
-    },
-    args() {
-      return this.showAmount ? [this.fullAmount, this.$t(this.currency)] : []
     },
     showAmount() {
       return this.verification_type !== 'amount' && this.show_button_amount

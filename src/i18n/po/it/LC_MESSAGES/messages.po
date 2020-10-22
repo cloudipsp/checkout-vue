@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 15:43+0300\n"
+"POT-Creation-Date: 2020-10-22 10:17+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -126,7 +126,7 @@ msgstr "Oppure pagare con"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr "Pagare <b>{0}</b> {1}"
+msgstr "Pagare"
 
 #: src/i18n/process/templates.js:17
 msgid "use_other_card"
@@ -379,54 +379,74 @@ msgid "subscription_amount"
 msgstr "Importo del pagamento ricorrente"
 
 #: src/i18n/process/templates.js:76
+msgid "trial_period"
+msgstr ""
+
+#: src/i18n/process/templates.js:77
+msgid "number_of_payments"
+msgstr ""
+
+#: src/i18n/process/templates.js:78
+msgid "unlimited"
+msgstr ""
+
+#: src/i18n/process/templates.js:79
 msgid "subscription_every"
 msgstr "Ogni"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:80
 msgid "subscription_period"
 msgstr "Arco di tempo"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:81
 msgid "subscription_start_time"
 msgstr "A partire"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:82
+msgid "subscription_end_time"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
+msgid "verification_desc"
+msgstr ""
+
+#: src/i18n/process/templates.js:84
 msgid "payment_id"
 msgstr "ID pagamento"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:85
 msgid "customer_name"
 msgstr "Nome del titolare"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:86
 msgid "customer_name_utf8"
 msgstr "Nome e cognome"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:87
 msgid "customer_address"
 msgstr "Indirizzo (via, casa, interno)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:88
 msgid "customer_zip"
 msgstr "CAP/Codice di avviamento postale"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:89
 msgid "customer_city"
 msgstr "Città/Paese"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:90
 msgid "customer_country"
 msgstr "Nazione"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:91
 msgid "customer_state"
 msgstr "Stato/Provincia/Regione"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:92
 msgid "customer_phonemobile"
 msgstr "Telefono"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:93
 msgid "customer_email"
 msgstr "E-mail"
 

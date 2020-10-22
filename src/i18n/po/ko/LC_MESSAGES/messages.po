@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 15:43+0300\n"
+"POT-Creation-Date: 2020-10-22 10:17+0300\n"
 "PO-Revision-Date: 2020-10-05 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -123,7 +123,7 @@ msgstr "아니면 다른 방법으로 지불합니다"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr "<b>{0}</b> {1}지불합니다"
+msgstr "지불합니다"
 
 #: src/i18n/process/templates.js:17
 msgid "use_other_card"
@@ -370,54 +370,74 @@ msgid "subscription_amount"
 msgstr "반복 결제 금액"
 
 #: src/i18n/process/templates.js:76
+msgid "trial_period"
+msgstr ""
+
+#: src/i18n/process/templates.js:77
+msgid "number_of_payments"
+msgstr ""
+
+#: src/i18n/process/templates.js:78
+msgid "unlimited"
+msgstr ""
+
+#: src/i18n/process/templates.js:79
 msgid "subscription_every"
 msgstr "...마다"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:80
 msgid "subscription_period"
 msgstr "기간"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:81
 msgid "subscription_start_time"
 msgstr "...부터 시작합니다"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:82
+msgid "subscription_end_time"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
+msgid "verification_desc"
+msgstr ""
+
+#: src/i18n/process/templates.js:84
 msgid "payment_id"
 msgstr "결제 ID"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:85
 msgid "customer_name"
 msgstr "카드 소유자 이름"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:86
 msgid "customer_name_utf8"
 msgstr "성명"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:87
 msgid "customer_address"
 msgstr "주소 (거리, 동, 아파트)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:88
 msgid "customer_zip"
 msgstr "우편 번호"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:89
 msgid "customer_city"
 msgstr "도시"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:90
 msgid "customer_country"
 msgstr "국가"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:91
 msgid "customer_state"
 msgstr "주 / 지방 / 지역"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:92
 msgid "customer_phonemobile"
 msgstr "전화번호"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:93
 msgid "customer_email"
 msgstr "이메일주소"
 
