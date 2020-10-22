@@ -57,7 +57,6 @@ export default i18n
 
 function setI18nLanguage(lang) {
   i18n.locale = lang
-  document.querySelector('html').setAttribute('lang', lang)
   return lang
 }
 
