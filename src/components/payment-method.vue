@@ -1,7 +1,7 @@
 <template>
   <div :class="className">
     <transition name="fade-enter">
-      <!--card banklinks_eu local_methods sepa receipt wallets -->
+      <!--card banklinks_eu local_methods sepa receipt wallets loans -->
       <component :is="method" :key="method" :class="classNameInner" />
     </transition>
     <f-security class="f-center-security" />
@@ -15,6 +15,7 @@ import Local_methods from '@/components/local_methods'
 import Sepa from '@/components/sepa'
 import Receipt from '@/components/receipt'
 import Wallets from '@/components/wallets'
+import Loans from '@/components/loans'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -25,6 +26,7 @@ export default {
     Sepa,
     Receipt,
     Wallets,
+    Loans,
   },
   computed: {
     ...mapState('router', ['method']),
