@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-22 10:17+0300\n"
+"POT-Creation-Date: 2020-10-22 13:40+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -46,14 +46,21 @@ msgstr "Miestne platobné metódy"
 msgid "wallets"
 msgstr ""
 
+#: src/i18n/process/methods.js:8
+msgid "loans"
+msgstr ""
+
+#: src/i18n/process/regular-period.js:1
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "Deň"
 
+#: src/i18n/process/regular-period.js:2
 #: src/i18n/process/subscription-period.js:2
 msgid "week"
 msgstr "Týždeň"
 
+#: src/i18n/process/regular-period.js:3
 #: src/i18n/process/subscription-period.js:3
 msgid "month"
 msgstr "Mesiac"
