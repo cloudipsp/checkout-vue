@@ -135,7 +135,6 @@ export default {
     this.submit()
       .then(model => {
         this.model = model.data
-        this.model.send_data.mfo = null
       })
       .catch(errorHandler)
   },
