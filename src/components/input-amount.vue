@@ -24,7 +24,7 @@
     <span v-t="currency" class="f-form-group-currency" />
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">
-        {{ errors.first(name_) }}
+        {{ deprecatedErrors.first(name_) }}
       </div>
     </transition>
   </div>

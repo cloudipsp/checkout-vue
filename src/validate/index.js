@@ -16,7 +16,10 @@ import {
   regex,
 } from 'vee-validate/dist/rules.esm.js'
 import { validate as messages } from '@/i18n/lang/en'
-import { ValidationProvider } from 'vee-validate/dist/vee-validate.minimal.esm.js'
+import {
+  ValidationProvider,
+  ValidationObserver,
+} from 'vee-validate/dist/vee-validate.minimal.esm.js'
 
 const install = Vue => {
   const REGEX_CUSTOMER_FIELD = /^(?!\s)[0-9A-Za-z-\/\.,\s]+$/
@@ -84,11 +87,13 @@ const install = Vue => {
   Validator.localize('en', messages)
 
   Vue.use(VeeValidate, {
+    errorBagName: 'deprecatedErrors',
     inject: false,
     events: 'change|input|blur',
   })
 
   Vue.component('ValidationProvider', ValidationProvider)
+  Vue.component('ValidationObserver', ValidationObserver)
 }
 
 export default { install }

@@ -96,7 +96,7 @@ export default {
       return this.$validator.flags[this.name_] || {}
     },
     isError() {
-      return this.errors.has(this.name_)
+      return this.deprecatedErrors.has(this.name_)
     },
     hasError() {
       return this.isError && (this.flag.touched || this.isSubmit)
@@ -108,7 +108,11 @@ export default {
     },
     showError() {
       let showError = !this.tooltip && this.hasError && this.focused
-      this.$emit('show-error', showError, this.errors.first(this.name_))
+      this.$emit(
+        'show-error',
+        showError,
+        this.deprecatedErrors.first(this.name_)
+      )
       return showError && !this.hideError
     },
     value_: {

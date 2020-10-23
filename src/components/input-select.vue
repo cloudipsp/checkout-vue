@@ -28,7 +28,7 @@
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">
-        {{ errors.first(name_) }}
+        {{ deprecatedErrors.first(name_) }}
       </div>
     </transition>
   </div>

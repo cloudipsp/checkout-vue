@@ -1,5 +1,10 @@
 <template>
-  <div class="f-wrapper" :style="style" :data-e2e-ready="ready">
+  <f-form
+    class="f-wrapper"
+    :style="style"
+    :data-e2e-ready="ready"
+    :form-request="formRequest"
+  >
     <f-sidebar />
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
@@ -16,7 +21,7 @@
         <f-alert-gdpr v-model="show_gdpr_frame" />
       </f-scrollbar-vertical>
     </div>
-  </div>
+  </f-form>
 </template>
 
 <script>
@@ -30,7 +35,6 @@ import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import getCardBrand from '@/utils/card-brand'
-import timeout from '@/mixins/timeout'
 import Resize from '@/mixins/resize'
 
 let model3ds
@@ -39,7 +43,6 @@ export default {
   provide() {
     return {
       formRequest: this.formRequest,
-      submit: this.submit,
     }
   },
   components: {
@@ -50,8 +53,7 @@ export default {
     FModalError,
     FAlertGdpr,
   },
-  mixins: [timeout, Resize],
-  inject: ['$validator'],
+  mixins: [Resize],
   data() {
     return {
       timeoutId: 0,
@@ -63,16 +65,15 @@ export default {
   },
   computed: {
     ...mapState(['loading']),
-    ...mapState('router', ['page', 'method']),
+    ...mapState('router', ['page']),
     ...mapState('options', ['full_screen']),
-    ...mapState('params', ['token', 'lang']),
+    ...mapState('params', ['token']),
 
     ...mapStateGetSet([
       'ready',
       'cards',
       'verification_type',
       'need_verify_code',
-      'submited',
       'show_gdpr_frame',
     ]),
     ...mapStateGetSet('options', ['title']),
@@ -97,7 +98,6 @@ export default {
   },
   created() {
     this.initHeight()
-    this.createdEvent()
 
     if (this.token) {
       this.store.formLoading(true)
@@ -127,22 +127,6 @@ export default {
     },
     resize() {
       this.initHeight()
-    },
-    submit() {
-      this.submited = true
-      return this.$nextTick()
-        .then(() => this.$validator.validateAll())
-        .then(isValid => {
-          this.store.state.isSubmit = true
-          // this.errors.items this.fields this.errors.clear() this.errors.count()
-
-          if (!isValid) return this.autoFocus()
-
-          return this.formRequest()
-        })
-        .finally(() => {
-          this.submited = false
-        })
     },
     formRequest(data) {
       if (this.loading) return Promise.reject()
@@ -274,24 +258,6 @@ export default {
           clearTimeout(this.processingTimeout)
         }, 2 * 30 * 1000)
       }
-    },
-    createdEvent() {
-      this.$root.$on('submit', this.submit)
-    },
-    autoFocus() {
-      let $firstErrorField = this.$el.querySelector(
-        '#' + this.errors.items[0].field
-      )
-
-      if (this.full_screen) {
-        $firstErrorField.scrollIntoView()
-      }
-
-      this.timeout(() => {
-        $firstErrorField.focus()
-      })
-
-      return Promise.reject()
     },
     submit3ds() {
       model3ds.submit3dsForm()

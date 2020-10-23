@@ -18,16 +18,18 @@
 <script>
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
+import validator from '@/mixins/validator'
 
 export default {
-  inject: ['$validator', 'submit'],
+  inject: ['submit'],
+  mixins: [validator],
   computed: {
     ...mapState(['verification_type', 'isSubmit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount']),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     disabled() {
-      return !!this.errors.items.length && this.isSubmit
+      return this.isError && this.isSubmit
     },
     fullAmount() {
       return (this.amount_with_fee || this.amount) / 100

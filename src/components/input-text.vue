@@ -61,11 +61,11 @@
       under-sticky
     >
       <f-svg name="warning" />
-      {{ errors.first(name_) }}
+      {{ deprecatedErrors.first(name_) }}
     </f-tooltip-error>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">
-        {{ errors.first(name_) }}
+        {{ deprecatedErrors.first(name_) }}
       </div>
     </transition>
   </div>
