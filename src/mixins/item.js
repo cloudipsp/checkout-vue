@@ -30,11 +30,12 @@ export default {
   computed: {
     ...mapState(['css']),
     _id() {
-      return this.$attrs.id || this.id
+      const id = this.$attrs.id ? this.$attrs.id.replace(/^f-/, '') : ''
+      return 'f-' + (id || this.$attrs.name || this.id)
     },
     error() {
       if (!this.isMounted) return null
-      const error = Object.values(this.$refs.validation.failedRules)[0]
+      const error = this.$refs.validation.messages[0]
       this.$emit('error', error)
       return error
     },
@@ -49,7 +50,7 @@ export default {
     attrsValidation() {
       return {
         // Identifier used for target/cross-field based rules.
-        vid: this.$attrs.name,
+        vid: this._id,
         // A string that will be used to replace {field} in error messages and for custom error messages.
         name: this.$attrs.name,
         rules: this.rules,

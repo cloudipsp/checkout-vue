@@ -23,7 +23,7 @@
           v-if="showTrial"
           key="trial"
           :value="trial"
-          name="trial_period"
+          label="trial_period"
           :readonly="true"
         />
         <div v-if="showQuantity" class="f-row">
@@ -32,7 +32,7 @@
             key="checked_unlimited"
             value="∞"
             class="f-col-7"
-            name="number_of_payments"
+            label="number_of_payments"
             :readonly="true"
           />
           <f-form-group
@@ -40,7 +40,7 @@
             key="quantity"
             v-model="quantity"
             class="f-col-7"
-            name="number_of_payments"
+            label="number_of_payments"
             rules="required|numeric"
             type="tel"
             inputmode="numeric"
@@ -60,7 +60,7 @@
           <f-form-group
             v-model="every"
             class="f-col-3"
-            name="subscription_every"
+            label="subscription_every"
             rules="required|numeric"
             type="tel"
             inputmode="numeric"
@@ -92,7 +92,7 @@
         <f-form-group
           v-model="start_time"
           component="date"
-          name="subscription_start_time"
+          label="subscription_start_time"
           rules="required"
           type="date"
           :readonly="readonly"
@@ -103,7 +103,7 @@
           key="end_time"
           v-model="end_time"
           component="date"
-          name="subscription_end_time"
+          label="subscription_end_time"
           rules="required"
           type="date"
           :readonly="readonly"

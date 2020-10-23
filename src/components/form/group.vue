@@ -7,9 +7,9 @@
     />
     <div :class="classGroupInner">
       <f-form-item
+        ref="item"
         v-bind="attrs"
         v-on="$listeners"
-        @error="onError"
         @focus="focus"
         @blur="blur"
         @input="input"
@@ -28,9 +28,10 @@
 import { mapState } from '@/utils/store'
 import { isExist } from '@/utils/typeof'
 import id from '@/mixins/id'
+import isMounted from '@/mixins/is_mounted'
 
 export default {
-  mixins: [id],
+  mixins: [id, isMounted],
   inheritAttrs: false,
   props: {
     description: {
@@ -39,9 +40,7 @@ export default {
     },
     label: {
       type: String,
-      default() {
-        return this.$attrs.name || ''
-      },
+      default: '',
     },
     labelClass: {
       type: String,
@@ -59,16 +58,26 @@ export default {
   data() {
     return {
       focused: false,
-      touched: false,
       hover: false,
-      error: '',
       value: null,
     }
   },
   computed: {
     ...mapState(['css', 'isSubmit']),
     _id() {
-      return this.$attrs.id || this.id
+      return 'f-' + (this.$attrs.id || this.$attrs.name || this.id)
+    },
+    validation() {
+      if (!this.isMounted) return
+      return this.$refs.item.$children[0].$refs.validation
+    },
+    touched() {
+      if (!this.isMounted) return
+      return this.validation.flags.touched
+    },
+    error() {
+      if (!this.isMounted) return
+      return this.validation.messages[0]
     },
     attrs() {
       return {
@@ -110,15 +119,11 @@ export default {
     },
   },
   methods: {
-    onError(error) {
-      this.error = error
-    },
     focus() {
       this.focused = true
     },
     blur() {
       this.focused = false
-      this.touched = true
     },
     input(value) {
       this.value = value
