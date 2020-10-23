@@ -31,7 +31,6 @@
 import { mapState } from '@/utils/store'
 
 export default {
-  // inject: ['$validator'],
   computed: {
     ...mapState(['cards']),
     ...mapState('params', ['card_number']),

@@ -179,6 +179,7 @@ import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
 import FPrice from '@/components/price'
 import timeout from '@/mixins/timeout'
+import isMounted from '@/mixins/is_mounted'
 
 export default {
   inject: ['$validator'],
@@ -188,7 +189,7 @@ export default {
     FIcons,
     FPrice,
   },
-  mixins: [mobile, timeout],
+  mixins: [mobile, timeout, isMounted],
   data() {
     return {
       maskExpiryDate: '##/##',
@@ -352,7 +353,7 @@ export default {
       this.focus('f-expiry_date', value, 'cvv2')
     },
     focus(name, value, next) {
-      if (!this.fields[name]) return
+      if (!this.isMounted) return
       // wait for computed property validCardNumber
       this.$nextTick()
         .then(() => this.$validator.validate(name, value))

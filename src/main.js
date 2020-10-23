@@ -45,7 +45,7 @@ const install = function(Vue) {
           return this
         },
         location: function(method, system) {
-          this.$emit('location', method, system)
+          this.store.location('payment-method', method, system)
           return this
         },
         setParams: function(params) {

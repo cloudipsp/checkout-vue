@@ -277,9 +277,6 @@ export default {
     },
     createdEvent() {
       this.$root.$on('submit', this.submit)
-      this.$root.$on('location', (method, system) => {
-        this.store.location('payment-method', method, system)
-      })
     },
     autoFocus() {
       let $firstErrorField = this.$el.querySelector(
