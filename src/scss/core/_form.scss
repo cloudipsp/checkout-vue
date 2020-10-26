@@ -42,9 +42,8 @@
     outline: 0;
   }
 
-  &[readonly],
   &[disabled],
-  .f-readonly > & {
+  .f-disabled > & {
     color: $input_readonly_color;
     border-color: $input_border;
   }
@@ -151,8 +150,8 @@
   color: $label_focus_color;
 }
 
-.f-form-control[readonly] + .f-control-label,
-.f-readonly > .f-control-label {
+.f-form-control[disabled] + .f-control-label,
+.f-disabled > .f-control-label {
   color: $label_color;
 }
 
