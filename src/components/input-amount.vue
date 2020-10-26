@@ -14,7 +14,7 @@
       :class="className"
       :placeholder="placeholder_"
       :readonly="readonly"
-      :disabled="readonly"
+      :disabled="disabled"
       inputmode="numeric"
       @keyup.enter="onEnter"
       @focus="focus"

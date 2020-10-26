@@ -17,14 +17,14 @@
           name="subscription_amount"
           field="amount"
           recurring
-          :readonly="readonly"
+          :disabled="readonly"
         />
         <f-form-group
           v-if="showTrial"
           key="trial"
           :value="trial"
           label="trial_period"
-          :readonly="true"
+          :disabled="true"
         />
         <div v-if="showQuantity" class="f-row">
           <f-form-group
@@ -33,7 +33,7 @@
             value="∞"
             class="f-col-7"
             label="number_of_payments"
-            :readonly="true"
+            :disabled="true"
           />
           <f-form-group
             v-else
@@ -44,14 +44,14 @@
             rules="required|numeric"
             type="tel"
             inputmode="numeric"
-            :readonly="readonly"
+            :disabled="readonly"
           />
           <f-form-group
             key="unlimited"
             v-model="unlimited"
             component="checkbox"
             class="f-col-5 f-subscription-unlimited"
-            :readonly="readonly"
+            :disabled="readonly"
           >
             <span v-t="'unlimited'" />
           </f-form-group>
@@ -64,7 +64,7 @@
             rules="required|numeric"
             type="tel"
             inputmode="numeric"
-            :readonly="readonly"
+            :disabled="readonly"
             :hide-error="true"
             :input-class="'f-form-control-every'"
             @show-error="onShowError"
@@ -95,7 +95,7 @@
           label="subscription_start_time"
           rules="required"
           type="date"
-          :readonly="readonly"
+          :disabled="readonly"
           :input-class="'f-form-control-start-time'"
         />
         <f-form-group
@@ -106,7 +106,7 @@
           label="subscription_end_time"
           rules="required"
           type="date"
-          :readonly="readonly"
+          :disabled="readonly"
           :input-class="'f-form-control-start-time'"
         />
         <div

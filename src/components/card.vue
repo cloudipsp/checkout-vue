@@ -37,7 +37,7 @@
         :mask="maskCardNumber"
         :masked="false"
         :maxlength="23"
-        :readonly="readonly"
+        :disabled="readonly"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -89,7 +89,7 @@
         :validate="validExpiryDate"
         :mask="maskExpiryDate"
         :masked="true"
-        :readonly="readonly"
+        :disabled="readonly"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -105,7 +105,7 @@
         type="tel"
         inputmode="numeric"
         :mask="maskCvv"
-        :readonly="need_verify_code"
+        :disabled="need_verify_code"
         :maxlength="digitsCvv"
         tooltip
         label-class

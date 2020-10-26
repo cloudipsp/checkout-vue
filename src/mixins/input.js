@@ -50,6 +50,7 @@ export default {
       default: null,
     },
     readonly: Boolean,
+    disabled: Boolean,
     autocomplete: {
       type: String,
       default: null,

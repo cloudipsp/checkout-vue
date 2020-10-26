@@ -100,6 +100,7 @@ export default {
         'f-form-group-inner',
         {
           'f-readonly': this.$attrs.readonly,
+          'f-disabled': this.$attrs.disabled,
         },
       ]
     },
