@@ -24,22 +24,20 @@
       <div v-else key="list">
         <div class="f-row">
           <div v-if="showCountry" class="f-col f-bank-country">
-            <input-select
-              name="default_country"
-              :list="country"
-              :model="options"
-              validate="required"
-              input-class="f-control-sm"
+            <f-form-group
+              v-model="default_country"
+              :options="country"
+              label="default_country"
+              size="sm"
+              component="select"
               @input="clear"
             />
           </div>
           <div v-if="showSearch" class="f-col f-bank-search">
-            <input-text
-              name="search"
+            <f-form-group
+              v-model="search"
               label="system_search"
-              type="text"
-              :model="form"
-              input-class="f-control-sm"
+              size="sm"
               prepend="search"
             />
           </div>
@@ -87,7 +85,7 @@
 </template>
 
 <script>
-import { sort } from '@/utils/sort'
+import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { removeDuplicate, errorHandler } from '@/utils/helpers'
 import { isPlainObject } from '@/utils/typeof'
@@ -117,9 +115,7 @@ export default {
   },
   data() {
     return {
-      form: {
-        search: '',
-      },
+      search: '',
       count: 15,
       more: 15,
       spin: false,
@@ -129,7 +125,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['ready', 'options', 'css']),
+    ...mapState(['ready']),
     ...mapState('options', ['countries']),
     ...mapState('router', ['system']),
     ...mapStateGetSet('options', ['default_country']),
@@ -139,25 +135,19 @@ export default {
     },
     // [{id: 'PL', name:''}]
     country() {
-      return this.listCountry.map(this.parseCountry).sort(sort('name'))
+      return this.listCountry.map(parseSelect).sort(sort('text'))
     },
     listCountry() {
       return this.countries && this.countries.length
         ? this.countries
         : this.values.map(item => item.country).filter(removeDuplicate)
     },
-    parseCountry() {
-      return item => ({
-        id: item,
-        name: this.$t(item),
-      })
-    },
     // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
     listSelect() {
       return this.values.filter(this.listSelectFilter).sort(this.listSelectSort)
     },
     list() {
-      let search = this.form.search.toLowerCase()
+      let search = this.search.toLowerCase()
       if (search) {
         return this.listSelect.filter(function(item) {
           let name = item.name.toLowerCase()
@@ -200,7 +190,7 @@ export default {
       return [
         'f-col',
         'f-bank-item',
-        `f-bank-item-${this.options.default_country}`,
+        `f-bank-item-${this.default_country}`,
         `f-bank-item-${this.view}`,
       ]
     },
@@ -217,7 +207,7 @@ export default {
       return ['f-bank-item-wrapper', `f-bank-item-wrapper-${this.view}`]
     },
     isGermany() {
-      return this.options.default_country === 'DE'
+      return this.default_country === 'DE'
     },
     sizeBankIcon() {
       return this.view === 'list' ? 'sm' : 'md'
@@ -227,7 +217,7 @@ export default {
     country: {
       handler(item) {
         if (item.length === 1) {
-          this.default_country = item[0].id
+          this.default_country = item[0].value
         }
       },
       immediate: true,
@@ -260,7 +250,7 @@ export default {
       }
     },
     clear() {
-      this.form.search = ''
+      this.search = ''
       this.setView('bar')
     },
     loadMore() {
