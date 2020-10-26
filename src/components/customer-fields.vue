@@ -1,8 +1,11 @@
 <template>
   <div v-if="show" class="f-customer-fields">
-    <div v-for="item in list" :key="item.name">
-      <component :is="item.component" v-bind="item" />
-    </div>
+    <f-form-group
+      v-for="field in list"
+      :key="field.name"
+      v-model="params.customer_data[field.name]"
+      v-bind="field"
+    />
   </div>
 </template>
 
@@ -11,10 +14,12 @@ import config from '@/config/customer-fields'
 import countries from '@/config/countries'
 import { sort } from '@/utils/sort'
 import { mapState } from '@/utils/store'
+import { parseSelect } from '@/utils/sort'
 
 export default {
   computed: {
     ...mapState('options', ['email', 'customer_fields']),
+    ...mapState(['params']),
     show() {
       return this.list.length
     },
@@ -22,26 +27,18 @@ export default {
       return this.customer_fields
         .filter(name => name !== 'email' || !this.email)
         .filter(name => config[name])
-        .reduce((result, field) => {
-          let list = config[field].dictionary && this.country
-          result.push({
-            ...config[field],
-            field,
-            list,
-            customer_data: true,
-            component: list ? 'input-select' : 'input-text',
-          })
-          return result
-        }, [])
+        .map(name => {
+          let options = config[name].dictionary && this.country
+          return {
+            ...config[name],
+            name,
+            options,
+            component: options ? 'select' : 'input',
+          }
+        })
     },
     country() {
-      return countries.map(this.parseCountry).sort(sort('name'))
-    },
-    parseCountry() {
-      return item => ({
-        id: item,
-        name: this.$t(item),
-      })
+      return countries.map(parseSelect).sort(sort('text'))
     },
   },
 }
