@@ -12,7 +12,6 @@ import FAlertBase from '@/components/alert/alert-base'
 import InputText from '@/components/input-text'
 import InputAmount from '@/components/input-amount'
 import InputHidden from '@/components/input-hidden'
-import InputSelect from '@/components/input-select'
 import FIcon from '@/components/icon'
 import FInfo from '@/components/info'
 import FCustomerFields from '@/components/customer-fields'
@@ -48,7 +47,6 @@ const components = {
   InputText,
   InputAmount,
   InputHidden,
-  InputSelect,
   FIcon,
   FInfo,
   FCustomerFields,
