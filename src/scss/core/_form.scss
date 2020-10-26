@@ -73,11 +73,27 @@
   }
 }
 
+.f-form-control-select-wrapper {
+  position: relative;
+}
+
 .f-form-control-select {
   position: relative;
   z-index: 1;
-  padding-left: px-to-rem(8px);
+  padding-right: px-to-rem(24px);
   background-color: transparent;
+  appearance: none;
+
+  // Hides the default caret in IE11
+  &::-ms-expand {
+    display: none;
+  }
+
+  // Remove outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $input_color;
+  }
 
   &:hover {
     background-color: inherit;
@@ -87,12 +103,15 @@
     opacity: 1;
   }
 
-  & + .f-control-label-p {
-    z-index: 0;
-  }
-
   & > option {
     color: initial;
+  }
+
+  & + .f-svg {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
   }
 }
 
