@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 import optionsDefault from '@/config/options-default'
-import configCss from '@/config/css'
 import notSet from '@/config/not-set'
 import cssVarisble from '@/config/css-varisble'
 import {
@@ -144,11 +143,6 @@ class Store {
       this.state.css_variable,
       cssVarisble(this.state.options.theme),
       optionsUser.css_variable
-    )
-    Object.assign(
-      this.state.css,
-      configCss[this.state.options.css],
-      optionsUser.css
     )
     this.initCdn()
     this.initMethods()

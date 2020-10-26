@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
 import timeout from '@/mixins/timeout'
 
 export default {
@@ -34,7 +33,6 @@ export default {
     },
   },
   computed: {
-    ...mapState(['css']),
     attrs() {
       return {
         hideFooter: false,

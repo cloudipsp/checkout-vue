@@ -80,7 +80,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['css', 'isSubmit']),
+    ...mapState(['isSubmit']),
     name_() {
       return 'f-' + this.name
     },
@@ -127,24 +127,25 @@ export default {
     classReadonly() {
       return { 'f-form-control-text': this.readonly }
     },
-    classError() {
-      return this.hasError ? this.css.ie : ''
-    },
     className() {
-      return [this.css.fc, this.classReadonly, this.classError, this.inputClass]
+      return ['f-form-control', this.classReadonly, this.inputClass]
     },
     classLabel() {
       return [
-        this.css.cl,
+        'f-control-label',
         this.labelClass,
-        this.hasError ? this.css.le : '',
         { 'f-control-label-active': this.params[this.field_] || this.focused },
         { 'f-control-label-hover': this.hover },
         { 'f-control-label-focused': this.focused },
       ]
     },
     classGroupName() {
-      return ['f-form-group', this.hasError ? this.css.he : '']
+      return [
+        'f-form-group',
+        {
+          'f-has-error': this.hasError,
+        },
+      ]
     },
   },
   created() {

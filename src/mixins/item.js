@@ -1,7 +1,6 @@
 import isMounted from '@/mixins/is_mounted'
 import id from '@/mixins/id'
 import { isExist } from '@/utils/typeof'
-import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
@@ -33,7 +32,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['css']),
     _id() {
       const id = this.$attrs.id ? this.$attrs.id.replace(/^f-/, '') : ''
       return 'f-' + (id || this.$attrs.name || this.id)
@@ -68,7 +66,7 @@ export default {
     },
     classInput() {
       return [
-        this.css.fc,
+        'f-form-control',
         this.inputClass,
         {
           ['f-control-' + this.size]: this.size,

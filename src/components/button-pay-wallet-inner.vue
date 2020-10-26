@@ -32,7 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['css', 'isOnlyCard']),
+    ...mapState(['isOnlyCard']),
     ...mapState('params', ['amount']),
     ...mapState('options', [
       'api_domain',

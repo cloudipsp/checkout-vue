@@ -14,7 +14,6 @@ import { excludes } from '@/utils/helpers'
 import configExcludeMessages from '@/config/exclude-messages'
 
 const cardIcons = Object.keys(configCardBrands)
-const css = ['bootstrap3', 'bootstrap4', 'foundation6']
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
 const theme = Object.keys(configTheme)
@@ -206,7 +205,6 @@ export default {
           button: { type: 'boolean' },
           locales: enumArray(locales),
           email: { type: 'boolean' },
-          css: { type: 'enum', enum: css },
           api_domain: { type: 'string' },
           endpoint: {
             ...enumObject(endpoint),

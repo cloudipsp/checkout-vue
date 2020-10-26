@@ -42,7 +42,7 @@ export default {
   },
   mixins: [Resize],
   computed: {
-    ...mapState(['css', 'isOnlyCard', 'is_only_wallets']),
+    ...mapState(['isOnlyCard', 'is_only_wallets']),
     ...mapState('params', ['lang']),
     ...mapState('router', ['page']),
     ...mapState('options', [

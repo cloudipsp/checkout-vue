@@ -204,7 +204,6 @@ export default {
   },
   computed: {
     ...mapState([
-      'css',
       'read_only',
       'need_verify_code',
       'verification_type',

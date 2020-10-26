@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['css', 'isSubmit']),
+    ...mapState(['isSubmit']),
     _id() {
       return 'f-' + (this.$attrs.id || this.$attrs.name || this.id)
     },
@@ -93,7 +93,12 @@ export default {
       }
     },
     classGroup() {
-      return ['f-form-group', this.hasError ? this.css.he : '']
+      return [
+        'f-form-group',
+        {
+          'f-has-error': this.hasError,
+        },
+      ]
     },
     classGroupInner() {
       return [
@@ -108,9 +113,8 @@ export default {
     },
     classLabel() {
       return [
-        this.css.cl,
+        'f-control-label',
         this.labelClass,
-        this.hasError ? this.css.le : '',
         {
           'f-control-label-active':
             (isExist(this.value) && this.value !== '') || this.focused,
