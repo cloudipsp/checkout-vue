@@ -11,7 +11,8 @@ export default {
     component: {
       type: String,
       default: 'input',
-      validator: value => ['input', 'date', 'checkbox'].includes(value),
+      validator: value =>
+        ['input', 'date', 'checkbox', 'select'].includes(value),
     },
   },
   computed: {

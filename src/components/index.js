@@ -26,6 +26,7 @@ import FFormGroup from '@/components/form/group'
 import FFormItemInput from '@/components/form/item/input'
 import FFormItemDate from '@/components/form/item/date'
 import FFormItemCheckbox from '@/components/form/item/checkbox'
+import FFormItemSelect from '@/components/form/item/select'
 import FScrollbarVertical from '@/components/scrollbar-vertical'
 import FButtonLink from '@/components/button/button-link'
 import FButton from '@/components/button/button'
@@ -60,6 +61,7 @@ const components = {
   FFormItemInput,
   FFormItemDate,
   FFormItemCheckbox,
+  FFormItemSelect,
   FScrollbarVertical,
   FButtonLink,
   FButton,
