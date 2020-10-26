@@ -15,17 +15,17 @@
       </transition>
     </div>
     <div v-if="full_screen" class="f-header-menu">
-      <select
-        v-if="showLang"
-        :value="lang"
-        class="f-lang"
-        dir="rtl"
-        @change="changeLang"
-      >
-        <option v-for="{ value, text } in locale" :key="value" :value="value">
-          {{ text }}
-        </option>
-      </select>
+      <f-form-base>
+        <f-form-item-select
+          v-if="showLang"
+          input-class="f-lang"
+          :value="lang"
+          :options="locale"
+          size="sm"
+          dir="rtl"
+          @input="changeLang"
+        />
+      </f-form-base>
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@
 import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import FButtonMethods from '@/components/button/button-methods'
-import { sort } from '@/utils/sort'
+import { sort, parseSelect } from '@/utils/sort'
 
 export default {
   components: {
@@ -58,10 +58,7 @@ export default {
       return !this.is_only_wallets
     },
     locale() {
-      return this.locales.map(this.parseLocale).sort(sort('text'))
-    },
-    parseLocale() {
-      return item => ({ value: item, text: this.$t(item) })
+      return this.locales.map(parseSelect).sort(sort('text'))
     },
     showBack() {
       return (
@@ -87,8 +84,8 @@ export default {
     },
   },
   methods: {
-    changeLang($event) {
-      this.store.changeLang($event.target.value)
+    changeLang(value) {
+      this.store.changeLang(value)
       this.store.sendRequestInfo()
     },
   },
