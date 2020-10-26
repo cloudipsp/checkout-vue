@@ -22,13 +22,10 @@ export default {
   computed: {
     ...mapState(['params']),
     list() {
-      return this.parseFields(this.fields)
+      return this.fields.map(this.parseField)
     },
   },
   methods: {
-    parseFields(fields) {
-      return fields.map(this.parseField)
-    },
     parseField(attrs) {
       return {
         ...attrs,
@@ -38,6 +35,8 @@ export default {
         component: attrs.type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(attrs.validate),
         autocomplete: 'on',
+        message: null,
+        validate: null,
       }
     },
     parseValidate(validate) {

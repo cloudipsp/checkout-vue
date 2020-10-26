@@ -45,7 +45,7 @@ gulp.task('po', function(done) {
         // placeholder: 'tran4'
         // name: 'tran4'
         // { path: 'tran4'
-        match: /(?:(?<!(?:(?:svg|transition|slot)[ ])|[^ ])(?:title|text|name|label|placeholder)=(["'])([^{}]+?)\1)|(?:v-t="'(.+?)'")|(?:\$t\((["'])(.+?)\4)|(?:(?:[ ]label|placeholder|name|{ path):[ ]?(["'])(.+?)\6)/g,
+        match: /(?:(?<!(?:(?:svg|transition|slot)[ ])|[^ ])(?:title|text|name|label|placeholder)=(["'])([^{}]+?)\1)|(?:v-t="'(.+?)'")|(?:\$t\((["'])(.+?)\4)|(?:(?:label|placeholder|name|{ path):[ ]?(["'])(.+?)\6)/g,
         replace: "_('$2$3$5$7')",
       },
       params: {

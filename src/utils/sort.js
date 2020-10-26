@@ -10,3 +10,8 @@ export const sort = (field, reverse) => {
     }
   }
 }
+
+export const parseSelect = item => ({
+  value: item,
+  text: i18n.t(item),
+})
