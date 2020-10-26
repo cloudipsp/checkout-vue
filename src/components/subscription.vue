@@ -69,14 +69,14 @@
             :input-class="'f-form-control-every'"
             @show-error="onShowError"
           />
-          <input-select
+          <f-form-group
+            v-model="period"
+            component="select"
             class="f-col-9"
-            :list="periods"
-            name="subscription_period"
-            field="period"
-            validate="required"
-            recurring
-            :readonly="readonly"
+            :options="list"
+            label="subscription_period"
+            rules="required"
+            :disabled="readonly"
             :hide-error="true"
             :input-class="'f-form-control-period'"
             @show-error="onShowError"
@@ -121,6 +121,7 @@
 
 <script>
 import { mapState, mapStateGetSet } from '@/utils/store'
+import { parseSelect } from '@/utils/sort'
 
 export default {
   data() {
@@ -138,7 +139,7 @@ export default {
     ...mapState('subscription', ['show', 'show_switch']),
     ...mapStateGetSet('subscription', ['enabled', 'enabled_switch']),
     ...mapStateGetSet('params', ['recurring']),
-    ...mapState('params.recurring_data', ['period', 'readonly']),
+    ...mapState('params.recurring_data', ['readonly']),
     ...mapStateGetSet('params.recurring_data', [
       'every',
       'start_time',
@@ -146,6 +147,7 @@ export default {
       'quantity',
       'trial_period',
       'trial_quantity',
+      'period',
     ]),
     ...mapState('params', ['amount']),
     ...mapState(['amount_readonly']),
@@ -157,6 +159,9 @@ export default {
     },
     trial() {
       return this.trial_quantity + ' ' + this.trial_period
+    },
+    list() {
+      return this.periods.map(parseSelect)
     },
   },
   watch: {
