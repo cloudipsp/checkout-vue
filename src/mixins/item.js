@@ -21,6 +21,11 @@ export default {
       type: String,
       default: '',
     },
+    size: {
+      type: String,
+      default: '',
+      validator: value => ['', 'sm'].includes(value),
+    },
   },
   data() {
     return {
@@ -62,7 +67,13 @@ export default {
       return this.error ? false : null
     },
     classInput() {
-      return [this.css.fc, this.inputClass]
+      return [
+        this.css.fc,
+        this.inputClass,
+        {
+          ['f-control-' + this.size]: this.size,
+        },
+      ]
     },
     placeholder() {
       return this.$t(this.$attrs.placeholder)

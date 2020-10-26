@@ -20,7 +20,12 @@ export default {
       return 'f-form-item-' + this.component
     },
     className() {
-      return 'f-form-item-' + this.component
+      return [
+        'f-form-item-' + this.component,
+        {
+          ['f-form-item-' + this.$attrs.size]: this.$attrs.size,
+        },
+      ]
     },
   },
 }
