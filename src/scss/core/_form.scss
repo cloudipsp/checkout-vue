@@ -7,6 +7,11 @@
   position: relative;
 }
 
+.f-form-group-inner-select {
+  background-color: $input_bg;
+  border-radius: px-to-rem(8px);
+}
+
 .f-form-control {
   display: block;
   width: 100%;

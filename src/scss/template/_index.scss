@@ -94,23 +94,10 @@
   letter-spacing: px-to-rem(-0.3px);
 }
 
-$bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'><path d='M1 1L5.64645 5.64645C5.84171 5.84171 6.15829 5.84171 6.35355 5.64645L11 1' stroke='#9CA7B3' stroke-width='1.5' stroke-linecap='round'></path></svg>");
 .f-lang {
-  display: inline-block;
-  padding: px-to-rem(8px) px-to-rem(20px) px-to-rem(8px) px-to-rem(8px);
+  padding: px-to-rem(8px) px-to-rem(28px) px-to-rem(8px) px-to-rem(8px);
   color: $btn_link_default_color;
-  vertical-align: middle;
-  background: $container_bg escape-svg($bg) no-repeat right center;
   border: none;
-  // stylelint-disable-next-line property-no-vendor-prefix
-  -webkit-appearance: none;
-  &::-ms-expand {
-    display: none;
-  }
-
-  &:focus {
-    outline: 0;
-  }
 }
 
 .f-icons {
