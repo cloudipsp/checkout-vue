@@ -6,6 +6,9 @@
       class="f-form-control-description"
     />
     <div :class="classGroupInner">
+      <label v-if="prepend" :for="_id" class="f-form-control-prepend">
+        <f-svg :name="prepend" fw />
+      </label>
       <f-form-item
         ref="item"
         v-bind="attrs"
@@ -53,6 +56,10 @@ export default {
     hideError: {
       type: Boolean,
       default: false,
+    },
+    prepend: {
+      type: String,
+      default: null,
     },
   },
   data() {
