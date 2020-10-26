@@ -16,6 +16,7 @@
         <div v-t="'bank_desc'" class="f-bank-desc" />
         <div class="f-container-sm">
           <f-fields-bank v-if="showFieldsBank" :fields="select.form.fields" />
+          <f-fields />
           <f-offer />
           <f-button-pay />
         </div>
