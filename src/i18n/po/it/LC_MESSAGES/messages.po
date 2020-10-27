@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:13
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-22 13:40+0300\n"
+"POT-Creation-Date: 2020-10-27 22:40+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -116,92 +116,92 @@ msgid "default_country"
 msgstr "Ricerca per paese"
 
 #: src/i18n/process/templates.js:11
-msgid "search"
-msgstr "-"
-
-#: src/i18n/process/templates.js:12
 msgid "system_search"
 msgstr "Ricerca per nome della banca, IBAN o CAB"
 
-#: src/i18n/process/templates.js:13
+#: src/i18n/process/templates.js:12
 msgid "load_more"
 msgstr "Caricare di più..."
 
-#: src/i18n/process/templates.js:15
+#: src/i18n/process/templates.js:14
 msgid "other_payment_method"
 msgstr "Oppure pagare con"
 
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:15
 msgid "pay"
 msgstr "Pagare"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:16
 msgid "use_other_card"
 msgstr "Inserire un'altra carta"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:17
 msgid "expires_on"
 msgstr "Valido fino al"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:18
 msgid "pay_with_card"
 msgstr "Pagare con carta"
 
-#: src/i18n/process/templates.js:20
+#: src/i18n/process/templates.js:19
 msgid "card_number"
 msgstr "Numero di carta"
 
-#: src/i18n/process/templates.js:21
+#: src/i18n/process/templates.js:20
 msgid "card_number_p"
 msgstr "0000 0000 0000 0000"
 
-#: src/i18n/process/templates.js:22
+#: src/i18n/process/templates.js:21
 msgid "angle-down"
 msgstr "-"
 
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:22
 msgid "expiry_date"
 msgstr "MM/AA"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:23
 msgid "expiry_date_p"
 msgstr "00/00"
 
-#: src/i18n/process/templates.js:25
+#: src/i18n/process/templates.js:24
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:26
+#: src/i18n/process/templates.js:25
 msgid "cvv2_p"
 msgstr "000"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:26
 msgid "cvv2_help"
 msgstr "{0}-codice numerico sul retro della carta"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:27
 msgid "checkout-email"
 msgstr "-"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:28
 msgid "email"
 msgstr "E-mail"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:29
 msgid "code"
 msgstr "-"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:30
 msgid "verification_code"
 msgstr "Codice di conferma"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:31
 msgid "verification_amount"
 msgstr "Importo della verifica"
 
-#: src/i18n/process/templates.js:33
+#: src/i18n/process/templates.js:32
 msgid "datepicker"
 msgstr "-"
+
+#: src/i18n/process/templates.js:33
+msgid "model"
+msgstr ""
 
 #: src/i18n/process/templates.js:34
 msgid "see_more"
@@ -387,15 +387,15 @@ msgstr "Importo del pagamento ricorrente"
 
 #: src/i18n/process/templates.js:76
 msgid "trial_period"
-msgstr ""
+msgstr "Periodo di prova"
 
 #: src/i18n/process/templates.js:77
 msgid "number_of_payments"
-msgstr ""
+msgstr "Numero di pagamenti"
 
 #: src/i18n/process/templates.js:78
 msgid "unlimited"
-msgstr ""
+msgstr "Illimitato"
 
 #: src/i18n/process/templates.js:79
 msgid "subscription_every"
@@ -411,11 +411,11 @@ msgstr "A partire"
 
 #: src/i18n/process/templates.js:82
 msgid "subscription_end_time"
-msgstr ""
+msgstr "Data di fine"
 
 #: src/i18n/process/templates.js:83
 msgid "verification_desc"
-msgstr ""
+msgstr "Per verificare la tua carta, congeleremo una piccola somma nel tuo account per 15 minuti."
 
 #: src/i18n/process/templates.js:84
 msgid "payment_id"
@@ -586,6 +586,9 @@ msgstr "Portafoglio digitale"
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
 msgstr "Contanti tramite terminale"
+
+#~ msgid "search"
+#~ msgstr "-"
 
 #~ msgid "offer"
 #~ msgstr "-"

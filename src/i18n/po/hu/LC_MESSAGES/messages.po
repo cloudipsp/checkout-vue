@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:13
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-22 13:40+0300\n"
+"POT-Creation-Date: 2020-10-27 22:40+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -115,92 +115,92 @@ msgid "default_country"
 msgstr "Ország szerinti keresés"
 
 #: src/i18n/process/templates.js:11
-msgid "search"
-msgstr "-"
-
-#: src/i18n/process/templates.js:12
 msgid "system_search"
 msgstr "Keresés banknév, IBAN vagy BLZ szerint "
 
-#: src/i18n/process/templates.js:13
+#: src/i18n/process/templates.js:12
 msgid "load_more"
 msgstr "Több betöltése..."
 
-#: src/i18n/process/templates.js:15
+#: src/i18n/process/templates.js:14
 msgid "other_payment_method"
 msgstr "Vagy fizetni máskép"
 
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:15
 msgid "pay"
 msgstr "Fizetni"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:16
 msgid "use_other_card"
 msgstr "Adja meg egy másik kártya adatait"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:17
 msgid "expires_on"
 msgstr "Érvényesség"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:18
 msgid "pay_with_card"
 msgstr "Fizetni kártyával"
 
-#: src/i18n/process/templates.js:20
+#: src/i18n/process/templates.js:19
 msgid "card_number"
 msgstr "Kártya száma"
 
-#: src/i18n/process/templates.js:21
+#: src/i18n/process/templates.js:20
 msgid "card_number_p"
 msgstr "0000 0000 0000 0000"
 
-#: src/i18n/process/templates.js:22
+#: src/i18n/process/templates.js:21
 msgid "angle-down"
 msgstr "-"
 
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:22
 msgid "expiry_date"
 msgstr "HH/ÉÉ"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:23
 msgid "expiry_date_p"
 msgstr "00/00"
 
-#: src/i18n/process/templates.js:25
+#: src/i18n/process/templates.js:24
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:26
+#: src/i18n/process/templates.js:25
 msgid "cvv2_p"
 msgstr "000"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:26
 msgid "cvv2_help"
 msgstr "{0}-a kártya hátoldalán található numerikus kód"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:27
 msgid "checkout-email"
 msgstr "-"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:28
 msgid "email"
 msgstr "Email"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:29
 msgid "code"
 msgstr "-"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:30
 msgid "verification_code"
 msgstr "Megerősítő kód"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:31
 msgid "verification_amount"
 msgstr "Ellenőrző összeg"
 
-#: src/i18n/process/templates.js:33
+#: src/i18n/process/templates.js:32
 msgid "datepicker"
 msgstr "-"
+
+#: src/i18n/process/templates.js:33
+msgid "model"
+msgstr ""
 
 #: src/i18n/process/templates.js:34
 msgid "see_more"
@@ -387,15 +387,15 @@ msgstr "Ismétlődő fizetési összeg"
 
 #: src/i18n/process/templates.js:76
 msgid "trial_period"
-msgstr ""
+msgstr "Próbaidő"
 
 #: src/i18n/process/templates.js:77
 msgid "number_of_payments"
-msgstr ""
+msgstr "Kifizetések száma"
 
 #: src/i18n/process/templates.js:78
 msgid "unlimited"
-msgstr ""
+msgstr "Korlátlan"
 
 #: src/i18n/process/templates.js:79
 msgid "subscription_every"
@@ -411,11 +411,11 @@ msgstr "Első fizetés"
 
 #: src/i18n/process/templates.js:82
 msgid "subscription_end_time"
-msgstr ""
+msgstr "Befejezés dátuma"
 
 #: src/i18n/process/templates.js:83
 msgid "verification_desc"
-msgstr ""
+msgstr "Kártyája igazolásához egy kis ellenőrzési díjat számolunk fel a bankszámláján 15 percre."
 
 #: src/i18n/process/templates.js:84
 msgid "payment_id"
@@ -585,6 +585,9 @@ msgstr "Digitális pénztárca"
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
 msgstr "Készpénz terminálon keresztül"
+
+#~ msgid "search"
+#~ msgstr "-"
 
 #~ msgid "offer"
 #~ msgstr "-"
