@@ -1,13 +1,15 @@
-const webpack = require('webpack');
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
-const gitRevisionPlugin = new GitRevisionPlugin();
-const increaseSpecificity = require('./build/postcss-increase-specificity');
-const argv = require('minimist')(process.argv.slice(2));
+const webpack = require('webpack')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const gitRevisionPlugin = new GitRevisionPlugin()
+const increaseSpecificity = require('./build/postcss-increase-specificity')
+const autoprefixer = require('autoprefixer')
+const argv = require('minimist')(process.argv.slice(2))
 
 function addF (options) {
   options.plugins = () => [
     increaseSpecificity({ repeat: 1, stackableRoot: '#f', overrideIds: false }),
-  ];
+    autoprefixer(),
+  ]
   return options
 }
 
