@@ -23,7 +23,7 @@
           :options="locale"
           size="sm"
           dir="rtl"
-          @input="changeLang"
+          @change="changeLang"
         />
       </f-form-base>
     </div>

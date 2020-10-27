@@ -67,11 +67,9 @@ class Store {
     })
   }
   sendRequestInfo() {
-    this.sendRequest(
-      'api.checkout.info',
-      'get',
-      this.formParams()
-    ).then(model => this.infoSuccess(model))
+    this.sendRequest('api.checkout.info', 'get', this.formParams())
+      .then(model => this.infoSuccess(model))
+      .catch(errorHandler)
   }
   infoSuccess(model) {
     if (isExist(model.attr('validate_expdate'))) {
