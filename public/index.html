@@ -4,29 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>checkout-vue</title>
-    <link href="https://pay.fondy.eu/icons/dist/png/32/favicon/fondy.png" rel="icon" type="image/x-icon" />
 
     <style>
-      html {
-        height: 100%;
-      }
       body {
-        height: 100%;
         margin: 0;
-        font-family: 'Arial', sans-serif;
       }
       * {
         box-sizing: border-box;
-      }
-      #app {
-        height: 100%;
       }
       .coll {
         position: relative;
         min-height: 1px;
         padding-left: 15px;
         padding-right: 15px;
-        display: none;
       }
       @media (min-width: 600px) {
         .coll {
@@ -40,13 +30,7 @@
         left: 0;
         bottom: 0;
       }
-      .hide {
-        display: none;
-      }
     </style>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">-->
   </head>
   <body>
     <div id="app"></div>
@@ -61,14 +45,14 @@
         <option value="dark">dark</option>
       </select>
       <button class="render">render</button>
-      <button class="go-sepa hide">go sepa</button>
-      <button class="go-card hide">go card</button>
-      <button class="set-params hide">set params</button>
+      <button class="go-sepa">go sepa</button>
+      <button class="go-card">go card</button>
+      <button class="set-params">set params</button>
       <button class="submit">submit 1</button>
     </div>
     <div>
-      <div class="coll"></div>
-      <div class="coll"></div>
+      <!--<div class="coll"><div id="app2"></div></div>-->
+      <!--<div class="coll"><div id="app3"></div></div>-->
     </div>
 
     <script type="text/x-vue-template" id="f-fields2">
@@ -160,11 +144,11 @@
               },
               show_menu_first: false,
               // disable_request: true,
-            },
-            subscription: {
-              insert: true,
-              open: false,
-              period: ['week', 'month'],
+              // show_button_amount: false,
+              subscription: {
+                type: 'shown_edit_on',
+              },
+              // countries: ['PL'],
             },
             params: {
               currency: 'EUR',
@@ -249,6 +233,18 @@
                   )
                 },
               },
+            },
+          },
+          max2: {
+            options: {
+              methods: ['card', 'banklinks_eu'],
+              api_domain: 'api.dev.fondy.eu',
+              full_screen: false,
+            },
+            params: {
+              currency: 'EUR',
+              merchant_id: 900158,
+              amount: 50400,
             },
           },
           min: {
@@ -474,7 +470,9 @@
           }
         }
 
-        window.app = render('max')
+        window.app = render('#app', 'max')
+        // render('#app2', 'min')
+        // render('#app3', 'max2')
 
         document.querySelector('.submit').addEventListener('click', function() {
           app.submit()
@@ -509,9 +507,9 @@
           render()
         })
 
-        function render(type) {
+        function render(el, type) {
           return (app = fondy(
-            '#app',
+            el || '#app',
             options[type || document.querySelector('.options').value]
           )
             .$on('success', function(model) {
