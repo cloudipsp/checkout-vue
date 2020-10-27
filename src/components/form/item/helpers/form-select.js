@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { isArray } from 'bootstrap-vue/esm/utils/array'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
 import { BFormSelect } from 'bootstrap-vue'
 import { BFormSelectOption } from 'bootstrap-vue/esm/components/form-select/form-select-option'
@@ -26,7 +25,7 @@ export default Vue.extend({
       const { value, label, options, disabled } = option
       const key = `option_${index}`
 
-      return isArray(options)
+      return Array.isArray(options)
         ? h(BFormSelectOptionGroup, { props: { label, options }, key })
         : h(BFormSelectOption, {
             props: { value, disabled },
