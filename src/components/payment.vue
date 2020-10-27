@@ -121,9 +121,10 @@ export default {
   },
   methods: {
     initHeight() {
-      this.height = this.isBreakpointLg
-        ? `calc(${window.innerHeight}px - 4.625rem)`
-        : 'calc(100% - 4.625rem)'
+      this.height =
+        this.full_screen && this.isWidthLg
+          ? `calc(${window.innerHeight}px - 4.625rem)`
+          : 'calc(100% - 4.625rem)'
     },
     resize() {
       this.initHeight()
