@@ -90,6 +90,7 @@
           </transition>
         </div>
         <f-form-group
+          v-if="showStartTime"
           v-model="start_time"
           component="date"
           label="subscription_start_time"
@@ -151,6 +152,9 @@ export default {
     ]),
     ...mapState('params', ['amount']),
     ...mapState(['amount_readonly']),
+    showStartTime() {
+      return !this.showTrial
+    },
     showEndTime() {
       return !this.showQuantity && this.end_time
     },
