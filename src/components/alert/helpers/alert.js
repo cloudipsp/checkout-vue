@@ -35,7 +35,7 @@ export default Vue.extend({
             'aria-atomic': true,
           },
         },
-        [$dismissBtn, this.normalizeSlot('default')]
+        [$dismissBtn, this.normalizeSlot()]
       )
       $alert = [$alert]
     }

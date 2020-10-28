@@ -1,6 +1,7 @@
-import Vue from 'vue'
 import { BButtonClose } from 'bootstrap-vue'
-import { mergeData } from 'vue-functional-data-merge'
+import Vue, { mergeData } from 'bootstrap-vue/esm/vue'
+import { SLOT_NAME_DEFAULT } from 'bootstrap-vue/esm/constants/slot-names'
+import { stopEvent } from 'bootstrap-vue/esm/utils/events'
 import { isEvent } from 'bootstrap-vue/esm/utils/inspect'
 import {
   hasNormalizedSlot,
@@ -28,20 +29,19 @@ export default Vue.extend({
           // Ensure click on button HTML content is also disabled
           /* istanbul ignore if: bug in JSDOM still emits click on inner element */
           if (props.disabled && isEvent(evt)) {
-            evt.stopPropagation()
-            evt.preventDefault()
+            stopEvent(evt)
           }
         },
       },
     }
     // Careful not to override the default slot with innerHTML
-    if (!hasNormalizedSlot('default', $scopedSlots, $slots)) {
+    if (!hasNormalizedSlot(SLOT_NAME_DEFAULT, $scopedSlots, $slots)) {
       componentData.domProps = { innerHTML: props.content }
     }
     return h(
       'button',
       mergeData(data, componentData),
-      normalizeSlot('default', {}, $scopedSlots, $slots)
+      normalizeSlot(SLOT_NAME_DEFAULT, {}, $scopedSlots, $slots)
     )
   },
 })

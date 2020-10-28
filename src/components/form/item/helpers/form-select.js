@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { SLOT_NAME_FIRST } from 'bootstrap-vue/esm/constants/slot-names'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
 import { BFormSelect } from 'bootstrap-vue'
 import { BFormSelectOption } from 'bootstrap-vue/esm/components/form-select/form-select-option'
@@ -54,7 +55,7 @@ export default Vue.extend({
         directives: [{ name: 'model', value }],
         ref: 'input',
       },
-      [this.normalizeSlot('first'), $options, this.normalizeSlot('default')]
+      [this.normalizeSlot(SLOT_NAME_FIRST), $options, this.normalizeSlot()]
     )
   },
 })

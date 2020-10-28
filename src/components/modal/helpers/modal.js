@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { BModal, BButton } from 'bootstrap-vue'
 import FButtonClose from '../../button/button-close'
+import { SLOT_NAME_DEFAULT } from 'bootstrap-vue/esm/constants/slot-names'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
 import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
 import { BTransporterSingle } from 'bootstrap-vue/esm/utils/transporter'
@@ -88,7 +89,7 @@ export default Vue.extend({
           attrs: { id: this.modalBodyId },
           ref: 'body',
         },
-        this.normalizeSlot('default', this.slotScope)
+        this.normalizeSlot(SLOT_NAME_DEFAULT, this.slotScope)
       )
 
       // Modal footer
