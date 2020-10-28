@@ -1,1 +1,3 @@
-module.exports = require('./package.json').babel
+module.exports = {
+  presets: ['@vue/cli-plugin-babel/preset'],
+}

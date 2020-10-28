@@ -4,6 +4,9 @@
 // css class
 // vue-i18n-extensions
 
+import fonts from '@/scss/fonts.scss'
+import css from '@/scss/style.scss'
+
 import Vue from 'vue'
 import Checkout from '@/checkout'
 import i18n from '@/i18n/index'

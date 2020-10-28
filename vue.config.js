@@ -15,11 +15,10 @@ function addF (options) {
 
 module.exports = {
   pages: {
-    index: {
+    checkout: {
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
-      chunks: ['checkout'],
       inject: 'head',
       minify: {
         collapseWhitespace: false, // true
@@ -27,25 +26,10 @@ module.exports = {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
     },
-    e2e: {
-      entry: 'src/main.js',
-      template: 'public/e2e.html',
-      filename: 'e2e.html',
-      chunks: ['checkout'],
-      inject: 'head',
-    },
-    e2e_snippet: {
-      entry: 'src/main.js',
-      template: 'public/e2e_snippet.html',
-      filename: 'e2e_snippet.html',
-      chunks: ['snippet'],
-      inject: 'head',
-    },
-    index_snippet: {
-      entry: 'src/main.js',
+    snippet: {
+      entry: 'src/snippet.js',
       template: 'public/index_snippet.html',
       filename: 'index_snippet.html',
-      chunks: ['snippet'],
       inject: 'head',
     },
   },
@@ -130,18 +114,6 @@ module.exports = {
         .end()
       .entryPoints
         .delete('app')
-        .delete('index')
-        .delete('e2e')
-        .delete('e2e_snippet')
-        .delete('index_snippet')
-        .end()
-      .entry('checkout')
-        .add('./src/scss/fonts.scss')
-        .add('./src/scss/style.scss')
-        .add('./src/main.js')
-        .end()
-      .entry('snippet')
-        .add('./src/snippet.js')
         .end()
       .output
         .filename('[name].js')

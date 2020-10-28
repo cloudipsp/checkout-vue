@@ -4,7 +4,7 @@
       {{ $t('submit3ds_title') }}
     </template>
     <span v-t="'submit3ds_text'" />
-    <template #modal-footer="{ ok, cancel }">
+    <template #modal-footer="{ ok }">
       <f-button
         ref="submit"
         variant="secondary"
