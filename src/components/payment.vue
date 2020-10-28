@@ -104,14 +104,7 @@ export default {
     }
 
     this.store
-      .loadButton()
-      .then(() => {
-        return this.store.sendRequest(
-          'api.checkout',
-          'app',
-          this.createdFormParams
-        )
-      })
+      .sendRequest('api.checkout', 'app', this.createdFormParams)
       .finally(() => {
         this.ready = true
         this.store.formLoading(false)

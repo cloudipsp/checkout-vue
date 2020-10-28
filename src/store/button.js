@@ -1,12 +1,11 @@
 import axios from 'axios'
 import { findGetParameter } from '@/utils/helpers'
-import configSubscription from '@/config/subscription'
 
 let config = {}
 
 export default function() {
   let button = findGetParameter('button')
-  if (!button) return Promise.reject()
+  if (!button) return Promise.resolve()
 
   return axios
     .get(`/buttons/${button}.json`)
@@ -39,6 +38,7 @@ function parseOptions({
       api_domain: host,
       title: name,
       subscription: {
+        type: recurring_state ? 'shown_edit_on' : 'disable',
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
@@ -59,9 +59,6 @@ function parseOptions({
     },
     fields: Object.values(fields).map(parseField),
     amount_readonly: Boolean(amount_readonly),
-    subscription: recurring_state
-      ? configSubscription.shown_edit_on
-      : undefined,
   }
 }
 

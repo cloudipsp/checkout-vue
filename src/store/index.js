@@ -18,6 +18,7 @@ import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadButton from '@/store/button'
+import loadCardImg from '@/store/card-img'
 import initFavicon from '@/store/favicon'
 import { sessionStorage } from '@/utils/store'
 import { methods, tabs } from '@/utils/compatibility'
@@ -34,6 +35,11 @@ class Store {
   constructor() {
     this.default = optionsDefault
     this.setStateDefault()
+    this.server = {
+      options: { subscription: {} },
+      params: { recurring_data: {} },
+      css_variable: {},
+    }
   }
   attr(name, value) {
     name = (name || '').split('.')
@@ -124,23 +130,33 @@ class Store {
   }
   setOptions(optionsUser) {
     // delete undefined property
-    optionsUser = JSON.parse(JSON.stringify(optionsUser))
+    this.user = JSON.parse(JSON.stringify(optionsUser))
 
-    this.optionsFormat(optionsUser)
-    this.validate(optionsUser)
-    this.user = optionsUser
-    deepMerge(this.state.params, optionsUser.params, notSet.params)
-    deepMerge(this.state.options, optionsUser.options, notSet.options)
+    this.optionsFormat(this.user)
+    this.validate(this.user)
+    deepMerge(
+      this.state.params,
+      this.user.params,
+      notSet.params,
+      this.server.params
+    )
+    deepMerge(
+      this.state.options,
+      this.user.options,
+      notSet.options,
+      this.server.options
+    )
     Object.assign(
       this.state.subscription,
       configSubscription[this.state.options.subscription.type]
     )
-    Object.assign(this.state.messages, optionsUser.messages)
-    Object.assign(this.state.validate, optionsUser.validate)
+    Object.assign(this.state.messages, this.user.messages)
+    Object.assign(this.state.validate, this.user.validate)
     Object.assign(
       this.state.css_variable,
       cssVarisble(this.state.options.theme),
-      optionsUser.css_variable
+      this.user.css_variable,
+      this.server.css_variable
     )
     this.initCdn()
     this.initMethods()
@@ -223,6 +239,7 @@ class Store {
 
     this.state.params.lang = lang
     sessionStorage.set(cookieLang, lang)
+    this.changeLang(this.state.params.lang)
   }
   initError() {
     const token = findGetParameter('token')
@@ -276,24 +293,25 @@ class Store {
     this.state.params.referrer = document.referrer
   }
   loadButton() {
-    return loadButton()
-      .then(
-        response => {
-          if (this.state.options.full_screen) {
-            document.title = response.options.title
-          }
-
-          this.setState(response)
-          this.initLang()
-        },
-        () => {}
-      )
-      .then(() => {
-        this.changeLang(this.state.params.lang)
-      })
+    return loadButton().then(config => {
+      if (!config) return
+      if (this.state.options.full_screen) {
+        document.title = config.options.title
+      }
+      this.setServer(config)
+    })
+  }
+  loadCardImg(preset) {
+    return loadCardImg(preset).then(config => {
+      if (!config) return
+      this.setServer(config)
+    })
   }
   setState(state) {
     deepMerge(this.state, JSON.parse(JSON.stringify(state)))
+  }
+  setServer(state) {
+    deepMerge(this.server, JSON.parse(JSON.stringify(state)))
   }
   changeLang(lang) {
     if (this.state.options.full_screen) {

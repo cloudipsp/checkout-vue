@@ -81,10 +81,10 @@ export default {
     },
   },
   created: function() {
-    loadCardImg(this.getPreset())
-      .then(card_img => {
-        this.attr('optionsUser.css_variable.card_img', `url(${card_img})`)
-      })
+    Promise.all([
+      this.store.loadButton(),
+      this.store.loadCardImg(this.getPreset()),
+    ])
       .finally(() => {
         this.load = true
         this.store.setOptions(this.optionsUser)
