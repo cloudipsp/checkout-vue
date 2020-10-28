@@ -1,5 +1,6 @@
 .f-input-group {
   background-color: $input_bg;
+  border-radius: px-to-rem(8px);
   @extend .f-row;
   @extend .f-no-gutters;
 
