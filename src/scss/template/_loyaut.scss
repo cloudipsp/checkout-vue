@@ -79,13 +79,16 @@
 }
 
 .f-top {
-  height: px-to-rem(24px);
   background-image: linear-gradient(
     to bottom,
     $container_bg,
     fade($container_bg, 0)
   );
   @include sticky-top();
+}
+
+.f-top-inner {
+  height: px-to-rem(24px);
 }
 
 .f-center {

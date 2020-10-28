@@ -2,7 +2,7 @@
   <div v-if="show" class="f-sidebar">
     <f-scrollbar-vertical wrap-class="f-sidebar-wrap">
       <div class="f-sidebar-content f-container-sm">
-        <div v-if="full_screen" class="f-top">&nbsp;</div>
+        <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
         <f-info />
         <f-button-pay-wallet position="sidebar" />
         <f-menu />
