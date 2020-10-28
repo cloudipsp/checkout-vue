@@ -117,7 +117,7 @@ const config = {
   subscription: configSubscription.disable,
 }
 
-locales.forEach(function(locale) {
+locales.forEach(function (locale) {
   config.messages[locale] = {}
   config.validate[locale] = {}
 })

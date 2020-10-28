@@ -180,7 +180,7 @@ class Store {
 
     for (let prop in options) {
       if (options.hasOwnProperty(prop)) {
-        let modified = prop.replace(regex, function(match) {
+        let modified = prop.replace(regex, function (match) {
           return '_' + match.toLowerCase()
         })
         if (prop !== modified) {

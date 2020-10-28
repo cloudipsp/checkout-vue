@@ -2,7 +2,7 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    style="isolation:isolate"
+    style="isolation: isolate"
     viewBox="0 0 130 121"
     width="130px"
     height="121px"

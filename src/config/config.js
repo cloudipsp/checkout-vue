@@ -41,7 +41,7 @@ function enumArray(array) {
         return callback()
       let errors = []
       if (Array.isArray(value)) {
-        value.forEach(function(item) {
+        value.forEach(function (item) {
           if (array.includes(item)) return
           errors.push(
             [
@@ -148,7 +148,7 @@ function validatorNotEmpty() {
 
 let messages = enumObject(locales)
 
-locales.forEach(function(locale) {
+locales.forEach(function (locale) {
   messages.fields[locale] = {
     ...excludeObject(configExcludeMessages),
   }
@@ -156,7 +156,7 @@ locales.forEach(function(locale) {
 
 let validate = enumObject(locales)
 
-locales.forEach(function(locale) {
+locales.forEach(function (locale) {
   validate.fields[locale] = {
     type: 'object',
   }

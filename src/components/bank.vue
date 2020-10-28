@@ -75,7 +75,7 @@
         </div>
         <div class="f-bank-footer">
           <f-button v-if="showMore" variant="outline" @click="loadMore">
-            <span><f-svg name="redo" size="lg" :spin="spin" fw/></span>
+            <span><f-svg name="redo" size="lg" :spin="spin" fw /></span>
             <span v-t="'load_more'" />
           </f-button>
         </div>
@@ -93,11 +93,11 @@ import FFieldsBank from '@/components/fields-bank'
 import timeout from '@/mixins/timeout'
 
 export default {
-  inject: ['submit'],
   components: {
     FFieldsBank,
   },
   mixins: [timeout],
+  inject: ['submit'],
   props: {
     type: {
       type: String,
@@ -149,7 +149,7 @@ export default {
     list() {
       let search = this.search.toLowerCase()
       if (search) {
-        return this.listSelect.filter(function(item) {
+        return this.listSelect.filter(function (item) {
           let name = item.name.toLowerCase()
           let iban = item.iban.toLowerCase()
 

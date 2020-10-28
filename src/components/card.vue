@@ -182,7 +182,6 @@ import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 
 export default {
-  inject: ['$validator'],
   components: {
     FSubscription,
     FCardList,
@@ -190,6 +189,7 @@ export default {
     FPrice,
   },
   mixins: [mobile, timeout, isMounted],
+  inject: ['$validator'],
   data() {
     return {
       maskExpiryDate: '##/##',

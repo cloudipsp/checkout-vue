@@ -1,6 +1,6 @@
 let scrollBarWidth
 
-export default function() {
+export default function () {
   if (typeof window === 'undefined') return 0
   if (scrollBarWidth !== undefined) return scrollBarWidth
 

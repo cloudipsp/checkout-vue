@@ -49,7 +49,7 @@ function hexToHSL(H) {
 
 const prefix = '--fondy-'
 
-export default function(variablesLink) {
+export default function (variablesLink) {
   let variables = Object.fromEntries(
     Object.entries(variablesLink).reduce((acc, [n, v]) => {
       let name = `${prefix}${n}`

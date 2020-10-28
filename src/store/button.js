@@ -3,7 +3,7 @@ import { findGetParameter } from '@/utils/helpers'
 
 let config = {}
 
-export default function() {
+export default function () {
   let button = findGetParameter('button')
   if (!button) return Promise.resolve()
 

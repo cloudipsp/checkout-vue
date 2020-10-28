@@ -16,7 +16,7 @@ import svg from '@/svg/index'
 import store from '@/store/index'
 import validate from '@/validate/index'
 
-const install = function(Vue) {
+const install = function (Vue) {
   let instance = {}
 
   Vue.config.productionTip = false
@@ -25,7 +25,7 @@ const install = function(Vue) {
   Vue.use(svg)
   Vue.use(validate)
 
-  window.fondy = function(el, optionsUser) {
+  window.fondy = function (el, optionsUser) {
     optionsUser = optionsUser || {}
     if (!isString(el)) return console.error('Selector not a string')
     if (!isPlainObject(optionsUser))
@@ -43,15 +43,15 @@ const install = function(Vue) {
         optionsUser: optionsUser,
       },
       methods: {
-        submit: function() {
+        submit() {
           this.$emit('submit')
           return this
         },
-        location: function(method, system) {
+        location(method, system) {
           this.store.location('payment-method', method, system)
           return this
         },
-        setParams: function(params) {
+        setParams(params) {
           this.store.setParams(params)
           return this
         },

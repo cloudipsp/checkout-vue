@@ -57,7 +57,7 @@ const install = Vue => {
   Validator.extend('numrange', {
     validate: (value, range) => {
       value = parseInt(value, 10)
-      range = range.map(function(i) {
+      range = range.map(function (i) {
         return parseInt(i, 10)
       })
       return range[0] <= value && value <= range[1]

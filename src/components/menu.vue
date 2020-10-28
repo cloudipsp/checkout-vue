@@ -45,7 +45,7 @@ export default {
     ...mapState('router', ['method']),
     ...mapState(['options']),
     className() {
-      return function(item) {
+      return function (item) {
         return [
           'f-menu-item',
           { active: this.method === item && !this.isBreakpointMd },

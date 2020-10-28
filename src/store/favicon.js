@@ -2,7 +2,7 @@ import configFavicon from '@/config/favicon'
 import { setAttr } from '@/utils/dom'
 import { getId } from '@/utils/helpers'
 
-export default function(cdnIcons, full_screen) {
+export default function (cdnIcons, full_screen) {
   if (!full_screen) return
 
   configFavicon.forEach(([rel, href, sizes, type, color]) => {

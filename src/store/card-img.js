@@ -2,7 +2,7 @@ import axios from 'axios'
 import presetGradient from '@/config/preset-gradient'
 import optionsDefault from '@/config/options-default'
 
-export default function(preset) {
+export default function (preset) {
   if (!presetGradient.includes(preset)) return Promise.resolve()
 
   return axios

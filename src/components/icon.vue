@@ -41,8 +41,9 @@ export default {
     style() {
       if (this.skip) return {}
       return {
-        'background-image': `url(${this.cdnIcons}svg/${this.map[this.type] ||
-          this.type}/${this.name}.svg)`,
+        'background-image': `url(${this.cdnIcons}svg/${
+          this.map[this.type] || this.type
+        }/${this.name}.svg)`,
       }
     },
     className() {

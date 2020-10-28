@@ -26,12 +26,12 @@ export default {
   computed: {
     ...mapState('options', ['full_screen']),
   },
-  created: function() {
+  created() {
     resizeBind = resize.bind(this)
     window.addEventListener('resize', resizeBind)
     init.apply(this)
   },
-  beforeDestroy: function() {
+  beforeDestroy() {
     window.removeEventListener('resize', resizeBind)
   },
   methods: {

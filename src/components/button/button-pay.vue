@@ -21,8 +21,8 @@ import { errorHandler } from '@/utils/helpers'
 import validator from '@/mixins/validator'
 
 export default {
-  inject: ['submit'],
   mixins: [validator],
+  inject: ['submit'],
   computed: {
     ...mapState(['verification_type', 'isSubmit']),
     ...mapState('options', { show: 'button' }),

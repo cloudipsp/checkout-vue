@@ -43,7 +43,7 @@ class F {
     return this
   }
   setParams(...args) {
-    this.$emit('setParams', ...args)
+    this.$emit('set-params', ...args)
     return this
   }
   destroy(...args) {
@@ -71,7 +71,7 @@ function loadScript(src) {
   el.type = 'text/javascript'
   el.src = `${cdn}${src}?${version}`
   el.async = false
-  el.addEventListener('load', function() {
+  el.addEventListener('load', function () {
     loaded += 1
     if (load === loaded && fondy.isInit) {
       fondy.run()

@@ -114,8 +114,8 @@ import mobile from '@/mixins/mobile'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  inject: ['submit'],
   mixins: [mobile],
+  inject: ['submit'],
   data() {
     return {
       model: null,

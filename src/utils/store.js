@@ -1,15 +1,15 @@
 function normalizeMap(map) {
   return Array.isArray(map)
-    ? map.map(function(key) {
+    ? map.map(function (key) {
         return { key: key, val: key }
       })
-    : Object.keys(map).map(function(key) {
+    : Object.keys(map).map(function (key) {
         return { key: key, val: map[key] }
       })
 }
 
 function normalizeNamespace(fn) {
-  return function(namespace, map) {
+  return function (namespace, map) {
     if (typeof namespace !== 'string') {
       map = namespace
       namespace = ''
@@ -26,10 +26,10 @@ function getState(namespace) {
   return state
 }
 
-export const mapState = normalizeNamespace(function(namespace, states) {
+export const mapState = normalizeNamespace(function (namespace, states) {
   let res = {}
 
-  normalizeMap(states).forEach(function({ key, val }) {
+  normalizeMap(states).forEach(function ({ key, val }) {
     res[key] = function mappedState() {
       let state = getState.call(this, namespace)
 
@@ -39,10 +39,10 @@ export const mapState = normalizeNamespace(function(namespace, states) {
   return res
 })
 
-export const mapStateGetSet = normalizeNamespace(function(namespace, states) {
+export const mapStateGetSet = normalizeNamespace(function (namespace, states) {
   let res = {}
 
-  normalizeMap(states).forEach(function({ key, val }) {
+  normalizeMap(states).forEach(function ({ key, val }) {
     res[key] = {
       get() {
         let state = getState.call(this, namespace)

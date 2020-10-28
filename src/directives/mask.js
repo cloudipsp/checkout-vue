@@ -38,7 +38,7 @@ function input(ev) {
   if (el === document.activeElement) {
     el.setSelectionRange(position, position)
     clearTimeout(el.timeout)
-    el.timeout = setTimeout(function() {
+    el.timeout = setTimeout(function () {
       el.setSelectionRange(position, position)
     }, 0)
   }

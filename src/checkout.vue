@@ -80,7 +80,7 @@ export default {
       return this.error.errors.length
     },
   },
-  created: function() {
+  created() {
     Promise.all([
       this.store.loadButton(),
       this.store.loadCardImg(this.getPreset()),

@@ -10,13 +10,13 @@ import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 
 export default {
+  mixins: [timeout, isMounted],
   provide() {
     return {
       submit: this.submit,
     }
   },
   inject: ['$validator'],
-  mixins: [timeout, isMounted],
   props: {
     formRequest: {
       type: Function,

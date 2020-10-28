@@ -61,7 +61,7 @@ function setI18nLanguage(lang) {
 }
 
 function loadScript(url) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     let id = getId(url)
     let el = document.createElement('script')
     el.setAttribute('id', id)

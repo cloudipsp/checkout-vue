@@ -40,11 +40,6 @@ import Resize from '@/mixins/resize'
 let model3ds
 
 export default {
-  provide() {
-    return {
-      formRequest: this.formRequest,
-    }
-  },
   components: {
     Success,
     PaymentMethod,
@@ -54,6 +49,11 @@ export default {
     FAlertGdpr,
   },
   mixins: [Resize],
+  provide() {
+    return {
+      formRequest: this.formRequest,
+    }
+  },
   data() {
     return {
       timeoutId: 0,
