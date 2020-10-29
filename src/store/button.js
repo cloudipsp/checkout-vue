@@ -31,6 +31,7 @@ function parseOptions({
   recurring_state,
   recurring_trial,
   recurring_type,
+  button_type,
 }) {
   amount = amount * 100
   return {
@@ -38,7 +39,12 @@ function parseOptions({
       api_domain: host,
       title: name,
       subscription: {
-        type: recurring_state ? 'shown_edit_on' : 'disable',
+        type:
+          button_type === 'recurring'
+            ? recurring_state
+              ? 'shown_edit_on'
+              : 'shown_edit_off'
+            : 'disable',
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
@@ -52,7 +58,6 @@ function parseOptions({
       lang,
       recurring_data: {
         ...recurring,
-        amount,
         readonly: recurring_readonly,
       },
       recurring: recurring_state ? 'y' : 'n',

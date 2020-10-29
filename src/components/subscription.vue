@@ -212,32 +212,12 @@ export default {
     recurringStartTime() {
       if (this.start_time) {
         return this.recurringTime('start_time')
-      } else {
-        return this.getFuturePeriod(this.period, this.every)
       }
     },
     recurringEndTime() {
       if (this.end_time) {
         return this.recurringTime('end_time')
       }
-    },
-    getFuturePeriod(period, every) {
-      let d = new Date()
-      switch (period) {
-        case 'day':
-          d.setDate(d.getDate() + 1 * every)
-          break
-        case 'week':
-          d.setDate(d.getDate() + 7 * every)
-          break
-        case 'month':
-          d.setMonth(d.getMonth() + 1 * every)
-          break
-        case 'year':
-          d.setFullYear(d.getFullYear() + 1 * every)
-          break
-      }
-      return this.getDateFormat(d)
     },
     onShowError(show, error) {
       this.error = show && error
