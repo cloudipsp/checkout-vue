@@ -153,10 +153,10 @@ export default {
     ...mapState('params', ['amount']),
     ...mapState(['amount_readonly']),
     showStartTime() {
-      return !this.showTrial
+      return this.unlimited || this.start_time
     },
     showEndTime() {
-      return !this.showQuantity && this.end_time
+      return this.unlimited || this.end_time
     },
     showVerificationDesc() {
       return this.showTrial && this.amount <= 100 && this.amount_readonly
