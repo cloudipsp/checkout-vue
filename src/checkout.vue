@@ -19,7 +19,6 @@ import FHeader from '@/components/header'
 import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
-import loadCardImg from '@/store/card-img'
 import { errorHandler } from '@/utils/helpers'
 import configTheme from '@/config/theme'
 

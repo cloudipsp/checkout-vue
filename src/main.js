@@ -4,7 +4,9 @@
 // css class
 // vue-i18n-extensions
 
+// eslint-disable-next-line no-unused-vars
 import fonts from '@/scss/fonts.scss'
+// eslint-disable-next-line no-unused-vars
 import css from '@/scss/style.scss'
 
 import Vue from 'vue'

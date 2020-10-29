@@ -47,7 +47,7 @@ class Store {
     let prop = name.pop()
     let len = arguments.length
     for (let i = 0; i < name.length; i++) {
-      if (data && data.hasOwnProperty(name[i])) {
+      if (data && Object.prototype.hasOwnProperty.call(data, name[i])) {
         data = data[name[i]]
       } else {
         if (len === 2) {
@@ -179,12 +179,12 @@ class Store {
     if (!isPlainObject(options)) return
 
     for (let prop in options) {
-      if (options.hasOwnProperty(prop)) {
+      if (Object.prototype.hasOwnProperty.call(options, prop)) {
         let modified = prop.replace(regex, function (match) {
           return '_' + match.toLowerCase()
         })
         if (prop !== modified) {
-          if (options.hasOwnProperty(modified)) continue
+          if (Object.prototype.hasOwnProperty.call(options, modified)) continue
           options[modified] = options[prop]
           delete options[prop]
           this.optionsFormat(options[modified])

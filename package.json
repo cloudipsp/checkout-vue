@@ -75,6 +75,7 @@
     },
     "extends": [
       "plugin:vue/recommended",
+      "eslint:recommended",
       "@vue/prettier"
     ],
     "rules": {

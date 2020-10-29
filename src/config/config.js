@@ -37,7 +37,10 @@ function enumArray(array) {
   return {
     type: 'array',
     validator(rule, value, callback, source, options) {
-      if (!rule.required && !source.hasOwnProperty(rule.field))
+      if (
+        !rule.required &&
+        !Object.prototype.hasOwnProperty.call(source, rule.field)
+      )
         return callback()
       let errors = []
       if (Array.isArray(value)) {
