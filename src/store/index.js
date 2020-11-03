@@ -93,7 +93,7 @@ class Store {
       this.state.options.logo_url || model.attr('merchant.logo_url')
     this.state.options.offerta_url =
       this.state.options.offerta_url || model.attr('merchant.offerta_url')
-    this.state.region = model.attr('merchant.country').toLowerCase()
+    this.state.region = (model.attr('merchant.country') || '').toLowerCase()
 
     if (model.attr('tabs_order') && model.attr('tabs_order').length) {
       this.state.options.methods = methods(

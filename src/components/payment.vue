@@ -110,6 +110,7 @@ export default {
         this.store.formLoading(false)
       })
       .then(this.appSuccess)
+      .catch(this.appError)
       .catch(errorHandler)
   },
   methods: {
@@ -152,6 +153,13 @@ export default {
     },
     appSuccess(model) {
       this.$root.$emit('ready', model)
+      this.appFinally(model)
+    },
+    appError(model) {
+      this.appFinally(model)
+      return Promise.reject(model)
+    },
+    appFinally(model) {
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))

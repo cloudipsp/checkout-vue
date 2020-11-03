@@ -18,9 +18,9 @@ export const methods = (user, server, disable) => {
     .filter(excludes(disable))
 }
 
-export const tabs = arr => {
+export const tabs = (obj = {}) => {
   return Object.fromEntries(
-    Object.entries(arr).map(([name, value]) => {
+    Object.entries(obj).map(([name, value]) => {
       name = mapped(name)
       return [name, parse(value, name)]
     })
