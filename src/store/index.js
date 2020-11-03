@@ -423,17 +423,11 @@ class Store {
       params.recurring_data.amount = params.recurring_data.amount / 100
     }
 
-    if (!this.state.options.subscription.trial) {
-      delete params.recurring_data.trial_period
-      delete params.recurring_data.trial_quantity
-    }
-
-    if (
-      !this.state.options.subscription.quantity ||
-      this.state.options.subscription.unlimited
-    ) {
-      delete params.recurring_data.quantity
-    }
+    params.recurring_data = Object.fromEntries(
+      Object.entries(params.recurring_data).filter(
+        ([, value]) => value !== 0 || value !== ''
+      )
+    )
 
     if (params.recurring === 'n') {
       delete params.recurring_data
