@@ -138,10 +138,6 @@ class Store {
     this.validate(this.user)
     deepMerge(this.state.params, this.user.params, notSet.params)
     deepMerge(this.state.options, this.user.options, notSet.options)
-    Object.assign(
-      this.state.subscription,
-      configSubscription[this.state.options.subscription.type]
-    )
     Object.assign(this.state.messages, this.user.messages)
     Object.assign(this.state.validate, this.user.validate)
     Object.assign(
@@ -151,6 +147,11 @@ class Store {
     )
 
     this.setState(this.server)
+    Object.assign(
+      this.state.subscription,
+      configSubscription[this.state.options.subscription.type]
+    )
+
     this.initCdn()
     this.initMethods()
     this.initLang()
