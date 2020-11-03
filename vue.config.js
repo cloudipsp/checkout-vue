@@ -55,6 +55,13 @@ module.exports = {
         config
           .optimization
             .delete('splitChunks')
+            .minimizer('terser')
+              .tap(([options]) => {
+                options.terserOptions.output = options.terserOptions.output || {}
+                options.terserOptions.output.comments = /^! (npm|build)/
+                return [options]
+              })
+              .end()
             .end()
           .plugin('extract-css')
             .tap(() => {
