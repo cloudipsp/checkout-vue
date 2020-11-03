@@ -425,7 +425,7 @@ class Store {
 
     params.recurring_data = Object.fromEntries(
       Object.entries(params.recurring_data).filter(
-        ([, value]) => value !== 0 || value !== ''
+        ([, value]) => value !== 0 && value !== ''
       )
     )
 
