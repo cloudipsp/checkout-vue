@@ -83,6 +83,11 @@ const install = Vue => {
       return nCheck % 10 === 0
     },
   })
+  Validator.extend('one', {
+    validate: value => {
+      return parseInt(value, 10) > 0
+    },
+  })
 
   Validator.localize('en', messages)
 
