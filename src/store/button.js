@@ -33,7 +33,7 @@ function parseOptions({
   recurring_type,
   button_type,
 }) {
-  amount = amount * 100
+  amount = Math.round(amount * 100) || 0
   return {
     options: {
       api_domain: host,
@@ -58,9 +58,9 @@ function parseOptions({
       lang,
       recurring_data: {
         ...recurring,
+        amount: Math.round(recurring.amount * 100) || 0,
         readonly: recurring_readonly,
       },
-      recurring: recurring_state ? 'y' : 'n',
     },
     fields: Object.values(fields).map(parseField),
     amount_readonly: Boolean(amount_readonly),
