@@ -66,6 +66,11 @@
       border-width: px-to-rem(1.5px);
     }
   }
+
+  &[type='text'],
+  &[type='tel'] {
+    appearance: none;
+  }
 }
 
 .f-control-sm {
