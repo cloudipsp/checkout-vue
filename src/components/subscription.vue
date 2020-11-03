@@ -38,7 +38,7 @@
           <f-form-group
             v-else
             key="quantity"
-            v-model="quantity"
+            v-model.number="quantity"
             class="f-col-7"
             label="number_of_payments"
             rules="required|numeric|one"
@@ -58,7 +58,7 @@
         </div>
         <div class="f-input-group">
           <f-form-group
-            v-model="every"
+            v-model.number="every"
             class="f-col-3"
             label="subscription_every"
             rules="required|numeric|one"
@@ -128,12 +128,17 @@ export default {
   data() {
     return {
       error: '',
+      quantity_: 0,
+      trial_period_: '',
+      trial_quantity_: 0,
+      start_time_: '',
+      end_time_: '',
     }
   },
   computed: {
     ...mapState('options.subscription', {
       showQuantity: 'quantity',
-      showTrial: 'trial',
+      optionTrial: 'trial',
     }),
     ...mapState('options.subscription', ['periods']),
     ...mapStateGetSet('options.subscription', ['unlimited']),
@@ -152,6 +157,9 @@ export default {
     ]),
     ...mapState('params', ['amount']),
     ...mapState(['amount_readonly']),
+    showTrial() {
+      return this.optionTrial && !this.unlimited
+    },
     showStartTime() {
       return this.unlimited || this.start_time
     },
@@ -175,15 +183,39 @@ export default {
       },
       immediate: true,
     },
-    enabled_switch: {
-      handler(value) {
-        this.enabled = value
-      },
+    enabled_switch(value) {
+      this.enabled = value
+    },
+    unlimited(value) {
+      if (value) {
+        this.saveQuantity()
+        this.saveTrial()
+        this.clearQuantity()
+        this.clearTrial()
+        this.setTime()
+      } else {
+        this.saveTime()
+        this.clearTime()
+        this.setQuantity()
+        this.setTrial()
+      }
     },
   },
   created() {
     this.end_time = this.recurringEndTime()
     this.start_time = this.recurringStartTime()
+
+    if (!this.optionTrial) {
+      this.clearTrial()
+    }
+
+    if (!this.showQuantity || this.unlimited) {
+      this.clearQuantity()
+    }
+
+    this.saveTime()
+    this.saveQuantity()
+    this.saveTrial()
   },
   methods: {
     getDate(date) {
@@ -221,6 +253,39 @@ export default {
     },
     onShowError(show, error) {
       this.error = show && error
+    },
+    setTime() {
+      this.start_time = this.start_time_
+      this.end_time = this.end_time_
+    },
+    setQuantity() {
+      this.quantity = this.quantity_
+    },
+    setTrial() {
+      this.trial_period = this.trial_period_
+      this.trial_quantity = this.trial_quantity_
+    },
+    saveTime() {
+      this.start_time_ = this.start_time
+      this.end_time_ = this.end_time
+    },
+    saveQuantity() {
+      this.quantity_ = this.quantity
+    },
+    saveTrial() {
+      this.trial_period_ = this.trial_period
+      this.trial_quantity_ = this.trial_quantity
+    },
+    clearTime() {
+      this.start_time = ''
+      this.end_time = ''
+    },
+    clearQuantity() {
+      this.quantity = 0
+    },
+    clearTrial() {
+      this.trial_period = ''
+      this.trial_quantity = 0
     },
   },
 }
