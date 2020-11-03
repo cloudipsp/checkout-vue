@@ -439,21 +439,43 @@ class Store {
   }
   setSubscription({ subscription, recurring_data = {} } = {}) {
     if (!subscription) return
+
     if (!recurring_data) {
       recurring_data = {}
     }
-    const unlimited = !recurring_data.quantity && !recurring_data.end_time
+
+    const {
+      amount = 0,
+      period = 1,
+      every = 'month',
+      start_time = '',
+      end_time = '',
+      readonly = false,
+      conditions,
+    } = recurring_data
+
+    const { quantity = 0, trial_period = '', trial_quantity = 0 } = conditions
+
+    const unlimited = !quantity && !end_time
     const config = {
       options: {
         subscription: {
-          quantity: recurring_data.quantity || unlimited,
+          quantity: quantity || unlimited,
           unlimited,
-          trial: recurring_data.trial_period && recurring_data.trial_quantity,
+          trial: trial_period && trial_quantity,
         },
       },
       params: {
         recurring_data: {
-          ...recurring_data,
+          amount: Math.round(amount * 100) || 0,
+          period,
+          every,
+          start_time,
+          end_time,
+          readonly,
+          quantity,
+          trial_period,
+          trial_quantity,
         },
       },
       subscription: configSubscription.shown_readonly,
