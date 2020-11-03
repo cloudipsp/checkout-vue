@@ -39,6 +39,8 @@ class Store {
       options: { subscription: {} },
       params: { recurring_data: {} },
       css_variable: {},
+      fields: [],
+      amount_readonly: true,
     }
   }
   attr(name, value) {
@@ -134,18 +136,8 @@ class Store {
 
     this.optionsFormat(this.user)
     this.validate(this.user)
-    deepMerge(
-      this.state.params,
-      this.user.params,
-      notSet.params,
-      this.server.params
-    )
-    deepMerge(
-      this.state.options,
-      this.user.options,
-      notSet.options,
-      this.server.options
-    )
+    deepMerge(this.state.params, this.user.params, notSet.params)
+    deepMerge(this.state.options, this.user.options, notSet.options)
     Object.assign(
       this.state.subscription,
       configSubscription[this.state.options.subscription.type]
@@ -155,9 +147,10 @@ class Store {
     Object.assign(
       this.state.css_variable,
       cssVarisble(this.state.options.theme),
-      this.user.css_variable,
-      this.server.css_variable
+      this.user.css_variable
     )
+
+    this.setState(this.server)
     this.initCdn()
     this.initMethods()
     this.initLang()
