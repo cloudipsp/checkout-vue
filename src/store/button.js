@@ -34,17 +34,22 @@ function parseOptions({
   button_type,
 }) {
   amount = Math.round(amount * 100) || 0
+
+  const type =
+    button_type === '.recurring-form'
+      ? recurring_state
+        ? 'shown_edit_on'
+        : 'shown_edit_off'
+      : button_type === 'recurring'
+      ? recurring_state
+      : 'disable'
+
   return {
     options: {
       api_domain: host,
       title: name,
       subscription: {
-        type:
-          button_type === 'recurring'
-            ? recurring_state
-              ? 'shown_edit_on'
-              : 'shown_edit_off'
-            : 'disable',
+        type,
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
