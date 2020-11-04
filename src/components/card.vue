@@ -153,7 +153,7 @@
     />
     <f-customer-fields />
     <f-fields />
-    <f-subscription />
+    <f-subscription v-if="showSubscription" />
     <f-offer />
     <f-button-pay />
     <f-modal-base
@@ -211,11 +211,15 @@ export default {
       'css_variable',
       'submited',
       'isOnlyCard',
+      'ready',
     ]),
     ...mapState('router', ['method']),
     ...mapState('options', ['email']),
     ...mapState('params', ['card_number', 'code', 'token']),
     ...mapState('css_variable', ['card_bg_lighten']),
+    showSubscription() {
+      return this.token ? this.ready : true
+    },
     readonly() {
       return this.read_only || this.need_verify_code
     },

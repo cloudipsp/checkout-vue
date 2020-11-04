@@ -105,11 +105,11 @@ export default {
 
     this.store
       .sendRequest('api.checkout', 'app', this.createdFormParams)
+      .then(this.appSuccess)
       .finally(() => {
         this.ready = true
         this.store.formLoading(false)
       })
-      .then(this.appSuccess)
       .catch(this.appError)
       .catch(errorHandler)
   },
