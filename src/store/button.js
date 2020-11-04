@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { findGetParameter } from '@/utils/helpers'
+import { deepMerge, findGetParameter } from '@/utils/helpers'
+import optionsDefault from '@/config/options-default'
 
 let config = {}
 
@@ -62,7 +63,7 @@ function parseOptions({
       merchant_id,
       lang,
       recurring_data: {
-        ...recurring,
+        ...deepMerge({}, optionsDefault.params.recurring_data, recurring),
         amount: Math.round(recurring.amount * 100) || 0,
         readonly: recurring_readonly,
       },
