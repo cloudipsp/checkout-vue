@@ -187,20 +187,7 @@ export default {
     enabled_switch(value) {
       this.enabled = value
     },
-    unlimited(value) {
-      if (value) {
-        this.saveQuantity()
-        this.saveTrial()
-        this.clearQuantity()
-        this.clearTrial()
-        this.setTime()
-      } else {
-        this.saveTime()
-        this.clearTime()
-        this.setQuantity()
-        this.setTrial()
-      }
-    },
+    unlimited: 'watchUnlimited',
   },
   created() {
     this.end_time = this.recurringEndTime()
@@ -217,6 +204,7 @@ export default {
     this.saveTime()
     this.saveQuantity()
     this.saveTrial()
+    this.watchUnlimited(this.unlimited)
   },
   methods: {
     getDate(date) {
@@ -254,6 +242,20 @@ export default {
     },
     onShowError(show, error) {
       this.error = show && error
+    },
+    watchUnlimited(value) {
+      if (value) {
+        this.saveQuantity()
+        this.saveTrial()
+        this.clearQuantity()
+        this.clearTrial()
+        this.setTime()
+      } else {
+        this.saveTime()
+        this.clearTime()
+        this.setQuantity()
+        this.setTrial()
+      }
     },
     setTime() {
       this.start_time = this.start_time_
