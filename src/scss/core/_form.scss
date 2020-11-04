@@ -68,7 +68,8 @@
   }
 
   &[type='text'],
-  &[type='tel'] {
+  &[type='tel'],
+  &[type='date'] {
     appearance: none;
   }
 }
