@@ -26,12 +26,12 @@
           label="trial_period"
           :disabled="true"
         />
-        <div v-if="showQuantity" class="f-row">
+        <div v-if="showQuantity" class="f-row f-align-items-center">
           <f-form-group
             v-if="unlimited"
             key="checked_unlimited"
             value="∞"
-            class="f-col-7"
+            class="f-col-12 f-col-ss-7"
             label="number_of_payments"
             :disabled="true"
           />
@@ -39,7 +39,7 @@
             v-else
             key="quantity"
             v-model.number="quantity"
-            class="f-col-7"
+            class="f-col-12 f-col-ss-7"
             label="number_of_payments"
             rules="required|numeric|one"
             type="tel"
@@ -50,8 +50,9 @@
             key="unlimited"
             v-model="unlimited"
             component="checkbox"
-            class="f-col-5 f-subscription-unlimited"
+            class="f-col"
             :disabled="readonly"
+            size="sm"
           >
             <span v-t="'unlimited'" />
           </f-form-group>
@@ -59,7 +60,7 @@
         <div class="f-input-group">
           <f-form-group
             v-model.number="every"
-            class="f-col-3"
+            class="f-col-4 f-col-ss-3"
             label="subscription_every"
             rules="required|numeric|one"
             type="tel"
@@ -72,7 +73,7 @@
           <f-form-group
             v-model="period"
             component="select"
-            class="f-col-9"
+            class="f-col"
             :options="list"
             label="subscription_period"
             rules="required"

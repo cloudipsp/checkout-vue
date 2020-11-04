@@ -103,6 +103,11 @@
   }
 }
 
+.f-form-item-sm > .f-checkbox-label {
+  font-size: px-to-rem(12px);
+  line-height: px-to-rem(22px);
+}
+
 .f-checkbox-default {
   @include checkbox-variant(
     $input_bg,
