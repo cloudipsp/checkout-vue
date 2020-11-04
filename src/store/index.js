@@ -33,7 +33,6 @@ let instance = {}
 
 class Store {
   constructor() {
-    this.default = optionsDefault
     this.setStateDefault()
     this.server = {
       options: { subscription: {} },
@@ -434,29 +433,46 @@ class Store {
   setSubscription({ subscription, recurring_data = {} } = {}) {
     if (!subscription) return
 
-    if (!recurring_data) {
-      recurring_data = {}
+    recurring_data = recurring_data || {}
+
+    let {
+      amount,
+      period,
+      every,
+      start_time,
+      end_time,
+      readonly,
+      conditions = {},
+      state,
+    } = deepMerge({}, optionsDefault.params.recurring_data, recurring_data)
+
+    const { quantity, trial_period, trial_quantity } = deepMerge(
+      {},
+      optionsDefault.params.recurring_data,
+      conditions
+    )
+
+    state = (state || '').toLowerCase()
+
+    let type
+
+    if (state === 'y') {
+      type = 'shown_edit_on'
+    } else if (state === 'n') {
+      type = 'shown_edit_off'
+    } else if (state in configSubscription) {
+      type = state
+    } else {
+      type = 'shown_readonly'
     }
 
-    const {
-      amount = 0,
-      period = 1,
-      every = 'month',
-      start_time = '',
-      end_time = '',
-      readonly = false,
-      conditions,
-    } = recurring_data
-
-    const { quantity = 0, trial_period = '', trial_quantity = 0 } = conditions
-
-    const unlimited = !quantity && !end_time
+    const unlimited = Boolean(!quantity && !end_time)
     const config = {
       options: {
         subscription: {
-          quantity: quantity || unlimited,
+          quantity: Boolean(quantity || unlimited),
           unlimited,
-          trial: trial_period && trial_quantity,
+          trial: Boolean(trial_period && trial_quantity),
         },
       },
       params: {
@@ -472,7 +488,7 @@ class Store {
           trial_quantity,
         },
       },
-      subscription: configSubscription.shown_readonly,
+      subscription: configSubscription[type],
     }
 
     this.setState(config)
