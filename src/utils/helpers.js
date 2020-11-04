@@ -1,3 +1,5 @@
+import { isPlainObject } from '@/utils/typeof'
+
 export const getCookie = name => {
   let matches = document.cookie.match(
     new RegExp(
@@ -17,7 +19,8 @@ export const deepMerge = (...args) => {
   let merge = function (obj) {
     for (let prop in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-        if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+        if (isPlainObject(obj[prop])) {
+          extended[prop] = extended[prop] || {}
           extended[prop] = deepMerge(extended[prop], obj[prop])
         } else {
           extended[prop] = obj[prop]
