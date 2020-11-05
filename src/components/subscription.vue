@@ -190,9 +190,6 @@ export default {
     unlimited: 'watchUnlimited',
   },
   created() {
-    this.end_time = this.recurringEndTime()
-    this.start_time = this.recurringStartTime()
-
     if (!this.optionTrial) {
       this.clearTrial()
     }
@@ -207,39 +204,6 @@ export default {
     this.watchUnlimited(this.unlimited)
   },
   methods: {
-    getDate(date) {
-      date.setHours(0)
-      date.setMinutes(0)
-      date.setSeconds(0)
-      date.setMilliseconds(0)
-      return date
-    },
-    getDateFormat(d) {
-      return (
-        d.getFullYear() +
-        '-' +
-        ('0' + (d.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + d.getDate()).slice(-2)
-      )
-    },
-    recurringTime(field) {
-      let date = this[field]
-      let value = this.getDate(new Date(date))
-      let now = this.getDate(new Date())
-      if (now > value) value = now
-      return this.getDateFormat(value)
-    },
-    recurringStartTime() {
-      if (this.start_time) {
-        return this.recurringTime('start_time')
-      }
-    },
-    recurringEndTime() {
-      if (this.end_time) {
-        return this.recurringTime('end_time')
-      }
-    },
     onShowError(show, error) {
       this.error = show && error
     },
