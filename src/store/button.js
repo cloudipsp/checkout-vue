@@ -62,7 +62,7 @@ function parseOptions({
       lang,
       recurring_data: {
         ...deepMerge({}, optionsDefault.params.recurring_data, recurring),
-        amount: Math.round(recurring.amount * 100) || 0,
+        amount: Math.round(recurring.amount * 100) || amount,
         readonly: recurring_readonly,
       },
     },
