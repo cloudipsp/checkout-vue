@@ -131,21 +131,27 @@ export default {
         .sendRequest(
           'api.checkout.form',
           'request',
-          Object.assign(this.store.formParams(), data)
+          Object.assign(this.store.formParams(), data),
+          {},
+          this.submitProgress
         )
         .finally(() => {
           this.store.formLoading(false)
         })
         .then(this.submitSuccess, this.submitError)
     },
-    submitSuccess(model) {
+    submitProgress(model) {
       if (!model) return
-      this.$root.$emit('success', model)
 
       this.location(model.instance(model.alt('order', model.data)))
       this.submit3dsSuccess(model)
 
       return model
+    },
+    submitSuccess(model) {
+      this.$root.$emit('success', model)
+
+      this.submitProgress(model)
     },
     submitError(model) {
       this.$root.$emit('error', model)
