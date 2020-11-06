@@ -18,7 +18,6 @@ export default function () {
 }
 
 function parseOptions({
-  host,
   name,
   fields = {},
   amount,
@@ -47,7 +46,6 @@ function parseOptions({
 
   return {
     options: {
-      api_domain: host,
       title: name,
       subscription: {
         type,
