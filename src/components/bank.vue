@@ -214,6 +214,13 @@ export default {
     },
   },
   watch: {
+    config() {
+      if (!this.open) return
+
+      let bank = this.list.filter(item => item.id === this.select.id)[0]
+
+      this.selectBank(bank)
+    },
     country: {
       handler(item) {
         if (item.length === 1) {
