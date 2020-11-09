@@ -114,7 +114,7 @@ const config = {
   region: '',
   amount_readonly: true,
   show_gdpr_frame: false,
-  subscription: configSubscription.disable,
+  subscription: configSubscription.disabled,
 }
 
 locales.forEach(function (locale) {

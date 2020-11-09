@@ -1,5 +1,5 @@
 export default {
-  disable: {
+  disabled: {
     enabled: false,
     show: false,
     enabled_switch: false,
