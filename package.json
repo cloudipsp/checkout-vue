@@ -41,7 +41,7 @@
     "vue2-datepicker": "^3.7.0"
   },
   "devDependencies": {
-    "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
+    "@samhammer/vue-cli-plugin-stylelint": "~2.0.1",
     "@vue/cli-plugin-babel": "^4.5.8",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.8",
     "@vue/cli-plugin-eslint": "^4.5.8",
@@ -64,8 +64,10 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "sass-loader": "^8.0.2",
-    "stylelint-config-prettier": "^5.3.0",
-    "stylelint-config-twbs-bootstrap": "^0.4.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-twbs-bootstrap": "^2.1.0",
+    "stylelint-prettier": "^1.1.2",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
@@ -113,12 +115,13 @@
     "syntax": "scss",
     "extends": [
       "stylelint-config-twbs-bootstrap/scss",
-      "stylelint-config-prettier"
+      "stylelint-prettier/recommended"
     ],
     "rules": {
       "no-descending-specificity": null,
       "media-feature-name-no-unknown": null,
-      "scss/dollar-variable-default": null
+      "scss/dollar-variable-default": null,
+      "scss/dollar-variable-pattern": "^[a-z][a-z-\\d_]*$"
     }
   },
   "prettier": {

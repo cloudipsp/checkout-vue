@@ -9,7 +9,7 @@
 .f-subscription-wrapper {
   margin-top: px-to-rem(12px);
 
-  & > :last-child {
+  > :last-child {
     margin: 0;
   }
 }
