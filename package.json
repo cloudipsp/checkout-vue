@@ -176,6 +176,7 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "license": "MIT",
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",
