@@ -21,6 +21,8 @@ import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
 import { errorHandler } from '@/utils/helpers'
 import configTheme from '@/config/theme'
+import initFavicon from '@/store/favicon'
+import { isExist } from '@/utils/typeof'
 
 export default {
   components: {
@@ -45,7 +47,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isOnlyCard', 'error']),
+    ...mapState(['isOnlyCard', 'error', 'cdnIcons']),
     ...mapState('options', ['show_menu_first', 'full_screen']),
     ...mapState('options.theme', ['type']),
     ...mapState('router', ['page', 'method']),
@@ -80,6 +82,8 @@ export default {
     },
   },
   created() {
+    this.initFavicon()
+
     Promise.all([
       this.store.loadButton(),
       this.store.loadCardImg(this.getPreset()),
@@ -92,6 +96,14 @@ export default {
       .catch(errorHandler)
   },
   methods: {
+    initFavicon() {
+      const userFullScreen = this.attr('optionsUser.options.full_screen')
+      const full_screen = isExist(userFullScreen)
+        ? userFullScreen
+        : this.full_screen
+
+      initFavicon(this.cdnIcons, full_screen)
+    },
     initHeight() {
       this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
     },

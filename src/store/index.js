@@ -19,7 +19,6 @@ import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadButton from '@/store/button'
 import loadCardImg from '@/store/card-img'
-import initFavicon from '@/store/favicon'
 import { sessionStorage } from '@/utils/store'
 import { methods, tabs } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
@@ -164,7 +163,6 @@ class Store {
     this.initIsOnlyWallets()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
-    initFavicon(this.state.cdnIcons, this.state.options.full_screen)
   }
   optionsFormat(options) {
     let regex = /[A-Z]+/g
