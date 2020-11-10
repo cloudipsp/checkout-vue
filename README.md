@@ -153,15 +153,13 @@ app.$on('success', function(model) {})
 app.$on('error', function(model) {})
 app.$on('ready', function(model) {})
 app.$on('callback', function(model) {})
+app.$on('show-pay', function(model) {})
 
 app.submit()
-app.$emit('submit')
 
 app.location({method}, {system})
-app.$emit('location', {method}, {system}) method support `card`, `sepa`, `banklinks_eu`
 
 app.setParams({params})
-app.$emit('setParams', {params})
 
 app.$destroy()
 ```
