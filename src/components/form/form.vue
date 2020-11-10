@@ -8,6 +8,7 @@
 import { mapState, mapStateGetSet } from '@/utils/store'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   mixins: [timeout, isMounted],
@@ -41,7 +42,9 @@ export default {
     method: 'watchMethod',
   },
   created() {
-    this.$root.$on('submit', this.submit)
+    this.$root.$on('submit', () => {
+      this.submit().catch(errorHandler)
+    })
   },
   methods: {
     watchMethod() {
