@@ -165,7 +165,7 @@ export default {
       return this.unlimited || this.start_time
     },
     showEndTime() {
-      return this.unlimited || this.end_time
+      return (this.unlimited && !this.start_time) || this.end_time
     },
     showVerificationDesc() {
       return this.showTrial && this.amount <= 100 && this.amount_readonly
@@ -190,6 +190,8 @@ export default {
     unlimited: 'watchUnlimited',
   },
   created() {
+    this.setStartTime()
+
     if (!this.optionTrial) {
       this.clearTrial()
     }
@@ -204,6 +206,25 @@ export default {
     this.watchUnlimited(this.unlimited)
   },
   methods: {
+    setStartTime() {
+      if (!this.start_time) return
+
+      let value = new Date(this.start_time)
+      let now = new Date()
+
+      if (now > value) value = now
+
+      this.start_time = this.getDateFormat(value)
+    },
+    getDateFormat(d) {
+      return (
+        d.getFullYear() +
+        '-' +
+        ('0' + (d.getMonth() + 1)).slice(-2) +
+        '-' +
+        ('0' + d.getDate()).slice(-2)
+      )
+    },
     onShowError(show, error) {
       this.error = show && error
     },
