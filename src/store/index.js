@@ -25,6 +25,7 @@ import { localStorage } from '@/utils/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
+import { getType } from '@/store/subscription'
 
 Vue.use(store)
 
@@ -450,20 +451,6 @@ class Store {
       conditions
     )
 
-    state = (state || '').toLowerCase()
-
-    let type
-
-    if (state === 'y') {
-      type = 'shown_edit_on'
-    } else if (state === 'n') {
-      type = 'shown_edit_off'
-    } else if (state in configSubscription) {
-      type = state
-    } else {
-      type = 'shown_readonly'
-    }
-
     const unlimited = Boolean(!quantity && !end_time)
     const config = {
       options: {
@@ -486,7 +473,7 @@ class Store {
           trial_quantity,
         },
       },
-      subscription: configSubscription[type],
+      subscription: configSubscription[getType(true, state)],
     }
 
     this.setState(config)

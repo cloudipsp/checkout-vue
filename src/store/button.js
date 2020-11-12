@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { deepMerge, findGetParameter } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
-import { isBoolean, isString } from '@/utils/typeof'
-import configSubscription from '@/config/subscription'
+import { getType } from '@/store/subscription'
 
 let config = {}
 
@@ -37,28 +36,11 @@ function parseOptions({
 }) {
   amount = Math.round(amount * 100) || 0
 
-  let type
-
-  if (button_type === 'recurring') {
-    if (isBoolean(recurring_state)) {
-      type = recurring_state ? 'shown_edit_on' : 'shown_edit_off'
-    } else if (
-      isString(recurring_state) &&
-      recurring_state in configSubscription
-    ) {
-      type = recurring_state
-    } else {
-      type = 'shown_readonly'
-    }
-  } else {
-    type = 'disable'
-  }
-
   return {
     options: {
       title: name,
       subscription: {
-        type,
+        type: getType(button_type === 'recurring', recurring_state),
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
