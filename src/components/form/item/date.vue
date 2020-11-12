@@ -6,6 +6,7 @@
       v-model="innerValue"
       :class="classInput"
       v-bind="attrs"
+      :min="minFormat"
       v-on="$listeners"
       @keyup.enter="onEnter"
     />
@@ -28,6 +29,7 @@ import item from '@/mixins/item'
 import mobile from '@/mixins/mobile'
 import DatePicker from './helpers/date-picker'
 import FormInput from './helpers/form-input'
+import { dateFormat } from '@/utils/helpers'
 
 export default {
   components: {
@@ -35,6 +37,20 @@ export default {
     FormInput,
   },
   mixins: [item, mobile],
+  props: {
+    min: {
+      type: String,
+      default: '',
+      validator: value => ['', 'now'].includes(value),
+    },
+  },
+  data() {
+    return {
+      map: {
+        now: this.getDate(new Date()),
+      },
+    }
+  },
   computed: {
     attrsDatepicker() {
       return {
@@ -50,7 +66,30 @@ export default {
         'prefix-class': 'f-datepicker',
         'append-to-body': false,
         disabled: this.attrs.disabled,
+        'disabled-date': this.disabledDate,
       }
+    },
+    minDate() {
+      if (!this.min) return
+
+      return this.map[this.min]
+    },
+    minFormat() {
+      if (!this.min) return
+
+      return dateFormat(this.minDate)
+    },
+  },
+  methods: {
+    disabledDate(date) {
+      return date < this.minDate
+    },
+    getDate(date) {
+      date.setHours(0)
+      date.setMinutes(0)
+      date.setSeconds(0)
+      date.setMilliseconds(0)
+      return date
     },
   },
 }
