@@ -99,6 +99,7 @@
           type="date"
           :disabled="readonly"
           :input-class="'f-form-control-start-time'"
+          min="now"
         />
         <f-form-group
           v-if="showEndTime"
@@ -110,6 +111,7 @@
           type="date"
           :disabled="readonly"
           :input-class="'f-form-control-start-time'"
+          min="now"
         />
         <div
           v-if="showVerificationDesc"
@@ -124,6 +126,7 @@
 <script>
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
+import { dateFormat } from '@/utils/helpers'
 
 export default {
   data() {
@@ -214,16 +217,7 @@ export default {
 
       if (now > value) value = now
 
-      this.start_time = this.getDateFormat(value)
-    },
-    getDateFormat(d) {
-      return (
-        d.getFullYear() +
-        '-' +
-        ('0' + (d.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + d.getDate()).slice(-2)
-      )
+      this.start_time = dateFormat(value)
     },
     onShowError(show, error) {
       this.error = show && error
