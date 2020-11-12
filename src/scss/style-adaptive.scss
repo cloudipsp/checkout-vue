@@ -222,51 +222,6 @@
   }
 }
 
-.f-card {
-  @include media-breakpoint-up(ss) {
-    padding: px-to-rem(95px) 0 px-to-rem(19.5px) px-to-rem(16px);
-  }
-}
-
-.f-form-group-card {
-  .f-control-label {
-    @include media-breakpoint-up(ss) {
-      margin-bottom: px-to-rem(4px);
-      font-size: px-to-rem(11px);
-      line-height: px-to-rem(13px);
-    }
-  }
-
-  .f-form-control {
-    @include media-breakpoint-up(ss) {
-      height: px-to-rem(25px);
-      font-size: px-to-rem(20px);
-      line-height: px-to-rem(25px);
-    }
-
-    &:-webkit-autofill {
-      &::first-line {
-        @include media-breakpoint-up(ss) {
-          font-size: px-to-rem(20px);
-          line-height: px-to-rem(25px);
-        }
-      }
-    }
-  }
-}
-
-.f-amount {
-  @include media-breakpoint-up(ss) {
-    font-size: px-to-rem(32px);
-  }
-}
-
-.f-currency {
-  @include media-breakpoint-up(ss) {
-    font-size: px-to-rem(22px);
-  }
-}
-
 .f-menu-item {
   @include media-breakpoint-up(lg) {
     height: px-to-rem(60px);
@@ -290,64 +245,14 @@
   }
 }
 
-.f-container-sm,
-.f-payment-method-card-inner {
-  @include media-breakpoint-up(ss) {
-    width: 100%;
-    max-width: 335px;
-  }
-
-  @include media-breakpoint-up(sm) {
-    max-width: 360px;
-  }
-}
-
 .f-bank-item {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
   @include media-breakpoint-up(md) {
     flex: 0 0 33.3%;
     max-width: 33.3%;
   }
 }
 
-.f-bank-country {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 px-to-rem(220px);
-    max-width: px-to-rem(220px);
-  }
-}
-
-.f-bank-search {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 calc(100% - #{px-to-rem(320px)});
-    max-width: calc(100% - #{px-to-rem(320px)});
-  }
-}
-
-.f-bank-view {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 px-to-rem(100px);
-    max-width: px-to-rem(100px);
-  }
-}
-
 .f-fast-access-icon {
-  @include media-breakpoint-up(ss) {
-    margin-right: 23px; // 335px
-
-    &:nth-child(5n) {
-      margin-right: 0;
-    }
-  }
-
-  @include media-breakpoint-up(sm) {
-    margin-right: 30px; // 360px
-  }
-
   @include media-breakpoint-up(lg) {
     margin-right: 22px; // 328px
   }
@@ -430,17 +335,5 @@
     margin-right: 0;
     margin-left: 0;
     border-radius: px-to-rem(8px);
-  }
-}
-
-.f-receipt-row {
-  @include media-breakpoint-up(sm) {
-    display: flex;
-  }
-}
-
-.f-receipt-key {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 160px;
   }
 }

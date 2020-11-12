@@ -1,0 +1,57 @@
+@import 'core/functions';
+@import 'core/colors';
+@import 'core/variables';
+@import 'core/mixins/index';
+
+.f-container-sm,
+.f-payment-method-card-inner {
+  @include media-breakpoint-up(sm) {
+    max-width: 360px;
+  }
+}
+
+.f-bank-item {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.f-bank-country {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 px-to-rem(220px);
+    max-width: px-to-rem(220px);
+  }
+}
+
+.f-bank-search {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 calc(100% - #{px-to-rem(320px)});
+    max-width: calc(100% - #{px-to-rem(320px)});
+  }
+}
+
+.f-bank-view {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 px-to-rem(100px);
+    max-width: px-to-rem(100px);
+  }
+}
+
+.f-fast-access-icon {
+  @include media-breakpoint-up(sm) {
+    margin-right: 30px; // 360px
+  }
+}
+
+.f-receipt-row {
+  @include media-breakpoint-up(sm) {
+    display: flex;
+  }
+}
+
+.f-receipt-key {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 160px;
+  }
+}
