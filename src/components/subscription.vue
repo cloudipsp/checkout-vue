@@ -144,12 +144,11 @@ export default {
       showQuantity: 'quantity',
       optionTrial: 'trial',
     }),
-    ...mapState('options.subscription', ['periods']),
+    ...mapState('options.subscription', ['periods', 'readonly']),
     ...mapStateGetSet('options.subscription', ['unlimited']),
     ...mapState('subscription', ['show', 'show_switch']),
     ...mapStateGetSet('subscription', ['enabled', 'enabled_switch']),
     ...mapStateGetSet('params', ['recurring']),
-    ...mapState('params.recurring_data', ['readonly']),
     ...mapStateGetSet('params.recurring_data', [
       'every',
       'start_time',

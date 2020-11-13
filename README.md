@@ -76,6 +76,7 @@ Name                  | Type        | Default                 | Description
 `quantity`            | Boolean     | false                   |
 `trial`               | Boolean     | false                   |
 `unlimited`           | Boolean     | true                    |
+`readonly`            | Boolean     | false                   |
 
 ### params
 Name                  | Type        | Default                 | Description                 | Priority

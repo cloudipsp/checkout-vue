@@ -9,8 +9,5 @@ export default {
     code: '',
     fee: 0,
     amount_with_fee: 0,
-    recurring_data: {
-      readonly: false,
-    },
   },
 }

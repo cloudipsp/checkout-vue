@@ -44,6 +44,7 @@ function parseOptions({
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
+        readonly: recurring_readonly,
       },
     },
     params: {
@@ -55,7 +56,6 @@ function parseOptions({
       recurring_data: {
         ...deepMerge({}, optionsDefault.params.recurring_data, recurring),
         amount: Math.round(recurring.amount * 100) || amount,
-        readonly: recurring_readonly,
       },
     },
     fields: Object.values(fields).map(parseField),

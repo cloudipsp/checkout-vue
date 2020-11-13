@@ -46,6 +46,7 @@ const config = {
       quantity: false,
       trial: false,
       unlimited: true,
+      readonly: false,
     },
   },
   params: {
@@ -61,7 +62,6 @@ const config = {
       start_time: '',
       end_time: '',
       amount: 0,
-      readonly: false,
       quantity: 0,
       trial_period: '',
       trial_quantity: 0,

@@ -440,6 +440,7 @@ class Store extends Model {
           quantity: Boolean(quantity || unlimited),
           unlimited,
           trial: Boolean(trial_period && trial_quantity),
+          readonly,
         },
       },
       params: {
@@ -449,7 +450,6 @@ class Store extends Model {
           every,
           start_time,
           end_time,
-          readonly,
           quantity,
           trial_period,
           trial_quantity,

@@ -9,8 +9,6 @@ import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
-import configNotSet from '@/config/not-set'
-import { excludes } from '@/utils/helpers'
 import configExcludeMessages from '@/config/exclude-messages'
 
 const cardIcons = Object.keys(configCardBrands)
@@ -22,13 +20,7 @@ const locales = Object.keys(configLocales)
 const options = Object.keys(configOptionsDefault.options)
 const endpoint = Object.keys(configOptionsDefault.options.endpoint)
 const subscription = Object.keys(configOptionsDefault.options.subscription)
-const recurring_data_include = Object.keys(
-  configOptionsDefault.params.recurring_data
-)
-const recurring_data_exclude = Object.keys(configNotSet.params.recurring_data)
-const recurring_data = recurring_data_include.filter(
-  excludes(recurring_data_exclude)
-)
+const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
 const subscriptionType = Object.keys(configSubscription)
 const config = ['options', 'params', 'messages', 'validate', 'css_variable']
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
@@ -242,6 +234,7 @@ export default {
               quantity: { type: 'boolean' },
               trial: { type: 'boolean' },
               unlimited: { type: 'boolean' },
+              readonly: { type: 'boolean' },
             },
           },
         },
