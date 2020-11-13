@@ -26,13 +26,16 @@ import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
 import { getType } from '@/store/subscription'
+import { compatibilityUserConfig } from '@/utils/compatibility'
+import Model from '@/class/model'
 
 Vue.use(store)
 
 let instance = {}
 
-class Store {
+class Store extends Model {
   constructor() {
+    super()
     this.setStateDefault()
     this.server = {
       options: { subscription: {} },
@@ -40,29 +43,6 @@ class Store {
       css_variable: {},
       fields: [],
       amount_readonly: true,
-    }
-  }
-  attr(name, value) {
-    name = (name || '').split('.')
-    let data = this
-    let prop = name.pop()
-    let len = arguments.length
-    for (let i = 0; i < name.length; i++) {
-      if (data && Object.prototype.hasOwnProperty.call(data, name[i])) {
-        data = data[name[i]]
-      } else {
-        if (len === 2) {
-          data = data[name[i]] = {}
-        } else {
-          break
-        }
-      }
-    }
-    if (len === 1) {
-      return data ? data[prop] : null
-    }
-    if (len === 2) {
-      data[prop] = value
     }
   }
   sendRequest(...args) {
@@ -129,9 +109,11 @@ class Store {
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
-  setOptions(optionsUser) {
+  setOptions(userConfig) {
+    userConfig = compatibilityUserConfig(userConfig)
+
     // delete undefined property
-    this.user = JSON.parse(JSON.stringify(optionsUser))
+    this.user = JSON.parse(JSON.stringify(userConfig))
 
     this.optionsFormat(this.user)
     this.validate(this.user)

@@ -1,5 +1,6 @@
 import configMethods from '@/config/methods.json'
 import { removeDuplicate, includes, excludes } from '@/utils/helpers'
+import Model from '@/class/model'
 
 const config = {
   trustly: 'banklinks_eu',
@@ -50,3 +51,43 @@ function parse(value, method) {
   )
   return value
 }
+
+class UserConfig extends Model {
+  constructor(data) {
+    super()
+    this.data = data
+  }
+
+  compatibility() {
+    this.subscription()
+    return this.data
+  }
+
+  subscription() {
+    let oldSubscription = this.attr('data.regular')
+    let newSubscription = this.attr('data.options.subscription')
+
+    if (!oldSubscription) return
+    if (newSubscription) return this.removeOldSubscription()
+
+    const insert = oldSubscription.insert
+    const open = oldSubscription.open
+    const type = insert
+      ? open
+        ? 'shown_edit_on'
+        : 'shown_edit_off'
+      : 'disabled'
+
+    this.attr('data.options.subscription.type', type)
+    this.attr('data.options.subscription.periods', oldSubscription.period)
+
+    this.removeOldSubscription()
+  }
+
+  removeOldSubscription() {
+    delete this.data.regular
+  }
+}
+
+export const compatibilityUserConfig = config =>
+  new UserConfig(config).compatibility()
