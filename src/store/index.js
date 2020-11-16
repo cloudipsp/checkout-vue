@@ -25,7 +25,7 @@ import { localStorage } from '@/utils/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
-import { getType } from '@/store/subscription'
+import { subscription } from '@/store/subscription'
 import { compatibilityUserConfig } from '@/utils/compatibility'
 import Model from '@/class/model'
 
@@ -102,7 +102,9 @@ class Store extends Model {
         'verification_' + this.state.verification_type + '_d'
     }
 
-    this.setSubscription(model.attr('order'))
+    subscription(model.attr('order'))
+      .then(config => this.setState(config))
+      .catch(errorHandler)
 
     this.state.show_gdpr_frame = model.attr('show_gdpr_frame')
   }
@@ -410,55 +412,6 @@ class Store extends Model {
   }
   setError(errors) {
     this.state.error.errors = errors
-  }
-  setSubscription({ subscription, recurring_data = {} } = {}) {
-    if (!subscription) return
-
-    recurring_data = recurring_data || {}
-
-    let {
-      amount,
-      period,
-      every,
-      start_time,
-      end_time,
-      readonly,
-      conditions = {},
-      state,
-    } = deepMerge({}, optionsDefault.params.recurring_data, recurring_data)
-
-    const { quantity, trial_period, trial_quantity } = deepMerge(
-      {},
-      optionsDefault.params.recurring_data,
-      conditions
-    )
-
-    const unlimited = Boolean(!quantity && !end_time)
-    const config = {
-      options: {
-        subscription: {
-          quantity: Boolean(quantity || unlimited),
-          unlimited,
-          trial: Boolean(trial_period && trial_quantity),
-          readonly,
-        },
-      },
-      params: {
-        recurring_data: {
-          amount: Math.round(amount * 100) || 0,
-          period,
-          every,
-          start_time,
-          end_time,
-          quantity,
-          trial_period,
-          trial_quantity,
-        },
-      },
-      subscription: configSubscription[getType(true, state)],
-    }
-
-    this.setState(config)
   }
   toggleMenu() {
     this.state.options.show_menu_first = !this.state.options.show_menu_first
