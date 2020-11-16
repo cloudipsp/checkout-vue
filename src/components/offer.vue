@@ -15,10 +15,13 @@ export default {
     ...mapStateGetSet('params', ['offer']),
     ...mapState('options', ['offerta_url']),
     show() {
-      return this.offerta_url
+      return this.url
     },
     html() {
-      return this.$t('offer_t', [this.offerta_url])
+      return this.$t('offer_t', [this.url])
+    },
+    url() {
+      return this.$te('offerta_url') ? this.$t('offerta_url') : this.offerta_url
     },
   },
 }

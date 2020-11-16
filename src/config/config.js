@@ -80,7 +80,6 @@ function enumObject(array) {
 function excludeObject(array) {
   return {
     type: 'object',
-    fields: {},
     validator(rule, value = {}, callback) {
       let errors = []
       Object.keys(value).forEach(item => {
@@ -146,6 +145,9 @@ let messages = enumObject(locales)
 locales.forEach(function (locale) {
   messages.fields[locale] = {
     ...excludeObject(configExcludeMessages),
+    fields: {
+      offerta_url: { type: 'url' },
+    },
   }
 })
 
