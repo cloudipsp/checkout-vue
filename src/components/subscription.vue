@@ -209,14 +209,17 @@ export default {
   },
   methods: {
     setStartTime() {
-      if (!this.start_time) return
+      if (
+        this.start_time ||
+        (!this.start_time && this.unlimited && !this.optionTrial)
+      ) {
+        let value = new Date(this.start_time || new Date())
+        let now = new Date()
 
-      let value = new Date(this.start_time)
-      let now = new Date()
+        if (now > value) value = now
 
-      if (now > value) value = now
-
-      this.start_time = dateFormat(value)
+        this.start_time = dateFormat(value)
+      }
     },
     onShowError(show, error) {
       this.error = show && error
