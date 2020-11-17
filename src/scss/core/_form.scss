@@ -51,6 +51,8 @@
   .f-disabled > & {
     color: $input_readonly_color;
     border-color: $input_border;
+    -webkit-text-fill-color: $input_readonly_color;
+    opacity: 1;
   }
 
   &:-webkit-autofill + .f-control-label-p {
