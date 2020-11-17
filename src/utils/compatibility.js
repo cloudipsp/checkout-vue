@@ -44,12 +44,22 @@ function parse(value, method) {
         ...value,
         method,
         id,
-        bank_logo: value.bank_logo || 'no_logo',
+        bank_logo: bankLogo(value),
         iban: id.split('|')[1] || '',
       },
     ])
   )
   return value
+}
+
+function bankLogo({ country, bank_logo }) {
+  return (
+    bank_logo || (isGermany(country) ? 'germanonlinebanktransfer' : 'no_logo')
+  )
+}
+
+function isGermany(country) {
+  return country === 'DE'
 }
 
 class UserConfig extends Model {
