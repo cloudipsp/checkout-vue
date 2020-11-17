@@ -146,6 +146,7 @@
     font-weight: 500;
     line-height: px-to-rem(10px);
     text-align: left;
+    background-color: $container_bg;
 
     .f-svg {
       min-width: px-to-rem(32px);
