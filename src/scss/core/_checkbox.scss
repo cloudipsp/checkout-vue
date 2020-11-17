@@ -41,6 +41,19 @@
       border-color: $color-checked;
     }
   }
+
+  &[disabled] + .f-checkbox-label {
+    cursor: default;
+
+    &::before {
+      background-color: $bg;
+      border-color: $border;
+    }
+
+    &::after {
+      opacity: 0;
+    }
+  }
 }
 
 .f-checkbox {
