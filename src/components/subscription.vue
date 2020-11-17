@@ -47,6 +47,7 @@
             :disabled="readonly"
           />
           <f-form-group
+            v-if="showUnlimited"
             key="unlimited"
             v-model="unlimited"
             component="checkbox"
@@ -163,6 +164,9 @@ export default {
     ...mapState(['amount_readonly']),
     showTrial() {
       return this.optionTrial && !this.unlimited
+    },
+    showUnlimited() {
+      return !this.readonly
     },
     showStartTime() {
       return this.unlimited || this.start_time
