@@ -137,6 +137,7 @@ export default {
       trial_quantity_: 0,
       start_time_: '',
       end_time_: '',
+      start_time_created: '',
     }
   },
   computed: {
@@ -167,7 +168,7 @@ export default {
       return this.unlimited || this.start_time
     },
     showEndTime() {
-      return (this.unlimited && !this.start_time) || this.end_time
+      return (this.unlimited && !this.start_time_created) || this.end_time
     },
     showVerificationDesc() {
       return this.showTrial && this.amount <= 100 && this.amount_readonly
@@ -192,6 +193,7 @@ export default {
     unlimited: 'watchUnlimited',
   },
   created() {
+    this.start_time_created = this.start_time
     this.setStartTime()
 
     if (!this.optionTrial) {
