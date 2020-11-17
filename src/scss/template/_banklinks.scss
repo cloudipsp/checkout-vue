@@ -15,7 +15,7 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   }
 }
 
-.f-bank-item-list {
+.f-bank-item.f-bank-item-list {
   flex: 0 0 100%;
   max-width: 100%;
 }
