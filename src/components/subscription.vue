@@ -26,7 +26,7 @@
           label="trial_period"
           :disabled="true"
         />
-        <div v-if="showQuantity" class="f-row f-align-items-center">
+        <div v-if="showQuantity" class="f-row f-align-items-center f-quantity">
           <f-form-group
             v-if="unlimited"
             key="checked_unlimited"
