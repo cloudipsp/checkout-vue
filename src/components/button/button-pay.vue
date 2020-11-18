@@ -1,18 +1,21 @@
 <template>
-  <f-button
-    v-if="show"
-    class="f-button-pay"
-    variant="success"
-    :disabled="disabled"
-    size="lg"
-    block
-    @click="click"
-  >
-    <span v-t="'pay'" />
-    <span v-if="showAmount">
-      <b> {{ fullAmount }}</b> {{ $t(currency) }}
-    </span>
-  </f-button>
+  <div>
+    <f-button
+      v-if="show"
+      class="f-button-pay"
+      variant="success"
+      :disabled="disabled"
+      size="lg"
+      block
+      @click="click"
+    >
+      <span v-t="'pay'" />
+      <span v-if="showAmount">
+        <b> {{ fullAmount }}</b> {{ $t(currency) }}
+      </span>
+    </f-button>
+    <div v-if="isDemo" v-t="'demo-desc'" class="f-demo-desc" />
+  </div>
 </template>
 
 <script>
@@ -26,7 +29,7 @@ export default {
   computed: {
     ...mapState(['verification_type', 'isSubmit']),
     ...mapState('options', { show: 'button' }),
-    ...mapState('options', ['show_button_amount']),
+    ...mapState('options', ['show_button_amount', 'disable_request']),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
     disabled() {
       return this.isError && this.isSubmit
@@ -36,6 +39,9 @@ export default {
     },
     showAmount() {
       return this.verification_type !== 'amount' && this.show_button_amount
+    },
+    isDemo() {
+      return this.disable_request
     },
   },
   methods: {

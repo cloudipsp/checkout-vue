@@ -1,6 +1,9 @@
 <template>
   <div id="f" :style="style" :class="className">
     <div v-if="show" class="f-container" :class="classNameContainer">
+      <div v-if="isDemo" class="f-demo">
+        <div v-t="'demo-title'" class="f-demo-title" />
+      </div>
       <f-header />
       <payment />
     </div>
@@ -48,7 +51,11 @@ export default {
   },
   computed: {
     ...mapState(['isOnlyCard', 'error', 'cdnIcons']),
-    ...mapState('options', ['show_menu_first', 'full_screen']),
+    ...mapState('options', [
+      'show_menu_first',
+      'full_screen',
+      'disable_request',
+    ]),
     ...mapState('options.theme', ['type']),
     ...mapState('router', ['page', 'method']),
     className() {
@@ -79,6 +86,9 @@ export default {
     },
     isError() {
       return this.error.errors.length
+    },
+    isDemo() {
+      return this.disable_request
     },
   },
   created() {
