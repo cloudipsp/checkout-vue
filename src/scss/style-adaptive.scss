@@ -21,11 +21,13 @@
   }
 }
 
-.f-header {
-  @include media-breakpoint-up(lg) {
-    @include sticky-top();
+.f-demo {
+  @include media-breakpoint-up(xl) {
+    border-radius: px-to-rem(16px) px-to-rem(16px) 0 0;
   }
+}
 
+.f-header {
   @include media-breakpoint-up(xl) {
     border-radius: px-to-rem(16px) px-to-rem(16px) 0 0;
   }

@@ -8,9 +8,25 @@
 }
 
 .f-container {
+  position: relative;
   width: 100%;
   height: 100%;
   background: $container_bg;
+}
+
+.f-demo {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: block;
+  height: px-to-rem(16px);
+  content: '';
+  border-top: 2px solid $demo;
+}
+
+.f-demo-desc {
+  font-size: px-to-rem(14px);
+  text-align: center;
 }
 
 .f-header {
