@@ -26,7 +26,7 @@
 
 <script>
 import item from '@/mixins/item'
-import mobile from '@/mixins/mobile'
+import { isMobile } from '@/utils/mobile'
 import DatePicker from './helpers/date-picker'
 import FormInput from './helpers/form-input'
 import { dateFormat } from '@/utils/helpers'
@@ -36,7 +36,7 @@ export default {
     DatePicker,
     FormInput,
   },
-  mixins: [item, mobile],
+  mixins: [item],
   props: {
     min: {
       type: String,
@@ -78,6 +78,9 @@ export default {
       if (!this.min) return
 
       return dateFormat(this.minDate)
+    },
+    isMobile() {
+      return isMobile
     },
   },
   methods: {

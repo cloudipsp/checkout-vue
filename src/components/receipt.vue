@@ -110,11 +110,10 @@
 </template>
 
 <script>
-import mobile from '@/mixins/mobile'
+import { isDesktop } from '@/utils/mobile'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  mixins: [mobile],
   inject: ['submit'],
   data() {
     return {
@@ -129,6 +128,9 @@ export default {
     },
     isIbox() {
       return !this.model.send_data.mfo
+    },
+    isDesktop() {
+      return isDesktop
     },
   },
   created() {

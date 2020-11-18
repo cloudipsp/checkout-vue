@@ -50,7 +50,7 @@
           </label>
         </template>
         <template v-else-if="isCards" #label="{ classLabel, label_ }">
-          <template v-if="isPhone">
+          <template v-if="enableModal">
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
@@ -174,12 +174,13 @@ import { errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 import FSubscription from '@/components/subscription'
 import FCardList from '@/components/card-list'
-import mobile from '@/mixins/mobile'
+import Resize from '@/mixins/resize'
 import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
 import FPrice from '@/components/price'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
+import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
 
 export default {
   components: {
@@ -188,7 +189,7 @@ export default {
     FIcons,
     FPrice,
   },
-  mixins: [mobile, timeout, isMounted],
+  mixins: [Resize, timeout, isMounted],
   inject: ['$validator'],
   data() {
     return {
@@ -294,6 +295,9 @@ export default {
         },
       ]
     },
+    enableModal() {
+      return isPhone || this.isWidthSm
+    },
   },
   watch: {
     card_number(value) {
@@ -370,13 +374,15 @@ export default {
         .catch(errorHandler)
     },
     scroll() {
+      if (isMobileFirefox) return
+
       let activeElement = document.activeElement
 
       if (activeElement.tagName !== 'INPUT') return
 
       activeElement.blur()
 
-      if (this.isDesktop) {
+      if (isDesktop) {
         let rectWrapper = this.wrapper.$el.getBoundingClientRect()
         let rectActiveElement = activeElement.getBoundingClientRect()
 

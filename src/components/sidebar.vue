@@ -17,7 +17,7 @@
 import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
 import FInfo from '@/components/info'
-import mobile from '@/mixins/mobile'
+import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -26,7 +26,7 @@ export default {
     FMenu,
     FInfo,
   },
-  mixins: [mobile],
+  mixins: [Resize],
   computed: {
     ...mapState(['isOnlyCard', 'is_only_wallets']),
     ...mapState('router', ['page', 'method']),

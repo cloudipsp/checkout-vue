@@ -1,6 +1,6 @@
 <template>
   <div class="f-security">
-    <template v-if="isPhone">
+    <template v-if="enableModal">
       <a href="#" class="f-title-security" @click.prevent="open">
         <f-svg ref="security" name="security" size="2x" />
         <span v-t="'security_title'" />
@@ -50,15 +50,21 @@
 </template>
 
 <script>
-import mobile from '@/mixins/mobile'
+import Resize from '@/mixins/resize'
+import { isPhone } from '@/utils/mobile'
 
 export default {
-  mixins: [mobile],
+  mixins: [Resize],
   data() {
     return {
       showTooltip: false,
       showModal: false,
     }
+  },
+  computed: {
+    enableModal() {
+      return isPhone || this.isWidthSm
+    },
   },
   methods: {
     mouseenter() {
