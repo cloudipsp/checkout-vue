@@ -11,7 +11,7 @@ export default {
     attrs() {
       return {
         triggers: 'focus',
-        placement: 'bottom',
+        placement: 'top',
         'custom-class': 'f-tooltip-error',
         variant: 'light',
         ...this.$attrs,
