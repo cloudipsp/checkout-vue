@@ -166,6 +166,8 @@ export default {
       return Promise.reject(model)
     },
     appFinally(model) {
+      if (!model) return
+
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
