@@ -4,7 +4,7 @@
       <div v-if="open" key="item">
         <div class="f-bank-select">
           <f-icon
-            :name="select.bank_logo"
+            :name="select[logo]"
             :type="type"
             class="f-bank-select-icon"
           />
@@ -60,7 +60,7 @@
             @click="selectBank(bank)"
           >
             <f-icon
-              :name="bank.bank_logo"
+              :name="bank[logo]"
               :type="type"
               :class="classBankIcon"
               :size="sizeBankIcon"
@@ -111,6 +111,11 @@ export default {
     isBank: {
       type: Boolean,
       default: true,
+    },
+    logo: {
+      type: String,
+      required: true,
+      validator: value => ['bank_logo', 'id'].includes(value),
     },
   },
   data() {

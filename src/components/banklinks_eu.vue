@@ -1,5 +1,5 @@
 <template>
-  <f-bank type="banklinks_eu" :config="config" />
+  <f-bank type="banklinks_eu" :config="config" logo="bank_logo" />
 </template>
 
 <script>

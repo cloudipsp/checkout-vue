@@ -1,5 +1,5 @@
 <template>
-  <f-bank type="local_methods" :config="config" />
+  <f-bank type="local_methods" :config="config" logo="bank_logo" />
 </template>
 
 <script>

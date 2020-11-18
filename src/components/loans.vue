@@ -1,5 +1,5 @@
 <template>
-  <f-bank type="loans" :config="config" :is-bank="false" />
+  <f-bank type="loans" :config="config" :is-bank="false" logo="id" />
 </template>
 
 <script>
