@@ -28,11 +28,11 @@ gulp.task(
   process('./src/config/subscription-period.json')
 )
 
-gulp.task('po', function(done) {
+gulp.task('po', function (done) {
   return nodeGettextGenerator
     .process({
       extract: {
-        path: ['./src/components', './src/config'],
+        path: ['./src/components', './src/config', './src/checkout.vue'],
         target: './src/i18n/process/templates.js',
         // title="tran1"
         // text="tran1"
@@ -56,7 +56,7 @@ gulp.task('po', function(done) {
         locales,
       },
     })
-    .then(function() {
+    .then(function () {
       done()
     })
 })
