@@ -37,13 +37,7 @@ class Store extends Model {
   constructor() {
     super()
     this.setStateDefault()
-    this.server = {
-      options: { subscription: {} },
-      params: { recurring_data: {} },
-      css_variable: {},
-      fields: [],
-      amount_readonly: true,
-    }
+    this.server = {}
   }
   sendRequest(...args) {
     if (this.state.options.disable_request) return Promise.reject()
