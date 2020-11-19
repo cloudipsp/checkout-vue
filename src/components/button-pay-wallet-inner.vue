@@ -12,8 +12,11 @@
 import $checkout from 'ipsp-js-sdk/dist/checkout'
 import { api } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
+import id from '@/mixins/id'
+import timeout from '@/mixins/timeout'
 
 export default {
+  mixins: [id, timeout],
   inject: ['formRequest'],
   props: {
     position: {
@@ -27,13 +30,10 @@ export default {
   },
   data() {
     return {
-      timeout: null,
-      id: null,
-      show: false,
+      init: false,
     }
   },
   computed: {
-    ...mapState(['css']),
     ...mapState('params', ['amount']),
     ...mapState('options', ['api_domain']),
     ...mapState('options.wallet_pay_button', {
@@ -65,6 +65,12 @@ export default {
     isWallets() {
       return this.tab === 'wallets'
     },
+    classButton() {
+      return 'f-wallet-pay-button-' + this.id
+    },
+    show() {
+      return this.init
+    },
     color() {
       let result = ''
       if (this.theme === 'dark') {
@@ -90,27 +96,18 @@ export default {
         'f-block-sm': !this.isMenu && this.isTop,
       }
     },
-    classButton() {
-      return 'f-wallet-pay-button-' + this.id
-    },
   },
   watch: {
     amount() {
       if (!this.show) return
 
-      clearTimeout(this.timeout)
-
-      this.timeout = setTimeout(this.update, 100)
+      this.timeout(this.update, 100)
     },
   },
   mounted() {
     if (!this.isInit) return
 
-    this.id = this._uid
-
-    this.$nextTick(function() {
-      this.initButton()
-    })
+    this.$nextTick().then(this.initButton)
   },
   methods: {
     initButton() {
@@ -129,10 +126,10 @@ export default {
         .process(this.process)
         .on('show', () => {
           this.$root.$emit('show-pay')
-          this.show = true
+          this.init = true
         })
         .on('hide', () => {
-          this.show = false
+          this.init = false
         })
     },
     update() {
