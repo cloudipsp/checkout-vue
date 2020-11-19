@@ -152,7 +152,7 @@ msgstr "Numéro de la carte"
 
 #: src/i18n/process/templates.js:20
 msgid "card_number_p"
-msgstr "0000 0000 0000 0000"
+msgstr "____ ____ ____ ____"
 
 #: src/i18n/process/templates.js:21
 msgid "angle-down"
@@ -164,7 +164,7 @@ msgstr "MM/YY"
 
 #: src/i18n/process/templates.js:23
 msgid "expiry_date_p"
-msgstr "00/00"
+msgstr "__/__"
 
 #: src/i18n/process/templates.js:24
 msgid "cvv2"
@@ -172,7 +172,7 @@ msgstr "CVV2/CVC2"
 
 #: src/i18n/process/templates.js:25
 msgid "cvv2_p"
-msgstr "000"
+msgstr "___"
 
 #: src/i18n/process/templates.js:26
 msgid "cvv2_help"
