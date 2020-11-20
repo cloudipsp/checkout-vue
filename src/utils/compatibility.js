@@ -1,6 +1,7 @@
 import configMethods from '@/config/methods.json'
 import { removeDuplicate, includes, excludes } from '@/utils/helpers'
 import Model from '@/class/model'
+import { isExist } from '@/utils/typeof'
 
 const config = {
   trustly: 'banklinks_eu',
@@ -62,15 +63,25 @@ function isGermany(country) {
   return country === 'DE'
 }
 
-class UserConfig extends Model {
+class CorrectingUserConfig extends Model {
   constructor(data) {
     super()
     this.data = data
   }
 
+  init() {
+    this.compatibility()
+    this.configDefault()
+
+    return this.data
+  }
+
   compatibility() {
     this.subscription()
-    return this.data
+  }
+
+  configDefault() {
+    this.showMenuFirst()
   }
 
   subscription() {
@@ -94,10 +105,22 @@ class UserConfig extends Model {
     this.removeOldSubscription()
   }
 
+  showMenuFirst() {
+    const options = 'data.options'
+    const name = `${options}.show_menu_first`
+    let show_menu_first = this.attr(name)
+    let full_screen = this.attr(`${options}.full_screen`)
+
+    if (!isExist(full_screen)) return
+    if (isExist(show_menu_first)) return
+
+    this.attr(name, !full_screen)
+  }
+
   removeOldSubscription() {
     delete this.data.regular
   }
 }
 
-export const compatibilityUserConfig = config =>
-  new UserConfig(config).compatibility()
+export const correctingUserConfig = config =>
+  new CorrectingUserConfig(config).init()

@@ -51,7 +51,7 @@ Name                  | Type        | Default                 | Description     
 `countries`           | Array       |                         |                                                                                     |
 `lang`                | Boolean     | true                    |                                                                                     |
 `theme`               | Object      |                         |                                                                                     |
-`show_menu_first`     | Boolean     | true                    |                                                                                     |
+`show_menu_first`     | Boolean     | false                   |                                                                                     |
 `disable_request`     | Boolean     | false                   | no requests are sent to the server                                                  |
 `show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
 `subscription`        | Object      |                         |                                                                                     |

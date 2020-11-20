@@ -37,7 +37,7 @@ const config = {
       type: theme,
       preset: configTheme[theme],
     },
-    show_menu_first: true,
+    show_menu_first: false,
     disable_request: false,
     show_button_amount: true,
     subscription: {

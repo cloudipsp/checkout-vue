@@ -26,7 +26,7 @@ import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
 import { subscription } from '@/store/subscription'
-import { compatibilityUserConfig } from '@/utils/compatibility'
+import { correctingUserConfig } from '@/utils/compatibility'
 import Model from '@/class/model'
 
 Vue.use(store)
@@ -106,7 +106,7 @@ class Store extends Model {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
   setOptions(userConfig) {
-    userConfig = compatibilityUserConfig(userConfig)
+    userConfig = correctingUserConfig(userConfig)
 
     // delete undefined property
     this.user = JSON.parse(JSON.stringify(userConfig))
