@@ -33,6 +33,7 @@ function parseOptions({
   recurring_trial,
   recurring_type,
   button_type,
+  response_url,
 }) {
   amount = Math.round(amount * 100) || 0
 
@@ -57,6 +58,7 @@ function parseOptions({
         ...deepMerge({}, optionsDefault.params.recurring_data, recurring),
         amount: Math.round(recurring.amount * 100) || amount,
       },
+      response_url,
     },
     fields: Object.values(fields).map(parseField),
     amount_readonly: Boolean(amount_readonly),
