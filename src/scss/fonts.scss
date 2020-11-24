@@ -1,10 +1,12 @@
+$cdn: 'https://pay.fondy.eu/icons/dist/fonts/';
+
 @font-face {
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/inter-regular.woff2') format('woff2'),
-    url('../fonts/inter-regular.woff') format('woff');
+  src: url('#{$cdn}inter-regular.woff2') format('woff2'),
+    url('#{$cdn}inter-regular.woff') format('woff');
 }
 
 @font-face {
@@ -12,8 +14,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('../fonts/inter-medium.woff2') format('woff2'),
-    url('../fonts/inter-medium.woff') format('woff');
+  src: url('#{$cdn}inter-medium.woff2') format('woff2'),
+    url('#{$cdn}inter-medium.woff') format('woff');
 }
 
 @font-face {
@@ -21,8 +23,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('../fonts/inter-semibold.woff2') format('woff2'),
-    url('../fonts/inter-semibold.woff') format('woff');
+  src: url('#{$cdn}inter-semibold.woff2') format('woff2'),
+    url('#{$cdn}inter-semibold.woff') format('woff');
 }
 
 @font-face {
@@ -30,7 +32,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/card-number.woff') format('woff');
+  src: url('#{$cdn}card-number.woff') format('woff');
 }
 
 @font-face {
@@ -38,5 +40,5 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/cvv.woff') format('woff');
+  src: url('#{$cdn}cvv.woff') format('woff');
 }
