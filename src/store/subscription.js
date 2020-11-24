@@ -38,7 +38,7 @@ export const subscription = ({ subscription, recurring_data = {} } = {}) => {
       },
       params: {
         recurring_data: {
-          amount: Math.round(amount * 100) || 0,
+          amount,
           period,
           every,
           start_time,
