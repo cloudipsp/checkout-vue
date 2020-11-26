@@ -15,6 +15,7 @@ import { api } from '@/utils/api'
 import { mapState } from '@/utils/store'
 import id from '@/mixins/id'
 import timeout from '@/mixins/timeout'
+import { errorHandler } from '@/utils/helpers'
 
 export default {
   mixins: [id, timeout],
@@ -99,7 +100,7 @@ export default {
       this.button.update({ data: this.store.formParams() })
     },
     process(model) {
-      this.formRequest(model.data)
+      this.formRequest(model.data).catch(errorHandler)
     },
   },
 }

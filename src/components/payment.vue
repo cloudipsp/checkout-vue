@@ -154,6 +154,8 @@ export default {
       this.$root.$emit('success', model)
 
       this.submitProgress(model)
+
+      return model
     },
     submitError(model) {
       this.$root.$emit('error', model)
