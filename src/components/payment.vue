@@ -104,7 +104,9 @@ export default {
     }
 
     this.store
-      .sendRequest('api.checkout', 'app', this.createdFormParams)
+      .sendRequest('api.checkout', 'app', this.createdFormParams, {
+        cached: this.token,
+      })
       .then(this.appSuccess)
       .finally(() => {
         this.ready = true
