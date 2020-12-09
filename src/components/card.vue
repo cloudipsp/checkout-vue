@@ -131,6 +131,7 @@
     <f-form-group
       v-if="showEmail"
       v-model.trim="email"
+      input-class="f-checkout-email"
       label="email"
       rules="required|email"
       autocomplete="email"
