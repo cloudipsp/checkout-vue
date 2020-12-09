@@ -128,12 +128,11 @@
         </template>
       </input-text>
     </div>
-    <input-text
-      v-if="email"
-      name="checkout-email"
-      field="email"
+    <f-form-group
+      v-if="showEmail"
+      v-model.trim="email"
       label="email"
-      validate="required|email"
+      rules="required|email"
       autocomplete="email"
     />
     <input-text
@@ -171,7 +170,7 @@
 <script>
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { errorHandler } from '@/utils/helpers'
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import FSubscription from '@/components/subscription'
 import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
@@ -215,9 +214,12 @@ export default {
       'ready',
     ]),
     ...mapState('router', ['method']),
-    ...mapState('options', ['email']),
+    ...mapState('options', {
+      showEmail: 'email',
+    }),
     ...mapState('params', ['card_number', 'code', 'token']),
     ...mapState('css_variable', ['card_bg_lighten']),
+    ...mapStateGetSet('params', ['email']),
     showSubscription() {
       return this.token ? this.ready : true
     },
