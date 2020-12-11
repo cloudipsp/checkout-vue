@@ -27,7 +27,6 @@ export default {
     },
     attrs() {
       return {
-        boundary: 'window',
         container: this.$root,
         ...this.$attrs,
         'custom-class': this.customClass,
