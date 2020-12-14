@@ -98,6 +98,7 @@ class Store extends Model {
     if (model.attr('lang')) {
       this.state.params.lang = model.attr('lang')
     }
+    this.initLang()
 
     subscription(model.attr('order'))
       .then(config => this.setState(config))
@@ -189,21 +190,7 @@ class Store extends Model {
     )
   }
   initLang() {
-    const langKey = 'lang_s'
-    let lang
-    let locales = this.state.options.locales
-    if (this.state.options.full_screen) {
-      lang = getCookie(langKey) || this.state.params.lang
-    } else {
-      lang = this.state.params.lang || getCookie(langKey)
-    }
-    if (locales.length) {
-      if (locales.indexOf(lang) < 0) {
-        lang = locales[0]
-      }
-    }
-
-    this.changeLang(lang)
+    this.changeLang(getCookie('lang_s') || this.state.params.lang)
   }
   initError() {
     const token = findGetParameter('token')
