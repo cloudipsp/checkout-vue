@@ -101,6 +101,7 @@
         tooltip
         label-class
         autocomplete="cc-exp"
+        :format="format"
         @input="inputExpiryDate"
       />
       <f-form-group
@@ -411,6 +412,16 @@ export default {
       }
 
       activeElement.focus()
+    },
+    format(value) {
+      let [month, year] = value.split('/')
+
+      if (year && year.length === 4) {
+        year = year.slice(-2)
+        value = `${month}/${year}`
+      }
+
+      return value
     },
   },
 }
