@@ -13,4 +13,13 @@ export default Vue.extend({
       return []
     },
   },
+  render(h) {
+    return h('input', {
+      ref: 'input',
+      class: this.computedClass,
+      attrs: { ...this.$attrs, ...this.computedAttrs },
+      domProps: { value: this.localValue },
+      on: this.computedListeners,
+    })
+  },
 })

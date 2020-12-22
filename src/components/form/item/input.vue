@@ -5,7 +5,8 @@
       v-model="innerValue"
       :class="classInput"
       v-bind="attrs"
-      v-on="$listeners"
+      @focus="$emit('focus')"
+      @blur="$emit('blur')"
       @keyup.enter="onEnter"
     />
   </ValidationProvider>
