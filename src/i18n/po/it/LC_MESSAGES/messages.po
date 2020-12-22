@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:13
+#: src/i18n/process/templates.js:14
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 22:40+0200\n"
+"POT-Creation-Date: 2020-12-22 16:44+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -66,28 +66,32 @@ msgid "month"
 msgstr "Mese"
 
 #: src/i18n/process/templates.js:1
+msgid "demo-title"
+msgstr ""
+
+#: src/i18n/process/templates.js:2
 msgid "gdpr_alert_text"
 msgstr ""
 "Utilizziamo i cookie su questo sito Web per migliorare la tua esperienza di "
 "pagamento."
 
-#: src/i18n/process/templates.js:2
+#: src/i18n/process/templates.js:3
 msgid "learn_more"
 msgstr "Per saperne di più."
 
-#: src/i18n/process/templates.js:3
+#: src/i18n/process/templates.js:4
 msgid "save_card"
 msgstr "Salvare la mia carta per pagamenti futuri."
 
-#: src/i18n/process/templates.js:4
+#: src/i18n/process/templates.js:5
 msgid "its_safe"
 msgstr "É sicuro."
 
-#: src/i18n/process/templates.js:5
+#: src/i18n/process/templates.js:6
 msgid "gdpr_modal_safe_title"
 msgstr "Salvare la carta è sicuro e conveniente"
 
-#: src/i18n/process/templates.js:6
+#: src/i18n/process/templates.js:7
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>Non registriamo i dati della sua carta mentre li inserisce. In effetti, "
@@ -98,244 +102,248 @@ msgstr ""
 "intercettarli. Non ha senso intercettare i dati dei token poiché non hanno "
 "valore al di fuori del servizio di pagamento Fondy."
 
-#: src/i18n/process/templates.js:7
+#: src/i18n/process/templates.js:8
 msgid "close"
 msgstr "Chiedere più tardi"
 
-#: src/i18n/process/templates.js:8
+#: src/i18n/process/templates.js:9
 msgid "accept"
 msgstr "Sono d'accordo"
 
-#: src/i18n/process/templates.js:9
+#: src/i18n/process/templates.js:10
 msgid "bank_desc"
 msgstr ""
 "Verrà reindirizzato al sito web della banca per completare il pagamento"
 
-#: src/i18n/process/templates.js:10
+#: src/i18n/process/templates.js:11
 msgid "default_country"
 msgstr "Ricerca per paese"
 
-#: src/i18n/process/templates.js:11
+#: src/i18n/process/templates.js:12
 msgid "system_search"
 msgstr "Ricerca per nome della banca, IBAN o CAB"
 
-#: src/i18n/process/templates.js:12
+#: src/i18n/process/templates.js:13
 msgid "load_more"
 msgstr "Caricare di più..."
 
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:15
 msgid "other_payment_method"
 msgstr "Oppure pagare con"
 
-#: src/i18n/process/templates.js:15
+#: src/i18n/process/templates.js:16
 msgid "pay"
 msgstr "Pagare"
 
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:17
+msgid "demo-desc"
+msgstr ""
+
+#: src/i18n/process/templates.js:18
 msgid "use_other_card"
 msgstr "Inserire un'altra carta"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:19
 msgid "expires_on"
 msgstr "Valido fino al"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:20
 msgid "pay_with_card"
 msgstr "Pagare con carta"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:21
 msgid "card_number"
 msgstr "Numero di carta"
 
-#: src/i18n/process/templates.js:20
+#: src/i18n/process/templates.js:22
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:21
+#: src/i18n/process/templates.js:23
 msgid "angle-down"
 msgstr "-"
 
-#: src/i18n/process/templates.js:22
+#: src/i18n/process/templates.js:24
 msgid "expiry_date"
 msgstr "MM/AA"
 
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:25
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:26
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:25
+#: src/i18n/process/templates.js:27
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:26
+#: src/i18n/process/templates.js:28
 msgid "cvv2_help"
 msgstr "{0}-codice numerico sul retro della carta"
 
-#: src/i18n/process/templates.js:27
-msgid "checkout-email"
-msgstr "-"
-
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:29
 msgid "email"
 msgstr "E-mail"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:30
 msgid "code"
 msgstr "-"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:31
 msgid "verification_code"
 msgstr "Codice di conferma"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:32
 msgid "verification_amount"
 msgstr "Importo della verifica"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:33
 msgid "datepicker"
 msgstr "-"
 
-#: src/i18n/process/templates.js:33
+#: src/i18n/process/templates.js:34
 msgid "model"
 msgstr ""
 
-#: src/i18n/process/templates.js:34
+#: src/i18n/process/templates.js:35
 msgid "see_more"
 msgstr "Vedere altro"
 
-#: src/i18n/process/templates.js:35
+#: src/i18n/process/templates.js:36
 msgid "order_details"
 msgstr "Dettagli dell'ordine"
 
-#: src/i18n/process/templates.js:36
+#: src/i18n/process/templates.js:37
 msgid "show"
 msgstr "-"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:38
 msgid "submit3ds_title"
 msgstr "Il pagamento non è stato completato"
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:39
 msgid "submit3ds_text"
 msgstr "Inserire un altro codice di conferma"
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:40
 msgid "submit3ds_submit"
 msgstr "Riprovare"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:41
 msgid "submit3ds_wait"
 msgstr ""
 "Verrà reindirizzato nuovamente al sito web della banca per completare il "
 "pagamento in {0} pochi secondi"
 
-#: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:42 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "Sfortunatamente, il suo pagamento non è andato a buon fine"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:43
 msgid "server_trouble_title"
 msgstr "Oops.."
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:44
 msgid "server_trouble_desc"
 msgstr ""
 "Qualcosa non va, ma ci stiamo già lavorando. Torni ai passaggi precedenti ed "
 "effettui nuovamente il pagamento."
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:45
 msgid "offer_t"
 msgstr "Io accetto <a href=\"{0}\" target=\"_blank\">altre condizioni </a>"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:46
+msgid "offerta_url"
+msgstr ""
+
+#: src/i18n/process/templates.js:47
 msgid "amount"
 msgstr "Importo totale"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:48
 msgid "total_amount"
 msgstr "Importo totale"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:49
 msgid "fee"
 msgstr "Commissione"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:50
 msgid "mfo_title"
 msgstr "Dettagli di pagamento per l'ordine n. {0}"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:51
 msgid "ibox_title"
 msgstr "ID ordine (da pagare tramite iBox)"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:52
 msgid "full_requesites"
 msgstr "Requisiti bancari del destinatario"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:53
 msgid "full_requesites_explain"
 msgstr ""
 "Non dovrà indicarli durante il pagamento, ma salvarli per riferimento "
 "potrebbe essere utile."
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:54
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:55
 msgid "receiver"
 msgstr "Destinatario"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:56
 msgid "current_bill"
 msgstr "Numero di conto bancario (IBAN)"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:57
 msgid "usreou"
 msgstr "Codice fiscale (C.F.)"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:58
 msgid "bank"
 msgstr "Nome della banca"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:59
 msgid "mfo"
 msgstr "Codice della banca (CAB)"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:60
 msgid "purpose"
 msgstr "Descrizione"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:61
 msgid "receipt_id"
 msgstr "ID ordine"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:62
 msgid "end_date"
 msgstr "Scadenza di pagamento"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:63
 msgid "ibox_desc"
 msgstr ""
 "Tutti i terminali iBox che accettano pagamenti sono contrassegnati nel file "
 "<a href=\"https://ibox.ua/map\" target=\"_blank\">map</a>"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:64
 msgid "save_receipt"
 msgstr "Salvare ricevuta"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:65
 msgid "save_qr_code"
 msgstr "Salvare su smartphone"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:66
 msgid "qr_code_text"
 msgstr "Scansioni questo codice QR per salvare la ricevuta sul suo smartphone"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:67
 msgid "ibox_info"
 msgstr ""
 "<p>Per pagare l'ordine, utilizzare l'opzione Cerca per individuare il "
@@ -343,117 +351,119 @@ msgstr ""
 "automaticamente annullato oltre la scadenza.<p>Non accetteremo pagamenti per "
 "questo ordine tramite terminali diversi da iBox."
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:68
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:69
 msgid "security_title"
 msgstr "L'autenticazione forte del cliente"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:70
 msgid "security_text"
 msgstr ""
 "<p>Conforme a PCI DSS<p>Elencato su Visa Global Registry e verificato da "
 "Mastercard"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:71
 msgid "sepa_t"
 msgstr "Dovrebbe fornire i requisiti del suo conto bancario"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:72
 msgid "sender_name"
 msgstr "Nome"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:73
 msgid "sender_familyName"
 msgstr "Cognome"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:74
 msgid "bic"
 msgstr "BIC"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:75
 msgid "iban"
 msgstr "IBAN"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:76
 msgid "subscription"
 msgstr "Ripetere automaticamente questo pagamento"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:77
 msgid "subscription_amount"
 msgstr "Importo del pagamento ricorrente"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:78
 msgid "trial_period"
 msgstr "Periodo di prova"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:79
 msgid "number_of_payments"
 msgstr "Numero di pagamenti"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:80
 msgid "unlimited"
 msgstr "Illimitato"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:81
 msgid "subscription_every"
 msgstr "Ogni"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:82
 msgid "subscription_period"
 msgstr "Arco di tempo"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:83
 msgid "subscription_start_time"
 msgstr "A partire"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:84
 msgid "subscription_end_time"
 msgstr "Data di fine"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:85
 msgid "verification_desc"
-msgstr "Per verificare la tua carta, congeleremo una piccola somma nel tuo account per 15 minuti."
+msgstr ""
+"Per verificare la tua carta, congeleremo una piccola somma nel tuo account "
+"per 15 minuti."
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:86
 msgid "payment_id"
 msgstr "ID pagamento"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:87
 msgid "customer_name"
 msgstr "Nome del titolare"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:88
 msgid "customer_name_utf8"
 msgstr "Nome e cognome"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:89
 msgid "customer_address"
 msgstr "Indirizzo (via, casa, interno)"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:90
 msgid "customer_zip"
 msgstr "CAP/Codice di avviamento postale"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:91
 msgid "customer_city"
 msgstr "Città/Paese"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:92
 msgid "customer_country"
 msgstr "Nazione"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:93
 msgid "customer_state"
 msgstr "Stato/Provincia/Regione"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:94
 msgid "customer_phonemobile"
 msgstr "Telefono"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:95
 msgid "customer_email"
 msgstr "E-mail"
 
@@ -586,6 +596,13 @@ msgstr "Portafoglio digitale"
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
 msgstr "Contanti tramite terminale"
+
+#: src/i18n/process/translate.js:39
+msgid "loans_tooltip"
+msgstr ""
+
+#~ msgid "checkout-email"
+#~ msgstr "-"
 
 #~ msgid "search"
 #~ msgstr "-"

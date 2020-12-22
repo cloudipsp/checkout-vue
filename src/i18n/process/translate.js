@@ -35,3 +35,5 @@ _('arbitrary_amount')
 
 _('emoney')
 _('ibox_ua')
+
+_('loans_tooltip')
