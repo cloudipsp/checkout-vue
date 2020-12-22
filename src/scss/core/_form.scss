@@ -5,6 +5,8 @@
 
 .f-form-group-inner {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .f-form-group-inner-select {

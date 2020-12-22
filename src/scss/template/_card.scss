@@ -109,13 +109,11 @@
       background-color: inherit;
     }
 
-    &:-webkit-autofill {
-      &::first-line {
-        font-family: $font-family-card-number;
-        font-size: px-to-rem(15px);
-        line-height: px-to-rem(18px);
-        color: $card_input_color;
-      }
+    &:-webkit-autofill::first-line {
+      font-family: $font-family-card-number;
+      font-size: px-to-rem(15px);
+      line-height: px-to-rem(18px);
+      color: $card_input_color;
     }
 
     &::placeholder {
@@ -148,6 +146,11 @@
 #f-cvv2 {
   width: px-to-rem(75px);
   font-family: $font-family-cvv;
+
+  // stylelint-disable-next-line selector-max-id
+  &:-webkit-autofill::first-line {
+    font-family: $font-family-cvv;
+  }
 }
 
 .f-control-label-card-list {
