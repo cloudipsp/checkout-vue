@@ -34,12 +34,14 @@
             />
           </div>
           <div v-if="showSearch" class="f-col f-bank-search">
-            <f-form-group
-              v-model="search"
-              label="system_search"
-              size="sm"
-              prepend="search"
-            />
+            <f-form-base>
+              <f-form-group
+                v-model="search"
+                label="system_search"
+                size="sm"
+                prepend="search"
+              />
+            </f-form-base>
           </div>
           <div v-if="showView" class="f-col f-bank-view">
             <div class="f-form-group f-bank-view-wrapper">
