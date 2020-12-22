@@ -28,12 +28,14 @@
           />
         </transition>
       </div>
-      <input-text
+      <f-form-group
+        id="card_number"
         ref="card_number"
+        v-model="card_number"
         class="f-form-group-card f-form-group-card-number"
-        name="card_number"
+        label="card_number"
         placeholder="card_number_p"
-        :validate="validCardNumber"
+        :rules="validCardNumber"
         :mask="maskCardNumber"
         :masked="false"
         :maxlength="23"
@@ -42,6 +44,7 @@
         inputmode="numeric"
         tooltip
         label-class
+        autocomplete="cc-number"
         @input="inputCardNumber"
       >
         <template v-if="need_verify_code" #label="{ classLabel, label_ }">
@@ -80,13 +83,16 @@
             </f-tooltip-card>
           </template>
         </template>
-      </input-text>
-      <input-text
+      </f-form-group>
+
+      <f-form-group
+        id="expiry_date"
         ref="expiry_date"
+        :value="expiry_date"
         class="f-form-group-card"
-        name="expiry_date"
+        label="expiry_date"
         placeholder="expiry_date_p"
-        :validate="validExpiryDate"
+        :rules="validExpiryDate"
         :mask="maskExpiryDate"
         :masked="true"
         :disabled="readonly"
@@ -94,14 +100,17 @@
         inputmode="numeric"
         tooltip
         label-class
+        autocomplete="cc-exp"
         @input="inputExpiryDate"
       />
-      <input-text
+      <f-form-group
+        id="cvv2"
         ref="cvv2"
+        v-model="cvv2"
         class="f-form-group-card"
-        name="cvv2"
+        label="cvv2"
         placeholder="cvv2_p"
-        :validate="validCvv"
+        :rules="validCvv"
         type="tel"
         inputmode="numeric"
         :mask="maskCvv"
@@ -109,6 +118,7 @@
         :maxlength="digitsCvv"
         tooltip
         label-class
+        autocomplete="cc-csc"
       >
         <template #label="{ classLabel, name_, label_ }">
           <label :class="classLabel" :for="name_">
@@ -126,7 +136,7 @@
             {{ $t('cvv2_help', [digitsCvv]) }}
           </f-tooltip-default>
         </template>
-      </input-text>
+      </f-form-group>
     </div>
     <f-form-group
       v-if="showEmail"
@@ -218,9 +228,14 @@ export default {
     ...mapState('options', {
       showEmail: 'email',
     }),
-    ...mapState('params', ['card_number', 'code', 'token']),
+    ...mapState('params', ['code', 'token']),
     ...mapState('css_variable', ['card_bg_lighten']),
-    ...mapStateGetSet('params', ['email']),
+    ...mapStateGetSet('params', [
+      'email',
+      'cvv2',
+      'expiry_date',
+      'card_number',
+    ]),
     showSubscription() {
       return this.token ? this.ready : true
     },
@@ -241,15 +256,15 @@ export default {
       return `required|date_format:MM/yy|after:${minDate},true`
     },
     validCardNumber() {
-      return {
-        rules: {
-          required: true,
-          ccard:
-            !/\d{6}X/.test(this.card_number) &&
-            (this.card_number.length === 16 ||
-              this.card_number.length === 19 ||
-              this.submited),
-        },
+      let needValidCard =
+        !/\d{6}X/.test(this.card_number) &&
+        (this.card_number.length === 16 ||
+          this.card_number.length === 19 ||
+          this.submited)
+      if (needValidCard) {
+        return 'required|ccard'
+      } else {
+        return 'required'
       }
     },
     validCvv() {
@@ -334,11 +349,11 @@ export default {
   methods: {
     cardTypeFeeSuccess() {},
     setCardNumber() {
-      this.returnFocus = this.$refs.cvv2.$refs.input.$el
+      this.returnFocus = this.$refs.cvv2.$children[0].$children[0].$refs.input.$el
       this.hide()
     },
     addCardNumber() {
-      this.returnFocus = this.$refs.card_number.$refs.input.$el
+      this.returnFocus = this.$refs.card_number.$children[0].$children[0].$refs.input.$el
       this.hide()
     },
     hide() {
@@ -357,22 +372,24 @@ export default {
     },
     inputCardNumber(value) {
       if (value.length !== 16 && value.length !== 19) return
-      this.focus('f-card_number', value, 'expiry_date')
+      this.focus('card_number', value, 'expiry_date')
     },
     inputExpiryDate(value) {
-      this.focus('f-expiry_date', value, 'cvv2')
+      this.focus('expiry_date', value, 'cvv2')
     },
     focus(name, value, next) {
       if (!this.isMounted) return
       // wait for computed property validCardNumber
       this.$nextTick()
-        .then(() => this.$validator.validate(name, value))
-        .then(valid => {
+        .then(() =>
+          this.$refs[name].$children[0].$children[0].$refs.validation.validate()
+        )
+        .then(({ valid }) => {
           if (!valid) return Promise.reject()
           return this.$nextTick()
         })
         .then(() => {
-          this.$refs[next].$refs.input.$el.focus()
+          this.$refs[next].$children[0].$children[0].$refs.input.$el.focus()
         })
         .catch(errorHandler)
     },

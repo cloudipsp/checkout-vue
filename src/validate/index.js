@@ -35,7 +35,9 @@ const install = Vue => {
   Validator.extend('alpha', alpha)
   Validator.extend('min', min)
   Validator.extend('max', max)
-  Validator.extend('after', after)
+  Validator.extend('after', after, {
+    hasTarget: false,
+  })
   Validator.extend('digits', digits)
   Validator.extend('regex', regex)
 
