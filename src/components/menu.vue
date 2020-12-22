@@ -3,6 +3,7 @@
     <template v-for="method in list">
       <button
         :key="method"
+        :ref="method"
         type="button"
         :class="className(method)"
         @click.prevent="click(method)"
@@ -14,7 +15,19 @@
           fw
         />
         <span v-t="method" />
-        <f-icons class="f-menu-icons" :type="method" position="sidebar" />
+        <f-icons
+          :ref="`${method}_icons`"
+          class="f-menu-icons"
+          :type="method"
+          position="sidebar"
+        />
+        <f-tooltip-default
+          v-if="showTooltip(method)"
+          :ref="`${method}_tooltip`"
+          :target="() => $refs[method][0]"
+        >
+          {{ $t(`${method}_tooltip`) }}
+        </f-tooltip-default>
       </button>
     </template>
   </div>
@@ -55,9 +68,16 @@ export default {
     list() {
       return this.methods.filter(removeWallets)
     },
+    showTooltip() {
+      return method =>
+        this.$te(`${method}_tooltip`, 'en') || this.$te(`${method}_tooltip`)
+    },
   },
   methods: {
     click(method) {
+      let tooltip = this.$refs[`${method}_tooltip`]
+      tooltip && tooltip[0].close()
+      this.$refs[`${method}_icons`][0].close()
       this.store.location('payment-method', method)
     },
   },
