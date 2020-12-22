@@ -19,8 +19,19 @@
       >
         <slot />
       </f-form-item>
-      <label v-if="label" v-t="label" :class="classLabel" :for="_id" />
+      <slot name="label" :classLabel="classLabel" :name_="_id" :label_="label_">
+        <label v-if="label" v-t="label" :class="classLabel" :for="_id" />
+      </slot>
     </div>
+    <f-tooltip-error
+      v-if="showErrorTooltip"
+      :show.sync="showErrorTooltipFlag"
+      :target="() => $refs.item && $refs.item.$el"
+      under-sticky
+    >
+      <f-svg name="warning" />
+      {{ error }}
+    </f-tooltip-error>
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
     </transition>
@@ -67,6 +78,7 @@ export default {
       focused: false,
       hover: false,
       value: null,
+      showErrorTooltipFlag: false,
     }
   },
   computed: {
@@ -131,6 +143,15 @@ export default {
       this.$emit('show-error', showError, this.error)
       return showError && !this.hideError
     },
+    showErrorTooltip() {
+      return this.tooltip && this.hasError && this.focused
+    },
+    label_() {
+      return this.$t(this.label)
+    },
+  },
+  watch: {
+    showErrorTooltip: 'watchShowErrorTooltip',
   },
   methods: {
     focus() {
@@ -147,6 +168,9 @@ export default {
     },
     mouseleave() {
       this.hover = false
+    },
+    watchShowErrorTooltip(value) {
+      this.showErrorTooltipFlag = value
     },
   },
 }
