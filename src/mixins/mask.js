@@ -12,6 +12,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    format: {
+      type: Function,
+      default: value => value,
+    },
   },
   data() {
     return {
@@ -20,7 +24,7 @@ export default {
   },
   methods: {
     watchInnerValue(newValue) {
-      let value = mask(newValue, this.innerMask, true)
+      let value = mask(this.format(newValue), this.innerMask, true)
       if (newValue !== value) {
         this.innerValue = value
         this.$refs.input.localValue = value
@@ -29,7 +33,7 @@ export default {
       }
     },
     watchValue(newValue) {
-      this.innerValue = mask(newValue, this.innerMask, true)
+      this.innerValue = mask(this.format(newValue), this.innerMask, true)
     },
   },
 }
