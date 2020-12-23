@@ -33,7 +33,7 @@
     "bootstrap-vue": "^2.19.0",
     "core-js": "^3.7.0",
     "css-vars-ponyfill": "^2.4.1",
-    "ipsp-js-sdk": "^1.0.36",
+    "ipsp-js-sdk": "^1.0.37",
     "ismobilejs": "^1.1.1",
     "vee-validate": "^2.2.15",
     "vue": "^2.6.12",
