@@ -88,7 +88,7 @@
       <f-form-group
         id="expiry_date"
         ref="expiry_date"
-        :value="expiry_date"
+        v-model="expiry_date"
         class="f-form-group-card"
         label="expiry_date"
         placeholder="expiry_date_p"
