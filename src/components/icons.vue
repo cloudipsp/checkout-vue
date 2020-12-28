@@ -73,6 +73,7 @@ export default {
       return this.options[this.type + '_icons'] || []
     },
     listFirst() {
+      if (this.list.length <= this.count + 1) return this.list
       return this.list.slice(0, this.count)
     },
     listLast() {
@@ -82,7 +83,7 @@ export default {
       return this.list.length
     },
     showCount() {
-      return this.list.length > this.count
+      return this.list.length > this.count + 1
     },
     countLast() {
       return this.list.length - this.count
