@@ -63,14 +63,12 @@
   position: absolute;
   top: px-to-rem(14px);
   right: px-to-rem(14px);
-  width: px-to-rem(84px);
-  height: px-to-rem(40px);
-  border-radius: px-to-rem(6px);
 }
 
 .f-card-brand-icon {
-  width: px-to-rem(84px);
-  height: px-to-rem(40px);
+  width: px-to-rem(86px);
+  height: px-to-rem(42px);
+  border: px-to-rem(1px) solid $white;
   border-radius: px-to-rem(6px);
 }
 
