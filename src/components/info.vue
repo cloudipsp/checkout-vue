@@ -4,7 +4,7 @@
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
-    <div v-if="order_desc" class="f-order-desc">
+    <f-preloader :condition="order_desc" size="xs" class="f-order-desc">
       <div ref="wrapper" class="f-order-desc-text">
         <span ref="desc">{{ order_desc_translation }}</span>
       </div>
@@ -16,7 +16,7 @@
       >
         <span v-t="'see_more'" /> <f-svg name="angle-right" />
       </a>
-    </div>
+    </f-preloader>
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-t="order_desc" />
     </f-modal-base>

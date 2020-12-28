@@ -86,7 +86,7 @@ class Store extends Model {
       model.attr('customer_required_data') || []
 
     this.state.params.order_desc =
-      this.state.params.order_desc || model.attr('order.order_desc')
+      this.state.params.order_desc || model.attr('order.order_desc') || ''
 
     if (model.attr('order.verification')) {
       this.state.verification_type = model.attr('verification_type')

@@ -1,22 +1,24 @@
 <template>
   <div v-if="show" class="f-price">
-    <div v-if="showAmountReadOnly">
-      <span class="f-amount"
-        >{{ integerAmount }}<sup>{{ fractionalAmount }}</sup></span
-      >
-      <span v-t="currency" class="f-currency" />
-    </div>
-    <input-amount v-else name="amount" />
-    <table v-if="showFeeAmount" class="f-table">
-      <tr v-if="showTotal">
-        <td v-t="'total_amount'" class="f-pr-3" />
-        <td>{{ totalAmount }}</td>
-      </tr>
-      <tr>
-        <td v-t="'fee'" class="f-pr-3" />
-        <td>{{ feeAmount }}</td>
-      </tr>
-    </table>
+    <f-preloader :condition="amount" size="sm">
+      <div v-if="showAmountReadOnly">
+        <span class="f-amount"
+          >{{ integerAmount }}<sup>{{ fractionalAmount }}</sup></span
+        >
+        <span v-t="currency" class="f-currency" />
+      </div>
+      <input-amount v-else name="amount" />
+      <table v-if="showFeeAmount" class="f-table">
+        <tr v-if="showTotal">
+          <td v-t="'total_amount'" class="f-pr-3" />
+          <td>{{ totalAmount }}</td>
+        </tr>
+        <tr>
+          <td v-t="'fee'" class="f-pr-3" />
+          <td>{{ feeAmount }}</td>
+        </tr>
+      </table>
+    </f-preloader>
   </div>
 </template>
 

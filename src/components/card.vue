@@ -140,14 +140,15 @@
         </template>
       </f-form-group>
     </div>
-    <f-form-group
-      v-if="showEmail"
-      v-model.trim="email"
-      input-class="f-checkout-email"
-      label="email"
-      rules="required|email"
-      autocomplete="email"
-    />
+    <f-preloader :condition="showEmail">
+      <f-form-group
+        v-model.trim="email"
+        input-class="f-checkout-email"
+        label="email"
+        rules="required|email"
+        autocomplete="email"
+      />
+    </f-preloader>
     <input-text
       v-if="isVerificationCode"
       name="code"
