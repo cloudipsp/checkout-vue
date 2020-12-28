@@ -27,7 +27,7 @@ const config = {
     logo_url: '',
     offerta_url: '',
     button: true,
-    fee: false,
+    fee: true,
     email: false,
     fields: false,
     default_country: '',

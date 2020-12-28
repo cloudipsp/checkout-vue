@@ -7,16 +7,16 @@
       <span v-t="currency" class="f-currency" />
     </div>
     <input-amount v-else name="amount" />
-    <div v-if="showFeeAmount">
-      <div class="f-row">
-        <div v-t="'total_amount'" class="f-col f-fee-key" />
-        <div class="f-col">{{ totalAmount }}</div>
-      </div>
-      <div class="f-row">
-        <div v-t="'fee'" class="f-col f-fee-key" />
-        <div class="f-col">{{ feeAmount }}</div>
-      </div>
-    </div>
+    <table v-if="showFeeAmount" class="f-table">
+      <tr v-if="showTotal">
+        <td v-t="'total_amount'" class="f-pr-3" />
+        <td>{{ totalAmount }}</td>
+      </tr>
+      <tr>
+        <td v-t="'fee'" class="f-pr-3" />
+        <td>{{ feeAmount }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -44,6 +44,9 @@ export default {
     },
     showAmountReadOnly() {
       return this.amount_readonly || this.page === 'success'
+    },
+    showTotal() {
+      return this.amount_readonly
     },
     fullAmount() {
       let amount = this.amount_with_fee || this.amount
