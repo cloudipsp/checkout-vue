@@ -1,0 +1,18 @@
+.f-preloader {
+  height: px-to-rem(56px);
+  background: linear-gradient(
+    120deg,
+    $preloader_bg 42%,
+    $preloader_inner_bg 60%,
+    $preloader_bg 78%
+  );
+  border-radius: px-to-rem(8px);
+}
+
+.f-preloader-xs {
+  height: px-to-rem(20px);
+}
+
+.f-preloader-sm {
+  height: px-to-rem(38px);
+}
