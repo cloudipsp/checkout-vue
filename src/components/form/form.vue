@@ -64,9 +64,9 @@ export default {
           this.isSubmit = true
           // this.deprecatedErrors.items this.fields this.deprecatedErrors.clear() this.deprecatedErrors.count()
 
+          if (!isValidNew) return this.autoFocus(this.errors[0][0])
           if (!isValid)
             return this.autoFocus(this.deprecatedErrors.items[0].field)
-          if (!isValidNew) return this.autoFocus(this.errors[0][0])
 
           return this.formRequest()
         })
