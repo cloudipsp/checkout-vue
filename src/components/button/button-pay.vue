@@ -9,10 +9,8 @@
       block
       @click="click"
     >
-      <span v-t="'pay'" />
-      <span v-if="showAmount">
-        <b> {{ fullAmount }}</b> {{ $t(currency) }}
-      </span>
+      <span v-t="'pay'" />&nbsp;
+      <f-amount v-if="showAmount" :value="fullAmount" :currency="currency" />
     </f-button>
     <div v-if="isDemo" v-t="'demo-desc'" class="f-demo-desc" />
   </div>
@@ -35,7 +33,7 @@ export default {
       return this.isError && this.isSubmit
     },
     fullAmount() {
-      return (this.amount_with_fee || this.amount) / 100
+      return this.amount_with_fee || this.amount
     },
     showAmount() {
       return this.verification_type !== 'amount' && this.show_button_amount

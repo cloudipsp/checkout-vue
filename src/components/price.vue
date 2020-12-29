@@ -1,12 +1,14 @@
 <template>
   <div v-if="show" class="f-price">
     <f-preloader :condition="amount" size="sm">
-      <div v-if="showAmountReadOnly">
-        <span class="f-amount"
-          >{{ integerAmount }}<sup>{{ fractionalAmount }}</sup></span
-        >
-        <span v-t="currency" class="f-currency" />
-      </div>
+      <f-amount
+        v-if="showAmountReadOnly"
+        :value="valueAmount"
+        :currency="currency"
+        amount-class="f-amount"
+        currency-class="f-currency"
+        sup
+      />
       <input-amount v-else name="amount" />
       <table v-if="showFeeAmount" class="f-table">
         <tr v-if="showTotal">
@@ -28,11 +30,6 @@ import { mapState } from '@/utils/store'
 let cacheFeeAmount = 0
 
 export default {
-  data() {
-    return {
-      separator: '.',
-    }
-  },
   computed: {
     ...mapState(['verification_type', 'amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
@@ -50,28 +47,6 @@ export default {
     showTotal() {
       return this.amount_readonly
     },
-    fullAmount() {
-      let amount = this.amount_with_fee || this.amount
-      let result = amount / 100
-      try {
-        result = new Intl.NumberFormat().format(result)
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-
-      if (amount % 100 === 0) {
-        result = result + this.separator + '00'
-      } else if (amount % 10 === 0) {
-        result = result + '0'
-      }
-
-      return result
-    },
-    integerAmount() {
-      return String(this.fullAmount).slice(0, -2)
-    },
-    fractionalAmount() {
-      return String(this.fullAmount).slice(-2)
-    },
     totalAmount() {
       return this.amount / 100
     },
@@ -79,6 +54,9 @@ export default {
       if (this.amount_with_fee - this.amount < 0) return cacheFeeAmount
 
       return (cacheFeeAmount = (this.amount_with_fee - this.amount) / 100)
+    },
+    valueAmount() {
+      return this.amount_with_fee || this.amount
     },
   },
   watch: {
@@ -88,12 +66,6 @@ export default {
     amount() {
       this.store.getAmountWithFee()
     },
-  },
-  created() {
-    try {
-      this.separator = new Intl.NumberFormat().format(0.1)[1]
-      // eslint-disable-next-line no-empty
-    } catch (e) {}
   },
 }
 </script>
