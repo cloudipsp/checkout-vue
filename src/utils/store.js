@@ -61,7 +61,7 @@ class backupStorage {
     this.data = {}
   }
   getItem(id) {
-    return this.data[id]
+    return this.data[id] || null
   }
   setItem(id, val) {
     this.data[id] = String(val)
