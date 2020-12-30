@@ -10,7 +10,9 @@
       @click="click"
     >
       <span v-t="'pay'" />&nbsp;
-      <f-amount v-if="showAmount" :value="fullAmount" :currency="currency" />
+      <f-preloader v-if="showAmount" :condition="fullAmount" tag="span">
+        <f-amount :value="fullAmount" :currency="currency" />
+      </f-preloader>
     </f-button>
     <div v-if="isDemo" v-t="'demo-desc'" class="f-demo-desc" />
   </div>
