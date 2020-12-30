@@ -1,8 +1,7 @@
 <template>
   <span>
-    <b :class="amountClass">
-      {{ integer }}
-      <component :is="tagFractional">{{ fractional }}</component>
+    <b :class="amountClass"
+      >{{ integer }}<component :is="tagFractional">{{ fractional }}</component>
     </b>
     &nbsp;
     <span v-t="currency" :class="currencyClass" />
