@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-enter">
-    <div v-if="show" key="1" :class="className" />
-    <div v-else key="2"><slot /></div>
+    <component :is="tag" v-if="show" key="1" :class="className" />
+    <component :is="tag" v-else key="2"><slot /></component>
   </transition>
 </template>
 
@@ -18,6 +18,11 @@ export default {
       type: String,
       default: null,
       validator: value => ['xs', 'sm'].includes(value),
+    },
+    tag: {
+      type: String,
+      default: 'div',
+      validator: value => ['div', 'span'].includes(value),
     },
   },
   computed: {
