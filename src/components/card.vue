@@ -140,7 +140,7 @@
         </template>
       </f-form-group>
     </div>
-    <f-preloader :condition="showEmail">
+    <f-preloader :condition="showEmail" class="f-mb-3">
       <f-form-group
         v-model.trim="email"
         input-class="f-checkout-email"
