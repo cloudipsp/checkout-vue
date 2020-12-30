@@ -1,9 +1,11 @@
 <template>
   <div>
-    <template v-if="isBreakpointMd && isOnlyCard">
-      <f-info />
-      <f-button-pay-wallet key="1" position="center" />
+    <template v-if="isBreakpointMd">
+      <f-info v-if="isOnlyCard" />
+      <f-price v-else />
+      <f-button-pay-wallet position="center" />
       <f-icons
+        v-if="isOnlyCard"
         class="f-mb-3"
         title="pay_with_card"
         :type="method"
@@ -11,10 +13,6 @@
         under-sticky
         position="center"
       />
-    </template>
-    <template v-if="isBreakpointMd && !isOnlyCard">
-      <f-price />
-      <f-button-pay-wallet key="2" position="center" />
     </template>
     <div class="f-card">
       <div class="f-card-shadow" />
