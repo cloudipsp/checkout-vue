@@ -2,11 +2,13 @@
   height: px-to-rem(56px);
   background: linear-gradient(
     120deg,
-    $preloader_bg 42%,
-    $preloader_inner_bg 60%,
-    $preloader_bg 78%
+    $preloader_bg 41%,
+    $preloader_inner_bg 50%,
+    $preloader_bg 59%
   );
+  background-size: 200% 100%;
   border-radius: px-to-rem(8px);
+  animation: f-preloader 2s ease-in-out infinite;
 }
 
 .f-preloader-xs {
@@ -15,4 +17,16 @@
 
 .f-preloader-sm {
   height: px-to-rem(38px);
+}
+
+@keyframes f-preloader {
+  0% {
+    background-position: 80% 0;
+  }
+  50% {
+    background-position: 20% 0;
+  }
+  100% {
+    background-position: 80% 0;
+  }
 }
