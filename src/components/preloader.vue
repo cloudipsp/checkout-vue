@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-enter">
-    <component :is="tag" v-if="show" key="1" :class="className" />
-    <component :is="tag" v-else key="2"><slot /></component>
+    <component :is="tag" v-if="showPreloader" key="1" :class="className" />
+    <component :is="tag" v-if="showContent" key="2"><slot /></component>
   </transition>
 </template>
 
@@ -27,8 +27,11 @@ export default {
   },
   computed: {
     ...mapState(['ready']),
-    show() {
+    showPreloader() {
       return !this.condition && !this.ready
+    },
+    showContent() {
+      return this.condition && this.ready
     },
     className() {
       return [
