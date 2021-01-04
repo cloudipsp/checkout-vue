@@ -7,7 +7,7 @@
   >
     <template #modal-title>
       <svg-decline />
-      <h5 v-t="'declined'" class="f-modal-title" />
+      <h5 class="f-modal-title" v-text="$t('declined')" />
     </template>
     <p>
       <b>{{ code }}</b> {{ message }}
@@ -16,10 +16,10 @@
   <f-modal-base v-else v-model="show" v-bind="attrs" v-on="$listeners">
     <template #modal-title>
       <svg-server-trouble />
-      <h5 v-t="'server_trouble_title'" class="f-modal-title" />
+      <h5 class="f-modal-title" v-text="$t('server_trouble_title')" />
     </template>
 
-    <p v-t="'server_trouble_desc'" />
+    <p v-text="$t('server_trouble_desc')" />
   </f-modal-base>
 </template>
 

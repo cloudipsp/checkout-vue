@@ -1,9 +1,9 @@
 <template>
   <f-modal-base v-bind="attrs" v-on="$listeners" @show="run" @hide="hide">
     <template #modal-title>
-      {{ $t('submit3ds_title') }}
+      <span v-text="$t('submit3ds_title')" />
     </template>
-    <span v-t="'submit3ds_text'" />
+    <span v-text="$t('submit3ds_text')" />
     <template #modal-footer="{ ok }">
       <f-button
         ref="submit"
@@ -12,7 +12,7 @@
         @click="submit(ok)"
       />
       <div class="f-w-100" />
-      <div v-t="{ path: 'submit3ds_wait', args: [duration] }" />
+      <div v-text="$t({ path: 'submit3ds_wait', args: [duration] })" />
     </template>
   </f-modal-base>
 </template>

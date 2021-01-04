@@ -14,7 +14,7 @@
           size="lg"
           fw
         />
-        <span v-t="method" />
+        <span v-text="$t(method)" />
         <f-icons
           :ref="`${method}_icons`"
           class="f-menu-icons"
@@ -26,7 +26,7 @@
           :ref="`${method}_tooltip`"
           :target="() => $refs[method][0]"
         >
-          {{ $t(`${method}_tooltip`) }}
+          <span v-text="$t(`${method}_tooltip`)" />
         </f-tooltip-default>
       </button>
     </template>

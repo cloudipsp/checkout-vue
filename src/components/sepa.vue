@@ -1,6 +1,6 @@
 <template>
   <div class="f-sepa">
-    <div v-t="'sepa_t'" />
+    <div v-text="$t('sepa_t')" />
 
     <input-text name="sender_name" validate="required|alpha" />
     <input-text name="sender_familyName" validate="required|alpha" />

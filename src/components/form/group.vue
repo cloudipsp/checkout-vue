@@ -2,8 +2,8 @@
   <div :class="classGroup" @mouseenter="mouseenter" @mouseleave="mouseleave">
     <div
       v-if="description"
-      v-t="description"
       class="f-form-control-description"
+      v-text="$t(description)"
     />
     <div :class="classGroupInner">
       <label v-if="prepend" :for="_id" class="f-form-control-prepend">
@@ -20,7 +20,7 @@
         <slot />
       </f-form-item>
       <slot name="label" :classLabel="classLabel" :name_="_id" :label_="label_">
-        <label v-if="label" v-t="label" :class="classLabel" :for="_id" />
+        <label v-if="label" :class="classLabel" :for="_id" v-text="$t(label)" />
       </slot>
     </div>
     <f-tooltip-error

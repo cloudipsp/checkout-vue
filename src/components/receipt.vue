@@ -5,48 +5,53 @@
       <div v-if="model">
         <div
           v-if="model.send_data.mfo"
-          v-t="{ path: 'mfo_title', args: [model.send_data.receipt_orig] }"
           class="f-title f-title-lg"
+          v-text="
+            $t({ path: 'mfo_title', args: [model.send_data.receipt_orig] })
+          "
         />
         <template v-if="isIbox">
-          <div v-t="'ibox_title'" class="f-title f-title-lg f-receipt-title" />
+          <div
+            class="f-title f-title-lg f-receipt-title"
+            v-text="$t('ibox_title')"
+          />
 
-          <div v-t="'full_requesites'" />
-          <div v-t="'full_requesites_explain'" />
+          <div v-text="$t('full_requesites')" />
+          <div v-text="$t('full_requesites_explain')" />
         </template>
 
         <div class="f-receipt-props">
           <div v-if="model.send_data.amount" class="f-receipt-row">
-            <div v-t="'amount'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('amount')" />
             <div class="f-receipt-value">
-              {{ model.send_data.amount }} <span v-t="'UAH'" />
+              {{ model.send_data.amount }} <span v-text="$t('UAH')" />
             </div>
           </div>
           <div class="f-receipt-row">
-            <div v-t="'receiver'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('receiver')" />
             <div class="f-receipt-value">{{ model.send_data.receiver }}</div>
           </div>
           <div v-if="model.send_data.current_bill" class="f-receipt-row">
-            <div v-t="'current_bill'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('current_bill')" />
             <div class="f-receipt-value">
               {{ model.send_data.current_bill }}
             </div>
           </div>
           <div v-if="model.send_data.usreou" class="f-receipt-row">
-            <div v-t="'usreou'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('usreou')" />
             <div class="f-receipt-value">{{ model.send_data.usreou }}</div>
           </div>
           <div v-if="model.send_data.bank" class="f-receipt-row">
-            <div v-t="'bank'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('bank')" />
             <div class="f-receipt-value">{{ model.send_data.bank }}</div>
           </div>
           <div v-if="model.send_data.mfo" class="f-receipt-row">
-            <div v-t="'mfo'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('mfo')" />
             <div class="f-receipt-value">{{ model.send_data.mfo }}</div>
           </div>
           <template v-if="model.send_data.mfo">
             <div v-if="model.send_data.receipt_id" class="f-receipt-row">
-              <div v-t="'purpose'" class="f-receipt-key" />
+              <div class="f-receipt-key" v-text="$t('purpose')" />
               <div class="f-receipt-value">
                 {{ model.send_data.receipt_id }}
               </div>
@@ -54,14 +59,14 @@
           </template>
           <template v-else>
             <div v-if="model.send_data.receipt_orig" class="f-receipt-row">
-              <div v-t="'receipt_id'" class="f-receipt-key" />
+              <div class="f-receipt-key" v-text="$t('receipt_id')" />
               <div class="f-receipt-value">
                 № {{ model.send_data.receipt_orig }}
               </div>
             </div>
           </template>
           <div v-if="model.send_data.end_date" class="f-receipt-row">
-            <div v-t="'end_date'" class="f-receipt-key" />
+            <div class="f-receipt-key" v-text="$t('end_date')" />
             <div class="f-receipt-value">{{ model.send_data.end_date }}</div>
           </div>
         </div>
@@ -91,8 +96,8 @@
                 </div>
                 <div
                   v-if="!loadingQrCode"
-                  v-t="'qr_code_text'"
                   class="f-qr-code-text"
+                  v-text="$t('qr_code_text')"
                 />
               </f-modal-base>
             </div>

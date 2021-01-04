@@ -12,11 +12,11 @@
       <input-amount v-else name="amount" />
       <table v-if="showFeeAmount" class="f-table">
         <tr v-if="showTotal">
-          <td v-t="'total_amount'" class="f-pr-3" />
+          <td class="f-pr-3" v-text="$t('total_amount')" />
           <td>{{ totalAmount }}</td>
         </tr>
         <tr>
-          <td v-t="'fee'" class="f-pr-3" />
+          <td class="f-pr-3" v-text="$t('fee')" />
           <td>{{ feeAmount }}</td>
         </tr>
       </table>

@@ -2,10 +2,10 @@
   <f-alert-base v-if="show" ref="alert" v-bind="attrs" v-on="$listeners">
     <div class="f-gdpr-content">
       <div class="f-form-group">
-        <span v-t="'gdpr_alert_text'" />&nbsp;
-        <a v-t="'learn_more'" href="#" @click="showGdprText = true" />
+        <span v-text="$t('gdpr_alert_text')" />&nbsp;
+        <a href="#" @click="showGdprText = true" v-text="$t('learn_more')" />
         <f-modal-base v-model="showGdprText" header-class="f-p-0">
-          <span v-t="`gdpr_modal_text_${region}`" />
+          <span v-text="$t(`gdpr_modal_text_${region}`)" />
         </f-modal-base>
       </div>
 
@@ -14,14 +14,14 @@
         component="checkbox"
         variant="secondary"
       >
-        <span v-t="'save_card'" />&nbsp;
-        <a v-t="'its_safe'" href="#" @click="showGdprSafe = true" />
+        <span v-text="$t('save_card')" />&nbsp;
+        <a href="#" @click="showGdprSafe = true" v-text="$t('its_safe')" />
       </f-form-group>
 
       <f-modal-base v-model="showGdprSafe" size="lg">
         <template #modal-title>
           <svg-safe />
-          <h5 v-t="'gdpr_modal_safe_title'" class="f-modal-title" />
+          <h5 class="f-modal-title" v-text="$t('gdpr_modal_safe_title')" />
         </template>
 
         <!-- eslint-disable-next-line vue/no-v-html -->
@@ -29,7 +29,7 @@
       </f-modal-base>
     </div>
     <div class="f-gdpr-buttons">
-      <f-button-link v-t="'close'" variant="secondary" @click="close" />
+      <f-button-link variant="secondary" @click="close" v-text="$t('close')" />
       <f-button variant="secondary" text="accept" @click="accept" />
     </div>
   </f-alert-base>

@@ -9,12 +9,12 @@
       block
       @click="click"
     >
-      <span v-t="'pay'" />&nbsp;
+      <span v-text="$t('pay')" />&nbsp;
       <f-preloader v-if="showAmount" :condition="fullAmount" tag="span">
         <f-amount :value="fullAmount" :currency="currency" />
       </f-preloader>
     </f-button>
-    <div v-if="isDemo" v-t="'demo-desc'" class="f-demo-desc" />
+    <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo-desc')" />
   </div>
 </template>
 

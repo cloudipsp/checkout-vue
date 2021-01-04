@@ -3,12 +3,12 @@
     <div class="f-success-title">
       <svg-approved v-if="isApproved" />
       <svg-decline v-if="isDeclined" />
-      <div v-t="order.order_status" class="f-title" />
+      <div class="f-title" v-text="$t(order.order_status)" />
     </div>
     <f-info />
     <div class="f-success-form-group">
       <div class="f-row">
-        <div v-t="'payment_id'" class="f-col" />
+        <div class="f-col" v-text="$t('payment_id')" />
         <div class="f-col f-text-right">
           {{ order.payment_id }}
         </div>

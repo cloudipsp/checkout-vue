@@ -2,7 +2,7 @@
   <div id="f" :style="style" :class="className">
     <div v-if="show" class="f-container" :class="classNameContainer">
       <div v-if="isDemo" class="f-demo">
-        <div v-t="'demo-title'" class="f-demo-title" />
+        <div class="f-demo-title" v-text="$t('demo-title')" />
       </div>
       <f-header />
       <payment />

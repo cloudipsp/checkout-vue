@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-icons">
-    <span v-if="showTitle" v-t="title" class="f-icons-title" />
+    <span v-if="showTitle" class="f-icons-title" v-text="$t(title)" />
     <f-icon
       v-for="item in listFirst"
       :key="item"

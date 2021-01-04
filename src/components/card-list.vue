@@ -2,7 +2,7 @@
   <div class="f-card-list">
     <a href="#" :class="['f-card-list-add']" @click.prevent="addCardNumber()">
       <f-svg name="plus-circle" class="f-card-list-icon" size="lg" fw />
-      <div v-t="'use_other_card'" />
+      <div v-text="$t('use_other_card')" />
     </a>
     <a
       v-for="item in cards"
@@ -20,7 +20,7 @@
       <div>
         <div class="f-card-list-number">{{ item.card_number }}</div>
         <div class="f-card-list-expiry-date">
-          <span v-t="'expires_on'" /> {{ item.expiry_date }}
+          <span v-text="$t('expires_on')" /> {{ item.expiry_date }}
         </div>
       </div>
     </a>

@@ -133,7 +133,7 @@
             under-sticky
           >
             <f-svg name="info-circle" />
-            {{ $t('cvv2_help', [digitsCvv]) }}
+            <span v-text="$t('cvv2_help', [digitsCvv])" />
           </f-tooltip-default>
         </template>
       </f-form-group>

@@ -1,6 +1,6 @@
 <template>
   <div class="f-info">
-    <div v-if="title" v-t="title" class="f-merchant-name" />
+    <div v-if="title" class="f-merchant-name" v-text="$t(title)" />
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
@@ -14,11 +14,11 @@
         href="#"
         @click.prevent="clickMore"
       >
-        <span v-t="'see_more'" /> <f-svg name="angle-right" />
+        <span v-text="$t('see_more')" /> <f-svg name="angle-right" />
       </a>
     </f-preloader>
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
-      <span v-t="order_desc" />
+      <span v-text="$t(order_desc)" />
     </f-modal-base>
     <f-price />
   </div>

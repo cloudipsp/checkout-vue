@@ -21,7 +21,7 @@
       @blur="blur"
     />
     <label :class="classLabel" :for="name_">{{ label_ }}</label>
-    <span v-t="currency" class="f-form-group-currency" />
+    <span class="f-form-group-currency" v-text="$t(currency)" />
     <transition name="slide-fade">
       <div v-if="showError" class="f-error">
         {{ deprecatedErrors.first(name_) }}

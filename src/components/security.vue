@@ -3,12 +3,12 @@
     <template v-if="enableModal">
       <a href="#" class="f-title-security" @click.prevent="open">
         <f-svg ref="security" name="security" size="2x" />
-        <span v-t="'security_title'" />
+        <span v-text="$t('security_title')" />
       </a>
       <f-modal-base v-model="showModal">
         <div class="f-modal-security-title">
           <f-svg name="security" size="lg" />
-          <span v-t="'security_title'" />
+          <span v-text="$t('security_title')" />
         </div>
         <!--eslint-disable-next-line vue/no-v-html-->
         <div class="f-modal-security-content" v-html="$t('security_text')" />
@@ -23,9 +23,9 @@
       <a href="#" class="f-title-security" tabindex="-1" @click.prevent>
         <f-svg ref="security" name="security" size="2x" tabindex="0" />
         <span
-          v-t="'security_title'"
           @mouseenter="mouseenter"
           @mouseleave="mouseleave"
+          v-text="$t('security_title')"
         />
       </a>
       <f-tooltip-default

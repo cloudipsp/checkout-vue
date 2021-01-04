@@ -7,9 +7,9 @@
       component="checkbox"
       switch
     >
-      <span v-t="'subscription'" />
+      <span v-text="$t('subscription')" />
     </f-form-group>
-    <div v-else v-t="'subscription'" class="f-form-group" />
+    <div v-else class="f-form-group" v-text="$t('subscription')" />
     <transition name="collapse">
       <div v-show="enabled_switch" class="f-subscription-wrapper">
         <input-amount
@@ -55,7 +55,7 @@
             :disabled="readonly"
             size="sm"
           >
-            <span v-t="'unlimited'" />
+            <span v-text="$t('unlimited')" />
           </f-form-group>
         </div>
         <div class="f-input-group">
@@ -116,8 +116,8 @@
         />
         <div
           v-if="showVerificationDesc"
-          v-t="'verification_desc'"
           class="f-verification-desc"
+          v-text="$t('verification_desc')"
         />
       </div>
     </transition>

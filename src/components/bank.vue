@@ -13,7 +13,7 @@
           <div>{{ select.iban }}</div>
           <f-button-close class="f-bank-select-close" @click="open = false" />
         </div>
-        <div v-t="'bank_desc'" class="f-bank-desc" />
+        <div class="f-bank-desc" v-text="$t('bank_desc')" />
         <div class="f-container-sm">
           <f-fields-bank v-if="showFieldsBank" :fields="select.form.fields" />
           <f-fields />
@@ -68,7 +68,7 @@
               :size="sizeBankIcon"
             />
             <div :class="classBankItemWrapper">
-              <div v-t="bank.name" class="f-bank-name" />
+              <div class="f-bank-name" v-text="$t(bank.name)" />
               <div v-if="isGermany" class="f-bank-iban">
                 {{ bank.iban }}
               </div>
@@ -78,7 +78,7 @@
         <div class="f-bank-footer">
           <f-button v-if="showMore" variant="outline" @click="loadMore">
             <span><f-svg name="redo" size="lg" :spin="spin" fw /></span>
-            <span v-t="'load_more'" />
+            <span v-text="$t('load_more')" />
           </f-button>
         </div>
       </div>

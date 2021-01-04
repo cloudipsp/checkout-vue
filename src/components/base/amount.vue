@@ -4,7 +4,7 @@
       >{{ integer }}<component :is="tagFractional">{{ fractional }}</component>
     </b>
     &nbsp;
-    <span v-t="currency" :class="currencyClass" />
+    <span :class="currencyClass" v-text="$t(currency)" />
   </span>
 </template>
 
