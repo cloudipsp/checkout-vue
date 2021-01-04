@@ -67,7 +67,7 @@ export default {
     ...mapState(['loading']),
     ...mapState('router', ['page']),
     ...mapState('options', ['full_screen']),
-    ...mapState('params', ['token']),
+    ...mapState('params', ['token', 'lang']),
 
     ...mapStateGetSet([
       'ready',
@@ -88,7 +88,9 @@ export default {
       'cvv2',
     ]),
     createdFormParams() {
-      return this.token ? { token: this.token } : this.store.formParams()
+      return this.token
+        ? { token: this.token, lang: this.lang }
+        : this.store.formParams()
     },
     style() {
       return {
