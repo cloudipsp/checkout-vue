@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="f-price">
-    <f-preloader :condition="amount" size="sm">
+    <f-preloader :condition="showAmount" :size="sizePreloader">
       <f-amount
         v-if="showAmountReadOnly"
         :value="valueAmount"
@@ -47,6 +47,9 @@ export default {
     showTotal() {
       return this.amount_readonly
     },
+    showAmount() {
+      return this.amount || !this.amount_readonly
+    },
     totalAmount() {
       return this.amount / 100
     },
@@ -57,6 +60,9 @@ export default {
     },
     valueAmount() {
       return this.amount_with_fee || this.amount
+    },
+    sizePreloader() {
+      return this.amount_readonly ? 'sm' : null
     },
   },
   watch: {

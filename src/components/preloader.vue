@@ -31,7 +31,7 @@ export default {
       return !this.condition && !this.ready
     },
     showContent() {
-      return this.condition && this.ready
+      return this.condition
     },
     className() {
       return [
