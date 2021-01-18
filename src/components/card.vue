@@ -18,7 +18,7 @@
       <div class="f-card-shadow" />
       <div :class="classCardBg" />
       <div class="f-card-brand">
-        <transition name="fade">
+        <transition name="f-fade">
           <f-icon
             v-if="cardBrand"
             type="card_system/max"

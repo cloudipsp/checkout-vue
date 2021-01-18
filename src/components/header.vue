@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="f-header">
     <div class="f-header-logo">
-      <transition name="fade-enter">
+      <transition name="f-fade-enter">
         <div v-if="showBack" key="back"><f-button-methods /></div>
         <div
           v-else-if="showLogoCustom"

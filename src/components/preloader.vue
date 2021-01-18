@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade-enter">
+  <transition name="f-fade-enter">
     <component :is="tag" v-if="showPreloader" key="1" :class="className" />
     <component :is="tag" v-if="showContent" key="2"><slot /></component>
   </transition>

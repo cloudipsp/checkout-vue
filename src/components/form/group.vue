@@ -32,7 +32,7 @@
       <f-svg name="warning" />
       {{ error }}
     </f-tooltip-error>
-    <transition name="slide-fade">
+    <transition name="f-slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
     </transition>
   </div>

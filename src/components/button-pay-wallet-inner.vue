@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade-enter">
+  <transition name="f-fade-enter">
     <div v-show="show" class="f-btn-pay-wallet">
       <div class="f-wallet-pay-button" :class="classButton" />
       <div

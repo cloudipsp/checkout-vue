@@ -63,7 +63,7 @@
       <f-svg name="warning" />
       {{ deprecatedErrors.first(name_) }}
     </f-tooltip-error>
-    <transition name="slide-fade">
+    <transition name="f-slide-fade">
       <div v-if="showError" class="f-error">
         {{ deprecatedErrors.first(name_) }}
       </div>

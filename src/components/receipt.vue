@@ -1,7 +1,7 @@
 <template>
   <div class="f-receipt">
     <span v-t />
-    <transition name="fade">
+    <transition name="f-fade">
       <div v-if="model">
         <div
           v-if="model.send_data.mfo"

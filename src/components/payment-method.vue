@@ -1,6 +1,6 @@
 <template>
   <div :class="className">
-    <transition name="fade-enter">
+    <transition name="f-fade-enter">
       <!--card banklinks_eu local_methods sepa receipt wallets loans -->
       <component :is="method" :key="method" :class="classNameInner" />
     </transition>

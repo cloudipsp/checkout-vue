@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" :class="className">
-    <transition name="fade-enter">
+    <transition name="f-fade-enter">
       <div v-if="open" key="item">
         <div class="f-bank-select">
           <f-icon
