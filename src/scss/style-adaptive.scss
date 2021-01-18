@@ -164,10 +164,10 @@
 
 @include media-breakpoint-up(md) {
   .f-modal {
-    &.fade .f-modal-dialog {
+    &.f-fade .f-modal-dialog {
       transform: translate(0, -50px);
     }
-    &.show .f-modal-dialog {
+    &.f-show .f-modal-dialog {
       transform: none;
     }
   }

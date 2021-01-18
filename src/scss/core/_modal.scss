@@ -26,13 +26,13 @@ html {
   // See also https://github.com/twbs/bootstrap/issues/17695
 
   // When fading in the modal, animate it to slide down
-  &.fade .f-modal-dialog {
+  &.f-fade .f-modal-dialog {
     transition: transform 0.3s ease-out;
     transform: translate3d(0, 25%, 0);
   }
 
   // When fading in the modal, animate it to slide down
-  &.show .f-modal-dialog {
+  &.f-show .f-modal-dialog {
     transform: none;
   }
 
@@ -102,10 +102,10 @@ html {
   opacity: $modal-backdrop-opacity;
 
   // Fade for backdrop
-  &.fade {
+  &.f-fade {
     opacity: 0;
   }
-  &.show {
+  &.f-show {
     opacity: $modal-backdrop-opacity;
   }
 }
