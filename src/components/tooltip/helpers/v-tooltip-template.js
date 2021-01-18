@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import { BVTooltipTemplate } from 'bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template'
 import { isFunction, isUndefinedOrNull } from 'bootstrap-vue/esm/utils/inspect'
+import Transition from '@/utils/transition'
 
 export default Vue.extend({
   extends: BVTooltipTemplate,
   computed: {
-    templateType() {
-      return 'tooltip'
-    },
     templateClasses() {
       return [
         {
@@ -79,5 +77,23 @@ export default Vue.extend({
         ]
       )
     },
+  },
+  render(h) {
+    // Note: `f-show` and 'f-fade' classes are only appled during transition
+    return h(
+      Transition,
+      {
+        // Transitions as soon as mounted
+        props: { appear: true, noFade: this.noFade },
+        on: {
+          // Events used by parent component/instance
+          beforeEnter: el => this.$emit('show', el),
+          afterEnter: el => this.$emit('shown', el),
+          beforeLeave: el => this.$emit('hide', el),
+          afterLeave: el => this.$emit('hidden', el),
+        },
+      },
+      [this.localShow ? this.renderTemplate(h) : h()]
+    )
   },
 })

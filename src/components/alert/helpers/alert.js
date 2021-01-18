@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { BAlert } from 'bootstrap-vue'
 import FButtonClose from '../../button/button-close'
-import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
+import Transition from '@/utils/transition'
 
 export default Vue.extend({
   extends: BAlert,
@@ -39,6 +39,6 @@ export default Vue.extend({
       )
       $alert = [$alert]
     }
-    return h(BVTransition, { props: { noFade: !this.fade } }, $alert)
+    return h(Transition, { props: { noFade: !this.fade } }, $alert)
   },
 })

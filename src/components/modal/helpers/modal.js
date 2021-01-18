@@ -3,12 +3,21 @@ import { BModal, BButton } from 'bootstrap-vue'
 import FButtonClose from '../../button/button-close'
 import { SLOT_NAME_DEFAULT } from 'bootstrap-vue/esm/constants/slot-names'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
-import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
+import Transition from '@/utils/transition'
 import { BTransporterSingle } from 'bootstrap-vue/esm/utils/transporter'
 
 export default Vue.extend({
   extends: BModal,
   computed: {
+    modalClasses() {
+      return [
+        {
+          'f-fade': !this.noFade,
+          'f-show': this.isShow,
+        },
+        this.modalClass,
+      ]
+    },
     dialogClasses() {
       return [
         {
@@ -210,7 +219,7 @@ export default Vue.extend({
       )
 
       // Wrap modal in transition
-      // Sadly, we can't use `BVTransition` here due to the differences in
+      // Sadly, we can't use `Transition` here due to the differences in
       // transition durations for `.modal` and `.modal-dialog`
       // At least until https://github.com/vuejs/vue/issues/9986 is resolved
       $modal = h(
@@ -249,9 +258,7 @@ export default Vue.extend({
           this.normalizeSlot('modal-backdrop')
         )
       }
-      $backdrop = h(BVTransition, { props: { noFade: this.noFade } }, [
-        $backdrop,
-      ])
+      $backdrop = h(Transition, { props: { noFade: this.noFade } }, [$backdrop])
 
       // Assemble modal and backdrop in an outer <div>
       return h(
