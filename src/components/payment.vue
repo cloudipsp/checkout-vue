@@ -88,9 +88,13 @@ export default {
       'cvv2',
     ]),
     createdFormParams() {
-      return this.token
-        ? { token: this.token, lang: this.lang }
-        : this.store.formParams()
+      let result = this.token ? { token: this.token } : this.store.formParams()
+
+      if (this.store.user.params.lang) {
+        result.lang = this.lang
+      }
+
+      return result
     },
     style() {
       return {

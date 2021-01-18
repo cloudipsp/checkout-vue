@@ -86,7 +86,7 @@ export default {
   methods: {
     changeLang(value) {
       this.store.changeLang(value)
-      this.store.sendRequestInfo()
+      this.store.sendRequestInfo({ lang: value })
     },
   },
 }
