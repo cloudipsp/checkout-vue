@@ -41,6 +41,8 @@ class Store extends Model {
   sendRequest(...args) {
     if (this.state.options.disable_request) return Promise.reject()
 
+    Object.assign(args[2], this.defaultParams())
+
     return sendRequest(...args).catch(model => {
       this.showError(model.attr('error.code'), model.attr('error.message'))
       return Promise.reject(model)
@@ -347,6 +349,13 @@ class Store extends Model {
       deepMerge(this.state.params, params)
     }
   }
+  defaultParams() {
+    return {
+      referrer: document.referrer,
+      embedded: !this.state.options.full_screen,
+      location: location.href,
+    }
+  }
   formParams(data) {
     // copy params
     let params = JSON.parse(JSON.stringify(this.state.params))
@@ -391,7 +400,7 @@ class Store extends Model {
 
     delete params.lang
 
-    return Object.assign(params, data)
+    return Object.assign(params, data, this.defaultParams())
   }
   setError(errors) {
     this.state.error.errors = errors
