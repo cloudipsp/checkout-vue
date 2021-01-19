@@ -2,6 +2,7 @@ import axios from 'axios'
 import { deepMerge, findGetParameter } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
+import { sort } from '@/utils/sort'
 
 let config = {}
 
@@ -60,7 +61,7 @@ function parseOptions({
       },
       response_url,
     },
-    fields: Object.values(fields).map(parseField),
+    fields: Object.values(fields).sort(sort('p')).map(parseField),
     amount_readonly: Boolean(amount_readonly),
   }
 }
