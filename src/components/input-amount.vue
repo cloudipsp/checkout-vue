@@ -1,6 +1,9 @@
 <template>
   <f-form-group v-model="form[name]" v-bind="attrs">
-    <span class="f-form-group-currency" v-text="$t(currency)" />
+    <template #default="{ id }">
+      <slot :id="id" />
+      <span class="f-form-group-currency" v-text="$t(currency)" />
+    </template>
   </f-form-group>
 </template>
 
@@ -39,6 +42,7 @@ export default {
         rules: 'required|decimal:2',
         type: 'tel',
         inputmode: 'numeric',
+        autocomplete: 'off',
         format: this.format,
         parse: this.parse,
       }

@@ -17,7 +17,7 @@
         @blur="blur"
         @input="input"
       >
-        <slot />
+        <slot :id="id" />
       </f-form-item>
       <slot :id="id" name="label" :classLabel="classLabel" :label="$t(label)">
         <label v-if="label" :class="classLabel" :for="id" v-text="$t(label)" />

@@ -1,35 +1,52 @@
 <template>
   <div v-if="show" class="f-price">
     <f-preloader :condition="showAmount" :size="sizePreloader">
-      <f-amount
-        v-if="showAmountReadOnly"
-        :value="valueAmount"
-        :currency="currency"
-        amount-class="f-amount"
-        currency-class="f-currency"
-        sup
-      />
-      <input-amount v-else name="amount" />
-      <table v-if="showFeeAmount" class="f-table">
-        <tr v-if="showTotal">
-          <td class="f-pr-3" v-text="$t('total_amount')" />
-          <td>{{ totalAmount }}</td>
-        </tr>
-        <tr>
-          <td class="f-pr-3" v-text="$t('fee')" />
-          <td>{{ feeAmount }}</td>
-        </tr>
-      </table>
+      <template v-if="showAmountReadOnly">
+        <f-amount
+          :value="valueAmount"
+          :currency="currency"
+          amount-class="f-amount"
+          currency-class="f-currency"
+          sup
+        />
+        <table v-if="showFeeAmount" class="f-table">
+          <tr>
+            <td class="f-pr-3" v-text="$t('total_amount')" />
+            <td>{{ totalAmount }}</td>
+          </tr>
+          <tr>
+            <td class="f-pr-3" v-text="$t('fee')" />
+            <td>{{ feeAmount }}</td>
+          </tr>
+        </table>
+      </template>
+      <template v-else>
+        <input-amount name="amount" label="amount">
+          <template #default="{ id }">
+            <div ref="amount" class="f-form-control f-hidden">
+              {{ totalAmount }}
+            </div>
+            <label v-if="showFeeAmount" :for="id" class="f-fee" :style="style">
+              + {{ feeAmount }}
+            </label>
+          </template>
+        </input-amount>
+      </template>
     </f-preloader>
   </div>
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
-
-let cacheFeeAmount = 0
+import { errorHandler } from '@/utils/helpers'
 
 export default {
+  data() {
+    return {
+      cacheAmount: 0,
+      left: 0,
+    }
+  },
   computed: {
     ...mapState(['verification_type', 'amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
@@ -39,13 +56,12 @@ export default {
       return this.verification_type !== 'amount'
     },
     showFeeAmount() {
-      return this.showFee && this.amount && this.amount_with_fee
+      return (
+        this.showFee && this.amount && this.amount_with_fee && this.feeAmount
+      )
     },
     showAmountReadOnly() {
       return this.amount_readonly || this.page === 'success'
-    },
-    showTotal() {
-      return this.amount_readonly
     },
     showAmount() {
       return this.amount || !this.amount_readonly
@@ -54,9 +70,7 @@ export default {
       return this.amount / 100
     },
     feeAmount() {
-      if (this.amount_with_fee - this.amount < 0) return cacheFeeAmount
-
-      return (cacheFeeAmount = (this.amount_with_fee - this.amount) / 100)
+      return (this.amount_with_fee - this.cacheAmount) / 100
     },
     valueAmount() {
       return this.amount_with_fee || this.amount
@@ -64,13 +78,29 @@ export default {
     sizePreloader() {
       return this.amount_readonly ? 'sm' : null
     },
+    style() {
+      return {
+        left: `${this.left}px`,
+      }
+    },
   },
   watch: {
-    fee() {
-      this.store.getAmountWithFee()
+    fee: 'getAmountWithFee',
+    amount: 'getAmountWithFee',
+  },
+  mounted() {
+    this.setCacheAmount()
+  },
+  methods: {
+    setCacheAmount() {
+      this.left = this.$refs.amount?.offsetWidth + 5
+      this.cacheAmount = this.amount
     },
-    amount() {
-      this.store.getAmountWithFee()
+    getAmountWithFee() {
+      this.store
+        .getAmountWithFee()
+        .then(this.setCacheAmount)
+        .catch(errorHandler)
     },
   },
 }
