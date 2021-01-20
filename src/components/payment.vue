@@ -90,7 +90,7 @@ export default {
     createdFormParams() {
       let result = this.token ? { token: this.token } : this.store.formParams()
 
-      if (this.store.user.params.lang) {
+      if (this.store.user.params?.lang) {
         result.lang = this.lang
       }
 
