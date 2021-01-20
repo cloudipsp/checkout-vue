@@ -55,6 +55,7 @@ export default {
   order_desc_color: white,
   order_desc_more_color: '#CBCCCD',
   amount_color: white,
+  fee_color: white_04,
   currency_color: white_04,
   card_shadow: '#000000',
   card_bg: '&main',

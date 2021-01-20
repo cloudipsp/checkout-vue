@@ -61,6 +61,7 @@
 }
 
 .f-price {
+  position: relative;
   margin-bottom: px-to-rem(24px);
 }
 
@@ -80,6 +81,23 @@
   display: inline-block;
   font-size: px-to-rem(20px);
   color: $currency_color;
+}
+
+.f-fee {
+  position: absolute;
+  top: px-to-rem(26px);
+  font-weight: 500;
+  color: $fee_color;
+}
+
+.f-hidden {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  display: inline;
+  width: auto;
+  padding-right: 0;
+  opacity: 0;
 }
 
 .f-icons-title {

@@ -46,6 +46,7 @@ export default {
   order_desc_color: '&main_color',
   order_desc_more_color: grey_3,
   amount_color: black,
+  fee_color: ash_700,
   currency_color: grey_1,
   card_shadow: '&main',
   card_bg: '&main',
