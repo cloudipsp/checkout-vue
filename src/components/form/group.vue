@@ -22,6 +22,7 @@
       <slot :id="id" name="label" :classLabel="classLabel" :label="$t(label)">
         <label v-if="label" :class="classLabel" :for="id" v-text="$t(label)" />
       </slot>
+      <f-placeholder v-if="showPlaceholder" v-bind="attrs" />
     </div>
     <f-tooltip-error
       v-if="showErrorTooltip"
@@ -149,6 +150,9 @@ export default {
     },
     showErrorTooltip() {
       return this.tooltip && this.hasError && this.focused
+    },
+    showPlaceholder() {
+      return !this.labelClass && this.id
     },
   },
   watch: {
