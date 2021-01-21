@@ -1,0 +1,12 @@
+.f-placeholder {
+  position: absolute;
+  top: px-to-rem(17px);
+  font-family: $font-family-card-number;
+  font-size: px-to-rem(15px);
+  font-weight: 400;
+  line-height: px-to-rem(18px);
+  color: fade($card_input_color, 30%);
+  text-shadow: px-to-rem(1px) px-to-rem(1px) px-to-rem(2px)
+    fade($card_input_shadow, 15%);
+  user-select: none;
+}

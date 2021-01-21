@@ -65,3 +65,10 @@
     }
   }
 }
+
+.f-placeholder {
+  @include media-breakpoint-up(ss) {
+    font-size: px-to-rem(20px);
+    line-height: px-to-rem(25px);
+  }
+}
