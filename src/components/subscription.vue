@@ -3,6 +3,7 @@
     <f-form-group
       v-if="show_switch"
       v-model="enabled_switch"
+      name="switch"
       class="f-mb-1"
       component="checkbox"
       switch
@@ -23,7 +24,7 @@
           v-if="showTrial"
           key="trial"
           :value="trial"
-          label="trial_period"
+          name="trial_period"
           :disabled="true"
         />
         <div v-if="showQuantity" class="f-row f-align-items-center f-quantity">
@@ -32,7 +33,7 @@
             key="checked_unlimited"
             value="∞"
             class="f-col-12 f-col-ss-7"
-            label="number_of_payments"
+            name="number_of_payments"
             :disabled="true"
           />
           <f-form-group
@@ -40,7 +41,7 @@
             key="quantity"
             v-model.number="quantity"
             class="f-col-12 f-col-ss-7"
-            label="number_of_payments"
+            name="number_of_payments"
             rules="required|numeric|one"
             type="tel"
             inputmode="numeric"
@@ -62,7 +63,7 @@
           <f-form-group
             v-model.number="every"
             class="f-col-4 f-col-ss-3"
-            label="subscription_every"
+            name="subscription_every"
             rules="required|numeric|one"
             type="tel"
             inputmode="numeric"
@@ -76,7 +77,7 @@
             component="select"
             class="f-col"
             :options="list"
-            label="subscription_period"
+            name="subscription_period"
             rules="required"
             :disabled="readonly"
             :hide-error="true"
@@ -95,7 +96,7 @@
           v-if="showStartTime"
           v-model="start_time"
           component="date"
-          label="subscription_start_time"
+          name="subscription_start_time"
           rules="required"
           type="date"
           :disabled="readonly"
@@ -107,7 +108,7 @@
           key="end_time"
           v-model="end_time"
           component="date"
-          label="subscription_end_time"
+          name="subscription_end_time"
           rules="required"
           type="date"
           :disabled="readonly"

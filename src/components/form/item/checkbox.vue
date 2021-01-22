@@ -7,7 +7,7 @@
       v-on="$listeners"
       @keyup.enter="onEnter"
     />
-    <label :class="classLabel" :for="_id"><slot /></label>
+    <label :class="classLabel" :for="attrs.id"><slot /></label>
   </ValidationProvider>
 </template>
 

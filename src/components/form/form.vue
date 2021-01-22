@@ -75,9 +75,9 @@ export default {
         })
     },
     autoFocus(id) {
-      let $firstErrorField = this.$el.querySelector(
-        '#' + id.replace(/\./g, '\\.')
-      )
+      // mask point
+      id = id.replace(/\./g, '\\.')
+      let $firstErrorField = this.$el.querySelector(`[name=${id}]`)
 
       if (!$firstErrorField) return Promise.reject()
 

@@ -32,10 +32,6 @@ export default {
     }
   },
   computed: {
-    _id() {
-      const id = this.$attrs.id ? this.$attrs.id.replace(/^f-/, '') : ''
-      return 'f-' + (id || this.$attrs.name || this.id)
-    },
     error() {
       if (!this.isMounted) return null
       const error = this.$refs.validation.messages[0]
@@ -45,7 +41,7 @@ export default {
     attrs() {
       return {
         ...this.$attrs,
-        id: this._id,
+        id: this.$attrs.id || this.id,
         state: this.state,
         placeholder: this.placeholder,
       }
@@ -53,7 +49,7 @@ export default {
     attrsValidation() {
       return {
         // Identifier used for target/cross-field based rules.
-        vid: this._id,
+        vid: this.$attrs.name,
         // A string that will be used to replace {field} in error messages and for custom error messages.
         name: this.$attrs.name,
         rules: this.rules,

@@ -60,7 +60,7 @@ export default {
         format: 'DD/MM/YYYY',
         'input-class': this.classInput.join(' '),
         'input-attr': {
-          id: this._id,
+          id: this.attrs.id,
         },
         'value-type': 'YYYY-MM-DD',
         'prefix-class': 'f-datepicker',

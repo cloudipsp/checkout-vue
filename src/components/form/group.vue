@@ -6,7 +6,7 @@
       v-text="$t(description)"
     />
     <div :class="classGroupInner">
-      <label v-if="prepend" :for="_id" class="f-form-control-prepend">
+      <label v-if="prepend" :for="id" class="f-form-control-prepend">
         <f-svg :name="prepend" fw />
       </label>
       <f-form-item
@@ -19,8 +19,8 @@
       >
         <slot />
       </f-form-item>
-      <slot name="label" :classLabel="classLabel" :name_="_id" :label_="label_">
-        <label v-if="label" :class="classLabel" :for="_id" v-text="$t(label)" />
+      <slot :id="id" name="label" :classLabel="classLabel" :label="$t(label)">
+        <label v-if="label" :class="classLabel" :for="id" v-text="$t(label)" />
       </slot>
     </div>
     <f-tooltip-error
@@ -52,9 +52,15 @@ export default {
       type: String,
       default: '',
     },
+    name: {
+      type: String,
+      required: true,
+    },
     label: {
       type: String,
-      default: '',
+      default() {
+        return this.$attrs.component === 'checkbox' ? '' : this.name
+      },
     },
     labelClass: {
       type: String,
@@ -83,9 +89,6 @@ export default {
   },
   computed: {
     ...mapState(['isSubmit']),
-    _id() {
-      return 'f-' + (this.$attrs.id || this.$attrs.name || this.id)
-    },
     validation() {
       if (!this.isMounted) return
       return this.$refs.item.$children[0].$refs.validation
@@ -101,7 +104,8 @@ export default {
     attrs() {
       return {
         ...this.$attrs,
-        id: this._id,
+        id: this.id,
+        name: `f-${this.name}`,
       }
     },
     classGroup() {
@@ -145,9 +149,6 @@ export default {
     },
     showErrorTooltip() {
       return this.tooltip && this.hasError && this.focused
-    },
-    label_() {
-      return this.$t(this.label)
     },
   },
   watch: {

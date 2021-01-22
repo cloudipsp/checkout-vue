@@ -135,17 +135,14 @@
   margin: 0 0 px-to-rem(18px) 0;
 }
 
-// stylelint-disable-next-line selector-max-id
-#f-expiry_date {
+[name='f-expiry_date'] {
   width: px-to-rem(80px);
 }
 
-// stylelint-disable-next-line selector-max-id
-#f-cvv2 {
+.f-form-control[name='f-cvv2'] {
   width: px-to-rem(75px);
   font-family: $font-family-cvv;
 
-  // stylelint-disable-next-line selector-max-id
   &:-webkit-autofill::first-line {
     font-family: $font-family-cvv;
   }

@@ -27,7 +27,7 @@
             <f-form-group
               v-model="default_country"
               :options="country"
-              label="default_country"
+              name="default_country"
               size="sm"
               component="select"
               @input="clear"
@@ -37,7 +37,7 @@
             <f-form-base>
               <f-form-group
                 v-model="search"
-                label="system_search"
+                name="system_search"
                 size="sm"
                 prepend="search"
               />

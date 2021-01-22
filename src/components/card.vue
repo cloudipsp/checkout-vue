@@ -30,11 +30,10 @@
         </transition>
       </div>
       <f-form-group
-        id="card_number"
         ref="card_number"
         v-model="card_number"
         class="f-form-group-card f-form-group-card-number"
-        label="card_number"
+        name="card_number"
         placeholder="card_number_p"
         :rules="validCardNumber"
         :mask="maskCardNumber"
@@ -48,19 +47,19 @@
         autocomplete="cc-number"
         @input="inputCardNumber"
       >
-        <template v-if="need_verify_code" #label="{ classLabel, label_ }">
+        <template v-if="need_verify_code" #label="{ classLabel, label }">
           <label :class="classLabel">
-            {{ label_ }} <f-svg name="lock-alt" size="lg" />
+            {{ label }} <f-svg name="lock-alt" size="lg" />
           </label>
         </template>
-        <template v-else-if="isCards" #label="{ classLabel, label_ }">
+        <template v-else-if="isCards" #label="{ classLabel, label }">
           <template v-if="enableModal">
             <a
               href="#"
               :class="[classLabel, 'f-control-label-card-list']"
               @click.prevent="showModalCard = true"
             >
-              {{ label_ }} <f-svg name="angle-down" size="lg" />
+              {{ label }} <f-svg name="angle-down" size="lg" />
             </a>
           </template>
           <template v-else>
@@ -72,7 +71,7 @@
               @click.prevent="showTooltipCard = true"
               @blur="blurTooltipCard"
             >
-              {{ label_ }}
+              {{ label }}
               <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
             </a>
             <f-tooltip-card
@@ -87,11 +86,10 @@
       </f-form-group>
 
       <f-form-group
-        id="expiry_date"
         ref="expiry_date"
         v-model="expiry_date"
         class="f-form-group-card"
-        label="expiry_date"
+        name="expiry_date"
         placeholder="expiry_date_p"
         :rules="validExpiryDate"
         :mask="maskExpiryDate"
@@ -106,11 +104,10 @@
         @input="inputExpiryDate"
       />
       <f-form-group
-        id="cvv2"
         ref="cvv2"
         v-model="cvv2"
         class="f-form-group-card"
-        label="cvv2"
+        name="cvv2"
         placeholder="cvv2_p"
         :rules="validCvv"
         type="tel"
@@ -122,9 +119,9 @@
         label-class
         autocomplete="cc-csc"
       >
-        <template #label="{ classLabel, name_, label_ }">
-          <label :class="classLabel" :for="name_">
-            <span ref="label_cvv">{{ label_ }}</span>
+        <template #label="{ classLabel, id, label }">
+          <label :class="classLabel" :for="id">
+            <span ref="label_cvv">{{ label }}</span>
           </label>
 
           <f-tooltip-default
@@ -144,7 +141,7 @@
       <f-form-group
         v-model.trim="email"
         input-class="f-checkout-email"
-        label="email"
+        name="email"
         rules="required|email"
         autocomplete="email"
       />
