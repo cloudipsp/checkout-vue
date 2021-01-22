@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n'
 import { messages } from '@/i18n/lang/en'
 import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
 import { getId } from '@/utils/helpers'
+import configLocales from '@/config/locales.json'
 
 Vue.use(VueI18n)
 
@@ -77,4 +78,20 @@ function loadScript(url) {
 
 function getUrl(lang, store) {
   return `${store.state.cdn}/i18n/${lang}.js`
+}
+
+export const getBrowserLanguage = () => {
+  let n = window.navigator
+  const browserLanguage = (n.language || n.browserLanguage || '')
+    .toLowerCase()
+    .split('-')[0]
+  return getSupportLang(browserLanguage)
+}
+
+function getSupportLang(value) {
+  return isSupportLang(value) ? value : 'en'
+}
+
+function isSupportLang(value) {
+  return Object.keys(configLocales).includes(value)
 }

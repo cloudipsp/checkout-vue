@@ -12,8 +12,7 @@ import {
 } from '@/utils/helpers'
 import { initApi, sendRequest } from '@/utils/api'
 import { isPlainObject, isExist } from '@/utils/typeof'
-import { loadLanguageAsync } from '@/i18n/index'
-import i18n from '@/i18n/index'
+import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from './setup'
 import { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
@@ -97,9 +96,8 @@ class Store extends Model {
         'verification_' + this.state.verification_type + '_d'
     }
 
-    if (model.attr('lang')) {
-      this.state.params.lang = model.attr('lang')
-    }
+    this.state.params.lang = this.state.params.lang || model.attr('lang')
+
     this.initLang()
 
     subscription(model.attr('order'))
@@ -192,7 +190,9 @@ class Store extends Model {
     )
   }
   initLang() {
-    this.changeLang(getCookie('lang_s') || this.state.params.lang)
+    this.changeLang(
+      getCookie('lang_s') || this.state.params.lang || getBrowserLanguage()
+    )
   }
   initError() {
     const token = findGetParameter('token')

@@ -86,7 +86,7 @@ Name                  | Type        | Default                 | Description     
 `amount`              | Integer     | 0                       |                             |
 `currency`            | String      | 'USD'                   |                             |
 `response_url`        | String      |                         | format url                  |
-`lang`                | String      | 'en'                    |                             | server or options
+`lang`                | String      | browser language        |                             | server or options
 `required_rectoken`   | String      |                         | support `Y`, `N`, `y`, `n`. |
 `verification`        | String      |                         | support `Y`, `N`, `y`, `n`. |
 `verification_type`   | String      |                         | support `amount`, `code`    |

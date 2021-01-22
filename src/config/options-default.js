@@ -73,7 +73,7 @@ const config = {
     code: '',
     order_desc: '',
     offer: false,
-    lang: 'en',
+    lang: '',
     custom: {}, // users x-vue-template fields
     customer_data: {}, // customer_required_data fields
     form: {}, // bank form fields
