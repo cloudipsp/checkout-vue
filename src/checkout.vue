@@ -13,6 +13,20 @@
         {{ item.message }}
       </li>
     </ul>
+    <f-modal-base
+      v-else
+      v-model="showModalError"
+      no-close-on-esc
+      no-close-on-backdrop
+      hide-header-close
+    >
+      <template #modal-title>
+        <svg-decline />
+        <h5 class="f-modal-title" v-text="$t(`${idError}_title`)" />
+      </template>
+
+      <p class="f-text-center" v-text="$t(`${idError}_text`)" />
+    </f-modal-base>
   </div>
 </template>
 
@@ -42,6 +56,8 @@ export default {
   data() {
     return {
       load: false,
+      showModalError: false,
+      idError: '',
       // eslint-disable-next-line no-undef
       COMMITHASH,
       // eslint-disable-next-line no-undef
@@ -99,9 +115,16 @@ export default {
       this.store.loadCardImg(this.getPreset()),
     ])
       .finally(() => {
-        this.load = true
         this.store.setOptions(this.optionsUser)
         this.initHeight()
+      })
+      .then(() => {
+        this.load = true
+      })
+      .catch(error => {
+        this.idError = error.id
+        this.showModalError = true
+        return Promise.reject(error)
       })
       .catch(errorHandler)
   },
