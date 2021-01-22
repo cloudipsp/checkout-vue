@@ -191,6 +191,7 @@ import FPrice from '@/components/price'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
+import { createDate, formatMMYY } from '@/utils/date'
 
 export default {
   components: {
@@ -243,15 +244,9 @@ export default {
       return this.read_only || this.need_verify_code
     },
     validExpiryDate() {
-      let minDate
-      if (this.store.state.validate_expdate) {
-        let date = new Date()
-        let year = String(date.getFullYear()).slice(-2)
-        let month = ('0' + (date.getMonth() + 1)).slice(-2)
-        minDate = `${month}/${year}`
-      } else {
-        minDate = '01/19'
-      }
+      let minDate = this.store.state.validate_expdate
+        ? formatMMYY(createDate())
+        : '01/19'
 
       return `required|date_format:MM/yy|after:${minDate},true,MM/yy`
     },

@@ -23,6 +23,12 @@ export const date = (date, format) => {
   return createDate(year, month - 1, day, hour, minute)
 }
 
+export const formatMMYY = date => {
+  let year = String(date.getFullYear()).slice(-2)
+  let month = `0${date.getMonth() + 1}`.slice(-2)
+  return `${month}/${year}`
+}
+
 export const isAfter = (date, after) => {
   return date.getTime() > after.getTime()
 }

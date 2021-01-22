@@ -129,6 +129,7 @@
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
 import { dateFormat } from '@/utils/helpers'
+import { createDate } from '@/utils/date'
 
 export default {
   data() {
@@ -220,8 +221,8 @@ export default {
         this.start_time ||
         (!this.start_time && this.unlimited && !this.optionTrial)
       ) {
-        let value = new Date(this.start_time || new Date())
-        let now = new Date()
+        let value = createDate(this.start_time || createDate())
+        let now = createDate()
 
         if (now > value) value = now
 

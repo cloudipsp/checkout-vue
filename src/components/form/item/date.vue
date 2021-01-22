@@ -30,6 +30,7 @@ import { isMobile } from '@/utils/mobile'
 import DatePicker from './helpers/date-picker'
 import FormInput from './helpers/form-input'
 import { dateFormat } from '@/utils/helpers'
+import { createDate } from '@/utils/date'
 
 export default {
   components: {
@@ -47,7 +48,7 @@ export default {
   data() {
     return {
       map: {
-        now: this.getDate(new Date()),
+        now: this.getDate(createDate()),
       },
     }
   },
