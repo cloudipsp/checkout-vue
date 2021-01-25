@@ -6,9 +6,7 @@
         <div
           v-if="model.send_data.mfo"
           class="f-title f-title-lg"
-          v-text="
-            $t({ path: 'mfo_title', args: [model.send_data.receipt_orig] })
-          "
+          v-text="$t('mfo_title', [model.send_data.receipt_orig])"
         />
         <template v-if="isIbox">
           <div

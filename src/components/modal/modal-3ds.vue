@@ -12,7 +12,7 @@
         @click="submit(ok)"
       />
       <div class="f-w-100" />
-      <div v-text="$t({ path: 'submit3ds_wait', args: [duration] })" />
+      <div v-text="$t('submit3ds_wait', [duration])" />
     </template>
   </f-modal-base>
 </template>
