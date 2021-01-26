@@ -2,6 +2,7 @@ import configMethods from '@/config/methods.json'
 import { removeDuplicate, includes, excludes } from '@/utils/helpers'
 import Model from '@/class/model'
 import { isExist } from '@/utils/typeof'
+import configTheme from '@/config/theme'
 
 const config = {
   trustly: 'banklinks_eu',
@@ -82,6 +83,7 @@ class CorrectingUserConfig extends Model {
 
   configDefault() {
     this.showMenuFirst()
+    this.preset()
   }
 
   subscription() {
@@ -115,6 +117,15 @@ class CorrectingUserConfig extends Model {
     if (isExist(show_menu_first)) return
 
     this.attr(name, !full_screen)
+  }
+
+  preset() {
+    const preset = this.data.options?.theme?.preset
+    const theme = this.data.options?.theme?.type
+
+    if (preset || !theme) return
+
+    this.attr('data.options.theme.preset', configTheme[theme])
   }
 
   removeOldSubscription() {

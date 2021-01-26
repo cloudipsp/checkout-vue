@@ -26,6 +26,7 @@ import configSubscription from '@/config/subscription'
 import { subscription } from '@/store/subscription'
 import { correctingUserConfig } from '@/utils/compatibility'
 import Model from '@/class/model'
+import initFavicon from '@/store/favicon'
 
 Vue.use(store)
 
@@ -35,7 +36,6 @@ class Store extends Model {
   constructor() {
     super()
     this.setStateDefault()
-    this.server = {}
   }
   sendRequest(...args) {
     if (this.state.options.disable_request) return Promise.reject()
@@ -130,12 +130,12 @@ class Store extends Model {
       this.user.css_variable
     )
 
-    this.setState(this.server)
     Object.assign(
       this.state.subscription,
       configSubscription[this.state.options.subscription.type]
     )
 
+    this.initFavicon()
     this.initCdn()
     this.initMethods()
     this.initLang()
@@ -175,6 +175,9 @@ class Store extends Model {
       if (!errors) return
       this.setError(errors)
     })
+  }
+  initFavicon() {
+    initFavicon(this.state.cdnIcons, this.state.options.full_screen)
   }
   initCdn() {
     let scriptFondyEl = [
@@ -245,26 +248,28 @@ class Store extends Model {
       }
     )
   }
+  load() {
+    return Promise.all([this.loadButton(), this.loadCardImg()])
+  }
   loadButton() {
     return loadButton().then(config => {
       if (!config) return
       if (this.state.options.full_screen) {
         document.title = config.options.title
       }
-      this.setServer(config)
+      this.setState(config)
+      this.initLang()
     })
   }
-  loadCardImg(preset) {
-    return loadCardImg(preset).then(config => {
+  loadCardImg() {
+    return loadCardImg(this.state.options.theme.preset).then(config => {
       if (!config) return
-      this.setServer(config)
+      this.setState(config)
+      initCssVariable(config.css_variable)
     })
   }
   setState(state) {
     deepMerge(this.state, JSON.parse(JSON.stringify(state)))
-  }
-  setServer(state) {
-    deepMerge(this.server, JSON.parse(JSON.stringify(state)))
   }
   changeLang(lang) {
     if (this.state.options.full_screen) {

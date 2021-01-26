@@ -37,9 +37,6 @@ import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import Attr from '@/mixins/attr'
 import { errorHandler } from '@/utils/helpers'
-import configTheme from '@/config/theme'
-import initFavicon from '@/store/favicon'
-import { isExist } from '@/utils/typeof'
 
 export default {
   components: {
@@ -66,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isOnlyCard', 'error', 'cdnIcons']),
+    ...mapState(['isOnlyCard', 'error']),
     ...mapState('options', [
       'show_menu_first',
       'full_screen',
@@ -108,51 +105,24 @@ export default {
     },
   },
   created() {
-    this.initFavicon()
-
-    Promise.all([
-      this.store.loadButton(),
-      this.store.loadCardImg(this.getPreset()),
-    ])
-      .finally(() => {
-        this.store.setOptions(this.optionsUser)
-        this.initHeight()
-      })
-      .then(() => {
-        this.load = true
-      })
-      .catch(error => {
-        this.idError = error.id
-        this.showModalError = true
-        return Promise.reject(error)
-      })
-      .catch(errorHandler)
+    this.store.setOptions(this.optionsUser)
+    this.initHeight()
+    this.store.load().then(this.onLoad, this.onError).catch(errorHandler)
   },
   methods: {
-    initFavicon() {
-      const userFullScreen = this.attr('optionsUser.options.full_screen')
-      const full_screen = isExist(userFullScreen)
-        ? userFullScreen
-        : this.full_screen
-
-      initFavicon(this.cdnIcons, full_screen)
-    },
     initHeight() {
       this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
     },
     resize() {
       this.initHeight()
     },
-    getPreset() {
-      const userPreset = this.attr('optionsUser.options.theme.preset')
-      const userTheme = this.attr('optionsUser.options.theme.type')
-
-      if (userPreset) {
-        return userPreset
-      } else if (userTheme) {
-        this.attr('optionsUser.options.theme.preset', configTheme[userTheme])
-        return configTheme[userTheme]
-      }
+    onLoad() {
+      this.load = true
+    },
+    onError(error) {
+      this.idError = error.id
+      this.showModalError = true
+      return Promise.reject(error)
     },
   },
 }

@@ -3,6 +3,7 @@ import { deepMerge, findGetParameter } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
 import { date, createDate } from '@/utils/date'
+import configSubscription from '@/config/subscription'
 import { sort } from '@/utils/sort'
 
 let config = {}
@@ -50,7 +51,6 @@ function parseOptions({
     options: {
       title: name,
       subscription: {
-        type: getType(button_type === 'recurring', recurring_state),
         quantity: recurring_type === 'quantity',
         unlimited: recurring_type === 'period',
         trial: recurring_trial,
@@ -71,6 +71,8 @@ function parseOptions({
     },
     fields: Object.values(fields).sort(sort('p')).map(parseField),
     amount_readonly: Boolean(amount_readonly),
+    subscription:
+      configSubscription[getType(button_type === 'recurring', recurring_state)],
   }
 }
 
