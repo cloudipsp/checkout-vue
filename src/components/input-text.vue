@@ -1,103 +1,45 @@
 <template>
-  <div
-    :class="classGroupName"
-    @mouseenter="mouseenter"
-    @mouseleave="mouseleave"
-  >
-    <label v-if="prepend" :for="name_" class="f-form-control-prepend">
-      <f-svg :name="prepend" fw />
-    </label>
-    <f-mask
-      v-if="mask"
-      :id="name_"
-      ref="input"
-      v-model="params[field_]"
-      v-validate="validate"
-      :data-vv-as="label_"
-      :data-vv-name="name_"
-      :type="type"
-      :class="className"
-      :maxlength="maxlength"
-      :placeholder="placeholder_"
-      :inputmode="inputmode"
-      :mask="mask"
-      :masked="masked"
-      :readonly="readonly"
-      :disabled="disabled"
-      @blur.native="blurNative"
-      @keyup.native.enter="onEnter"
-      v-on="$listeners"
-      @focus.native="focus"
-    />
-    <input
-      v-else
-      :id="name_"
-      ref="input"
-      v-model="params[field_]"
-      v-validate="validate"
-      :data-vv-as="label_"
-      :data-vv-name="name_"
-      :type="type"
-      :class="className"
-      :maxlength="maxlength"
-      :placeholder="placeholder_"
-      :inputmode="inputmode"
-      :autocomplete="autocomplete"
-      :readonly="readonly"
-      :disabled="disabled"
-      @keyup.enter="onEnter"
-      v-on="$listeners"
-      @focus="focus"
-      @blur="blur"
-    />
-    <slot name="label" :classLabel="classLabel" :name_="name_" :label_="label_">
-      <label :class="classLabel" :for="name_">{{ label_ }}</label>
-    </slot>
-    <slot />
-    <f-tooltip-error
-      v-if="showErrorTooltip"
-      :show.sync="showErrorTooltipFlag"
-      :target="'#' + name_"
-      under-sticky
-    >
-      <f-svg name="warning" />
-      {{ deprecatedErrors.first(name_) }}
-    </f-tooltip-error>
-    <transition name="f-slide-fade">
-      <div v-if="showError" class="f-error">
-        {{ deprecatedErrors.first(name_) }}
-      </div>
-    </transition>
-  </div>
+  <f-form-group v-model="form[name]" v-bind="attrs" />
 </template>
 
 <script>
-import Input from '@/mixins/input'
-import remove_add_event_listener from '@/mixins/remove_add_event_listener'
+import { mapState } from '@/utils/store'
 
 export default {
-  mixins: [Input, remove_add_event_listener],
+  inheritAttrs: false,
   props: {
-    type: {
+    name: {
       type: String,
-      default: 'text',
+      required: true,
     },
-    maxlength: {
-      type: Number,
-      default: null,
+    value: {
+      type: String,
+      default: '',
     },
-    mask: {
-      type: [String, Object],
-      default: null,
+    validate: {
+      type: String,
+      default: '',
     },
-    masked: Boolean,
+    custom: {
+      type: Boolean,
+      default: false,
+    },
   },
-  methods: {
-    // TODO for this.flag.touched
-    blurNative() {
-      this.$refs.input.$emit('blur')
-      this.blur()
+  computed: {
+    ...mapState(['params']),
+    attrs() {
+      return {
+        ...this.$attrs,
+        name: this.name,
+        rules: this.validate,
+      }
     },
+    form() {
+      return this.custom ? this.params.custom : this.params
+    },
+  },
+  created() {
+    this.form[this.name] = this.form[this.name] || this.value
   },
 }
 </script>
