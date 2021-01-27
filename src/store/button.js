@@ -65,21 +65,22 @@ function parseOptions({
   }
 }
 
-function parseField(attrs) {
-  let { hidden, required, valid = {} } = attrs
-  const component = hidden ? 'input-hidden' : 'input-text'
-  let validate = {}
-  if (required) validate.required = required
-  if (valid.pattern) validate.regex = valid.pattern
-  if (valid.min_length) validate.min = valid.min_length
-  if (valid.max_length) validate.max = valid.max_length
+function parseField({ value, name, label, hidden, required, valid = {} }) {
+  let { pattern, min_length, max_length } = valid
+  let rules = {}
+  if (required) rules.required = required
+  if (pattern) rules.regex = pattern
+  if (min_length) rules.min = min_length
+  if (max_length) rules.max = max_length
 
   return {
-    ...attrs,
+    value,
+    name,
+    label,
     placeholder: '',
-    component,
+    componentName: hidden ? 'input-hidden' : 'f-form-group',
     custom: true,
-    validate,
+    rules,
     autocomplete: 'on',
   }
 }

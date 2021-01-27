@@ -1,8 +1,12 @@
 <template>
   <div v-if="show">
-    <template v-for="field in fields">
-      <component :is="field.component" :key="field.name" v-bind="field" />
-    </template>
+    <component
+      :is="field.componentName"
+      v-for="field in list"
+      :key="field.name"
+      v-model="params.custom[field.name]"
+      v-bind="field"
+    />
   </div>
 </template>
 
@@ -11,10 +15,18 @@ import { mapState } from '@/utils/store'
 
 export default {
   computed: {
-    ...mapState(['fields']),
+    ...mapState(['params', 'fields']),
     show() {
       return this.fields.length
     },
+    list() {
+      return this.fields
+    },
+  },
+  created() {
+    this.list.forEach(({ name, value }) => {
+      this.params.custom[name] = value
+    })
   },
 }
 </script>

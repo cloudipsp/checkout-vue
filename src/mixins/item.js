@@ -17,7 +17,7 @@ export default {
       default: '',
     },
     rules: {
-      type: String,
+      type: [Object, String],
       default: '',
     },
     size: {

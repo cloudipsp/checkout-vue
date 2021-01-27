@@ -146,20 +146,20 @@
         autocomplete="email"
       />
     </f-preloader>
-    <input-text
+    <f-form-group
       v-if="isVerificationCode"
-      name="code"
-      :validate="validCode"
+      v-model="code"
+      name="verification_code"
+      :rules="validCode"
       type="tel"
       :maxlength="4"
-      label="verification_code"
     />
-    <input-text
+    <f-form-group
       v-if="isVerificationAmount"
-      name="code"
-      :validate="validAmount"
+      v-model="code"
+      name="verification_amount"
+      :rules="validAmount"
       type="text"
-      label="verification_amount"
     />
     <f-customer-fields />
     <f-fields />
@@ -228,13 +228,14 @@ export default {
     ...mapState('options', {
       showEmail: 'email',
     }),
-    ...mapState('params', ['code', 'token']),
+    ...mapState('params', ['token']),
     ...mapState('css_variable', ['card_bg_lighten']),
     ...mapStateGetSet('params', [
       'email',
       'cvv2',
       'expiry_date',
       'card_number',
+      'code',
     ]),
     showSubscription() {
       return this.token ? this.ready : true
@@ -261,11 +262,8 @@ export default {
         (this.card_number.length === 16 ||
           this.card_number.length === 19 ||
           this.submited)
-      if (needValidCard) {
-        return 'required|ccard'
-      } else {
-        return 'required'
-      }
+
+      return needValidCard ? 'required|ccard' : 'required'
     },
     validCvv() {
       return 'required|digits:' + this.digitsCvv
@@ -277,20 +275,13 @@ export default {
       return !!this.cards.length
     },
     validCode() {
-      return {
-        rules: {
-          required: true,
-          digits: /EURT/.test(this.code) ? false : '4',
-        },
-      }
+      return /EURT/.test(this.code) ? 'required' : 'required|digits:4'
     },
     validAmount() {
       return {
-        rules: {
-          required: true,
-          numrange: [0, 9999999.99],
-          regex: '^\\d{1,7}([,\\.]\\d{1,2})?$',
-        },
+        required: true,
+        numrange: [0, 9999999.99],
+        regex: '^\\d{1,7}([,.]\\d{1,2})?$',
       }
     },
     isVerificationAmount() {
