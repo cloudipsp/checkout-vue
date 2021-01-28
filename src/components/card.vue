@@ -200,7 +200,6 @@ export default {
     FPrice,
   },
   mixins: [Resize, timeout, isMounted],
-  inject: ['$validator'],
   data() {
     return {
       maskExpiryDate: '##/##',

@@ -1,5 +1,5 @@
 export default {
-  inject: ['$validator', '$_veeObserver'],
+  inject: ['$_veeObserver'],
   computed: {
     errors() {
       return Object.entries(this.$_veeObserver.ctx.errors).filter(
@@ -7,7 +7,7 @@ export default {
       )
     },
     isError() {
-      return !!this.deprecatedErrors.items.length || !!this.errors.length
+      return !!this.errors.length
     },
   },
 }

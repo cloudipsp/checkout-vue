@@ -17,7 +17,6 @@ export default {
       submit: this.submit,
     }
   },
-  inject: ['$validator'],
   props: {
     formRequest: {
       type: Function,
@@ -54,19 +53,11 @@ export default {
     submit() {
       this.submited = true
       return this.$nextTick()
-        .then(() =>
-          Promise.all([
-            this.$validator.validateAll(),
-            this.$$validator.validate(),
-          ])
-        )
-        .then(([isValid, isValidNew]) => {
+        .then(() => this.$$validator.validate())
+        .then(isValid => {
           this.isSubmit = true
-          // this.deprecatedErrors.items this.fields this.deprecatedErrors.clear() this.deprecatedErrors.count()
 
-          if (!isValidNew) return this.autoFocus(this.errors[0][0])
-          if (!isValid)
-            return this.autoFocus(this.deprecatedErrors.items[0].field)
+          if (!isValid) return this.autoFocus(this.errors[0][0])
 
           return this.formRequest()
         })

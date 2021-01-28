@@ -94,7 +94,6 @@ const install = Vue => {
   Validator.localize('en', messages)
 
   Vue.use(VeeValidate, {
-    errorBagName: 'deprecatedErrors',
     inject: false,
     events: 'change|input|blur',
   })
