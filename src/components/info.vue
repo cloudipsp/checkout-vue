@@ -4,7 +4,7 @@
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
-    <f-preloader :condition="order_desc" size="xs" class="f-order-desc">
+    <f-preloader :condition="showOrderDesc" size="xs" class="f-order-desc">
       <div ref="wrapper" class="f-order-desc-text">
         <span ref="desc">{{ order_desc_translation }}</span>
       </div>
@@ -41,6 +41,9 @@ export default {
   computed: {
     ...mapState('options', ['title', 'link']),
     ...mapState('params', ['order_desc']),
+    showOrderDesc() {
+      return this.order_desc && this.order_desc !== ' '
+    },
     order_desc_translation() {
       this.nextResize()
       return this.$t(this.order_desc)
