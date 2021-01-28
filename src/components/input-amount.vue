@@ -1,56 +1,71 @@
 <template>
-  <div
-    :class="[classGroupName, 'f-form-group-amount']"
-    @mouseenter="mouseenter"
-    @mouseleave="mouseleave"
-  >
-    <input
-      :id="name_"
-      v-model="amount"
-      v-validate="'required|decimal:2'"
-      :data-vv-as="label_"
-      :data-vv-name="name_"
-      type="tel"
-      :class="className"
-      :placeholder="placeholder_"
-      :readonly="readonly"
-      :disabled="disabled"
-      inputmode="numeric"
-      @keyup.enter="onEnter"
-      @focus="focus"
-      @blur="blur"
-    />
-    <label :class="classLabel" :for="name_">{{ label_ }}</label>
+  <f-form-group v-model="form[name]" v-bind="attrs">
     <span class="f-form-group-currency" v-text="$t(currency)" />
-    <transition name="f-slide-fade">
-      <div v-if="showError" class="f-error">
-        {{ deprecatedErrors.first(name_) }}
-      </div>
-    </transition>
-  </div>
+  </f-form-group>
 </template>
 
 <script>
-import Input from '@/mixins/input'
 import { mapState } from '@/utils/store'
 
 export default {
-  mixins: [Input],
+  inheritAttrs: false,
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    value: {
+      type: String,
+      default: '',
+    },
+    recurring: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      hasLastDot: false,
+    }
+  },
   computed: {
+    ...mapState(['params']),
     ...mapState('params', ['currency']),
-    amount: {
-      get() {
-        let amount = parseInt(this.params[this.field_])
-        return amount ? amount / 100 : ''
-      },
-      set(v) {
-        if (v.slice(-1) === '.') {
-          return false
-        }
-        this.params[this.field_] =
-          Math.round(parseFloat(v).toFixed(2) * 100) || 0
-        this.$validator.validate(this.name_, v)
-      },
+    attrs() {
+      return {
+        ...this.$attrs,
+        name: this.name,
+        value: this.value,
+        rules: 'required|decimal:2',
+        type: 'tel',
+        inputmode: 'numeric',
+        format: this.format,
+        parse: this.parse,
+      }
+    },
+    form() {
+      return this.recurring ? this.params.recurring_data : this.params
+    },
+  },
+  created() {
+    this.form[this.name] = this.form[this.name] || this.value
+  },
+  methods: {
+    format(value) {
+      value = parseInt(value)
+
+      let result = ''
+      if (value) {
+        result = String(value / 100)
+      }
+      if (this.hasLastDot) {
+        result += '.'
+      }
+      return result
+    },
+    parse(value) {
+      this.hasLastDot = value.slice(-1) === '.'
+      return Math.round(parseFloat(value).toFixed(2) * 100) || 0
     },
   },
 }

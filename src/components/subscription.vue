@@ -15,8 +15,8 @@
       <div v-show="enabled_switch" class="f-subscription-wrapper">
         <input-amount
           class="f-subscription-amount"
-          name="subscription_amount"
-          field="amount"
+          name="amount"
+          label="subscription_amount"
           recurring
           :disabled="readonly"
         />

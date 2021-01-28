@@ -9,6 +9,7 @@
       @blur="$emit('blur')"
       @keyup.enter="onEnter"
     />
+    <slot />
   </ValidationProvider>
 </template>
 
