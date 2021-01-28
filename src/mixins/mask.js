@@ -16,6 +16,10 @@ export default {
       type: Function,
       default: value => value,
     },
+    parse: {
+      type: Function,
+      default: value => value,
+    },
   },
   data() {
     return {
@@ -24,12 +28,15 @@ export default {
   },
   methods: {
     watchInnerValue(newValue) {
-      let value = mask(this.format(newValue), this.innerMask, true)
+      let value = mask(this.format(this.parse(newValue)), this.innerMask, true)
       if (newValue !== value) {
         this.innerValue = value
         this.$refs.input.localValue = value
       } else {
-        this.$emit('input', mask(newValue, this.innerMask, this.masked))
+        this.$emit(
+          'input',
+          mask(this.parse(newValue), this.innerMask, this.masked)
+        )
       }
     },
     watchValue(newValue) {
