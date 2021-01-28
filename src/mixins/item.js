@@ -79,7 +79,7 @@ export default {
   },
   created() {
     if (isExist(this.value)) {
-      this.innerValue = this.value
+      this.watchValue(this.value)
     }
   },
   methods: {
