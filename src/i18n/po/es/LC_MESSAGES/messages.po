@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 16:44+0200\n"
+"POT-Creation-Date: 2021-02-10 17:09+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -186,16 +186,16 @@ msgid "email"
 msgstr "Correo electrónico"
 
 #: src/i18n/process/templates.js:30
-msgid "code"
-msgstr "-"
-
-#: src/i18n/process/templates.js:31
 msgid "verification_code"
 msgstr "Código de confirmación"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:31
 msgid "verification_amount"
 msgstr "Monto de comprobación"
+
+#: src/i18n/process/templates.js:32
+msgid "label"
+msgstr ""
 
 #: src/i18n/process/templates.js:33
 msgid "datepicker"
@@ -249,17 +249,17 @@ msgstr ""
 "intente pagar de nuevo."
 
 #: src/i18n/process/templates.js:45
+msgid "offer"
+msgstr "-"
+
+#: src/i18n/process/templates.js:46
 msgid "offer_t"
 msgstr ""
 "Yo acepto <a href=\"{0}\" target=\"_blank\"> los términos de la oferta </a>"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:47
 msgid "offerta_url"
 msgstr ""
-
-#: src/i18n/process/templates.js:47
-msgid "amount"
-msgstr "Monto total"
 
 #: src/i18n/process/templates.js:48
 msgid "total_amount"
@@ -270,78 +270,82 @@ msgid "fee"
 msgstr "Monto de la comisión"
 
 #: src/i18n/process/templates.js:50
+msgid "amount"
+msgstr "Monto total"
+
+#: src/i18n/process/templates.js:51
 msgid "mfo_title"
 msgstr "Detalles del pago para el orden # {0}"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:52
 msgid "ibox_title"
 msgstr "Número ID del orden (para el pago vía iBox)"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:53
 msgid "full_requesites"
 msgstr "Detalles bancarios del beneficiario"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:54
 msgid "full_requesites_explain"
 msgstr ""
 "No necesitará incluirlos al pagar, pero puede ser útil guardarlos como "
 "referencia."
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:55
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:56
 msgid "receiver"
 msgstr "Beneficiario"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:57
 msgid "current_bill"
 msgstr "Número de la cuenta bancaria (IBAN)"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:58
 msgid "usreou"
 msgstr "Número de identificación fiscal (NIF)"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:59
 msgid "bank"
 msgstr "Nombre del banco"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:60
 msgid "mfo"
 msgstr "Código del banco (MFO)"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:61
 msgid "purpose"
 msgstr "Concepto"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:62
 msgid "receipt_id"
 msgstr "Número ID del orden"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:63
 msgid "end_date"
 msgstr "Plazo de pago"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:64
 msgid "ibox_desc"
 msgstr ""
 "Todos terminales iBox, que aceptan los pagos, están marcados en <a href="
 "\"https://ibox.ua/map\" target=\"_blank\">la mapa</a>"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:65
 msgid "save_receipt"
 msgstr "Guardar el recibo"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:66
 msgid "save_qr_code"
 msgstr "Guardar en smartphone"
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:67
 msgid "qr_code_text"
 msgstr "Escanne el código QR para guardar el recibo en su smartphone"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:68
 msgid "ibox_info"
 msgstr ""
 "<p>Para pagar el pedido, utilice la función de búsqueda para encontrar el "
@@ -349,119 +353,111 @@ msgstr ""
 "automáticamente después del período especificado.<p>No aceptamos el pago de "
 "este pedido a través de terminales que no sean iBox."
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:69
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:70
 msgid "security_title"
 msgstr "Autenticación fuerte de cliente"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:71
 msgid "security_text"
 msgstr ""
 "<p>Sujeto al estándar de seguridad de datos de la industria de tarjetas de "
 "pago <p>Incluido en el Registro global de Visa y verificado por Mastercard"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:72
 msgid "sepa_t"
 msgstr "Introduzca los detalles de su cuenta bancaria"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:73
 msgid "sender_name"
 msgstr "Nombre"
 
-#: src/i18n/process/templates.js:73
-msgid "sender_familyName"
-msgstr "Apellido"
-
 #: src/i18n/process/templates.js:74
-msgid "bic"
-msgstr "Código de identificación bancaria"
+msgid "switch"
+msgstr ""
 
 #: src/i18n/process/templates.js:75
-msgid "iban"
-msgstr "IBAN"
-
-#: src/i18n/process/templates.js:76
 msgid "subscription"
 msgstr "Repetir este pago automáticamente"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:76
 msgid "subscription_amount"
 msgstr "Suma del pago periódico"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:77
 msgid "trial_period"
 msgstr "Periodo de prueba"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:78
 msgid "number_of_payments"
 msgstr "Número de pagos"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:79
 msgid "unlimited"
 msgstr "Ilimitado"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:80
 msgid "subscription_every"
 msgstr "Cada"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:81
 msgid "subscription_period"
 msgstr "Período de tiempo"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:82
 msgid "subscription_start_time"
 msgstr "A partir"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:83
 msgid "subscription_end_time"
 msgstr "Fecha final"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:84
 msgid "verification_desc"
 msgstr ""
 "Para revisar su tarjeta, congelaremos una pequeña cantidad en su cuenta "
 "durante 15 minutos."
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:85
 msgid "payment_id"
 msgstr "ID del pago"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:86
 msgid "customer_name"
 msgstr "Nombre del propietario de la tarjeta"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:87
 msgid "customer_name_utf8"
 msgstr "Nombre completo"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:88
 msgid "customer_address"
 msgstr "Dirección (calle, casa, piso)"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:89
 msgid "customer_zip"
 msgstr "Código postal"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:90
 msgid "customer_city"
 msgstr "Ciudad"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:91
 msgid "customer_country"
 msgstr "País"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:92
 msgid "customer_state"
 msgstr "Estado/Provincia/Región"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:93
 msgid "customer_phonemobile"
 msgstr "Teléfono"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:94
 msgid "customer_email"
 msgstr "Correo electrónico"
 
@@ -492,7 +488,7 @@ msgstr "El valor {_field_} no es válido"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
-msgstr "La validez de la tarjeta no puede ser posterior al {_target_}"
+msgstr "La validez de la tarjeta no puede ser posterior al {target}"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
@@ -508,7 +504,7 @@ msgstr "Usa las cifras (0-9), puntos (.) o comas (,)"
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr "Introduzca {_length_} símbolos"
+msgstr "Introduzca {length} símbolos"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
@@ -516,11 +512,11 @@ msgstr "Introduzca dirección de correo electrónico válido"
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
-msgstr "Introduzca {_length_} símbolos de máximo."
+msgstr "Introduzca {length} símbolos de máximo."
 
 #: src/i18n/process/translate.js:16
 msgid "rule_min"
-msgstr "Introduzca {_length_} símbolos de mínimo."
+msgstr "Introduzca {length} símbolos de mínimo."
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
@@ -598,13 +594,22 @@ msgstr "Efectivo a través de la terminal"
 msgid "loans_tooltip"
 msgstr ""
 
+#~ msgid "code"
+#~ msgstr "-"
+
+#~ msgid "sender_familyName"
+#~ msgstr "Apellido"
+
+#~ msgid "bic"
+#~ msgstr "Código de identificación bancaria"
+
+#~ msgid "iban"
+#~ msgstr "IBAN"
+
 #~ msgid "checkout-email"
 #~ msgstr "-"
 
 #~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "offer"
 #~ msgstr "-"
 
 #~ msgid "local_banks"
