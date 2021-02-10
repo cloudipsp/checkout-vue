@@ -100,7 +100,7 @@ export default {
     },
     error() {
       if (!this.isMounted) return
-      return this.validation.messages[0]
+      return this.validation.errors[0]
     },
     attrs() {
       return {

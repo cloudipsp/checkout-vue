@@ -34,9 +34,7 @@ export default {
   computed: {
     error() {
       if (!this.isMounted) return null
-      const error = this.$refs.validation.messages[0]
-      this.$emit('error', error)
-      return error
+      return this.$refs.validation.errors[0]
     },
     attrs() {
       return {

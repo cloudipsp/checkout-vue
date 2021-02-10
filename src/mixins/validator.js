@@ -2,7 +2,7 @@ export default {
   inject: ['$_veeObserver'],
   computed: {
     errors() {
-      return Object.entries(this.$_veeObserver.ctx.errors).filter(
+      return Object.entries(this.$_veeObserver.errors).filter(
         ([, value]) => value.length
       )
     },

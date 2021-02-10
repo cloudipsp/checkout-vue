@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import { messages } from '@/i18n/lang/en'
-import { Validator } from 'vee-validate/dist/vee-validate.minimal.esm.js'
+import { messages, validate as validateEn } from '@/i18n/lang/en'
+import { localize } from 'vee-validate'
 import { getId } from '@/utils/helpers'
 import configLocales from '@/config/locales.json'
 
@@ -35,19 +35,19 @@ export const loadLanguageAsync = (lang, store) => {
         `./lang/${lang}`
       )
     })
-    .then(msgs => {
-      Validator.localize(lang, {
+    .then(({ messages, validate }) => {
+      localize(lang, {
         messages: Object.assign(
           {},
-          lang !== 'en' ? Validator.dictionary.container['en'] : {},
-          msgs.validate,
+          validateEn,
+          validate,
           store.state.validate[lang]
         ),
       })
 
       i18n.setLocaleMessage(
         lang,
-        Object.assign({}, msgs.messages, store.state.messages[lang])
+        Object.assign({}, messages, store.state.messages[lang])
       )
 
       return setI18nLanguage(lang)

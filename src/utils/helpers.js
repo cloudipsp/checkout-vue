@@ -71,14 +71,7 @@ export const generateValidateMessage = translation =>
   Object.fromEntries(
     Object.entries(translation)
       .filter(([k]) => /^rule_/.test(k))
-      .map(([k, v]) => [
-        k.replace('rule_', ''),
-        (field, params) => {
-          return v
-            .replace(/({_field_})/, field)
-            .replace(/({_\w+_})/, (params && params[0]) || '')
-        },
-      ])
+      .map(([k, v]) => [k.replace('rule_', ''), v])
   )
 
 export const removeDuplicate = (item, key, self) => self.indexOf(item) === key

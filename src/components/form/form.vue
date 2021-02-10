@@ -26,13 +26,13 @@ export default {
   computed: {
     ...mapState('router', ['method']),
     ...mapStateGetSet(['submited', 'isSubmit']),
-    $$validator() {
+    observer() {
       if (!this.isMounted) return
       return this.$refs.observer
     },
     errors() {
       if (!this.isMounted) return
-      return Object.entries(this.$$validator.ctx.errors).filter(
+      return Object.entries(this.observer.errors).filter(
         ([, value]) => value.length
       )
     },
@@ -47,13 +47,13 @@ export default {
   },
   methods: {
     watchMethod() {
-      this.$$validator.reset()
+      this.observer.reset()
       this.isSubmit = false
     },
     submit() {
       this.submited = true
       return this.$nextTick()
-        .then(() => this.$$validator.validate())
+        .then(() => this.observer.validate())
         .then(isValid => {
           this.isSubmit = true
 

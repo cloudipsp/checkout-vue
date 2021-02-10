@@ -123,7 +123,7 @@ class Store extends Model {
     deepMerge(this.state.params, this.user.params, notSet.params)
     deepMerge(this.state.options, this.user.options, notSet.options)
     Object.assign(this.state.messages, this.user.messages)
-    Object.assign(this.state.validate, this.user.validate)
+    Object.assign(this.state.validate, userConfig.validate) // userConfig because functions are removed in this.user
     Object.assign(
       this.state.css_variable,
       cssVarisble(this.state.options.theme),

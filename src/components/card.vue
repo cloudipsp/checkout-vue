@@ -253,7 +253,7 @@ export default {
         minDate = '01/19'
       }
 
-      return `required|date_format:MM/yy|after:${minDate},true`
+      return `required|date_format:MM/yy|after:${minDate},true,MM/yy`
     },
     validCardNumber() {
       let needValidCard =

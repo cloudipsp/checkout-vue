@@ -168,8 +168,7 @@ full_screen: true - add css
 
 ## Use validate
 
-https://github.com/baianat/vee-validate/blob/master/locale/en.js
-https://baianat.github.io/vee-validate/guide/rules.html
+https://vee-validate.logaretm.com/v3/guide/rules.html#rules
 
 support `after`, `alpha`, `date_format`, `decimal`, `digits`, `email`, `max`, `min`, `numeric`, `required`, `customer_field`, `phone`, `numrange`, `ccard`
 
