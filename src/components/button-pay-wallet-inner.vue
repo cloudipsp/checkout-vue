@@ -35,7 +35,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('params', ['amount']),
+    ...mapState('params', ['amount', 'email', 'custom', 'customer_data']),
     ...mapState('options', [
       'api_domain',
       'endpoint',
@@ -67,6 +67,15 @@ export default {
       if (!this.show) return
 
       this.timeout(this.update, 100)
+    },
+    email: 'changeParams',
+    custom: {
+      handler: 'changeParams',
+      deep: true,
+    },
+    customer_data: {
+      handler: 'changeParams',
+      deep: true,
     },
   },
   mounted() {
@@ -108,6 +117,13 @@ export default {
     },
     process(model) {
       this.formRequest(model.data).catch(errorHandler)
+    },
+    changeParams() {
+      if (!this.show) return
+
+      this.button.utils.extend(this.button.params, {
+        data: this.store.formParams(),
+      })
     },
   },
 }
