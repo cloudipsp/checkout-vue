@@ -4,8 +4,8 @@
       :is="field.componentName"
       v-for="field in list"
       :key="field.name"
-      v-model="params.custom[field.name]"
       v-bind="field"
+      v-model="params.custom[field.name]"
     />
   </div>
 </template>
