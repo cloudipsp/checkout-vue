@@ -1,11 +1,19 @@
-// vee-validate 123kb (minimal 68kb, rules 64kb)
-// vue 106kb
-// js 62kb
-// async-validator 46kb
-// fonts 28kb
-// img 25kb 6 иконок
-// ipsp-js-sdk 25kb
-// vue-i18n 23kb
-// css 10kb
-// vue-the-mask 5kb
-// 453kb
+189 js
+113 bootstrap-vue
+93 vue
+58 vue2-datepicker
+34 ipsp-js-sdk
+28 vee-validate
+26 svg
+25 webpack
+22 css-vars-ponyfill
+18 vue-i18n
+14 axios
+13 async-validator
+9 css
+9 svg component
+9 card-brands
+7 en locale
+5 country-list
+2 ismobilejs
+1 config/countries delete
