@@ -57,8 +57,24 @@ module.exports = {
             .delete('splitChunks')
             .minimizer('terser')
               .tap(([options]) => {
-                options.terserOptions.output = options.terserOptions.output || {}
-                options.terserOptions.output.comments = /^! (npm|build)/
+                let terserOptions = options.terserOptions
+                terserOptions.compress = {
+                  ...terserOptions.compress,
+                  collapse_vars: true,
+                  comparisons: true,
+                  hoist_funs: true,
+                  hoist_props: true,
+                  inline: true,
+                  loops: true,
+                  negate_iife: true,
+                  properties: true,
+                  reduce_vars: true,
+                  switches: true,
+                  typeofs: true,
+                  passes: 2,
+                }
+                terserOptions.output = terserOptions.output || {}
+                terserOptions.output.comments = /^! (npm|build)/
                 return [options]
               })
               .end()
