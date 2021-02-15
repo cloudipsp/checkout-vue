@@ -11,7 +11,7 @@
 
 <script>
 import config from '@/config/customer-fields'
-import countries from '@/config/countries'
+import countries from '@umpirsky/country-list/data/en/country.json'
 import { sort } from '@/utils/sort'
 import { mapState } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
@@ -38,7 +38,7 @@ export default {
         })
     },
     country() {
-      return countries.map(parseSelect).sort(sort('text'))
+      return Object.keys(countries).map(parseSelect).sort(sort('text'))
     },
   },
 }

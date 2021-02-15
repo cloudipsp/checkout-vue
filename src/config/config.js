@@ -1,7 +1,7 @@
 import configLocales from '@/config/locales.json'
 import methods from '@/config/methods.json'
 import period from '@/config/subscription-period.json'
-import configCountries from '@/config/countries'
+import configCountries from '@umpirsky/country-list/data/en/country.json'
 import rules from 'async-validator/es/rule/'
 import cssVarisble from '@/config/css-varisble'
 import configCardBrands from '@/config/card-brands'
@@ -11,6 +11,7 @@ import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
 
+const countries = Object.keys(configCountries)
 const cardIcons = Object.keys(configCardBrands)
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
@@ -217,8 +218,8 @@ export default {
             pattern: patternUrlImg,
           },
           offerta_url: { type: 'url' },
-          default_country: { type: 'enum', enum: configCountries },
-          countries: enumArray(configCountries),
+          default_country: { type: 'enum', enum: countries },
+          countries: enumArray(countries),
           theme: {
             ...enumObject(['type', 'preset']),
             fields: {
