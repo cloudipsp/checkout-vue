@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 import optionsDefault from '@/config/options-default'
 import notSet from '@/config/not-set'
-import cssVarisble from '@/config/css-varisble'
+import cssVariable from '@/config/css-variable'
 import {
   getCookie,
   deepMerge,
@@ -124,7 +124,7 @@ class Store extends Model {
     Object.assign(this.state.validate, userConfig.validate) // userConfig because functions are removed in this.user
     Object.assign(
       this.state.css_variable,
-      cssVarisble(this.state.options.theme),
+      cssVariable(this.state.options.theme),
       this.user.css_variable
     )
 

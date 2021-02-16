@@ -3,7 +3,7 @@ import methods from '@/config/methods.json'
 import period from '@/config/subscription-period.json'
 import configCountries from '@umpirsky/country-list/data/en/country.json'
 import rules from 'async-validator/es/rule/'
-import cssVarisble from '@/config/css-varisble'
+import cssVariable from '@/config/css-variable'
 import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
@@ -172,14 +172,14 @@ locales.forEach(function (locale) {
   }
 })
 
-const cssVarisbleKeys = Object.keys(
-  cssVarisble({
+const cssVariableKeys = Object.keys(
+  cssVariable({
     type: 'light',
     preset: configTheme['light'],
   })
 )
 
-let css_variable = enumObject(cssVarisbleKeys)
+let css_variable = enumObject(cssVariableKeys)
 
 const configCssVariable = {
   card_img: {
@@ -188,7 +188,7 @@ const configCssVariable = {
   },
 }
 
-cssVarisbleKeys.forEach(item => {
+cssVariableKeys.forEach(item => {
   css_variable.fields[item] = configCssVariable[item] || [
     validatorNotEmpty(),
     {

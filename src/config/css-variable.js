@@ -1,6 +1,6 @@
-import presets from './presets'
-import light from './css-varisble-light'
-import dark from './css-varisble-dark'
+import presets from '@/config/presets'
+import light from '@/config/css-variable-light'
+import dark from '@/config/css-variable-dark'
 
 export default function ({ type, preset }) {
   return Object.assign(

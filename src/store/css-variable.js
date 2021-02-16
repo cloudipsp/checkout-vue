@@ -103,8 +103,7 @@ export default function (variablesLink) {
       'g'
     )
     return cssText.replace(reg, (match, ref, operation, y, yUnit) => {
-      // eslint-disable-next-line no-unused-vars
-      let [full, x, xUnit] = /([\d\\.]+)([%]?)/.exec(getValue(ref))
+      let [, x, xUnit] = /([\d\\.]+)([%]?)/.exec(getValue(ref))
       return calculator(operation, x, y).toFixed(1) + (xUnit || yUnit)
     })
   }
