@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-16 18:10+0200\n"
+"POT-Creation-Date: 2021-02-16 20:39+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -372,7 +372,7 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Provide your bank account details"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:73 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "Name"
 
@@ -611,17 +611,20 @@ msgstr "Payment link is deactivated."
 msgid "button_status_not_active_text"
 msgstr "Please contact merchant in order to receive actual payment link."
 
+#: src/i18n/process/translate.js:47
+msgid "sender_familyName"
+msgstr "Surname"
+
+#: src/i18n/process/translate.js:48
+msgid "bic"
+msgstr "BIC"
+
+#: src/i18n/process/translate.js:49
+msgid "iban"
+msgstr "IBAN"
+
 #~ msgid "code"
 #~ msgstr "-"
-
-#~ msgid "sender_familyName"
-#~ msgstr "Surname"
-
-#~ msgid "bic"
-#~ msgstr "BIC"
-
-#~ msgid "iban"
-#~ msgstr "IBAN"
 
 #~ msgid "checkout-email"
 #~ msgstr "-"

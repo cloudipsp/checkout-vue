@@ -42,3 +42,8 @@ _('button_expired_title')
 _('button_expired_text')
 _('button_status_not_active_title')
 _('button_status_not_active_text')
+
+_('sender_name')
+_('sender_familyName')
+_('bic')
+_('iban')

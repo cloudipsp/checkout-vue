@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-16 18:10+0200\n"
+"POT-Creation-Date: 2021-02-16 20:39+0200\n"
 "PO-Revision-Date: 2020-09-30 12:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -371,7 +371,7 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Укажите реквизиты банковского счета"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:73 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "Имя"
 
@@ -612,17 +612,20 @@ msgstr ""
 "Обратитесь, пожалуйста, к торговцу для получения актуальной ссылки для "
 "оплаты."
 
+#: src/i18n/process/translate.js:47
+msgid "sender_familyName"
+msgstr "Фамилия"
+
+#: src/i18n/process/translate.js:48
+msgid "bic"
+msgstr "BIC/ Swift"
+
+#: src/i18n/process/translate.js:49
+msgid "iban"
+msgstr "IBAN"
+
 #~ msgid "code"
 #~ msgstr "-"
-
-#~ msgid "sender_familyName"
-#~ msgstr "Фамилия"
-
-#~ msgid "bic"
-#~ msgstr "BIC/ Swift"
-
-#~ msgid "iban"
-#~ msgstr "IBAN"
 
 #~ msgid "checkout-email"
 #~ msgstr "-"

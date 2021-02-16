@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-16 18:10+0200\n"
+"POT-Creation-Date: 2021-02-16 20:39+0200\n"
 "PO-Revision-Date: 2020-10-05 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -364,7 +364,7 @@ msgstr ""
 msgid "sepa_t"
 msgstr "은행 계좌 상세정보를 입력해주십시오"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:73 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "이름"
 
@@ -605,17 +605,20 @@ msgstr ""
 msgid "button_status_not_active_text"
 msgstr ""
 
+#: src/i18n/process/translate.js:47
+msgid "sender_familyName"
+msgstr "성"
+
+#: src/i18n/process/translate.js:48
+msgid "bic"
+msgstr "은행인식코드 (BIC)"
+
+#: src/i18n/process/translate.js:49
+msgid "iban"
+msgstr "국제은행계좌번호(IBAN)"
+
 #~ msgid "code"
 #~ msgstr "-"
-
-#~ msgid "sender_familyName"
-#~ msgstr "성"
-
-#~ msgid "bic"
-#~ msgstr "은행인식코드 (BIC)"
-
-#~ msgid "iban"
-#~ msgstr "국제은행계좌번호(IBAN)"
 
 #~ msgid "checkout-email"
 #~ msgstr "-"
