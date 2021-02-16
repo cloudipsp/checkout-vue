@@ -37,3 +37,8 @@ _('emoney')
 _('ibox_ua')
 
 _('loans_tooltip')
+
+_('button_expired_title')
+_('button_expired_text')
+_('button_status_not_active_title')
+_('button_status_not_active_text')

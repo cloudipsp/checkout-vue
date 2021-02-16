@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 17:09+0200\n"
+"POT-Creation-Date: 2021-02-16 18:10+0200\n"
 "PO-Revision-Date: 2020-09-30 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -593,6 +593,24 @@ msgstr "Готівка у терміналі"
 #: src/i18n/process/translate.js:39
 msgid "loans_tooltip"
 msgstr "Купи зараз, оплати через 15 днів. Комісія 0%."
+
+#: src/i18n/process/translate.js:41
+msgid "button_expired_title"
+msgstr "Термін дії платіжної кнопки завершено"
+
+#: src/i18n/process/translate.js:42
+msgid "button_expired_text"
+msgstr "Для вирішення питання зверніться до торговця"
+
+#: src/i18n/process/translate.js:43
+msgid "button_status_not_active_title"
+msgstr "Платіжне посилання деактивовано."
+
+#: src/i18n/process/translate.js:44
+msgid "button_status_not_active_text"
+msgstr ""
+"Зверніться, будь ласка, до торговця щодо отримання актуального посилання для "
+"оплати."
 
 #~ msgid "code"
 #~ msgstr "-"

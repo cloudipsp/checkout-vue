@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 17:09+0200\n"
+"POT-Creation-Date: 2021-02-16 18:10+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -595,6 +595,22 @@ msgstr "Contanti tramite terminale"
 
 #: src/i18n/process/translate.js:39
 msgid "loans_tooltip"
+msgstr ""
+
+#: src/i18n/process/translate.js:41
+msgid "button_expired_title"
+msgstr ""
+
+#: src/i18n/process/translate.js:42
+msgid "button_expired_text"
+msgstr ""
+
+#: src/i18n/process/translate.js:43
+msgid "button_status_not_active_title"
+msgstr ""
+
+#: src/i18n/process/translate.js:44
+msgid "button_status_not_active_text"
 msgstr ""
 
 #~ msgid "code"
