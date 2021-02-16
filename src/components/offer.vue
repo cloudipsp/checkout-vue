@@ -4,7 +4,7 @@
       v-model="offer"
       name="offer"
       component="checkbox"
-      rules="required:true"
+      :rules="rules"
     >
       <!-- eslint-disable-next-line vue/no-v-html -->
       <span v-html="html" />
@@ -21,6 +21,9 @@ export default {
     ...mapState('options', ['offerta_url']),
     show() {
       return this.url
+    },
+    rules() {
+      return { required: { allowFalse: false } }
     },
     html() {
       return this.$t('offer_t', [this.url])
