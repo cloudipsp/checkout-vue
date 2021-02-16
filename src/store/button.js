@@ -18,10 +18,7 @@ export default function () {
       config = response.data
       return response.data
     })
-    .catch(() => {
-      return Promise.reject({ id: 'button_not_load' })
-    })
-    .then(parseOptions)
+    .then(parseOptions, () => {})
 }
 
 function parseOptions({
@@ -41,11 +38,15 @@ function parseOptions({
   button_type,
   response_url,
   expire,
+  status,
 }) {
   amount = Math.round(amount * 100) || 0
 
   if (expire && date(expire, 'DD.MM.YYYY hh:mm') < createDate())
     return Promise.reject({ id: 'button_expired' })
+
+  if (status && status !== 'enabled')
+    return Promise.reject({ id: 'button_status_not_active' })
 
   return {
     options: {
