@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { deepMerge, findGetParameter } from '@/utils/helpers'
+import { deepMerge } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
 import { date, createDate } from '@/utils/date'
@@ -8,8 +8,7 @@ import { sort } from '@/utils/sort'
 
 let config = {}
 
-export default function () {
-  let button = findGetParameter('button')
+export default function (button) {
   if (!button) return Promise.resolve()
 
   return axios

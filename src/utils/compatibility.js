@@ -1,5 +1,10 @@
 import configMethods from '@/config/methods.json'
-import { removeDuplicate, includes, excludes } from '@/utils/helpers'
+import {
+  removeDuplicate,
+  includes,
+  excludes,
+  findGetParameter,
+} from '@/utils/helpers'
 import Model from '@/class/model'
 import { isExist } from '@/utils/typeof'
 import configTheme from '@/config/theme'
@@ -79,6 +84,8 @@ class CorrectingUserConfig extends Model {
 
   compatibility() {
     this.subscription()
+    this.token()
+    this.button()
   }
 
   configDefault() {
@@ -105,6 +112,15 @@ class CorrectingUserConfig extends Model {
     this.attr('data.options.subscription.periods', oldSubscription.period)
 
     this.removeOldSubscription()
+  }
+
+  token() {
+    this.data.params.token = findGetParameter('token') || this.data.params.token
+  }
+
+  button() {
+    this.data.params.button =
+      findGetParameter('button') || this.data.params.button
   }
 
   showMenuFirst() {

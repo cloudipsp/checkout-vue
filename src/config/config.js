@@ -117,11 +117,23 @@ function validatorToken() {
   }
 }
 
+function conflictTokenButton() {
+  return {
+    validator(rule, value, callback, { token, button }) {
+      callback(
+        token && button
+          ? "Conflict error: order token and button token can't be used concurrently."
+          : []
+      )
+    },
+  }
+}
+
 function validatorCurrencyRequired() {
   return {
-    validator(rule, value, callback, source) {
+    validator(rule, value, callback, { token, button }) {
       let errors = []
-      if (!source.token && !value) {
+      if (!token && !button && !value) {
         errors.push([rule.fullField, 'is required'].join(' '))
       }
       callback(errors)
@@ -258,7 +270,8 @@ export default {
           required_rectoken: { type: 'enum', enum: YN },
           verification: { type: 'enum', enum: YN },
           verification_type: { type: 'enum', enum: verificationType },
-          token: { type: 'string', len: 40 },
+          token: [{ type: 'string', len: 40 }, conflictTokenButton()],
+          button: { type: 'string', min: 20, max: 80 },
           offer: { type: 'boolean' },
           recurring_data: {
             ...enumObject(recurring_data),

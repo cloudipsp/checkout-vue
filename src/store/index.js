@@ -6,7 +6,6 @@ import cssVarisble from '@/config/css-varisble'
 import {
   getCookie,
   deepMerge,
-  findGetParameter,
   errorHandler,
   removeWallets,
 } from '@/utils/helpers'
@@ -14,9 +13,8 @@ import { initApi, sendRequest } from '@/utils/api'
 import { isPlainObject, isExist } from '@/utils/typeof'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from './setup'
-import { getLabel } from '@/store/button'
+import loadButton, { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
-import loadButton from '@/store/button'
 import loadCardImg from '@/store/card-img'
 import { methods, tabs } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
@@ -140,8 +138,6 @@ class Store extends Model {
     this.initMethods()
     this.initLang()
     this.initLocation(this.state.options.active_tab)
-    this.initError()
-    this.initToken()
     this.initApi()
     this.initCssDevice()
     this.initIsOnlyCard()
@@ -200,21 +196,6 @@ class Store extends Model {
       getCookie('lang_s') || this.state.params.lang || getBrowserLanguage()
     )
   }
-  initError() {
-    const token = findGetParameter('token')
-    const button = findGetParameter('button')
-    if ((this.state.params.token || token) && button) {
-      this.setError([
-        {
-          message:
-            "Conflict error: order token and button token can't be used concurrently.",
-        },
-      ])
-    }
-  }
-  initToken() {
-    this.setParam(this.state.params, 'token', findGetParameter('token'))
-  }
   initCssDevice() {
     if (!this.state.options.full_screen) return
 
@@ -233,10 +214,6 @@ class Store extends Model {
     this.state.options.show_menu_first =
       this.state.options.show_menu_first && !this.state.isOnlyCard
   }
-  setParam(object, key, value) {
-    if (!value) return
-    object[key] = value
-  }
   initApi() {
     initApi(
       {
@@ -252,7 +229,7 @@ class Store extends Model {
     return Promise.all([this.loadButton(), this.loadCardImg()])
   }
   loadButton() {
-    return loadButton().then(config => {
+    return loadButton(this.state.params.button).then(config => {
       if (!config) return
       if (this.state.options.full_screen) {
         document.title = config.options.title
