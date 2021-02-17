@@ -30,7 +30,7 @@
       :target="() => $refs.item && $refs.item.$el"
       under-sticky
     >
-      <f-svg name="warning" />
+      <f-svg name="warning" size="md" />
       {{ error }}
     </f-tooltip-error>
     <transition name="f-slide-fade">

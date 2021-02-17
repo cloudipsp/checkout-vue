@@ -131,7 +131,7 @@
             variant="light"
             under-sticky
           >
-            <f-svg name="info-circle" />
+            <f-svg name="info-circle" size="md" />
             <span v-text="$t('cvv2_help', [digitsCvv])" />
           </f-tooltip-default>
         </template>
