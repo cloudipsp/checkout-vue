@@ -29,6 +29,13 @@ export const formatMMYY = date => {
   return `${month}/${year}`
 }
 
+export const formatYYYYMMDD = date =>
+  date.getFullYear() +
+  '-' +
+  ('0' + (date.getMonth() + 1)).slice(-2) +
+  '-' +
+  ('0' + date.getDate()).slice(-2)
+
 export const isAfter = (date, after) => {
   return date.getTime() > after.getTime()
 }

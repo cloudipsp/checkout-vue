@@ -128,8 +128,7 @@
 <script>
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
-import { dateFormat } from '@/utils/helpers'
-import { createDate } from '@/utils/date'
+import { createDate, formatYYYYMMDD } from '@/utils/date'
 
 export default {
   data() {
@@ -226,7 +225,7 @@ export default {
 
         if (now > value) value = now
 
-        this.start_time = dateFormat(value)
+        this.start_time = formatYYYYMMDD(value)
       }
     },
     onShowError(show, error) {

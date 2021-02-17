@@ -29,8 +29,7 @@ import item from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
 import DatePicker from './helpers/date-picker'
 import FormInput from './helpers/form-input'
-import { dateFormat } from '@/utils/helpers'
-import { createDate } from '@/utils/date'
+import { createDate, formatYYYYMMDD } from '@/utils/date'
 
 export default {
   components: {
@@ -78,7 +77,7 @@ export default {
     minFormat() {
       if (!this.min) return
 
-      return dateFormat(this.minDate)
+      return formatYYYYMMDD(this.minDate)
     },
     isMobile() {
       return isMobile

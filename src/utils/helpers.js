@@ -82,10 +82,3 @@ export const removeWallets = item => item !== 'wallets'
 export const includes = list => item => list.includes(item)
 
 export const excludes = list => item => !list.includes(item)
-
-export const dateFormat = date =>
-  date.getFullYear() +
-  '-' +
-  ('0' + (date.getMonth() + 1)).slice(-2) +
-  '-' +
-  ('0' + date.getDate()).slice(-2)
