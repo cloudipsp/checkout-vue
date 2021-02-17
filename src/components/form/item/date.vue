@@ -30,6 +30,8 @@ import { isMobile } from '@/utils/mobile'
 import DatePicker from './helpers/date-picker'
 import FormInput from './helpers/form-input'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
+import { mapState } from '@/utils/store'
+import format from '@/config/date'
 
 export default {
   components: {
@@ -52,12 +54,16 @@ export default {
     }
   },
   computed: {
+    ...mapState(['region']),
+    format() {
+      return format[this.region] || format.default
+    },
     attrsDatepicker() {
       return {
         ...this.attrs,
         lang: this.$t('datepicker'),
         clearable: false,
-        format: 'DD/MM/YYYY',
+        format: this.format,
         'input-class': this.classInput.join(' '),
         'input-attr': {
           id: this.attrs.id,

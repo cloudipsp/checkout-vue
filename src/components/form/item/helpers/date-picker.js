@@ -7,7 +7,7 @@ export default Vue.extend({
   inheritAttrs: false,
   watch: {
     userInput(newValue) {
-      let value = mask(newValue, '##/##/####', true)
+      let value = mask(newValue, this.format.replace(/\w/g, '#'), true)
       if (newValue !== value) {
         this.userInput = value || null
       }
