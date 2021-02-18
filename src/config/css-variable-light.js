@@ -131,10 +131,10 @@ export default createConfig([
   error, // tooltip_error_color
   grey_2, // tooltip_card_color
   grey_3, // tooltip_cvv_color
-  white, // tooltip_light_bg
-  color2, // tooltip_light_shadow
-  white, // tooltip_dark_color
-  grey_9, // tooltip_dark_bg
+  grey_9, // tooltip_default_bg
+  white, // tooltip_default_color
+  white, // tooltip_secondary_bg
+  color2, // tooltip_secondary_shadow
   grey_9, // tooltip_icons_shadow
   ash_800, // icon_color
   ash_700, // security_icon_color

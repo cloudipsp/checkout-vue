@@ -13,7 +13,7 @@ export default {
         triggers: 'focus',
         placement: 'top',
         'custom-class': 'f-tooltip-error',
-        variant: 'light',
+        variant: 'secondary',
         ...this.$attrs,
       }
     },

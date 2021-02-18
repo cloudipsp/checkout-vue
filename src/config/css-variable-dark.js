@@ -30,6 +30,7 @@ const white_03 = '#6F7274'
 const white_04 = '#838688'
 const white_05 = '#989A9C'
 const white_06 = '#ADAEB0'
+const white_08 = '#D6D7D7'
 
 export default createConfig([
   '#1C1F22', // main_bg
@@ -129,7 +130,7 @@ export default createConfig([
   white_02, // switch_bg
   grey_9, // switch_indicator_bg
   white_03, // switch_hover_bg
-  white_06, // switch_checked_bg
+  white_08, // switch_checked_bg
   error, // text_error_color
   white_04, // label_color
   '#B1B2B4', // label_hover_color
@@ -138,16 +139,16 @@ export default createConfig([
   error, // tooltip_error_color
   grey_2, // tooltip_card_color
   grey_3, // tooltip_cvv_color
-  white, // tooltip_light_bg
-  '#B6B9BF', // tooltip_light_shadow
-  grey_2, // tooltip_dark_color
-  white, // tooltip_dark_bg
+  white, // tooltip_default_bg
+  grey_2, // tooltip_default_color
+  white, // tooltip_secondary_bg
+  '#B6B9BF', // tooltip_secondary_shadow
   '#CACFD6', // tooltip_icons_shadow
   ash_800, // icon_color
   color2, // security_icon_color
   color2, // security_color
-  color1, // security_icon_hover_color
-  color1, // security_hover_color //
+  white_08, // security_icon_hover_color
+  white_08, // security_hover_color
   white, // close_color
   '#32353A', // modal_backdrop_bg
   grey_3, // modal_content_color

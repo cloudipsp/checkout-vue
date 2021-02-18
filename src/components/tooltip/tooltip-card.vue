@@ -13,7 +13,7 @@ export default {
         triggers: 'click focus blur',
         placement: 'bottom',
         'custom-class': 'f-tooltip-card',
-        variant: 'light',
+        variant: 'secondary',
         ...this.$attrs,
       }
     },

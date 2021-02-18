@@ -12,7 +12,7 @@ export default {
       return {
         triggers: 'hover focus',
         placement: 'topright',
-        variant: 'dark',
+        variant: 'default',
         ...this.$attrs,
       }
     },

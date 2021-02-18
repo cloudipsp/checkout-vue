@@ -155,20 +155,20 @@ $tooltip-arrow-height: px-to-rem(7px);
   }
 }
 
-.f-tooltip-dark {
-  @include tooltip-variant($tooltip_dark_bg);
+.f-tooltip-default {
+  @include tooltip-variant($tooltip_default_bg);
 
   .f-tooltip-inner {
-    color: $tooltip_dark_color;
+    color: $tooltip_default_color;
     border-radius: px-to-rem(6px);
     opacity: 0.95;
   }
 }
 
-.f-tooltip-light {
-  @include tooltip-variant($tooltip_light_bg);
+.f-tooltip-secondary {
+  @include tooltip-variant($tooltip_secondary_bg);
 
   .f-tooltip-inner {
-    box-shadow: 0 8px 32px fade($tooltip_light_shadow, 50%);
+    box-shadow: 0 8px 32px fade($tooltip_secondary_shadow, 50%);
   }
 }

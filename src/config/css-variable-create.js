@@ -14,7 +14,6 @@ const color = 'color'
 const container = 'container'
 const content = 'content'
 const count = 'count'
-const dark = 'dark'
 const datepicker = 'datepicker'
 const default_ = 'default'
 const desc = 'desc'
@@ -29,7 +28,6 @@ const input = 'input'
 const item = 'item'
 const label = 'label'
 const lg = 'lg'
-const light = 'light'
 const link = 'link'
 const list = 'list'
 const main = 'main'
@@ -159,10 +157,10 @@ const names = [
   [tooltip, error, color],
   [tooltip, card, color],
   [tooltip, 'cvv', color],
-  [tooltip, light, bg],
-  [tooltip, light, shadow],
-  [tooltip, dark, color],
-  [tooltip, dark, bg],
+  [tooltip, default_, bg],
+  [tooltip, default_, color],
+  [tooltip, secondary, bg],
+  [tooltip, secondary, shadow],
   [tooltip, icons, shadow],
   [icon, color],
   [security, icon, color],

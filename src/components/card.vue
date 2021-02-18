@@ -128,7 +128,7 @@
             custom-class="f-tooltip-cvv"
             placement="top"
             :target="() => $refs.label_cvv"
-            variant="light"
+            variant="secondary"
             under-sticky
           >
             <f-svg name="info-circle" size="md" />
