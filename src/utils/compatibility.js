@@ -23,7 +23,7 @@ export const methods = (user, server, disable) => {
     .concat(['wallets'])
     .filter(onlyConfig)
     .filter(removeDuplicate)
-    .filter(excludes(disable))
+    .filter(excludes(disable.map(mapped)))
 }
 
 export const tabs = (obj = {}) => {
