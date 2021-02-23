@@ -24,7 +24,7 @@ const subscription = Object.keys(configOptionsDefault.options.subscription)
 const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
 const subscriptionType = Object.keys(configSubscription)
 const config = ['options', 'params', 'messages', 'validate', 'css_variable']
-const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/\w+?;base64,)/
+const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/[\w+;]+?,)/
 
 function enumArray(array) {
   return {

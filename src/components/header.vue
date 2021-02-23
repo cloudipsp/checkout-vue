@@ -76,7 +76,7 @@ export default {
     },
     styleLogo() {
       return {
-        'background-image': `url(${this.logo_url})`,
+        'background-image': `url("${this.logo_url.replace(/"/g, "'")}")`,
       }
     },
     showLang() {
