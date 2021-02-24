@@ -25,7 +25,7 @@
   background-color: $input_bg;
   border: 1px solid $input_border;
   border-radius: px-to-rem(8px);
-  transition: color ease-in-out 0.15s;
+  transition: all ease-in-out 0.15s;
 
   &:-webkit-autofill {
     @include plain-hover-focus-active() {
@@ -44,6 +44,7 @@
   }
 
   &:focus {
+    z-index: 1;
     border-color: $input_focus_border;
     border-width: px-to-rem(1.5px);
     outline: 0;
@@ -92,8 +93,6 @@
 }
 
 .f-form-control-select {
-  position: relative;
-  z-index: 1;
   padding-right: px-to-rem(24px);
   background-color: transparent;
   appearance: none;
@@ -149,6 +148,7 @@
   @include text-truncate();
 
   &.f-control-label-active {
+    z-index: 1;
     transform: translateY(-8px) scale(0.75);
   }
 
@@ -171,6 +171,7 @@
 }
 
 .f-error {
+  margin-top: px-to-rem(4px);
   font-weight: 500;
   color: $text_error_color;
 }

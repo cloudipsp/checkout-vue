@@ -5,9 +5,12 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   flex: 0 0 100%;
   align-items: center;
   max-width: 100%;
-  margin-bottom: px-to-rem(24px);
+  padding-top: px-to-rem(8px);
+  padding-bottom: px-to-rem(8px);
+  margin-bottom: px-to-rem(8px);
   color: $bank_item_color;
   cursor: pointer;
+  border-radius: px-to-rem(8px);
 
   &:hover {
     color: $bank_item_hover_color;

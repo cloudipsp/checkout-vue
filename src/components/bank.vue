@@ -55,9 +55,10 @@
           </div>
         </div>
         <div class="f-row f-bank-list">
-          <div
+          <a
             v-for="bank in listMin"
             :key="bank.id"
+            href="#"
             :class="classBankItem"
             @click="selectBank(bank)"
           >
@@ -73,7 +74,7 @@
                 {{ bank.iban }}
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="f-bank-footer">
           <f-button v-if="showMore" variant="outline" @click="loadMore">

@@ -1,7 +1,12 @@
 <template>
   <div class="f-security">
     <template v-if="enableModal">
-      <a href="#" class="f-title-security" @click.prevent="open">
+      <a
+        href="#"
+        class="f-title-security"
+        @click.prevent="open"
+        @keyup.space="open"
+      >
         <f-svg ref="security" name="security" size="2x" />
         <span v-text="$t('security_title')" />
       </a>

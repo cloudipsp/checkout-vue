@@ -139,9 +139,9 @@
 }
 
 .f-btn-methods {
+  left: -(px-to-rem(8px));
   display: block;
-  padding-right: 0;
-  padding-left: 0;
+  padding: px-to-rem(8px) px-to-rem(8px);
 }
 
 .f-security {
