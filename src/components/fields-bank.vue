@@ -26,17 +26,14 @@ export default {
     },
   },
   methods: {
-    parseField(attrs) {
+    parseField({ label, placeholder, name, type, validate }) {
       return {
-        ...attrs,
-        description: attrs.label,
-        label: attrs.placeholder,
-        placeholder: '',
-        component: attrs.type === 'date' ? 'date' : 'input',
-        rules: this.parseValidate(attrs.validate),
+        name,
+        description: label,
+        label: placeholder,
+        component: type === 'date' ? 'date' : 'input',
+        rules: this.parseValidate(validate),
         autocomplete: 'on',
-        message: null,
-        validate: null,
       }
     },
     parseValidate(validate) {
