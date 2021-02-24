@@ -11,6 +11,7 @@
 
       <f-form-group
         v-model="save_card"
+        name="save_card"
         component="checkbox"
         variant="secondary"
       >

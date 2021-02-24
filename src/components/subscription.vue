@@ -51,6 +51,7 @@
             v-if="showUnlimited"
             key="unlimited"
             v-model="unlimited"
+            name="unlimited"
             component="checkbox"
             class="f-col"
             :disabled="readonly"
