@@ -74,15 +74,17 @@
 }
 
 .f-checkbox-label {
+  $padding: px-to-rem(3px);
   position: relative;
-  padding: 0 0 0 px-to-rem(30px);
+  left: -$padding;
+  padding: $padding $padding $padding px-to-rem(30px) + $padding;
   font-size: px-to-rem(16px);
   cursor: pointer;
 
   &::before {
     position: absolute;
-    top: px-to-rem(1px);
-    left: 0;
+    top: px-to-rem(1px) + $padding;
+    left: $padding;
     width: px-to-rem(20px);
     height: px-to-rem(20px);
     content: '';
@@ -94,8 +96,8 @@
 
   &::after {
     position: absolute;
-    top: px-to-rem(6px);
-    left: px-to-rem(5px);
+    top: px-to-rem(6px) + $padding;
+    left: px-to-rem(5px) + $padding;
     width: px-to-rem(10px);
     height: px-to-rem(7px);
     content: '';

@@ -26,14 +26,17 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
 }
 
 .f-switch-label {
+  $padding: px-to-rem(3px);
   position: relative;
+  right: -$padding;
   display: block;
+  padding: $padding $switch-width + $padding $padding $padding;
   cursor: pointer;
 
   &::before {
     position: absolute;
-    top: ($font-size-base * $line-height-base - $switch-height) / 2;
-    right: 0;
+    top: ($font-size-base * $line-height-base - $switch-height) / 2 + $padding;
+    right: $padding;
     display: block;
     width: $switch-width;
     height: $switch-height;
@@ -46,10 +49,12 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
 
   &::after {
     position: absolute;
-    top: ($font-size-base * $line-height-base - $switch-indicator-size) / 2;
+    // stylelint-disable-next-line scss/operator-no-newline-after
+    top: ($font-size-base * $line-height-base - $switch-indicator-size) / 2 +
+      $padding;
     // stylelint-disable-next-line scss/operator-no-newline-after
     right: $switch-width - $switch-indicator-size -
-      ($switch-height - $switch-indicator-size) / 2;
+      ($switch-height - $switch-indicator-size) / 2 + $padding;
     width: $switch-indicator-size;
     height: $switch-indicator-size;
     content: '';
