@@ -176,4 +176,8 @@ export default createConfig([
   grey, // receipt_value_color
   black, // logo_color
   ash_200, // subscription_bg
+  grey_1, // outline_border
+  ash_300, // outline_bg
+  ash_800, // outline_secondary_border
+  grey_3, // outline_secondary_bg
 ])

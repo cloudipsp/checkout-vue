@@ -25,6 +25,7 @@ const color2 = '#797C7E'
 const white_005 = '#3B3F43'
 const white_007 = '#3F4347'
 const white_01 = '#46494D'
+const white_015 = '#505357'
 const white_02 = '#5A5D61'
 const white_03 = '#6F7274'
 const white_04 = '#838688'
@@ -184,4 +185,8 @@ export default createConfig([
   white, // receipt_value_color
   white, // logo_color
   white_007, // subscription_bg
+  white_06, // outline_border
+  white_015, // outline_bg
+  grey_1, // outline_secondary_border
+  ash_300, // outline_secondary_bg
 ])

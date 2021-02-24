@@ -202,6 +202,10 @@ const names = [
   [receipt, 'value', color],
   ['logo', color],
   ['subscription', bg],
+  [outline, border],
+  [outline, bg],
+  [outline, secondary, border],
+  [outline, secondary, bg],
 ]
 
 export default function (list) {

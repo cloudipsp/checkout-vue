@@ -67,6 +67,7 @@ export default {
       return function (item) {
         return [
           'f-menu-item',
+          'f-outline',
           { active: this.method === item && !this.isBreakpointMd },
         ]
       }

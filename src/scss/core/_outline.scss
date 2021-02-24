@@ -1,0 +1,111 @@
+.f-outline {
+  transition: box-shadow ease-in-out 0.15s;
+
+  &:focus {
+    position: relative;
+    outline: 0;
+    box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+      0 0 0 px-to-rem(4px) $outline_border;
+  }
+}
+
+.f-form-control:focus {
+  @extend .f-outline:focus;
+}
+
+// sm
+.f-outline-sm:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+    0 0 0 px-to-rem(3.5px) $outline_border;
+}
+
+.f-switch:focus + .f-switch-label,
+.f-checkbox:focus + .f-checkbox-label {
+  background: $outline_bg;
+  @extend .f-outline:focus;
+  @extend .f-outline-sm:focus;
+}
+
+a,
+.f-svg {
+  @extend .f-outline;
+  @extend .f-outline-sm;
+}
+
+.f-btn-success:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+    0 0 0 px-to-rem(4px) $btn_success_bg;
+}
+
+.f-btn-default:focus,
+.f-btn-secondary:focus,
+.f-btn-outline:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+    0 0 0 px-to-rem(4px) $outline_border;
+}
+
+.f-btn-link:focus,
+.f-bank-item:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
+}
+
+a,
+.f-svg,
+.f-switch-label,
+.f-checkbox-label {
+  border-radius: px-to-rem(1px);
+}
+
+// subscription
+.f-subscription {
+  .f-form-control:focus {
+    box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
+      0 0 0 px-to-rem(4px) $outline_border;
+  }
+  .f-switch:focus + .f-switch-label,
+  .f-checkbox:focus + .f-checkbox-label {
+    box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
+      0 0 0 px-to-rem(3.5px) $outline_border;
+  }
+}
+
+.f-close:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
+}
+
+// gdpr
+.f-switch-secondary:focus + .f-switch-label,
+.f-checkbox-secondary:focus + .f-checkbox-label {
+  background: $outline_secondary_bg;
+  box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+    0 0 0 px-to-rem(3.5px) $outline_secondary_border;
+}
+
+.f-alert-info {
+  a:focus {
+    box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+      0 0 0 px-to-rem(3.5px) $outline_secondary_border;
+  }
+
+  .f-btn-secondary:focus {
+    box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+      0 0 0 px-to-rem(4px) $outline_secondary_border;
+  }
+
+  .f-btn-link-secondary:focus {
+    box-shadow: 0 0 0 px-to-rem(2px) $outline_secondary_border;
+  }
+}
+
+.f-modal .f-btn-secondary:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) #fff,
+    0 0 0 px-to-rem(4px) $outline_secondary_border;
+}
+
+.f-header .f-form-control-select:focus {
+  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
+}
+
+.f-form-group-card .f-form-control:focus {
+  box-shadow: none;
+}
