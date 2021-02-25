@@ -22,7 +22,7 @@ import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
 import { subscription } from '@/store/subscription'
-import { correctingUserConfig } from '@/utils/compatibility'
+import { correctingUserConfig, priorityUserConfig } from '@/utils/compatibility'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
 
@@ -111,13 +111,14 @@ class Store extends Model {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
   setOptions(userConfig) {
-    userConfig = correctingUserConfig(userConfig)
+    correctingUserConfig(userConfig)
+    this.optionsFormat(userConfig)
+    this.validate(userConfig)
+    priorityUserConfig(userConfig)
 
     // delete undefined property
     this.user = JSON.parse(JSON.stringify(userConfig))
 
-    this.optionsFormat(this.user)
-    this.validate(this.user)
     deepMerge(this.state.params, this.user.params, notSet.params)
     deepMerge(this.state.options, this.user.options, notSet.options)
     Object.assign(this.state.messages, this.user.messages)

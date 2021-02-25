@@ -78,13 +78,10 @@ class CorrectingUserConfig extends Model {
   init() {
     this.compatibility()
     this.configDefault()
-
-    return this.data
   }
 
   compatibility() {
     this.subscription()
-    this.token()
     this.button()
   }
 
@@ -114,13 +111,11 @@ class CorrectingUserConfig extends Model {
     this.removeOldSubscription()
   }
 
-  token() {
-    this.data.params.token = findGetParameter('token') || this.data.params.token
-  }
-
   button() {
-    this.data.params.button =
-      findGetParameter('button') || this.data.params.button
+    let button = findGetParameter('button') || this.data.params?.button
+    if (!button) return
+
+    this.data.params.button = button
   }
 
   showMenuFirst() {
@@ -149,5 +144,26 @@ class CorrectingUserConfig extends Model {
   }
 }
 
+class PriorityUserConfig extends Model {
+  constructor(data) {
+    super()
+    this.data = data
+  }
+
+  init() {
+    this.token()
+  }
+
+  token() {
+    let token = findGetParameter('token') || this.data.params?.token
+    if (!token) return
+
+    this.data.params.token = token
+  }
+}
+
 export const correctingUserConfig = config =>
   new CorrectingUserConfig(config).init()
+
+export const priorityUserConfig = config =>
+  new PriorityUserConfig(config).init()
