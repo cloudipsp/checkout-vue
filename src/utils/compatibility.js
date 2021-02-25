@@ -82,6 +82,7 @@ class CorrectingUserConfig extends Model {
 
   compatibility() {
     this.subscription()
+    this.email()
     this.button()
   }
 
@@ -109,6 +110,16 @@ class CorrectingUserConfig extends Model {
     this.attr('data.options.subscription.periods', oldSubscription.period)
 
     this.removeOldSubscription()
+  }
+
+  email() {
+    let sender_email = this.data.params?.sender_email
+
+    if (!sender_email) return
+
+    this.data.params.email = sender_email
+
+    delete this.data.params.sender_email
   }
 
   button() {
