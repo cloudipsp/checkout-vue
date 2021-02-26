@@ -12,7 +12,7 @@
     </f-form-group>
     <div v-else class="f-form-group" v-text="$t('subscription')" />
     <transition name="f-collapse">
-      <div v-show="enabled_switch" class="f-subscription-wrapper">
+      <div v-if="enabled_switch" class="f-subscription-wrapper">
         <input-amount
           class="f-subscription-amount"
           name="amount"
