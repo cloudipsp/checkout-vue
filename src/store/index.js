@@ -49,10 +49,17 @@ class Store extends Model {
   }
   sendRequestInfo(data) {
     this.sendRequest('api.checkout.info', 'get', this.formParams(data))
-      .then(model => this.infoSuccess(model))
+      .then(model => this.info(model))
       .catch(errorHandler)
   }
   infoSuccess(model) {
+    this.info(model)
+
+    this.state.params.lang = this.user.params.lang || model.attr('lang')
+
+    this.initLang()
+  }
+  info(model) {
     if (isExist(model.attr('validate_expdate'))) {
       this.state.validate_expdate = model.attr('validate_expdate')
     }
@@ -95,10 +102,6 @@ class Store extends Model {
       this.state.params.order_desc =
         'verification_' + this.state.verification_type + '_d'
     }
-
-    this.state.params.lang = this.state.params.lang || model.attr('lang')
-
-    this.initLang()
 
     subscription(model.attr('order'))
       .then(config => this.setState(config))
