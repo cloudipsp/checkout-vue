@@ -1,8 +1,12 @@
 <template>
   <div :class="className">
-    <div :class="classNameBackdrop" />
+    <div v-if="backdrop" class="f-loading-backdrop" />
     <div v-if="showCustom" class="f-loading-custom" :style="style" />
-    <div v-else class="f-loading-loader" />
+    <div v-else class="f-loading-loader">
+      <f-svg name="sota" class="f-loading-item" />
+      <f-svg name="sota" class="f-loading-item" />
+      <f-svg name="sota" class="f-loading-item" />
+    </div>
   </div>
 </template>
 
@@ -25,11 +29,6 @@ export default {
           'f-loading-wrapper': this.backdrop,
         },
       ]
-    },
-    classNameBackdrop() {
-      return {
-        'f-loading-backdrop': this.backdrop,
-      }
     },
     showCustom() {
       return this.loading

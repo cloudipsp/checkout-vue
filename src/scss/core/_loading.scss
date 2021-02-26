@@ -32,19 +32,136 @@
 }
 
 .f-loading-loader {
-  width: px-to-rem(64px);
-  height: px-to-rem(64px);
-  border: px-to-rem(3px) solid $input_border;
-  border-top: px-to-rem(3px) solid $main;
-  border-radius: 50%;
-  animation: f-loading 2s linear infinite;
+  position: relative;
+  width: $loading-width;
+  height: $loading-width;
 }
 
-@keyframes f-loading {
-  0% {
-    transform: rotate(0deg);
+.f-loading-item {
+  position: absolute;
+  font-size: $loading-item;
+  color: #08a835;
+
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.f-loading-item:nth-child(1) {
+  animation-name: f-loading-left1;
+}
+.f-loading-item:nth-child(2) {
+  animation-name: f-loading-left2;
+}
+.f-loading-item:nth-child(3) {
+  color: #000;
+  animation-name: f-loading-right;
+}
+
+@mixin loading-top-center {
+  top: $loading-top;
+  left: ($loading-width - $loading-item) / 2;
+}
+
+@mixin loading-right-button {
+  top: $loading-width - $loading-item;
+  left: $loading-width - $loading-item;
+}
+
+@mixin loading-button-left {
+  top: $loading-width - $loading-item;
+  left: 0;
+}
+
+@keyframes f-loading-right {
+  #{100 / 12 * 0%} {
+    @include loading-top-center();
   }
-  100% {
-    transform: rotate(360deg);
+  #{100 / 12 * 1%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 2%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 3%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 4%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 5%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 6%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 7%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 8%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 9%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 10%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 11%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 12%} {
+    @include loading-top-center();
+  }
+}
+
+@keyframes f-loading-left1 {
+  #{100 / 12 * 0%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 1%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 4%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 5%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 8%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 9%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 12%} {
+    @include loading-right-button();
+  }
+}
+
+@keyframes f-loading-left2 {
+  #{100 / 12 * 0%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 2%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 3%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 6%} {
+    @include loading-right-button();
+  }
+  #{100 / 12 * 7%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 10%} {
+    @include loading-top-center();
+  }
+  #{100 / 12 * 11%} {
+    @include loading-button-left();
+  }
+  #{100 / 12 * 12%} {
+    @include loading-button-left();
   }
 }
