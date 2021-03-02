@@ -1,6 +1,5 @@
 <template>
   <div class="f-receipt">
-    <span v-t />
     <transition name="f-fade">
       <div v-if="model">
         <div
