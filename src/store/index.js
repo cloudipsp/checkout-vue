@@ -55,7 +55,7 @@ class Store extends Model {
   infoSuccess(model) {
     this.info(model)
 
-    this.state.params.lang = this.user.params.lang || model.attr('lang')
+    this.state.params.lang = this.user.params?.lang || model.attr('lang')
 
     this.initLang()
   }
