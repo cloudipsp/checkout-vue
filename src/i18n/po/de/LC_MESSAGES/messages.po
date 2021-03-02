@@ -434,11 +434,11 @@ msgstr "Zahlungs-ID"
 
 #: src/i18n/process/templates.js:86
 msgid "customer_name"
-msgstr "Name auf der Karte"
+msgstr "Kundenname und Nachname"
 
 #: src/i18n/process/templates.js:87
 msgid "customer_name_utf8"
-msgstr "Vollständiger Name"
+msgstr "Kundenname und Nachname"
 
 #: src/i18n/process/templates.js:88
 msgid "customer_address"

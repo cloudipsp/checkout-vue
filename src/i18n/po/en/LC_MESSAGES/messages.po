@@ -428,11 +428,11 @@ msgstr "Payment ID"
 
 #: src/i18n/process/templates.js:86
 msgid "customer_name"
-msgstr "Cardholder name"
+msgstr "Name and Surname"
 
 #: src/i18n/process/templates.js:87
 msgid "customer_name_utf8"
-msgstr "Full name"
+msgstr "Name and Surname"
 
 #: src/i18n/process/templates.js:88
 msgid "customer_address"
