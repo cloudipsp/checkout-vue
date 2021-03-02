@@ -113,10 +113,12 @@ export default {
       .sendRequest('api.checkout', 'app', this.createdFormParams, {
         cached: this.token,
       })
+      .finally(() => {
+        this.store.formLoading(false)
+      })
       .then(this.appSuccess)
       .finally(() => {
         this.ready = true
-        this.store.formLoading(false)
       })
       .catch(this.appError)
       .catch(errorHandler)
@@ -139,7 +141,7 @@ export default {
         .sendRequest(
           'api.checkout.form',
           'request',
-          Object.assign(this.store.formParams(), data),
+          this.store.formParams(data),
           {},
           this.submitProgress
         )
@@ -170,6 +172,7 @@ export default {
     appSuccess(model) {
       this.$root.$emit('ready', model)
       this.appFinally(model)
+      this.store.autoSubmit().then(this.formRequest).catch(errorHandler)
     },
     appError(model) {
       this.appFinally(model)

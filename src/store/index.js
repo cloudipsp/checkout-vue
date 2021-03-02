@@ -21,6 +21,7 @@ import { localStorage } from '@/utils/store'
 import config from '@/config/config'
 import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
+import configAutoSubmit from '@/config/auto-submit'
 import { subscription } from '@/store/subscription'
 import { correctingUserConfig, priorityUserConfig } from '@/utils/compatibility'
 import Model from '@/class/model'
@@ -56,6 +57,30 @@ class Store extends Model {
     this.state.params.lang = this.user.params?.lang || model.attr('lang')
 
     this.initLang()
+  }
+  autoSubmit() {
+    let methods = this.state.options.methods
+
+    if (
+      !this.user.options?.methods?.includes('wallets') ||
+      this.user.options?.methods_disabled?.includes('wallets')
+    ) {
+      methods = methods.filter(removeWallets)
+    }
+
+    if (methods.length !== 1) return Promise.reject()
+
+    let method = methods[0]
+
+    if (!configAutoSubmit.includes(method)) return Promise.reject()
+
+    let payment_systems = Object.keys(this.state.tabs[method].payment_systems)
+
+    if (payment_systems.length !== 1) return Promise.reject()
+
+    let payment_system = payment_systems[0]
+
+    return Promise.resolve({ payment_system })
   }
   info(model) {
     if (isExist(model.attr('validate_expdate'))) {
