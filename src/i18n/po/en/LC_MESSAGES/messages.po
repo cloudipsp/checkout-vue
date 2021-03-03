@@ -489,7 +489,7 @@ msgstr "The {_field_} value is not valid"
 
 #: src/i18n/process/translate.js:9
 msgid "rule_after"
-msgstr "Valid thru date may not be after {_target_}"
+msgstr "Valid thru date may not be after {target}"
 
 #: src/i18n/process/translate.js:10
 msgid "rule_alpha"
@@ -505,7 +505,7 @@ msgstr "Please use digits (0-9), periods (.) or commas (,)"
 
 #: src/i18n/process/translate.js:13
 msgid "rule_digits"
-msgstr "Please enter {_length_} digits"
+msgstr "Please enter {length} digits"
 
 #: src/i18n/process/translate.js:14
 msgid "rule_email"
@@ -513,11 +513,11 @@ msgstr "Please enter a valid email"
 
 #: src/i18n/process/translate.js:15
 msgid "rule_max"
-msgstr "Please enter {_length_} characters max."
+msgstr "Please enter {length} characters max."
 
 #: src/i18n/process/translate.js:16
 msgid "rule_min"
-msgstr "Please enter {_length_} characters min."
+msgstr "Please enter {length} characters min."
 
 #: src/i18n/process/translate.js:17
 msgid "rule_numeric"
