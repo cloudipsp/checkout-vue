@@ -249,7 +249,7 @@ export default {
         this.title = 'verification_t'
         this.order_desc = 'verification_' + this.verification_type + '_d'
         this.card_number = model.attr('order_data.masked_card')
-        this.expiry_date = model.attr('order_data.expiry_date')
+        this.expiry_date = model.attr('order_data.expiry_date') || ''
         this.cvv2 = ''
         this.store.location('payment-method', 'card')
       } else if (model.inProgress() && model.waitForResponse()) {
