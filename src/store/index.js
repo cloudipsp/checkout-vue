@@ -294,13 +294,23 @@ class Store extends Model {
     this.state.router.page = 'payment-method'
     this.state.router.method = method
   }
-  setCardNumber({ card_number, expiry_date, email, hash, read_only } = {}) {
-    this.state.params.card_number = card_number || ''
-    this.state.params.expiry_date = expiry_date || ''
-    this.state.params.email = email || this.state.params.email
-    this.state.params.hash = hash
-    this.state.params.cvv2 = ''
-    this.state.read_only = read_only
+  setCardNumber({
+    card_number = '',
+    expiry_date = '',
+    email = this.state.params.email,
+    hash,
+    read_only,
+  } = {}) {
+    this.setState({
+      params: {
+        card_number,
+        expiry_date,
+        email,
+        hash,
+        cvv2: '',
+      },
+      read_only,
+    })
 
     let el = document.getElementById('f-cvv2')
     if (card_number && expiry_date && el) {

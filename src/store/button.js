@@ -13,9 +13,9 @@ export default function (button) {
 
   return axios
     .get(`/buttons/${button}.json`)
-    .then(response => {
-      config = response.data
-      return response.data
+    .then(({ data }) => {
+      config = data
+      return data
     })
     .then(parseOptions, () => {})
 }

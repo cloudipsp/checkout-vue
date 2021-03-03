@@ -31,8 +31,7 @@ const install = function (Vue) {
   Vue.use(svg)
   Vue.use(validate)
 
-  window.fondy = function (el, optionsUser) {
-    optionsUser = optionsUser || {}
+  window.fondy = function (el, optionsUser = {}) {
     if (!isString(el)) return console.error('Selector not a string')
     if (!isPlainObject(optionsUser))
       return console.error('Options not an object')

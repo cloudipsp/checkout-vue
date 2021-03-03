@@ -7,11 +7,10 @@ const tokens = {
   '!': { escape: true },
 }
 
-export default function maskit(value, mask, masked = true) {
+export default function maskit(value = '', mask, masked = true) {
   if (!mask) return value
 
-  value = String(value) || ''
-  mask = mask || ''
+  value = String(value)
   let iMask = 0
   let iValue = 0
   let output = ''

@@ -35,7 +35,6 @@ import Payment from '@/components/payment'
 import FHeader from '@/components/header'
 import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
-import Attr from '@/mixins/attr'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
@@ -43,7 +42,7 @@ export default {
     FHeader,
     Payment,
   },
-  mixins: [Resize, Attr],
+  mixins: [Resize],
   props: {
     optionsUser: {
       type: Object,

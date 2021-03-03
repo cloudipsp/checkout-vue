@@ -1,20 +1,17 @@
 export default class Model {
-  attr(name, value) {
-    name = (name || '').split('.')
+  attr(name = '', value) {
+    name = name.split('.')
     let data = this
     let prop = name.pop()
     let len = arguments.length
-    for (let i = 0; i < name.length; i++) {
-      if (data && Object.prototype.hasOwnProperty.call(data, name[i])) {
-        data = data[name[i]]
-      } else {
-        if (len === 2) {
-          data = data[name[i]] = {}
-        } else {
-          break
-        }
+
+    name.forEach(item => {
+      if (data && item in data) {
+        data = data[item]
+      } else if (len === 2) {
+        data = data[item] = {}
       }
-    }
+    })
     if (len === 1) {
       return data ? data[prop] : null
     }
