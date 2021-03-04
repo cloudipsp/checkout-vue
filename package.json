@@ -28,7 +28,7 @@
   "unpkg": "dist/checkout.js",
   "dependencies": {
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
-    "async-validator": "^1.11.2",
+    "async-validator": "^3.5.1",
     "axios": "^0.21.1",
     "bootstrap-vue": "~2.19.0",
     "core-js": "^3.9.1",
