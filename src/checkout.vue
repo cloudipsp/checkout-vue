@@ -9,7 +9,7 @@
     </div>
     <ul v-else-if="isError">
       <div>{{ COMMITHASH }} {{ BRANCH }}</div>
-      <li v-for="item in error.errors" :key="item.message">
+      <li v-for="item in errors" :key="item.message">
         {{ item.message }}
       </li>
     </ul>
@@ -51,6 +51,7 @@ export default {
   },
   data() {
     return {
+      errors: [],
       load: false,
       showModalError: false,
       idError: '',
@@ -62,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isOnlyCard', 'error']),
+    ...mapState(['isOnlyCard']),
     ...mapState('options', [
       'show_menu_first',
       'full_screen',
@@ -97,18 +98,27 @@ export default {
       return !this.isError && this.load
     },
     isError() {
-      return this.error.errors.length
+      return this.errors.length
     },
     isDemo() {
       return this.disable_request
     },
   },
   created() {
-    this.store.setOptions(this.optionsUser)
-    this.initHeight()
-    this.store.load().then(this.onLoad, this.onError).catch(errorHandler)
+    this.store
+      .setOptions(this.optionsUser)
+      .then(this.init)
+      .catch(errors => {
+        this.errors = errors
+        return Promise.reject(errors)
+      })
+      .catch(errorHandler)
   },
   methods: {
+    init() {
+      this.initHeight()
+      this.store.load().then(this.onLoad, this.onError).catch(errorHandler)
+    },
     initHeight() {
       this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
     },

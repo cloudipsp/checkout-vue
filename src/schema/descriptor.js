@@ -2,7 +2,6 @@ import configLocales from '@/config/locales.json'
 import methods from '@/config/methods.json'
 import period from '@/config/subscription-period.json'
 import configCountries from '@umpirsky/country-list/data/en/country.json'
-import rules from 'async-validator/es/rule/'
 import cssVariable from '@/config/css-variable'
 import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
@@ -10,91 +9,83 @@ import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
+import { isPlainObject } from '@/utils/typeof'
+import Schema from 'async-validator'
 
 const countries = Object.keys(configCountries)
 const cardIcons = Object.keys(configCardBrands)
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
-const theme = Object.keys(configTheme)
+const themeType = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
 const options = Object.keys(configOptionsDefault.options)
 const endpoint = Object.keys(configOptionsDefault.options.endpoint)
 const subscription = Object.keys(configOptionsDefault.options.subscription)
+const theme = Object.keys(configOptionsDefault.options.theme)
 const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
 const subscriptionType = Object.keys(configSubscription)
 const config = ['options', 'params', 'messages', 'validate', 'css_variable']
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/[\w+;]+?,)/
+const messageEnum = 'is not equal to one of'
+const messageExclude = 'should not include one of'
+const typeBoolean = { type: 'boolean' }
+const typeString = { type: 'string' }
+const typeInteger = { type: 'integer' }
+const typeUrl = { type: 'url' }
+const typeEnum = value => ({ type: 'enum', enum: value })
+const typeDate = { ...typeString, pattern: /^\d{4}-\d{2}-\d{2}$/ }
+const typeIntegerMax = max => ({ ...typeInteger, max })
+const typeObject = { type: 'object' }
+const digits12 = 999999999999
+
+function error(array, includes, rule, value, callback, message) {
+  callback(
+    value
+      .filter(item => (includes ? !array.includes(item) : array.includes(item)))
+      .reduce(
+        (accum, item) =>
+          accum.concat(
+            [rule.fullField, item, message, array.join(', ')].join(' ')
+          ),
+        []
+      )
+  )
+}
 
 function enumArray(array) {
   return {
     type: 'array',
     validator(rule, value, callback, source, options) {
-      if (
-        !rule.required &&
-        !Object.prototype.hasOwnProperty.call(source, rule.field)
-      )
-        return callback()
-      let errors = []
-      if (Array.isArray(value)) {
-        value.forEach(function (item) {
-          if (array.includes(item)) return
-          errors.push(
-            [
-              rule.fullField,
-              item,
-              'is not equal to one of',
-              array.join(', '),
-            ].join(' ')
-          )
-        })
-      } else {
-        rules.type(rule, value, source, errors, options)
-      }
-      callback(errors)
+      if (!Array.isArray(value))
+        return Schema.validators.array(rule, value, callback, source, options)
+
+      error(array, true, rule, value, callback, messageEnum)
     },
   }
 }
 
 function enumObject(array) {
   return {
-    type: 'object',
+    ...typeObject,
     fields: {},
-    validator(rule, value = {}, callback) {
-      let errors = []
-      Object.keys(value).forEach(item => {
-        if (array.includes(item)) return
-        errors.push(
-          [
-            rule.fullField,
-            item,
-            'is not equal to one of',
-            array.join(', '),
-          ].join(' ')
-        )
-      })
-      callback(errors)
+    validator(rule, value, callback, source, options) {
+      if (!isPlainObject(value))
+        return Schema.validators.object(rule, value, callback, source, options)
+
+      error(array, true, rule, Object.keys(value), callback, messageEnum)
     },
   }
 }
 
 function excludeObject(array) {
   return {
-    type: 'object',
-    validator(rule, value = {}, callback) {
-      let errors = []
-      Object.keys(value).forEach(item => {
-        if (!array.includes(item)) return
-        errors.push(
-          [
-            rule.fullField,
-            item,
-            'should not include one of',
-            array.join(', '),
-          ].join(' ')
-        )
-      })
-      callback(errors)
+    ...typeObject,
+    validator(rule, value, callback, source, options) {
+      if (!isPlainObject(value))
+        return Schema.validators.object(rule, value, callback, source, options)
+
+      error(array, false, rule, Object.keys(value), callback, messageExclude)
     },
   }
 }
@@ -159,7 +150,7 @@ locales.forEach(function (locale) {
   messages.fields[locale] = {
     ...excludeObject(configExcludeMessages),
     fields: {
-      offerta_url: { type: 'url' },
+      offerta_url: typeUrl,
     },
   }
 })
@@ -167,9 +158,7 @@ locales.forEach(function (locale) {
 let validate = enumObject(locales)
 
 locales.forEach(function (locale) {
-  validate.fields[locale] = {
-    type: 'object',
-  }
+  validate.fields[locale] = typeObject
 })
 
 const cssVariableKeys = Object.keys(
@@ -183,7 +172,7 @@ let css_variable = enumObject(cssVariableKeys)
 
 const configCssVariable = {
   card_img: {
-    type: 'string',
+    ...typeString,
     pattern: patternUrlImg,
   },
 }
@@ -192,7 +181,7 @@ cssVariableKeys.forEach(item => {
   css_variable.fields[item] = configCssVariable[item] || [
     validatorNotEmpty(),
     {
-      type: 'string',
+      ...typeString,
       pattern: /^#[0-9a-fA-F]{6}$/,
     },
   ]
@@ -208,48 +197,48 @@ export default {
           methods: enumArray(methods),
           methods_disabled: enumArray(methods),
           card_icons: enumArray(cardIcons),
-          fields: { type: 'boolean' },
-          title: { type: 'string' },
-          link: { type: 'url' },
-          full_screen: { type: 'boolean' },
-          button: { type: 'boolean' },
+          fields: typeBoolean,
+          title: typeString,
+          link: typeUrl,
+          full_screen: typeBoolean,
+          button: typeBoolean,
           locales: enumArray(locales),
-          email: { type: 'boolean' },
-          api_domain: { type: 'string' },
+          email: typeBoolean,
+          api_domain: typeString,
           endpoint: {
             ...enumObject(endpoint),
             fields: {
-              gateway: { type: 'string' },
-              button: { type: 'string' },
+              gateway: typeString,
+              button: typeString,
             },
           },
-          fee: { type: 'boolean' },
-          active_tab: { type: 'enum', enum: methods },
+          fee: typeBoolean,
+          active_tab: typeEnum(methods),
           logo_url: {
-            type: 'string',
+            ...typeString,
             pattern: patternUrlImg,
           },
-          offerta_url: { type: 'url' },
-          default_country: { type: 'enum', enum: countries },
+          offerta_url: typeUrl,
+          default_country: typeEnum(countries),
           countries: enumArray(countries),
           theme: {
-            ...enumObject(['type', 'preset']),
+            ...enumObject(theme),
             fields: {
-              type: { type: 'enum', enum: theme },
-              preset: { type: 'enum', enum: preset },
+              type: typeEnum(themeType),
+              preset: typeEnum(preset),
             },
           },
-          disable_request: { type: 'boolean' },
-          show_button_amount: { type: 'boolean' },
+          disable_request: typeBoolean,
+          show_button_amount: typeBoolean,
           subscription: {
             ...enumObject(subscription),
             fields: {
-              type: { type: 'enum', enum: subscriptionType },
+              type: typeEnum(subscriptionType),
               periods: enumArray(period),
-              quantity: { type: 'boolean' },
-              trial: { type: 'boolean' },
-              unlimited: { type: 'boolean' },
-              readonly: { type: 'boolean' },
+              quantity: typeBoolean,
+              trial: typeBoolean,
+              unlimited: typeBoolean,
+              readonly: typeBoolean,
             },
           },
           loading: {
@@ -259,39 +248,35 @@ export default {
         },
       },
       params: {
-        type: 'object',
+        ...typeObject,
         fields: {
-          merchant_id: { type: 'integer', max: 999999999999 },
-          order_desc: { type: 'string', max: 1024 },
-          amount: [{ type: 'integer', max: 999999999999 }, validatorToken()],
-          currency: [
-            { type: 'string' },
-            validatorToken(),
-            validatorCurrencyRequired(),
-          ],
-          response_url: { type: 'url' },
-          lang: { type: 'enum', enum: locales },
-          required_rectoken: { type: 'enum', enum: YN },
-          verification: { type: 'enum', enum: YN },
-          verification_type: { type: 'enum', enum: verificationType },
-          token: [{ type: 'string', len: 40 }, conflictTokenButton()],
-          button: { type: 'string', min: 20, max: 80 },
-          offer: { type: 'boolean' },
+          merchant_id: typeIntegerMax(digits12),
+          order_desc: { ...typeString, max: 1024 },
+          amount: [typeIntegerMax(digits12), validatorToken()],
+          currency: [typeString, validatorToken(), validatorCurrencyRequired()],
+          response_url: typeUrl,
+          lang: typeEnum(locales),
+          required_rectoken: typeEnum(YN),
+          verification: typeEnum(YN),
+          verification_type: typeEnum(verificationType),
+          token: [{ ...typeString, len: 40 }, conflictTokenButton()],
+          button: { ...typeString, min: 20, max: 80 },
+          offer: typeBoolean,
           recurring_data: {
             ...enumObject(recurring_data),
             fields: {
-              period: { type: 'enum', enum: period },
-              every: { type: 'integer' },
-              start_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
-              end_time: { type: 'string', pattern: /^\d{4}-\d{2}-\d{2}$/ },
-              amount: { type: 'integer' },
-              quantity: { type: 'integer' },
-              trial_period: { type: 'string' },
-              trial_quantity: { type: 'integer' },
+              period: typeEnum(period),
+              every: typeInteger,
+              start_time: typeDate,
+              end_time: typeDate,
+              amount: typeInteger,
+              quantity: typeInteger,
+              trial_period: typeString,
+              trial_quantity: typeInteger,
             },
           },
-          custom: { type: 'object' },
-          customer_data: { type: 'object' },
+          custom: typeObject,
+          customer_data: typeObject,
         },
       },
       messages,

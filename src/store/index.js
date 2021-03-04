@@ -10,7 +10,7 @@ import {
   removeWallets,
 } from '@/utils/helpers'
 import { initApi, sendRequest } from '@/utils/api'
-import { isPlainObject, isExist } from '@/utils/typeof'
+import { isExist } from '@/utils/typeof'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from './setup'
 import loadButton, { getLabel } from '@/store/button'
@@ -18,12 +18,10 @@ import initCssVariable from '@/store/css-variable'
 import loadCardImg from '@/store/card-img'
 import { methods, tabs } from '@/utils/compatibility'
 import { localStorage } from '@/utils/store'
-import config from '@/config/config'
-import Schema from 'async-validator'
 import configSubscription from '@/config/subscription'
 import configAutoSubmit from '@/config/auto-submit'
 import { subscription } from '@/store/subscription'
-import { correctingUserConfig, priorityUserConfig } from '@/utils/compatibility'
+import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
 
@@ -136,11 +134,13 @@ class Store extends Model {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
   }
   setOptions(userConfig) {
-    correctingUserConfig(userConfig)
-    this.optionsFormat(userConfig)
-    this.validate(userConfig)
-    priorityUserConfig(userConfig)
-
+    return validate(userConfig)
+      .init()
+      .then(() => {
+        this.init(userConfig)
+      })
+  }
+  init(userConfig) {
     // delete undefined property
     this.user = JSON.parse(JSON.stringify(userConfig))
 
@@ -171,33 +171,6 @@ class Store extends Model {
     this.initIsOnlyWallets()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
-  }
-  optionsFormat(options) {
-    let regex = /[A-Z]+/g
-
-    if (!isPlainObject(options)) return
-
-    for (let prop in options) {
-      if (Object.prototype.hasOwnProperty.call(options, prop)) {
-        let modified = prop.replace(regex, function (match) {
-          return '_' + match.toLowerCase()
-        })
-        if (prop !== modified) {
-          if (Object.prototype.hasOwnProperty.call(options, modified)) continue
-          options[modified] = options[prop]
-          delete options[prop]
-          this.optionsFormat(options[modified])
-        } else {
-          this.optionsFormat(options[prop])
-        }
-      }
-    }
-  }
-  validate(options) {
-    new Schema(config).validate({ config: options }, errors => {
-      if (!errors) return
-      this.setError(errors)
-    })
   }
   initFavicon() {
     initFavicon(this.state.cdnIcons, this.state.options.full_screen)
@@ -369,10 +342,12 @@ class Store extends Model {
       )
       return
     }
-    this.validate({ params: params })
-    if (!this.state.error.errors.length) {
-      deepMerge(this.state.params, params)
-    }
+    validate({ params: params })
+      .validate()
+      .then(() => {
+        deepMerge(this.state.params, params)
+      })
+      .catch(errorHandler)
   }
   defaultParams() {
     return {
@@ -426,9 +401,6 @@ class Store extends Model {
     delete params.lang
 
     return Object.assign(params, data, this.defaultParams())
-  }
-  setError(errors) {
-    this.state.error.errors = errors
   }
   toggleMenu() {
     this.state.options.show_menu_first = !this.state.options.show_menu_first
