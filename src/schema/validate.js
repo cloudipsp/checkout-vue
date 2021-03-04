@@ -4,6 +4,7 @@ import { isExist, isPlainObject } from '@/utils/typeof'
 import configTheme from '@/config/theme'
 import Schema from 'async-validator'
 import descriptor from '@/schema/descriptor'
+import { captureMessage } from '@/sentry'
 
 class Validate extends Model {
   constructor(data) {
@@ -55,6 +56,9 @@ class Validate extends Model {
     return new Schema(descriptor)
       .validate({ config: this.data })
       .catch(({ errors }) => {
+        errors = errors.map(({ message }) => message)
+        captureMessage('config', 'info', errors)
+
         return Promise.reject(errors)
       })
   }

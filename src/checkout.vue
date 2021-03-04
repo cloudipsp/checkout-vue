@@ -8,9 +8,9 @@
       <payment />
     </div>
     <ul v-else-if="isError">
-      <div>{{ COMMITHASH }} {{ BRANCH }}</div>
-      <li v-for="item in errors" :key="item.message">
-        {{ item.message }}
+      <li>{{ commithash }} {{ branch }}</li>
+      <li v-for="error in errors" :key="error">
+        {{ error }}
       </li>
     </ul>
     <f-modal-base
@@ -36,6 +36,7 @@ import FHeader from '@/components/header'
 import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
+import { commithash, branch } from '@/config/config'
 
 export default {
   components: {
@@ -55,10 +56,8 @@ export default {
       load: false,
       showModalError: false,
       idError: '',
-      // eslint-disable-next-line no-undef
-      COMMITHASH,
-      // eslint-disable-next-line no-undef
-      BRANCH,
+      commithash,
+      branch,
       height: null,
     }
   },
