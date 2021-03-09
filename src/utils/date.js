@@ -1,26 +1,54 @@
+import { sort } from '@/utils/sort'
+
 export const createDate = (...args) => new Date(...args)
 
 export const date = (date, format) => {
+  let config = {
+    YYYY: 'year',
+    yy: 'year',
+    MM: 'month',
+    DD: 'day',
+    hh: 'hour',
+    mm: 'minute',
+  }
+
+  let order = Object.keys(config)
+    .reduce(
+      (accum, type) => [...accum, { type, index: format.indexOf(type) }],
+      []
+    )
+    .filter(({ index }) => index > -1)
+    .sort(sort('index'))
+    .map(({ type }) => type)
+
   let regexp = new RegExp(
-    format
-      .replace('YYYY', '(?<year>\\d{4})')
-      .replace('yy', '(?<year>\\d{2})')
-      .replace('MM', '(?<month>\\d{2})')
-      .replace('DD', '(?<day>\\d{2})')
-      .replace('hh', '(?<hour>\\d{2})')
-      .replace('mm', '(?<minute>\\d{2})')
+    order.reduce(
+      (accum, type) => accum.replace(type, `(\\d{${type.length}})`),
+      format
+    )
   )
 
   let match = date.match(regexp)
 
   if (!match) return new Date('')
 
-  let { year = 0, month = 1, day = 1, hour = 0, minute = 0 } = match.groups
-  year = `20${year}`.slice(-4)
+  let d = {
+    year: 0,
+    month: 1,
+    day: 1,
+    hour: 0,
+    minute: 0,
+  }
 
-  if (month > 12) return new Date('')
+  order.forEach((type, index) => {
+    d[config[type]] = match[index + 1]
+  })
 
-  return createDate(year, month - 1, day, hour, minute)
+  d.year = `20${d.year}`.slice(-4)
+
+  if (d.month > 12) return new Date('')
+
+  return createDate(d.year, d.month - 1, d.day, d.hour, d.minute)
 }
 
 export const formatMMYY = date => {
