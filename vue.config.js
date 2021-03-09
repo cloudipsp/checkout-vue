@@ -29,12 +29,6 @@ module.exports = {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
     },
-    snippet: {
-      entry: 'src/snippet.js',
-      template: 'public/index_snippet.html',
-      filename: 'index_snippet.html',
-      inject: 'head',
-    },
   },
   devServer: {
     overlay: {
