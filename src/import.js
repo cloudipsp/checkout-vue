@@ -69,3 +69,8 @@ export const loadLang = chunk => {
       )
   }
 }
+
+export const loadCheckout = () =>
+  import(
+    /* webpackChunkName: "ipsp-js-sdk" */ 'ipsp-js-sdk/dist/checkout'
+  ).then(module => module.default)

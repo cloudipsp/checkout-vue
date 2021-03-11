@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import $checkout from 'ipsp-js-sdk/dist/checkout'
+import { loadCheckout } from '@/import'
 import { api } from '@/utils/api'
 import { mapState } from '@/utils/store'
 import id from '@/mixins/id'
@@ -70,10 +70,15 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick().then(this.initButton)
+    this.$nextTick().then(this.loadCheckout)
   },
   methods: {
-    initButton() {
+    loadCheckout() {
+      if (this.disable_request) return
+
+      loadCheckout().then(this.initButton)
+    },
+    initButton($checkout) {
       if (this.disable_request) return
 
       this.button = $checkout
