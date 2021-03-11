@@ -5,21 +5,23 @@ import {
   dsn,
   isDevelopment,
 } from '@/config/config'
-import * as Sentry from '@sentry/vue'
+import { loadSentry } from '@/import'
 
 const install = Vue => {
   if (!dsn) return
 
-  Sentry.init({
-    Vue,
-    dsn,
-    release: branch,
-    autoSessionTracking: false,
-    logErrors: isDevelopment,
-    environment,
-  })
+  loadSentry().then(({ init, setTag }) => {
+    init({
+      Vue,
+      dsn,
+      release: branch,
+      autoSessionTracking: false,
+      logErrors: isDevelopment,
+      environment,
+    })
 
-  Sentry.setTag('commithash', commithash)
+    setTag('commithash', commithash)
+  })
 }
 
 export default { install }
@@ -27,8 +29,10 @@ export default { install }
 export const captureMessage = (message, level, extra) => {
   if (!dsn) return
 
-  Sentry.captureMessage(message, {
-    level,
-    extra,
+  loadSentry().then(({ captureMessage }) => {
+    captureMessage(message, {
+      level,
+      extra,
+    })
   })
 }

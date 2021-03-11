@@ -80,6 +80,9 @@ export const loadCssVars = () =>
     module => module.default
   )
 
+export const loadSentry = () =>
+  import(/* webpackChunkName: "3" */ '@sentry/vue')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */
