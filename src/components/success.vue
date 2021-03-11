@@ -18,7 +18,13 @@
 </template>
 
 <script>
+import { SvgDecline, SvgApproved } from '@/import'
+
 export default {
+  components: {
+    SvgDecline,
+    SvgApproved,
+  },
   props: {
     order: {
       type: Object,

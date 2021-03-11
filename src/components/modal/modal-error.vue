@@ -25,8 +25,13 @@
 
 <script>
 import { mapState, mapStateGetSet } from '@/utils/store'
+import { SvgServerTrouble, SvgDecline } from '@/import'
 
 export default {
+  components: {
+    SvgServerTrouble,
+    SvgDecline,
+  },
   computed: {
     ...mapStateGetSet('error', ['show']),
     ...mapState('error', ['code', 'message']),

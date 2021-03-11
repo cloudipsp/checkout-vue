@@ -37,11 +37,13 @@ import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
 import { commithash, branch } from '@/config/config'
+import { SvgDecline } from '@/import'
 
 export default {
   components: {
     FHeader,
     Payment,
+    SvgDecline,
   },
   mixins: [Resize],
   props: {

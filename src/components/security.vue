@@ -56,8 +56,14 @@
 <script>
 import Resize from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
+import { SvgVerifiedByVisa, SvgMasterCardSecureCode, SvgPciDss } from '@/import'
 
 export default {
+  components: {
+    SvgVerifiedByVisa,
+    SvgMasterCardSecureCode,
+    SvgPciDss,
+  },
   mixins: [Resize],
   data() {
     return {

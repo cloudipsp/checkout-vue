@@ -6,8 +6,9 @@ import SvgPciDss from '@/svg/pci-dss'
 import SvgDecline from '@/svg/decline'
 import SvgApproved from '@/svg/approved'
 import SvgLogo from '@/svg/logo'
+import SvgTimer from '@/svg/timer'
 
-const components = {
+export {
   SvgServerTrouble,
   SvgSafe,
   SvgVerifiedByVisa,
@@ -16,12 +17,5 @@ const components = {
   SvgDecline,
   SvgApproved,
   SvgLogo,
+  SvgTimer,
 }
-
-const install = Vue => {
-  Object.keys(components).forEach(name => {
-    Vue.component(name, components[name])
-  })
-}
-
-export default { install }

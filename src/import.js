@@ -71,11 +71,39 @@ export const loadLang = chunk => {
 }
 
 export const loadCheckout = () =>
-  import(
-    /* webpackChunkName: "ipsp-js-sdk" */ 'ipsp-js-sdk/dist/checkout'
-  ).then(module => module.default)
-
-export const loadCssVars = () =>
-  import(/* webpackChunkName: "css-vars-ponyfill" */ 'css-vars-ponyfill').then(
+  import(/* webpackChunkName: "1" */ 'ipsp-js-sdk/dist/checkout').then(
     module => module.default
   )
+
+export const loadCssVars = () =>
+  import(/* webpackChunkName: "2" */ 'css-vars-ponyfill').then(
+    module => module.default
+  )
+
+export const loadSvg = () =>
+  import(
+    /* webpackChunkName: "20" */
+    '@/svg/'
+  )
+
+export const SvgServerTrouble = () =>
+  loadSvg().then(({ SvgServerTrouble }) => SvgServerTrouble)
+
+export const SvgDecline = () => loadSvg().then(({ SvgDecline }) => SvgDecline)
+
+export const SvgSafe = () => loadSvg().then(({ SvgSafe }) => SvgSafe)
+
+export const SvgVerifiedByVisa = () =>
+  loadSvg().then(({ SvgVerifiedByVisa }) => SvgVerifiedByVisa)
+
+export const SvgMasterCardSecureCode = () =>
+  loadSvg().then(({ SvgMasterCardSecureCode }) => SvgMasterCardSecureCode)
+
+export const SvgPciDss = () => loadSvg().then(({ SvgPciDss }) => SvgPciDss)
+
+export const SvgApproved = () =>
+  loadSvg().then(({ SvgApproved }) => SvgApproved)
+
+export const SvgLogo = () => loadSvg().then(({ SvgLogo }) => SvgLogo)
+
+export const SvgTimer = () => loadSvg().then(({ SvgTimer }) => SvgTimer)

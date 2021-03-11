@@ -42,7 +42,7 @@ import { mapState } from '@/utils/store'
 import FIcons from '@/components/icons'
 import resize from '@/mixins/resize'
 import { removeWallets } from '@/utils/helpers'
-import SvgTimer from '@/svg/timer'
+import { SvgTimer } from '@/import'
 
 export default {
   components: {

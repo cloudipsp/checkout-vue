@@ -35,10 +35,12 @@ import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import FButtonMethods from '@/components/button/button-methods'
 import { sort, parseSelect } from '@/utils/sort'
+import { SvgLogo } from '@/import'
 
 export default {
   components: {
     FButtonMethods,
+    SvgLogo,
   },
   mixins: [Resize],
   computed: {
