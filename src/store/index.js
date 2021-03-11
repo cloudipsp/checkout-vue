@@ -160,7 +160,6 @@ class Store extends Model {
     )
 
     this.initFavicon()
-    this.initCdn()
     this.initMethods()
     this.initLocaleMessageEn()
     this.initLang()
@@ -174,15 +173,6 @@ class Store extends Model {
   }
   initFavicon() {
     initFavicon(this.state.cdnIcons, this.state.options.full_screen)
-  }
-  initCdn() {
-    let scriptFondyEl = [
-      ...document.querySelectorAll('script[src$="checkout.js"]'),
-    ].filter(item => /fondy/.test(item.src))[0]
-
-    if (!scriptFondyEl) return
-
-    this.state.cdn = scriptFondyEl.src.replace('/checkout.js', '')
   }
   initMethods() {
     this.state.options.methods = methods(
