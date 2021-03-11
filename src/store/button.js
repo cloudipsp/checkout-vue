@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { loadAxios } from '@/import'
 import { deepMerge } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
@@ -11,8 +11,8 @@ let config = {}
 export default function (button) {
   if (!button) return Promise.resolve()
 
-  return axios
-    .get(`/buttons/${button}.json`)
+  return loadAxios()
+    .then(axios => axios.get(`/buttons/${button}.json`))
     .then(({ data }) => {
       config = data
       return data

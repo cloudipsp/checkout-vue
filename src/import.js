@@ -88,6 +88,9 @@ export const loadAsyncValidator = () =>
     module => module.default
   )
 
+export const loadAxios = () =>
+  import(/* webpackChunkName: "5" */ 'axios').then(module => module.default)
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */
