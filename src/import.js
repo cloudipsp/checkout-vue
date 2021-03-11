@@ -107,3 +107,9 @@ export const SvgApproved = () =>
 export const SvgLogo = () => loadSvg().then(({ SvgLogo }) => SvgLogo)
 
 export const SvgTimer = () => loadSvg().then(({ SvgTimer }) => SvgTimer)
+
+export const loadStyleAdaptive = () =>
+  import(
+    /* webpackChunkName: "18" */
+    '@/scss/style-adaptive.scss'
+  )

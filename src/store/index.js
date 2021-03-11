@@ -24,6 +24,7 @@ import { subscription } from '@/store/subscription'
 import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
+import { loadStyleAdaptive } from '@/import'
 
 Vue.use(store)
 
@@ -192,7 +193,7 @@ class Store extends Model {
   initCssDevice() {
     if (!this.state.options.full_screen) return
 
-    require('@/scss/style-adaptive.scss?no-extract')
+    loadStyleAdaptive()
   }
   initIsOnlyCard() {
     let methods = this.state.options.methods.filter(removeWallets)

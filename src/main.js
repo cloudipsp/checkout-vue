@@ -4,14 +4,8 @@
 // css class
 // vue-i18n-extensions
 
-// eslint-disable-next-line no-unused-vars
-import fonts from '@/scss/fonts.scss'
-// eslint-disable-next-line no-unused-vars
-import css from '@/scss/style.scss'
-// eslint-disable-next-line no-unused-vars
-import ss from '@/scss/style-adaptive-ss.scss'
-// eslint-disable-next-line no-unused-vars
-import sm from '@/scss/style-adaptive-sm.scss'
+import '@/scss/fonts.scss'
+import '@/scss/style.scss'
 
 import Vue from 'vue'
 import Checkout from '@/checkout'
