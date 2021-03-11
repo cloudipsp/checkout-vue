@@ -1,4 +1,4 @@
-import cssVars from 'css-vars-ponyfill'
+import { loadCssVars } from '@/import'
 import { loadStyle } from '@/utils/helpers'
 import calculator from '@/utils/calculator'
 import { hasCssVariableSupport } from '@/utils/env'
@@ -92,10 +92,14 @@ export default function (variablesLink) {
 
   loadStyle(css)
 
-  cssVars({
-    include: 'link[href*="checkout.css"],style',
-    onSuccess,
-  })
+  if (!hasCssVariableSupport) {
+    loadCssVars().then(cssVars => {
+      cssVars({
+        include: 'link[href*="checkout.css"],style',
+        onSuccess,
+      })
+    })
+  }
 
   function onSuccess(cssText) {
     const reg = new RegExp(
