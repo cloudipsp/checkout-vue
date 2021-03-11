@@ -70,8 +70,6 @@ export default {
         `f-svg-${this.size}`,
         {
           'f-svg-spin': this.spin,
-        },
-        {
           'f-svg-fw': this.fw,
         },
       ]

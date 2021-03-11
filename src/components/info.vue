@@ -26,12 +26,8 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import FPrice from '@/components/price'
 
 export default {
-  components: {
-    FPrice,
-  },
   data() {
     return {
       showMore: false,

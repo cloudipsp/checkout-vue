@@ -187,7 +187,6 @@ import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
 import getCardBrand from '@/utils/card-brand'
 import FIcons from '@/components/icons'
-import FPrice from '@/components/price'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
@@ -198,7 +197,6 @@ export default {
     FSubscription,
     FCardList,
     FIcons,
-    FPrice,
   },
   mixins: [Resize, timeout, isMounted],
   data() {

@@ -12,9 +12,8 @@
 <script>
 import config from '@/config/customer-fields'
 import countries from '@umpirsky/country-list/data/en/country.json'
-import { sort } from '@/utils/sort'
+import { sort, parseSelect } from '@/utils/sort'
 import { mapState } from '@/utils/store'
-import { parseSelect } from '@/utils/sort'
 
 export default {
   computed: {
