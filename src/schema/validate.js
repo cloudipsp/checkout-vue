@@ -2,9 +2,9 @@ import { findGetParameter } from '@/utils/helpers'
 import Model from '@/class/model'
 import { isExist, isPlainObject } from '@/utils/typeof'
 import configTheme from '@/config/theme'
-import Schema from 'async-validator'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
+import { loadAsyncValidator } from '@/import'
 
 class Validate extends Model {
   constructor(data) {
@@ -53,8 +53,8 @@ class Validate extends Model {
   }
 
   validate() {
-    return new Schema(descriptor)
-      .validate({ config: this.data })
+    return loadAsyncValidator()
+      .then(Schema => new Schema(descriptor).validate({ config: this.data }))
       .catch(({ errors }) => {
         errors = errors.map(({ message }) => message)
         captureMessage('config', 'info', errors)

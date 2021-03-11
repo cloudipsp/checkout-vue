@@ -10,7 +10,7 @@ import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
 import { isPlainObject } from '@/utils/typeof'
-import Schema from 'async-validator'
+import { loadAsyncValidator } from '@/import'
 
 const countries = Object.keys(configCountries)
 const cardIcons = Object.keys(configCardBrands)
@@ -58,7 +58,9 @@ function enumArray(array) {
     type: 'array',
     validator(rule, value, callback, source, options) {
       if (!Array.isArray(value))
-        return Schema.validators.array(rule, value, callback, source, options)
+        return loadAsyncValidator().then(Schema =>
+          Schema.validators.array(rule, value, callback, source, options)
+        )
 
       error(array, true, rule, value, callback, messageEnum)
     },
@@ -71,7 +73,9 @@ function enumObject(array) {
     fields: {},
     validator(rule, value, callback, source, options) {
       if (!isPlainObject(value))
-        return Schema.validators.object(rule, value, callback, source, options)
+        return loadAsyncValidator().then(Schema =>
+          Schema.validators.object(rule, value, callback, source, options)
+        )
 
       error(array, true, rule, Object.keys(value), callback, messageEnum)
     },
@@ -83,7 +87,9 @@ function excludeObject(array) {
     ...typeObject,
     validator(rule, value, callback, source, options) {
       if (!isPlainObject(value))
-        return Schema.validators.object(rule, value, callback, source, options)
+        return loadAsyncValidator().then(Schema =>
+          Schema.validators.object(rule, value, callback, source, options)
+        )
 
       error(array, false, rule, Object.keys(value), callback, messageExclude)
     },

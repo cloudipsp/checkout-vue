@@ -83,6 +83,11 @@ export const loadCssVars = () =>
 export const loadSentry = () =>
   import(/* webpackChunkName: "3" */ '@sentry/vue')
 
+export const loadAsyncValidator = () =>
+  import(/* webpackChunkName: "4" */ 'async-validator').then(
+    module => module.default
+  )
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */
