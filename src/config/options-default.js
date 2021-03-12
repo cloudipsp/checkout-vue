@@ -13,6 +13,7 @@ const config = {
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
     local_methods_icons: [],
+    loans_icons: [],
     title: '',
     full_screen: true,
     link: '',
