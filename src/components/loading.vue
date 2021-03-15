@@ -1,11 +1,14 @@
 <template>
   <div :class="className">
     <div :class="classNameBackdrop" />
-    <div class="f-loading-loader" />
+    <div v-if="showCustom" class="f-loading-custom" :style="style" />
+    <div v-else class="f-loading-loader" />
   </div>
 </template>
 
 <script>
+import { mapState } from '@/utils/store'
+
 export default {
   props: {
     backdrop: {
@@ -14,6 +17,7 @@ export default {
     },
   },
   computed: {
+    ...mapState('options', ['loading']),
     className() {
       return [
         'f-loading',
@@ -25,6 +29,14 @@ export default {
     classNameBackdrop() {
       return {
         'f-loading-backdrop': this.backdrop,
+      }
+    },
+    showCustom() {
+      return this.loading
+    },
+    style() {
+      return {
+        'background-image': `url("${this.loading.replace(/"/g, "'")}")`,
       }
     },
   },

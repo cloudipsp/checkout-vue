@@ -252,6 +252,10 @@ export default {
               readonly: { type: 'boolean' },
             },
           },
+          loading: {
+            type: 'string',
+            pattern: patternUrlImg,
+          },
         },
       },
       params: {

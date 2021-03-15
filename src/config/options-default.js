@@ -49,6 +49,7 @@ const config = {
       unlimited: true,
       readonly: false,
     },
+    loading: '',
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
