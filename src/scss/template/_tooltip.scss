@@ -46,3 +46,13 @@
     color: $tooltip_cvv_color;
   }
 }
+
+.f-tooltip-menu {
+  .f-tooltip-inner {
+    align-items: center;
+  }
+  svg {
+    flex: 0 0 px-to-rem(50px);
+    max-width: px-to-rem(50px);
+  }
+}

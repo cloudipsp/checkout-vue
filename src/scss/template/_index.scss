@@ -115,6 +115,7 @@
 .f-icons {
   display: flex;
   align-items: center;
+  padding: px-to-rem(4px) 0;
 
   .f-icon {
     margin-right: px-to-rem(8px);
