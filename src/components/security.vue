@@ -20,18 +20,17 @@
       </f-modal-base>
     </template>
     <template v-else>
-      <a href="#" class="f-title-security" tabindex="-1" @click.prevent>
-        <f-svg ref="security" name="security" size="2x" tabindex="0" />
-        <span
-          @mouseenter="mouseenter"
-          @mouseleave="mouseleave"
-          v-text="$t('security_title')"
-        />
-      </a>
-      <f-tooltip-default
-        :show.sync="showTooltip"
-        :target="() => $refs.security && $refs.security.$el"
+      <a
+        ref="security"
+        href="#"
+        class="f-title-security"
+        tabindex="-1"
+        @click.prevent
       >
+        <f-svg ref="reference" name="security" size="2x" tabindex="0" />
+        <span v-text="$t('security_title')" />
+      </a>
+      <f-tooltip-default :target="() => $refs.security">
         <div>
           <div class="f-tooltip-security-icons">
             <svg-verified-by-visa />
@@ -57,7 +56,6 @@ export default {
   mixins: [Resize],
   data() {
     return {
-      showTooltip: false,
       showModal: false,
     }
   },
@@ -66,13 +64,10 @@ export default {
       return isPhone || this.isWidthSm
     },
   },
+  mounted() {
+    this.$refs.security.reference = this.$refs.reference.$el
+  },
   methods: {
-    mouseenter() {
-      this.showTooltip = true
-    },
-    mouseleave() {
-      this.showTooltip = false
-    },
     open() {
       this.showModal = true
     },

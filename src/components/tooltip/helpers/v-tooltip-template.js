@@ -2,6 +2,8 @@ import Vue from 'vue'
 import { BVTooltipTemplate } from 'bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template'
 import { isFunction, isUndefinedOrNull } from 'bootstrap-vue/esm/utils/inspect'
 import Transition from '@/utils/transition'
+import Popper from 'popper.js'
+import { isElement } from '@/utils/dom'
 
 export default Vue.extend({
   extends: BVTooltipTemplate,
@@ -51,6 +53,15 @@ export default Vue.extend({
     },
   },
   methods: {
+    popperCreate(el) {
+      this.destroyPopper()
+      // We use `el` rather than `this.$el` just in case the original
+      // mountpoint root element type was changed by the template
+      let target = isElement(this.target.reference)
+        ? this.target.reference
+        : this.target
+      this.$_popper = new Popper(target, el, this.popperConfig)
+    },
     renderTemplate(h) {
       // Title can be a scoped slot function
       const $title = isFunction(this.title)
