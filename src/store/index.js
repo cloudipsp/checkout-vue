@@ -162,6 +162,7 @@ class Store extends Model {
     this.initFavicon()
     this.initCdn()
     this.initMethods()
+    this.initLocaleMessageEn()
     this.initLang()
     this.initLocation(this.state.options.active_tab)
     this.initApi()
@@ -216,6 +217,9 @@ class Store extends Model {
       this.state.options.methods,
       this.state.options.methods_disabled
     )
+  }
+  initLocaleMessageEn() {
+    i18n.setLocaleMessage('en', this.state.messages['en'])
   }
   initLang() {
     this.changeLang(
