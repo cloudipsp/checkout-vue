@@ -23,6 +23,14 @@
   opacity: $modal-backdrop-opacity;
 }
 
+.f-loading-custom {
+  width: px-to-rem(64px);
+  height: px-to-rem(64px);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+
 .f-loading-loader {
   width: px-to-rem(64px);
   height: px-to-rem(64px);
