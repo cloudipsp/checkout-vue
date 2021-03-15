@@ -24,8 +24,12 @@
         <f-tooltip-default
           v-if="showTooltip(method)"
           :ref="`${method}_tooltip`"
+          custom-class="f-tooltip-menu"
           :target="() => $refs[method][0]"
+          placement="topright"
+          boundary-padding="30"
         >
+          <component :is="tooltipIcon(method)" />
           <span v-text="$t(`${method}_tooltip`)" />
         </f-tooltip-default>
       </button>
@@ -38,10 +42,12 @@ import { mapState } from '@/utils/store'
 import FIcons from '@/components/icons'
 import resize from '@/mixins/resize'
 import { removeWallets } from '@/utils/helpers'
+import SvgTimer from '@/svg/timer'
 
 export default {
   components: {
     FIcons,
+    SvgTimer,
   },
   mixins: [resize],
   data() {
@@ -72,6 +78,15 @@ export default {
       return method =>
         this.$te(`${method}_tooltip`, 'en') || this.$te(`${method}_tooltip`)
     },
+    tooltipIcon() {
+      return method => (method === 'loans' ? 'svg-timer' : 'span')
+    },
+  },
+  mounted() {
+    this.methods.forEach(method => {
+      if (!this.$refs[method]) return
+      this.$refs[method][0].reference = this.$refs[`${method}_icons`][0].$el
+    })
   },
   methods: {
     click(method) {
