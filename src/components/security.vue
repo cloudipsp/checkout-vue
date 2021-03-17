@@ -65,7 +65,9 @@ export default {
     },
   },
   mounted() {
-    this.$refs.security.reference = this.$refs.reference.$el
+    if (!this.enableModal) {
+      this.$refs.security.reference = this.$refs.reference.$el
+    }
   },
   methods: {
     open() {

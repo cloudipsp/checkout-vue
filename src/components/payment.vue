@@ -115,11 +115,9 @@ export default {
       })
       .finally(() => {
         this.store.formLoading(false)
-      })
-      .then(this.appSuccess)
-      .finally(() => {
         this.ready = true
       })
+      .then(this.appSuccess)
       .catch(this.appError)
       .catch(errorHandler)
   },
