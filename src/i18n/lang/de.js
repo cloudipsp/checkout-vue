@@ -1,6 +1,6 @@
 import translation from '@/i18n/po/de/translation.json'
 import countries from '@umpirsky/country-list/data/de/country.json'
-import datepicker from 'vue2-datepicker/locale/de'
+import formatLocale from 'date-format-parse/lib/locale/de'
 import locales from '@/config/locales.json'
 import { clearEmptyValue, generateValidateMessage } from '@/utils/helpers'
 
@@ -10,7 +10,12 @@ export const messages = Object.assign(
   locales,
   clearEmptyValue(translation),
   {
-    datepicker,
+    datepicker: {
+      formatLocale,
+      yearFormat: 'YYYY',
+      monthFormat: 'MMM',
+      monthBeforeYear: true,
+    },
   }
 )
 

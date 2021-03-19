@@ -91,6 +91,11 @@ export const loadAsyncValidator = () =>
 export const loadAxios = () =>
   import(/* webpackChunkName: "5" */ 'axios').then(module => module.default)
 
+export const DatePicker = () =>
+  import(
+    /* webpackChunkName: "6" */ '@/components/form/item/helpers/date-picker'
+  )
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */

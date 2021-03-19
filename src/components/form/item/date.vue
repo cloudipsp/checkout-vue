@@ -27,7 +27,7 @@
 <script>
 import item from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
-import DatePicker from './helpers/date-picker'
+import { DatePicker } from '@/import'
 import FormInput from './helpers/form-input'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
 import { mapState } from '@/utils/store'
