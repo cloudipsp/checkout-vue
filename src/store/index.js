@@ -9,7 +9,7 @@ import {
   errorHandler,
   removeWallets,
 } from '@/utils/helpers'
-import { initApi, sendRequest } from '@/utils/api'
+import { sendRequest } from '@/utils/api'
 import { isExist } from '@/utils/typeof'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from './setup'
@@ -165,7 +165,6 @@ class Store extends Model {
     this.initLocaleMessageEn()
     this.initLang()
     this.initLocation(this.state.options.active_tab)
-    this.initApi()
     this.initCssDevice()
     this.initIsOnlyCard()
     this.initIsOnlyWallets()
@@ -207,17 +206,6 @@ class Store extends Model {
   initShowMenuFirst() {
     this.state.options.show_menu_first =
       this.state.options.show_menu_first && !this.state.isOnlyCard
-  }
-  initApi() {
-    initApi(
-      {
-        origin: 'https://' + this.state.options.api_domain,
-        endpoint: this.state.options.endpoint,
-      },
-      () => {
-        this.formLoading(false)
-      }
-    )
   }
   load() {
     return Promise.all([this.loadButton(), this.loadCardImg()])

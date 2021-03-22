@@ -15,6 +15,12 @@ import sentry from '@/sentry'
 import components from '@/components/index'
 import store from '@/store/index'
 import validate from '@/validate/index'
+import { initApi } from '@/utils/api'
+import optionsDefault from '@/config/options-default'
+import { loadCheckout, loadAsyncValidator, loadSvg } from '@/import'
+loadCheckout()
+loadAsyncValidator()
+loadSvg()
 
 const install = function (Vue) {
   let instance = {}
@@ -34,9 +40,27 @@ const install = function (Vue) {
 
     if (instance[el]) instance[el].$destroy()
 
+    let instanceStore = store(el)
+    let origin =
+      'https://' +
+      (optionsUser.options?.api_domain ||
+        optionsUser.options?.apiDomain ||
+        optionsDefault.options.api_domain)
+    let endpoint =
+      optionsUser.options?.endpoint || optionsDefault.options.endpoint
+    initApi(
+      {
+        origin,
+        endpoint,
+      },
+      () => {
+        instanceStore.formLoading(false)
+      }
+    )
+
     instance[el] = new Vue({
       i18n,
-      store: store(el),
+      store: instanceStore,
       components: { Checkout },
       data: {
         optionsUser: optionsUser,
