@@ -71,7 +71,6 @@ export default {
       'disable_request',
     ]),
     ...mapState('options.theme', ['type']),
-    ...mapState('router', ['page', 'method']),
     className() {
       return { 'f-embed': !this.full_screen }
     },
@@ -81,7 +80,7 @@ export default {
           'f-only-card': this.isOnlyCard,
           'f-open': this.show_menu_first,
         },
-        `f-page-${this.page}-${this.method}`,
+        `f-page-${this.$route.name}`,
         `f-theme-${this.type}`,
       ]
     },

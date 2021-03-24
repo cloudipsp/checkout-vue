@@ -51,7 +51,6 @@ export default {
     ...mapState(['verification_type', 'amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
     ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
-    ...mapState('router', ['page']),
     show() {
       return this.verification_type !== 'amount'
     },
@@ -61,7 +60,7 @@ export default {
       )
     },
     showAmountReadOnly() {
-      return this.amount_readonly || this.page === 'success'
+      return this.amount_readonly || this.$route.name === 'success'
     },
     showAmount() {
       return this.amount || !this.amount_readonly

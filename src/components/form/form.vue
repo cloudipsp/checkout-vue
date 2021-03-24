@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState, mapStateGetSet } from '@/utils/store'
+import { mapStateGetSet } from '@/utils/store'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { errorHandler } from '@/utils/helpers'
@@ -24,7 +24,6 @@ export default {
     },
   },
   computed: {
-    ...mapState('router', ['method']),
     ...mapStateGetSet(['submited', 'isSubmit']),
     observer() {
       if (!this.isMounted) return
@@ -38,7 +37,7 @@ export default {
     },
   },
   watch: {
-    method: 'watchMethod',
+    $route: 'watchRoute',
   },
   created() {
     this.$root.$on('submit', () => {
@@ -46,7 +45,7 @@ export default {
     })
   },
   methods: {
-    watchMethod() {
+    watchRoute() {
       this.observer.reset()
       this.isSubmit = false
     },

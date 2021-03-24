@@ -25,6 +25,7 @@ import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
 import { loadStyleAdaptive } from '@/import'
+import router from '@/router/index'
 
 Vue.use(store)
 
@@ -241,10 +242,9 @@ class Store extends Model {
   }
   initLocation(active_method) {
     let methods = this.state.options.methods
-    let active_tab = active_method || this.state.router.method
+    let active_tab = active_method || router.history.current.name
     let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
-    this.state.router.page = 'payment-method'
-    this.state.router.method = method
+    router.push({ name: method }).catch(() => {})
   }
   setCardNumber({
     card_number = '',
@@ -293,11 +293,10 @@ class Store extends Model {
       })
       .catch(errorHandler)
   }
-  location(page, method, system) {
+  location(name, system) {
     this.state.options.show_menu_first = false
-    this.state.router.page = page
-    this.state.router.method = method
     this.state.router.system = system
+    router.push({ name }).catch(() => {})
   }
   locationSystem(system) {
     this.state.router.system = system

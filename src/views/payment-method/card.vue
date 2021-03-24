@@ -10,7 +10,6 @@
         v-if="isOnlyCard"
         class="f-mb-3"
         title="pay_with_card"
-        :type="method"
         :count="5"
         under-sticky
         position="center"
@@ -222,7 +221,6 @@ export default {
       'isOnlyCard',
       'ready',
     ]),
-    ...mapState('router', ['method']),
     ...mapState('options', {
       showEmail: 'email',
     }),

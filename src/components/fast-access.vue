@@ -50,7 +50,7 @@ export default {
       )
     },
     click(bank) {
-      this.store.location('payment-method', bank.method, bank.id)
+      this.store.location(bank.method, bank.id)
     },
     listFilter(item) {
       return item.quick_method && item.bank_logo !== 'no_logo'

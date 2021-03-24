@@ -9,6 +9,7 @@ import '@/scss/style.scss'
 
 import Vue from 'vue'
 import Checkout from '@/checkout'
+import router from '@/router/index'
 import i18n from '@/i18n/index'
 import { isString, isPlainObject } from '@/utils/typeof'
 import sentry from '@/sentry'
@@ -59,6 +60,7 @@ const install = function (Vue) {
     )
 
     instance[el] = new Vue({
+      router,
       i18n,
       store: instanceStore,
       components: { Checkout },
@@ -71,7 +73,7 @@ const install = function (Vue) {
           return this
         },
         location(method, system) {
-          this.store.location('payment-method', method, system)
+          this.store.location(method, system)
           return this
         },
         setParams(params) {

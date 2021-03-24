@@ -9,8 +9,7 @@
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
         <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
-        <!--payment-method success-->
-        <component :is="page" :order="order" />
+        <router-view :order="order" />
         <f-loading v-if="loading" backdrop />
         <f-modal-error />
         <f-modal-3ds
@@ -25,8 +24,6 @@
 </template>
 
 <script>
-import Success from '@/components/success'
-import PaymentMethod from '@/components/payment-method'
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
 import FAlertGdpr from '@/components/alert/alert-gdpr'
@@ -41,8 +38,6 @@ let model3ds
 
 export default {
   components: {
-    Success,
-    PaymentMethod,
     FSidebar,
     FModal3ds,
     FModalError,
@@ -65,7 +60,6 @@ export default {
   },
   computed: {
     ...mapState(['loading']),
-    ...mapState('router', ['page']),
     ...mapState('options', ['full_screen']),
     ...mapState('params', ['token', 'lang']),
 
@@ -252,12 +246,12 @@ export default {
         this.card_number = model.attr('order_data.masked_card')
         this.expiry_date = model.attr('order_data.expiry_date') || ''
         this.cvv2 = ''
-        this.store.location('payment-method', 'card')
+        this.store.location('card')
       } else if (model.inProgress() && model.waitForResponse()) {
         this.locationPending()
       } else if (model.inProgress()) {
         this.order = model.attr('order_data')
-        this.store.location('success', this.order.order_status)
+        this.store.location('success')
       }
     },
     locationPending() {

@@ -46,7 +46,6 @@ export default {
   computed: {
     ...mapState(['isOnlyCard', 'is_only_wallets']),
     ...mapState('params', ['lang']),
-    ...mapState('router', ['page']),
     ...mapState('options', [
       'locales',
       'logo_url',
@@ -67,7 +66,7 @@ export default {
         !this.isOnlyCard &&
         !this.show_menu_first &&
         this.isBreakpointMd &&
-        this.page !== 'success'
+        this.$route.name !== 'success'
       )
     },
     showLogoCustom() {

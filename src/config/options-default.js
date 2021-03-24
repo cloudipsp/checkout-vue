@@ -93,8 +93,6 @@ const config = {
     message: '',
   },
   router: {
-    page: '', // payment-method success
-    method: '', // card banklinks_eu local_methods sepa
     system: '',
   },
   loading: false,

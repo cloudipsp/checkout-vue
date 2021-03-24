@@ -27,14 +27,13 @@ export default {
   mixins: [Resize],
   computed: {
     ...mapState(['isOnlyCard', 'is_only_wallets']),
-    ...mapState('router', ['page', 'method']),
     ...mapState('options', ['full_screen']),
     show() {
       return !this.hide
     },
     hide() {
       return (
-        (this.page === 'success' && this.method === 'approved') ||
+        this.$route.name === 'success' ||
         (this.isBreakpointMd && this.isOnlyCard) ||
         this.is_only_wallets
       )

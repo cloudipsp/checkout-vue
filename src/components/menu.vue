@@ -61,14 +61,13 @@ export default {
   },
   computed: {
     ...mapState('options', ['methods']),
-    ...mapState('router', ['method']),
     ...mapState(['options']),
     className() {
       return function (item) {
         return [
           'f-menu-item',
           'f-outline',
-          { active: this.method === item && !this.isBreakpointMd },
+          { active: this.$route.name === item && !this.isBreakpointMd },
         ]
       }
     },
@@ -94,7 +93,7 @@ export default {
       let tooltip = this.$refs[`${method}_tooltip`]
       tooltip && tooltip[0].close()
       this.$refs[`${method}_icons`][0].close()
-      this.store.location('payment-method', method)
+      this.store.location(method)
     },
   },
 }

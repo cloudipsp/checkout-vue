@@ -96,6 +96,30 @@ export const DatePicker = () =>
     /* webpackChunkName: "6" */ '@/components/form/item/helpers/date-picker'
   )
 
+export const Card = () =>
+  import(/* webpackChunkName: "11" */ '@/views/payment-method/card')
+
+export const Banklinks_eu = () =>
+  import(/* webpackChunkName: "12" */ '@/views/payment-method/banklinks_eu')
+
+export const Local_methods = () =>
+  import(/* webpackChunkName: "13" */ '@/views/payment-method/local_methods')
+
+export const Sepa = () =>
+  import(/* webpackChunkName: "14" */ '@/views/payment-method/sepa')
+
+export const Receipt = () =>
+  import(/* webpackChunkName: "15" */ '@/views/payment-method/receipt')
+
+export const Wallets = () =>
+  import(/* webpackChunkName: "16" */ '@/views/payment-method/wallets')
+
+export const Loans = () =>
+  import(/* webpackChunkName: "17" */ '@/views/payment-method/loans')
+
+export const Success = () =>
+  import(/* webpackChunkName: "19" */ '@/views/success')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */
