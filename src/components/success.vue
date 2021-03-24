@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import { SvgDecline, SvgApproved } from '@/import'
+import SvgApproved from '@/svg/approved'
+import { SvgDecline } from '@/import'
 
 export default {
   components: {
