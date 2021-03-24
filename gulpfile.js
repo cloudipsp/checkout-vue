@@ -32,7 +32,12 @@ gulp.task('po', function (done) {
   return nodeGettextGenerator
     .process({
       extract: {
-        path: ['./src/components', './src/config', './src/checkout.vue'],
+        path: [
+          './src/components',
+          './src/views',
+          './src/config',
+          './src/checkout.vue',
+        ],
         target: './src/i18n/process/templates.js',
         // title="tran1"
         // text="tran1"
