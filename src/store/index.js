@@ -355,7 +355,8 @@ class Store extends Model {
         ]
       })
     )
-    params.payment_system = this.state.router.system || this.state.router.method
+    params.payment_system =
+      this.state.router.system || router.history.current.name
 
     if (this.state.need_verify_code) {
       delete params.custom
