@@ -1,16 +1,18 @@
 {
-  "cs": "Čeština",
-  "de": "Deutsche",
+  "az": "azərbaycan dili",
+  "cs": "čeština",
+  "de": "Deutsch",
   "en": "English",
   "es": "Español",
   "fr": "Français",
-  "hu": "Magyar",
+  "hu": "magyar",
   "it": "Italiano",
   "ko": "한국어",
-  "lv": "Latviešu",
-  "pl": "Polski",
+  "lv": "latviešu valoda",
+  "nl": "Nederlands",
+  "pl": "język polski",
   "ro": "Română",
   "ru": "Русский",
-  "sk": "Slovenský",
-  "uk": "Українською"
+  "sk": "slovenčina",
+  "uk": "Українська"
 }

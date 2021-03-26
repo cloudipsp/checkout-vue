@@ -1,5 +1,10 @@
 export const loadLang = chunk => {
   switch (chunk) {
+    case 'az':
+      return import(
+        /* webpackChunkName: "az" */
+        '@/i18n/lang/az'
+      )
     case 'cs':
       return import(
         /* webpackChunkName: "cs" */
@@ -41,6 +46,11 @@ export const loadLang = chunk => {
       return import(
         /* webpackChunkName: "lv" */
         '@/i18n/lang/lv'
+      )
+    case 'nl':
+      return import(
+        /* webpackChunkName: "nl" */
+        '@/i18n/lang/nl'
       )
     case 'pl':
       return import(
