@@ -26,56 +26,59 @@ import {
 
 Vue.use(Router)
 
-const router = new Router({
-  mode: 'abstract',
-  routes: [
-    {
-      path: `/${payment_method}`,
-      component: PaymentMethod,
-      children: [
-        {
-          path: card,
-          name: card,
-          component: Card,
-        },
-        {
-          path: banklinks_eu,
-          name: banklinks_eu,
-          component: Banklinks_eu,
-        },
-        {
-          path: local_methods,
-          name: local_methods,
-          component: Local_methods,
-        },
-        {
-          path: sepa,
-          name: sepa,
-          component: Sepa,
-        },
-        {
-          path: receipt,
-          name: receipt,
-          component: Receipt,
-        },
-        {
-          path: wallets,
-          name: wallets,
-          component: Wallets,
-        },
-        {
-          path: loans,
-          name: loans,
-          component: Loans,
-        },
-      ],
-    },
-    {
-      path: `/${success}`,
-      name: success,
-      component: Success,
-    },
-  ],
-})
+let instance = {}
 
-export default router
+export default name => {
+  if (instance[name]) return instance[name]
+  return (instance[name] = new Router({
+    mode: 'abstract',
+    routes: [
+      {
+        path: `/${payment_method}`,
+        component: PaymentMethod,
+        children: [
+          {
+            path: card,
+            name: card,
+            component: Card,
+          },
+          {
+            path: banklinks_eu,
+            name: banklinks_eu,
+            component: Banklinks_eu,
+          },
+          {
+            path: local_methods,
+            name: local_methods,
+            component: Local_methods,
+          },
+          {
+            path: sepa,
+            name: sepa,
+            component: Sepa,
+          },
+          {
+            path: receipt,
+            name: receipt,
+            component: Receipt,
+          },
+          {
+            path: wallets,
+            name: wallets,
+            component: Wallets,
+          },
+          {
+            path: loans,
+            name: loans,
+            component: Loans,
+          },
+        ],
+      },
+      {
+        path: `/${success}`,
+        name: success,
+        component: Success,
+      },
+    ],
+  }))
+}
