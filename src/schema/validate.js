@@ -102,7 +102,7 @@ class Validate extends Model {
     let button = findGetParameter('button') || this.data.params?.button
     if (!button) return
 
-    this.data.params.button = button
+    this.attr('data.params.button', button)
   }
 
   showMenuFirst() {
@@ -134,7 +134,7 @@ class Validate extends Model {
     let token = findGetParameter('token') || this.data.params?.token
     if (!token) return
 
-    this.data.params.token = token
+    this.attr('data.params.token', token)
   }
 }
 
