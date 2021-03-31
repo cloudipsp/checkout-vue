@@ -19,12 +19,13 @@ import {
   inherit,
   main,
 } from '@/config/color'
-import createConfig from '@/config/css-variable-create'
+import { createConfig } from '@/utils/helpers'
+import names from '@/config/css-variable-names'
 
 const color1 = '#CACFD6'
 const color2 = '#B6B9BF'
 
-export default createConfig([
+export default createConfig(names, [
   ash_400, // main_bg
   grey_2, // main_color
   white, // container_bg

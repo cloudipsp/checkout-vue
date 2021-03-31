@@ -1,56 +1,83 @@
-const active = 'active'
-const alert = 'alert'
-const bank = 'bank'
-const bg = 'bg'
-const border = 'border'
-const box = 'box'
-const btn = 'btn'
-const card = 'card'
-const cell = 'cell'
-const checkbox = 'checkbox'
-const checked = 'checked'
-const close = 'close'
-const color = 'color'
-const container = 'container'
-const content = 'content'
-const count = 'count'
-const datepicker = 'datepicker'
-const default_ = 'default'
-const desc = 'desc'
-const disabled = 'disabled'
-const error = 'error'
-const focus = 'focus'
-const hover = 'hover'
-const icon = 'icon'
-const icons = 'icons'
-const info = 'info'
-const input = 'input'
-const item = 'item'
-const label = 'label'
-const lg = 'lg'
-const link = 'link'
-const list = 'list'
-const main = 'main'
-const menu = 'menu'
-const merchant = 'merchant'
-const modal = 'modal'
-const name = 'name'
-const order = 'order'
-const outline = 'outline'
-const receipt = 'receipt'
-const secondary = 'secondary'
-const security = 'security'
-const select = 'select'
-const shadow = 'shadow'
-const sidebar = 'sidebar'
-const success = 'success'
-const switch_ = 'switch'
-const title = 'title'
-const today = 'today'
-const tooltip = 'tooltip'
-const view = 'view'
+import {
+  active,
+  alert,
+  amount,
+  backdrop,
+  bank,
+  bg,
+  border,
+  box,
+  btn,
+  card,
+  cell,
+  checkbox,
+  checked,
+  close,
+  color,
+  container,
+  content,
+  count,
+  currency,
+  current,
+  cvv,
+  date,
+  datepicker,
+  default_,
+  desc,
+  disabled,
+  error,
+  expiry,
+  fee,
+  focus,
+  hover,
+  icon,
+  icons,
+  indicator,
+  info,
+  input,
+  item,
+  label,
+  lg,
+  link,
+  list,
+  logo,
+  main,
+  menu,
+  merchant,
+  modal,
+  month,
+  more,
+  name,
+  not,
+  number,
+  order,
+  outline,
+  prepend,
+  props,
+  readonly,
+  receipt,
+  scrollbar,
+  secondary,
+  security,
+  select,
+  shadow,
+  sidebar,
+  subscription,
+  success,
+  svg,
+  switch_,
+  text,
+  th,
+  thumb,
+  title,
+  today,
+  tooltip,
+  url,
+  value,
+  view,
+} from '@/config/const'
 
-const names = [
+export default [
   [main, bg],
   [main, color],
   [container, bg],
@@ -72,20 +99,20 @@ const names = [
   [menu, count, bg],
   [menu, count, active, bg],
   [merchant, name, color],
-  [merchant, 'url', color],
+  [merchant, url, color],
   [order, desc, color],
-  [order, desc, 'more', color],
-  ['amount', color],
-  ['fee', color],
-  ['currency', color],
+  [order, desc, more, color],
+  [amount, color],
+  [fee, color],
+  [currency, color],
   [card, shadow],
   [card, bg],
   [card, label, color],
   [card, input, color],
   [card, input, shadow],
   [card, list, item, active, bg],
-  [card, list, 'number', color],
-  [card, list, 'expiry', 'date', color],
+  [card, list, number, color],
+  [card, list, expiry, date, color],
   [btn, success, color],
   [btn, success, bg],
   [btn, success, shadow],
@@ -130,8 +157,8 @@ const names = [
   [input, focus, border],
   [input, error, color],
   [input, error, border],
-  [input, 'readonly', color],
-  [input, 'prepend', color],
+  [input, readonly, color],
+  [input, prepend, color],
   [checkbox, default_, border],
   [checkbox, default_, hover, bg],
   [checkbox, default_, hover, border],
@@ -146,17 +173,17 @@ const names = [
   [checkbox, secondary, checked, color],
   [checkbox, secondary, label, color],
   [switch_, bg],
-  [switch_, 'indicator', bg],
+  [switch_, indicator, bg],
   [switch_, hover, bg],
   [switch_, checked, bg],
-  ['text', error, color],
+  [text, error, color],
   [label, color],
   [label, hover, color],
   [label, focus, color],
   [link, color],
   [tooltip, error, color],
   [tooltip, card, color],
-  [tooltip, 'cvv', color],
+  [tooltip, cvv, color],
   [tooltip, default_, bg],
   [tooltip, default_, color],
   [tooltip, secondary, bg],
@@ -168,12 +195,12 @@ const names = [
   [security, icon, hover, color],
   [security, hover, color],
   [close, color],
-  [modal, 'backdrop', bg],
+  [modal, backdrop, bg],
   [modal, content, color],
   [modal, content, bg],
   [modal, title, color],
   [modal, security, title, color],
-  [modal, security, title, 'svg', color],
+  [modal, security, title, svg, color],
   [bank, item, color],
   [bank, item, hover, color],
   [bank, icon, shadow],
@@ -192,25 +219,18 @@ const names = [
   [datepicker, cell, active, color],
   [datepicker, cell, active, bg],
   [datepicker, cell, disabled, color],
-  [datepicker, cell, 'not', 'current', 'month', color],
-  [datepicker, 'th', color],
-  [datepicker, btn, 'text', color],
+  [datepicker, cell, not, current, month, color],
+  [datepicker, th, color],
+  [datepicker, btn, text, color],
   [alert, info, color],
   [alert, info, bg],
-  ['scrollbar', 'thumb', bg],
-  [receipt, 'props', bg],
-  [receipt, 'value', color],
-  ['logo', color],
-  ['subscription', bg],
+  [scrollbar, thumb, bg],
+  [receipt, props, bg],
+  [receipt, value, color],
+  [logo, color],
+  [subscription, bg],
   [outline, border],
   [outline, bg],
   [outline, secondary, border],
   [outline, secondary, bg],
 ]
-
-export default function (list) {
-  return list.reduce((result, value, key) => {
-    result[names[key].join('_')] = value
-    return result
-  }, {})
-}
