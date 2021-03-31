@@ -86,3 +86,5 @@ export const createConfig = (names, values) =>
     result[names[key].join('_')] = value
     return result
   }, {})
+
+export const key = (...arr) => arr.join('_')

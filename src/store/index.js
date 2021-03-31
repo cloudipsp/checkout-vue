@@ -3,6 +3,7 @@ import Vue from 'vue'
 import optionsDefault from '@/config/options-default'
 import notSet from '@/config/not-set'
 import cssVariable from '@/config/css-variable'
+import cssClass from '@/config/css-class'
 import {
   getCookie,
   deepMerge,
@@ -164,7 +165,7 @@ class Store extends Model {
       cssVariable(this.state.options.theme),
       this.user.css_variable
     )
-
+    Object.assign(this.state.css_class, cssClass(this.state.options.theme.type))
     Object.assign(
       this.state.subscription,
       configSubscription[this.state.options.subscription.type]
