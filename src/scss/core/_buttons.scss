@@ -302,6 +302,40 @@
   );
 }
 
+.f-btn-light {
+  @include button-variant(
+    $btn_light_bg,
+    null,
+    $btn_light_color,
+    null,
+    darken($btn_light_bg, 20%),
+    null,
+    null,
+    null,
+    darken($btn_light_bg, 40%),
+    null,
+    null,
+    null
+  );
+}
+
+.f-btn-dark {
+  @include button-variant(
+    $btn_dark_bg,
+    null,
+    $btn_dark_color,
+    null,
+    lighten($btn_dark_bg, 20%),
+    null,
+    null,
+    null,
+    lighten($btn_dark_bg, 40%),
+    null,
+    null,
+    null
+  );
+}
+
 .f-btn-outline {
   font-size: px-to-rem(14px);
   font-weight: 500;

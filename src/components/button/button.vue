@@ -25,7 +25,14 @@ export default {
       type: String,
       default: 'default',
       validator: value =>
-        ['success', 'default', 'secondary', 'outline'].includes(value),
+        [
+          'success',
+          'default',
+          'secondary',
+          'outline',
+          'light',
+          'dark',
+        ].includes(value),
     },
     size: {
       type: String,

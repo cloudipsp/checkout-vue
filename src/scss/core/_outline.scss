@@ -39,6 +39,8 @@ a,
 
 .f-btn-default:focus,
 .f-btn-secondary:focus,
+.f-btn-light:focus,
+.f-btn-dark:focus,
 .f-btn-outline:focus {
   box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
     0 0 0 px-to-rem(4px) $outline_border;

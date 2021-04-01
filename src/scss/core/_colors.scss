@@ -6,6 +6,11 @@ $demo: #30d769;
 $preloader_bg: #d5dae0;
 $preloader_inner_bg: #f7f8f9;
 
+$btn_light_bg: var(#{$prefix}btn_light_bg);
+$btn_light_color: var(#{$prefix}btn_light_color);
+$btn_dark_bg: var(#{$prefix}btn_dark_bg);
+$btn_dark_color: var(#{$prefix}btn_dark_color);
+
 $main: var(#{$prefix}main);
 $main_bg: var(#{$prefix}main_bg);
 $main_color: var(#{$prefix}main_color);
