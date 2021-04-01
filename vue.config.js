@@ -48,6 +48,20 @@ module.exports = {
     config
       .when(isProduction, config => {
         config
+          .module
+            .rule('scss')
+              .oneOf('normal')
+                .use('extract-css-loader')
+                  .tap(options => {
+                    return {
+                      ...options,
+                      publicPath: ''
+                    }
+                  })
+                  .end()
+                .end()
+              .end()
+            .end()
           .optimization
             .splitChunks(false)
             .minimizer('terser')
@@ -139,23 +153,11 @@ module.exports = {
           .oneOf('normal').use('postcss-loader').tap(addF).end().end()
           .end()
         .rule('images')
-          .use('url-loader')
-            .tap(options => {
-              delete options.limit
-              return options
-            })
-            .end()
           .use('image-webpack-loader')
             .loader('image-webpack-loader')
             .end()
           .end()
         .rule('svg')
-          .uses
-            .clear()
-            .end()
-          .use('url-loader')
-            .loader('url-loader')
-            .end()
           .use('image-webpack-loader')
             .loader('image-webpack-loader')
             .end()
