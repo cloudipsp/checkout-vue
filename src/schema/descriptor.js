@@ -3,7 +3,6 @@ import methods from '@/config/methods.json'
 import period from '@/config/subscription-period.json'
 import configCountries from '@umpirsky/country-list/data/en/country.json'
 import cssVariable from '@/config/css-variable'
-import configCardBrands from '@/config/card-brands'
 import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
@@ -13,7 +12,19 @@ import { isPlainObject } from '@/utils/typeof'
 import { loadAsyncValidator } from '@/import'
 
 const countries = Object.keys(configCountries)
-const cardIcons = Object.keys(configCardBrands)
+const cardIcons = [
+  'american_express',
+  'diners',
+  'discover',
+  'jcb',
+  'maestro',
+  'mastercard',
+  'mir',
+  'prostir',
+  'rupay',
+  'union_pay',
+  'visa',
+]
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
 const themeType = Object.keys(configTheme)

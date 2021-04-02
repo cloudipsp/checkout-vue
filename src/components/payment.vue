@@ -31,7 +31,7 @@ import FAlertGdpr from '@/components/alert/alert-gdpr'
 import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import getCardBrand from '@/utils/card-brand'
+import { cardsParse } from '@/utils/card-brand'
 import Resize from '@/mixins/resize'
 
 let model3ds
@@ -177,24 +177,13 @@ export default {
       this.cardsSuccess(model.instance(model.attr('cards')))
     },
     cardsSuccess(model) {
-      if (this.need_verify_code || !Array.isArray(model.data)) return
+      if (this.need_verify_code) return
+      if (!Array.isArray(model.data)) return
       if (!model.data.length) return
 
-      this.cards = this.cardsParse(model.data)
-
-      this.store.setCardNumber(this.cards[0])
-    },
-    cardsParse(data) {
-      return data.map(item => {
-        let card_number = item.card_number.replace(/ /g, '')
-        let expiry_date = item.expiry_date.replace(/ /g, '')
-
-        return {
-          ...item,
-          card_number,
-          expiry_date,
-          card_brand: getCardBrand(card_number),
-        }
+      cardsParse(model.data).then(cards => {
+        this.cards = cards
+        this.store.setCardNumber(this.cards[0])
       })
     },
     orderSuccess(model) {

@@ -184,7 +184,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 import FSubscription from '@/components/subscription'
 import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
-import getCardBrand from '@/utils/card-brand'
+import { getCardBrand } from '@/utils/card-brand'
 import FIcons from '@/components/icons'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
@@ -300,7 +300,9 @@ export default {
   },
   watch: {
     card_number(value) {
-      this.cardBrand = getCardBrand(value)
+      getCardBrand(value).then(cardBrand => {
+        this.cardBrand = cardBrand
+      })
       if (!value) return
 
       value = value.slice(0, 6)

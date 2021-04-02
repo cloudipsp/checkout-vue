@@ -106,6 +106,11 @@ export const DatePicker = () =>
     /* webpackChunkName: "6" */ '@/components/form/item/helpers/date-picker'
   )
 
+export const loadCardBrands = () =>
+  import(/* webpackChunkName: "7" */ '@/config/card-brands').then(
+    module => module.default
+  )
+
 export const Card = () =>
   import(/* webpackChunkName: "11" */ '@/views/payment-method/card')
 
