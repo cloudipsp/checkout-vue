@@ -1,24 +1,18 @@
 import {
   ash_300,
-  ash_400,
   ash_500,
   ash_600,
-  ash_700,
   ash_800,
+  black,
   grey_1,
   grey_2,
-  grey_3,
   grey_4,
   grey_9,
-  black,
-  grey,
-  white,
-  error,
   inherit,
-  main,
+  white,
 } from '@/config/color'
 import { createConfig } from '@/utils/helpers'
-import names from '@/config/css-variable-names'
+import { namesTheme } from '@/config/css-variable-names'
 
 const color1 = '#CBCCCD'
 const color2 = '#797C7E'
@@ -34,7 +28,7 @@ const white_05 = '#989A9C'
 const white_06 = '#ADAEB0'
 const white_08 = '#D6D7D7'
 
-export default createConfig(names, [
+export default createConfig(namesTheme, [
   '#1C1F22', // main_bg
   white_05, // main_color
   grey_9, // container_bg
@@ -63,15 +57,6 @@ export default createConfig(names, [
   white_04, // fee_color
   white_04, // currency_color
   black, // card_shadow
-  main, // card_bg
-  white, // card_label_color
-  white, // card_input_color
-  black, // card_input_shadow
-  ash_300, // card_list_item_active_bg
-  grey, // card_list_number_color
-  grey_2, // card_list_expiry_date_color
-  white, // btn_success_color
-  main, // btn_success_bg
   black, // btn_success_shadow
   white, // btn_default_color
   white_04, // btn_default_bg
@@ -81,14 +66,6 @@ export default createConfig(names, [
   white, // btn_default_active_color
   white_01, // btn_default_active_bg
   black, // btn_default_active_shadow
-  grey_3, // btn_secondary_color
-  ash_500, // btn_secondary_bg
-  grey_4, // btn_secondary_hover_color
-  ash_600, // btn_secondary_hover_bg
-  ash_400, // btn_secondary_hover_shadow
-  grey_4, // btn_secondary_active_color
-  ash_800, // btn_secondary_active_bg
-  ash_600, // btn_secondary_active_shadow
   inherit, // btn_outline_bg
   white_02, // btn_outline_border
   white_06, // btn_outline_color
@@ -112,8 +89,6 @@ export default createConfig(names, [
   white_005, // input_hover_bg
   '#898C8E', // input_hover_border
   white_06, // input_focus_border
-  error, // input_error_color
-  error, // input_error_border
   white_06, // input_readonly_color
   grey_9, // input_prepend_color
   white_04, // checkbox_default_border
@@ -133,31 +108,18 @@ export default createConfig(names, [
   grey_9, // switch_indicator_bg
   white_03, // switch_hover_bg
   white_08, // switch_checked_bg
-  error, // text_error_color
   white_04, // label_color
   '#B1B2B4', // label_hover_color
   white_04, // label_focus_color
   white_05, // link_color //
-  error, // tooltip_error_color
-  grey_2, // tooltip_card_color
-  grey_3, // tooltip_cvv_color
   white, // tooltip_default_bg
   grey_2, // tooltip_default_color
-  white, // tooltip_secondary_bg
   '#B6B9BF', // tooltip_secondary_shadow
   '#CACFD6', // tooltip_icons_shadow
-  ash_800, // icon_color
   color2, // security_icon_color
   color2, // security_color
   white_08, // security_icon_hover_color
   white_08, // security_hover_color
-  white, // close_color
-  '#32353A', // modal_backdrop_bg
-  grey_3, // modal_content_color
-  white, // modal_content_bg
-  grey, // modal_title_color
-  grey_3, // modal_security_title_color
-  grey_1, // modal_security_title_svg_color
   white_06, // bank_item_color
   white, // bank_item_hover_color
   grey_9, // bank_icon_shadow
@@ -166,19 +128,6 @@ export default createConfig(names, [
   '#414549', // bank_select_bg
   '#8D8F92', // bank_select_close_color
   white, // bank_select_close_hover_color
-  grey_9, // datepicker_shadow
-  white, // datepicker_bg
-  grey_2, // datepicker_cell_color
-  grey_3, // datepicker_cell_today_color
-  ash_300, // datepicker_cell_today_bg
-  grey_3, // datepicker_cell_hover_color
-  ash_500, // datepicker_cell_hover_bg
-  white, // datepicker_cell_active_color
-  ash_800, // datepicker_cell_active_bg
-  ash_400, // datepicker_cell_disabled_color
-  ash_500, // datepicker_cell_not_current_month_color
-  ash_700, // datepicker_th_color
-  grey, // datepicker_btn_text_color
   grey_2, // alert_info_color
   white, // alert_info_bg
   white_02, // scrollbar_thumb_bg
