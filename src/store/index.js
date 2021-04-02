@@ -183,7 +183,8 @@ class Store extends Model {
     initCssVariable(this.state.css_variable)
   }
   initFavicon() {
-    initFavicon(this.state.cdnIcons, this.state.options.full_screen)
+    if (!this.state.options.full_screen) return
+    initFavicon()
   }
   initMethods() {
     this.state.options.methods = methods(

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
 import configMethods from '@/config/methods.json'
+import { cdn } from '@/config/config'
 
 export default {
   props: {
@@ -34,14 +34,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cdnIcons']),
     skip() {
       return this.name === 'no_logo'
     },
     style() {
       if (this.skip) return {}
       return {
-        'background-image': `url(${this.cdnIcons}svg/${
+        'background-image': `url(${cdn}svg/${
           this.map[this.type] || this.type
         }/${this.name}.svg)`,
       }

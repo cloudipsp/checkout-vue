@@ -103,8 +103,6 @@ const config = {
   read_only: false,
   need_verify_code: false,
   verification_type: '',
-  cdn: '',
-  cdnIcons: 'https://pay.fondy.eu/icons/dist/',
   tabs: {},
   ready: false,
   fields: [],

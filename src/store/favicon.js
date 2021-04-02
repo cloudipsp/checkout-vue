@@ -1,13 +1,12 @@
 import configFavicon from '@/config/favicon'
 import { setAttr } from '@/utils/dom'
+import { cdn } from '@/config/config'
 
-export default function (cdnIcons, full_screen) {
-  if (!full_screen) return
-
+export default function () {
   let fragment = document.createDocumentFragment()
 
   configFavicon.forEach(([rel, href, sizes, type, color]) => {
-    href = `${cdnIcons}favicon/fondy/${href}`
+    href = `${cdn}favicon/fondy/${href}`
     const id = href.replace(/\W/g, '_')
 
     if (document.getElementById(id)) return
