@@ -36,7 +36,7 @@
     "core-js": "^3.9.1",
     "css-vars-ponyfill": "^2.4.3",
     "date-format-parse": "^0.2.6",
-    "ipsp-js-sdk": "^1.0.37",
+    "ipsp-js-sdk": "^1.0.38",
     "ismobilejs": "^1.1.1",
     "vee-validate": "^3.4.5",
     "vue": "^2.6.12",
