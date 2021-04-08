@@ -4,6 +4,7 @@ const gitRevisionPlugin = new GitRevisionPlugin()
 const increaseSpecificity = require('./build/postcss-increase-specificity')
 const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = process.env.NODE_ENV === 'development'
@@ -109,6 +110,12 @@ module.exports = {
               entryOnly: true,
               exclude: /css$/
             }])
+            .end()
+      })
+      .when(isProduction && !argv['public-path'], config => {
+        config
+          .plugin('webpack-bundle-analyzer')
+            .use(BundleAnalyzerPlugin)
             .end()
       })
       .when(isDevelopment, config => {
