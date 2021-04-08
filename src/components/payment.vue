@@ -17,7 +17,7 @@
           :duration.sync="duration3ds"
           @submit3ds="submit3ds"
         />
-        <f-alert-gdpr v-model="show_gdpr_frame" />
+        <f-alert-gdpr-wrapper />
       </f-scrollbar-vertical>
     </div>
   </f-form>
@@ -26,7 +26,7 @@
 <script>
 import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
-import FAlertGdpr from '@/components/alert/alert-gdpr'
+import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 
 import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
@@ -41,7 +41,7 @@ export default {
     FSidebar,
     FModal3ds,
     FModalError,
-    FAlertGdpr,
+    FAlertGdprWrapper,
   },
   mixins: [Resize],
   provide() {
@@ -68,7 +68,6 @@ export default {
       'cards',
       'verification_type',
       'need_verify_code',
-      'show_gdpr_frame',
     ]),
     ...mapStateGetSet('options', ['title']),
     ...mapStateGetSet('params', [

@@ -1,5 +1,5 @@
 <template>
-  <f-alert-base v-if="show" ref="alert" v-bind="attrs" v-on="$listeners">
+  <f-alert-base ref="alert" v-bind="attrs" v-on="$listeners">
     <div class="f-gdpr-content">
       <div class="f-form-group">
         <span v-text="$t('gdpr_alert_text')" />&nbsp;
@@ -9,15 +9,17 @@
         </f-modal-base>
       </div>
 
-      <f-form-group
-        v-model="save_card"
-        name="save_card"
-        component="checkbox"
-        variant="secondary"
-      >
-        <span v-text="$t('save_card')" />&nbsp;
-        <a href="#" @click="showGdprSafe = true" v-text="$t('its_safe')" />
-      </f-form-group>
+      <f-form-base>
+        <f-form-group
+          v-model="save_card"
+          name="save_card"
+          component="checkbox"
+          variant="secondary"
+        >
+          <span v-text="$t('save_card')" />&nbsp;
+          <a href="#" @click="showGdprSafe = true" v-text="$t('its_safe')" />
+        </f-form-group>
+      </f-form-base>
 
       <f-modal-base v-model="showGdprSafe" size="lg">
         <template #modal-title>
@@ -44,9 +46,11 @@ import {
   localStorage,
   sessionStorage,
 } from '@/utils/store'
+import FAlertBase from '@/components/alert/alert-base'
 
 export default {
   components: {
+    FAlertBase,
     SvgSafe,
   },
   model: {
@@ -62,10 +66,6 @@ export default {
   computed: {
     ...mapState(['region']),
     ...mapStateGetSet('params', ['save_card']),
-    show() {
-      if (localStorage.get('show_gdpr_frame')) return false
-      return !sessionStorage.get('show_gdpr_frame')
-    },
     attrs() {
       return {
         class: 'f-gdpr',
