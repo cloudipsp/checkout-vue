@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { SvgSafe } from '@/import'
 import {
   mapState,
   mapStateGetSet,
@@ -45,6 +46,9 @@ import {
 } from '@/utils/store'
 
 export default {
+  components: {
+    SvgSafe,
+  },
   model: {
     prop: 'show',
     event: 'input',

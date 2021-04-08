@@ -146,6 +146,8 @@ export const SvgServerTrouble = () =>
 
 export const SvgDecline = () => loadSvg().then(({ SvgDecline }) => SvgDecline)
 
+export const SvgSafe = () => loadSvg().then(({ SvgSafe }) => SvgSafe)
+
 export const SvgVerifiedByVisa = () =>
   loadSvg().then(({ SvgVerifiedByVisa }) => SvgVerifiedByVisa)
 
