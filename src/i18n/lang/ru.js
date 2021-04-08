@@ -1,7 +1,8 @@
 import countries from '@umpirsky/country-list/data/ru/country.json'
+import locales from '@/config/locales'
 import { messages as validateMessages } from 'vee-validate/dist/locale/ru'
 
-export const messages = Object.assign({}, countries, {
+export const messages = Object.assign({}, countries, locales, {
   card: 'Оплата картой',
   card_number: 'Номер карты',
   card_number_p: 'XXXX XXXX XXXX XXXX',
@@ -65,14 +66,6 @@ export const messages = Object.assign({}, countries, {
   webmoney: 'WebMoney',
   yamoney: 'Яндекс.Деньги',
   liqpay: 'LiqPay',
-
-  ru: 'Русский',
-  en: 'English',
-  uk: 'Українською',
-  lv: 'Latviešu',
-  fr: 'Français',
-  cs: 'Čeština',
-  sk: 'Slovenský',
 
   customer_name: 'ФИО',
   customer_name_utf8: 'ФИО',

@@ -3,6 +3,8 @@ import configMethods from '@/config/methods'
 import configCss from '@/config/css'
 import css_varisble from '@/config/css-varisble'
 
+const locales = Object.keys(configLocales)
+
 const options = {
   options: {
     methods: ['card'],
@@ -102,7 +104,7 @@ const options = {
   validate_expdate: true,
 }
 
-configLocales.forEach(function(locale) {
+locales.forEach(function(locale) {
   options.messages[locale] = {}
   options.validate[locale] = {}
 })

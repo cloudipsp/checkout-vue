@@ -18,7 +18,7 @@ let cardIcons = [
   'diners-club',
   'american-express',
 ]
-let locales = configLocales
+let locales = Object.keys(configLocales)
 let period = ['day', 'week', 'month']
 let css = ['bootstrap3', 'bootstrap4', 'foundation6']
 // let currency = ['UAH', 'RUB', 'USD', 'EUR', 'GBP', 'CZK']
