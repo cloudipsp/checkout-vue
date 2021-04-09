@@ -6,8 +6,15 @@ const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const isProduction = process.env.NODE_ENV === 'production'
-const isDevelopment = process.env.NODE_ENV === 'development'
+const publicPath = argv['public-path']
+const VERSION = gitRevisionPlugin.version()
+const COMMITHASH = gitRevisionPlugin.commithash()
+const BRANCH = gitRevisionPlugin.branch()
+const ENVIRONMENT = process.env.NODE_ENV
+const DSN = argv['sentry-dsn']
+const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
+const isProduction = ENVIRONMENT === 'production'
+const isDevelopment = ENVIRONMENT === 'development'
 
 function addF (options) {
   options.plugins = () => [
@@ -15,6 +22,12 @@ function addF (options) {
     autoprefixer(),
   ]
   return options
+}
+
+function stringify(obj) {
+  return Object.fromEntries(
+    Object.entries(obj).map(([name, value]) => [name, JSON.stringify(value)])
+  )
 }
 
 module.exports = {
@@ -42,7 +55,7 @@ module.exports = {
   runtimeCompiler: true,
   productionSourceMap: false,
   publicPath: isProduction
-    ? argv['public-path']
+    ? publicPath
     : '/',
   pluginOptions: {},
   chainWebpack: config => {
@@ -104,7 +117,7 @@ module.exports = {
                   `npm ${argv.version} parent` :
                   'build'),
                 'commithash',
-                gitRevisionPlugin.commithash(),
+                COMMITHASH,
                 new Date().toUTCString(),
               ].join(' '),
               entryOnly: true,
@@ -112,7 +125,7 @@ module.exports = {
             }])
             .end()
       })
-      .when(isProduction && !argv['public-path'], config => {
+      .when(isProduction && !publicPath, config => {
         config
           .plugin('webpack-bundle-analyzer')
             .use(BundleAnalyzerPlugin)
@@ -171,17 +184,14 @@ module.exports = {
           .end()
         .end()
       .plugin('define-plugin')
-        .use(webpack.DefinePlugin, [
-          Object.fromEntries(
-            Object.entries({
-              VERSION: gitRevisionPlugin.version(),
-              COMMITHASH: gitRevisionPlugin.commithash(),
-              BRANCH: gitRevisionPlugin.branch(),
-              ENVIRONMENT: process.env.NODE_ENV,
-              DSN: argv['sentry-dsn'],
-            }).map(([name, value]) => [name, JSON.stringify(value)])
-          ),
-        ])
+        .use(webpack.DefinePlugin, [stringify({
+          VERSION,
+          COMMITHASH,
+          BRANCH,
+          ENVIRONMENT,
+          DSN,
+          DOMAIN,
+        })])
         .end()
   }
 }

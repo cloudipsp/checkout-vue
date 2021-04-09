@@ -4,11 +4,14 @@ import {
   environment,
   dsn,
   isDevelopment,
+  domain,
 } from '@/config/config'
 import { loadSentry } from '@/import'
 
+const enable = dsn && domain === location.hostname
+
 const install = Vue => {
-  if (!dsn) return
+  if (!enable) return
 
   loadSentry().then(({ init, setTag }) => {
     init({
@@ -27,7 +30,7 @@ const install = Vue => {
 export default { install }
 
 export const captureMessage = (message, level, extra) => {
-  if (!dsn) return
+  if (!enable) return
 
   loadSentry().then(({ captureMessage }) => {
     captureMessage(message, {

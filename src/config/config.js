@@ -14,3 +14,6 @@ export const isDevelopment = ENVIRONMENT === 'development'
 export const dsn = DSN
 
 export const cdn = 'https://pay.fondy.eu/icons/dist/'
+
+// eslint-disable-next-line no-undef
+export const domain = DOMAIN
