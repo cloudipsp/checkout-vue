@@ -175,7 +175,6 @@ class Store extends Model {
     this.initMethods()
     this.initLocaleMessageEn()
     this.initLang()
-    this.initLocation(this.state.options.active_tab)
     this.initCssDevice()
     this.initIsOnlyCard()
     this.initIsOnlyWallets()

@@ -1,50 +1,15 @@
 <template>
   <div id="f" :style="style" :class="className">
-    <div v-if="show" class="f-container" :class="classNameContainer">
-      <div v-if="isDemo" class="f-demo">
-        <div class="f-demo-title" v-text="$t('demo-title')" />
-      </div>
-      <f-header />
-      <payment />
-    </div>
-    <ul v-else-if="isError">
-      <li>{{ commithash }} {{ branch }}</li>
-      <li v-for="error in errors" :key="error">
-        {{ error }}
-      </li>
-    </ul>
-    <f-modal-base
-      v-else
-      v-model="showModalError"
-      no-close-on-esc
-      no-close-on-backdrop
-      hide-header-close
-    >
-      <template #modal-title>
-        <svg-decline />
-        <h5 class="f-modal-title" v-text="$t(`${idError}_title`)" />
-      </template>
-
-      <p class="f-text-center" v-text="$t(`${idError}_text`)" />
-    </f-modal-base>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Payment from '@/components/payment'
-import FHeader from '@/components/header'
 import { mapState } from '@/utils/store'
 import Resize from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
-import { commithash, branch } from '@/config/config'
-import { SvgDecline } from '@/import'
 
 export default {
-  components: {
-    FHeader,
-    Payment,
-    SvgDecline,
-  },
   mixins: [Resize],
   props: {
     optionsUser: {
@@ -54,35 +19,13 @@ export default {
   },
   data() {
     return {
-      errors: [],
-      load: false,
-      showModalError: false,
-      idError: '',
-      commithash,
-      branch,
       height: null,
     }
   },
   computed: {
-    ...mapState(['isOnlyCard']),
-    ...mapState('options', [
-      'show_menu_first',
-      'full_screen',
-      'disable_request',
-    ]),
-    ...mapState('options.theme', ['type']),
+    ...mapState('options', ['show_menu_first', 'full_screen', 'active_tab']),
     className() {
       return { 'f-embed': !this.full_screen }
-    },
-    classNameContainer() {
-      return [
-        {
-          'f-only-card': this.isOnlyCard,
-          'f-open': this.show_menu_first,
-        },
-        `f-page-${this.$route.name}`,
-        `f-theme-${this.type}`,
-      ]
     },
     style() {
       return {
@@ -94,30 +37,22 @@ export default {
             : 'visible',
       }
     },
-    show() {
-      return !this.isError && this.load
-    },
-    isError() {
-      return this.errors.length
-    },
-    isDemo() {
-      return this.disable_request
-    },
   },
   created() {
     this.store
       .setOptions(this.optionsUser)
       .then(this.init)
-      .catch(errors => {
-        this.errors = errors
-        return Promise.reject(errors)
-      })
+      .catch(this.goError)
       .catch(errorHandler)
   },
   methods: {
     init() {
       this.initHeight()
-      this.store.load().then(this.onLoad, this.onError).catch(errorHandler)
+      this.store
+        .load()
+        .then(this.go)
+        .catch(this.goErrorModal)
+        .catch(errorHandler)
     },
     initHeight() {
       this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
@@ -125,13 +60,16 @@ export default {
     resize() {
       this.initHeight()
     },
-    onLoad() {
-      this.load = true
+    go() {
+      this.store.initLocation(this.active_tab)
     },
-    onError(error) {
-      this.idError = error.id
-      this.showModalError = true
-      return Promise.reject(error)
+    goErrorModal(error) {
+      this.$router
+        .push({ name: 'error_modal', query: { error } })
+        .catch(() => {})
+    },
+    goError(errors) {
+      this.$router.push({ name: 'error', query: { errors } }).catch(() => {})
     },
   },
 }

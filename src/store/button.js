@@ -45,10 +45,10 @@ function parseOptions({
   amount = Math.round(amount * 100) || 0
 
   if (expire && date(expire, 'DD.MM.YYYY hh:mm') < createDate())
-    return Promise.reject({ id: 'button_expired' })
+    return Promise.reject('button_expired')
 
   if (status && status !== 'enabled')
-    return Promise.reject({ id: 'button_status_not_active' })
+    return Promise.reject('button_status_not_active')
 
   return {
     options: {
