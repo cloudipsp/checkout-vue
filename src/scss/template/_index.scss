@@ -86,6 +86,7 @@
 .f-fee {
   position: absolute;
   top: px-to-rem(26px);
+  z-index: 1;
   font-weight: 500;
   color: $fee_color;
 }
@@ -178,6 +179,7 @@
   position: absolute;
   top: px-to-rem(17px);
   right: px-to-rem(12px);
+  z-index: 1;
   font-size: px-to-rem(16px);
   font-weight: 500;
   color: $label_color;
