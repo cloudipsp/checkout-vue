@@ -5,14 +5,13 @@ import { getType } from '@/store/subscription'
 import { date, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
 import { sort } from '@/utils/sort'
-import { isDevelopment } from '@/config/config'
 
 let config = {}
 
 export default function (api_domain, button) {
   if (!button) return Promise.resolve()
   let domain = `https://${api_domain}`
-  if (isDevelopment) domain = ''
+  if (ENVIRONMENT === 'development') domain = ''
 
   return loadAxios()
     .then(axios => axios.get(`${domain}/buttons/${button}.json`))

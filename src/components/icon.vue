@@ -4,7 +4,6 @@
 
 <script>
 import configMethods from '@/config/methods.json'
-import { cdn } from '@/config/config'
 
 export default {
   props: {
@@ -40,7 +39,7 @@ export default {
     style() {
       if (this.skip) return {}
       return {
-        'background-image': `url(${cdn}svg/${
+        'background-image': `url(${CDN}svg/${
           this.map[this.type] || this.type
         }/${this.name}.svg)`,
       }

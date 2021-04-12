@@ -1,14 +1,6 @@
-import {
-  commithash,
-  branch,
-  environment,
-  dsn,
-  isDevelopment,
-  domain,
-} from '@/config/config'
 import { loadSentry } from '@/import'
 
-const enable = dsn && domain === location.hostname
+const enable = DSN && DOMAIN === location.hostname
 
 const install = Vue => {
   if (!enable) return
@@ -16,14 +8,14 @@ const install = Vue => {
   loadSentry().then(({ init, setTag }) => {
     init({
       Vue,
-      dsn,
-      release: branch,
+      dsn: DSN,
+      release: BRANCH,
       autoSessionTracking: false,
-      logErrors: isDevelopment,
-      environment,
+      logErrors: ENVIRONMENT === 'development',
+      environment: ENVIRONMENT,
     })
 
-    setTag('commithash', commithash)
+    setTag('commithash', COMMITHASH)
   })
 }
 

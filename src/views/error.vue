@@ -8,13 +8,11 @@
 </template>
 
 <script>
-import { commithash, branch } from '@/config/config'
-
 export default {
   data() {
     return {
-      commithash,
-      branch,
+      commithash: COMMITHASH,
+      branch: BRANCH,
     }
   },
 }
