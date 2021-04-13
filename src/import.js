@@ -115,29 +115,25 @@ export const FAlertGdpr = () =>
   import(/* webpackChunkName: "8" */ '@/components/alert/alert-gdpr')
 
 export const Card = () =>
-  import(/* webpackChunkName: "11" */ '@/views/checkout/payment-method/card')
+  import(/* webpackChunkName: "11" */ '@/views/checkout/method/card')
 
 export const Banklinks_eu = () =>
-  import(
-    /* webpackChunkName: "12" */ '@/views/checkout/payment-method/banklinks_eu'
-  )
+  import(/* webpackChunkName: "12" */ '@/views/checkout/method/banklinks_eu')
 
 export const Local_methods = () =>
-  import(
-    /* webpackChunkName: "13" */ '@/views/checkout/payment-method/local_methods'
-  )
+  import(/* webpackChunkName: "13" */ '@/views/checkout/method/local_methods')
 
 export const Sepa = () =>
-  import(/* webpackChunkName: "14" */ '@/views/checkout/payment-method/sepa')
+  import(/* webpackChunkName: "14" */ '@/views/checkout/method/sepa')
 
 export const Receipt = () =>
-  import(/* webpackChunkName: "15" */ '@/views/checkout/payment-method/receipt')
+  import(/* webpackChunkName: "15" */ '@/views/checkout/method/receipt')
 
 export const Wallets = () =>
-  import(/* webpackChunkName: "16" */ '@/views/checkout/payment-method/wallets')
+  import(/* webpackChunkName: "16" */ '@/views/checkout/method/wallets')
 
 export const Loans = () =>
-  import(/* webpackChunkName: "17" */ '@/views/checkout/payment-method/loans')
+  import(/* webpackChunkName: "17" */ '@/views/checkout/method/loans')
 
 export const Success = () =>
   import(/* webpackChunkName: "19" */ '@/views/checkout/success')
@@ -148,7 +144,7 @@ export const ErrorModal = () =>
   import(/* webpackChunkName: "22" */ '@/views/error_modal')
 
 export const System = () =>
-  import(/* webpackChunkName: "23" */ '@/views/checkout/payment-method/system')
+  import(/* webpackChunkName: "23" */ '@/views/checkout/method/system')
 
 export const loadSvg = () =>
   import(

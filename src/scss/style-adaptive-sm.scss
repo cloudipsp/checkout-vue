@@ -4,7 +4,7 @@
 @import 'core/mixins/index';
 
 .f-container-sm,
-.f-payment-method-card-inner {
+.f-method-card-inner {
   @include media-breakpoint-up(sm) {
     max-width: 360px;
   }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import PaymentMethod from '@/views/checkout/payment-method'
+import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
 import store from '@/store/index'
 import {
@@ -18,7 +18,6 @@ import {
   System,
 } from '@/import'
 
-const payment_method = 'payment-method'
 const card = 'card'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
@@ -48,8 +47,8 @@ export default name => {
         component: Checkout,
         children: [
           {
-            path: payment_method,
-            component: PaymentMethod,
+            path: 'method',
+            component: Method,
             children: [
               {
                 path: card,

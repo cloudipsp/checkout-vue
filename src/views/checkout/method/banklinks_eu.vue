@@ -1,6 +1,6 @@
 <template>
   <f-bank
-    type="local_methods"
+    type="banklinks_eu"
     :config="config"
     logo="bank_logo"
     @system="system"
@@ -9,22 +9,22 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import FBank from '@/views/checkout/payment-method/bank'
+import FBank from '@/views/checkout/method/bank'
 
 export default {
   components: {
     FBank,
   },
   computed: {
-    ...mapState('tabs', ['local_methods']),
+    ...mapState('tabs', ['banklinks_eu']),
     config() {
-      return this.local_methods?.payment_systems || {}
+      return this.banklinks_eu?.payment_systems || {}
     },
   },
   methods: {
     system(system) {
       this.$router
-        .push({ name: 'system', params: { method: 'local_methods', system } })
+        .push({ name: 'system', params: { method: 'banklinks_eu', system } })
         .catch(() => {})
     },
   },

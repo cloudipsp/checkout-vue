@@ -10,14 +10,14 @@
 @import 'tooltip';
 @import 'receipt';
 
-.f-payment-method {
+.f-method {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .f-container-sm,
-.f-payment-method-card-inner {
+.f-method-card-inner {
   width: 100%;
   max-width: 280px;
   margin: 0 auto;

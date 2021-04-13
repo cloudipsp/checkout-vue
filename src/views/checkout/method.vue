@@ -11,10 +11,10 @@
 export default {
   computed: {
     className() {
-      return ['f-payment-method', `f-payment-method-${this.$route.name}`]
+      return ['f-method', `f-method-${this.$route.name}`]
     },
     classNameInner() {
-      return `f-payment-method-${this.$route.name}-inner`
+      return `f-method-${this.$route.name}-inner`
     },
   },
 }
