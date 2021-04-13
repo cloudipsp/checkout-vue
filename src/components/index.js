@@ -30,7 +30,6 @@ import FScrollbarVertical from '@/components/scrollbar-vertical'
 import FButtonLink from '@/components/button/button-link'
 import FButton from '@/components/button/button'
 import FLoading from '@/components/loading'
-import FBank from '@/components/bank'
 import FSecurity from '@/components/security'
 import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
@@ -67,7 +66,6 @@ const components = {
   FButtonLink,
   FButton,
   FLoading,
-  FBank,
   FSecurity,
   FPreloader,
   FAmount,

@@ -67,7 +67,12 @@ export default {
         return [
           'f-menu-item',
           'f-outline',
-          { active: this.$route.name === item && !this.isBreakpointMd },
+          {
+            active:
+              (this.$route.name === item ||
+                this.$route.params.method === item) &&
+              !this.isBreakpointMd,
+          },
         ]
       }
     },
@@ -93,7 +98,7 @@ export default {
       let tooltip = this.$refs[`${method}_tooltip`]
       tooltip && tooltip[0].close()
       this.$refs[`${method}_icons`][0].close()
-      this.store.location(method)
+      this.$router.push({ name: method }).catch(() => {})
     },
   },
 }

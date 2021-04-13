@@ -93,9 +93,6 @@ const config = {
     code: '',
     message: '',
   },
-  router: {
-    system: '',
-  },
   loading: false,
   cards: [],
   isSubmit: false,

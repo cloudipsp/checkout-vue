@@ -23,7 +23,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('options', ['show_menu_first', 'full_screen', 'active_tab']),
+    ...mapState('options', [
+      'show_menu_first',
+      'full_screen',
+      'active_tab',
+      'methods',
+    ]),
     className() {
       return { 'f-embed': !this.full_screen }
     },
@@ -61,7 +66,12 @@ export default {
       this.initHeight()
     },
     go() {
-      this.store.initLocation(this.active_tab)
+      this.$router
+        .push({
+          name: this.active_tab || this.methods[0],
+          query: { init: true },
+        })
+        .catch(() => {})
     },
     goErrorModal(error) {
       this.$router

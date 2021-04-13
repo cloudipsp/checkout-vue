@@ -26,17 +26,15 @@ import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
 import { loadStyleAdaptive } from '@/import'
-import router from '@/router/index'
 
 Vue.use(store)
 
 let instance = {}
 
 class Store extends Model {
-  constructor(name) {
+  constructor() {
     super()
     this.setStateDefault()
-    this.router = router(name)
   }
   sendRequest(...args) {
     if (this.state.options.disable_request) return Promise.reject()
@@ -114,7 +112,6 @@ class Store extends Model {
         model.attr('tabs_order'),
         this.state.options.methods_disabled
       )
-      this.initLocation()
       this.initIsOnlyCard()
       this.initIsOnlyWallets()
     }
@@ -253,12 +250,6 @@ class Store extends Model {
 
     loadLanguageAsync(lang, this).catch(errorHandler)
   }
-  initLocation(active_method) {
-    let methods = this.state.options.methods
-    let active_tab = active_method || this.router.history.current.name
-    let method = methods.indexOf(active_tab) > -1 ? active_tab : methods[0]
-    this.router.push({ name: method }).catch(() => {})
-  }
   setCardNumber({
     card_number = '',
     expiry_date = '',
@@ -305,14 +296,6 @@ class Store extends Model {
         )
       })
       .catch(errorHandler)
-  }
-  location(name, system) {
-    this.state.options.show_menu_first = false
-    this.state.router.system = system
-    this.router.push({ name }).catch(() => {})
-  }
-  locationSystem(system) {
-    this.state.router.system = system
   }
   showError(code, message) {
     this.state.error.code = code
@@ -368,8 +351,6 @@ class Store extends Model {
         ]
       })
     )
-    params.payment_system =
-      this.state.router.system || this.router.history.current.name
 
     if (this.state.need_verify_code) {
       delete params.custom
@@ -400,6 +381,6 @@ class Store extends Model {
 }
 
 export default name => {
-  // if (instance[name]) return instance[name]
-  return (instance[name] = new Store(name))
+  if (instance[name]) return instance[name]
+  return (instance[name] = new Store())
 }

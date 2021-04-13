@@ -43,17 +43,23 @@ export default {
     getValues(list) {
       return list.reduce(
         (accum, method) =>
-          accum.concat(
-            Object.values((this[method] && this[method].payment_systems) || {})
-          ),
+          accum.concat(Object.values(this[method]?.payment_systems || {})),
         []
       )
     },
-    click(bank) {
-      this.store.location(bank.method, bank.id)
+    click({ method, id }) {
+      this.$router
+        .push({
+          name: 'system',
+          params: {
+            method,
+            system: id,
+          },
+        })
+        .catch(() => {})
     },
-    listFilter(item) {
-      return item.quick_method && item.bank_logo !== 'no_logo'
+    listFilter({ quick_method, bank_logo }) {
+      return quick_method && bank_logo !== 'no_logo'
     },
     listSort(a, b) {
       return a.user_priority < b.user_priority ? 1 : -1

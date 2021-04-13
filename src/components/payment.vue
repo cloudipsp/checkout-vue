@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     ...mapState(['loading']),
-    ...mapState('options', ['full_screen']),
+    ...mapState('options', ['full_screen', 'methods']),
     ...mapState('params', ['token', 'lang']),
 
     ...mapStateGetSet([
@@ -172,8 +172,17 @@ export default {
       if (!model) return
 
       this.store.infoSuccess(model.instance(model.attr('info')))
+      this.initLocation()
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
+    },
+    initLocation() {
+      let method_route = this.$route.name || this.$route.params.method
+      let name = this.methods.includes(method_route)
+        ? method_route
+        : this.methods[0]
+
+      this.$router.push({ name, query: { init: true } }).catch(() => {})
     },
     cardsSuccess(model) {
       if (this.need_verify_code) return
@@ -233,12 +242,12 @@ export default {
         this.card_number = model.attr('order_data.masked_card')
         this.expiry_date = model.attr('order_data.expiry_date') || ''
         this.cvv2 = ''
-        this.store.location('card')
+        this.$router.push({ name: 'card' }).catch(() => {})
       } else if (model.inProgress() && model.waitForResponse()) {
         this.locationPending()
       } else if (model.inProgress()) {
         this.order = model.attr('order_data')
-        this.store.location('success')
+        this.$router.push({ name: 'success' }).catch(() => {})
       } else {
         this.store.autoSubmit().then(this.formRequest).catch(errorHandler)
       }

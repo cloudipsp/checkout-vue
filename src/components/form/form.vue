@@ -49,7 +49,7 @@ export default {
       this.observer.reset()
       this.isSubmit = false
     },
-    submit() {
+    submit(data) {
       this.submited = true
       return this.$nextTick()
         .then(() => this.observer.validate())
@@ -58,7 +58,7 @@ export default {
 
           if (!isValid) return this.autoFocus(this.errors[0][0])
 
-          return this.formRequest()
+          return this.formRequest(data)
         })
         .finally(() => {
           this.submited = false

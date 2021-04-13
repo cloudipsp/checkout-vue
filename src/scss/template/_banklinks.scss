@@ -97,7 +97,7 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   text-align: center;
 }
 
-.f-bank-select {
+.f-system {
   position: relative;
   display: flex;
   align-items: center;
@@ -107,16 +107,16 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   border-radius: px-to-rem(8px);
 }
 
-.f-bank-select-icon {
+.f-system-icon {
   margin-right: px-to-rem(12px);
   border-radius: px-to-rem(8px);
 }
 
-.f-bank-select-name {
+.f-system-name {
   margin-right: px-to-rem(12px);
 }
 
-.f-bank-select-close {
+.f-system-close {
   position: absolute;
   top: 0;
   right: 0;

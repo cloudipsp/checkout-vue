@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import PaymentMethod from '@/views/checkout/payment-method'
 import Checkout from '@/views/checkout'
+import store from '@/store/index'
 import {
   Card,
   Banklinks_eu,
@@ -14,6 +15,7 @@ import {
   Success,
   Error,
   ErrorModal,
+  System,
 } from '@/import'
 
 const payment_method = 'payment-method'
@@ -35,7 +37,9 @@ let instance = {}
 
 export default name => {
   if (instance[name]) return instance[name]
-  return (instance[name] = new Router({
+
+  let instanceStore = store(name)
+  instance[name] = new Router({
     mode: 'abstract',
     routes: [
       {
@@ -82,6 +86,11 @@ export default name => {
                 name: loans,
                 component: Loans,
               },
+              {
+                path: ':method/:system',
+                name: 'system',
+                component: System,
+              },
             ],
           },
           {
@@ -102,5 +111,14 @@ export default name => {
         component: ErrorModal,
       },
     ],
-  }))
+  })
+
+  instance[name].afterEach(({ name, params, query }) => {
+    if (!query.init) {
+      instanceStore.state.options.show_menu_first = false
+    }
+    instanceStore.state.params.payment_system = params.system || name
+  })
+
+  return instance[name]
 }

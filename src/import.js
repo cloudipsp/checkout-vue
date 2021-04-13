@@ -147,6 +147,9 @@ export const Error = () => import(/* webpackChunkName: "21" */ '@/views/error')
 export const ErrorModal = () =>
   import(/* webpackChunkName: "22" */ '@/views/error_modal')
 
+export const System = () =>
+  import(/* webpackChunkName: "23" */ '@/views/checkout/payment-method/system')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */
