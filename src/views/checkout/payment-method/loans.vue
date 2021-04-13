@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import FBank from '@/components/bank'
+import FBank from '@/views/checkout/payment-method/bank'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
