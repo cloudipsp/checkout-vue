@@ -21,9 +21,9 @@ export const methods = (user, server, disable) => {
 
 export const tabs = (obj = {}) => {
   return Object.fromEntries(
-    Object.entries(obj).map(([name, value]) => {
+    Object.entries(obj).map(([name, { payment_systems }]) => {
       name = mapped(name)
-      return [name, parse(value, name)]
+      return [name, parse(payment_systems, name)]
     })
   )
 }
@@ -36,9 +36,9 @@ function mapped(item) {
   return config[item] || item
 }
 
-function parse(value, method) {
-  value.payment_systems = Object.fromEntries(
-    Object.entries(value.payment_systems).map(([id, value]) => [
+function parse(systems, method) {
+  return Object.fromEntries(
+    Object.entries(systems).map(([id, value]) => [
       id,
       {
         ...value,
@@ -49,7 +49,6 @@ function parse(value, method) {
       },
     ])
   )
-  return value
 }
 
 function logo({ country, bank_logo }, id) {

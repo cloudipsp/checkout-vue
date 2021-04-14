@@ -15,7 +15,7 @@ export default {
   computed: {
     ...mapState('tabs', ['loans']),
     config() {
-      return this.loans?.payment_systems || {}
+      return this.loans || {}
     },
   },
   methods: {

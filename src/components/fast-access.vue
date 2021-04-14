@@ -42,8 +42,7 @@ export default {
   methods: {
     getValues(list) {
       return list.reduce(
-        (accum, method) =>
-          accum.concat(Object.values(this[method]?.payment_systems || {})),
+        (accum, method) => accum.concat(Object.values(this[method] || {})),
         []
       )
     },

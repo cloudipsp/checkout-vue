@@ -35,9 +35,6 @@ export default {
   },
   computed: {
     ...mapState(['tabs']),
-    payment_systems() {
-      return this.tabs[this.$route.params.method]?.payment_systems || {}
-    },
   },
   watch: {
     $route: 'initSystem',
@@ -50,7 +47,7 @@ export default {
       this.$router.push({ name: this.$route.params.method }).catch(() => {})
     },
     initSystem() {
-      let { name, iban, logo, form } = this.payment_systems[
+      let { name, iban, logo, form } = this.tabs[this.$route.params.method][
         this.$route.params.system
       ]
 

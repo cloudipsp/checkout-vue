@@ -13,7 +13,7 @@ export default {
   computed: {
     ...mapState('tabs', ['local_methods']),
     config() {
-      return this.local_methods?.payment_systems || {}
+      return this.local_methods || {}
     },
   },
   methods: {

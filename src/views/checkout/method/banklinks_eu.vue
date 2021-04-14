@@ -13,7 +13,7 @@ export default {
   computed: {
     ...mapState('tabs', ['banklinks_eu']),
     config() {
-      return this.banklinks_eu?.payment_systems || {}
+      return this.banklinks_eu || {}
     },
   },
   methods: {

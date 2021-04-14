@@ -74,11 +74,11 @@ class Store extends Model {
 
     if (!configAutoSubmit.includes(method)) return Promise.reject()
 
-    let payment_systems = Object.keys(this.state.tabs[method].payment_systems)
+    let systems = Object.keys(this.state.tabs[method])
 
-    if (payment_systems.length !== 1) return Promise.reject()
+    if (systems.length !== 1) return Promise.reject()
 
-    let system = payment_systems[0]
+    let system = systems[0]
 
     return Promise.resolve({ method, system })
   }
