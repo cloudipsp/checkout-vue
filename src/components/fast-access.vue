@@ -4,7 +4,7 @@
       v-for="item in list"
       :key="item.id"
       class="f-fast-access-icon"
-      :name="item.bank_logo"
+      :name="item.logo"
       type="banklinks_eu"
       @click.native="click(item)"
     />
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState('tabs', ['banklinks_eu', 'local_methods']),
-    // [{country: 'PL', name: '', bank_logo: 'mbank'}]
+    // [{country: 'PL', name: '', logo: 'mbank'}]
     values() {
       return this.getValues(['banklinks_eu', 'local_methods'])
     },
@@ -58,8 +58,8 @@ export default {
         })
         .catch(() => {})
     },
-    listFilter({ quick_method, bank_logo }) {
-      return quick_method && bank_logo !== 'no_logo'
+    listFilter({ quick_method, logo }) {
+      return quick_method && logo !== 'no_logo'
     },
     listSort(a, b) {
       return a.user_priority < b.user_priority ? 1 : -1

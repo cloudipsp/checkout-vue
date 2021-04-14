@@ -34,22 +34,22 @@
     </div>
     <div class="f-row f-bank-list">
       <a
-        v-for="bank in listMin"
-        :key="bank.id"
+        v-for="{ id, name, method, logo, iban } in listMin"
+        :key="id"
         href="#"
         :class="classBankItem"
-        @click="goSystem(bank)"
+        @click="goSystem(id)"
       >
         <f-icon
-          :name="bank[logo]"
-          :type="type"
+          :name="logo"
+          :type="method"
           :class="classBankIcon"
           :size="sizeBankIcon"
         />
         <div :class="classBankItemWrapper">
-          <div class="f-bank-name" v-text="$t(bank.name)" />
+          <div class="f-bank-name" v-text="$t(name)" />
           <div v-if="isGermany" class="f-bank-iban">
-            {{ bank.iban }}
+            {{ iban }}
           </div>
         </div>
       </a>
@@ -73,11 +73,7 @@ import timeout from '@/mixins/timeout'
 export default {
   mixins: [timeout],
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
-    // {147209: {country: 'PL', name: '', bank_logo: 'mbank'}}
+    // {147209: {country: 'PL', name: '', logo: 'mbank'}}
     config: {
       type: Object,
       required: true,
@@ -85,11 +81,6 @@ export default {
     enableCountry: {
       type: Boolean,
       default: true,
-    },
-    logo: {
-      type: String,
-      required: true,
-      validator: value => ['bank_logo', 'id'].includes(value),
     },
   },
   data() {
@@ -105,7 +96,7 @@ export default {
     ...mapState(['ready']),
     ...mapState('options', ['countries']),
     ...mapStateGetSet('options', ['default_country']),
-    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', logo: 'mbank'}]
     values() {
       return Object.values(this.config)
     },
@@ -118,7 +109,7 @@ export default {
         ? this.countries
         : this.values.map(item => item.country).filter(removeDuplicate)
     },
-    // [{id: 147209, country: 'PL', name: '', bank_logo: 'mbank'}]
+    // [{id: 147209, country: 'PL', name: '', logo: 'mbank'}]
     listSelect() {
       return this.values.filter(this.listSelectFilter).sort(this.listSelectSort)
     },
@@ -195,7 +186,7 @@ export default {
     }
   },
   methods: {
-    goSystem({ id }) {
+    goSystem(id) {
       this.$emit('system', id)
     },
     clear() {

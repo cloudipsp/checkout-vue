@@ -1,10 +1,5 @@
 <template>
-  <f-bank
-    type="local_methods"
-    :config="config"
-    logo="bank_logo"
-    @system="system"
-  />
+  <f-bank :config="config" @system="system" />
 </template>
 
 <script>

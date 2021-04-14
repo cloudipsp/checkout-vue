@@ -1,11 +1,5 @@
 <template>
-  <f-bank
-    type="loans"
-    :config="config"
-    logo="id"
-    :enable-country="false"
-    @system="system"
-  />
+  <f-bank :config="config" :enable-country="false" @system="system" />
 </template>
 
 <script>

@@ -1,19 +1,15 @@
 <template>
   <div>
     <div class="f-system">
-      <f-icon
-        :name="item[logo]"
-        :type="$route.params.method"
-        class="f-system-icon"
-      />
-      <div class="f-system-name">{{ item.name }}</div>
+      <f-icon :name="logo" :type="$route.params.method" class="f-system-icon" />
+      <div class="f-system-name">{{ name }}</div>
 
-      <div>{{ item.iban }}</div>
+      <div>{{ iban }}</div>
       <f-button-close class="f-system-close" @click="goMethod" />
     </div>
     <div class="f-bank-desc" v-text="$t('bank_desc')" />
     <div class="f-container-sm">
-      <f-fields-bank v-if="showFieldsBank" :fields="item.form.fields" />
+      <f-fields-bank :fields="form.fields" />
       <f-fields />
       <f-offer />
       <f-button-pay />
@@ -23,7 +19,6 @@
 
 <script>
 import FFieldsBank from '@/components/fields-bank'
-import { isPlainObject } from '@/utils/typeof'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -32,17 +27,16 @@ export default {
   },
   data() {
     return {
-      logo: 'bank_logo',
-      item: {},
+      name: '',
+      iban: '',
+      logo: '',
+      form: {},
     }
   },
   computed: {
     ...mapState(['tabs']),
     payment_systems() {
       return this.tabs[this.$route.params.method]?.payment_systems || {}
-    },
-    showFieldsBank() {
-      return isPlainObject(this.item.form)
     },
   },
   watch: {
@@ -56,7 +50,14 @@ export default {
       this.$router.push({ name: this.$route.params.method }).catch(() => {})
     },
     initSystem() {
-      this.item = this.payment_systems[this.$route.params.system]
+      let { name, iban, logo, form } = this.payment_systems[
+        this.$route.params.system
+      ]
+
+      this.name = name
+      this.iban = iban
+      this.logo = logo
+      this.form = form || {}
     },
   },
 }

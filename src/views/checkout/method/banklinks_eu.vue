@@ -1,10 +1,5 @@
 <template>
-  <f-bank
-    type="banklinks_eu"
-    :config="config"
-    logo="bank_logo"
-    @system="system"
-  />
+  <f-bank :config="config" @system="system" />
 </template>
 
 <script>
