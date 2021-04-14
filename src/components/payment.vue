@@ -172,17 +172,8 @@ export default {
       if (!model) return
 
       this.store.infoSuccess(model.instance(model.attr('info')))
-      this.initLocation()
       this.orderSuccess(model.instance(model.attr('order')))
       this.cardsSuccess(model.instance(model.attr('cards')))
-    },
-    initLocation() {
-      let method_route = this.$route.name || this.$route.params.method
-      let name = this.methods.includes(method_route)
-        ? method_route
-        : this.methods[0]
-
-      this.$router.push({ name, query: { init: true } }).catch(() => {})
     },
     cardsSuccess(model) {
       if (this.need_verify_code) return
@@ -249,7 +240,10 @@ export default {
         this.order = model.attr('order_data')
         this.$router.push({ name: 'success' }).catch(() => {})
       } else {
-        this.store.autoSubmit().then(this.formRequest).catch(errorHandler)
+        this.store
+          .autoSubmit()
+          .then(this.autoSubmit, this.locationMethod)
+          .catch(errorHandler)
       }
     },
     locationPending() {
@@ -271,6 +265,23 @@ export default {
           clearTimeout(this.processingTimeout)
         }, 2 * 30 * 1000)
       }
+    },
+    autoSubmit({ method, system }) {
+      this.$router
+        .push({
+          name: 'system',
+          params: { method, system },
+          query: { autoSubmit: true },
+        })
+        .catch(() => {})
+    },
+    locationMethod() {
+      let method_route = this.$route.name || this.$route.params.method
+      let name = this.methods.includes(method_route)
+        ? method_route
+        : this.methods[0]
+
+      this.$router.push({ name, query: { init: true } }).catch(() => {})
     },
     submit3ds() {
       model3ds.submit3dsForm()
