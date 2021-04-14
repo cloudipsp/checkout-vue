@@ -38,7 +38,7 @@
         :key="id"
         href="#"
         :class="classBankItem"
-        @click="goSystem(id)"
+        @click.prevent="goSystem(id)"
       >
         <f-icon
           :name="logo"
