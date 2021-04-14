@@ -146,6 +146,9 @@ export const ErrorModal = () =>
 export const System = () =>
   import(/* webpackChunkName: "23" */ '@/views/checkout/method/system')
 
+export const FSubscription = () =>
+  import(/* webpackChunkName: "24" */ '@/components/subscription')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */

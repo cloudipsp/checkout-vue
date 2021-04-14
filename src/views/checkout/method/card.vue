@@ -162,7 +162,7 @@
     />
     <f-customer-fields />
     <f-fields />
-    <f-subscription v-if="showSubscription" />
+    <f-subscription-wrapper />
     <f-offer />
     <f-button-pay />
     <f-modal-base
@@ -181,7 +181,7 @@
 //  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import FSubscription from '@/components/subscription'
+import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardList from '@/components/card-list'
 import Resize from '@/mixins/resize'
 import { getCardBrand } from '@/utils/card-brand'
@@ -193,7 +193,7 @@ import { createDate, formatMMYY } from '@/utils/date'
 
 export default {
   components: {
-    FSubscription,
+    FSubscriptionWrapper,
     FCardList,
     FIcons,
   },
@@ -219,7 +219,6 @@ export default {
       'css_variable',
       'submited',
       'isOnlyCard',
-      'ready',
     ]),
     ...mapState('options', {
       showEmail: 'email',
@@ -233,9 +232,6 @@ export default {
       'card_number',
       'code',
     ]),
-    showSubscription() {
-      return this.token ? this.ready : true
-    },
     readonly() {
       return this.read_only || this.need_verify_code
     },
