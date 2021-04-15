@@ -87,6 +87,9 @@ export default {
     fee: 'getAmountWithFee',
     amount: 'getAmountWithFee',
   },
+  created() {
+    this.getAmountWithFee()
+  },
   mounted() {
     this.setCacheAmount()
   },
