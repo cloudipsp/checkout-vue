@@ -17,7 +17,7 @@
     </template>
     <div class="f-card">
       <div class="f-card-shadow" />
-      <div :class="classCardBg" />
+      <f-card-bg />
       <div class="f-card-brand">
         <transition name="f-fade">
           <f-icon
@@ -183,9 +183,10 @@ import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardList from '@/components/card-list'
+import FIcons from '@/components/icons'
+import FCardBg from '@/components/card-bg'
 import Resize from '@/mixins/resize'
 import { getCardBrand } from '@/utils/card-brand'
-import FIcons from '@/components/icons'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
@@ -196,6 +197,7 @@ export default {
     FSubscriptionWrapper,
     FCardList,
     FIcons,
+    FCardBg,
   },
   mixins: [Resize, timeout, isMounted],
   data() {
@@ -275,20 +277,6 @@ export default {
     },
     isVerificationCode() {
       return this.need_verify_code && this.verification_type !== 'amount'
-    },
-    classCardBg() {
-      return [
-        'f-card-bg',
-        {
-          'f-card-img':
-            this.css_variable.card_img &&
-            !this.css_variable.card_gradient_custom,
-          'f-card-gradient-custom':
-            this.css_variable.card_gradient_custom &&
-            !this.css_variable.card_img,
-          'f-card-bg-lighten': this.card_bg_lighten,
-        },
-      ]
     },
     enableModal() {
       return isPhone || this.isWidthSm
