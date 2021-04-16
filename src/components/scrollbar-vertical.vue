@@ -5,7 +5,7 @@
       class="f-scrollbar-wrap"
       :class="wrapClass"
       :style="styleWrap"
-      @scroll="handleScroll"
+      @scroll="scroll"
     >
       <slot />
     </div>
@@ -14,7 +14,7 @@
         ref="thumb"
         class="f-scrollbar-thumb"
         :style="styleThumb"
-        @mousedown="handleDragstart"
+        @mousedown="dragstart"
       />
     </div>
   </div>
@@ -23,6 +23,8 @@
 <script>
 import getScrollbarWidth from '@/utils/scrollbar-width'
 import Resize from '@/mixins/resize'
+import { isMobileFirefox, isDesktop } from '@/utils/mobile'
+import { contains } from '@/utils/dom'
 
 export default {
   mixins: [Resize],
@@ -55,10 +57,10 @@ export default {
   },
   created() {
     this.scrollbarWidth = getScrollbarWidth()
-    document.addEventListener('mouseup', this.handleDragend)
+    document.addEventListener('mouseup', this.dragend)
   },
   beforeDestroy() {
-    document.addEventListener('mouseup', this.handleDragend)
+    document.addEventListener('mouseup', this.dragend)
   },
   mounted() {
     this.$nextTick().then(this.getThumbSize)
@@ -74,21 +76,21 @@ export default {
       const heightPercentage = (clientHeight * 100) / scrollHeight
       this.thumbHeight = heightPercentage < 100 ? `${heightPercentage}%` : ''
     },
-    handleScroll(evt) {
-      this.$emit('scroll')
+    scroll(evt) {
+      this.hideAutocomplete()
       this.getThumbSize()
       const el = evt.currentTarget
       const { scrollHeight, scrollTop } = el
       this.thumbTop = `${(scrollTop * 100) / scrollHeight}%`
     },
-    handleDragstart(evt) {
+    dragstart(evt) {
       evt.stopImmediatePropagation()
       this._draggable = true
       const { offsetTop } = this.$refs.thumb
       this._prevY = evt.clientY - offsetTop
-      document.addEventListener('mousemove', this.handleDraging)
+      document.addEventListener('mousemove', this.draging)
     },
-    handleDraging(evt) {
+    draging(evt) {
       if (!this._draggable) return
 
       const { clientY } = evt
@@ -98,11 +100,32 @@ export default {
       const top = (offsetY * scrollHeight) / clientHeight
       wrap.scrollTop = top
     },
-    handleDragend() {
+    dragend() {
       if (!this._draggable) return
 
       this._draggable = false
-      document.removeEventListener('mousemove', this.handleDraging)
+      document.removeEventListener('mousemove', this.draging)
+    },
+    hideAutocomplete() {
+      if (isMobileFirefox) return
+
+      let activeElement = document.activeElement
+
+      if (activeElement.tagName !== 'INPUT') return
+
+      if (!contains(this.$refs.wrap, activeElement)) return
+
+      activeElement.blur()
+
+      if (isDesktop) {
+        let rectWrapper = this.$refs.wrap.getBoundingClientRect()
+        let rectActiveElement = activeElement.getBoundingClientRect()
+
+        if (rectActiveElement.top < rectWrapper.top) return
+        if (rectActiveElement.bottom > rectWrapper.bottom) return
+      }
+
+      activeElement.focus()
     },
   },
 }

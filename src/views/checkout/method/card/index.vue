@@ -180,7 +180,7 @@ import FCardBrand from '@/components/card-brand'
 import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
-import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
+import { isPhone } from '@/utils/mobile'
 import { createDate, formatMMYY } from '@/utils/date'
 
 export default {
@@ -294,13 +294,6 @@ export default {
         .catch(errorHandler)
     },
   },
-  mounted() {
-    this.wrapper = this.$parent.$parent
-    this.wrapper.$on('scroll', this.scroll)
-  },
-  destroyed() {
-    this.wrapper.$off('scroll', this.scroll)
-  },
   methods: {
     cardTypeFeeSuccess() {},
     setCardNumber() {
@@ -347,25 +340,6 @@ export default {
           this.$refs[next].$children[0].$children[0].$refs.input.$el.focus()
         })
         .catch(errorHandler)
-    },
-    scroll() {
-      if (isMobileFirefox) return
-
-      let activeElement = document.activeElement
-
-      if (activeElement.tagName !== 'INPUT') return
-
-      activeElement.blur()
-
-      if (isDesktop) {
-        let rectWrapper = this.wrapper.$el.getBoundingClientRect()
-        let rectActiveElement = activeElement.getBoundingClientRect()
-
-        if (rectActiveElement.top < rectWrapper.top) return
-        if (rectActiveElement.bottom > rectWrapper.bottom) return
-      }
-
-      activeElement.focus()
     },
     format(value) {
       let [month, year] = value.split('/')
