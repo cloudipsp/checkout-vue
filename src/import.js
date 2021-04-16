@@ -149,6 +149,9 @@ export const System = () =>
 export const FSubscription = () =>
   import(/* webpackChunkName: "24" */ '@/components/subscription')
 
+export const CardVerify = () =>
+  import(/* webpackChunkName: "25" */ '@/views/checkout/method/card/verify')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */

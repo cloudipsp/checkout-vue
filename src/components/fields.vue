@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!need_verify_code" class="f-fields">
+  <div class="f-fields">
     <fields-button />
     <fields-user v-if="showUserFields" />
   </div>
@@ -17,7 +17,7 @@ export default {
     FieldsButton,
   },
   computed: {
-    ...mapState(['need_verify_code', 'fields']),
+    ...mapState(['fields']),
     ...mapState('options', {
       optionsFields: 'fields',
     }),

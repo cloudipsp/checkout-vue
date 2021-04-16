@@ -14,7 +14,7 @@ export default {
       return ['f-method', `f-method-${this.$route.name}`]
     },
     classNameInner() {
-      return `f-method-${this.$route.name}-inner`
+      return `f-method-${this.$route.meta.method || this.$route.name}-inner`
     },
   },
 }

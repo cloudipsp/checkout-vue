@@ -1,20 +1,5 @@
 <template>
   <div>
-    <template v-if="isBreakpointMd">
-      <div>
-        <f-info v-if="isOnlyCard" />
-        <f-price v-else />
-      </div>
-      <f-button-pay-wallet position="center" />
-      <f-icons
-        v-if="isOnlyCard"
-        class="f-mb-3"
-        title="pay_with_card"
-        :count="5"
-        under-sticky
-        position="center"
-      />
-    </template>
     <div class="f-card">
       <div class="f-card-shadow" />
       <f-card-bg />
@@ -26,10 +11,10 @@
         name="card_number"
         placeholder="card_number_p"
         :rules="validCardNumber"
-        :mask="maskCardNumber"
+        mask="XXXX XXXX XXXX XXXX XXX"
         :masked="false"
         :maxlength="23"
-        :disabled="readonly"
+        :disabled="read_only"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -37,12 +22,7 @@
         autocomplete="cc-number"
         @input="inputCardNumber"
       >
-        <template v-if="need_verify_code" #label="{ classLabel, label }">
-          <label :class="classLabel">
-            {{ label }} <f-svg name="lock-alt" size="lg" />
-          </label>
-        </template>
-        <template v-else-if="isCards" #label="{ classLabel, label }">
+        <template v-if="isCards" #label="{ classLabel, label }">
           <template v-if="enableModal">
             <a
               href="#"
@@ -81,10 +61,10 @@
         class="f-form-group-card"
         name="expiry_date"
         placeholder="expiry_date_p"
-        :rules="readonly ? '' : validExpiryDate"
-        :mask="maskExpiryDate"
+        :rules="read_only ? '' : validExpiryDate"
+        mask="##/##"
         :masked="true"
-        :disabled="readonly"
+        :disabled="read_only"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -99,11 +79,10 @@
         class="f-form-group-card"
         name="cvv2"
         placeholder="cvv2_p"
-        :rules="need_verify_code ? '' : validCvv"
+        :rules="validCvv"
         type="tel"
         inputmode="numeric"
-        :mask="maskCvv"
-        :disabled="need_verify_code"
+        mask="####"
         :maxlength="digitsCvv"
         tooltip
         label-class
@@ -136,21 +115,6 @@
         autocomplete="email"
       />
     </f-preloader>
-    <f-form-group
-      v-if="isVerificationCode"
-      v-model="code"
-      name="verification_code"
-      :rules="validCode"
-      type="tel"
-      :maxlength="4"
-    />
-    <f-form-group
-      v-if="isVerificationAmount"
-      v-model="code"
-      name="verification_amount"
-      :rules="validAmount"
-      type="text"
-    />
     <f-customer-fields />
     <f-fields />
     <f-subscription-wrapper />
@@ -169,15 +133,12 @@
 </template>
 
 <script>
-//  ['#### ### ### ###', ' #### ###### #####', '#### #### #### ####', '  ######## ##########']
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardList from '@/components/card-list'
-import FIcons from '@/components/icons'
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
-import Resize from '@/mixins/resize'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone } from '@/utils/mobile'
@@ -187,37 +148,23 @@ export default {
   components: {
     FSubscriptionWrapper,
     FCardList,
-    FIcons,
     FCardBg,
     FCardBrand,
   },
-  mixins: [Resize, timeout, isMounted],
+  mixins: [timeout, isMounted],
   data() {
     return {
-      maskExpiryDate: '##/##',
-      maskCardNumber: 'XXXX XXXX XXXX XXXX XXX',
-      maskCvv: '####',
       showModalCard: false,
       showTooltipCard: false,
-      wrapper: null,
       returnFocus: null,
     }
   },
   computed: {
-    ...mapState([
-      'read_only',
-      'need_verify_code',
-      'verification_type',
-      'cards',
-      'css_variable',
-      'submited',
-      'isOnlyCard',
-    ]),
+    ...mapState(['read_only', 'cards', 'submited']),
     ...mapState('options', {
       showEmail: 'email',
     }),
     ...mapState('params', ['token']),
-    ...mapState('css_variable', ['card_bg_lighten']),
     ...mapStateGetSet('params', [
       'email',
       'cvv2',
@@ -225,9 +172,6 @@ export default {
       'card_number',
       'code',
     ]),
-    readonly() {
-      return this.read_only || this.need_verify_code
-    },
     validExpiryDate() {
       let minDate = this.store.state.validate_expdate
         ? formatMMYY(createDate())
@@ -252,22 +196,6 @@ export default {
     },
     isCards() {
       return !!this.cards.length
-    },
-    validCode() {
-      return /EURT/.test(this.code) ? 'required' : 'required|digits:4'
-    },
-    validAmount() {
-      return {
-        required: true,
-        numrange: [0, 9999999.99],
-        regex: '^\\d{1,7}([,.]\\d{1,2})?$',
-      }
-    },
-    isVerificationAmount() {
-      return this.need_verify_code && this.verification_type === 'amount'
-    },
-    isVerificationCode() {
-      return this.need_verify_code && this.verification_type !== 'amount'
     },
     enableModal() {
       return isPhone || this.isWidthSm

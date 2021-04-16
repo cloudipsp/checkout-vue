@@ -70,7 +70,8 @@ export default {
           {
             active:
               (this.$route.name === item ||
-                this.$route.params.method === item) &&
+                this.$route.params.method === item ||
+                this.$route.meta.method === item) &&
               !this.isBreakpointMd,
           },
         ]

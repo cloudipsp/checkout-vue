@@ -3,9 +3,11 @@ import Router from 'vue-router'
 
 import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
+import Card from '@/views/checkout/method/card'
 import store from '@/store/index'
 import {
   CardIndex,
+  CardVerify,
   Banklinks_eu,
   Local_methods,
   Sepa,
@@ -52,8 +54,29 @@ export default name => {
             children: [
               {
                 path: card,
-                name: card,
-                component: CardIndex,
+                component: Card,
+                children: [
+                  {
+                    path: '',
+                    name: card,
+                    component: CardIndex,
+                    beforeEnter: (to, from, next) => {
+                      if (instanceStore.state.need_verify_code)
+                        next({
+                          name: 'card-verify',
+                        })
+                      else next()
+                    },
+                  },
+                  {
+                    path: 'verify',
+                    name: 'card-verify',
+                    component: CardVerify,
+                    meta: {
+                      method: card,
+                    },
+                  },
+                ],
               },
               {
                 path: banklinks_eu,

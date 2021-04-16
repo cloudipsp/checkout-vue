@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <template v-if="isBreakpointMd">
+      <div>
+        <f-info v-if="isOnlyCard" />
+        <f-price v-else />
+      </div>
+      <f-button-pay-wallet position="center" />
+      <f-icons
+        v-if="isOnlyCard"
+        class="f-mb-3"
+        title="pay_with_card"
+        :count="5"
+        under-sticky
+        position="center"
+      />
+    </template>
+    <router-view />
+  </div>
+</template>
+
+<script>
+import { mapState } from '@/utils/store'
+import FIcons from '@/components/icons'
+import Resize from '@/mixins/resize'
+
+export default {
+  components: {
+    FIcons,
+  },
+  mixins: [Resize],
+  computed: {
+    ...mapState(['isOnlyCard']),
+  },
+}
+</script>

@@ -225,7 +225,6 @@ export default {
       if (model.submitToMerchant()) return // ready_to_submit && response_url && order_data formDataSubmit()
 
       if (model.needVerifyCode()) {
-        // need_verify_code
         this.need_verify_code = true
         this.verification_type = model.attr('verification_type')
         this.title = 'verification_t'
@@ -233,7 +232,7 @@ export default {
         this.card_number = model.attr('order_data.masked_card')
         this.expiry_date = model.attr('order_data.expiry_date') || ''
         this.cvv2 = ''
-        this.$router.push({ name: 'card' }).catch(() => {})
+        this.$router.push({ name: 'card-verify' }).catch(() => {})
       } else if (model.inProgress() && model.waitForResponse()) {
         this.locationPending()
       } else if (model.inProgress()) {
