@@ -164,7 +164,6 @@ export default {
     appSuccess(model) {
       this.$root.$emit('ready', model)
       this.appFinally(model)
-      this.store.autoSubmit().then(this.formRequest).catch(errorHandler)
     },
     appError(model) {
       this.appFinally(model)
@@ -252,6 +251,8 @@ export default {
       } else if (model.inProgress()) {
         this.order = model.attr('order_data')
         this.store.location('success')
+      } else {
+        this.store.autoSubmit().then(this.formRequest).catch(errorHandler)
       }
     },
     locationPending() {
