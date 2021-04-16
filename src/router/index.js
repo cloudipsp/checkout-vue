@@ -5,7 +5,7 @@ import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
 import store from '@/store/index'
 import {
-  Card,
+  CardIndex,
   Banklinks_eu,
   Local_methods,
   Sepa,
@@ -53,7 +53,7 @@ export default name => {
               {
                 path: card,
                 name: card,
-                component: Card,
+                component: CardIndex,
               },
               {
                 path: banklinks_eu,
