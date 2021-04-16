@@ -18,16 +18,7 @@
     <div class="f-card">
       <div class="f-card-shadow" />
       <f-card-bg />
-      <div class="f-card-brand">
-        <transition name="f-fade">
-          <f-icon
-            v-if="cardBrand"
-            type="card_system/max"
-            :name="cardBrand"
-            class="f-card-brand-icon"
-          />
-        </transition>
-      </div>
+      <f-card-brand :number="card_number" />
       <f-form-group
         ref="card_number"
         v-model="card_number"
@@ -185,8 +176,8 @@ import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardList from '@/components/card-list'
 import FIcons from '@/components/icons'
 import FCardBg from '@/components/card-bg'
+import FCardBrand from '@/components/card-brand'
 import Resize from '@/mixins/resize'
-import { getCardBrand } from '@/utils/card-brand'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone, isMobileFirefox, isDesktop } from '@/utils/mobile'
@@ -198,6 +189,7 @@ export default {
     FCardList,
     FIcons,
     FCardBg,
+    FCardBrand,
   },
   mixins: [Resize, timeout, isMounted],
   data() {
@@ -209,7 +201,6 @@ export default {
       showTooltipCard: false,
       wrapper: null,
       returnFocus: null,
-      cardBrand: '',
     }
   },
   computed: {
@@ -284,9 +275,6 @@ export default {
   },
   watch: {
     card_number(value) {
-      getCardBrand(value).then(cardBrand => {
-        this.cardBrand = cardBrand
-      })
       if (!value) return
 
       value = value.slice(0, 6)
