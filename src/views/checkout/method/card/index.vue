@@ -115,8 +115,9 @@
         autocomplete="email"
       />
     </f-preloader>
-    <f-customer-fields />
-    <f-fields />
+    <f-fields-customer />
+    <f-fields-button />
+    <f-fields-user />
     <f-subscription-wrapper />
     <f-offer />
     <f-button-pay />
@@ -139,6 +140,9 @@ import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardList from '@/components/card-list'
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
+import FFieldsCustomer from '@/components/fields/customer'
+import FFieldsButton from '@/components/fields/button'
+import FFieldsUser from '@/components/fields/user'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
 import { isPhone } from '@/utils/mobile'
@@ -150,6 +154,9 @@ export default {
     FCardList,
     FCardBg,
     FCardBrand,
+    FFieldsCustomer,
+    FFieldsButton,
+    FFieldsUser,
   },
   mixins: [timeout, isMounted],
   data() {

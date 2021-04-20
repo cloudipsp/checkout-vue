@@ -1,5 +1,5 @@
 <template>
-  <div class="f-form-fields">
+  <div>
     <f-form-group
       v-for="field in list"
       :key="field.name"

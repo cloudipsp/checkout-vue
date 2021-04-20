@@ -10,7 +10,8 @@
     <div class="f-bank-desc" v-text="$t('bank_desc')" />
     <div class="f-container-sm">
       <f-fields-bank :fields="form.fields" />
-      <f-fields />
+      <f-fields-button />
+      <f-fields-user />
       <f-offer />
       <f-button-pay />
     </div>
@@ -18,12 +19,16 @@
 </template>
 
 <script>
-import FFieldsBank from '@/components/fields-bank'
+import FFieldsBank from '@/components/fields/bank'
+import FFieldsButton from '@/components/fields/button'
+import FFieldsUser from '@/components/fields/user'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FFieldsBank,
+    FFieldsButton,
+    FFieldsUser,
   },
   data() {
     return {

@@ -1,27 +1,22 @@
 <template>
-  <div class="f-fields">
-    <fields-button />
-    <fields-user v-if="showUserFields" />
-  </div>
+  <f-fields v-if="show" />
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
-import FieldsButton from '@/components/fields-button'
 
 export default {
   components: {
-    FieldsUser: {
+    FFields: {
       template: '#f-fields',
     },
-    FieldsButton,
   },
   computed: {
     ...mapState(['fields']),
     ...mapState('options', {
       optionsFields: 'fields',
     }),
-    showUserFields() {
+    show() {
       return !this.fields.length && this.optionsFields
     },
   },

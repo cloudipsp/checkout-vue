@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="f-customer-fields">
+  <div v-if="show">
     <f-form-group
       v-for="field in list"
       :key="field.name"

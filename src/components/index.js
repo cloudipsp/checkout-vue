@@ -13,8 +13,6 @@ import InputHidden from '@/components/input-hidden'
 import FIcon from '@/components/icon'
 import FPrice from '@/components/price'
 import FInfo from '@/components/info'
-import FCustomerFields from '@/components/customer-fields'
-import FFields from '@/components/fields'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import FButtonClose from '@/components/button/button-close'
@@ -49,8 +47,6 @@ const components = {
   FIcon,
   FPrice,
   FInfo,
-  FCustomerFields,
-  FFields,
   FOffer,
   FButtonPay,
   FButtonClose,
