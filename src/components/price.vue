@@ -37,10 +37,14 @@
 </template>
 
 <script>
+import { InputAmount } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
+  components: {
+    InputAmount,
+  },
   data() {
     return {
       cacheAmount: 0,

@@ -152,6 +152,15 @@ export const FSubscription = () =>
 export const CardVerify = () =>
   import(/* webpackChunkName: "25" */ '@/views/checkout/method/card/verify')
 
+export const InputText = () =>
+  import(/* webpackChunkName: "26" */ '@/components/input-text')
+
+export const InputHidden = () =>
+  import(/* webpackChunkName: "26" */ '@/components/input-hidden')
+
+export const InputAmount = () =>
+  import(/* webpackChunkName: "26" */ '@/components/input-amount')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */

@@ -3,12 +3,18 @@
 </template>
 
 <script>
+import { InputText, InputHidden, InputAmount } from '@/import'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FFields: {
       template: '#f-fields',
+      components: {
+        InputText,
+        InputHidden,
+        InputAmount,
+      },
     },
   },
   computed: {

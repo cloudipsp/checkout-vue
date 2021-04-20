@@ -127,11 +127,15 @@
 </template>
 
 <script>
+import { InputAmount } from '@/import'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
 
 export default {
+  components: {
+    InputAmount,
+  },
   data() {
     return {
       error: '',
