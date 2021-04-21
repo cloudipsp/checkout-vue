@@ -12,16 +12,11 @@ import { errorHandler } from '@/utils/helpers'
 
 export default {
   mixins: [timeout, isMounted],
+  inject: ['formRequest'],
   provide() {
     return {
       submit: this.submit,
     }
-  },
-  props: {
-    formRequest: {
-      type: Function,
-      required: true,
-    },
   },
   computed: {
     ...mapStateGetSet(['submited', 'isSubmit']),

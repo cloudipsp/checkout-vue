@@ -32,11 +32,7 @@ export default {
       return !this.hide
     },
     hide() {
-      return (
-        this.$route.name === 'success' ||
-        (this.isBreakpointMd && this.isOnlyCard) ||
-        this.is_only_wallets
-      )
+      return (this.isBreakpointMd && this.isOnlyCard) || this.is_only_wallets
     },
   },
 }

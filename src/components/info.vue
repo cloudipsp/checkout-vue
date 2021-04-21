@@ -20,7 +20,7 @@
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-text="$t(order_desc)" />
     </f-modal-base>
-    <f-price />
+    <f-price :readonly="readonly" />
   </div>
 </template>
 
@@ -28,6 +28,12 @@
 import { mapState } from '@/utils/store'
 
 export default {
+  props: {
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       showMore: false,

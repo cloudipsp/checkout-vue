@@ -136,7 +136,7 @@ export const Loans = () =>
   import(/* webpackChunkName: "17" */ '@/views/checkout/method/loans')
 
 export const Success = () =>
-  import(/* webpackChunkName: "19" */ '@/views/checkout/success')
+  import(/* webpackChunkName: "19" */ '@/views/checkout/blank/success')
 
 export const Error = () => import(/* webpackChunkName: "21" */ '@/views/error')
 
@@ -160,6 +160,9 @@ export const InputHidden = () =>
 
 export const InputAmount = () =>
   import(/* webpackChunkName: "26" */ '@/components/input-amount')
+
+export const Blank = () =>
+  import(/* webpackChunkName: "27" */ '@/views/checkout/blank')
 
 export const loadSvg = () =>
   import(

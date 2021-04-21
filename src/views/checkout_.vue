@@ -1,25 +1,21 @@
 <template>
-  <f-form class="f-wrapper" :data-e2e-ready="ready" :form-request="formRequest">
-    <f-sidebar />
-    <div ref="center" class="f-center">
-      <f-scrollbar-vertical wrap-class="f-center-wrap">
-        <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
-        <router-view :order="order" />
-        <f-loading v-if="loading" backdrop />
-        <f-modal-error />
-        <f-modal-3ds
-          v-model="show3ds"
-          :duration.sync="duration3ds"
-          @submit3ds="submit3ds"
-        />
-        <f-alert-gdpr-wrapper />
-      </f-scrollbar-vertical>
+  <div class="f-container" :class="classNameContainer" :data-e2e-ready="ready">
+    <div v-if="isDemo" class="f-demo">
+      <div class="f-demo-title" v-text="$t('demo-title')" />
     </div>
-  </f-form>
+    <router-view class="f-loyaut" :order="order" />
+    <f-loading v-if="loading" backdrop />
+    <f-modal-error />
+    <f-modal-3ds
+      v-model="show3ds"
+      :duration.sync="duration3ds"
+      @submit3ds="submit3ds"
+    />
+    <f-alert-gdpr-wrapper />
+  </div>
 </template>
 
 <script>
-import FSidebar from '@/components/sidebar'
 import FModalError from '@/components/modal/modal-error'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 
@@ -32,7 +28,6 @@ let model3ds
 
 export default {
   components: {
-    FSidebar,
     FModal3ds,
     FModalError,
     FAlertGdprWrapper,
@@ -51,8 +46,11 @@ export default {
     }
   },
   computed: {
+    ...mapState(['isOnlyCard']),
+    ...mapState('options', ['show_menu_first', 'disable_request']),
+    ...mapState('options.theme', ['type']),
     ...mapState(['loading']),
-    ...mapState('options', ['full_screen', 'methods']),
+    ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'lang']),
 
     ...mapStateGetSet([
@@ -72,6 +70,19 @@ export default {
       'expiry_date',
       'cvv2',
     ]),
+    classNameContainer() {
+      return [
+        {
+          'f-only-card': this.isOnlyCard,
+          'f-open': this.show_menu_first,
+        },
+        `f-page-${this.$route.name}`,
+        `f-theme-${this.type}`,
+      ]
+    },
+    isDemo() {
+      return this.disable_request
+    },
     createdFormParams() {
       let result = this.token ? { token: this.token } : this.store.formParams()
 

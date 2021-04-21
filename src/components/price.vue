@@ -45,6 +45,12 @@ export default {
   components: {
     InputAmount,
   },
+  props: {
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       cacheAmount: 0,
@@ -64,7 +70,7 @@ export default {
       )
     },
     showAmountReadOnly() {
-      return this.amount_readonly || this.$route.name === 'success'
+      return this.amount_readonly || this.readonly
     },
     showAmount() {
       return this.amount || !this.amount_readonly

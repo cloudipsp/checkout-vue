@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Method from '@/views/checkout/method'
-import Checkout from '@/views/checkout'
+import Checkout from '@/views/checkout_'
 import Card from '@/views/checkout/method/card'
 import store from '@/store/index'
 import {
@@ -18,6 +18,7 @@ import {
   Error,
   ErrorModal,
   System,
+  Blank,
 } from '@/import'
 
 const card = 'card'
@@ -116,9 +117,15 @@ export default name => {
             ],
           },
           {
-            path: success,
-            name: success,
-            component: Success,
+            path: 'blank',
+            component: Blank,
+            children: [
+              {
+                path: success,
+                name: success,
+                component: Success,
+              },
+            ],
           },
         ],
       },

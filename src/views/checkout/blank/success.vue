@@ -5,7 +5,7 @@
       <svg-decline v-if="isDeclined" />
       <div class="f-title" v-text="$t(order.order_status)" />
     </div>
-    <f-info />
+    <f-info readonly />
     <div class="f-success-form-group">
       <div class="f-row">
         <div class="f-col" v-text="$t('payment_id')" />
