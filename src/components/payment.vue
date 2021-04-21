@@ -1,10 +1,5 @@
 <template>
-  <f-form
-    class="f-wrapper"
-    :style="style"
-    :data-e2e-ready="ready"
-    :form-request="formRequest"
-  >
+  <f-form class="f-wrapper" :data-e2e-ready="ready" :form-request="formRequest">
     <f-sidebar />
     <div ref="center" class="f-center">
       <f-scrollbar-vertical wrap-class="f-center-wrap">
@@ -32,7 +27,6 @@ import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { cardsParse } from '@/utils/card-brand'
-import Resize from '@/mixins/resize'
 
 let model3ds
 
@@ -43,7 +37,6 @@ export default {
     FModalError,
     FAlertGdprWrapper,
   },
-  mixins: [Resize],
   provide() {
     return {
       formRequest: this.formRequest,
@@ -55,7 +48,6 @@ export default {
       order: {},
       show3ds: false,
       duration3ds: 0,
-      height: null,
     }
   },
   computed: {
@@ -89,15 +81,8 @@ export default {
 
       return result
     },
-    style() {
-      return {
-        height: this.height,
-      }
-    },
   },
   created() {
-    this.initHeight()
-
     if (this.token) {
       this.store.formLoading(true)
     }
@@ -115,15 +100,6 @@ export default {
       .catch(errorHandler)
   },
   methods: {
-    initHeight() {
-      this.height =
-        this.full_screen && this.isWidthLg
-          ? `calc(${window.innerHeight}px - 4.625rem)`
-          : 'calc(100% - 4.625rem)'
-    },
-    resize() {
-      this.initHeight()
-    },
     formRequest(data) {
       if (this.loading) return Promise.reject()
       this.store.formLoading(true)

@@ -5,7 +5,6 @@ function init() {
 
   this.isBreakpointMd = this.full_screen ? width < 992 : true
   this.isWidthSm = width < 768
-  this.isWidthLg = width < 1200
 }
 
 function resize() {
@@ -20,7 +19,6 @@ export default {
     return {
       isBreakpointMd: false,
       isWidthSm: false,
-      isWidthLg: false,
     }
   },
   computed: {

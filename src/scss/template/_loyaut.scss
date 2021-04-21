@@ -31,6 +31,7 @@
 
 .f-header {
   display: flex;
+  height: $header-height;
   background: $container_bg;
 }
 
@@ -40,7 +41,6 @@
   flex-wrap: wrap;
   align-items: center;
   max-width: 50%;
-  height: px-to-rem(74px);
   padding: px-to-rem(24px) 0 0 px-to-rem(20px);
 
   // stylelint-disable-next-line selector-max-id
@@ -61,6 +61,7 @@
 
 .f-wrapper {
   position: relative;
+  height: calc(100% - #{$header-height});
 
   // stylelint-disable-next-line selector-max-id
   html #f.f-embed & {
