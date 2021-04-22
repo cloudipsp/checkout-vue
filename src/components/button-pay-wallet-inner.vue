@@ -23,10 +23,9 @@ export default {
   mixins: [id, timeout],
   inject: ['formRequest'],
   props: {
-    position: {
-      type: String,
-      required: true,
-      validator: value => ['sidebar', 'center'].includes(value),
+    showTitle: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -44,9 +43,6 @@ export default {
     ]),
     classButton() {
       return 'f-wallet-pay-button-' + this.id
-    },
-    showTitle() {
-      return this.position === 'sidebar'
     },
     show() {
       return this.init

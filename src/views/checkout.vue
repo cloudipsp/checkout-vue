@@ -3,7 +3,9 @@
     <div v-if="isDemo" class="f-demo">
       <div class="f-demo-title" v-text="$t('demo-title')" />
     </div>
-    <router-view class="f-loyaut" :order="order" />
+    <transition name="f-fade-enter">
+      <router-view class="f-loyaut" :order="order" />
+    </transition>
     <f-loading v-if="loading" backdrop />
     <f-modal-error />
     <f-modal-3ds
@@ -47,7 +49,7 @@ export default {
   },
   computed: {
     ...mapState(['isOnlyCard']),
-    ...mapState('options', ['show_menu_first', 'disable_request']),
+    ...mapState('options', ['disable_request']),
     ...mapState('options.theme', ['type']),
     ...mapState(['loading']),
     ...mapState('options', ['methods']),
@@ -74,7 +76,6 @@ export default {
       return [
         {
           'f-only-card': this.isOnlyCard,
-          'f-open': this.show_menu_first,
         },
         `f-page-${this.$route.name}`,
         `f-theme-${this.type}`,
@@ -262,12 +263,14 @@ export default {
         .catch(() => {})
     },
     locationMethod() {
+      if (this.$route.name === 'menu') return
+
       let method_route = this.$route.name || this.$route.params.method
       let name = this.methods.includes(method_route)
         ? method_route
         : this.methods[0]
 
-      this.$router.push({ name, query: { init: true } }).catch(() => {})
+      this.$router.push({ name }).catch(() => {})
     },
     submit3ds() {
       model3ds.submit3dsForm()

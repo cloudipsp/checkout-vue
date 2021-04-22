@@ -367,9 +367,6 @@ class Store extends Model {
 
     return Object.assign(params, data, this.defaultParams())
   }
-  toggleMenu() {
-    this.state.options.show_menu_first = !this.state.options.show_menu_first
-  }
 }
 
 export default name => {

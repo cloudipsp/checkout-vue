@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Method from '@/views/checkout/method'
-import Checkout from '@/views/checkout_'
+import Checkout from '@/views/checkout'
 import Card from '@/views/checkout/method/card'
 import store from '@/store/index'
 import {
@@ -19,6 +19,7 @@ import {
   ErrorModal,
   System,
   Blank,
+  FMenu,
 } from '@/import'
 
 const card = 'card'
@@ -32,6 +33,7 @@ const success = 'success'
 const error = 'error'
 const error_modal = 'error_modal'
 const checkout = 'checkout'
+const menu = 'menu'
 
 Vue.use(Router)
 
@@ -125,6 +127,11 @@ export default name => {
                 name: success,
                 component: Success,
               },
+              {
+                path: menu,
+                name: menu,
+                component: FMenu,
+              },
             ],
           },
         ],
@@ -142,10 +149,7 @@ export default name => {
     ],
   })
 
-  instance[name].afterEach(({ name, params, query }) => {
-    if (!query.init) {
-      instanceStore.state.options.show_menu_first = false
-    }
+  instance[name].afterEach(({ name, params }) => {
     instanceStore.state.params.payment_system = params.system || name
   })
 

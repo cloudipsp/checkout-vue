@@ -2,7 +2,14 @@
   <div v-if="show" class="f-header">
     <div class="f-header-logo">
       <transition name="f-fade-enter">
-        <div v-if="showBack" key="back"><f-button-methods /></div>
+        <f-button-link
+          v-if="showBack"
+          key="back"
+          class="f-btn-methods"
+          @click="goMenu"
+        >
+          <f-svg name="back" size="lg" />
+        </f-button-link>
         <div
           v-else-if="showLogoCustom"
           key="logo-custom"
@@ -33,25 +40,24 @@
 <script>
 import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
-import FButtonMethods from '@/components/button/button-methods'
 import { sort, parseSelect } from '@/utils/sort'
 import { SvgLogo } from '@/import'
 
 export default {
   components: {
-    FButtonMethods,
     SvgLogo,
   },
   mixins: [Resize],
+  props: {
+    back: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     ...mapState(['isOnlyCard', 'is_only_wallets']),
     ...mapState('params', ['lang']),
-    ...mapState('options', [
-      'locales',
-      'logo_url',
-      'show_menu_first',
-      'full_screen',
-    ]),
+    ...mapState('options', ['locales', 'logo_url', 'full_screen']),
     ...mapState('options', {
       optionsLang: 'lang',
     }),
@@ -62,12 +68,7 @@ export default {
       return this.locales.map(parseSelect).sort(sort('text'))
     },
     showBack() {
-      return (
-        !this.isOnlyCard &&
-        !this.show_menu_first &&
-        this.isBreakpointMd &&
-        this.$route.name !== 'success'
-      )
+      return !this.isOnlyCard && this.isBreakpointMd && this.back
     },
     showLogoCustom() {
       return this.logo_url && this.full_screen
@@ -88,6 +89,13 @@ export default {
     changeLang(value) {
       this.store.changeLang(value)
       this.store.sendRequestInfo({ lang: value })
+    },
+    goMenu() {
+      this.$router
+        .push({
+          name: 'menu',
+        })
+        .catch(() => {})
     },
   },
 }

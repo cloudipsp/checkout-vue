@@ -106,10 +106,9 @@ class Validate extends Model {
   }
 
   showMenuFirst() {
-    const options = 'data.options'
-    const name = `${options}.show_menu_first`
+    const name = 'data.options.show_menu_first'
     let show_menu_first = this.attr(name)
-    let full_screen = this.attr(`${options}.full_screen`)
+    let full_screen = this.attr('data.options.full_screen')
 
     if (!isExist(full_screen)) return
     if (isExist(show_menu_first)) return

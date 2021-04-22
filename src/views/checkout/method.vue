@@ -1,6 +1,6 @@
 <template>
   <div>
-    <f-header />
+    <f-header back />
     <f-form class="f-wrapper">
       <f-sidebar />
       <f-scrollbar-vertical class="f-center" wrap-class="f-center-wrap">

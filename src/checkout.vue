@@ -35,12 +35,14 @@ export default {
     style() {
       return {
         height: this.height,
-        // .f-sidebar transform: translateX(0);
-        overflow:
-          this.show_menu_first && (this.isBreakpointMd || !this.full_screen)
-            ? 'hidden'
-            : 'visible',
       }
+    },
+  },
+  watch: {
+    isBreakpointMd(value) {
+      if (value) return
+
+      this.$router.push({ name: this.methods[0] }).catch(() => {})
     },
   },
   created() {
@@ -66,10 +68,19 @@ export default {
       this.initHeight()
     },
     go() {
+      if (this.isBreakpointMd && this.show_menu_first) {
+        this.goMenu()
+      } else {
+        this.goMethod()
+      }
+    },
+    goMenu() {
+      this.$router.push({ name: 'menu' }).catch(() => {})
+    },
+    goMethod() {
       this.$router
         .push({
           name: this.active_tab || this.methods[0],
-          query: { init: true },
         })
         .catch(() => {})
     },

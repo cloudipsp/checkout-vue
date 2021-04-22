@@ -164,6 +164,9 @@ export const InputAmount = () =>
 export const Blank = () =>
   import(/* webpackChunkName: "27" */ '@/views/checkout/blank')
 
+export const FMenu = () =>
+  import(/* webpackChunkName: "28" */ '@/views/checkout/blank/menu')
+
 export const loadSvg = () =>
   import(
     /* webpackChunkName: "20" */

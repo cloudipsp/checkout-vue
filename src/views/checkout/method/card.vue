@@ -5,7 +5,7 @@
         <f-info v-if="isOnlyCard" />
         <f-price v-else />
       </div>
-      <f-button-pay-wallet position="center" />
+      <f-button-pay-wallet />
       <f-icons
         v-if="isOnlyCard"
         class="f-mb-3"
