@@ -81,12 +81,11 @@
 
 .f-sidebar {
   @include media-breakpoint-up(lg) {
-    position: inherit;
     flex: 0 0 410px;
     max-width: 410px;
     height: 100%;
+    background-color: $container_bg;
     border-right: 2px solid $sidebar_border;
-    transform: translateX(0);
   }
   @include media-breakpoint-up(xl) {
     flex: 0 0 450px;
@@ -123,12 +122,6 @@
 .f-security {
   @include media-breakpoint-up(lg) {
     @include sticky-bottom();
-  }
-}
-
-.f-sidebar-security {
-  @include media-breakpoint-up(lg) {
-    display: none;
   }
 }
 

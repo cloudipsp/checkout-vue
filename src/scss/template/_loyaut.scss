@@ -73,32 +73,6 @@
   }
 }
 
-.f-sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: $container_bg;
-  transform: translateX(-1000%);
-
-  .f-open & {
-    z-index: $zindex-sidebar;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform: translateX(0);
-  }
-}
-
-.f-sidebar-wrap {
-  padding: 0 px-to-rem(20px);
-}
-
-.f-sidebar-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .f-top {
   background-image: linear-gradient(
     to bottom,
