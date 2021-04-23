@@ -114,6 +114,9 @@ export const loadCardBrands = () =>
 export const FAlertGdpr = () =>
   import(/* webpackChunkName: "8" */ '@/components/alert/alert-gdpr')
 
+export const Card = () =>
+  import(/* webpackChunkName: "11" */ '@/views/checkout/method/card')
+
 export const CardIndex = () =>
   import(/* webpackChunkName: "11" */ '@/views/checkout/method/card/index')
 

@@ -3,9 +3,9 @@ import Router from 'vue-router'
 
 import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
-import Card from '@/views/checkout/method/card'
 import store from '@/store/index'
 import {
+  Card,
   CardIndex,
   CardVerify,
   Banklinks_eu,
