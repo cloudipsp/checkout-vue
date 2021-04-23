@@ -181,3 +181,5 @@ export const FMenu = () =>
 
 export const FModalError = () =>
   import(/* webpackChunkName: "29" */ '@/components/modal/modal-error')
+
+export const SvgLogo = () => import(/* webpackChunkName: "30" */ '@/svg/logo')
