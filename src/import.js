@@ -178,3 +178,6 @@ export const Blank = () =>
 
 export const FMenu = () =>
   import(/* webpackChunkName: "28" */ '@/views/checkout/blank/menu')
+
+export const FModalError = () =>
+  import(/* webpackChunkName: "29" */ '@/components/modal/modal-error')

@@ -7,7 +7,7 @@
       <router-view class="f-loyaut" :order="order" />
     </transition>
     <f-loading v-if="loading" backdrop />
-    <f-modal-error />
+    <f-modal-error-wrapper />
     <f-modal-3ds
       v-model="show3ds"
       :duration.sync="duration3ds"
@@ -19,7 +19,7 @@
 
 <script>
 import FLoading from '@/components/loading'
-import FModalError from '@/components/modal/modal-error'
+import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 import { errorHandler } from '@/utils/helpers'
@@ -31,7 +31,7 @@ let model3ds
 export default {
   components: {
     FLoading,
-    FModalError,
+    FModalErrorWrapper,
     FModal3ds,
     FAlertGdprWrapper,
   },
