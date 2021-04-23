@@ -18,11 +18,11 @@
 </template>
 
 <script>
+import FLoading from '@/components/loading'
 import FModalError from '@/components/modal/modal-error'
-import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
-
-import { errorHandler } from '@/utils/helpers'
 import FModal3ds from '@/components/modal/modal-3ds'
+import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
+import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { cardsParse } from '@/utils/card-brand'
 
@@ -30,8 +30,9 @@ let model3ds
 
 export default {
   components: {
-    FModal3ds,
+    FLoading,
     FModalError,
+    FModal3ds,
     FAlertGdprWrapper,
   },
   provide() {

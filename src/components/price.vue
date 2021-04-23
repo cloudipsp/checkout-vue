@@ -37,12 +37,16 @@
 </template>
 
 <script>
+import FPreloader from '@/components/preloader'
+import FAmount from '@/components/base/amount'
 import { InputAmount } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
   components: {
+    FPreloader,
+    FAmount,
     InputAmount,
   },
   props: {

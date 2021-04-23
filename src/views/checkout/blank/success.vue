@@ -18,11 +18,13 @@
 </template>
 
 <script>
+import FInfo from '@/components/info'
 import SvgApproved from '@/svg/approved'
 import { SvgDecline } from '@/import'
 
 export default {
   components: {
+    FInfo,
     SvgDecline,
     SvgApproved,
   },

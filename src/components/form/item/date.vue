@@ -25,10 +25,11 @@
 </template>
 
 <script>
+import { DatePicker } from '@/import'
+import FormInput from '@/components/form/item/helpers/form-input'
+import FSvg from '@/components/svg'
 import item from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
-import { DatePicker } from '@/import'
-import FormInput from './helpers/form-input'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
 import { mapState } from '@/utils/store'
 import format from '@/config/date'
@@ -37,6 +38,7 @@ export default {
   components: {
     DatePicker,
     FormInput,
+    FSvg,
   },
   mixins: [item],
   props: {

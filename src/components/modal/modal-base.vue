@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Modal from './helpers/modal'
+import Modal from '@/components/modal/helpers/modal'
 
 export default {
   components: {

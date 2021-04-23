@@ -27,7 +27,14 @@
 </template>
 
 <script>
+import FButtonLink from '@/components/button/button-link'
+import FButton from '@/components/button/button'
+
 export default {
+  components: {
+    FButtonLink,
+    FButton,
+  },
   data() {
     return {
       button: ['default', 'secondary', 'outline', 'success'],

@@ -5,7 +5,15 @@
 </template>
 
 <script>
+import FFormItemInput from '@/components/form/item/input'
+import FFormItemDate from '@/components/form/item/date'
+import FFormItemCheckbox from '@/components/form/item/checkbox'
 export default {
+  components: {
+    FFormItemInput,
+    FFormItemDate,
+    FFormItemCheckbox,
+  },
   inheritAttrs: false,
   props: {
     component: {

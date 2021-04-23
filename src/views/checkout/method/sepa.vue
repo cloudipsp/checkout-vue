@@ -23,9 +23,15 @@
 </template>
 
 <script>
+import FOffer from '@/components/offer'
+import FButtonPay from '@/components/button/button-pay'
 import { mapState } from '@/utils/store'
 
 export default {
+  components: {
+    FOffer,
+    FButtonPay,
+  },
   data() {
     return {
       name: 'sender_name',

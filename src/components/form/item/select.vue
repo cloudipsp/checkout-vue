@@ -17,12 +17,14 @@
 </template>
 
 <script>
+import FormSelect from '@/components/form/item/helpers/form-select'
+import FSvg from '@/components/svg'
 import item from '@/mixins/item'
-import FormSelect from './helpers/form-select'
 
 export default {
   components: {
     FormSelect,
+    FSvg,
   },
   mixins: [item],
 }

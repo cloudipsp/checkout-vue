@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { BVTooltip } from 'bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip'
-import VTooltipTemplate from './v-tooltip-template'
+import VTooltipTemplate from '@/components/tooltip/helpers/v-tooltip-template'
 
 export default Vue.extend({
   extends: BVTooltip,

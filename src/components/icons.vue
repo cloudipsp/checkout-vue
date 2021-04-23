@@ -36,10 +36,16 @@
 </template>
 
 <script>
+import FIcon from '@/components/icon'
+import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { mapState } from '@/utils/store'
 import configMethods from '@/config/methods.json'
 
 export default {
+  components: {
+    FIcon,
+    FTooltipDefault,
+  },
   props: {
     position: {
       type: String,

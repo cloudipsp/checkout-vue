@@ -16,7 +16,7 @@
 <script>
 import item from '@/mixins/item'
 import mask from '@/mixins/mask'
-import FormInput from './helpers/form-input'
+import FormInput from '@/components/form/item/helpers/form-input'
 import remove_add_event_listener from '@/mixins/remove_add_event_listener'
 
 export default {

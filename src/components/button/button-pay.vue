@@ -19,11 +19,19 @@
 </template>
 
 <script>
+import FButton from '@/components/button/button'
+import FPreloader from '@/components/preloader'
+import FAmount from '@/components/base/amount'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import validator from '@/mixins/validator'
 
 export default {
+  components: {
+    FButton,
+    FPreloader,
+    FAmount,
+  },
   mixins: [validator],
   inject: ['submit'],
   computed: {

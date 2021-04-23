@@ -19,11 +19,17 @@
 
 <script>
 import FHeader from '@/components/header'
+import FForm from '@/components/form/form'
+import FScrollbarVertical from '@/components/scrollbar-vertical'
+import FSecurity from '@/components/security'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FHeader,
+    FForm,
+    FScrollbarVertical,
+    FSecurity,
   },
   props: {
     order: {

@@ -38,14 +38,20 @@
 </template>
 
 <script>
+import FButtonLink from '@/components/button/button-link'
+import FSvg from '@/components/svg'
+import { SvgLogo } from '@/import'
+import FFormBase from '@/components/form/form/form-base'
 import Resize from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import { sort, parseSelect } from '@/utils/sort'
-import { SvgLogo } from '@/import'
 
 export default {
   components: {
+    FButtonLink,
+    FSvg,
     SvgLogo,
+    FFormBase,
   },
   mixins: [Resize],
   props: {

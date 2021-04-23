@@ -12,10 +12,14 @@
 </template>
 
 <script>
+import FIcon from '@/components/icon'
 import { mapState } from '@/utils/store'
 import { removeDuplicate } from '@/utils/helpers'
 
 export default {
+  components: {
+    FIcon,
+  },
   data() {
     return {
       fast: [],

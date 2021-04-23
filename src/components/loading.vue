@@ -11,9 +11,13 @@
 </template>
 
 <script>
+import FSvg from '@/components/svg'
 import { mapState } from '@/utils/store'
 
 export default {
+  components: {
+    FSvg,
+  },
   props: {
     backdrop: {
       type: Boolean,

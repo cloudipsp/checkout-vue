@@ -9,12 +9,16 @@
 </template>
 
 <script>
+import FInfo from '@/components/info'
+import FButtonPayWallet from '@/components/button-pay-wallet-wrapper'
 import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
+    FInfo,
+    FButtonPayWallet,
     FFastAccess,
     FMenu,
   },

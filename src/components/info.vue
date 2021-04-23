@@ -25,9 +25,17 @@
 </template>
 
 <script>
+import FPreloader from '@/components/preloader'
+import FSvg from '@/components/svg'
+import FPrice from '@/components/price'
 import { mapState } from '@/utils/store'
 
 export default {
+  components: {
+    FPreloader,
+    FSvg,
+    FPrice,
+  },
   props: {
     readonly: {
       type: Boolean,

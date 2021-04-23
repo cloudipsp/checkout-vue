@@ -19,16 +19,22 @@
 </template>
 
 <script>
+import FIcon from '@/components/icon'
 import FFieldsBank from '@/components/fields/bank'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
+import FOffer from '@/components/offer'
+import FButtonPay from '@/components/button/button-pay'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
+    FIcon,
     FFieldsBank,
     FFieldsButton,
     FFieldsUser,
+    FOffer,
+    FButtonPay,
   },
   data() {
     return {

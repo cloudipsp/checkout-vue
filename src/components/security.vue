@@ -54,12 +54,16 @@
 </template>
 
 <script>
+import FSvg from '@/components/svg'
+import FTooltipDefault from '@/components/tooltip/tooltip-default'
+import { SvgVerifiedByVisa, SvgMasterCardSecureCode, SvgPciDss } from '@/import'
 import Resize from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
-import { SvgVerifiedByVisa, SvgMasterCardSecureCode, SvgPciDss } from '@/import'
 
 export default {
   components: {
+    FSvg,
+    FTooltipDefault,
     SvgVerifiedByVisa,
     SvgMasterCardSecureCode,
     SvgPciDss,

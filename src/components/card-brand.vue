@@ -12,9 +12,13 @@
 </template>
 
 <script>
+import FIcon from '@/components/icon'
 import { getCardBrand } from '@/utils/card-brand'
 
 export default {
+  components: {
+    FIcon,
+  },
   props: {
     number: {
       type: String,

@@ -11,9 +11,13 @@
 </template>
 
 <script>
+import { InputHidden } from '@/import'
 import { mapState } from '@/utils/store'
 
 export default {
+  components: {
+    InputHidden,
+  },
   computed: {
     ...mapState(['params', 'fields']),
     show() {

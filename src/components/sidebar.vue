@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import FScrollbarVertical from '@/components/scrollbar-vertical'
 import { FMenu } from '@/import'
 import Resize from '@/mixins/resize'
 
 export default {
   components: {
+    FScrollbarVertical,
     FMenu,
   },
   mixins: [Resize],

@@ -112,10 +112,18 @@
 </template>
 
 <script>
+import FButton from '@/components/button/button'
+import FLoading from '@/components/loading'
+import FSvg from '@/components/svg'
 import { isDesktop } from '@/utils/mobile'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
+  components: {
+    FButton,
+    FLoading,
+    FSvg,
+  },
   inject: ['submit'],
   data() {
     return {

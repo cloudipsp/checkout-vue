@@ -39,19 +39,24 @@
 </template>
 
 <script>
+import FAlertBase from '@/components/alert/alert-base'
+import FFormBase from '@/components/form/form/form-base'
 import { SvgSafe } from '@/import'
+import FButtonLink from '@/components/button/button-link'
+
 import {
   mapState,
   mapStateGetSet,
   localStorage,
   sessionStorage,
 } from '@/utils/store'
-import FAlertBase from '@/components/alert/alert-base'
 
 export default {
   components: {
     FAlertBase,
+    FFormBase,
     SvgSafe,
+    FButtonLink,
   },
   model: {
     prop: 'show',

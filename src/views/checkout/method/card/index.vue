@@ -134,29 +134,41 @@
 </template>
 
 <script>
-import { errorHandler } from '@/utils/helpers'
-import { mapState, mapStateGetSet } from '@/utils/store'
-import FSubscriptionWrapper from '@/components/subscription-wrapper'
-import FCardList from '@/components/card-list'
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
+import FSvg from '@/components/svg'
+import FTooltipCard from '@/components/tooltip/tooltip-card'
+import FCardList from '@/components/card-list'
+import FTooltipDefault from '@/components/tooltip/tooltip-default'
+import FPreloader from '@/components/preloader'
 import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
+import FSubscriptionWrapper from '@/components/subscription-wrapper'
+import FOffer from '@/components/offer'
+import FButtonPay from '@/components/button/button-pay'
 import timeout from '@/mixins/timeout'
 import isMounted from '@/mixins/is_mounted'
+import { errorHandler } from '@/utils/helpers'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import { isPhone } from '@/utils/mobile'
 import { createDate, formatMMYY } from '@/utils/date'
 
 export default {
   components: {
-    FSubscriptionWrapper,
-    FCardList,
     FCardBg,
     FCardBrand,
+    FSvg,
+    FTooltipCard,
+    FCardList,
+    FTooltipDefault,
+    FPreloader,
     FFieldsCustomer,
     FFieldsButton,
     FFieldsUser,
+    FSubscriptionWrapper,
+    FOffer,
+    FButtonPay,
   },
   mixins: [timeout, isMounted],
   data() {

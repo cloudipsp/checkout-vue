@@ -18,9 +18,13 @@
 </template>
 
 <script>
+import FButton from '@/components/button/button'
 import timeout from '@/mixins/timeout'
 
 export default {
+  components: {
+    FButton,
+  },
   mixins: [timeout],
   model: {
     prop: 'visible',

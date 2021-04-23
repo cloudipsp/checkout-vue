@@ -20,13 +20,19 @@
 
 <script>
 import FHeader from '@/components/header'
+import FForm from '@/components/form/form'
 import FSidebar from '@/components/sidebar'
+import FScrollbarVertical from '@/components/scrollbar-vertical'
+import FSecurity from '@/components/security'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FHeader,
+    FForm,
     FSidebar,
+    FScrollbarVertical,
+    FSecurity,
   },
   computed: {
     ...mapState('options', ['full_screen']),

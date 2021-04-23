@@ -13,7 +13,7 @@ import {
 import { sendRequest } from '@/utils/api'
 import { isExist } from '@/utils/typeof'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
-import store from './setup'
+import store from '@/store/setup'
 import loadButton, { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadCardImg from '@/store/card-img'

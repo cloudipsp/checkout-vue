@@ -21,11 +21,17 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import FInfo from '@/components/info'
+import FPrice from '@/components/price'
+import FButtonPayWallet from '@/components/button-pay-wallet-wrapper'
 import FIcons from '@/components/icons'
 import Resize from '@/mixins/resize'
 
 export default {
   components: {
+    FInfo,
+    FPrice,
+    FButtonPayWallet,
     FIcons,
   },
   mixins: [Resize],

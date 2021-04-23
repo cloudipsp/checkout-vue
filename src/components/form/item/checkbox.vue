@@ -13,7 +13,7 @@
 
 <script>
 import item from '@/mixins/item'
-import Checkbox from './helpers/checkbox'
+import Checkbox from '@/components/form/item/helpers/checkbox'
 
 export default {
   components: {

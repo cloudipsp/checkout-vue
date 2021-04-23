@@ -28,9 +28,15 @@
 </template>
 
 <script>
+import FSvg from '@/components/svg'
+import FIcon from '@/components/icon'
 import { mapState } from '@/utils/store'
 
 export default {
+  components: {
+    FSvg,
+    FIcon,
+  },
   computed: {
     ...mapState(['cards']),
     ...mapState('params', ['card_number']),

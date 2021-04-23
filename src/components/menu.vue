@@ -38,15 +38,19 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
+import FSvg from '@/components/svg'
 import FIcons from '@/components/icons'
+import FTooltipDefault from '@/components/tooltip/tooltip-default'
+import { SvgTimer } from '@/import'
+import { mapState } from '@/utils/store'
 import resize from '@/mixins/resize'
 import { removeWallets } from '@/utils/helpers'
-import { SvgTimer } from '@/import'
 
 export default {
   components: {
+    FSvg,
     FIcons,
+    FTooltipDefault,
     SvgTimer,
   },
   mixins: [resize],

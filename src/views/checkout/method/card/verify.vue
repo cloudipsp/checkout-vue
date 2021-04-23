@@ -70,16 +70,24 @@
 </template>
 
 <script>
-import { mapState, mapStateGetSet } from '@/utils/store'
-import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
+import FSvg from '@/components/svg'
+import FPreloader from '@/components/preloader'
+import FSubscriptionWrapper from '@/components/subscription-wrapper'
+import FOffer from '@/components/offer'
+import FButtonPay from '@/components/button/button-pay'
+import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
   components: {
-    FSubscriptionWrapper,
     FCardBg,
     FCardBrand,
+    FSvg,
+    FPreloader,
+    FSubscriptionWrapper,
+    FOffer,
+    FButtonPay,
   },
   computed: {
     ...mapState(['verification_type']),

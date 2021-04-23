@@ -64,6 +64,9 @@
 </template>
 
 <script>
+import FFormBase from '@/components/form/form/form-base'
+import FSvg from '@/components/svg'
+import FIcon from '@/components/icon'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { removeDuplicate } from '@/utils/helpers'
@@ -71,6 +74,11 @@ import { removeDuplicate } from '@/utils/helpers'
 import timeout from '@/mixins/timeout'
 
 export default {
+  components: {
+    FFormBase,
+    FSvg,
+    FIcon,
+  },
   mixins: [timeout],
   props: {
     // {147209: {country: 'PL', name: '', logo: 'mbank'}}
