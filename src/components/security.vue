@@ -17,11 +17,7 @@
         </div>
         <!--eslint-disable-next-line vue/no-v-html-->
         <div class="f-modal-security-content" v-html="$t('security_text')" />
-        <div class="f-modal-security-icons">
-          <svg-verified-by-visa />
-          <svg-master-card-secure-code />
-          <svg-pci-dss />
-        </div>
+        <f-security-icons v-if="showModal" class="f-modal-security-icons" />
       </f-modal-base>
     </template>
     <template v-else>
@@ -35,13 +31,12 @@
         <f-svg ref="reference" name="security" size="2x" tabindex="0" />
         <span v-text="$t('security_title')" />
       </a>
-      <f-tooltip-default :target="() => $refs.security">
+      <f-tooltip-default :target="() => $refs.security" @shown="shown">
         <div>
-          <div class="f-tooltip-security-icons">
-            <svg-verified-by-visa />
-            <svg-master-card-secure-code />
-            <svg-pci-dss />
-          </div>
+          <f-security-icons
+            v-if="showTooltip"
+            class="f-tooltip-security-icons"
+          />
           <!--eslint-disable vue/no-v-html-->
           <div
             class="f-tooltip-security-content"
@@ -56,9 +51,7 @@
 <script>
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
-import SvgVerifiedByVisa from '@/svg/verified-by-visa'
-import SvgMasterCardSecureCode from '@/svg/master-card-secure-code'
-import SvgPciDss from '@/svg/pci-dss'
+import { FSecurityIcons } from '@/import'
 import Resize from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
 
@@ -66,14 +59,13 @@ export default {
   components: {
     FSvg,
     FTooltipDefault,
-    SvgVerifiedByVisa,
-    SvgMasterCardSecureCode,
-    SvgPciDss,
+    FSecurityIcons,
   },
   mixins: [Resize],
   data() {
     return {
       showModal: false,
+      showTooltip: false,
     }
   },
   computed: {
@@ -89,6 +81,9 @@ export default {
   methods: {
     open() {
       this.showModal = true
+    },
+    shown() {
+      this.showTooltip = true
     },
   },
 }

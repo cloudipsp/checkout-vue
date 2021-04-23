@@ -147,6 +147,9 @@ export const loadStyleAdaptive = () =>
 export const Success = () =>
   import(/* webpackChunkName: "19" */ '@/views/checkout/blank/success')
 
+export const FSecurityIcons = () =>
+  import(/* webpackChunkName: "20" */ '@/components/security-icons')
+
 export const Error = () => import(/* webpackChunkName: "21" */ '@/views/error')
 
 export const ErrorModal = () =>
