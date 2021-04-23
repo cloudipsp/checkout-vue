@@ -41,7 +41,7 @@
 <script>
 import FAlertBase from '@/components/alert/alert-base'
 import FFormBase from '@/components/form/form/form-base'
-import { SvgSafe } from '@/import'
+import SvgSafe from '@/svg/safe'
 import FButtonLink from '@/components/button/button-link'
 
 import {

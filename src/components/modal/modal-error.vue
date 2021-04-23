@@ -24,8 +24,9 @@
 </template>
 
 <script>
+import SvgServerTrouble from '@/svg/server-trouble'
+import SvgDecline from '@/svg/decline'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { SvgServerTrouble, SvgDecline } from '@/import'
 
 export default {
   components: {

@@ -138,6 +138,12 @@ export const Wallets = () =>
 export const Loans = () =>
   import(/* webpackChunkName: "17" */ '@/views/checkout/method/loans')
 
+export const loadStyleAdaptive = () =>
+  import(
+    /* webpackChunkName: "18" */
+    '@/scss/style-adaptive.scss'
+  )
+
 export const Success = () =>
   import(/* webpackChunkName: "19" */ '@/views/checkout/blank/success')
 
@@ -169,34 +175,3 @@ export const Blank = () =>
 
 export const FMenu = () =>
   import(/* webpackChunkName: "28" */ '@/views/checkout/blank/menu')
-
-export const loadSvg = () =>
-  import(
-    /* webpackChunkName: "20" */
-    '@/svg/'
-  )
-
-export const SvgServerTrouble = () =>
-  loadSvg().then(({ SvgServerTrouble }) => SvgServerTrouble)
-
-export const SvgDecline = () => loadSvg().then(({ SvgDecline }) => SvgDecline)
-
-export const SvgSafe = () => loadSvg().then(({ SvgSafe }) => SvgSafe)
-
-export const SvgVerifiedByVisa = () =>
-  loadSvg().then(({ SvgVerifiedByVisa }) => SvgVerifiedByVisa)
-
-export const SvgMasterCardSecureCode = () =>
-  loadSvg().then(({ SvgMasterCardSecureCode }) => SvgMasterCardSecureCode)
-
-export const SvgPciDss = () => loadSvg().then(({ SvgPciDss }) => SvgPciDss)
-
-export const SvgLogo = () => loadSvg().then(({ SvgLogo }) => SvgLogo)
-
-export const SvgTimer = () => loadSvg().then(({ SvgTimer }) => SvgTimer)
-
-export const loadStyleAdaptive = () =>
-  import(
-    /* webpackChunkName: "18" */
-    '@/scss/style-adaptive.scss'
-  )

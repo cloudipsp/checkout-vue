@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { SvgDecline } from '@/import'
+import SvgDecline from '@/svg/decline'
 
 export default {
   components: {

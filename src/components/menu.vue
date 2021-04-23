@@ -41,7 +41,7 @@
 import FSvg from '@/components/svg'
 import FIcons from '@/components/icons'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
-import { SvgTimer } from '@/import'
+import SvgTimer from '@/svg/timer'
 import { mapState } from '@/utils/store'
 import resize from '@/mixins/resize'
 import { removeWallets } from '@/utils/helpers'

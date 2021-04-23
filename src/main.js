@@ -18,10 +18,9 @@ import store from '@/store/index'
 import validate from '@/validate/index'
 import { initApi } from '@/utils/api'
 import optionsDefault from '@/config/options-default'
-import { loadCheckout, loadAsyncValidator, loadSvg } from '@/import'
+import { loadCheckout, loadAsyncValidator } from '@/import'
 loadCheckout()
 loadAsyncValidator()
-loadSvg()
 
 const install = function (Vue) {
   let instance = {}

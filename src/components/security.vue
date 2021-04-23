@@ -56,7 +56,9 @@
 <script>
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
-import { SvgVerifiedByVisa, SvgMasterCardSecureCode, SvgPciDss } from '@/import'
+import SvgVerifiedByVisa from '@/svg/verified-by-visa'
+import SvgMasterCardSecureCode from '@/svg/master-card-secure-code'
+import SvgPciDss from '@/svg/pci-dss'
 import Resize from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
 
