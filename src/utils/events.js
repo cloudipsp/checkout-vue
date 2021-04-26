@@ -1,5 +1,5 @@
 import { hasPassiveEventSupport } from '@/utils/env'
-import { isObject } from '@/utils/typeof'
+import { isObject } from '@/utils/inspect'
 
 // --- Utils ---
 

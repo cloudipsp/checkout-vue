@@ -1,6 +1,6 @@
 import { identity } from '@/utils/identity'
 import { concat } from '@/utils/array'
-import { isFunction } from '@/utils/typeof'
+import { isFunction } from '@/utils/inspect'
 
 // Note for functional components:
 // In functional components, `slots` is a function so it must be called

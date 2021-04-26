@@ -11,7 +11,7 @@ import {
   removeWallets,
 } from '@/utils/helpers'
 import { sendRequest } from '@/utils/api'
-import { isExist } from '@/utils/typeof'
+import { isExist } from '@/utils/inspect'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from '@/store/setup'
 import loadButton, { getLabel } from '@/store/button'

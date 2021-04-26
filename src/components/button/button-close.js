@@ -1,6 +1,6 @@
 import { mergeData } from 'vue-functional-data-merge'
 import { stopEvent } from '@/utils/events'
-import { isEvent } from '@/utils/typeof'
+import { isEvent } from '@/utils/inspect'
 import { hasNormalizedSlot, normalizeSlot } from '@/utils/normalize-slot'
 
 export const FButtonClose = {

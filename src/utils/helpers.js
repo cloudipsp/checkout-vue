@@ -1,4 +1,4 @@
-import { isPlainObject } from '@/utils/typeof'
+import { isPlainObject } from '@/utils/inspect'
 
 export const getCookie = name => {
   let matches = document.cookie.match(

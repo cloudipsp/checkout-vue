@@ -1,4 +1,4 @@
-import { isFunction } from '@/utils/typeof'
+import { isFunction } from '@/utils/inspect'
 
 // Determine if an element is an HTML element
 export const isElement = el => !!(el && el.nodeType === Node.ELEMENT_NODE)

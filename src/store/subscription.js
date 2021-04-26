@@ -1,4 +1,4 @@
-import { isBoolean, isString } from '@/utils/typeof'
+import { isBoolean, isString } from '@/utils/inspect'
 import configSubscription from '@/config/subscription'
 import { deepMerge } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'

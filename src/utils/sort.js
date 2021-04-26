@@ -1,5 +1,5 @@
 import i18n from '@/i18n'
-import { isString } from '@/utils/typeof'
+import { isString } from '@/utils/inspect'
 
 export const sort = (field, reverse) => {
   reverse = reverse ? -1 : 1

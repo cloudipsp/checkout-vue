@@ -1,6 +1,6 @@
 import isMounted from '@/mixins/is_mounted'
 import id from '@/mixins/id'
-import { isExist } from '@/utils/typeof'
+import { isExist } from '@/utils/inspect'
 import { errorHandler } from '@/utils/helpers'
 
 export default {

@@ -45,7 +45,7 @@ import FFormItem from '@/components/form/item'
 import FPlaceholder from '@/components/base/placeholder'
 import FTooltipError from '@/components/tooltip/tooltip-error'
 import { mapState } from '@/utils/store'
-import { isExist } from '@/utils/typeof'
+import { isExist } from '@/utils/inspect'
 import id from '@/mixins/id'
 import isMounted from '@/mixins/is_mounted'
 

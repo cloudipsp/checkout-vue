@@ -1,6 +1,6 @@
 import configMethods from '@/config/methods.json'
 import { removeDuplicate, includes, excludes } from '@/utils/helpers'
-import { isExist } from '@/utils/typeof'
+import { isExist } from '@/utils/inspect'
 
 const config = {
   trustly: 'banklinks_eu',

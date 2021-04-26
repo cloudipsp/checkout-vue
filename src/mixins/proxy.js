@@ -1,4 +1,4 @@
-import { isString } from '@/utils/typeof'
+import { isString } from '@/utils/inspect'
 
 export default {
   methods: {

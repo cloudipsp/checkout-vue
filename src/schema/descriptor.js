@@ -8,7 +8,7 @@ import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
-import { isPlainObject } from '@/utils/typeof'
+import { isPlainObject } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
 
 const countries = Object.keys(configCountries)

@@ -1,6 +1,6 @@
 import { findGetParameter } from '@/utils/helpers'
 import Model from '@/class/model'
-import { isExist, isPlainObject } from '@/utils/typeof'
+import { isExist, isPlainObject } from '@/utils/inspect'
 import configTheme from '@/config/theme'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
