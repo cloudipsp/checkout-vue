@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { FButtonClose } from '@/components/button/button-close'
 import { BModal, BButton } from 'bootstrap-vue'
 import { SLOT_NAME_DEFAULT } from 'bootstrap-vue/esm/constants/slot-names'
 import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
@@ -40,7 +41,7 @@ export default Vue.extend({
           let $closeButton = h()
           if (!this.hideHeaderClose) {
             $closeButton = h(
-              'f-button-close',
+              FButtonClose,
               {
                 props: {
                   content: this.headerCloseContent,

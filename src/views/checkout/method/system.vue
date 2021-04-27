@@ -20,6 +20,7 @@
 
 <script>
 import FIcon from '@/components/icon'
+import { FButtonClose } from '@/components/button/button-close'
 import FFieldsBank from '@/components/fields/bank'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
@@ -30,6 +31,7 @@ import { mapState } from '@/utils/store'
 export default {
   components: {
     FIcon,
+    FButtonClose,
     FFieldsBank,
     FFieldsButton,
     FFieldsUser,
