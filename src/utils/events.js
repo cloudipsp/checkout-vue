@@ -6,7 +6,6 @@ import { isObject } from '@/utils/inspect'
 // Normalize event options based on support of passive option
 // Exported only for testing purposes
 export const parseEventOptions = options => {
-  /* istanbul ignore else: can't test in JSDOM, as it supports passive */
   if (hasPassiveEventSupport) {
     return isObject(options) ? options : { capture: !!options || false }
   } else {

@@ -1,10 +1,10 @@
 <template>
   <f-modal-base v-bind="attrs" v-on="$listeners" @show="run" @hide="hide">
-    <template #modal-title>
+    <template #title>
       <span v-text="$t('submit3ds_title')" />
     </template>
     <span v-text="$t('submit3ds_text')" />
-    <template #modal-footer="{ ok }">
+    <template #footer="{ ok }">
       <f-button
         ref="submit"
         variant="secondary"
@@ -39,7 +39,7 @@ export default {
   computed: {
     attrs() {
       return {
-        hideFooter: false,
+        noFooter: false,
         ...this.$attrs,
       }
     },

@@ -5,7 +5,7 @@
     v-bind="attrs"
     v-on="$listeners"
   >
-    <template #modal-title>
+    <template #title>
       <svg-decline />
       <h5 class="f-modal-title" v-text="$t('declined')" />
     </template>
@@ -14,7 +14,7 @@
     </p>
   </f-modal-base>
   <f-modal-base v-else v-model="show" v-bind="attrs" v-on="$listeners">
-    <template #modal-title>
+    <template #title>
       <svg-server-trouble />
       <h5 class="f-modal-title" v-text="$t('server_trouble_title')" />
     </template>

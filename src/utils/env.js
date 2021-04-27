@@ -8,7 +8,6 @@ export const hasWindowSupport = typeof window !== 'undefined'
 export const hasDocumentSupport = typeof document !== 'undefined'
 export const hasNavigatorSupport = typeof navigator !== 'undefined'
 export const hasPromiseSupport = typeof Promise !== 'undefined'
-/* istanbul ignore next: JSDOM always returns false */
 export const hasMutationObserverSupport =
   typeof MutationObserver !== 'undefined' ||
   typeof WebKitMutationObserver !== 'undefined' ||
@@ -35,14 +34,12 @@ export const hasPassiveEventSupport = (() => {
         get passive() {
           // This function will be called when the browser
           // attempts to access the passive property.
-          /* istanbul ignore next: will never be called in JSDOM */
           passiveEventSupported = true
         },
       }
       window.addEventListener('test', options, options)
       window.removeEventListener('test', options, options)
     } catch (err) {
-      /* istanbul ignore next: will never be called in JSDOM */
       passiveEventSupported = false
     }
   }
@@ -56,7 +53,6 @@ export const hasTouchSupport =
 export const hasPointerEventSupport =
   isBrowser && Boolean(window.PointerEvent || window.MSPointerEvent)
 
-/* istanbul ignore next: JSDOM only checks for 'IntersectionObserver' */
 export const hasIntersectionObserverSupport =
   isBrowser &&
   'IntersectionObserver' in window &&
@@ -65,20 +61,6 @@ export const hasIntersectionObserverSupport =
   // but we an use intersectionRatio > 0 instead
   // 'isIntersecting' in window.IntersectionObserverEntry.prototype &&
   'intersectionRatio' in window.IntersectionObserverEntry.prototype
-
-// --- Getters ---
-
-export const getEnv = (key, fallback = null) => {
-  const env = typeof process !== 'undefined' && process ? process.env || {} : {}
-  if (!key) {
-    /* istanbul ignore next */
-    return env
-  }
-  return env[key] || fallback
-}
-
-export const getNoWarn = () =>
-  getEnv('BOOTSTRAP_VUE_NO_WARN') || getEnv('NODE_ENV') === 'production'
 
 export const hasCssVariableSupport =
   isBrowser &&
