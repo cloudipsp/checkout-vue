@@ -1,7 +1,7 @@
 import { FButtonClose } from '@/components/button/button-close'
 import FButton from '@/components/button/button'
 import { htmlOrText } from '@/utils/html'
-import Transition from '@/utils/transition'
+import { Transition } from '@/utils/transition'
 import { FTransporterSingle } from '@/utils/transporter'
 
 import { EVENT_OPTIONS_NO_CAPTURE } from '@/constants/events'

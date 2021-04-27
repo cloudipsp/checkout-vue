@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { BVTooltipTemplate } from 'bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template'
 import { isFunction, isUndefinedOrNull } from 'bootstrap-vue/esm/utils/inspect'
-import Transition from '@/utils/transition'
+import { Transition } from '@/utils/transition'
 import Popper from 'popper.js'
 import { isElement } from '@/utils/dom'
 
@@ -41,7 +41,6 @@ export default Vue.extend({
           this.updatePopper()
           // Handle flipping arrow classes
           if (data.originalPlacement !== data.placement) {
-            /* istanbul ignore next: can't test in JSDOM */
             this.popperPlacementChange(data)
           }
         },
@@ -67,7 +66,7 @@ export default Vue.extend({
       const $title = isFunction(this.title)
         ? this.title({})
         : isUndefinedOrNull(this.title)
-        ? /* istanbul ignore next */ h()
+        ? h()
         : this.title
 
       // Directive versions only

@@ -1,6 +1,5 @@
-import Vue, { mergeData } from 'bootstrap-vue/esm/vue'
-import BVTransition from 'bootstrap-vue/esm/utils/bv-transition'
-import { isPlainObject } from 'bootstrap-vue/esm/utils/inspect'
+import { mergeData } from 'vue-functional-data-merge'
+import { isPlainObject } from '@/utils/inspect'
 
 const NO_FADE_PROPS = {
   name: '',
@@ -18,8 +17,32 @@ const FADE_PROPS = {
   leaveActiveClass: 'f-fade',
 }
 
-export default Vue.extend({
-  extends: BVTransition,
+// @vue/component
+export const Transition = {
+  functional: true,
+  props: {
+    noFade: {
+      // Only applicable to the built in transition
+      // Has no effect if `trans-props` provided
+      type: Boolean,
+      default: false,
+    },
+    appear: {
+      // Has no effect if `trans-props` provided
+      type: Boolean,
+      default: false,
+    },
+    mode: {
+      // Can be overridden by user supplied trans-props
+      type: String,
+      default: undefined,
+    },
+    // For user supplied transitions (if needed)
+    transProps: {
+      type: Object,
+      default: null,
+    },
+  },
   render(h, { children, data, props }) {
     let transProps = props.transProps
     if (!isPlainObject(transProps)) {
@@ -48,4 +71,4 @@ export default Vue.extend({
       children
     )
   },
-})
+}

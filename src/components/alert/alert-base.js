@@ -1,4 +1,4 @@
-import Transition from '@/utils/transition'
+import { Transition } from '@/utils/transition'
 
 export default {
   inheritAttrs: false,
