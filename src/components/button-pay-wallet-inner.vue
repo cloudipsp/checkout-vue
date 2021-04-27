@@ -15,14 +15,15 @@
 import { loadCheckout } from '@/import'
 import { api } from '@/utils/api'
 import { mapState } from '@/utils/store'
-import id from '@/mixins/id'
+import { idMixin, props as idProps } from '@/mixins/id'
 import timeout from '@/mixins/timeout'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  mixins: [id, timeout],
+  mixins: [idMixin, timeout],
   inject: ['formRequest'],
   props: {
+    ...idProps,
     showTitle: {
       type: Boolean,
       default: false,
@@ -42,7 +43,7 @@ export default {
       'disable_request',
     ]),
     classButton() {
-      return 'f-wallet-pay-button-' + this.id
+      return 'f-wallet-pay-button-' + this.safeId()
     },
     show() {
       return this.init

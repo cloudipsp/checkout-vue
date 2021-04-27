@@ -6,7 +6,7 @@
       v-text="$t(description)"
     />
     <div :class="classGroupInner">
-      <label v-if="prepend" :for="id" class="f-form-control-prepend">
+      <label v-if="prepend" :for="safeId()" class="f-form-control-prepend">
         <f-svg :name="prepend" fw />
       </label>
       <f-form-item
@@ -17,10 +17,20 @@
         @blur="blur"
         @input="input"
       >
-        <slot :id="id" />
+        <slot :id="safeId()" />
       </f-form-item>
-      <slot :id="id" name="label" :classLabel="classLabel" :label="$t(label)">
-        <label v-if="label" :class="classLabel" :for="id" v-text="$t(label)" />
+      <slot
+        :id="safeId()"
+        name="label"
+        :classLabel="classLabel"
+        :label="$t(label)"
+      >
+        <label
+          v-if="label"
+          :class="classLabel"
+          :for="safeId()"
+          v-text="$t(label)"
+        />
       </slot>
       <f-placeholder v-if="showPlaceholder" v-bind="attrs" />
     </div>
@@ -46,7 +56,7 @@ import FPlaceholder from '@/components/base/placeholder'
 import FTooltipError from '@/components/tooltip/tooltip-error'
 import { mapState } from '@/utils/store'
 import { isExist } from '@/utils/inspect'
-import id from '@/mixins/id'
+import { idMixin, props as idProps } from '@/mixins/id'
 import isMounted from '@/mixins/is_mounted'
 
 export default {
@@ -56,9 +66,10 @@ export default {
     FPlaceholder,
     FTooltipError,
   },
-  mixins: [id, isMounted],
+  mixins: [idMixin, isMounted],
   inheritAttrs: false,
   props: {
+    ...idProps,
     description: {
       type: String,
       default: '',
@@ -115,7 +126,7 @@ export default {
     attrs() {
       return {
         ...this.$attrs,
-        id: this.id,
+        id: this.safeId(),
         name: `f-${this.name}`,
       }
     },
@@ -162,7 +173,7 @@ export default {
       return this.tooltip && this.hasError && this.focused
     },
     showPlaceholder() {
-      return !this.labelClass && this.id
+      return !this.labelClass && this.safeId()
     },
   },
   watch: {

@@ -1,13 +1,14 @@
 import isMounted from '@/mixins/is_mounted'
-import id from '@/mixins/id'
+import { idMixin, props as idProps } from '@/mixins/id'
 import { isExist } from '@/utils/inspect'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
   inheritAttrs: false,
   inject: ['submit'],
-  mixins: [isMounted, id],
+  mixins: [isMounted, idMixin],
   props: {
+    ...idProps,
     value: {
       type: [String, Number, Boolean],
       default: null,
@@ -39,7 +40,7 @@ export default {
     attrs() {
       return {
         ...this.$attrs,
-        id: this.$attrs.id || this.id,
+        id: this.safeId(),
         state: this.state,
         placeholder: this.placeholder,
       }
