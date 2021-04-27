@@ -32,7 +32,6 @@ export const FButtonClose = {
       on: {
         click(evt) {
           // Ensure click on button HTML content is also disabled
-          /* istanbul ignore if: bug in JSDOM still emits click on inner element */
           if (props.disabled && isEvent(evt)) {
             stopEvent(evt)
           }

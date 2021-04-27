@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    v-bind="$attrs"
+    v-bind="attrs"
     :class="className"
     :type="type"
     v-on="$listeners"
@@ -18,6 +18,10 @@ import { mapState } from '@/utils/store'
 export default {
   props: {
     block: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
     },
@@ -60,6 +64,12 @@ export default {
       'btn_success_gradient_custom',
       'btn_success_bg_lighten',
     ]),
+    attrs() {
+      return {
+        ...this.$attrs,
+        disabled: this.disabled,
+      }
+    },
     className() {
       return [
         'f-btn',
