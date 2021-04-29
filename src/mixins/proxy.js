@@ -1,6 +1,7 @@
 import { isString } from '@/utils/inspect'
 
-export default {
+// @vue/component
+export const proxyMixin = {
   methods: {
     proxy(fn) {
       return ((cx, cb) => (...args) => cb.apply(cx, args))(

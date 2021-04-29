@@ -1,12 +1,13 @@
-import isMounted from '@/mixins/is_mounted'
+import { isMountedMixin } from '@/mixins/is-mounted'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { isExist } from '@/utils/inspect'
 import { errorHandler } from '@/utils/helpers'
 
-export default {
-  inheritAttrs: false,
+// @vue/component
+export const itemMixin = {
+  mixins: [isMountedMixin, idMixin],
   inject: ['submit'],
-  mixins: [isMounted, idMixin],
+  inheritAttrs: false,
   props: {
     ...idProps,
     value: {

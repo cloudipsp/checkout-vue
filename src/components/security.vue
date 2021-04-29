@@ -52,7 +52,7 @@
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { FSecurityIcons } from '@/import'
-import Resize from '@/mixins/resize'
+import { resizeMixin } from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
 
 export default {
@@ -61,7 +61,7 @@ export default {
     FTooltipDefault,
     FSecurityIcons,
   },
-  mixins: [Resize],
+  mixins: [resizeMixin],
   data() {
     return {
       showModal: false,

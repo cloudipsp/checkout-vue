@@ -28,7 +28,7 @@
 import { DatePicker } from '@/import'
 import FormInput from '@/components/form/item/helpers/form-input'
 import FSvg from '@/components/svg'
-import item from '@/mixins/item'
+import { itemMixin } from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
 import { mapState } from '@/utils/store'
@@ -40,7 +40,7 @@ export default {
     FormInput,
     FSvg,
   },
-  mixins: [item],
+  mixins: [itemMixin],
   props: {
     min: {
       type: String,

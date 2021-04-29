@@ -6,12 +6,12 @@
 
 <script>
 import { mapStateGetSet } from '@/utils/store'
-import timeout from '@/mixins/timeout'
-import isMounted from '@/mixins/is_mounted'
+import { timeoutMixin } from '@/mixins/timeout'
+import { isMountedMixin } from '@/mixins/is-mounted'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  mixins: [timeout, isMounted],
+  mixins: [timeoutMixin, isMountedMixin],
   inject: ['formRequest'],
   provide() {
     return {

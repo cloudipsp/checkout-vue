@@ -9,14 +9,14 @@
 <script>
 import FScrollbarVertical from '@/components/scrollbar-vertical'
 import { FMenu } from '@/import'
-import Resize from '@/mixins/resize'
+import { resizeMixin } from '@/mixins/resize'
 
 export default {
   components: {
     FScrollbarVertical,
     FMenu,
   },
-  mixins: [Resize],
+  mixins: [resizeMixin],
   computed: {
     show() {
       return !this.isBreakpointMd

@@ -1,4 +1,5 @@
-export default {
+// @vue/component
+export const validatorMixin = {
   inject: ['$_veeObserver'],
   computed: {
     errors() {

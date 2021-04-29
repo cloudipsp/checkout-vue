@@ -70,8 +70,7 @@ import FIcon from '@/components/icon'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { removeDuplicate } from '@/utils/helpers'
-
-import timeout from '@/mixins/timeout'
+import { timeoutMixin } from '@/mixins/timeout'
 
 export default {
   components: {
@@ -79,7 +78,7 @@ export default {
     FSvg,
     FIcon,
   },
-  mixins: [timeout],
+  mixins: [timeoutMixin],
   props: {
     // {147209: {country: 'PL', name: '', logo: 'mbank'}}
     config: {

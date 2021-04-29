@@ -25,7 +25,7 @@ import FInfo from '@/components/info'
 import FPrice from '@/components/price'
 import FButtonPayWallet from '@/components/button-pay-wallet-wrapper'
 import FIcons from '@/components/icons'
-import Resize from '@/mixins/resize'
+import { resizeMixin } from '@/mixins/resize'
 
 export default {
   components: {
@@ -34,7 +34,7 @@ export default {
     FButtonPayWallet,
     FIcons,
   },
-  mixins: [Resize],
+  mixins: [resizeMixin],
   computed: {
     ...mapState(['isOnlyCard']),
   },

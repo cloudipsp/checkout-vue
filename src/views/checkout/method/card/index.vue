@@ -147,8 +147,9 @@ import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
-import timeout from '@/mixins/timeout'
-import isMounted from '@/mixins/is_mounted'
+import { timeoutMixin } from '@/mixins/timeout'
+import { isMountedMixin } from '@/mixins/is-mounted'
+import { resizeMixin } from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { isPhone } from '@/utils/mobile'
@@ -170,7 +171,7 @@ export default {
     FOffer,
     FButtonPay,
   },
-  mixins: [timeout, isMounted],
+  mixins: [timeoutMixin, isMountedMixin, resizeMixin],
   data() {
     return {
       showModalCard: false,

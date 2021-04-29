@@ -57,7 +57,7 @@ import FTooltipError from '@/components/tooltip/tooltip-error'
 import { mapState } from '@/utils/store'
 import { isExist } from '@/utils/inspect'
 import { idMixin, props as idProps } from '@/mixins/id'
-import isMounted from '@/mixins/is_mounted'
+import { isMountedMixin } from '@/mixins/is-mounted'
 
 export default {
   components: {
@@ -66,7 +66,7 @@ export default {
     FPlaceholder,
     FTooltipError,
   },
-  mixins: [idMixin, isMounted],
+  mixins: [idMixin, isMountedMixin],
   inheritAttrs: false,
   props: {
     ...idProps,

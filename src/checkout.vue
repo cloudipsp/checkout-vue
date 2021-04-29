@@ -6,11 +6,11 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import Resize from '@/mixins/resize'
+import { resizeMixin } from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  mixins: [Resize],
+  mixins: [resizeMixin],
   props: {
     optionsUser: {
       type: Object,

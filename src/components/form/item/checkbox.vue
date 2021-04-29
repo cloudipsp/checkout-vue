@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import item from '@/mixins/item'
+import { itemMixin } from '@/mixins/item'
 import Checkbox from '@/components/form/item/helpers/checkbox'
 
 export default {
   components: {
     Checkbox,
   },
-  mixins: [item],
+  mixins: [itemMixin],
   props: {
     variant: {
       type: String,

@@ -24,7 +24,7 @@ import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
-import validator from '@/mixins/validator'
+import { validatorMixin } from '@/mixins/validator'
 
 export default {
   components: {
@@ -32,7 +32,7 @@ export default {
     FPreloader,
     FAmount,
   },
-  mixins: [validator],
+  mixins: [validatorMixin],
   inject: ['submit'],
   computed: {
     ...mapState(['verification_type', 'isSubmit']),

@@ -19,13 +19,13 @@
 <script>
 import FormSelect from '@/components/form/item/helpers/form-select'
 import FSvg from '@/components/svg'
-import item from '@/mixins/item'
+import { itemMixin } from '@/mixins/item'
 
 export default {
   components: {
     FormSelect,
     FSvg,
   },
-  mixins: [item],
+  mixins: [itemMixin],
 }
 </script>

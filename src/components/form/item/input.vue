@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import item from '@/mixins/item'
-import mask from '@/mixins/mask'
+import { itemMixin } from '@/mixins/item'
+import { maskMixin } from '@/mixins/mask'
 import FormInput from '@/components/form/item/helpers/form-input'
-import remove_add_event_listener from '@/mixins/remove_add_event_listener'
+import { removeAddEventListenerMixin } from '@/mixins/remove-add-event-listener'
 
 export default {
   components: {
     FormInput,
   },
-  mixins: [item, mask, remove_add_event_listener],
+  mixins: [itemMixin, maskMixin, removeAddEventListenerMixin],
 }
 </script>

@@ -42,7 +42,7 @@ import FButtonLink from '@/components/button/button-link'
 import FSvg from '@/components/svg'
 import { SvgLogo } from '@/import'
 import FFormBase from '@/components/form/form/form-base'
-import Resize from '@/mixins/resize'
+import { resizeMixin } from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import { sort, parseSelect } from '@/utils/sort'
 
@@ -53,7 +53,7 @@ export default {
     SvgLogo,
     FFormBase,
   },
-  mixins: [Resize],
+  mixins: [resizeMixin],
   props: {
     back: {
       type: Boolean,

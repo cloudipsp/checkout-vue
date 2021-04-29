@@ -2,7 +2,8 @@ import mask from '@/utils/masker'
 
 const config = {}
 
-export default {
+// @vue/component
+export const maskMixin = {
   props: {
     mask: {
       type: [String, Array],

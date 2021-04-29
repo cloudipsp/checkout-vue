@@ -1,4 +1,6 @@
+import { listenOnWindowMixin } from '@/mixins/listen-on-window'
 import { mapState } from '@/utils/store'
+import { isFunction } from '@/utils/inspect'
 
 function init() {
   let width = window.innerWidth
@@ -9,12 +11,14 @@ function init() {
 
 function resize() {
   init.apply(this)
-  this.resize()
+  if (isFunction(this.resize)) {
+    this.resize()
+  }
 }
 
-let resizeBind
-
-export default {
+// @vue/component
+export const resizeMixin = {
+  mixins: [listenOnWindowMixin],
   data() {
     return {
       isBreakpointMd: false,
@@ -25,14 +29,9 @@ export default {
     ...mapState('options', ['full_screen']),
   },
   created() {
-    resizeBind = resize.bind(this)
-    window.addEventListener('resize', resizeBind)
+    let handler = resize.bind(this)
+    this.listenOnWindow('resize', handler)
+    this.listenOnWindow('orientationchange', handler)
     init.apply(this)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', resizeBind)
-  },
-  methods: {
-    resize() {},
   },
 }

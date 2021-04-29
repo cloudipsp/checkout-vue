@@ -1,4 +1,5 @@
-export default {
+// @vue/component
+export const isMountedMixin = {
   data() {
     return {
       isMounted: false,

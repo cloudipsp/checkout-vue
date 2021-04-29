@@ -16,11 +16,11 @@ import { loadCheckout } from '@/import'
 import { api } from '@/utils/api'
 import { mapState } from '@/utils/store'
 import { idMixin, props as idProps } from '@/mixins/id'
-import timeout from '@/mixins/timeout'
+import { timeoutMixin } from '@/mixins/timeout'
 import { errorHandler } from '@/utils/helpers'
 
 export default {
-  mixins: [idMixin, timeout],
+  mixins: [idMixin, timeoutMixin],
   inject: ['formRequest'],
   props: {
     ...idProps,
