@@ -72,37 +72,37 @@ msgstr "Demo mode"
 #: src/i18n/process/templates.js:2
 msgid "gdpr_alert_text"
 msgstr ""
-"We use cookies on this website to enhance your experience of making payments."
+"We use cookies on this website to enhance your experience of online payments."
 
 #: src/i18n/process/templates.js:3
 msgid "learn_more"
-msgstr "Learn more."
+msgstr "Learn more"
 
 #: src/i18n/process/templates.js:4
 msgid "save_card"
-msgstr "Save my card for future payments."
+msgstr "Save my card for future payments"
 
 #: src/i18n/process/templates.js:5
 msgid "its_safe"
-msgstr "It's safe."
+msgstr "It's safe"
 
 #: src/i18n/process/templates.js:6
 msgid "gdpr_modal_safe_title"
-msgstr "Saving card is safe and convenient"
+msgstr "Your card details are tokenised, making it safe and convenient for repeat purchases"
 
 #: src/i18n/process/templates.js:7
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>We do not record your card details as you enter them. In fact, we "
-"instantly encrypt and store them in the format of tokens. Tokens are random "
-"combinations of numbers and characters.<p>Each time another payment is made, "
+"instantly encrypt card details and store them in tokenised format. Tokens are random "
+"combinations of numbers and characters.<p>Whenever you make another payment, "
 "Fondy will use tokens instead of card details so that a potential fraudster "
-"won't be able to intercept them. It makes no sense to intercept token data "
-"since it has no value outside the Fondy payment service."
+"won't be able to intercept them. Token data has no value outside "
+"of the Fondy payment service."
 
 #: src/i18n/process/templates.js:8
 msgid "close"
-msgstr "Ask later"
+msgstr "Not now"
 
 #: src/i18n/process/templates.js:9
 msgid "accept"
@@ -118,11 +118,11 @@ msgstr "Search by country"
 
 #: src/i18n/process/templates.js:12
 msgid "system_search"
-msgstr "Search by bank name, IBAN or BLZ"
+msgstr "Search by bank name, IBAN or BIC"
 
 #: src/i18n/process/templates.js:13
 msgid "load_more"
-msgstr "Load more..."
+msgstr "Show more..."
 
 #: src/i18n/process/templates.js:15
 msgid "other_payment_method"
@@ -135,8 +135,8 @@ msgstr "Pay"
 #: src/i18n/process/templates.js:17
 msgid "demo-desc"
 msgstr ""
-"This is a demo mode. You can enter any data, the actual payment will not be "
-"available."
+"This is a demo system. While you may enter data, the payment will not be "
+"processed."
 
 #: src/i18n/process/templates.js:18
 msgid "use_other_card"
@@ -144,7 +144,7 @@ msgstr "Enter another card"
 
 #: src/i18n/process/templates.js:19
 msgid "expires_on"
-msgstr "Valid thru"
+msgstr "Expiry date"
 
 #: src/i18n/process/templates.js:20
 msgid "label"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: src/i18n/process/templates.js:23
 msgid "see_more"
-msgstr "See more"
+msgstr "Show in full"
 
 #: src/i18n/process/templates.js:24
 msgid "order_details"
@@ -172,7 +172,7 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:26
 msgid "submit3ds_title"
-msgstr "Payment was not completed"
+msgstr "Payment incomplete"
 
 #: src/i18n/process/templates.js:27
 msgid "submit3ds_text"
@@ -180,17 +180,17 @@ msgstr "Please enter another confirmation code"
 
 #: src/i18n/process/templates.js:28
 msgid "submit3ds_submit"
-msgstr "Try again"
+msgstr "Please try again"
 
 #: src/i18n/process/templates.js:29
 msgid "submit3ds_wait"
 msgstr ""
-"You will be redirected to the bank's website again to complete your payment "
+"You will be redirected to the bank's website to complete your payment "
 "in {0} seconds"
 
 #: src/i18n/process/templates.js:30 src/i18n/process/translate.js:1
 msgid "declined"
-msgstr "Unluckily, your payment didn't go through"
+msgstr "Unfortunately, your payment was unsuccessful"
 
 #: src/i18n/process/templates.js:31
 msgid "server_trouble_title"
@@ -199,8 +199,8 @@ msgstr "Oops.."
 #: src/i18n/process/templates.js:32
 msgid "server_trouble_desc"
 msgstr ""
-"Something is not right, but we are already on it. Please get back to a few "
-"steps prior and make a payment again."
+"A problem has occurred, and we are already working on it. Please return to your order "
+"and check out again."
 
 #: src/i18n/process/templates.js:33
 msgid "offer"
@@ -208,7 +208,7 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:34
 msgid "offer_t"
-msgstr "I accept <a href=\"{0}\" target=\"_blank\">offer conditions </a>"
+msgstr "I accept the <a href=\"{0}\" target=\"_blank\">bid terms and conditions. </a>"
 
 #: src/i18n/process/templates.js:35
 msgid "offerta_url"
@@ -216,15 +216,15 @@ msgstr ""
 
 #: src/i18n/process/templates.js:36
 msgid "total_amount"
-msgstr "Total"
+msgstr "Total amount due"
 
 #: src/i18n/process/templates.js:37
 msgid "fee"
-msgstr "Comission"
+msgstr "Commission"
 
 #: src/i18n/process/templates.js:38
 msgid "amount"
-msgstr "Total"
+msgstr "Amount due"
 
 #: src/i18n/process/templates.js:39
 msgid "security"
@@ -274,7 +274,7 @@ msgstr "Time span"
 
 #: src/i18n/process/templates.js:50
 msgid "subscription_start_time"
-msgstr "Starting on"
+msgstr "Start date"
 
 #: src/i18n/process/templates.js:51
 msgid "subscription_end_time"
@@ -296,7 +296,7 @@ msgstr "Name and Surname"
 
 #: src/i18n/process/templates.js:55
 msgid "customer_address"
-msgstr "Adress (street, building, apartment)"
+msgstr "Address (street, building, apartment)"
 
 #: src/i18n/process/templates.js:56
 msgid "customer_zip"
@@ -410,7 +410,7 @@ msgstr "Bank name"
 
 #: src/i18n/process/templates.js:83
 msgid "mfo"
-msgstr "Bank code (MFO)"
+msgstr "Bank code (BIC or MFO)"
 
 #: src/i18n/process/templates.js:84
 msgid "purpose"
@@ -447,7 +447,7 @@ msgid "ibox_info"
 msgstr ""
 "<p>To pay the order, please use the Search option to locate the Fondy "
 "payments service in the iBox terminal.<p>Your order will automatically be "
-"annulled past the deadline.<p>We won't accept payment for this order via "
+"cancelled after the deadline.<p>We cannot accept payment for this order via "
 "terminals other than iBox."
 
 #: src/i18n/process/templates.js:92
@@ -525,7 +525,7 @@ msgstr "Please use digits (0-9) only"
 
 #: src/i18n/process/translate.js:18
 msgid "rule_required"
-msgstr "Please fill in this field"
+msgstr "Please complete this field"
 
 #: src/i18n/process/translate.js:19
 msgid "rule_regex"
@@ -533,7 +533,7 @@ msgstr "Invalid format"
 
 #: src/i18n/process/translate.js:21
 msgid "rule_customer_name"
-msgstr "Please enter both name and last name, use letters (A-Za-z)"
+msgstr "Please enter both first name and last name, use letters (A-Za-z)"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_field"
@@ -541,7 +541,7 @@ msgstr "Please use letters (A-Za-z) and digits (0-9)"
 
 #: src/i18n/process/translate.js:23
 msgid "rule_customer_field_utf8"
-msgstr "Please don't use special characters here"
+msgstr "Please do not use special characters here"
 
 #: src/i18n/process/translate.js:24
 msgid "rule_phone"
@@ -601,15 +601,15 @@ msgstr "Payment button is expired"
 
 #: src/i18n/process/translate.js:42
 msgid "button_expired_text"
-msgstr "Contact the merchant to solve the issue "
+msgstr "Please contact the merchant to solve the issue. "
 
 #: src/i18n/process/translate.js:43
 msgid "button_status_not_active_title"
-msgstr "Payment link is deactivated."
+msgstr "Payment link is deactivated"
 
 #: src/i18n/process/translate.js:44
 msgid "button_status_not_active_text"
-msgstr "Please contact merchant in order to receive actual payment link."
+msgstr "Please contact the merchant to receive the payment link."
 
 #: src/i18n/process/translate.js:47
 msgid "sender_familyName"
@@ -636,4 +636,4 @@ msgstr "IBAN"
 #~ msgstr "Local payment methods"
 
 #~ msgid "declined_desc"
-#~ msgstr "You may return to the website and make another order."
+#~ msgstr "You may return to the website and place another order."
