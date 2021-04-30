@@ -331,7 +331,7 @@ msgstr "kart nömrəsi"
 
 #: src/i18n/process/templates.js:64
 msgid "card_number_p"
-msgstr "kart nömrəsi"
+msgstr "____ ____ ____ ____"
 
 #: src/i18n/process/templates.js:65
 msgid "angle-down"
