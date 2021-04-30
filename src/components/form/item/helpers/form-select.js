@@ -1,16 +1,100 @@
-import Vue from 'vue'
-import { SLOT_NAME_FIRST } from 'bootstrap-vue/esm/constants/slot-names'
-import { htmlOrText } from 'bootstrap-vue/esm/utils/html'
-import { BFormSelect } from 'bootstrap-vue'
-import { BFormSelectOption } from 'bootstrap-vue/esm/components/form-select/form-select-option'
-import { BFormSelectOptionGroup } from 'bootstrap-vue/esm/components/form-select/form-select-option-group'
+import { from as arrayFrom } from '@/utils/array'
+import { attemptBlur, attemptFocus } from '@/utils/dom'
+import { htmlOrText } from '@/utils/html'
+import { isArray } from '@/utils/inspect'
+import {
+  formControlMixin,
+  props as formControlProps,
+} from '@/mixins/form-control'
+import { formStateMixin, props as formStateProps } from '@/mixins/form-state'
+import { idMixin, props as idProps } from '@/mixins/id'
+import { normalizeSlotMixin } from '@/mixins/normalize-slot'
+import {
+  optionsMixin,
+  props as optionsProps,
+} from '@/components/form/item/helpers/mixin-options'
+import { FFormSelectOption } from '@/components/form/item/helpers/form-select-option'
+import { FFormSelectOptionGroup } from '@/components/form/item/helpers/form-select-option-group'
 
-export default Vue.extend({
-  extends: BFormSelect,
-  inheritAttrs: false,
+// @vue/component
+export const FFormSelect = {
+  mixins: [
+    idMixin,
+    normalizeSlotMixin,
+    formControlMixin,
+    formStateMixin,
+    optionsMixin,
+  ],
+  model: {
+    prop: 'value',
+    event: 'input',
+  },
+  props: {
+    ...idProps,
+    ...formControlProps,
+    ...formStateProps,
+    ...optionsProps,
+    value: {
+      // type: [Object, Array, String, Number, Boolean],
+      // default: undefined
+    },
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
+    selectSize: {
+      // Browsers default size to 0, which shows 4 rows in most browsers in multiple mode
+      // Size of 1 can bork out Firefox
+      type: Number,
+      default: 0,
+    },
+    ariaInvalid: {
+      type: [Boolean, String],
+      default: false,
+    },
+  },
+  data() {
+    return {
+      localValue: this.value,
+    }
+  },
   computed: {
-    inputClass() {
-      return []
+    computedSelectSize() {
+      // Custom selects with a size of zero causes the arrows to be hidden,
+      // so dont render the size attribute in this case
+      return this.selectSize === 0 ? null : this.selectSize
+    },
+    computedAriaInvalid() {
+      if (this.ariaInvalid === true || this.ariaInvalid === 'true') {
+        return 'true'
+      }
+      return this.stateClass === 'is-invalid' ? 'true' : null
+    },
+  },
+  watch: {
+    value(newVal) {
+      this.localValue = newVal
+    },
+    localValue() {
+      this.$emit('input', this.localValue)
+    },
+  },
+  methods: {
+    focus() {
+      attemptFocus(this.$refs.input)
+    },
+    blur() {
+      attemptBlur(this.$refs.input)
+    },
+    onChange(evt) {
+      const { target } = evt
+      const selectedVal = arrayFrom(target.options)
+        .filter(o => o.selected)
+        .map(o => ('_value' in o ? o._value : o.value))
+      this.localValue = target.multiple ? selectedVal : selectedVal[0]
+      this.$nextTick(() => {
+        this.$emit('change', this.localValue)
+      })
     },
   },
   render(h) {
@@ -26,9 +110,9 @@ export default Vue.extend({
       const { value, label, options, disabled } = option
       const key = `option_${index}`
 
-      return Array.isArray(options)
-        ? h(BFormSelectOptionGroup, { props: { label, options }, key })
-        : h(BFormSelectOption, {
+      return isArray(options)
+        ? h(FFormSelectOptionGroup, { props: { label, options }, key })
+        : h(FFormSelectOption, {
             props: { value, disabled },
             domProps: htmlOrText(option.html, option.text),
             key,
@@ -38,7 +122,6 @@ export default Vue.extend({
     return h(
       'select',
       {
-        class: this.inputClass,
         attrs: {
           ...this.$attrs,
           id: this.safeId(),
@@ -55,7 +138,7 @@ export default Vue.extend({
         directives: [{ name: 'model', value }],
         ref: 'input',
       },
-      [this.normalizeSlot(SLOT_NAME_FIRST), $options, this.normalizeSlot()]
+      [this.normalizeSlot('first'), $options, this.normalizeSlot()]
     )
   },
-})
+}

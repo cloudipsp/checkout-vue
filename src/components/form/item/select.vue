@@ -4,7 +4,7 @@
     class="f-form-control-select-wrapper"
     v-bind="attrsValidation"
   >
-    <form-select
+    <f-form-select
       ref="input"
       v-model="innerValue"
       :class="['f-form-control-select', classInput]"
@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import FormSelect from '@/components/form/item/helpers/form-select'
+import { FFormSelect } from '@/components/form/item/helpers/form-select'
 import FSvg from '@/components/svg'
 import { itemMixin } from '@/mixins/item'
 
 export default {
   components: {
-    FormSelect,
+    FFormSelect,
     FSvg,
   },
   mixins: [itemMixin],
