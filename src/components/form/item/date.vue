@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider ref="validation" v-bind="attrsValidation">
-    <form-input
+    <f-form-input
       v-if="isMobile"
       ref="input"
       v-model="innerValue"
@@ -26,7 +26,7 @@
 
 <script>
 import { DatePicker } from '@/import'
-import FormInput from '@/components/form/item/helpers/form-input'
+import { FFormInput } from '@/components/form/item/helpers/form-input'
 import FSvg from '@/components/svg'
 import { itemMixin } from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
@@ -37,7 +37,7 @@ import format from '@/config/date'
 export default {
   components: {
     DatePicker,
-    FormInput,
+    FFormInput,
     FSvg,
   },
   mixins: [itemMixin],
