@@ -106,15 +106,7 @@
         </template>
       </f-form-group>
     </div>
-    <f-preloader :condition="showEmail" class="f-mb-3">
-      <f-form-group
-        v-model.trim="email"
-        input-class="f-checkout-email"
-        name="email"
-        rules="required|email"
-        autocomplete="email"
-      />
-    </f-preloader>
+    <f-field-email />
     <f-fields-customer />
     <f-fields-button />
     <f-fields-user />
@@ -140,7 +132,7 @@ import FSvg from '@/components/svg'
 import FTooltipCard from '@/components/tooltip/tooltip-card'
 import FCardList from '@/components/card-list'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
-import FPreloader from '@/components/preloader'
+import FFieldEmail from '@/components/fields/email'
 import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
@@ -163,7 +155,7 @@ export default {
     FTooltipCard,
     FCardList,
     FTooltipDefault,
-    FPreloader,
+    FFieldEmail,
     FFieldsCustomer,
     FFieldsButton,
     FFieldsUser,
@@ -181,17 +173,8 @@ export default {
   },
   computed: {
     ...mapState(['read_only', 'cards', 'submited']),
-    ...mapState('options', {
-      showEmail: 'email',
-    }),
     ...mapState('params', ['token']),
-    ...mapStateGetSet('params', [
-      'email',
-      'cvv2',
-      'expiry_date',
-      'card_number',
-      'code',
-    ]),
+    ...mapStateGetSet('params', ['cvv2', 'expiry_date', 'card_number', 'code']),
     validExpiryDate() {
       let minDate = this.store.state.validate_expdate
         ? formatMMYY(createDate())
