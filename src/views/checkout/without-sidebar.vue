@@ -1,5 +1,5 @@
 <template>
-  <div class="f-blank">
+  <div class="f-without-sidebar">
     <f-header />
     <f-form class="f-wrapper">
       <f-scrollbar-vertical class="f-center" wrap-class="f-center-wrap">

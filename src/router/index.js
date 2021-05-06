@@ -18,7 +18,7 @@ import {
   Error,
   ErrorModal,
   System,
-  Blank,
+  WithoutSidebar,
   FMenu,
 } from '@/import'
 
@@ -119,8 +119,8 @@ export default name => {
             ],
           },
           {
-            path: 'blank',
-            component: Blank,
+            path: 'without-sidebar',
+            component: WithoutSidebar,
             children: [
               {
                 path: success,

@@ -145,7 +145,9 @@ export const loadStyleAdaptive = () =>
   )
 
 export const Success = () =>
-  import(/* webpackChunkName: "19" */ '@/views/checkout/blank/success')
+  import(
+    /* webpackChunkName: "19" */ '@/views/checkout/without-sidebar/success'
+  )
 
 export const FSecurityIcons = () =>
   import(/* webpackChunkName: "20" */ '@/components/security-icons')
@@ -173,11 +175,11 @@ export const InputHidden = () =>
 export const InputAmount = () =>
   import(/* webpackChunkName: "26" */ '@/components/input-amount')
 
-export const Blank = () =>
-  import(/* webpackChunkName: "27" */ '@/views/checkout/blank')
+export const WithoutSidebar = () =>
+  import(/* webpackChunkName: "27" */ '@/views/checkout/without-sidebar')
 
 export const FMenu = () =>
-  import(/* webpackChunkName: "28" */ '@/views/checkout/blank/menu')
+  import(/* webpackChunkName: "28" */ '@/views/checkout/without-sidebar/menu')
 
 export const FModalError = () =>
   import(/* webpackChunkName: "29" */ '@/components/modal/modal-error')
