@@ -1,4 +1,5 @@
 import { isPlainObject } from '@/utils/inspect'
+import { arrayIncludes } from '@/utils/array'
 
 export const getCookie = name => {
   let matches = document.cookie.match(
@@ -88,3 +89,13 @@ export const createConfig = (names, values) =>
   }, {})
 
 export const key = (...arr) => arr.join('_')
+
+export const getRouteName = (methods, active) => {
+  let name = arrayIncludes(methods, active) ? active : methods[0]
+
+  if (methods.length === 1 && methods[0] === 'wallets') {
+    name = 'blank-' + name
+  }
+
+  return name
+}

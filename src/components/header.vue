@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="f-header">
+  <div class="f-header">
     <div class="f-header-logo">
       <transition name="f-fade-enter">
         <f-button-link
@@ -61,15 +61,12 @@ export default {
     },
   },
   computed: {
-    ...mapState(['isOnlyCard', 'is_only_wallets']),
+    ...mapState(['isOnlyCard']),
     ...mapState('params', ['lang']),
     ...mapState('options', ['locales', 'logo_url', 'full_screen']),
     ...mapState('options', {
       optionsLang: 'lang',
     }),
-    show() {
-      return !this.is_only_wallets
-    },
     locale() {
       return this.locales.map(parseSelect).sort(sort('text'))
     },

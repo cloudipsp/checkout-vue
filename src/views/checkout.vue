@@ -22,7 +22,7 @@ import FLoading from '@/components/loading'
 import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
-import { errorHandler } from '@/utils/helpers'
+import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { cardsParse } from '@/utils/card-brand'
 
@@ -175,11 +175,11 @@ export default {
       })
     },
     orderSuccess(model) {
+      this.location(model)
+
       let order_data = model.attr('order_data')
 
       if (!order_data) return
-
-      this.location(model)
 
       this.amount = order_data.amount
       this.currency = order_data.currency
@@ -266,10 +266,10 @@ export default {
     locationMethod() {
       if (this.$route.name === 'menu') return
 
-      let method_route = this.$route.name || this.$route.params.method
-      let name = this.methods.includes(method_route)
-        ? method_route
-        : this.methods[0]
+      let name = getRouteName(
+        this.methods,
+        this.$route.name || this.$route.params.method
+      )
 
       this.$router.push({ name }).catch(() => {})
     },

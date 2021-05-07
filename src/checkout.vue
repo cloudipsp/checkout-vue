@@ -7,7 +7,7 @@
 <script>
 import { mapState } from '@/utils/store'
 import { resizeMixin } from '@/mixins/resize'
-import { errorHandler } from '@/utils/helpers'
+import { errorHandler, getRouteName } from '@/utils/helpers'
 
 export default {
   mixins: [resizeMixin],
@@ -42,7 +42,9 @@ export default {
     isBreakpointMd(value) {
       if (value) return
 
-      this.$router.push({ name: this.methods[0] }).catch(() => {})
+      let name = getRouteName(this.methods, this.methods[0])
+
+      this.$router.push({ name }).catch(() => {})
     },
   },
   created() {
@@ -78,11 +80,9 @@ export default {
       this.$router.push({ name: 'menu' }).catch(() => {})
     },
     goMethod() {
-      this.$router
-        .push({
-          name: this.active_tab || this.methods[0],
-        })
-        .catch(() => {})
+      let name = getRouteName(this.methods, this.active_tab)
+
+      this.$router.push({ name }).catch(() => {})
     },
     goErrorModal(error) {
       this.$router

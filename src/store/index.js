@@ -105,7 +105,6 @@ class Store extends Model {
         this.state.options.methods_disabled
       )
       this.initIsOnlyCard()
-      this.initIsOnlyWallets()
     }
     this.state.tabs = tabs(model.attr('tabs'))
     this.state.options.default_country =
@@ -166,7 +165,6 @@ class Store extends Model {
     this.initLang()
     this.initCssDevice()
     this.initIsOnlyCard()
-    this.initIsOnlyWallets()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
   }
@@ -197,11 +195,6 @@ class Store extends Model {
   initIsOnlyCard() {
     let methods = this.state.options.methods.filter(removeWallets)
     this.state.isOnlyCard = methods.length === 1 && methods[0] === 'card'
-  }
-  initIsOnlyWallets() {
-    this.state.is_only_wallets =
-      this.state.options.methods.length === 1 &&
-      this.state.options.methods[0] === 'wallets'
   }
   initShowMenuFirst() {
     this.state.options.show_menu_first =

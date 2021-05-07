@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
+import Blank from '@/views/checkout/blank'
 import store from '@/store/index'
 import {
   Card,
@@ -20,6 +21,7 @@ import {
   System,
   WithoutSidebar,
   FMenu,
+  BlankWallets,
 } from '@/import'
 
 const card = 'card'
@@ -131,6 +133,17 @@ export default name => {
                 path: menu,
                 name: menu,
                 component: FMenu,
+              },
+            ],
+          },
+          {
+            path: 'blank',
+            component: Blank,
+            children: [
+              {
+                path: 'wallets',
+                name: 'blank-wallets',
+                component: BlankWallets,
               },
             ],
           },
