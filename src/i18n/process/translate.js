@@ -47,3 +47,7 @@ _('sender_name')
 _('sender_familyName')
 _('bic')
 _('iban')
+
+_('wallets_google')
+_('wallets_card')
+_('wallets_apple')
