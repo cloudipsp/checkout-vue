@@ -28,7 +28,7 @@ export default {
         card: 'card_system',
         banklinks_eu: 'banks',
         local_methods: 'banks',
-        xz: 'digital_wallet',
+        wallets: 'digital_wallet',
       },
     }
   },

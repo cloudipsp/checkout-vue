@@ -29,7 +29,7 @@ export default {
   },
   created() {
     this.list.forEach(({ name, value }) => {
-      this.params.custom[name] = value
+      this.$set(this.params.custom, name, value)
     })
   },
 }

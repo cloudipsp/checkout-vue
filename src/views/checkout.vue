@@ -1,5 +1,9 @@
 <template>
-  <div class="f-container" :class="classNameContainer" :data-e2e-ready="ready">
+  <f-form
+    class="f-container"
+    :class="classNameContainer"
+    :data-e2e-ready="ready"
+  >
     <div v-if="isDemo" class="f-demo">
       <div class="f-demo-title" v-text="$t('demo-title')" />
     </div>
@@ -14,10 +18,11 @@
       @submit3ds="submit3ds"
     />
     <f-alert-gdpr-wrapper />
-  </div>
+  </f-form>
 </template>
 
 <script>
+import FForm from '@/components/form/form'
 import FLoading from '@/components/loading'
 import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
@@ -30,6 +35,7 @@ let model3ds
 
 export default {
   components: {
+    FForm,
     FLoading,
     FModalErrorWrapper,
     FModal3ds,
@@ -49,7 +55,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isOnlyCard']),
     ...mapState('options', ['disable_request']),
     ...mapState('options.theme', ['type']),
     ...mapState(['loading']),
@@ -74,13 +79,7 @@ export default {
       'cvv2',
     ]),
     classNameContainer() {
-      return [
-        {
-          'f-only-card': this.isOnlyCard,
-        },
-        `f-page-${this.$route.name}`,
-        `f-theme-${this.type}`,
-      ]
+      return [`f-page-${this.$route.name}`, `f-theme-${this.type}`]
     },
     isDemo() {
       return this.disable_request
@@ -181,7 +180,7 @@ export default {
 
       if (!order_data) return
 
-      this.amount = order_data.amount
+      this.amount = parseInt(order_data.amount)
       this.currency = order_data.currency
       this.merchant_id = order_data.merchant_id
       this.store.state.params.email =

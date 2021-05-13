@@ -71,7 +71,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['options', 'isOnlyCard']),
+    ...mapState(['options']),
     showTitle() {
       return this.position === 'center'
     },
