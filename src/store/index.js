@@ -182,7 +182,10 @@ class Store extends Model {
     )
   }
   initLocaleMessageEn() {
-    i18n.setLocaleMessage('en', this.state.messages['en'])
+    i18n.setLocaleMessage('en', {
+      ...i18n._vm.messages.en,
+      ...this.state.messages['en'],
+    })
   }
   initLang() {
     this.changeLang(
