@@ -1,4 +1,12 @@
 .f-wallet-pay-button {
+  &::after {
+    padding: px-to-rem(10px);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    background-size: contain;
+  }
+
   .f-sidebar & {
     margin-bottom: px-to-rem(32px);
   }
@@ -11,4 +19,22 @@
 .f-wallet-pay-title {
   margin-bottom: px-to-rem(16px);
   font-weight: 300;
+}
+
+.f-wallet-pay-button-google-light::after,
+.f-wallet-pay-button-card-light::after {
+  background-image: url('https://www.gstatic.com/instantbuy/svg/light_gpay.svg');
+}
+
+.f-wallet-pay-button-google-dark::after,
+.f-wallet-pay-button-card-dark::after {
+  background-image: url('https://www.gstatic.com/instantbuy/svg/dark_gpay.svg');
+}
+
+.f-wallet-pay-button-apple-light::after {
+  background-image: url('../assets/apple-pay-light.svg');
+}
+
+.f-wallet-pay-button-apple-dark::after {
+  background-image: url('../assets/apple-pay-dark.svg');
 }

@@ -36,7 +36,7 @@
   }
 
   &::after {
-    background: $background;
+    background-color: $background;
     @if $border {
       border: 1px solid $border;
     }
@@ -52,7 +52,7 @@
       }
     }
     &::after {
-      background: $background-hover;
+      background-color: $background-hover;
       @if $border-hover {
         border: 1px solid $border-hover;
       }
@@ -69,7 +69,7 @@
     }
 
     &::after {
-      background: $background-active;
+      background-color: $background-active;
       @if $border-active {
         border: 1px solid $border-active;
       }
@@ -96,13 +96,13 @@
   &:hover,
   &:focus {
     &::after {
-      background: $background-hover;
+      background-color: $background-hover;
     }
   }
 
   &:active {
     &::after {
-      background: $background-active;
+      background-color: $background-active;
     }
   }
 
@@ -112,6 +112,8 @@
 .f-btn {
   position: relative;
   display: inline-block;
+  height: px-to-rem(44px);
+  min-height: px-to-rem(44px);
   padding: px-to-rem(10px) px-to-rem(32px);
   font-size: px-to-rem(18px);
   font-weight: 400;
@@ -362,6 +364,8 @@
 }
 
 .f-btn-lg {
+  height: px-to-rem(56px);
+  min-height: px-to-rem(56px);
   padding: px-to-rem(16px) px-to-rem(32px);
 }
 
