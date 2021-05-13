@@ -143,7 +143,7 @@ export default {
       return isDesktop
     },
   },
-  created() {
+  mounted() {
     this.submit()
       .then(model => {
         this.model = model.data

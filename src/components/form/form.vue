@@ -16,6 +16,7 @@ export default {
   provide() {
     return {
       submit: this.submit,
+      validate: this.validate,
     }
   },
   computed: {
@@ -46,18 +47,20 @@ export default {
     },
     submit(data) {
       this.submited = true
-      return this.$nextTick()
-        .then(() => this.observer.validate())
-        .then(isValid => {
-          this.isSubmit = true
-
-          if (!isValid) return this.autoFocus(this.errors[0][0])
-
+      return this.validate()
+        .then(() => {
           return this.formRequest(data)
         })
         .finally(() => {
           this.submited = false
         })
+    },
+    validate() {
+      return this.observer.validate().then(isValid => {
+        this.isSubmit = true
+
+        if (!isValid) return this.autoFocus(this.errors[0][0])
+      })
     },
     autoFocus(id) {
       // mask point
