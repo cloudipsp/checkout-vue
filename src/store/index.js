@@ -57,6 +57,8 @@ class Store extends Model {
     this.state.params.lang = this.user.params?.lang || model.attr('lang')
 
     this.initLang()
+    this.initHasFields()
+    this.initIsOnlyCard()
   }
   autoSubmit() {
     let methods = this.state.options.methods
@@ -104,7 +106,6 @@ class Store extends Model {
         model.attr('tabs_order'),
         this.state.options.methods_disabled
       )
-      this.initIsOnlyCard()
     }
     this.state.tabs = tabs(model.attr('tabs'))
     this.state.options.default_country =
@@ -164,6 +165,7 @@ class Store extends Model {
     this.initLocaleMessageEn()
     this.initLang()
     this.initCssDevice()
+    this.initHasFields()
     this.initIsOnlyCard()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
@@ -192,8 +194,20 @@ class Store extends Model {
 
     loadStyleAdaptive()
   }
+  initHasFields() {
+    this.state.has_fields =
+      !this.state.amount_readonly ||
+      this.state.options.email ||
+      this.state.options.customer_fields.length ||
+      this.state.fields.length ||
+      this.state.options.fields ||
+      this.state.options.offerta_url
+  }
   initIsOnlyCard() {
-    let methods = this.state.options.methods.filter(removeWallets)
+    let methods =
+      this.state.has_fields && this.state.can_make_payment
+        ? this.state.options.methods
+        : this.state.options.methods.filter(removeWallets)
     this.state.isOnlyCard = methods.length === 1 && methods[0] === 'card'
   }
   initShowMenuFirst() {
@@ -214,6 +228,8 @@ class Store extends Model {
       }
       this.setState(config)
       this.initLang()
+      this.initHasFields()
+      this.initIsOnlyCard()
     })
   }
   loadCardImg() {

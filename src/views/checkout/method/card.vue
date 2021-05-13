@@ -5,7 +5,7 @@
         <f-info v-if="isOnlyCard" />
         <f-price v-else />
       </div>
-      <f-button-pay-wallet />
+      <div ref="button-pay-wallet" />
       <f-icons
         v-if="isOnlyCard"
         class="f-mb-3"
@@ -23,20 +23,25 @@
 import { mapState } from '@/utils/store'
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
-import FButtonPayWallet from '@/components/button-pay-wallet-wrapper'
 import FIcons from '@/components/icons'
 import { resizeMixin } from '@/mixins/resize'
+import { mountedButtonPayWallet } from '@/components/button-pay-wallet'
 
 export default {
   components: {
     FInfo,
     FPrice,
-    FButtonPayWallet,
     FIcons,
   },
   mixins: [resizeMixin],
   computed: {
-    ...mapState(['isOnlyCard']),
+    ...mapState(['isOnlyCard', 'has_fields']),
+  },
+  mounted() {
+    if (this.has_fields) return
+    if (!this.isBreakpointMd) return
+
+    mountedButtonPayWallet(this.$refs['button-pay-wallet'])
   },
 }
 </script>

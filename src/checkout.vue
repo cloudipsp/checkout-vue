@@ -29,6 +29,7 @@ export default {
       'active_tab',
       'methods',
     ]),
+    ...mapState(['has_fields']),
     className() {
       return { 'f-embed': !this.full_screen }
     },
@@ -42,7 +43,7 @@ export default {
     isBreakpointMd(value) {
       if (value) return
 
-      let name = getRouteName(this.methods, this.methods[0])
+      let name = getRouteName(this.methods, this.methods[0], this.has_fields)
 
       this.$router.push({ name }).catch(() => {})
     },
@@ -80,7 +81,7 @@ export default {
       this.$router.push({ name: 'menu' }).catch(() => {})
     },
     goMethod() {
-      let name = getRouteName(this.methods, this.active_tab)
+      let name = getRouteName(this.methods, this.active_tab, this.has_fields)
 
       this.$router.push({ name }).catch(() => {})
     },

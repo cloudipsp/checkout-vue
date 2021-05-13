@@ -14,6 +14,7 @@ const config = {
     banklinks_eu_icons: [],
     local_methods_icons: [],
     loans_icons: [],
+    wallets_icons: [],
     title: '',
     full_screen: true,
     link: '',
@@ -109,6 +110,8 @@ const config = {
   amount_readonly: true,
   show_gdpr_frame: false,
   subscription: configSubscription.disabled,
+  can_make_payment: '',
+  has_fields: false,
 }
 
 locales.forEach(function (locale) {

@@ -24,6 +24,7 @@ import FSidebar from '@/components/sidebar'
 import FScrollbarVertical from '@/components/scrollbar-vertical'
 import FSecurity from '@/components/security'
 import { mapState } from '@/utils/store'
+import { createdButtonPayWalletMixin } from '@/mixins/created-button-pay-wallet'
 
 export default {
   components: {
@@ -32,6 +33,7 @@ export default {
     FScrollbarVertical,
     FSecurity,
   },
+  mixins: [createdButtonPayWalletMixin],
   computed: {
     ...mapState('options', ['full_screen']),
     className() {

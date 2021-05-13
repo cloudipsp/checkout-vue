@@ -14,7 +14,7 @@
           size="lg"
           fw
         />
-        <span v-text="$t(method)" />
+        <span v-text="title(method)" />
         <f-icons
           :ref="`${method}_icons`"
           class="f-menu-icons"
@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     ...mapState('options', ['methods']),
-    ...mapState(['options']),
+    ...mapState(['has_fields', 'can_make_payment']),
     className() {
       return function (item) {
         return [
@@ -82,7 +82,9 @@ export default {
       }
     },
     list() {
-      return this.methods.filter(removeWallets)
+      return this.has_fields && this.can_make_payment
+        ? this.methods
+        : this.methods.filter(removeWallets)
     },
     showTooltip() {
       return method =>
@@ -90,6 +92,12 @@ export default {
     },
     tooltipIcon() {
       return method => (method === 'loans' ? 'svg-timer' : 'span')
+    },
+    title() {
+      return method =>
+        method === 'wallets'
+          ? this.$t(`${method}_${this.can_make_payment}`)
+          : this.$t(method)
     },
   },
   mounted() {

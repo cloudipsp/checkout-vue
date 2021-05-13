@@ -1,33 +1,34 @@
 <template>
   <transition name="f-fade-enter">
-    <div v-show="show" class="f-btn-pay-wallet">
-      <div class="f-wallet-pay-button" :class="classButton" />
-      <div
-        v-if="showTitle"
-        class="f-wallet-pay-title"
-        v-text="$t('other_payment_method')"
-      />
-    </div>
+    <f-button
+      v-show="show"
+      :class="classButton"
+      :variant="variant"
+      block
+      @click="click"
+    />
   </transition>
 </template>
 
 <script>
+import FButton from '@/components/button/button'
 import { loadCheckout } from '@/import'
 import { api } from '@/utils/api'
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { timeoutMixin } from '@/mixins/timeout'
-import { errorHandler } from '@/utils/helpers'
+import { errorHandler, key } from '@/utils/helpers'
+import { btn, pay, wallet, variant } from '@/config/const'
+import { setAttr, setStyle } from '@/utils/dom'
 
 export default {
+  components: {
+    FButton,
+  },
   mixins: [idMixin, timeoutMixin],
-  inject: ['formRequest'],
+  inject: ['formRequest', 'validate'],
   props: {
     ...idProps,
-    showTitle: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
@@ -35,42 +36,27 @@ export default {
     }
   },
   computed: {
-    ...mapState('params', ['amount', 'email', 'custom', 'customer_data']),
-    ...mapState('options', [
-      'api_domain',
-      'endpoint',
-      'theme',
-      'disable_request',
-    ]),
+    ...mapState('css_class', {
+      variant: key(btn, pay, wallet, variant),
+    }),
+    ...mapState('params', ['amount']),
+    ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
+    ...mapStateGetSet(['can_make_payment']),
+    ...mapState(['has_fields', 'params']),
+    ...mapStateGetSet('options', ['wallets_icons']),
     classButton() {
-      return 'f-wallet-pay-button-' + this.safeId()
+      return [
+        'f-wallet-pay-button',
+        `f-wallet-pay-button-${this.can_make_payment}-${this.variant}`,
+      ]
     },
     show() {
       return this.init
     },
-    color() {
-      let result = ''
-      if (this.theme.type === 'light') {
-        result = 'black'
-      }
-      if (this.theme.type === 'dark') {
-        result = 'white'
-      }
-      return result
-    },
   },
   watch: {
-    amount() {
-      if (!this.show) return
-
-      this.timeout(this.update, 100)
-    },
-    email: 'changeParams',
-    custom: {
-      handler: 'changeParams',
-      deep: true,
-    },
-    customer_data: {
+    amount: 'update',
+    params: {
       handler: 'changeParams',
       deep: true,
     },
@@ -82,6 +68,11 @@ export default {
     loadCheckout() {
       if (this.disable_request) return
 
+      const div = document.createElement('div')
+      setAttr(div, 'id', this.safeId())
+      setStyle(div, 'display', 'none')
+      this.$root.$el.appendChild(div)
+
       loadCheckout().then(this.initButton)
     },
     initButton($checkout) {
@@ -90,27 +81,29 @@ export default {
       this.button = $checkout
         .get('PaymentButton', {
           api,
-          element: '.' + this.classButton,
+          element: '#' + this.safeId(),
           origin: 'https://' + this.api_domain,
           endpoint: this.endpoint,
-          style: {
-            type: 'short', // short long
-            color: this.color,
-            height: 44,
-          },
           data: this.store.formParams(),
         })
         .process(this.process)
         .on('show', () => {
           this.$root.$emit('show-pay')
+          this.can_make_payment = this.button.method
+          this.store.initIsOnlyCard()
+          this.wallets_icons = [this.button.method]
           this.init = true
         })
         .on('hide', () => {
           this.init = false
         })
     },
-    update() {
-      this.button.update({ data: this.store.formParams() })
+    update(newValue, oldValue) {
+      if (!newValue && !oldValue) return
+
+      this.timeout(() => {
+        this.button.update({ data: this.store.formParams() })
+      }, 100)
     },
     process(model) {
       this.formRequest(model.data).catch(errorHandler)
@@ -121,6 +114,17 @@ export default {
       this.button.utils.extend(this.button.params, {
         data: this.store.formParams(),
       })
+    },
+    click() {
+      if (this.has_fields) {
+        this.validate()
+          .then(() => {
+            this.button.click()
+          })
+          .catch(errorHandler)
+      } else {
+        this.button.click()
+      }
     },
   },
 }

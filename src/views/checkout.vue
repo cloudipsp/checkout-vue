@@ -78,6 +78,7 @@ export default {
       'expiry_date',
       'cvv2',
     ]),
+    ...mapState(['has_fields']),
     classNameContainer() {
       return [`f-page-${this.$route.name}`, `f-theme-${this.type}`]
     },
@@ -267,7 +268,8 @@ export default {
 
       let name = getRouteName(
         this.methods,
-        this.$route.name || this.$route.params.method
+        this.$route.name || this.$route.params.method,
+        this.has_fields
       )
 
       this.$router.push({ name }).catch(() => {})

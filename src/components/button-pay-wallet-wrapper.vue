@@ -1,25 +1,21 @@
 <template>
-  <button-pay-wallet-inner v-if="show" v-bind="$attrs" />
+  <button-pay-wallet-inner v-if="show" />
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapState } from '@/utils/store'
 import ButtonPayWalletInner from '@/components/button-pay-wallet-inner'
 
-export default {
+export default Vue.extend({
   components: {
     ButtonPayWalletInner,
   },
   computed: {
-    ...mapState(['ready']),
-    ...mapState('params', ['token']),
     ...mapState('options', ['methods_disabled']),
     show() {
-      return (
-        !this.methods_disabled.includes('wallets') &&
-        (this.token ? this.ready : true)
-      )
+      return !this.methods_disabled.includes('wallets')
     },
   },
-}
+})
 </script>
