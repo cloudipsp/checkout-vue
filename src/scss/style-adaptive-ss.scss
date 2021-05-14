@@ -48,8 +48,7 @@
   }
 }
 
-.f-container-sm,
-.f-method-card-inner {
+.f-container-sm {
   @include media-breakpoint-up(ss) {
     width: 100%;
     max-width: 335px;

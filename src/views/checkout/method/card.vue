@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="f-container-sm">
     <template v-if="isBreakpointMd">
       <div>
         <f-info v-if="isOnlyCard" />

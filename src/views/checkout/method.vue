@@ -9,7 +9,7 @@
         </div>
         <div :class="className">
           <transition name="f-fade-enter">
-            <router-view :class="classNameInner" />
+            <router-view />
           </transition>
           <f-security class="f-center-security" />
         </div>
@@ -38,9 +38,6 @@ export default {
     ...mapState('options', ['full_screen']),
     className() {
       return ['f-method', `f-method-${this.$route.name}`]
-    },
-    classNameInner() {
-      return `f-method-${this.$route.meta.method || this.$route.name}-inner`
     },
   },
 }
