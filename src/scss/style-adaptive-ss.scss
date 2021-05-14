@@ -5,16 +5,16 @@
 
 .f-card {
   @include media-breakpoint-up(ss) {
-    padding: px-to-rem(95px) 0 px-to-rem(19.5px) px-to-rem(16px);
+    padding: px-to-rem(94px) 0 px-to-rem(19px) px-to-rem(16px);
   }
 }
 
 .f-form-group-card {
   .f-control-label {
     @include media-breakpoint-up(ss) {
-      margin-bottom: px-to-rem(4px);
+      margin-bottom: px-to-rem(3px);
       font-size: px-to-rem(11px);
-      line-height: px-to-rem(13px);
+      line-height: px-to-rem(18px);
     }
   }
 
