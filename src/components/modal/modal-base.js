@@ -29,6 +29,7 @@ import { listenOnRootMixin } from '@/mixins/listen-on-root'
 import { listenOnWindowMixin } from '@/mixins/listen-on-window'
 import { normalizeSlotMixin } from '@/mixins/normalize-slot'
 import { scopedStyleAttrsMixin } from '@/mixins/scoped-style-attrs'
+import { resizeMixin } from '@/mixins/resize'
 import { modalManager } from '@/components/modal/helpers/modal-manager'
 import { FModalEvent } from '@/components/modal/helpers/modal-event.class'
 
@@ -51,6 +52,7 @@ export default {
     listenOnWindowMixin,
     normalizeSlotMixin,
     scopedStyleAttrsMixin,
+    resizeMixin,
   ],
   inheritAttrs: false,
   model: {
@@ -310,6 +312,7 @@ export default {
         {
           'f-fade': !this.noFade,
           'f-show': this.isShow,
+          'f-overflow-hidden': this.isTransitioning,
         },
         this.modalClass,
       ]
@@ -832,7 +835,7 @@ export default {
       })
     },
     checkModalOverflow() {
-      if (this.isVisible) {
+      if (this.isVisible && !this.isWidthSm) {
         const modal = this.$refs.modal
         this.isModalOverflowing =
           modal.scrollHeight > document.documentElement.clientHeight
