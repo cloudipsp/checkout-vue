@@ -23,35 +23,7 @@
         @input="inputCardNumber"
       >
         <template v-if="isCards" #label="{ classLabel, label }">
-          <template v-if="enableModal">
-            <a
-              href="#"
-              :class="[classLabel, 'f-control-label-card-list']"
-              @click.prevent="showModalCard = true"
-            >
-              {{ label }} <f-svg name="angle-down" size="lg" />
-            </a>
-          </template>
-          <template v-else>
-            <a
-              ref="tooltip"
-              href="#"
-              :class="[classLabel, 'f-control-label-card-list']"
-              tabindex="-1"
-              @click.prevent="showTooltipCard = true"
-              @blur="blurTooltipCard"
-            >
-              {{ label }}
-              <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
-            </a>
-            <f-tooltip-card
-              :show.sync="showTooltipCard"
-              :target="() => $refs.label && $refs.label.$el"
-              under-sticky
-            >
-              <f-card-list @input="setCardNumber" @add="addCardNumber" />
-            </f-tooltip-card>
-          </template>
+          <f-card-list-wrapper :class-label="classLabel" :label="label" />
         </template>
       </f-form-group>
 
@@ -113,24 +85,14 @@
     <f-subscription-wrapper />
     <f-offer />
     <f-button-pay />
-    <f-modal-base
-      v-model="showModalCard"
-      content-class="f-modal-content-card-list"
-      header-class="f-p-0"
-      body-class="f-modal-body-card-list"
-      :return-focus="returnFocus"
-    >
-      <f-card-list @input="setCardNumber" @add="addCardNumber" />
-    </f-modal-base>
   </div>
 </template>
 
 <script>
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
+import { FCardListWrapper } from '@/import'
 import FSvg from '@/components/svg'
-import FTooltipCard from '@/components/tooltip/tooltip-card'
-import FCardList from '@/components/card-list'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
 import FFieldsCustomer from '@/components/fields/customer'
@@ -139,21 +101,17 @@ import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
-import { timeoutMixin } from '@/mixins/timeout'
 import { isMountedMixin } from '@/mixins/is-mounted'
-import { resizeMixin } from '@/mixins/resize'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { isPhone } from '@/utils/mobile'
 import { createDate, formatMMYY } from '@/utils/date'
 
 export default {
   components: {
     FCardBg,
     FCardBrand,
+    FCardListWrapper,
     FSvg,
-    FTooltipCard,
-    FCardList,
     FTooltipDefault,
     FFieldEmail,
     FFieldsCustomer,
@@ -163,14 +121,7 @@ export default {
     FOffer,
     FButtonPay,
   },
-  mixins: [timeoutMixin, isMountedMixin, resizeMixin],
-  data() {
-    return {
-      showModalCard: false,
-      showTooltipCard: false,
-      returnFocus: null,
-    }
-  },
+  mixins: [isMountedMixin],
   computed: {
     ...mapState(['read_only', 'cards', 'submited']),
     ...mapState('params', ['token']),
@@ -198,10 +149,7 @@ export default {
       return this.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
     },
     isCards() {
-      return !!this.cards.length
-    },
-    enableModal() {
-      return isPhone || this.isWidthSm
+      return this.cards.length
     },
   },
   watch: {
@@ -227,28 +175,6 @@ export default {
   },
   methods: {
     cardTypeFeeSuccess() {},
-    setCardNumber() {
-      this.returnFocus = this.$refs.cvv2.$children[0].$children[0].$refs.input.$el
-      this.hide()
-    },
-    addCardNumber() {
-      this.returnFocus = this.$refs.card_number.$children[0].$children[0].$refs.input.$el
-      this.hide()
-    },
-    hide() {
-      this.showModalCard = false
-      this.showTooltipCard = false
-      // for focus after hiding the tooltip
-      this.timeout(() => {
-        this.returnFocus.focus()
-      }, 100)
-    },
-    blurTooltipCard() {
-      // TODO to volunteer the event setCardNumber addCardNumber
-      this.timeout(() => {
-        this.showTooltipCard = false
-      }, 100)
-    },
     inputCardNumber(value) {
       if (value.length !== 16 && value.length !== 19) return
       this.focus('card_number', value, 'expiry_date')

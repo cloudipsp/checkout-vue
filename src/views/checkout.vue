@@ -29,7 +29,6 @@ import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { cardsParse } from '@/utils/card-brand'
 
 let model3ds
 
@@ -162,17 +161,7 @@ export default {
 
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
-      this.cardsSuccess(model.instance(model.attr('cards')))
-    },
-    cardsSuccess(model) {
-      if (this.need_verify_code) return
-      if (!Array.isArray(model.data)) return
-      if (!model.data.length) return
-
-      cardsParse(model.data).then(cards => {
-        this.cards = cards
-        this.store.setCardNumber(this.cards[0])
-      })
+      this.cards = model.attr('cards')
     },
     orderSuccess(model) {
       this.location(model)

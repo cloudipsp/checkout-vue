@@ -188,3 +188,6 @@ export const SvgLogo = () => import(/* webpackChunkName: "30" */ '@/svg/logo')
 
 export const BlankWallets = () =>
   import(/* webpackChunkName: "31" */ '@/views/checkout/blank/wallets')
+
+export const FCardListWrapper = () =>
+  import(/* webpackChunkName: "32" */ '@/components/card-list-wrapper')

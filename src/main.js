@@ -1,5 +1,4 @@
 // TODO $emit setParams затирает стейт параметрами notSet.params
-// TODO в fail приходят cards, их отображать?
 // vuepress
 // css class
 // vue-i18n-extensions

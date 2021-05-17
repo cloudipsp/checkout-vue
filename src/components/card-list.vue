@@ -5,7 +5,7 @@
       <div v-text="$t('use_other_card')" />
     </a>
     <a
-      v-for="item in cards"
+      v-for="item in list"
       :key="item.card_number"
       href="#"
       :class="['f-card-list-item', { active: hasActive(item) }]"
@@ -37,8 +37,12 @@ export default {
     FSvg,
     FIcon,
   },
+  props: {
+    list: {
+      type: Array,
+    },
+  },
   computed: {
-    ...mapState(['cards']),
     ...mapState('params', ['card_number']),
     hasActive() {
       return card => card.card_number === this.card_number

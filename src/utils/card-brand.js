@@ -12,7 +12,7 @@ export const getCardBrand = value => {
   )
 }
 
-export const cardsParse = data => {
+export const parseCards = data => {
   return Promise.all(
     data
       .map(parse)
