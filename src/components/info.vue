@@ -5,7 +5,7 @@
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
     <f-preloader :condition="showOrderDesc" size="xs" class="f-order-desc">
-      <div ref="wrapper" class="f-order-desc-text">
+      <div ref="wrapper" :class="classOrderDesc">
         <span ref="desc">{{ order_desc_translation }}</span>
       </div>
       <a
@@ -20,7 +20,7 @@
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-text="$t(order_desc)" />
     </f-modal-base>
-    <f-price :readonly="readonly" />
+    <f-price v-if="showPrice" :readonly="readonly" />
   </div>
 </template>
 
@@ -44,11 +44,12 @@ export default {
   },
   data() {
     return {
-      showMore: false,
+      more: false,
       modalMore: false,
     }
   },
   computed: {
+    ...mapState(['order']),
     ...mapState('options', ['title', 'link']),
     ...mapState('params', ['order_desc']),
     showOrderDesc() {
@@ -57,6 +58,20 @@ export default {
     order_desc_translation() {
       this.nextResize()
       return this.$t(this.order_desc)
+    },
+    verification_type() {
+      return this.order.verification_type
+    },
+    showMore() {
+      return this.more && !this.verification_type
+    },
+    showPrice() {
+      return this.verification_type !== 'amount'
+    },
+    classOrderDesc() {
+      return {
+        'f-order-desc-text': !this.verification_type,
+      }
     },
   },
   methods: {
@@ -67,14 +82,14 @@ export default {
       this.$nextTick().then(this.resize)
     },
     resize() {
-      this.showMore = false
+      this.more = false
 
       if (!this.$refs.wrapper) return
       if (!this.$refs.desc) return
       if (this.$refs.wrapper.offsetHeight >= this.$refs.desc.offsetHeight)
         return
 
-      this.showMore = true
+      this.more = true
     },
   },
 }

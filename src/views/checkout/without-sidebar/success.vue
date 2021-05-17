@@ -1,16 +1,16 @@
 <template>
-  <div class="f-success" :data-e2e-status="order.order_status">
+  <div class="f-success" :data-e2e-status="status">
     <div class="f-success-title">
       <svg-approved v-if="isApproved" />
       <svg-decline v-if="isDeclined" />
-      <div class="f-title" v-text="$t(order.order_status)" />
+      <div class="f-title" v-text="$t(status)" />
     </div>
     <f-info readonly />
     <div class="f-success-form-group">
       <div class="f-row">
         <div class="f-col" v-text="$t('payment_id')" />
         <div class="f-col f-text-right">
-          {{ order.payment_id }}
+          {{ order.order_data.payment_id }}
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@
 import FInfo from '@/components/info'
 import SvgApproved from '@/svg/approved'
 import SvgDecline from '@/svg/decline'
+import { mapState } from '@/utils/store'
 
 export default {
   components: {
@@ -28,18 +29,16 @@ export default {
     SvgDecline,
     SvgApproved,
   },
-  props: {
-    order: {
-      type: Object,
-      required: true,
-    },
-  },
   computed: {
+    ...mapState(['order']),
+    status() {
+      return this.order.order_data.order_status
+    },
     isApproved() {
-      return this.order.order_status === 'approved'
+      return this.status === 'approved'
     },
     isDeclined() {
-      return this.order.order_status === 'declined'
+      return this.status === 'declined'
     },
   },
 }

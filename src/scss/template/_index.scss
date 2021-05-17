@@ -43,11 +43,10 @@
 
 .f-order-desc {
   margin-bottom: px-to-rem(12px);
+  color: $order_desc_color;
 }
 
 .f-order-desc-text {
-  color: $order_desc_color;
-
   @include clip-row($container_bg);
 }
 

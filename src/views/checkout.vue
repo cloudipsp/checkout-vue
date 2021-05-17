@@ -8,7 +8,7 @@
       <div class="f-demo-title" v-text="$t('demo-title')" />
     </div>
     <transition name="f-fade-enter">
-      <router-view class="f-loyaut" :order="order" />
+      <router-view class="f-loyaut" />
     </transition>
     <f-loading v-if="loading" backdrop />
     <f-modal-error-wrapper />
@@ -48,7 +48,6 @@ export default {
   data() {
     return {
       timeoutId: 0,
-      order: {},
       show3ds: false,
       duration3ds: 0,
     }
@@ -60,22 +59,12 @@ export default {
     ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'lang']),
 
-    ...mapStateGetSet([
-      'ready',
-      'cards',
-      'verification_type',
-      'need_verify_code',
-    ]),
-    ...mapStateGetSet('options', ['title']),
+    ...mapStateGetSet(['ready', 'cards', 'order']),
     ...mapStateGetSet('params', [
-      'order_desc',
       'amount',
       'currency',
       'merchant_id',
       'order_id',
-      'card_number',
-      'expiry_date',
-      'cvv2',
     ]),
     ...mapState(['has_fields']),
     classNameContainer() {
@@ -185,6 +174,7 @@ export default {
       model3ds = model
     },
     location(model) {
+      this.order = model.data
       //        console.warn('model.inProgress()', 'order.in_progress', model.inProgress())
       //        console.warn('model.readyToSubmit()', 'order.ready_to_submit', model.readyToSubmit())
       //        console.warn('model.waitForResponse()', 'order.pending', model.waitForResponse())
@@ -203,18 +193,10 @@ export default {
       if (model.submitToMerchant()) return // ready_to_submit && response_url && order_data formDataSubmit()
 
       if (model.needVerifyCode()) {
-        this.need_verify_code = true
-        this.verification_type = model.attr('verification_type')
-        this.title = 'verification_t'
-        this.order_desc = 'verification_' + this.verification_type + '_d'
-        this.card_number = model.attr('order_data.masked_card')
-        this.expiry_date = model.attr('order_data.expiry_date') || ''
-        this.cvv2 = ''
         this.$router.push({ name: 'card-verify' }).catch(() => {})
       } else if (model.inProgress() && model.waitForResponse()) {
         this.locationPending()
       } else if (model.inProgress()) {
-        this.order = model.attr('order_data')
         this.$router.push({ name: 'success' }).catch(() => {})
       } else {
         this.store

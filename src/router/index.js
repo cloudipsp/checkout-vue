@@ -66,7 +66,7 @@ export default name => {
                     name: card,
                     component: CardIndex,
                     beforeEnter: (to, from, next) => {
-                      if (instanceStore.state.need_verify_code)
+                      if (instanceStore.state.order.need_verify_code)
                         next({
                           name: 'card-verify',
                         })

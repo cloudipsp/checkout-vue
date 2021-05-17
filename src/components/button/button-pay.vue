@@ -34,8 +34,14 @@ export default {
   },
   mixins: [validatorMixin],
   inject: ['submit'],
+  props: {
+    noAmount: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
-    ...mapState(['verification_type', 'isSubmit']),
+    ...mapState(['isSubmit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
@@ -46,7 +52,7 @@ export default {
       return this.amount_with_fee || this.amount
     },
     showAmount() {
-      return this.verification_type !== 'amount' && this.show_button_amount
+      return !this.noAmount && this.show_button_amount
     },
     isDemo() {
       return this.disable_request

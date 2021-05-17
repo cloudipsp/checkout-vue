@@ -8,7 +8,7 @@
         </div>
         <div class="f-method">
           <transition name="f-fade-enter">
-            <router-view :order="order" />
+            <router-view />
           </transition>
           <f-security class="f-center-security" />
         </div>

@@ -118,13 +118,6 @@ class Store extends Model {
     this.state.params.order_desc =
       this.state.params.order_desc || model.attr('order.order_desc') || ' '
 
-    if (model.attr('order.verification')) {
-      this.state.verification_type = model.attr('verification_type')
-      this.state.options.title = 'verification_t'
-      this.state.params.order_desc =
-        'verification_' + this.state.verification_type + '_d'
-    }
-
     subscription(model.attr('order'))
       .then(config => this.setState(config))
       .catch(errorHandler)
@@ -356,7 +349,7 @@ class Store extends Model {
       })
     )
 
-    if (this.state.need_verify_code) {
+    if (this.state.order.need_verify_code) {
       delete params.custom
     }
 

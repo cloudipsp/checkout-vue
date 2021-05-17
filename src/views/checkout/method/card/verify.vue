@@ -39,15 +39,7 @@
         label-class
       />
     </div>
-    <f-preloader :condition="showEmail" class="f-mb-3">
-      <f-form-group
-        v-model.trim="email"
-        input-class="f-checkout-email"
-        name="email"
-        rules="required|email"
-        autocomplete="email"
-      />
-    </f-preloader>
+    <f-field-email />
     <f-form-group
       v-if="isCode"
       v-model="code"
@@ -65,7 +57,7 @@
     />
     <f-subscription-wrapper />
     <f-offer />
-    <f-button-pay />
+    <f-button-pay :no-amount="type === 'amount'" />
   </div>
 </template>
 
@@ -73,7 +65,7 @@
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
 import FSvg from '@/components/svg'
-import FPreloader from '@/components/preloader'
+import FFieldEmail from '@/components/fields/email'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
@@ -84,18 +76,21 @@ export default {
     FCardBg,
     FCardBrand,
     FSvg,
-    FPreloader,
+    FFieldEmail,
     FSubscriptionWrapper,
     FOffer,
     FButtonPay,
   },
   computed: {
-    ...mapState(['verification_type']),
-    ...mapState('options', {
-      showEmail: 'email',
-    }),
-    ...mapState('params', ['cvv2', 'expiry_date', 'card_number']),
-    ...mapStateGetSet('params', ['email', 'code']),
+    ...mapState(['order']),
+    ...mapStateGetSet('options', ['title']),
+    ...mapStateGetSet('params', [
+      'card_number',
+      'expiry_date',
+      'cvv2',
+      'order_desc',
+      'code',
+    ]),
     validCode() {
       return /EURT/.test(this.code) ? 'required' : 'required|digits:4'
     },
@@ -106,12 +101,22 @@ export default {
         regex: '^\\d{1,7}([,.]\\d{1,2})?$',
       }
     },
+    type() {
+      return this.order.verification_type
+    },
     isCode() {
-      return this.verification_type !== 'amount'
+      return this.type !== 'amount'
     },
     isAmount() {
-      return this.verification_type === 'amount'
+      return this.type === 'amount'
     },
+  },
+  created() {
+    this.title = 'verification_t'
+    this.order_desc = 'verification_' + this.type + '_d'
+    this.card_number = this.order.order_data.masked_card
+    this.expiry_date = this.order.order_data.expiry_date || ''
+    this.cvv2 = ''
   },
 }
 </script>
