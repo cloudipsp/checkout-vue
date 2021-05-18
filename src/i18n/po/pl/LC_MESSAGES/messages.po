@@ -132,7 +132,7 @@ msgstr "Lub zapłać za pomocą"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr "Zapłacić"
+msgstr "Zapłac"
 
 #: src/i18n/process/templates.js:17
 msgid "demo-desc"
