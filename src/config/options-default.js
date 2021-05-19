@@ -70,6 +70,7 @@ const config = {
       trial_quantity: 0,
     },
     card_number: '',
+    hash: '',
     expiry_date: '',
     cvv2: '',
     email: '',

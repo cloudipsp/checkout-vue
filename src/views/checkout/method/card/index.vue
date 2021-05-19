@@ -125,7 +125,13 @@ export default {
   computed: {
     ...mapState(['read_only', 'cards', 'submited']),
     ...mapState('params', ['token']),
-    ...mapStateGetSet('params', ['cvv2', 'expiry_date', 'card_number', 'code']),
+    ...mapStateGetSet('params', [
+      'cvv2',
+      'expiry_date',
+      'card_number',
+      'code',
+      'hash',
+    ]),
     validExpiryDate() {
       let minDate = this.store.state.validate_expdate
         ? formatMMYY(createDate())
@@ -135,7 +141,7 @@ export default {
     },
     validCardNumber() {
       let needValidCard =
-        !/\d{6}X/.test(this.card_number) &&
+        !this.hash &&
         (this.card_number.length === 16 ||
           this.card_number.length === 19 ||
           this.submited)
@@ -176,8 +182,11 @@ export default {
   methods: {
     cardTypeFeeSuccess() {},
     inputCardNumber(value) {
-      if (value.length !== 16 && value.length !== 19) return
-      this.focus('card_number', value, 'expiry_date')
+      if (value.length === 16 || value.length === 19) {
+        this.focus('card_number', value, 'expiry_date')
+      } else {
+        this.hash = ''
+      }
     },
     inputExpiryDate(value) {
       this.focus('expiry_date', value, 'cvv2')
