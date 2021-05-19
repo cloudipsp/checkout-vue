@@ -29,6 +29,7 @@ import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
+import { timeoutMixin } from '@/mixins/timeout'
 
 let model3ds
 
@@ -40,6 +41,7 @@ export default {
     FModal3ds,
     FAlertGdprWrapper,
   },
+  mixins: [timeoutMixin],
   provide() {
     return {
       formRequest: this.formRequest,
@@ -206,24 +208,23 @@ export default {
       }
     },
     locationPending() {
-      if (this.loading) return
       this.store.formLoading(true)
-      this.processingTimeout = setTimeout(() => {
-        this.store
-          .sendRequest('api.checkout.order', 'get', this.store.formParams())
-          .finally(() => {
-            this.store.formLoading(false)
-          })
-          .then(this.orderSuccess)
-          .catch(errorHandler)
-      }, 15 * 1000)
-      if (!this.processingClear) {
-        this.processingClear = setTimeout(() => {
-          this.processingClear = null
+      this.timeout('getOrder', 15 * 1000)
+      this.timeout('getOrderClear', 60 * 1000, false)
+    },
+    getOrder() {
+      this.store
+        .sendRequest('api.checkout.order', 'get', this.store.formParams())
+        .finally(() => {
           this.store.formLoading(false)
-          clearTimeout(this.processingTimeout)
-        }, 2 * 30 * 1000)
-      }
+        })
+        .then(this.orderSuccess)
+        .catch(errorHandler)
+    },
+    getOrderClear() {
+      this.store.formLoading(false)
+      this.clearTimeout('getOrder')
+      this.clearTimeout('getOrderClear')
     },
     autoSubmit({ method, system }) {
       this.$router
