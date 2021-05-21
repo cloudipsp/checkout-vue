@@ -29,8 +29,8 @@ export default {
     parseField({ label, placeholder, name, type, validate }) {
       return {
         name,
-        description: label,
-        label: placeholder,
+        description: placeholder ? label : '',
+        label: placeholder ? placeholder : label,
         component: type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(validate),
         autocomplete: 'on',

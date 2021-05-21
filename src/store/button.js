@@ -78,7 +78,15 @@ function parseOptions({
   }
 }
 
-function parseField({ value, name, label, hidden, required, valid = {} }) {
+function parseField({
+  value,
+  name,
+  label,
+  placeholder,
+  hidden,
+  required,
+  valid = {},
+}) {
   let { pattern, min_length, max_length } = valid
   let rules = {}
   if (required) rules.required = required
@@ -89,8 +97,8 @@ function parseField({ value, name, label, hidden, required, valid = {} }) {
   return {
     value,
     name,
-    label,
-    placeholder: '',
+    description: placeholder ? label : '',
+    label: placeholder ? placeholder : label,
     componentName: hidden ? 'input-hidden' : 'f-form-group',
     custom: true,
     rules,
