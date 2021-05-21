@@ -73,7 +73,8 @@
     "stylelint-config-twbs-bootstrap": "^2.1.0",
     "stylelint-prettier": "^1.2.0",
     "vue-template-compiler": "^2.6.12",
-    "webpack-bundle-analyzer": "^4.4.1"
+    "webpack-bundle-analyzer": "^4.4.1",
+    "workbox-webpack-plugin": "^6.1.5"
   },
   "eslintConfig": {
     "globals": {
