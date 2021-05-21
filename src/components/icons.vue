@@ -22,7 +22,6 @@
       custom-class="f-tooltip-icons"
       placement="topleft"
       :target="() => $refs.last"
-      :under-sticky="underSticky"
     >
       <f-icon
         v-for="item in listLast"
@@ -64,10 +63,6 @@ export default {
     count: {
       type: Number,
       default: 3,
-    },
-    underSticky: {
-      type: Boolean,
-      default: false,
     },
   },
   computed: {

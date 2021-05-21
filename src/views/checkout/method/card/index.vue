@@ -70,7 +70,6 @@
             placement="top"
             :target="() => $refs.label_cvv"
             variant="secondary"
-            under-sticky
           >
             <f-svg name="info-circle" size="md" />
             <span v-text="$t('cvv2_help', [digitsCvv])" />

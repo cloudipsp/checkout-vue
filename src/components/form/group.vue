@@ -38,7 +38,6 @@
       v-if="showErrorTooltip"
       :show.sync="showErrorTooltipFlag"
       :target="() => $refs.item && $refs.item.$el"
-      under-sticky
     >
       <f-svg name="warning" size="md" />
       {{ error }}

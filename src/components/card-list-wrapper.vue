@@ -30,7 +30,6 @@
     <f-tooltip-card
       :show.sync="showTooltipCard"
       :target="() => $refs.label && $refs.label.$el"
-      under-sticky
     >
       <f-card-list :list="list" @input="setCardNumber" @add="addCardNumber" />
     </f-tooltip-card>
