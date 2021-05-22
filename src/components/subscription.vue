@@ -155,7 +155,7 @@ export default {
     ...mapState('options.subscription', ['periods', 'readonly']),
     ...mapStateGetSet('options.subscription', ['unlimited']),
     ...mapState('subscription', ['show', 'show_switch']),
-    ...mapStateGetSet('subscription', ['enabled', 'enabled_switch']),
+    ...mapStateGetSet('subscription', ['enabled_switch']),
     ...mapStateGetSet('params', ['recurring']),
     ...mapStateGetSet('params.recurring_data', [
       'every',
@@ -191,15 +191,7 @@ export default {
     },
   },
   watch: {
-    enabled: {
-      handler(value) {
-        this.recurring = value ? 'y' : 'n'
-      },
-      immediate: true,
-    },
-    enabled_switch(value) {
-      this.enabled = value
-    },
+    enabled_switch: 'watchEnable',
     unlimited: 'watchUnlimited',
   },
   created() {
@@ -235,6 +227,9 @@ export default {
     },
     onShowError(show, error) {
       this.error = show && error
+    },
+    watchEnable(value) {
+      this.recurring = value ? 'y' : 'n'
     },
     watchUnlimited(value) {
       if (value) {

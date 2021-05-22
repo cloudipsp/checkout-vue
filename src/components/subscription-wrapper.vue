@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import { FSubscription } from '@/import'
 
 export default {
@@ -14,8 +14,17 @@ export default {
     ...mapState(['ready']),
     ...mapState('subscription', ['enabled']),
     ...mapState('params', ['token']),
+    ...mapStateGetSet('params', ['recurring']),
     show() {
       return this.enabled && (this.token ? this.ready : true)
+    },
+  },
+  watch: {
+    enabled: {
+      handler(value) {
+        this.recurring = value ? 'y' : 'n'
+      },
+      immediate: true,
     },
   },
 }

@@ -56,7 +56,7 @@ export const subscription = ({ subscription, recurring_data = {} } = {}) => {
 export const getType = (isSubscription, state) => {
   let type
 
-  if (!isSubscription) return 'disable'
+  if (!isSubscription) return 'disabled'
 
   if (isBoolean(state)) {
     type = state ? 'shown_edit_on' : 'shown_edit_off'
