@@ -37,7 +37,6 @@ export default {
     ...mapState(['isOnlyCard', 'has_fields']),
   },
   mounted() {
-    if (this.has_fields) return
     if (!this.isBreakpointMd) return
 
     mountedButtonPayWallet(this.$refs['button-pay-wallet'])
