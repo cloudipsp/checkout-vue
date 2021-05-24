@@ -112,6 +112,7 @@ const config = {
   subscription: configSubscription.disabled,
   can_make_payment: '',
   has_fields: false,
+  need_validate_card: true,
 }
 
 locales.forEach(function (locale) {

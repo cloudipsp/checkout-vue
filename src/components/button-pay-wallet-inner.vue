@@ -41,7 +41,7 @@ export default {
     }),
     ...mapState('params', ['amount']),
     ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
-    ...mapStateGetSet(['can_make_payment']),
+    ...mapStateGetSet(['can_make_payment', 'need_validate_card']),
     ...mapState(['has_fields', 'params']),
     ...mapStateGetSet('options', ['wallets_icons']),
     classButton() {
@@ -117,9 +117,14 @@ export default {
     },
     click() {
       if (this.has_fields) {
-        this.validate()
+        this.need_validate_card = false
+        this.$nextTick()
+          .then(() => this.validate(false))
           .then(() => {
             this.button.click()
+          })
+          .finally(() => {
+            this.need_validate_card = true
           })
           .catch(errorHandler)
       } else {

@@ -55,9 +55,11 @@ export default {
           this.submited = false
         })
     },
-    validate() {
+    validate(isSubmit = true) {
       return this.observer.validate().then(isValid => {
-        this.isSubmit = true
+        if (isSubmit) {
+          this.isSubmit = true
+        }
 
         if (!isValid) return this.autoFocus(this.errors[0][0])
       })

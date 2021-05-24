@@ -122,7 +122,7 @@ export default {
   },
   mixins: [isMountedMixin],
   computed: {
-    ...mapState(['read_only', 'cards', 'submited']),
+    ...mapState(['read_only', 'cards', 'submited', 'need_validate_card']),
     ...mapState('params', ['token']),
     ...mapStateGetSet('params', [
       'cvv2',
@@ -132,6 +132,8 @@ export default {
       'hash',
     ]),
     validExpiryDate() {
+      if (!this.need_validate_card) return {}
+
       let minDate = this.store.state.validate_expdate
         ? formatMMYY(createDate())
         : '01/19'
@@ -139,6 +141,8 @@ export default {
       return `required|date_format:MM/yy|after:${minDate},true,MM/yy`
     },
     validCardNumber() {
+      if (!this.need_validate_card) return {}
+
       let needValidCard =
         !this.hash &&
         (this.card_number.length === 16 ||
@@ -148,6 +152,8 @@ export default {
       return needValidCard ? 'required|ccard' : 'required'
     },
     validCvv() {
+      if (!this.need_validate_card) return {}
+
       return 'required|digits:' + this.digitsCvv
     },
     digitsCvv() {
