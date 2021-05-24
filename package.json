@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "serve:dist": "serve -s dist",
     "build": "npm install && npm run locale && vue-cli-service build",
-    "build:localhost": "npm install && npm run locale && vue-cli-service build --public-path=http://localhost:5000/",
+    "build:localhost": "npm install && npm run locale && vue-cli-service build --public-path=http://localhost:5000/ --sentry-dsn=https://193b6edd40e746078854d820f494b206@sentry.dev.fondy.eu/26",
     "build:npm": "npm install && vue-cli-service build --public-path=https://pay.fondy.eu/latest/checkout-vue/",
     "lint": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
