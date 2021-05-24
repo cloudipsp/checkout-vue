@@ -199,10 +199,7 @@ class Store extends Model {
       this.state.options.offerta_url
   }
   initIsOnlyCard() {
-    let methods =
-      this.state.has_fields && this.state.can_make_payment
-        ? this.state.options.methods
-        : this.state.options.methods.filter(removeWallets)
+    let methods = this.state.options.methods.filter(removeWallets)
     this.state.isOnlyCard = methods.length === 1 && methods[0] === 'card'
   }
   initShowMenuFirst() {

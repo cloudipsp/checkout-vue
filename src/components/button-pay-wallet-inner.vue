@@ -90,7 +90,6 @@ export default {
         .on('show', () => {
           this.$root.$emit('show-pay')
           this.can_make_payment = this.button.method
-          this.store.initIsOnlyCard()
           this.wallets_icons = [this.button.method]
           this.init = true
         })
