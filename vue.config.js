@@ -5,17 +5,18 @@ const increaseSpecificity = require('./build/postcss-increase-specificity')
 const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const GenerateSW = require('workbox-webpack-plugin').GenerateSW
 
-const publicPath = argv['public-path']
 const VERSION = gitRevisionPlugin.version()
 const COMMITHASH = gitRevisionPlugin.commithash()
 const BRANCH = gitRevisionPlugin.branch()
 const ENVIRONMENT = process.env.NODE_ENV
 const DSN = argv['sentry-dsn']
-const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
 const CDN = 'https://pay.fondy.eu/icons/dist/'
 const isProduction = ENVIRONMENT === 'production'
 const isDevelopment = ENVIRONMENT === 'development'
+const PUBLIC_PATH = isProduction ? argv['public-path'] || '' : '/'
+const DOMAIN = (PUBLIC_PATH.match(/https?:\/\/([\w.]+)/) || [])[1]
 
 function addF (options) {
   options.plugins = () => [
@@ -55,9 +56,7 @@ module.exports = {
   lintOnSave: isDevelopment,
   runtimeCompiler: true,
   productionSourceMap: false,
-  publicPath: isProduction
-    ? publicPath
-    : '/',
+  publicPath: PUBLIC_PATH,
   pluginOptions: {},
   chainWebpack: config => {
     config
@@ -125,8 +124,15 @@ module.exports = {
               exclude: /css$/
             }])
             .end()
+          .plugin('generate-sw')
+            .use(GenerateSW, [{
+              swDest: 'sw.js',
+              // skipWaiting: true,
+              // clientsClaim: true,
+            }])
+            .end()
       })
-      .when(isProduction && !publicPath, config => {
+      .when(isProduction && !PUBLIC_PATH, config => {
         config
           .plugin('webpack-bundle-analyzer')
             .use(BundleAnalyzerPlugin)
@@ -193,6 +199,7 @@ module.exports = {
           DSN,
           DOMAIN,
           CDN,
+          PUBLIC_PATH,
         })])
         .end()
   }

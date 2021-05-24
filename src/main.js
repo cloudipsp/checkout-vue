@@ -12,6 +12,7 @@ import router from '@/router/index'
 import i18n from '@/i18n/index'
 import { isString, isPlainObject } from '@/utils/inspect'
 import sentry from '@/sentry'
+import serviceWorker from '@/service-worker'
 import components from '@/components/index'
 import store from '@/store/index'
 import validate from '@/validate/index'
@@ -27,6 +28,7 @@ const install = function (Vue) {
   Vue.config.productionTip = false
 
   Vue.use(sentry)
+  Vue.use(serviceWorker)
   Vue.use(components)
   Vue.use(validate)
 

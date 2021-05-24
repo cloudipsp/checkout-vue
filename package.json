@@ -84,7 +84,8 @@
       "ENVIRONMENT": "readonly",
       "DSN": "readonly",
       "DOMAIN": "readonly",
-      "CDN": "readonly"
+      "CDN": "readonly",
+      "PUBLIC_PATH": "readonly"
     },
     "root": true,
     "env": {
