@@ -193,7 +193,6 @@ class Store extends Model {
   initHasFields() {
     this.state.has_fields =
       !this.state.amount_readonly ||
-      this.state.options.email ||
       this.state.options.customer_fields.length ||
       this.state.fields.length ||
       this.state.options.fields ||

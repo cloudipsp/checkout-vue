@@ -3,7 +3,6 @@
     <template v-if="isBreakpointMd">
       <f-price />
     </template>
-    <f-field-email />
     <f-fields-customer />
     <f-fields-button />
     <f-fields-user />
@@ -14,7 +13,6 @@
 
 <script>
 import FPrice from '@/components/price'
-import FFieldEmail from '@/components/fields/email'
 import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
@@ -25,7 +23,6 @@ import { mountedButtonPayWallet } from '@/components/button-pay-wallet'
 export default {
   components: {
     FPrice,
-    FFieldEmail,
     FFieldsCustomer,
     FFieldsButton,
     FFieldsUser,

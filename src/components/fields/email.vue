@@ -4,7 +4,7 @@
       v-model.trim="email"
       input-class="f-checkout-email"
       name="email"
-      rules="required|email"
+      :rules="rules"
       autocomplete="email"
     />
   </f-preloader>
@@ -19,8 +19,12 @@ export default {
     FPreloader,
   },
   computed: {
+    ...mapState(['need_validate_card']),
     ...mapState('options', { show: 'email' }),
     ...mapStateGetSet('params', ['email']),
+    rules() {
+      return this.need_validate_card ? 'required|email' : ''
+    },
   },
 }
 </script>
