@@ -131,7 +131,7 @@ msgstr "Інші способи оплати"
 
 #: src/i18n/process/templates.js:16
 msgid "pay"
-msgstr "Оплатити"
+msgstr "Сплатити"
 
 #: src/i18n/process/templates.js:17
 msgid "demo-desc"
