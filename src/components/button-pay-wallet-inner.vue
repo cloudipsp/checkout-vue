@@ -118,13 +118,8 @@ export default {
       if (this.has_fields) {
         this.need_validate_card = false
         this.$nextTick()
-          .then(() => this.validate(false))
-          .then(() => {
-            this.button.click()
-          })
-          .finally(() => {
-            this.need_validate_card = true
-          })
+          .then(() => this.validate())
+          .then(() => this.button.click())
           .catch(errorHandler)
       } else {
         this.button.click()

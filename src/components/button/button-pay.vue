@@ -40,8 +40,12 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      isSubmit: false,
+    }
+  },
   computed: {
-    ...mapState(['isSubmit']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
     ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
@@ -63,11 +67,8 @@ export default {
   },
   methods: {
     click() {
-      this.submit()
-        .then(model => {
-          this.$emit('success', model)
-        })
-        .catch(errorHandler)
+      this.isSubmit = true
+      this.submit().catch(errorHandler)
     },
     autoSubmit() {
       if (!this.$route.query.autoSubmit) return

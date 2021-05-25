@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: {
-    ...mapStateGetSet(['submited', 'isSubmit']),
+    ...mapStateGetSet(['submited', 'isSubmit', 'need_validate_card']),
     observer() {
       if (!this.isMounted) return
       return this.$refs.observer
@@ -47,7 +47,9 @@ export default {
     },
     submit(data) {
       this.submited = true
-      return this.validate()
+      this.need_validate_card = true
+      return this.$nextTick()
+        .then(() => this.validate())
         .then(() => {
           return this.formRequest(data)
         })
@@ -55,11 +57,9 @@ export default {
           this.submited = false
         })
     },
-    validate(isSubmit = true) {
+    validate() {
       return this.observer.validate().then(isValid => {
-        if (isSubmit) {
-          this.isSubmit = true
-        }
+        this.isSubmit = true
 
         if (!isValid) return this.autoFocus(this.errors[0][0])
       })
