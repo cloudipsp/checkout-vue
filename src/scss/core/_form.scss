@@ -31,6 +31,8 @@
     @include plain-hover-focus-active() {
       transition: background-color 99999s;
     }
+    -webkit-text-fill-color: $input_color;
+
     &::first-line {
       font-size: px-to-rem(16px);
       font-weight: 500;

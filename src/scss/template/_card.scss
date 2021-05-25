@@ -107,11 +107,15 @@
       background-color: inherit;
     }
 
-    &:-webkit-autofill::first-line {
-      font-family: $font-family-card-number;
-      font-size: px-to-rem(15px);
-      line-height: px-to-rem(18px);
-      color: $card_input_color;
+    &:-webkit-autofill {
+      -webkit-text-fill-color: $card_input_color;
+
+      &::first-line {
+        font-family: $font-family-card-number;
+        font-size: px-to-rem(15px);
+        line-height: px-to-rem(18px);
+        color: $card_input_color;
+      }
     }
 
     &::placeholder {
