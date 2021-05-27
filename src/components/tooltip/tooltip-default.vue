@@ -1,5 +1,5 @@
 <template>
-  <f-tooltip-base ref="tooltip" v-bind="attrs" v-on="$listeners">
+  <f-tooltip-base v-bind="attrs" v-on="$listeners">
     <slot />
   </f-tooltip-base>
 </template>
@@ -15,11 +15,6 @@ export default {
         variant: 'default',
         ...this.$attrs,
       }
-    },
-  },
-  methods: {
-    close() {
-      this.$refs.tooltip.close()
     },
   },
 }

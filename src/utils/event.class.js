@@ -5,7 +5,7 @@ import {
   readonlyDescriptor,
 } from './object'
 
-class FEvent {
+export class FEvent {
   constructor(type, eventInit = {}) {
     // Start by emulating native Event constructor
     if (!type) {
@@ -62,6 +62,3 @@ class FEvent {
     }
   }
 }
-
-// Named Exports
-export { FEvent }

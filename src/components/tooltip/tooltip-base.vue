@@ -1,5 +1,5 @@
 <template>
-  <tooltip ref="tooltip" v-bind="attrs" v-on="$listeners">
+  <tooltip v-bind="attrs" v-on="$listeners">
     <slot />
   </tooltip>
 </template>
@@ -18,11 +18,6 @@ export default {
         container: this.$root,
         ...this.$attrs,
       }
-    },
-  },
-  methods: {
-    close() {
-      this.$refs.tooltip.$emit('close')
     },
   },
 }

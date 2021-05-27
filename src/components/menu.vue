@@ -108,9 +108,6 @@ export default {
   },
   methods: {
     click(method) {
-      let tooltip = this.$refs[`${method}_tooltip`]
-      tooltip && tooltip[0].close()
-      this.$refs[`${method}_icons`][0].close()
       this.$router.push({ name: method }).catch(() => {})
     },
   },

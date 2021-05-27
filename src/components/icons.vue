@@ -18,7 +18,6 @@
       +{{ countLast }}
     </a>
     <f-tooltip-default
-      ref="tooltip"
       custom-class="f-tooltip-icons"
       placement="topleft"
       :target="() => $refs.last"
@@ -88,11 +87,6 @@ export default {
     },
     countLast() {
       return this.list.length - this.count
-    },
-  },
-  methods: {
-    close() {
-      this.$refs.tooltip && this.$refs.tooltip.close()
     },
   },
 }
