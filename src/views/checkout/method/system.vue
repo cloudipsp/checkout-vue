@@ -63,9 +63,8 @@ export default {
       this.$router.push({ name: this.$route.params.method }).catch(() => {})
     },
     initSystem() {
-      let { name, iban, logo, form } = this.tabs[this.$route.params.method][
-        this.$route.params.system
-      ]
+      let { name, iban, logo, form } =
+        this.tabs[this.$route.params.method][this.$route.params.system]
 
       this.name = name
       this.iban = iban

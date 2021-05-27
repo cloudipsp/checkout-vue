@@ -143,8 +143,8 @@ export default {
         {
           'f-readonly': this.$attrs.readonly,
           'f-disabled': this.$attrs.disabled,
-          ['f-form-group-inner-' + this.$attrs.component]: this.$attrs
-            .component,
+          ['f-form-group-inner-' + this.$attrs.component]:
+            this.$attrs.component,
         },
       ]
     },
