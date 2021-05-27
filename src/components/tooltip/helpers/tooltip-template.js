@@ -1,13 +1,39 @@
 import Vue from 'vue'
-import { BVTooltipTemplate } from 'bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template'
-import { isFunction, isUndefinedOrNull } from 'bootstrap-vue/esm/utils/inspect'
-import { Transition } from '@/utils/transition'
-import Popper from 'popper.js'
-import { isElement } from '@/utils/dom'
+import { scopedStyleAttrsMixin } from '@/mixins/scoped-style-attrs'
+import { isFunction, isUndefinedOrNull } from '@/utils/inspect'
+import { Popper } from '@/components/tooltip/helpers/popper'
 
-export default Vue.extend({
-  extends: BVTooltipTemplate,
+// @vue/component
+export const TooltipTemplate = Vue.extend({
+  extends: Popper,
+  mixins: [scopedStyleAttrsMixin],
+  props: {
+    // Other non-reactive (while open) props are pulled in from Popper
+    id: {
+      type: String,
+      // default: null
+    },
+    html: {
+      // Used only by the directive versions
+      type: Boolean,
+      // default: false
+    },
+  },
+  data() {
+    // We use data, rather than props to ensure reactivity
+    // Parent component will directly set this data
+    return {
+      title: '',
+      content: '',
+      variant: null,
+      customClass: null,
+      interactive: true,
+    }
+  },
   computed: {
+    templateType() {
+      return 'tooltip'
+    },
     templateClasses() {
       return [
         {
@@ -15,52 +41,44 @@ export default Vue.extend({
           // hovers over its content
           noninteractive: !this.interactive,
           [`f-${this.templateType}-${this.variant}`]: this.variant,
-          // `attachment` will come from BVToolpop
+          // `attachment` will come from Toolpop
           [`f-${this.templateType}-${this.attachment}`]: this.attachment,
         },
         this.customClass,
       ]
     },
-    popperConfig() {
-      const placement = this.placement
+    templateAttributes() {
       return {
-        positionFixed: true,
-        placement: this.getAttachment(placement),
-        modifiers: {
-          offset: { offset: this.getOffset(placement) },
-          flip: { behavior: this.fallbackPlacement },
-          // `arrow.element` can also be a reference to an HTML Element
-          // maybe we should make this a `$ref` in the templates?
-          arrow: { element: this.$refs.arrow },
-          preventOverflow: {
-            padding: this.boundaryPadding,
-            boundariesElement: this.boundary,
-          },
+        // Apply attributes from root tooltip component
+        ...this.$parent.$parent.$attrs,
+
+        id: this.id,
+        role: 'tooltip',
+        tabindex: '-1',
+
+        // Add the scoped style data attribute to the template root element
+        ...this.scopedStyleAttrs,
+      }
+    },
+    templateListeners() {
+      // Used for hover/focus trigger listeners
+      return {
+        mouseenter: evt => {
+          this.$emit('mouseenter', evt)
         },
-        onCreate: data => {
-          this.updatePopper()
-          // Handle flipping arrow classes
-          if (data.originalPlacement !== data.placement) {
-            this.popperPlacementChange(data)
-          }
+        mouseleave: evt => {
+          this.$emit('mouseleave', evt)
         },
-        onUpdate: data => {
-          // Handle flipping arrow classes
-          this.popperPlacementChange(data)
+        focusin: evt => {
+          this.$emit('focusin', evt)
+        },
+        focusout: evt => {
+          this.$emit('focusout', evt)
         },
       }
     },
   },
   methods: {
-    popperCreate(el) {
-      this.destroyPopper()
-      // We use `el` rather than `this.$el` just in case the original
-      // mountpoint root element type was changed by the template
-      let target = isElement(this.target.reference)
-        ? this.target.reference
-        : this.target
-      this.$_popper = new Popper(target, el, this.popperConfig)
-    },
     renderTemplate(h) {
       // Title can be a scoped slot function
       const $title = isFunction(this.title)
@@ -87,23 +105,5 @@ export default Vue.extend({
         ]
       )
     },
-  },
-  render(h) {
-    // Note: `f-show` and 'f-fade' classes are only appled during transition
-    return h(
-      Transition,
-      {
-        // Transitions as soon as mounted
-        props: { appear: true, noFade: this.noFade },
-        on: {
-          // Events used by parent component/instance
-          beforeEnter: el => this.$emit('show', el),
-          afterEnter: el => this.$emit('shown', el),
-          beforeLeave: el => this.$emit('hide', el),
-          afterLeave: el => this.$emit('hidden', el),
-        },
-      },
-      [this.localShow ? this.renderTemplate(h) : h()]
-    )
   },
 })
