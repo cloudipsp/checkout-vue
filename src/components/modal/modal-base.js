@@ -64,9 +64,9 @@ export default {
       type: String,
       default: 'md',
     },
-    centered: {
+    noCentered: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     scrollable: {
       type: Boolean,
@@ -187,9 +187,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    noFooter: {
+    footer: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     noHeaderClose: {
       type: Boolean,
@@ -333,7 +333,7 @@ export default {
       return [
         {
           [`f-modal-${this.size}`]: this.size,
-          'f-modal-dialog-centered': this.centered,
+          'f-modal-dialog-centered': !this.noCentered,
           'f-modal-dialog-scrollable': this.scrollable,
         },
         this.dialogClass,
@@ -909,7 +909,7 @@ export default {
 
       // Modal footer
       let $footer = h()
-      if (!this.noFooter) {
+      if (this.footer) {
         let $modalFooter = this.normalizeSlot('footer', this.slotScope)
         if (!$modalFooter) {
           let $cancelButton = h()

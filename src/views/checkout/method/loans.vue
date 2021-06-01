@@ -1,5 +1,5 @@
 <template>
-  <f-bank :config="config" :enable-country="false" @system="system" />
+  <f-bank :config="config" @system="system" />
 </template>
 
 <script>

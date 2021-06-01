@@ -11,7 +11,6 @@
         class="f-mb-3"
         title="pay_with_card"
         :count="5"
-        position="center"
       />
     </template>
     <router-view />

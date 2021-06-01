@@ -18,12 +18,16 @@
         type="tel"
         inputmode="numeric"
         tooltip
-        label-class
+        no-label-floating
         autocomplete="cc-number"
         @input="inputCardNumber"
       >
         <template v-if="isCards" #label="{ classLabel, label }">
-          <f-card-list-wrapper :class-label="classLabel" :label="label" />
+          <f-card-list-wrapper
+            class="f-control-label-card-list"
+            :class="classLabel"
+            :label="label"
+          />
         </template>
       </f-form-group>
 
@@ -40,7 +44,7 @@
         type="tel"
         inputmode="numeric"
         tooltip
-        label-class
+        no-label-floating
         autocomplete="cc-exp"
         :format="format"
         @input="inputExpiryDate"
@@ -57,7 +61,7 @@
         mask="####"
         :maxlength="digitsCvv"
         tooltip
-        label-class
+        no-label-floating
         autocomplete="cc-csc"
       >
         <template #label="{ classLabel, id, label }">

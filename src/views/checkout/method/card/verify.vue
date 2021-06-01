@@ -11,7 +11,7 @@
         placeholder="card_number_p"
         mask="XXXX XXXX XXXX XXXX XXX"
         :disabled="true"
-        label-class
+        no-label-floating
       >
         <template #label="{ classLabel, label }">
           <label :class="classLabel">
@@ -27,7 +27,7 @@
         placeholder="expiry_date_p"
         mask="##/##"
         :disabled="true"
-        label-class
+        no-label-floating
       />
       <f-form-group
         :value="cvv2"
@@ -36,7 +36,7 @@
         placeholder="cvv2_p"
         mask="####"
         :disabled="true"
-        label-class
+        no-label-floating
       />
     </div>
     <f-field-email />

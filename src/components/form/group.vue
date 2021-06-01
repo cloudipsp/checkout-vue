@@ -83,9 +83,9 @@ export default {
         return this.$attrs.component === 'checkbox' ? '' : this.name
       },
     },
-    labelClass: {
-      type: String,
-      default: 'f-control-label-p',
+    noLabelFloating: {
+      type: Boolean,
+      default: false,
     },
     tooltip: {
       type: Boolean,
@@ -151,8 +151,8 @@ export default {
     classLabel() {
       return [
         'f-control-label',
-        this.labelClass,
         {
+          'f-control-label-p': !this.noLabelFloating,
           'f-control-label-active':
             (isExist(this.value) && this.value !== '') || this.focused,
         },
@@ -172,7 +172,7 @@ export default {
       return this.tooltip && this.hasError && this.focused
     },
     showPlaceholder() {
-      return !this.labelClass && this.safeId()
+      return this.noLabelFloating && this.safeId()
     },
   },
   watch: {

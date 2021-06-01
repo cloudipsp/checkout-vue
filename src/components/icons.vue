@@ -45,11 +45,6 @@ export default {
     FTooltipDefault,
   },
   props: {
-    position: {
-      type: String,
-      required: true,
-      validator: value => ['sidebar', 'center'].includes(value),
-    },
     title: {
       type: String,
       default: '',
@@ -67,7 +62,7 @@ export default {
   computed: {
     ...mapState(['options']),
     showTitle() {
-      return this.position === 'center'
+      return this.title
     },
     list() {
       return this.options[this.type + '_icons'] || []

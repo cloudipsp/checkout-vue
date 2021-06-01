@@ -1,10 +1,5 @@
 <template>
-  <a
-    v-if="enableModal"
-    href="#"
-    :class="[classLabel, 'f-control-label-card-list']"
-    @click.prevent="showModalCard = true"
-  >
+  <a v-if="enableModal" href="#" @click.prevent="showModalCard = true">
     {{ label }} <f-svg name="angle-down" size="lg" />
     <f-modal-base
       v-model="showModalCard"
@@ -20,7 +15,6 @@
     v-else
     ref="tooltip"
     href="#"
-    :class="[classLabel, 'f-control-label-card-list']"
     tabindex="-1"
     @click.prevent="showTooltipCard = true"
     @blur="blurTooltipCard"
@@ -55,10 +49,6 @@ export default {
   },
   mixins: [timeoutMixin, resizeMixin],
   props: {
-    classLabel: {
-      type: Array,
-      default: () => [],
-    },
     label: {
       type: String,
       default: '',

@@ -67,6 +67,7 @@
 import FFormBase from '@/components/form/form/form-base'
 import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
+import FButton from '@/components/button/button'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { removeDuplicate } from '@/utils/helpers'
@@ -77,6 +78,7 @@ export default {
     FFormBase,
     FSvg,
     FIcon,
+    FButton,
   },
   mixins: [timeoutMixin],
   props: {
@@ -87,7 +89,7 @@ export default {
     },
     enableCountry: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {

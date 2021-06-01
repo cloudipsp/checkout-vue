@@ -31,12 +31,6 @@ export default {
     FSecurity,
   },
   mixins: [createdButtonPayWalletMixin],
-  props: {
-    order: {
-      type: Object,
-      default: () => {},
-    },
-  },
   computed: {
     ...mapState('options', ['full_screen']),
   },

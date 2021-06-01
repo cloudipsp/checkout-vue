@@ -15,12 +15,7 @@
           fw
         />
         <span v-text="title(method)" />
-        <f-icons
-          :ref="`${method}_icons`"
-          class="f-menu-icons"
-          :type="method"
-          position="sidebar"
-        />
+        <f-icons :ref="`${method}_icons`" class="f-menu-icons" :type="method" />
         <f-tooltip-default
           v-if="showTooltip(method)"
           :ref="`${method}_tooltip`"
