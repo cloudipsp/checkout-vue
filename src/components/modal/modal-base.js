@@ -32,6 +32,14 @@ import { scopedStyleAttrsMixin } from '@/mixins/scoped-style-attrs'
 import { resizeMixin } from '@/mixins/resize'
 import { modalManager } from '@/components/modal/helpers/modal-manager'
 import { FModalEvent } from '@/components/modal/helpers/modal-event.class'
+import {
+  PROP_TYPE_ARRAY_OBJECT_STRING,
+  PROP_TYPE_ARRAY_STRING,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_OBJECT,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // ObserveDom config to detect changes in modal content
 // so that we can adjust the modal padding if needed
@@ -60,208 +68,61 @@ export default {
     event: 'change',
   },
   props: {
-    size: {
-      type: String,
-      default: 'md',
-    },
-    noCentered: {
-      type: Boolean,
-      default: false,
-    },
-    scrollable: {
-      type: Boolean,
-      default: false,
-    },
-    buttonSize: {
-      type: String,
-      // default: ''
-    },
-    noStacking: {
-      type: Boolean,
-      default: false,
-    },
-    noFade: {
-      type: Boolean,
-      default: false,
-    },
-    noCloseOnBackdrop: {
-      type: Boolean,
-      default: false,
-    },
-    noCloseOnEsc: {
-      type: Boolean,
-      default: false,
-    },
-    noEnforceFocus: {
-      type: Boolean,
-      default: false,
-    },
-    ignoreEnforceFocusSelector: {
-      type: [Array, String],
-      default: '',
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-    titleHtml: {
-      type: String,
-    },
-    titleTag: {
-      type: String,
-      default: 'h5',
-    },
-    titleClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    titleSrOnly: {
-      type: Boolean,
-      default: false,
-    },
-    ariaLabel: {
-      type: String,
-      // default: null
-    },
-    headerBgVariant: {
-      type: String,
-      // default: undefined
-    },
-    headerBorderVariant: {
-      type: String,
-      // default: undefined
-    },
-    headerTextVariant: {
-      type: String,
-      // default: undefined
-    },
-    headerCloseVariant: {
-      type: String,
-      // default: undefined
-    },
-    headerClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    bodyBgVariant: {
-      type: String,
-      // default: undefined
-    },
-    bodyTextVariant: {
-      type: String,
-      // default: undefined
-    },
-    modalClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    dialogClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    contentClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    bodyClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    footerBgVariant: {
-      type: String,
-      // default: undefined
-    },
-    footerBorderVariant: {
-      type: String,
-      // default: undefined
-    },
-    footerTextVariant: {
-      type: String,
-      // default: undefined
-    },
-    footerClass: {
-      type: [String, Array, Object],
-      // default: null
-    },
-    noHeader: {
-      type: Boolean,
-      default: false,
-    },
-    footer: {
-      type: Boolean,
-      default: false,
-    },
-    noHeaderClose: {
-      type: Boolean,
-      default: false,
-    },
-    okOnly: {
-      type: Boolean,
-      default: false,
-    },
-    okDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    cancelDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    visible: {
-      type: Boolean,
-      default: false,
-    },
-    returnFocus: {
-      // HTML Element, CSS selector string or Vue component instance
-      type: [HTMLElement, String, Object],
-      default: null,
-    },
-    headerCloseContent: {
-      type: String,
-      default: '&times;',
-    },
-    headerCloseLabel: {
-      type: String,
-      default: 'Close',
-    },
-    cancelTitle: {
-      type: String,
-      default: 'Cancel',
-    },
-    okTitle: {
-      type: String,
-      default: 'OK',
-    },
-    cancelVariant: {
-      type: String,
-      default: 'secondary',
-    },
-    okVariant: {
-      type: String,
-      default: 'default',
-    },
-    lazy: {
-      type: Boolean,
-      default: false,
-    },
-    busy: {
-      type: Boolean,
-      default: false,
-    },
-    static: {
-      type: Boolean,
-      default: false,
-    },
-    autoFocusButton: {
-      type: String,
-      default: null,
-      validator(value) {
-        return (
-          isUndefinedOrNull(value) ||
-          arrayIncludes(['ok', 'cancel', 'close'], value)
-        )
-      },
-    },
+    ariaLabel: makeProp(PROP_TYPE_STRING),
+    autoFocusButton: makeProp(PROP_TYPE_STRING, null, value => {
+      return (
+        isUndefinedOrNull(value) ||
+        arrayIncludes(['ok', 'cancel', 'close'], value)
+      )
+    }),
+    bodyBgVariant: makeProp(PROP_TYPE_STRING),
+    bodyClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    bodyTextVariant: makeProp(PROP_TYPE_STRING),
+    busy: makeProp(PROP_TYPE_BOOLEAN, false),
+    buttonSize: makeProp(PROP_TYPE_STRING),
+    cancelDisabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    cancelTitle: makeProp(PROP_TYPE_STRING, 'Cancel'),
+    cancelVariant: makeProp(PROP_TYPE_STRING, 'secondary'),
+    contentClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    dialogClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    footer: makeProp(PROP_TYPE_BOOLEAN, false),
+    footerBgVariant: makeProp(PROP_TYPE_STRING),
+    footerBorderVariant: makeProp(PROP_TYPE_STRING),
+    footerClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    footerTextVariant: makeProp(PROP_TYPE_STRING),
+    headerBgVariant: makeProp(PROP_TYPE_STRING),
+    headerBorderVariant: makeProp(PROP_TYPE_STRING),
+    headerClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    headerCloseContent: makeProp(PROP_TYPE_STRING, '&times;'),
+    headerCloseLabel: makeProp(PROP_TYPE_STRING, 'Close'),
+    headerCloseVariant: makeProp(PROP_TYPE_STRING),
+    headerTextVariant: makeProp(PROP_TYPE_STRING),
+    ignoreEnforceFocusSelector: makeProp(PROP_TYPE_ARRAY_STRING),
+    lazy: makeProp(PROP_TYPE_BOOLEAN, false),
+    modalClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    noCentered: makeProp(PROP_TYPE_BOOLEAN, false),
+    noCloseOnBackdrop: makeProp(PROP_TYPE_BOOLEAN, false),
+    noCloseOnEsc: makeProp(PROP_TYPE_BOOLEAN, false),
+    noEnforceFocus: makeProp(PROP_TYPE_BOOLEAN, false),
+    noFade: makeProp(PROP_TYPE_BOOLEAN, false),
+    noHeader: makeProp(PROP_TYPE_BOOLEAN, false),
+    noHeaderClose: makeProp(PROP_TYPE_BOOLEAN, false),
+    noStacking: makeProp(PROP_TYPE_BOOLEAN, false),
+    okDisabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    okOnly: makeProp(PROP_TYPE_BOOLEAN, false),
+    okTitle: makeProp(PROP_TYPE_STRING, 'OK'),
+    okVariant: makeProp(PROP_TYPE_STRING, 'default'),
+    // HTML Element, CSS selector string or Vue component instance
+    returnFocus: makeProp([HTMLElement, PROP_TYPE_OBJECT, PROP_TYPE_STRING]),
+    scrollable: makeProp(PROP_TYPE_BOOLEAN, false),
+    size: makeProp(PROP_TYPE_STRING, 'md'),
+    static: makeProp(PROP_TYPE_BOOLEAN, false),
+    title: makeProp(PROP_TYPE_STRING),
+    titleClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
+    titleHtml: makeProp(PROP_TYPE_STRING),
+    titleSrOnly: makeProp(PROP_TYPE_BOOLEAN, false),
+    titleTag: makeProp(PROP_TYPE_STRING, 'h5'),
+    visible: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

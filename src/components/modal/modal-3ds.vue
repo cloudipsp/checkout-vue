@@ -20,6 +20,8 @@
 <script>
 import FButton from '@/components/button/button'
 import { timeoutMixin } from '@/mixins/timeout'
+import { PROP_TYPE_NUMBER } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -31,10 +33,7 @@ export default {
     event: 'change',
   },
   props: {
-    duration: {
-      type: Number,
-      default: 0,
-    },
+    duration: makeProp(PROP_TYPE_NUMBER, 0),
   },
   computed: {
     attrs() {

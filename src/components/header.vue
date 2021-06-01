@@ -45,6 +45,8 @@ import FFormBase from '@/components/form/form/form-base'
 import { resizeMixin } from '@/mixins/resize'
 import { mapState } from '@/utils/store'
 import { sort, parseSelect } from '@/utils/sort'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -55,10 +57,7 @@ export default {
   },
   mixins: [resizeMixin],
   props: {
-    back: {
-      type: Boolean,
-      default: false,
-    },
+    back: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
     ...mapState(['isOnlyCard']),

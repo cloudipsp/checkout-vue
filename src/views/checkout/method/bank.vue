@@ -72,6 +72,8 @@ import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { removeDuplicate } from '@/utils/helpers'
 import { timeoutMixin } from '@/mixins/timeout'
+import { PROP_TYPE_OBJECT, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -83,14 +85,8 @@ export default {
   mixins: [timeoutMixin],
   props: {
     // {147209: {country: 'PL', name: '', logo: 'mbank'}}
-    config: {
-      type: Object,
-      required: true,
-    },
-    enableCountry: {
-      type: Boolean,
-      default: false,
-    },
+    config: makeProp(PROP_TYPE_OBJECT, {}),
+    enableCountry: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

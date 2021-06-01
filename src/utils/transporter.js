@@ -6,28 +6,21 @@ import { isBrowser } from '@/utils/env'
 import { isString } from '@/utils/inspect'
 import { HTMLElement } from '@/utils/safe-types'
 import { normalizeSlotMixin } from '@/mixins/normalize-slot'
+import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // This component has no root element, so only a single VNode is allowed
 // @vue/component
 export const FTransporterSingle = {
   mixins: [normalizeSlotMixin],
   props: {
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    container: {
-      // String: CSS selector,
-      // HTMLElement: Element reference
-      // Mainly needed for tooltips/popovers inside modals
-      type: [String, HTMLElement],
-      default: 'body',
-    },
-    tag: {
-      // This should be set to match the root element type
-      type: String,
-      default: 'div',
-    },
+    // String: CSS selector,
+    // HTMLElement: Element reference
+    // Mainly needed for tooltips/popovers inside modals
+    container: makeProp([HTMLElement, PROP_TYPE_STRING], 'body'),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    // This should be set to match the root element type
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   watch: {
     disabled: {

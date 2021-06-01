@@ -9,26 +9,16 @@
 
 <script>
 import mask from '@/utils/masker'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   inheritAttrs: false,
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      required: true,
-    },
-    mask: {
-      type: String,
-      default: '',
-    },
+    id: makeProp(PROP_TYPE_STRING, undefined, true),
+    value: makeProp(PROP_TYPE_STRING),
+    placeholder: makeProp(PROP_TYPE_STRING),
+    mask: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {

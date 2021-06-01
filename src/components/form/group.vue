@@ -57,6 +57,8 @@ import { mapState } from '@/utils/store'
 import { isExist } from '@/utils/inspect'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { isMountedMixin } from '@/mixins/is-mounted'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -69,36 +71,15 @@ export default {
   inheritAttrs: false,
   props: {
     ...idProps,
-    description: {
-      type: String,
-      default: '',
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    label: {
-      type: String,
-      default() {
-        return this.$attrs.component === 'checkbox' ? '' : this.name
-      },
-    },
-    noLabelFloating: {
-      type: Boolean,
-      default: false,
-    },
-    tooltip: {
-      type: Boolean,
-      default: false,
-    },
-    hideError: {
-      type: Boolean,
-      default: false,
-    },
-    prepend: {
-      type: String,
-      default: null,
-    },
+    description: makeProp(PROP_TYPE_STRING),
+    name: makeProp(PROP_TYPE_STRING, undefined, true),
+    label: makeProp(PROP_TYPE_STRING, function () {
+      return this.$attrs.component === 'checkbox' ? '' : this.name
+    }),
+    noLabelFloating: makeProp(PROP_TYPE_BOOLEAN, false),
+    tooltip: makeProp(PROP_TYPE_BOOLEAN, false),
+    hideError: makeProp(PROP_TYPE_BOOLEAN, false),
+    prepend: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {
@@ -155,9 +136,9 @@ export default {
           'f-control-label-p': !this.noLabelFloating,
           'f-control-label-active':
             (isExist(this.value) && this.value !== '') || this.focused,
+          'f-control-label-hover': this.hover,
+          'f-control-label-focused': this.focused,
         },
-        { 'f-control-label-hover': this.hover },
-        { 'f-control-label-focused': this.focused },
       ]
     },
     hasError() {

@@ -11,13 +11,12 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_ARRAY } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   props: {
-    fields: {
-      type: Array,
-      default: () => [],
-    },
+    fields: makeProp(PROP_TYPE_ARRAY, []),
   },
   computed: {
     ...mapState(['params']),

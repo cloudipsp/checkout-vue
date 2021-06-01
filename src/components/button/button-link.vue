@@ -5,17 +5,16 @@
 </template>
 
 <script>
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
+
 export default {
   props: {
-    block: {
-      type: Boolean,
-      default: false,
-    },
-    variant: {
-      type: String,
-      default: 'default',
-      validator: value => ['default', 'secondary'].includes(value),
-    },
+    block: makeProp(PROP_TYPE_BOOLEAN, false),
+    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+      arrayIncludes(['default', 'secondary'], value)
+    ),
   },
   computed: {
     className() {

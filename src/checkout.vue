@@ -8,14 +8,13 @@
 import { mapState } from '@/utils/store'
 import { resizeMixin } from '@/mixins/resize'
 import { errorHandler, getRouteName } from '@/utils/helpers'
+import { PROP_TYPE_OBJECT } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   mixins: [resizeMixin],
   props: {
-    optionsUser: {
-      type: Object,
-      required: true,
-    },
+    optionsUser: makeProp(PROP_TYPE_OBJECT),
   },
   data() {
     return {

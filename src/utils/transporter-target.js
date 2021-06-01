@@ -2,6 +2,8 @@ import Vue from 'vue'
 import { concat } from '@/utils/array'
 import { removeNode } from '@/utils/dom'
 import { isFunction } from '@/utils/inspect'
+import { PROP_TYPE_ARRAY_FUNCTION } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // FTransporterSingle/FTransporterTargetSingle:
 //
@@ -23,12 +25,9 @@ export const FTransporterTargetSingle = Vue.extend({
   // of this one will be the parent from which is was portal'd
   abstract: true,
   props: {
-    nodes: {
-      // Even though we only support a single root element,
-      // VNodes are always passed as an array
-      type: [Array, Function],
-      default: undefined,
-    },
+    // Even though we only support a single root element,
+    // VNodes are always passed as an array
+    nodes: makeProp(PROP_TYPE_ARRAY_FUNCTION),
   },
   data: vm => {
     return {

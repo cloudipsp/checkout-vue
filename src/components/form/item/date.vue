@@ -33,6 +33,9 @@ import { isMobile } from '@/utils/mobile'
 import { createDate, formatYYYYMMDD } from '@/utils/date'
 import { mapState } from '@/utils/store'
 import format from '@/config/date'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
@@ -42,11 +45,9 @@ export default {
   },
   mixins: [itemMixin],
   props: {
-    min: {
-      type: String,
-      default: '',
-      validator: value => ['', 'now'].includes(value),
-    },
+    min: makeProp(PROP_TYPE_STRING, undefined, value =>
+      arrayIncludes(['now'], value)
+    ),
   },
   data() {
     return {

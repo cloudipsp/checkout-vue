@@ -40,6 +40,8 @@ import { isPhone } from '@/utils/mobile'
 import { parseCards } from '@/utils/card-brand'
 import { isArray } from '@/utils/inspect'
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -49,10 +51,7 @@ export default {
   },
   mixins: [timeoutMixin, resizeMixin],
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
+    label: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {

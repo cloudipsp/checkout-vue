@@ -11,6 +11,12 @@ import { Transition } from '@/utils/transition'
 import { getCS, isElement, requestAF, select } from '@/utils/dom'
 import { toFloat } from '@/utils/number'
 import { HTMLElement, SVGElement } from '@/utils/safe-types'
+import {
+  PROP_TYPE_ARRAY_STRING,
+  PROP_TYPE_NUMBER_STRING,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -47,40 +53,19 @@ const OffsetMap = {
 // @vue/component
 export const Popper = Vue.extend({
   props: {
-    target: {
-      // Element that the tooltip/popover is positioned relative to
-      type: [HTMLElement, SVGElement],
-      // default: null
-    },
-    placement: {
-      type: String,
-      default: 'top',
-    },
-    fallbackPlacement: {
-      type: [String, Array],
-      default: 'flip',
-    },
-    offset: {
-      type: Number,
-      default: 0,
-    },
-    boundary: {
-      // 'scrollParent', 'viewport', 'window', or Element
-      type: [String, HTMLElement],
-      default: 'scrollParent',
-    },
-    boundaryPadding: {
-      // Tooltip/popover will try and stay away from
-      // boundary edge by this many pixels
-      type: Number,
-      default: 5,
-    },
-    arrowPadding: {
-      // The minimum distance (in `px`) from the edge of the
-      // tooltip/popover that the arrow can be positioned
-      type: Number,
-      default: 6,
-    },
+    // The minimum distance (in `px`) from the edge of the
+    // tooltip/popover that the arrow can be positioned
+    arrowPadding: makeProp(PROP_TYPE_NUMBER_STRING, 6),
+    // 'scrollParent', 'viewport', 'window', or `Element`
+    boundary: makeProp([HTMLElement, PROP_TYPE_STRING], 'scrollParent'),
+    // Tooltip/popover will try and stay away from
+    // boundary edge by this many pixels
+    boundaryPadding: makeProp(PROP_TYPE_NUMBER_STRING, 5),
+    fallbackPlacement: makeProp(PROP_TYPE_ARRAY_STRING, 'flip'),
+    offset: makeProp(PROP_TYPE_NUMBER_STRING, 0),
+    placement: makeProp(PROP_TYPE_STRING, 'top'),
+    // Element that the tooltip/popover is positioned relative to
+    target: makeProp([HTMLElement, SVGElement]),
   },
   data() {
     return {

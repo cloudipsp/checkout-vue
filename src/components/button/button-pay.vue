@@ -25,6 +25,8 @@ import FAmount from '@/components/base/amount'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { validatorMixin } from '@/mixins/validator'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -35,10 +37,7 @@ export default {
   mixins: [validatorMixin],
   inject: ['submit'],
   props: {
-    noAmount: {
-      type: Boolean,
-      default: false,
-    },
+    noAmount: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

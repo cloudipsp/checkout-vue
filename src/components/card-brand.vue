@@ -14,16 +14,15 @@
 <script>
 import FIcon from '@/components/icon'
 import { getCardBrand } from '@/utils/card-brand'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
     FIcon,
   },
   props: {
-    number: {
-      type: String,
-      required: true,
-    },
+    number: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {

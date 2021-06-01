@@ -25,14 +25,13 @@ import getScrollbarWidth from '@/utils/scrollbar-width'
 import { resizeMixin } from '@/mixins/resize'
 import { isMobileFirefox, isDesktop } from '@/utils/mobile'
 import { contains } from '@/utils/dom'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   mixins: [resizeMixin],
   props: {
-    wrapClass: {
-      type: String,
-      default: '',
-    },
+    wrapClass: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {

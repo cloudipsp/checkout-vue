@@ -11,11 +11,12 @@
 </template>
 
 <script>
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+
 export default {
   props: {
-    value: {
-      type: Boolean,
-    },
+    value: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   methods: {
     input($event) {

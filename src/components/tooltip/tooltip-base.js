@@ -1,95 +1,58 @@
 import { getScopeId } from '@/utils/get-scope-id'
-import { arrayIncludes } from '@/utils/array'
-import { isArray, isString, isUndefinedOrNull } from '@/utils/inspect'
+import { isUndefinedOrNull } from '@/utils/inspect'
 import { HTMLElement, SVGElement } from '@/utils/safe-types'
 import { Tooltip } from '@/components/tooltip/helpers/tooltip'
+import {
+  PROP_TYPE_ARRAY_STRING,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_FUNCTION,
+  PROP_TYPE_NUMBER_OBJECT_STRING,
+  PROP_TYPE_NUMBER_STRING,
+  PROP_TYPE_OBJECT,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // @vue/component
 export default {
   inheritAttrs: false,
   props: {
-    title: {
-      type: String,
-      // default: undefined
-    },
-    // Added in by BPopover
-    // content: {
-    //   type: String,
-    //   default: undefined
-    // },
-    target: {
-      // String ID of element, or element/component reference
-      // Or function that returns one of the above
-      type: [String, HTMLElement, SVGElement, Function, Object],
-      required: true,
-    },
-    triggers: {
-      type: [String, Array],
-      default: 'hover focus',
-    },
-    placement: {
-      type: String,
-      default: 'top',
-    },
-    fallbackPlacement: {
-      type: [String, Array],
-      default: 'flip',
-      validator(value) {
-        return (
-          (isArray(value) && value.every(v => isString(v))) ||
-          arrayIncludes(['flip', 'clockwise', 'counterclockwise'], value)
-        )
-      },
-    },
-    variant: {
-      type: String,
-      // default: undefined
-    },
-    customClass: {
-      type: String,
-      // default: undefined
-    },
-    delay: {
-      type: [Number, Object, String],
-      default: 50,
-    },
-    boundary: {
-      // String: scrollParent, window, or viewport
-      // Element: element reference
-      // Object: Vue component
-      type: [String, HTMLElement, Object],
-      default: 'scrollParent',
-    },
-    boundaryPadding: {
-      type: [Number, String],
-      default: 5,
-    },
-    offset: {
-      type: [Number, String],
-      default: 0,
-    },
-    noFade: {
-      type: Boolean,
-      default: false,
-    },
-    show: {
-      type: Boolean,
-      default: false,
-    },
-    noninteractive: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    id: {
-      // ID to use for tooltip element
-      // If not provided on will automatically be generated
-      type: String,
-      // default: null
-    },
+    // String: scrollParent, window, or viewport
+    // Element: element reference
+    // Object: Vue component
+    boundary: makeProp(
+      [HTMLElement, PROP_TYPE_OBJECT, PROP_TYPE_STRING],
+      'scrollParent'
+    ),
+    boundaryPadding: makeProp(PROP_TYPE_NUMBER_STRING, 5),
+    customClass: makeProp(PROP_TYPE_STRING),
+    delay: makeProp(PROP_TYPE_NUMBER_OBJECT_STRING, 50),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    fallbackPlacement: makeProp(PROP_TYPE_ARRAY_STRING, 'flip'),
+    // ID to use for tooltip element
+    // If not provided on will automatically be generated
+    id: makeProp(PROP_TYPE_STRING),
+    noFade: makeProp(PROP_TYPE_BOOLEAN, false),
+    noninteractive: makeProp(PROP_TYPE_BOOLEAN, false),
+    offset: makeProp(PROP_TYPE_NUMBER_STRING, 0),
+    placement: makeProp(PROP_TYPE_STRING, 'top'),
+    // String ID of element, or element/component reference
+    // Or function that returns one of the above
+    target: makeProp(
+      [
+        HTMLElement,
+        SVGElement,
+        PROP_TYPE_FUNCTION,
+        PROP_TYPE_OBJECT,
+        PROP_TYPE_STRING,
+      ],
+      undefined,
+      true
+    ),
+    title: makeProp(PROP_TYPE_STRING),
+    triggers: makeProp(PROP_TYPE_ARRAY_STRING, 'hover focus'),
+    variant: makeProp(PROP_TYPE_STRING),
+    show: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

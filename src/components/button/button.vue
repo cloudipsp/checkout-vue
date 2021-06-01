@@ -14,49 +14,28 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
-    block: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    variant: {
-      type: String,
-      default: 'default',
-      validator: value =>
-        [
-          'success',
-          'default',
-          'secondary',
-          'outline',
-          'light',
-          'dark',
-        ].includes(value),
-    },
-    size: {
-      type: String,
-      default: '',
-      validator: value => ['sm', '', 'lg'].includes(value),
-    },
-    tag: {
-      type: String,
-      default: 'button',
-    },
-    text: {
-      type: [String, Object],
-      default: '',
-    },
-    type: {
-      type: String,
-      default() {
-        return this.tag === 'button' ? 'button' : null
-      },
-    },
+    block: makeProp(PROP_TYPE_BOOLEAN, false),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+      arrayIncludes(
+        ['success', 'default', 'secondary', 'outline', 'light', 'dark'],
+        value
+      )
+    ),
+    size: makeProp(PROP_TYPE_STRING, undefined, value =>
+      arrayIncludes(['sm', 'lg'], value)
+    ),
+    tag: makeProp(PROP_TYPE_STRING, 'button'),
+    text: makeProp(PROP_TYPE_STRING),
+    type: makeProp(PROP_TYPE_STRING, function () {
+      return this.tag === 'button' ? 'button' : undefined
+    }),
   },
   computed: {
     ...mapState('css_variable', [

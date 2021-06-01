@@ -42,6 +42,8 @@ import FAmount from '@/components/base/amount'
 import { InputAmount } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -50,10 +52,7 @@ export default {
     InputAmount,
   },
   props: {
-    readonly: {
-      type: Boolean,
-      default: false,
-    },
+    readonly: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

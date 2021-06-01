@@ -13,17 +13,15 @@
 
 <script>
 import icons from '@/config/icons'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: String,
-      default: null,
-      validator: value =>
+    name: makeProp(PROP_TYPE_STRING, undefined, true),
+    size: makeProp(PROP_TYPE_STRING, undefined, value =>
+      arrayIncludes(
         [
           'lg',
           'md',
@@ -39,16 +37,12 @@ export default {
           '8x',
           '9x',
           '10x',
-        ].indexOf(value) > -1,
-    },
-    spin: {
-      type: Boolean,
-      default: false,
-    },
-    fw: {
-      type: Boolean,
-      default: false,
-    },
+        ],
+        value
+      )
+    ),
+    spin: makeProp(PROP_TYPE_BOOLEAN, false),
+    fw: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

@@ -13,16 +13,15 @@
 <script>
 import FSvg from '@/components/svg'
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
     FSvg,
   },
   props: {
-    backdrop: {
-      type: Boolean,
-      default: false,
-    },
+    backdrop: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
     ...mapState('options', ['loading']),

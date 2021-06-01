@@ -2,22 +2,18 @@ import Vue from 'vue'
 import { scopedStyleAttrsMixin } from '@/mixins/scoped-style-attrs'
 import { isFunction, isUndefinedOrNull } from '@/utils/inspect'
 import { Popper } from '@/components/tooltip/helpers/popper'
+import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // @vue/component
 export const TooltipTemplate = Vue.extend({
   extends: Popper,
   mixins: [scopedStyleAttrsMixin],
   props: {
-    // Other non-reactive (while open) props are pulled in from Popper
-    id: {
-      type: String,
-      // default: null
-    },
-    html: {
-      // Used only by the directive versions
-      type: Boolean,
-      // default: false
-    },
+    // Used only by the directive versions
+    html: makeProp(PROP_TYPE_BOOLEAN, false),
+    // Other non-reactive (while open) props are pulled in from BVPopper
+    id: makeProp(PROP_TYPE_STRING),
   },
   data() {
     // We use data, rather than props to ensure reactivity

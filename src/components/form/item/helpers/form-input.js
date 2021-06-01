@@ -9,6 +9,13 @@ import { idMixin, props as idProps } from '@/mixins/id'
 import { attrsMixin } from '@/mixins/attrs'
 import { listenersMixin } from '@/mixins/listeners'
 import { toString } from '@/utils/string'
+import {
+  PROP_TYPE_STRING,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_NUMBER_STRING,
+  PROP_TYPE_BOOLEAN_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // @vue/component
 export const FFormInput = {
@@ -28,25 +35,12 @@ export const FFormInput = {
     ...idProps,
     ...formControlProps,
     ...formStateProps,
-    value: {
-      type: [String, Number],
-      default: '',
-    },
-    ariaInvalid: {
-      type: [Boolean, String],
-      default: false,
-    },
+    value: makeProp(PROP_TYPE_NUMBER_STRING, ''),
+    ariaInvalid: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
     // `value` prop is defined in form-text mixin
-    type: {
-      type: String,
-      default: 'text',
-    },
-    noWheel: {
-      // Disable mousewheel to prevent wheel from
-      // changing values (i.e. number/date)
-      type: Boolean,
-      default: false,
-    },
+    type: makeProp(PROP_TYPE_STRING, 'text'),
+    // Disable mousewheel to prevent wheel from changing values (i.e. number/date)
+    noWheel: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

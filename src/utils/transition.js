@@ -1,5 +1,11 @@
 import { mergeData } from 'vue-functional-data-merge'
 import { isPlainObject } from '@/utils/inspect'
+import {
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_OBJECT,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 const NO_FADE_PROPS = {
   name: '',
@@ -21,27 +27,15 @@ const FADE_PROPS = {
 export const Transition = {
   functional: true,
   props: {
-    noFade: {
-      // Only applicable to the built in transition
-      // Has no effect if `trans-props` provided
-      type: Boolean,
-      default: false,
-    },
-    appear: {
-      // Has no effect if `trans-props` provided
-      type: Boolean,
-      default: false,
-    },
-    mode: {
-      // Can be overridden by user supplied trans-props
-      type: String,
-      default: undefined,
-    },
+    // Has no effect if `trans-props` provided
+    appear: makeProp(PROP_TYPE_BOOLEAN, false),
+    // Can be overridden by user supplied `trans-props`
+    mode: makeProp(PROP_TYPE_STRING),
+    // Only applicable to the built in transition
+    // Has no effect if `trans-props` provided
+    noFade: makeProp(PROP_TYPE_BOOLEAN, false),
     // For user supplied transitions (if needed)
-    transProps: {
-      type: Object,
-      default: null,
-    },
+    transProps: makeProp(PROP_TYPE_OBJECT),
   },
   render(h, { children, data, props }) {
     let transProps = props.transProps

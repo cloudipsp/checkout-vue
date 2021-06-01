@@ -2,22 +2,15 @@ import { mergeData } from 'vue-functional-data-merge'
 import { stopEvent } from '@/utils/events'
 import { isEvent } from '@/utils/inspect'
 import { hasNormalizedSlot, normalizeSlot } from '@/utils/normalize-slot'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export const FButtonClose = {
   functional: true,
   props: {
-    content: {
-      type: String,
-      default: '&times;',
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    ariaLabel: {
-      type: String,
-      default: 'Close',
-    },
+    content: makeProp(PROP_TYPE_STRING, '&times;'),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    ariaLabel: makeProp(PROP_TYPE_STRING, 'Close'),
   },
   render(h, { props, data, slots, scopedSlots }) {
     const $slots = slots()

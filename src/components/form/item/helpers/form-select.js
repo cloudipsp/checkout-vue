@@ -15,6 +15,13 @@ import {
 } from '@/components/form/item/helpers/mixin-options'
 import { FFormSelectOption } from '@/components/form/item/helpers/form-select-option'
 import { FFormSelectOptionGroup } from '@/components/form/item/helpers/form-select-option-group'
+import {
+  PROP_TYPE_ANY,
+  PROP_TYPE_NUMBER,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_BOOLEAN_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 // @vue/component
 export const FFormSelect = {
@@ -34,24 +41,12 @@ export const FFormSelect = {
     ...formControlProps,
     ...formStateProps,
     ...optionsProps,
-    value: {
-      // type: [Object, Array, String, Number, Boolean],
-      // default: undefined
-    },
-    multiple: {
-      type: Boolean,
-      default: false,
-    },
-    selectSize: {
-      // Browsers default size to 0, which shows 4 rows in most browsers in multiple mode
-      // Size of 1 can bork out Firefox
-      type: Number,
-      default: 0,
-    },
-    ariaInvalid: {
-      type: [Boolean, String],
-      default: false,
-    },
+    value: makeProp(PROP_TYPE_ANY),
+    multiple: makeProp(PROP_TYPE_BOOLEAN, false),
+    // Browsers default size to 0, which shows 4 rows in most browsers in multiple mode
+    // Size of 1 can bork out Firefox
+    selectSize: makeProp(PROP_TYPE_NUMBER, 0),
+    ariaInvalid: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
   },
   data() {
     return {

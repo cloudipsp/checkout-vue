@@ -29,6 +29,8 @@ import FPreloader from '@/components/preloader'
 import FSvg from '@/components/svg'
 import FPrice from '@/components/price'
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -37,10 +39,7 @@ export default {
     FPrice,
   },
   props: {
-    readonly: {
-      type: Boolean,
-      default: false,
-    },
+    readonly: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

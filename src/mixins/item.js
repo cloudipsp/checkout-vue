@@ -2,6 +2,13 @@ import { isMountedMixin } from '@/mixins/is-mounted'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { isExist } from '@/utils/inspect'
 import { errorHandler } from '@/utils/helpers'
+import {
+  PROP_TYPE_STRING_NUMBER_BOOLEAN,
+  PROP_TYPE_STRING,
+  PROP_TYPE_OBJECT_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 // @vue/component
 export const itemMixin = {
@@ -10,23 +17,12 @@ export const itemMixin = {
   inheritAttrs: false,
   props: {
     ...idProps,
-    value: {
-      type: [String, Number, Boolean],
-      default: null,
-    },
-    inputClass: {
-      type: String,
-      default: '',
-    },
-    rules: {
-      type: [Object, String],
-      default: '',
-    },
-    size: {
-      type: String,
-      default: '',
-      validator: value => ['', 'sm'].includes(value),
-    },
+    value: makeProp(PROP_TYPE_STRING_NUMBER_BOOLEAN),
+    inputClass: makeProp(PROP_TYPE_STRING),
+    rules: makeProp(PROP_TYPE_OBJECT_STRING),
+    size: makeProp(PROP_TYPE_STRING, undefined, value =>
+      arrayIncludes(['sm'], value)
+    ),
   },
   data() {
     return {

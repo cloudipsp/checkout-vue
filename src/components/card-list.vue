@@ -31,6 +31,8 @@
 import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
 import { mapState } from '@/utils/store'
+import { PROP_TYPE_ARRAY } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   components: {
@@ -38,9 +40,7 @@ export default {
     FIcon,
   },
   props: {
-    list: {
-      type: Array,
-    },
+    list: makeProp(PROP_TYPE_ARRAY),
   },
   computed: {
     ...mapState('params', ['card_number']),

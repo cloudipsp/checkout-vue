@@ -7,23 +7,20 @@
 
 <script>
 import { mapState } from '@/utils/store'
+import {
+  PROP_TYPE_STRING_NUMBER_BOOLEAN,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
-    condition: {
-      type: [String, Number, Boolean],
-      required: true,
-    },
-    size: {
-      type: String,
-      default: null,
-      validator: value => ['xs', 'sm'].includes(value),
-    },
-    tag: {
-      type: String,
-      default: 'div',
-      validator: value => ['div', 'span'].includes(value),
-    },
+    condition: makeProp(PROP_TYPE_STRING_NUMBER_BOOLEAN, undefined, true),
+    size: makeProp(PROP_TYPE_STRING, undefined, value =>
+      arrayIncludes(['xs', 'sm'], value)
+    ),
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   computed: {
     ...mapState(['ready']),

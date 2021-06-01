@@ -1,4 +1,6 @@
 import { Transition } from '@/utils/transition'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 export default {
   inheritAttrs: false,
@@ -7,14 +9,8 @@ export default {
     event: 'input',
   },
   props: {
-    variant: {
-      type: String,
-      default: 'info',
-    },
-    show: {
-      type: Boolean,
-      default: false,
-    },
+    variant: makeProp(PROP_TYPE_STRING, 'info'),
+    show: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {

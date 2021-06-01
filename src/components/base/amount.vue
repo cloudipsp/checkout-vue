@@ -9,28 +9,20 @@
 </template>
 
 <script>
+import {
+  PROP_TYPE_NUMBER_STRING,
+  PROP_TYPE_STRING,
+  PROP_TYPE_BOOLEAN,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
+
 export default {
   props: {
-    value: {
-      type: [Number, String],
-      required: true,
-    },
-    currency: {
-      type: String,
-      required: true,
-    },
-    sup: {
-      type: Boolean,
-      default: false,
-    },
-    amountClass: {
-      type: String,
-      default: null,
-    },
-    currencyClass: {
-      type: String,
-      default: null,
-    },
+    value: makeProp(PROP_TYPE_NUMBER_STRING),
+    currency: makeProp(PROP_TYPE_STRING),
+    sup: makeProp(PROP_TYPE_BOOLEAN, false),
+    amountClass: makeProp(PROP_TYPE_STRING),
+    currencyClass: makeProp(PROP_TYPE_STRING),
   },
   data() {
     return {

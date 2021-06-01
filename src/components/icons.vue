@@ -38,6 +38,9 @@ import FIcon from '@/components/icon'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { mapState } from '@/utils/store'
 import configMethods from '@/config/methods.json'
+import { PROP_TYPE_STRING, PROP_TYPE_NUMBER } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
@@ -45,19 +48,11 @@ export default {
     FTooltipDefault,
   },
   props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'card',
-      validator: value => configMethods.includes(value),
-    },
-    count: {
-      type: Number,
-      default: 3,
-    },
+    title: makeProp(PROP_TYPE_STRING),
+    type: makeProp(PROP_TYPE_STRING, 'card', value =>
+      arrayIncludes(configMethods, value)
+    ),
+    count: makeProp(PROP_TYPE_NUMBER, 3),
   },
   computed: {
     ...mapState(['options']),

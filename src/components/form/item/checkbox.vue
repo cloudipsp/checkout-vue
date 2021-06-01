@@ -14,6 +14,9 @@
 <script>
 import { itemMixin } from '@/mixins/item'
 import Checkbox from '@/components/form/item/helpers/checkbox'
+import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
@@ -21,15 +24,10 @@ export default {
   },
   mixins: [itemMixin],
   props: {
-    variant: {
-      type: String,
-      default: 'default',
-      validator: value => ['default', 'secondary'].includes(value),
-    },
-    switch: {
-      type: Boolean,
-      default: false,
-    },
+    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+      arrayIncludes(['default', 'secondary'], value)
+    ),
+    switch: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
     classInput() {

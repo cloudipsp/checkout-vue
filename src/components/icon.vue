@@ -4,23 +4,19 @@
 
 <script>
 import configMethods from '@/config/methods.json'
+import { PROP_TYPE_STRING } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: String,
-      default: 'md',
-      validator: value => ['sm', 'md', 'lg'].includes(value),
-    },
-    type: {
-      type: String,
-      default: 'card',
-      validator: value => [...configMethods, 'card_system/max'].includes(value),
-    },
+    name: makeProp(PROP_TYPE_STRING, undefined, true),
+    size: makeProp(PROP_TYPE_STRING, 'md', value => {
+      return arrayIncludes(['sm', 'md', 'lg'], value)
+    }),
+    type: makeProp(PROP_TYPE_STRING, 'card', value => {
+      return arrayIncludes([...configMethods, 'card_system/max'], value)
+    }),
   },
   data() {
     return {

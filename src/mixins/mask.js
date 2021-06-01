@@ -1,26 +1,20 @@
 import mask from '@/utils/masker'
+import {
+  PROP_TYPE_STRING,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_FUNCTION,
+} from '@/constants/props'
+import { makeProp } from '@/utils/props'
 
 const config = {}
 
 // @vue/component
 export const maskMixin = {
   props: {
-    mask: {
-      type: [String, Array],
-      default: '',
-    },
-    masked: {
-      type: Boolean,
-      default: false,
-    },
-    format: {
-      type: Function,
-      default: value => value,
-    },
-    parse: {
-      type: Function,
-      default: value => value,
-    },
+    mask: makeProp(PROP_TYPE_STRING),
+    masked: makeProp(PROP_TYPE_BOOLEAN, false),
+    format: makeProp(PROP_TYPE_FUNCTION, value => value),
+    parse: makeProp(PROP_TYPE_FUNCTION, value => value),
   },
   data() {
     return {
