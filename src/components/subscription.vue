@@ -178,7 +178,10 @@ export default {
       return this.unlimited || this.start_time
     },
     showEndTime() {
-      return (this.unlimited && !this.start_time_created) || this.end_time
+      return (
+        (this.unlimited && !this.start_time_created && !this.readonly) ||
+        this.end_time
+      )
     },
     showVerificationDesc() {
       return this.showTrial && this.amount <= 100 && this.amount_readonly
