@@ -11,7 +11,7 @@ export default {
   },
   customer_address: {
     label: 'customer_address',
-    rules: 'required|customer_field',
+    rules: 'required|customer_field_utf8',
     autocomplete: 'shipping street-address',
   },
   customer_zip: {
@@ -21,7 +21,7 @@ export default {
   },
   customer_city: {
     label: 'customer_city',
-    rules: 'required|customer_field',
+    rules: 'required|customer_field_utf8',
     autocomplete: 'shipping locality',
   },
   customer_country: {
