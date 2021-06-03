@@ -26,6 +26,8 @@ import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
 import { loadStyleAdaptive } from '@/import'
+import { arrayIncludes } from '@/utils/array'
+import { formatKiev } from '@/utils/date'
 
 Vue.use(store)
 
@@ -355,9 +357,14 @@ class Store extends Model {
     }
 
     params.recurring_data = Object.fromEntries(
-      Object.entries(params.recurring_data).filter(
-        ([, value]) => value !== 0 && value !== ''
-      )
+      Object.entries(params.recurring_data)
+        .filter(([, value]) => value !== 0 && value !== '')
+        .map(([name, value]) => [
+          name,
+          arrayIncludes(['start_time', 'end_time'], name)
+            ? formatKiev(value)
+            : value,
+        ])
     )
 
     if (params.recurring === 'n') {

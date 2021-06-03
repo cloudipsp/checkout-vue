@@ -1,4 +1,4 @@
-import { date, isAfter, isEqual, isValid } from '@/utils/date'
+import { parse, isAfter, isEqual, isValid } from '@/utils/date'
 
 const REGEX_RTRIM = /\S+$/
 
@@ -22,15 +22,15 @@ export const decimal = {
 
 export const date_format = {
   validate: (value, { format }) => {
-    return isValid(date(value, format))
+    return isValid(parse(value, format))
   },
   params: ['format'],
 }
 
 export const after = {
   validate(value, { target, inclusion = false, format }) {
-    value = date(value, format)
-    target = date(target, format)
+    value = parse(value, format)
+    target = parse(target, format)
 
     if (!isValid(value) || !isValid(target)) {
       return false

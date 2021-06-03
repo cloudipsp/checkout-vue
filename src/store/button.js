@@ -2,7 +2,7 @@ import { loadAxios } from '@/import'
 import { deepMerge } from '@/utils/helpers'
 import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
-import { date, createDate } from '@/utils/date'
+import { parse, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
 import { sort } from '@/utils/sort'
 
@@ -43,7 +43,7 @@ function parseOptions({
 }) {
   amount = Math.round(amount * 100) || 0
 
-  if (expire && date(expire, 'DD.MM.YYYY hh:mm') < createDate())
+  if (expire && parse(expire, 'DD.MM.YYYY hh:mm') < createDate())
     return Promise.reject('button_expired')
 
   if (status && status !== 'enabled')

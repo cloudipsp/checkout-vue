@@ -1,8 +1,9 @@
 import { sort } from '@/utils/sort'
+import { arrayIncludes } from '@/utils/array'
 
 export const createDate = (...args) => new Date(...args)
 
-export const date = (date, format) => {
+export const parse = (date, format) => {
   let config = {
     YYYY: 'year',
     yy: 'year',
@@ -74,4 +75,56 @@ export const isEqual = (dateLeft, dateRight) => {
 
 export const isValid = date => {
   return !isNaN(date)
+}
+
+const offsetKiev = getOffsetKiev()
+const offsetLocal = getOffsetLocal()
+const offsetDiff = (offsetLocal - offsetKiev) * 60 * 1000
+
+export const formatKiev = (string, format = 'YYYY-MM-DD') => {
+  let now = createDate()
+  let date = parse(string, format)
+
+  return formatYYYYMMDD(
+    createDate(
+      createDate(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        now.getHours(),
+        now.getMinutes()
+      ).getTime() - offsetDiff
+    )
+  )
+}
+
+function getOffsetLocal() {
+  // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+  // https://github.com/moment/moment/pull/1871
+  return -Math.round(createDate().getTimezoneOffset())
+}
+
+function getOffsetKiev() {
+  let resultDefault = 3
+  let include = [2, 3]
+  let format = 'DD.MM.YYYY, hh:mm'
+  let result
+  try {
+    let timeKiev = toLocaleString('Europe/Kiev')
+    let timeGreenwich = toLocaleString('Greenwich')
+    let dateKiev = parse(timeKiev, format)
+    let dateGreenwich = parse(timeGreenwich, format)
+    result = dateKiev.getHours() - dateGreenwich.getHours()
+    if (!arrayIncludes(include, result)) {
+      result = resultDefault
+    }
+  } catch (e) {
+    result = resultDefault
+  }
+
+  return result * 60
+}
+
+function toLocaleString(timeZone) {
+  return createDate().toLocaleString('ru-Ru', { timeZone })
 }
