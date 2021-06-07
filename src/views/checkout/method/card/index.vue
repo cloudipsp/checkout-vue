@@ -220,6 +220,7 @@ export default {
       let [month, year] = value.split('/')
 
       if (year && year.length === 4) {
+        month = `0${month}`.slice(-2)
         year = year.slice(-2)
         value = `${month}/${year}`
       }
