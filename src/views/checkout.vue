@@ -236,8 +236,6 @@ export default {
         .catch(() => {})
     },
     locationMethod() {
-      if (this.$route.name === 'menu') return
-
       let name = getRouteName(
         this.methods,
         this.$route.name || this.$route.params.method,

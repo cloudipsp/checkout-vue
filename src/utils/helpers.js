@@ -94,7 +94,11 @@ export const getRouteName = (methods, active, has_fields) => {
   let name = arrayIncludes(methods, active) ? active : methods[0]
 
   if (methods.length === 1 && methods[0] === 'wallets' && !has_fields) {
-    name = 'blank-' + name
+    return 'blank-' + name
+  }
+
+  if (active === 'menu') {
+    return active
   }
 
   return name
