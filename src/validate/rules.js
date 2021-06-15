@@ -53,7 +53,7 @@ export const customer_name = {
 
 export const customer_field_utf8 = {
   validate: value =>
-    /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\s]+$/.test(value) &&
+    /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\-\/.,\s]+$/.test(value) &&
     REGEX_RTRIM.test(value),
 }
 
