@@ -98,6 +98,7 @@ export default {
         })
     },
     update(newValue, oldValue) {
+      if (!this.button?.connector) return
       if (!newValue && !oldValue) return
 
       this.timeout(() => {
