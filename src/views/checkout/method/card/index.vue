@@ -15,6 +15,7 @@
         :masked="false"
         :maxlength="23"
         :disabled="read_only"
+        :message="message"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -125,6 +126,11 @@ export default {
     FButtonPay,
   },
   mixins: [isMountedMixin],
+  data() {
+    return {
+      message: '',
+    }
+  },
   computed: {
     ...mapState(['read_only', 'cards', 'submited', 'need_validate_card']),
     ...mapState('params', ['token']),
@@ -171,16 +177,13 @@ export default {
     card_number(value) {
       if (!value) return
 
-      value = value.slice(0, 6)
-      let card_bin = value.length === 6 ? value : value[0]
-
       this.store
         .sendRequest(
           'api.checkout.card_type_fee',
           'get',
           {
             token: this.token,
-            card_bin,
+            card_bin: this.getCardBin(value),
           },
           { cached: true }
         )
@@ -189,7 +192,9 @@ export default {
     },
   },
   methods: {
-    cardTypeFeeSuccess() {},
+    cardTypeFeeSuccess(model) {
+      this.message = model.attr('message')
+    },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {
         this.focus('card_number', value, 'expiry_date')
@@ -227,6 +232,12 @@ export default {
       }
 
       return value
+    },
+    getCardBin(value) {
+      let count = [9, 8, 7, 6, 1].find(
+        count => value.slice(0, count).length === count
+      )
+      return value.slice(0, count)
     },
   },
 }
