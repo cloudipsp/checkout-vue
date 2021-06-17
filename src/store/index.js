@@ -378,6 +378,5 @@ class Store extends Model {
 }
 
 export default name => {
-  if (instance[name]) return instance[name]
   return (instance[name] = new Store())
 }
