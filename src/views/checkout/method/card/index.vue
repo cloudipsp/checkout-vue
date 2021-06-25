@@ -217,6 +217,7 @@ export default {
         .catch(errorHandler)
     },
     format(value) {
+      value = value.replace(/[^\d]/, '/')
       let [month, year] = value.split('/')
 
       if (year && year.length === 4) {
