@@ -377,6 +377,8 @@ class Store extends Model {
   }
 }
 
-export default name => {
+export default (name, fromCache) => {
+  if (instance[name] && fromCache) return instance[name]
+
   return (instance[name] = new Store())
 }
