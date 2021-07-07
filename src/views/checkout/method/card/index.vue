@@ -129,6 +129,7 @@ export default {
   data() {
     return {
       message: '',
+      config: [6, 1],
     }
   },
   computed: {
@@ -176,7 +177,11 @@ export default {
   },
   watch: {
     card_number(value) {
-      if (!value) return
+      if (!value || value.length < Math.min(...this.config)) {
+        this.clear()
+
+        return
+      }
 
       this.store
         .sendRequest(
@@ -189,18 +194,23 @@ export default {
           },
           { cached: true }
         )
-        .then(this.cardTypeFeeSuccess)
+        .then(this.success)
         .catch(errorHandler)
     },
   },
   methods: {
-    cardTypeFeeSuccess(model) {
+    success(model) {
       this.message = model.attr('message')
 
       if (model.attr('actual_amount')) {
         this.actual_amount = Math.round(model.attr('actual_amount') * 100)
         this.card_type_fee = Math.round(model.attr('fee') * 100)
       }
+    },
+    clear() {
+      this.message = ''
+      this.actual_amount = 0
+      this.card_type_fee = 0
     },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {
@@ -241,7 +251,7 @@ export default {
       return value
     },
     getCardBin(value) {
-      let count = [9, 8, 7, 6, 1].find(
+      let count = this.config.find(
         count => value.slice(0, count).length === count
       )
       return value.slice(0, count)
