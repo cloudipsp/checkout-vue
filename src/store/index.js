@@ -286,9 +286,7 @@ class Store extends Model {
       }
     )
       .then(model => {
-        this.state.params.amount_with_fee = parseInt(
-          model.attr('amount_with_fee')
-        )
+        this.state.amount_with_fee = parseInt(model.attr('amount_with_fee'))
       })
       .catch(errorHandler)
   }

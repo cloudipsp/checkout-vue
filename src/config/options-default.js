@@ -55,7 +55,6 @@ const config = {
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
     amount: 0,
-    amount_with_fee: 0,
     fee: 0, // %
     currency: '',
     recurring: 'n',
@@ -113,6 +112,9 @@ const config = {
   can_make_payment: '',
   has_fields: false,
   need_validate_card: true,
+  amount_with_fee: 0,
+  actual_amount: 0,
+  card_type_fee: 0,
 }
 
 locales.forEach(function (locale) {

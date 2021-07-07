@@ -47,12 +47,13 @@ export default {
   computed: {
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
-    ...mapState('params', ['amount', 'amount_with_fee', 'currency']),
+    ...mapState('params', ['amount', 'currency']),
+    ...mapState(['amount_with_fee', 'actual_amount']),
     disabled() {
       return this.isError && this.isSubmit
     },
     fullAmount() {
-      return this.amount_with_fee || this.amount
+      return this.actual_amount || this.amount_with_fee || this.amount
     },
     showAmount() {
       return !this.noAmount && this.show_button_amount

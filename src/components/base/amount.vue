@@ -3,8 +3,10 @@
     <b :class="amountClass"
       >{{ integer }}<component :is="tagFractional">{{ fractional }}</component>
     </b>
-    &nbsp;
-    <span :class="currencyClass" v-text="$t(currency)" />
+    <template v-if="currency">
+      &nbsp;
+      <span :class="currencyClass" v-text="$t(currency)" />
+    </template>
   </span>
 </template>
 

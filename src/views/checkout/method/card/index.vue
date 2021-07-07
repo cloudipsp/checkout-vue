@@ -133,7 +133,7 @@ export default {
   },
   computed: {
     ...mapState(['read_only', 'cards', 'submited', 'need_validate_card']),
-    ...mapState('params', ['token']),
+    ...mapState('params', ['token', 'merchant_id']),
     ...mapStateGetSet('params', [
       'cvv2',
       'expiry_date',
@@ -141,6 +141,7 @@ export default {
       'code',
       'hash',
     ]),
+    ...mapStateGetSet(['card_type_fee', 'actual_amount']),
     validExpiryDate() {
       if (!this.need_validate_card) return {}
 
@@ -183,6 +184,7 @@ export default {
           'get',
           {
             token: this.token,
+            merchant_id: this.merchant_id,
             card_bin: this.getCardBin(value),
           },
           { cached: true }
@@ -194,6 +196,11 @@ export default {
   methods: {
     cardTypeFeeSuccess(model) {
       this.message = model.attr('message')
+
+      if (model.attr('actual_amount')) {
+        this.actual_amount = Math.round(model.attr('actual_amount') * 100)
+        this.card_type_fee = Math.round(model.attr('fee') * 100)
+      }
     },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {

@@ -12,11 +12,11 @@
         <table v-if="showFeeAmount" class="f-table">
           <tr>
             <td class="f-pr-3" v-text="$t('total_amount')" />
-            <td>{{ totalAmount }}</td>
+            <td><f-amount :value="amount" /></td>
           </tr>
           <tr>
             <td class="f-pr-3" v-text="$t('fee')" />
-            <td>{{ feeAmount }}</td>
+            <td><f-amount :value="feeAmount" /></td>
           </tr>
         </table>
       </template>
@@ -27,11 +27,21 @@
               {{ totalAmount }}
             </div>
             <label v-if="showFeeAmount" :for="id" class="f-fee" :style="style">
-              + {{ feeAmount }}
+              + <f-amount :value="feeAmount" />
             </label>
           </template>
         </input-amount>
       </template>
+      <table v-if="card_type_fee" class="f-table">
+        <tr>
+          <td class="f-pr-3" v-text="$t('total_amount')" />
+          <td><f-amount :value="amount" /></td>
+        </tr>
+        <tr>
+          <td class="f-pr-3" v-text="labelCardTypeFee" />
+          <td><f-amount :value="card_type_fee" /></td>
+        </tr>
+      </table>
     </f-preloader>
   </div>
 </template>
@@ -61,9 +71,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['amount_readonly']),
+    ...mapState([
+      'amount_readonly',
+      'amount_with_fee',
+      'card_type_fee',
+      'actual_amount',
+    ]),
     ...mapState('options', { showFee: 'fee' }),
-    ...mapState('params', ['currency', 'amount', 'fee', 'amount_with_fee']),
+    ...mapState('params', ['currency', 'amount', 'fee']),
     showFeeAmount() {
       return (
         this.showFee && this.amount && this.amount_with_fee && this.feeAmount
@@ -79,10 +94,10 @@ export default {
       return this.amount / 100
     },
     feeAmount() {
-      return (this.amount_with_fee - this.cacheAmount) / 100
+      return this.amount_with_fee - this.cacheAmount
     },
     valueAmount() {
-      return this.amount_with_fee || this.amount
+      return this.actual_amount || this.amount_with_fee || this.amount
     },
     sizePreloader() {
       return this.amount_readonly ? 'sm' : null
@@ -91,6 +106,9 @@ export default {
       return {
         left: `${this.left}px`,
       }
+    },
+    labelCardTypeFee() {
+      return this.card_type_fee < 0 ? this.$t('discount') : this.$t('fee')
     },
   },
   watch: {
