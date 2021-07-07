@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:17
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:27+0200\n"
+"POT-Creation-Date: 2021-07-06 19:14+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -66,32 +66,40 @@ msgid "month"
 msgstr "Miesiąc"
 
 #: src/i18n/process/templates.js:1
-msgid "demo-title"
+msgid "menu"
 msgstr ""
 
 #: src/i18n/process/templates.js:2
+msgid "error_modal"
+msgstr ""
+
+#: src/i18n/process/templates.js:3
+msgid "error"
+msgstr ""
+
+#: src/i18n/process/templates.js:4
 msgid "gdpr_alert_text"
 msgstr ""
 "Używamy plików cookie na tej stronie, aby zwiększyć wygodę dokonywania "
 "płatności."
 
-#: src/i18n/process/templates.js:3
+#: src/i18n/process/templates.js:5
 msgid "learn_more"
 msgstr "Dowiedz się więcej."
 
-#: src/i18n/process/templates.js:4
+#: src/i18n/process/templates.js:6
 msgid "save_card"
 msgstr "Zachowaj moją kartę do przyszłych płatności."
 
-#: src/i18n/process/templates.js:5
+#: src/i18n/process/templates.js:7
 msgid "its_safe"
 msgstr "To jest bezpieczne."
 
-#: src/i18n/process/templates.js:6
+#: src/i18n/process/templates.js:8
 msgid "gdpr_modal_safe_title"
 msgstr "Zapisywanie karty jest bezpieczne i wygodne"
 
-#: src/i18n/process/templates.js:7
+#: src/i18n/process/templates.js:9
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>Nie rejestrujemy danych Twojej karty, gdy je wprowadzasz. W "
@@ -102,49 +110,41 @@ msgstr ""
 "tokenów nie ma sensu, ponieważ nie mają one wartości poza usługą płatniczą "
 "Fondy."
 
-#: src/i18n/process/templates.js:8
+#: src/i18n/process/templates.js:10
 msgid "close"
 msgstr "Zamknij"
 
-#: src/i18n/process/templates.js:9
+#: src/i18n/process/templates.js:11
 msgid "accept"
 msgstr "Zgadzam się"
 
-#: src/i18n/process/templates.js:10
-msgid "bank_desc"
-msgstr "Zostaniesz przekierowany na stronę banku, aby dokończyć płatność"
-
-#: src/i18n/process/templates.js:11
-msgid "default_country"
-msgstr "Szukaj według kraju"
-
 #: src/i18n/process/templates.js:12
-msgid "system_search"
-msgstr "Szukaj według nazwy banku, numeru IBAN lub kodu bankowego"
-
-#: src/i18n/process/templates.js:13
-msgid "load_more"
-msgstr "Załaduj więcej..."
-
-#: src/i18n/process/templates.js:15
-msgid "other_payment_method"
-msgstr "Lub zapłać za pomocą"
-
-#: src/i18n/process/templates.js:16
 msgid "pay"
 msgstr "Zapłac"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:13
 msgid "demo-desc"
 msgstr ""
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:14
+msgid "angle-down"
+msgstr "-"
+
+#: src/i18n/process/templates.js:15
 msgid "use_other_card"
 msgstr "Wprowadź inną kartę"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:16
 msgid "expires_on"
 msgstr "Ważny do"
+
+#: src/i18n/process/templates.js:18
+msgid "system"
+msgstr ""
+
+#: src/i18n/process/templates.js:19
+msgid "email"
+msgstr "Poczta elektroniczna"
 
 #: src/i18n/process/templates.js:20
 msgid "label"
@@ -167,26 +167,26 @@ msgid "order_details"
 msgstr "Szczegóły zamówienia"
 
 #: src/i18n/process/templates.js:25
-msgid "show"
-msgstr "-"
-
-#: src/i18n/process/templates.js:26
 msgid "submit3ds_title"
 msgstr "Płatność nie została zakończona"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:26
 msgid "submit3ds_text"
 msgstr "Wprowadź inny kod potwierdzający"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:27
 msgid "submit3ds_submit"
 msgstr "Spróbuj ponownie"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:28
 msgid "submit3ds_wait"
 msgstr ""
 "Nastąpi ponowne przekierowanie na stronę banku, aby dokończyć płatność w "
 "ciągu {0} sekund"
+
+#: src/i18n/process/templates.js:29
+msgid "show"
+msgstr "-"
 
 #: src/i18n/process/templates.js:30 src/i18n/process/translate.js:1
 msgid "declined"
@@ -227,223 +227,243 @@ msgid "amount"
 msgstr "Kwota całkowita"
 
 #: src/i18n/process/templates.js:39
+msgid "discount"
+msgstr ""
+
+#: src/i18n/process/templates.js:40
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:41
 msgid "security_title"
 msgstr "Silne uwierzytelnianie klienta"
 
-#: src/i18n/process/templates.js:41
+#: src/i18n/process/templates.js:42
 msgid "security_text"
 msgstr ""
 "<p>Zgodnie ze standardem bezpieczeństwa danych w branży kart "
 "płatniczych<p>Notowany w Globalnym Rejestrze Visa i zweryfikowany przez "
 "Mastercard"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:43
 msgid "switch"
 msgstr ""
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:44
 msgid "subscription"
 msgstr "Powtórz tę płatność automatycznie"
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:45
 msgid "subscription_amount"
 msgstr "Kwota płatności cyklicznej"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:46
 msgid "trial_period"
 msgstr "Okres próbny"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:47
 msgid "number_of_payments"
 msgstr "Liczba płatności"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:48
 msgid "unlimited"
 msgstr "Bez limitu"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:49
 msgid "subscription_every"
 msgstr "Każdy"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:50
 msgid "subscription_period"
 msgstr "Okres czasu"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:51
 msgid "subscription_start_time"
 msgstr "Począwszy od"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:52
 msgid "subscription_end_time"
 msgstr "Data zakończenia"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:53
 msgid "verification_desc"
 msgstr ""
 "Aby zweryfikować Twoją kartę, zablokujemy niewielką kwotę weryfikacyjną na "
 "Twoim koncie bankowym przez 15 minut."
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:54
 msgid "customer_name"
 msgstr "Imię właściciela karty"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:55
 msgid "customer_name_utf8"
 msgstr "Pełne imię i nazwisko"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:56
 msgid "customer_address"
 msgstr "Adres (ulica, budynek, mieszkanie)"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:57
 msgid "customer_zip"
 msgstr "Kod pocztowy"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:58
 msgid "customer_city"
 msgstr "Miasto"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:59
 msgid "customer_country"
 msgstr "Kraj"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:60
 msgid "customer_state"
 msgstr "Stan/Województwo/Region"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:61
 msgid "customer_phonemobile"
 msgstr "Telefon"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:62
 msgid "customer_email"
 msgstr "Poczta elektroniczna"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:63
+msgid "demo-title"
+msgstr ""
+
+#: src/i18n/process/templates.js:64
+msgid "card-verify"
+msgstr ""
+
+#: src/i18n/process/templates.js:65
+msgid "success"
+msgstr ""
+
+#: src/i18n/process/templates.js:66
+msgid "default_country"
+msgstr "Szukaj według kraju"
+
+#: src/i18n/process/templates.js:67
+msgid "system_search"
+msgstr "Szukaj według nazwy banku, numeru IBAN lub kodu bankowego"
+
+#: src/i18n/process/templates.js:68
+msgid "load_more"
+msgstr "Załaduj więcej..."
+
+#: src/i18n/process/templates.js:69
 msgid "pay_with_card"
 msgstr "Zapłacić kartą"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:70
 msgid "card_number"
 msgstr "Numer karty"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:71
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:65
-msgid "angle-down"
-msgstr "-"
-
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:72
 msgid "expiry_date"
 msgstr "MM/RR"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:73
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:74
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:75
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:76
 msgid "cvv2_help"
 msgstr "{0}-kod cyfrowy z tyłu karty"
 
-#: src/i18n/process/templates.js:71
-msgid "email"
-msgstr "Poczta elektroniczna"
-
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:77
 msgid "verification_code"
 msgstr "Kod potwierdzający"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:78
 msgid "verification_amount"
 msgstr "Kwota weryfikacyjna"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:79
 msgid "mfo_title"
 msgstr "Szczegóły płatności za zamówienie # {0}"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:80
 msgid "ibox_title"
 msgstr "ID zamówienia (płatne przez iBox)"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:81
 msgid "full_requesites"
 msgstr "Dane bankowe odbiorcy"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:82
 msgid "full_requesites_explain"
 msgstr ""
 "Nie będziesz musiał ich wskazywać podczas dokonywania płatności, ale "
 "zapisanie ich w celach informacyjnych może być pomocne."
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:83
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:84
 msgid "receiver"
 msgstr "Odbiorca"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:85
 msgid "current_bill"
 msgstr "Numer konta bankowego (IBAN)"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:86
 msgid "usreou"
 msgstr "Numer identyfikacji podatkowej (NIP)"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:87
 msgid "bank"
 msgstr "Nazwa banku"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:88
 msgid "mfo"
 msgstr "Kod banku (MFO)"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:89
 msgid "purpose"
 msgstr "Cel płatności"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:90
 msgid "receipt_id"
 msgstr "Identyfikator zamówienia"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:91
 msgid "end_date"
 msgstr "Termin płatności"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:92
 msgid "ibox_desc"
 msgstr ""
 "Wszystkie terminale iBox, które akceptują płatności, są oznaczone na <a href="
 "\"https://ibox.ua/map\" target=\"_blank\">mapie</a>"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:93
 msgid "save_receipt"
 msgstr "Zapisz paragon"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:94
 msgid "save_qr_code"
 msgstr "Zapisz na smartfonie"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:95
 msgid "qr_code_text"
 msgstr "Zeskanuj ten kod QR, aby zapisać paragon na swoim smartfonie"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:96
 msgid "ibox_info"
 msgstr ""
 "<p>Aby opłacić zamówienie, skorzystaj z opcji Szukaj, aby zlokalizować "
@@ -451,15 +471,23 @@ msgstr ""
 "automatycznie anulowane po upływie terminu.<p>Nie przyjmujemy płatności za "
 "to zamówienie za pośrednictwem terminali innych niż iBox."
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:97
 msgid "sepa_t"
 msgstr "Podaj dane swojego konta bankowego"
 
-#: src/i18n/process/templates.js:93 src/i18n/process/translate.js:46
+#: src/i18n/process/templates.js:98 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "Imię"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:99
+msgid "bank_desc"
+msgstr "Zostaniesz przekierowany na stronę banku, aby dokończyć płatność"
+
+#: src/i18n/process/templates.js:100
+msgid "other_payment_method"
+msgstr "Lub zapłać za pomocą"
+
+#: src/i18n/process/templates.js:101
 msgid "payment_id"
 msgstr "Identyfikator płatności"
 
@@ -623,6 +651,18 @@ msgstr "BIC"
 #: src/i18n/process/translate.js:49
 msgid "iban"
 msgstr "IBAN"
+
+#: src/i18n/process/translate.js:51
+msgid "wallets_google"
+msgstr ""
+
+#: src/i18n/process/translate.js:52
+msgid "wallets_card"
+msgstr ""
+
+#: src/i18n/process/translate.js:53
+msgid "wallets_apple"
+msgstr ""
 
 #~ msgid "code"
 #~ msgstr "-"

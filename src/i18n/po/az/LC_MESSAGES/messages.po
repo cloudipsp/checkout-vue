@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:17
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:27+0200\n"
+"POT-Creation-Date: 2021-07-06 19:14+0300\n"
 "PO-Revision-Date: 2021-03-19 11:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -66,30 +66,38 @@ msgid "month"
 msgstr "ay"
 
 #: src/i18n/process/templates.js:1
-msgid "demo-title"
-msgstr "demo rejimi"
+msgid "menu"
+msgstr ""
 
 #: src/i18n/process/templates.js:2
+msgid "error_modal"
+msgstr ""
+
+#: src/i18n/process/templates.js:3
+msgid "error"
+msgstr ""
+
+#: src/i18n/process/templates.js:4
 msgid "gdpr_alert_text"
 msgstr "ödəmələrinizi asanlaşdırmaq üçün bu veb saytda cookies istifadə edirik"
 
-#: src/i18n/process/templates.js:3
+#: src/i18n/process/templates.js:5
 msgid "learn_more"
 msgstr "daha ətraflı"
 
-#: src/i18n/process/templates.js:4
+#: src/i18n/process/templates.js:6
 msgid "save_card"
 msgstr "kartımı gələcək ödənişlər üçün saxla"
 
-#: src/i18n/process/templates.js:5
+#: src/i18n/process/templates.js:7
 msgid "its_safe"
 msgstr "təhlükəsizdir"
 
-#: src/i18n/process/templates.js:6
+#: src/i18n/process/templates.js:8
 msgid "gdpr_modal_safe_title"
 msgstr "kartın saxlanılması təhlükəsiz və rahatdır"
 
-#: src/i18n/process/templates.js:7
+#: src/i18n/process/templates.js:9
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>Kart məlumatlarını daxil edərkən onları yazmırıq. Faktiki olaraq onları "
@@ -99,51 +107,43 @@ msgstr ""
 "istifadə edəcək. məlumatlarını ələ keçirməyin mənası yoxdur, çünki Fondy "
 "ödəmə xidmətinin xaricində onların heç bir dəyəri yoxdur"
 
-#: src/i18n/process/templates.js:8
+#: src/i18n/process/templates.js:10
 msgid "close"
 msgstr "sonra soruşun"
 
-#: src/i18n/process/templates.js:9
+#: src/i18n/process/templates.js:11
 msgid "accept"
 msgstr "razıyam"
 
-#: src/i18n/process/templates.js:10
-msgid "bank_desc"
-msgstr "ödənişinizi tamamlamaq üçün bankın veb saytına yönləndiriləcəksiniz"
-
-#: src/i18n/process/templates.js:11
-msgid "default_country"
-msgstr "ölkə üzrə axtarın"
-
 #: src/i18n/process/templates.js:12
-msgid "system_search"
-msgstr "bank adı, IBAN və ya BLZ ilə axtarın"
-
-#: src/i18n/process/templates.js:13
-msgid "load_more"
-msgstr "daha çox yüklə"
-
-#: src/i18n/process/templates.js:15
-msgid "other_payment_method"
-msgstr "və ya ilə ödə"
-
-#: src/i18n/process/templates.js:16
 msgid "pay"
 msgstr "ödə"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:13
 msgid "demo-desc"
 msgstr ""
 "bu bir demo rejimidir. Hər hansı bir məlumat daxil edə bilərsiniz, faktiki "
 "ödəniş olmayacaq"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:14
+msgid "angle-down"
+msgstr "bucaq aşağı"
+
+#: src/i18n/process/templates.js:15
 msgid "use_other_card"
 msgstr "başqa bir kart daxil edin"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:16
 msgid "expires_on"
 msgstr "etibarlıdır"
+
+#: src/i18n/process/templates.js:18
+msgid "system"
+msgstr ""
+
+#: src/i18n/process/templates.js:19
+msgid "email"
+msgstr "email"
 
 #: src/i18n/process/templates.js:20
 msgid "label"
@@ -166,26 +166,26 @@ msgid "order_details"
 msgstr "sifariş detalları"
 
 #: src/i18n/process/templates.js:25
-msgid "show"
-msgstr "göstər"
-
-#: src/i18n/process/templates.js:26
 msgid "submit3ds_title"
 msgstr "ödəniş tamamlanmadı"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:26
 msgid "submit3ds_text"
 msgstr "lütfən, başqa bir təsdiqləmə kodu daxil edin"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:27
 msgid "submit3ds_submit"
 msgstr "yenidən cəhd edin"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:28
 msgid "submit3ds_wait"
 msgstr ""
 "ödənişinizi {0} saniyə ərzində başa çatdırmaq üçün yenidən bankın veb "
 "saytına yönləndiriləcəksiniz"
+
+#: src/i18n/process/templates.js:29
+msgid "show"
+msgstr "göstər"
 
 #: src/i18n/process/templates.js:30 src/i18n/process/translate.js:1
 msgid "declined"
@@ -226,222 +226,242 @@ msgid "amount"
 msgstr "cəmi"
 
 #: src/i18n/process/templates.js:39
+msgid "discount"
+msgstr ""
+
+#: src/i18n/process/templates.js:40
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:41
 msgid "security_title"
 msgstr "güclü müştəri identifikasiyası"
 
-#: src/i18n/process/templates.js:41
+#: src/i18n/process/templates.js:42
 msgid "security_text"
 msgstr ""
 "<p>In compliance with PCI DSS<p>Listed on Visa Global Registry and verified "
 "by Mastercard"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:43
 msgid "switch"
 msgstr ""
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:44
 msgid "subscription"
 msgstr "bu ödəməni avtomatik olaraq təkrarlayın"
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:45
 msgid "subscription_amount"
 msgstr "təkrarlanan ödəniş məbləği"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:46
 msgid "trial_period"
 msgstr "sınaq müddəti"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:47
 msgid "number_of_payments"
 msgstr "ödənişlərin sayı"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:48
 msgid "unlimited"
 msgstr "limitsiz"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:49
 msgid "subscription_every"
 msgstr "hər biri"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:50
 msgid "subscription_period"
 msgstr "vaxt müddəti"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:51
 msgid "subscription_start_time"
 msgstr "starting on"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:52
 msgid "subscription_end_time"
 msgstr "bitmə vaxtı"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:53
 msgid "verification_desc"
 msgstr ""
 "kartınızı doğrulamaq üçün 15 dəqiqə ərzində bank hesabınızdan kiçik bir "
 "təsdiq haqqı alacağıq"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:54
 msgid "customer_name"
 msgstr "adı və Soyadı"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:55
 msgid "customer_name_utf8"
 msgstr "adı və Soyadı"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:56
 msgid "customer_address"
 msgstr "ünvan (küçə, ev, mənzil)"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:57
 msgid "customer_zip"
 msgstr "zip/Poçt kodu"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:58
 msgid "customer_city"
 msgstr "şəhər/Rayon"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:59
 msgid "customer_country"
 msgstr "ölkə"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:60
 msgid "customer_state"
 msgstr "ştat /Əyalət/ Rayon"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:61
 msgid "customer_phonemobile"
 msgstr "telefon"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:62
 msgid "customer_email"
 msgstr "email"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:63
+msgid "demo-title"
+msgstr "demo rejimi"
+
+#: src/i18n/process/templates.js:64
+msgid "card-verify"
+msgstr ""
+
+#: src/i18n/process/templates.js:65
+msgid "success"
+msgstr ""
+
+#: src/i18n/process/templates.js:66
+msgid "default_country"
+msgstr "ölkə üzrə axtarın"
+
+#: src/i18n/process/templates.js:67
+msgid "system_search"
+msgstr "bank adı, IBAN və ya BLZ ilə axtarın"
+
+#: src/i18n/process/templates.js:68
+msgid "load_more"
+msgstr "daha çox yüklə"
+
+#: src/i18n/process/templates.js:69
 msgid "pay_with_card"
 msgstr "kartla ödəniş edin"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:70
 msgid "card_number"
 msgstr "kart nömrəsi"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:71
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:65
-msgid "angle-down"
-msgstr "bucaq aşağı"
-
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:72
 msgid "expiry_date"
 msgstr "aa/ii"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:73
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:74
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:75
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:76
 msgid "cvv2_help"
 msgstr "{0}-digit code on the back of your card"
 
-#: src/i18n/process/templates.js:71
-msgid "email"
-msgstr "email"
-
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:77
 msgid "verification_code"
 msgstr "təsdiqedici kod"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:78
 msgid "verification_amount"
 msgstr "doğrulama məbləği"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:79
 msgid "mfo_title"
 msgstr "sifariş # {0} üçün ödəniş detalları"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:80
 msgid "ibox_title"
 msgstr "sifariş ID (iBox vasitəsilə ödəniləcək)"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:81
 msgid "full_requesites"
 msgstr "alıcının bank məlumatları"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:82
 msgid "full_requesites_explain"
 msgstr ""
 "ödəniş edərkən bunları əlavə etməyinizə ehtiyac yoxdur, ancaq istinad üçün "
 "saxlamaq faydalı ola bilər"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:83
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:84
 msgid "receiver"
 msgstr "alıcı"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:85
 msgid "current_bill"
 msgstr "bank hesab nömrəsi (IBAN)"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:86
 msgid "usreou"
 msgstr "tax identification number (TIN)"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:87
 msgid "bank"
 msgstr "bank adı"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:88
 msgid "mfo"
 msgstr "bank kodu (MFO)"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:89
 msgid "purpose"
 msgstr "təsvir"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:90
 msgid "receipt_id"
 msgstr "sifariş ID-si"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:91
 msgid "end_date"
 msgstr "ödəniş müddəti"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:92
 msgid "ibox_desc"
 msgstr ""
 "ödənişləri qəbul edən bütün iBox terminalları <a href=\"https://ibox.ua/map"
 "\" target=\"_blank\">map</a>"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:93
 msgid "save_receipt"
 msgstr "qəbz saxla"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:94
 msgid "save_qr_code"
 msgstr "smartfona qeyd edin"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:95
 msgid "qr_code_text"
 msgstr "qəbzinizi smartfonunuza saxlamaq üçün bu QR kodu skan edin"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:96
 msgid "ibox_info"
 msgstr ""
 "<p>Sifarişi ödəmək üçün, lütfən iBox terminalında Fondy ödəniş xidmətini "
@@ -449,15 +469,23 @@ msgstr ""
 "avtomatik olaraq ləğv ediləcəkdir.<p>Bu sifariş üçün iBox xaricindəki "
 "terminallar vasitəsilə ödəniş qəbul etməyəcəyik"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:97
 msgid "sepa_t"
 msgstr "bank hesabınızın məlumatlarını verin"
 
-#: src/i18n/process/templates.js:93 src/i18n/process/translate.js:46
+#: src/i18n/process/templates.js:98 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "adı"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:99
+msgid "bank_desc"
+msgstr "ödənişinizi tamamlamaq üçün bankın veb saytına yönləndiriləcəksiniz"
+
+#: src/i18n/process/templates.js:100
+msgid "other_payment_method"
+msgstr "və ya ilə ödə"
+
+#: src/i18n/process/templates.js:101
 msgid "payment_id"
 msgstr "ödəniş ID-si"
 
@@ -626,6 +654,18 @@ msgstr "bic"
 #: src/i18n/process/translate.js:49
 msgid "iban"
 msgstr "iban"
+
+#: src/i18n/process/translate.js:51
+msgid "wallets_google"
+msgstr ""
+
+#: src/i18n/process/translate.js:52
+msgid "wallets_card"
+msgstr ""
+
+#: src/i18n/process/translate.js:53
+msgid "wallets_apple"
+msgstr ""
 
 #~ msgid "code"
 #~ msgstr "-"
