@@ -43,6 +43,7 @@ import FAlertBase from '@/components/alert/alert-base'
 import FFormBase from '@/components/form/form/form-base'
 import SvgSafe from '@/svg/safe'
 import FButtonLink from '@/components/button/button-link'
+import FButton from '@/components/button/button'
 
 import {
   mapState,
@@ -57,6 +58,7 @@ export default {
     FFormBase,
     SvgSafe,
     FButtonLink,
+    FButton,
   },
   model: {
     prop: 'show',
