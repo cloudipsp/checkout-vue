@@ -3,7 +3,7 @@
     <transition name="f-fade">
       <f-icon
         v-if="brand"
-        type="card_system/max"
+        type="card/max"
         :name="brand"
         class="f-card-brand-icon"
       />

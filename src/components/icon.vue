@@ -15,16 +15,14 @@ export default {
       return arrayIncludes(['sm', 'md', 'lg'], value)
     }),
     type: makeProp(PROP_TYPE_STRING, 'card', value => {
-      return arrayIncludes([...configMethods, 'card_system/max'], value)
+      return arrayIncludes([...configMethods, 'card/max'], value)
     }),
   },
   data() {
     return {
       map: {
-        card: 'card_system',
         banklinks_eu: 'banks',
         local_methods: 'banks',
-        wallets: 'digital_wallet',
       },
     }
   },

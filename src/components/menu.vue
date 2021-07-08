@@ -55,6 +55,7 @@ export default {
         sepa: 'local',
         banklinks_eu: 'bank',
         local_methods: 'local',
+        emoney: 'wallet',
       },
     }
   },

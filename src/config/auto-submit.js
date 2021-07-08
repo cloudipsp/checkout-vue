@@ -1,1 +1,1 @@
-export default ['banklinks_eu', 'local_methods', 'loans']
+export default ['banklinks_eu', 'local_methods', 'loans', 'emoney']

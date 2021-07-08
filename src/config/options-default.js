@@ -14,6 +14,7 @@ const config = {
     banklinks_eu_icons: [],
     local_methods_icons: [],
     loans_icons: [],
+    emoney_icons: [],
     wallets_icons: [],
     title: '',
     full_screen: true,

@@ -15,6 +15,7 @@ import {
   Receipt,
   Wallets,
   Loans,
+  Emoney,
   Success,
   Error,
   ErrorModal,
@@ -32,6 +33,7 @@ const sepa = 'sepa'
 const receipt = 'receipt'
 const wallets = 'wallets'
 const loans = 'loans'
+const emoney = 'emoney'
 const success = 'success'
 const error = 'error'
 const error_modal = 'error_modal'
@@ -111,6 +113,11 @@ export default name => {
                 path: loans,
                 name: loans,
                 component: Loans,
+              },
+              {
+                path: emoney,
+                name: emoney,
+                component: Emoney,
               },
               {
                 path: ':method/:system',

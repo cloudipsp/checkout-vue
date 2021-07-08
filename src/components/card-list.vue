@@ -13,7 +13,7 @@
     >
       <f-icon
         v-if="item.card_brand"
-        type="card_system/max"
+        type="card/max"
         :name="item.card_brand"
         class="f-card-list-icon"
       />
