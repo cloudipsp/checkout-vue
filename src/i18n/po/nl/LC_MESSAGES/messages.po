@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:18
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 19:14+0300\n"
+"POT-Creation-Date: 2021-07-13 21:16+0300\n"
 "PO-Revision-Date: 2021-03-18 15:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -49,6 +49,10 @@ msgstr "portemonnees"
 #: src/i18n/process/methods.js:8
 msgid "loans"
 msgstr "online installaties"
+
+#: src/i18n/process/methods.js:9 src/i18n/process/translate.js:36
+msgid "emoney"
+msgstr "digitale portemonnee"
 
 #: src/i18n/process/regular-period.js:1
 #: src/i18n/process/subscription-period.js:1
@@ -110,7 +114,7 @@ msgstr ""
 "waarde hebben buiten het betaalsysteem van Fondy"
 
 #: src/i18n/process/templates.js:10
-msgid "close"
+msgid "not_now"
 msgstr "later opnieuw proberen"
 
 #: src/i18n/process/templates.js:11
@@ -118,353 +122,357 @@ msgid "accept"
 msgstr "ik ga akkoord"
 
 #: src/i18n/process/templates.js:12
+msgid "close"
+msgstr ""
+
+#: src/i18n/process/templates.js:13
 msgid "pay"
 msgstr "betalen"
 
-#: src/i18n/process/templates.js:13
+#: src/i18n/process/templates.js:14
 msgid "demo-desc"
 msgstr ""
 "dit is een demo-modus. U kunt alle gegevens invoeren, de huidige betaling "
 "zal niet beschikbaar zijn"
 
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:15
 msgid "angle-down"
 msgstr "-"
 
-#: src/i18n/process/templates.js:15
+#: src/i18n/process/templates.js:16
 msgid "use_other_card"
 msgstr "voer andere kaart in"
 
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:17
 msgid "expires_on"
 msgstr "geldig t/m"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:19
 msgid "system"
 msgstr ""
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:20
 msgid "email"
 msgstr "e-mailadres"
 
-#: src/i18n/process/templates.js:20
+#: src/i18n/process/templates.js:21
 msgid "label"
 msgstr ""
 
-#: src/i18n/process/templates.js:21
+#: src/i18n/process/templates.js:22
 msgid "datepicker"
 msgstr "-"
 
-#: src/i18n/process/templates.js:22
+#: src/i18n/process/templates.js:23
 msgid "model"
 msgstr ""
 
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:24
 msgid "see_more"
 msgstr "meer zien"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:25
 msgid "order_details"
 msgstr "bestelgegevens"
 
-#: src/i18n/process/templates.js:25
+#: src/i18n/process/templates.js:26
 msgid "submit3ds_title"
 msgstr "betaling niet voltooid"
 
-#: src/i18n/process/templates.js:26
+#: src/i18n/process/templates.js:27
 msgid "submit3ds_text"
 msgstr "a.u.b. voer een andere bevestigingscode in"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:28
 msgid "submit3ds_submit"
 msgstr "probeer opnieuw"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:29
 msgid "submit3ds_wait"
 msgstr ""
 "u wordt opnieuw doorverwezen naar de website van de bank om uw betaling in "
 "{0} seconden te voltooien"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:30
 msgid "show"
 msgstr "-"
 
-#: src/i18n/process/templates.js:30 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:31 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "helaas, je betaling is niet gelukt"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:32
 msgid "server_trouble_title"
 msgstr "Oeps..."
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:33
 msgid "server_trouble_desc"
 msgstr ""
 "er is iets fout gegaan, maar we zijn er al mee bezig. Ga terug naar de "
 "vorige pagina en doe de betaling opnieuw"
 
-#: src/i18n/process/templates.js:33
+#: src/i18n/process/templates.js:34
 msgid "offer"
 msgstr "-"
 
-#: src/i18n/process/templates.js:34
+#: src/i18n/process/templates.js:35
 msgid "offer_t"
 msgstr ""
 "ik accepteer <a href=\"{0}\" target=\"_blank\">aanbiedingsvoorwaarden </a>"
 
-#: src/i18n/process/templates.js:35
+#: src/i18n/process/templates.js:36
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:36
+#: src/i18n/process/templates.js:37
 msgid "total_amount"
 msgstr "totaal bedrag"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:38
 msgid "fee"
 msgstr "commissie"
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:39
 msgid "amount"
 msgstr "totaal"
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:40
 msgid "discount"
 msgstr ""
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:41
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:41
+#: src/i18n/process/templates.js:42
 msgid "security_title"
 msgstr "betrouwbare klanten authenticatie"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:43
 msgid "security_text"
 msgstr ""
 "<p>In overeenstemming met PCI DSS<p>Geregistreerd in het Visa Global "
 "Registry en geverifieerd door Mastercard"
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:44
 msgid "switch"
 msgstr ""
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:45
 msgid "subscription"
 msgstr "doe deze betaling automatisch opnieuw"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:46
 msgid "subscription_amount"
 msgstr "terugkerende betaling"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:47
 msgid "trial_period"
 msgstr "proefperiode"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:48
 msgid "number_of_payments"
 msgstr "aantal betalingen"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:49
 msgid "unlimited"
 msgstr "onbeperkt"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:50
 msgid "subscription_every"
 msgstr "elke"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:51
 msgid "subscription_period"
 msgstr "tijdsduur"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:52
 msgid "subscription_start_time"
 msgstr "vanaf"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:53
 msgid "subscription_end_time"
 msgstr "einddatum"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:54
 msgid "verification_desc"
 msgstr ""
 "om uw kaart te verifiëren zullen wij gedurende 15 minuten een klein bedrag "
 "op uw bankrekening inhouden"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:55
 msgid "customer_name"
 msgstr "voornaam en Achternaam"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:56
 msgid "customer_name_utf8"
 msgstr "naam en Achternaam"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:57
 msgid "customer_address"
 msgstr "adres (straat, gebouw, appartement)"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:58
 msgid "customer_zip"
 msgstr "postcode"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:59
 msgid "customer_city"
 msgstr "stad/Gemeente"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:60
 msgid "customer_country"
 msgstr "land"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:61
 msgid "customer_state"
 msgstr "staat/Provincie/Regio"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:62
 msgid "customer_phonemobile"
 msgstr "telefoonnummer"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:63
 msgid "customer_email"
 msgstr "e-mailadres"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:64
 msgid "demo-title"
 msgstr "demo-modus"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:65
 msgid "card-verify"
 msgstr ""
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:66
 msgid "success"
 msgstr ""
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:67
 msgid "default_country"
 msgstr "zoeken per land"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:68
 msgid "system_search"
 msgstr "zoeken per banknaam, IBAN of BLZ"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:69
 msgid "load_more"
 msgstr "Meer laden..."
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:70
 msgid "pay_with_card"
 msgstr "betalen met kaart"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:71
 msgid "card_number"
 msgstr "kaartnummer"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:72
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:73
 msgid "expiry_date"
 msgstr "dd/mm"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:74
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:75
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:76
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:77
 msgid "cvv2_help"
 msgstr "{0}-cijfers code op de achterkant van uw kaart"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:78
 msgid "verification_code"
 msgstr "bevestigingscode"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:79
 msgid "verification_amount"
 msgstr "verificatiebedrag"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:80
 msgid "mfo_title"
 msgstr "betalingsgegevens voor bestelling # {0}"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:81
 msgid "ibox_title"
 msgstr "bestel ID ( betalen via iBox)"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:82
 msgid "full_requesites"
 msgstr "bankgegevens ontvanger"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:83
 msgid "full_requesites_explain"
 msgstr ""
 "u hoeft deze niet te vermelden bij de betaling, maar het kan handig zijn "
 "deze te bewaren voor referentie"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:84
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:85
 msgid "receiver"
 msgstr "ontvanger"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:86
 msgid "current_bill"
 msgstr "bankrekeningnummer (IBAN)"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:87
 msgid "usreou"
 msgstr "fiscaal identificatienummer (FIN)"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:88
 msgid "bank"
 msgstr "naam Bank"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:89
 msgid "mfo"
 msgstr "bank code (MFO)"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:90
 msgid "purpose"
 msgstr "beschrijving"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:91
 msgid "receipt_id"
 msgstr "order ID"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:92
 msgid "end_date"
 msgstr "betalingstermijn"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:93
 msgid "ibox_desc"
 msgstr ""
 "alle iBox-terminals die betalingen accepteren zijn vermeld op de <a href="
 "\"https://ibox.ua/map\" target=\"_blank\">map</a>"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:94
 msgid "save_receipt"
 msgstr "ontvangstbewijs opslaan"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:95
 msgid "save_qr_code"
 msgstr "opslaan op smartphone"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:96
 msgid "qr_code_text"
 msgstr "scan deze QR-code om het ontvangstbewijs op uw smartphone op te slaan"
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:97
 msgid "ibox_info"
 msgstr ""
 "<p>Om uw bestelling te betalen, kunt u de Fondy-betaalservice in de iBox "
@@ -472,24 +480,24 @@ msgstr ""
 "geannuleerd na het verlopen van de betalingstermijn.<p>Wij accepteren geen "
 "betaling voor deze bestelling via andere terminals dan iBox"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:98
 msgid "sepa_t"
 msgstr "vul uw bankgegevens in"
 
-#: src/i18n/process/templates.js:98 src/i18n/process/translate.js:46
+#: src/i18n/process/templates.js:99 src/i18n/process/translate.js:46
 msgid "sender_name"
 msgstr "naam"
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:100
 msgid "bank_desc"
 msgstr ""
 "u wordt doorverwezen naar de website van de bank om uw betaling te voltooien"
 
-#: src/i18n/process/templates.js:100
+#: src/i18n/process/templates.js:101
 msgid "other_payment_method"
 msgstr "andere betalingsmethode"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:102
 msgid "payment_id"
 msgstr "betaal-ID"
 
@@ -613,10 +621,6 @@ msgstr "btw"
 #: src/i18n/process/translate.js:34
 msgid "arbitrary_amount"
 msgstr "bedrag"
-
-#: src/i18n/process/translate.js:36
-msgid "emoney"
-msgstr "digitale portemonnee"
 
 #: src/i18n/process/translate.js:37
 msgid "ibox_ua"
