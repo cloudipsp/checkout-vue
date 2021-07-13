@@ -9,6 +9,7 @@
 @import 'fast-access';
 @import 'tooltip';
 @import 'receipt';
+@import 'alert';
 
 .f-method {
   display: flex;
@@ -188,31 +189,6 @@
   .f-active + & {
     transform: translateY(7px);
   }
-}
-
-.f-gdpr {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $zindex-fixed;
-  padding-bottom: px-to-rem(32px);
-  margin-bottom: 0;
-  border-radius: px-to-rem(12px) px-to-rem(12px) px-to-rem(0) px-to-rem(0);
-
-  .f-checkbox-label {
-    &::after {
-      border-color: #6a747e;
-    }
-  }
-}
-
-.f-gdpr-content {
-  line-height: px-to-rem(20px);
-}
-
-.f-gdpr-buttons {
-  text-align: center;
 }
 
 .f-demo-title {

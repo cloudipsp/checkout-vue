@@ -17,9 +17,11 @@ import {
   grey_9,
   main,
   white,
+  warning,
 } from '@/config/color'
 
 export default createConfig(namesDefault, [
+  warning,
   error, // input_error_color
   error, // input_error_border
   error, // text_error_color

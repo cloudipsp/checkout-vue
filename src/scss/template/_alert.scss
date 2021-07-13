@@ -1,0 +1,62 @@
+.f-gdpr {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-fixed;
+  padding-bottom: px-to-rem(32px);
+  margin-bottom: 0;
+  border-radius: px-to-rem(12px) px-to-rem(12px) px-to-rem(0) px-to-rem(0);
+
+  .f-checkbox-label {
+    &::after {
+      border-color: #6a747e;
+    }
+  }
+}
+
+.f-gdpr-content {
+  line-height: px-to-rem(20px);
+}
+
+.f-gdpr-buttons {
+  text-align: center;
+}
+
+.f-notification {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $zindex-notification;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  border-radius: 0 0 px-to-rem(12px) px-to-rem(12px);
+  box-shadow: 0 px-to-rem(14px) px-to-rem(25px) fade($container_box_shadow, 40%);
+}
+
+.f-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: px-to-rem(52px);
+  color: $alert_warning_bg;
+  background-color: $warning;
+  border-radius: 0 0 0 px-to-rem(16px);
+}
+
+.f-notification-text {
+  padding: px-to-rem(16px) 0 px-to-rem(16px) px-to-rem(20px);
+  margin-right: auto;
+}
+
+.f-notification-btn {
+  display: flex;
+  align-items: center;
+
+  .f-btn {
+    padding-right: px-to-rem(24px);
+    padding-left: px-to-rem(24px);
+  }
+}

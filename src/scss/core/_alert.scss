@@ -7,7 +7,7 @@
 
 @mixin alert-variant($background, $color) {
   color: $color;
-  background-color: fade($background, 90%);
+  background-color: $background;
 
   a {
     color: $color;
@@ -15,5 +15,9 @@
 }
 
 .f-alert-info {
-  @include alert-variant($alert_info_bg, $alert_info_color);
+  @include alert-variant(fade($alert_info_bg, 90%), $alert_info_color);
+}
+
+.f-alert-warning {
+  @include alert-variant($alert_warning_bg, $warning);
 }

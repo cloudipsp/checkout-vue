@@ -126,6 +126,7 @@ export default createConfig(namesTheme, [
   grey, // bank_select_close_hover_color
   white, // alert_info_color
   grey_3, // alert_info_bg
+  white, // alert_warning_bg
   grey_2, // scrollbar_thumb_bg
   ash_100, // receipt_props_bg
   grey, // receipt_value_color

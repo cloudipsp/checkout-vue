@@ -334,3 +334,31 @@
     border-radius: px-to-rem(8px);
   }
 }
+
+.f-notification {
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: px-to-rem(8px);
+    right: px-to-rem(16px);
+    left: px-to-rem(16px);
+    border-radius: px-to-rem(16px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    top: px-to-rem(8px);
+    left: 50%;
+    width: 100%;
+    max-width: px-to-rem(815px);
+    transform: translateX(-50%);
+  }
+
+  @include media-breakpoint-up(xl) {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.f-notification-icon {
+  @include media-breakpoint-up(md) {
+    border-radius: px-to-rem(16px) 0 0 px-to-rem(16px);
+  }
+}

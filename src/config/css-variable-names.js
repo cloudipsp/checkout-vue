@@ -77,9 +77,11 @@ import {
   url,
   value,
   view,
+  warning,
 } from '@/config/const'
 
 export const namesDefault = [
+  [warning],
   [input, error, color],
   [input, error, border],
   [text, error, color],
@@ -233,6 +235,7 @@ export const namesTheme = [
   [bank, select, close, hover, color],
   [alert, info, color],
   [alert, info, bg],
+  [alert, warning, bg],
   [scrollbar, thumb, bg],
   [receipt, props, bg],
   [receipt, value, color],

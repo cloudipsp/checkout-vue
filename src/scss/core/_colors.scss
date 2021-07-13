@@ -6,6 +6,7 @@ $demo: #30d769;
 $preloader_bg: #d5dae0;
 $preloader_inner_bg: #f7f8f9;
 // default
+$warning: var(#{$prefix}warning);
 $input_error_color: var(#{$prefix}input_error_color);
 $input_error_border: var(#{$prefix}input_error_border);
 $text_error_color: var(#{$prefix}text_error_color);
@@ -172,6 +173,7 @@ $bank_select_close_color: var(#{$prefix}bank_select_close_color);
 $bank_select_close_hover_color: var(#{$prefix}bank_select_close_hover_color);
 $alert_info_color: var(#{$prefix}alert_info_color);
 $alert_info_bg: var(#{$prefix}alert_info_bg);
+$alert_warning_bg: var(#{$prefix}alert_warning_bg);
 $scrollbar_thumb_bg: var(#{$prefix}scrollbar_thumb_bg);
 $receipt_props_bg: var(#{$prefix}receipt_props_bg);
 $receipt_value_color: var(#{$prefix}receipt_value_color);
