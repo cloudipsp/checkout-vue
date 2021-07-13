@@ -15,7 +15,6 @@
         :masked="false"
         :maxlength="23"
         :disabled="read_only"
-        :message="message"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -128,7 +127,6 @@ export default {
   mixins: [isMountedMixin],
   data() {
     return {
-      message: '',
       config: [6, 1],
     }
   },
@@ -142,7 +140,7 @@ export default {
       'code',
       'hash',
     ]),
-    ...mapStateGetSet(['card_type_fee', 'actual_amount']),
+    ...mapStateGetSet(['card_type_fee', 'actual_amount', 'notification']),
     validExpiryDate() {
       if (!this.need_validate_card) return {}
 
@@ -200,7 +198,7 @@ export default {
   },
   methods: {
     success(model) {
-      this.message = model.attr('message')
+      this.notification = model.attr('message')
 
       if (model.attr('actual_amount')) {
         this.actual_amount = Math.round(model.attr('actual_amount') * 100)
@@ -208,7 +206,7 @@ export default {
       }
     },
     clear() {
-      this.message = ''
+      this.notification = ''
       this.actual_amount = 0
       this.card_type_fee = 0
     },

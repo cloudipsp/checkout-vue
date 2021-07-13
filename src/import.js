@@ -199,3 +199,6 @@ export const TooltipTemplate = () =>
 
 export const Emoney = () =>
   import(/* webpackChunkName: "34" */ '@/views/checkout/method/emoney')
+
+export const FAlertNotification = () =>
+  import(/* webpackChunkName: "35" */ '@/components/alert/alert-notification')

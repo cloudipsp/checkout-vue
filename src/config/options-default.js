@@ -116,6 +116,7 @@ const config = {
   amount_with_fee: 0,
   actual_amount: 0,
   card_type_fee: 0,
+  notification: '',
 }
 
 locales.forEach(function (locale) {

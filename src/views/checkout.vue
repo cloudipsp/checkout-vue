@@ -7,6 +7,7 @@
     <div v-if="isDemo" class="f-demo">
       <div class="f-demo-title" v-text="$t('demo-title')" />
     </div>
+    <f-alert-notification-wrapper />
     <transition name="f-fade-enter">
       <router-view class="f-loyaut" />
     </transition>
@@ -27,6 +28,7 @@ import FLoading from '@/components/loading'
 import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
+import FAlertNotificationWrapper from '@/components/alert/alert-notification-wrapper'
 import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
@@ -40,6 +42,7 @@ export default {
     FModalErrorWrapper,
     FModal3ds,
     FAlertGdprWrapper,
+    FAlertNotificationWrapper,
   },
   mixins: [timeoutMixin],
   provide() {

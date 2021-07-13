@@ -32,7 +32,11 @@
       </f-modal-base>
     </div>
     <div class="f-gdpr-buttons">
-      <f-button-link variant="secondary" @click="close" v-text="$t('close')" />
+      <f-button-link
+        variant="secondary"
+        @click="close"
+        v-text="$t('not_now')"
+      />
       <f-button variant="secondary" text="accept" @click="accept" />
     </div>
   </f-alert-base>

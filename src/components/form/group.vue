@@ -76,7 +76,6 @@ export default {
     label: makeProp(PROP_TYPE_STRING, function () {
       return this.$attrs.component === 'checkbox' ? '' : this.name
     }),
-    message: makeProp(PROP_TYPE_STRING),
     noLabelFloating: makeProp(PROP_TYPE_BOOLEAN, false),
     tooltip: makeProp(PROP_TYPE_BOOLEAN, false),
     hideError: makeProp(PROP_TYPE_BOOLEAN, false),
@@ -102,7 +101,7 @@ export default {
     },
     error() {
       if (!this.isMounted) return
-      return this.validation.errors[0] || this.message
+      return this.validation.errors[0]
     },
     attrs() {
       return {
@@ -143,7 +142,7 @@ export default {
       ]
     },
     hasError() {
-      return this.error && (this.touched || this.isSubmit || this.message)
+      return this.error && (this.touched || this.isSubmit)
     },
     showError() {
       let showError = !this.tooltip && this.hasError && this.focused
