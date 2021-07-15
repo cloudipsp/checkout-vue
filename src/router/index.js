@@ -43,8 +43,6 @@ Vue.use(Router)
 let instance = {}
 
 export default name => {
-  if (instance[name]) return instance[name]
-
   let instanceStore = store(name, true)
   instance[name] = new Router({
     mode: 'abstract',
