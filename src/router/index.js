@@ -25,6 +25,7 @@ import {
 } from '@/import'
 
 const card = 'card'
+const verify = 'verify'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
 const sepa = 'sepa'
@@ -68,14 +69,14 @@ export default name => {
                     beforeEnter: (to, from, next) => {
                       if (instanceStore.state.order.need_verify_code)
                         next({
-                          name: 'card-verify',
+                          name: verify,
                         })
                       else next()
                     },
                   },
                   {
-                    path: 'verify',
-                    name: 'card-verify',
+                    path: verify,
+                    name: verify,
                     component: CardVerify,
                     meta: {
                       method: card,

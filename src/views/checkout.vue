@@ -195,7 +195,7 @@ export default {
       if (model.submitToMerchant()) return // ready_to_submit && response_url && order_data formDataSubmit()
 
       if (model.needVerifyCode()) {
-        this.$router.push({ name: 'card-verify' }).catch(() => {})
+        this.$router.push({ name: 'verify' }).catch(() => {})
       } else if (model.inProgress() && model.waitForResponse()) {
         this.locationPending()
       } else if (model.inProgress()) {
