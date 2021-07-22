@@ -137,6 +137,7 @@ export default {
     },
     submitError(model) {
       this.$root.$emit('error', model)
+      this.location(model.instance(model.attr('order')))
       return Promise.reject(model)
     },
     appSuccess(model) {
