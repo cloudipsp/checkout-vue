@@ -355,6 +355,10 @@
   @include media-breakpoint-up(xl) {
     transform: translate(-50%, -50%);
   }
+
+  @media (min-width: map-get($grid-breakpoints, xl)) and (max-height: 750px) {
+    transform: translate(-50%, 0);
+  }
 }
 
 .f-notification-icon {
