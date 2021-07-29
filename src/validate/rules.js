@@ -1,7 +1,5 @@
 import { parse, isAfter, isEqual, isValid } from '@/utils/date'
 
-const REGEX_RTRIM = /\S+$/
-
 export const decimal = {
   validate: (value, { decimals = '*', separator = '.' } = {}) => {
     if (value === null || value === undefined || value === '') {
@@ -42,19 +40,16 @@ export const after = {
 }
 
 export const customer_field = {
-  validate: value =>
-    /^(?!\s)[0-9A-Za-z-\/.,\s]+$/.test(value) && REGEX_RTRIM.test(value),
+  validate: value => /^(?!\s)[0-9A-Za-z-\/.,\s]+$/.test(value),
 }
 
 export const customer_name = {
-  validate: value =>
-    /^([a-zA-Z]+(\s|$)){2,}$/.test(value) && REGEX_RTRIM.test(value),
+  validate: value => /^([a-zA-Z]+(\s|$)){2,}$/.test(value),
 }
 
 export const customer_field_utf8 = {
   validate: value =>
-    /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\-\/.,\s]+$/.test(value) &&
-    REGEX_RTRIM.test(value),
+    /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\-\/.,\s]+$/.test(value),
 }
 
 export const phone = {
