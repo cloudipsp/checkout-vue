@@ -9,7 +9,17 @@
           currency-class="f-currency"
           sup
         />
-        <table v-if="showFeeAmount" class="f-table">
+        <table v-if="card_type_fee" class="f-table">
+          <tr>
+            <td class="f-pr-3" v-text="$t('total_amount')" />
+            <td><f-amount :value="amount" /></td>
+          </tr>
+          <tr>
+            <td class="f-pr-3" v-text="labelCardTypeFee" />
+            <td><f-amount :value="card_type_fee" /></td>
+          </tr>
+        </table>
+        <table v-else-if="showFeeAmount" class="f-table">
           <tr>
             <td class="f-pr-3" v-text="$t('total_amount')" />
             <td><f-amount :value="amount" /></td>
@@ -32,16 +42,6 @@
           </template>
         </input-amount>
       </template>
-      <table v-if="card_type_fee" class="f-table">
-        <tr>
-          <td class="f-pr-3" v-text="$t('total_amount')" />
-          <td><f-amount :value="amount" /></td>
-        </tr>
-        <tr>
-          <td class="f-pr-3" v-text="labelCardTypeFee" />
-          <td><f-amount :value="card_type_fee" /></td>
-        </tr>
-      </table>
     </f-preloader>
   </div>
 </template>
