@@ -132,7 +132,7 @@ export default {
   },
   computed: {
     ...mapState(['read_only', 'cards', 'submited', 'need_validate_card']),
-    ...mapState('params', ['token', 'merchant_id']),
+    ...mapState('params', ['token', 'button', 'merchant_id']),
     ...mapStateGetSet('params', [
       'cvv2',
       'expiry_date',
@@ -187,6 +187,7 @@ export default {
           'get',
           {
             token: this.token,
+            button: this.button,
             merchant_id: this.merchant_id,
             card_bin: this.getCardBin(value),
           },
