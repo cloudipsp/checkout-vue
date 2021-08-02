@@ -61,6 +61,7 @@ class Store extends Model {
     this.initLang()
     this.initHasFields()
     this.initIsOnlyCard()
+    return this.getRouteName(model)
   }
   autoSubmit() {
     let methods = this.state.options.methods
@@ -205,8 +206,35 @@ class Store extends Model {
     this.state.isOnlyCard = methods.length === 1 && methods[0] === 'card'
   }
   initShowMenuFirst() {
-    this.state.options.show_menu_first =
-      this.state.options.show_menu_first && !this.state.isOnlyCard
+    let methodsLength = this.state.options.methods.filter(removeWallets).length
+
+    if (isExist(this.user.options?.show_menu_first)) return
+
+    if (methodsLength > 1) {
+      this.state.options.show_menu_first = true
+    }
+
+    if (methodsLength === 1) {
+      this.state.options.show_menu_first = false
+    }
+  }
+  getRouteName(model) {
+    let active_tab = model.active_tab === 'card' ? '' : model.active_tab
+    let methodsLength = this.state.options.methods.filter(removeWallets).length
+
+    if (!this.state.params.token) return
+
+    if (active_tab) return active_tab
+
+    if (isExist(this.user.options?.show_menu_first)) return
+
+    if (methodsLength > 1) {
+      return 'menu'
+    }
+
+    if (methodsLength === 1) {
+      return this.state.options.methods[0]
+    }
   }
   load() {
     return Promise.all([this.loadButton(), this.loadCardImg()])

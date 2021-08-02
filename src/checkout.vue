@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       height: null,
+      last: '',
     }
   },
   computed: {
@@ -42,10 +43,11 @@ export default {
     isBreakpointMd(value) {
       if (value) return
 
-      let name = getRouteName(this.methods, this.methods[0], this.has_fields)
+      let name = getRouteName(this.methods, this.last, this.has_fields)
 
       this.$router.push({ name }).catch(() => {})
     },
+    $route: 'watchRoute',
   },
   created() {
     this.store
@@ -91,6 +93,11 @@ export default {
     },
     goError(errors) {
       this.$router.push({ name: 'error', query: { errors } }).catch(() => {})
+    },
+    watchRoute() {
+      if (this.$route.name === 'menu') return
+
+      this.last = this.$route.name
     },
   },
 }

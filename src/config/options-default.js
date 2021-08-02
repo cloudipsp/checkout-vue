@@ -26,7 +26,7 @@ const config = {
       button: '/latest/checkout-v2/button/index.html',
     },
     customer_fields: [],
-    active_tab: 'card',
+    active_tab: '',
     logo_url: '',
     offerta_url: '',
     button: true,

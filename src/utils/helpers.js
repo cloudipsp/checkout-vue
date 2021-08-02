@@ -90,15 +90,18 @@ export const createConfig = (names, values) =>
 
 export const key = (...arr) => arr.join('_')
 
-export const getRouteName = (methods, active, has_fields) => {
+export const getRouteName = (
+  methods,
+  active,
+  has_fields,
+  isBreakpointMd = false
+) => {
   let name = arrayIncludes(methods, active) ? active : methods[0]
 
   if (methods.length === 1 && methods[0] === 'wallets' && !has_fields) {
-    return 'blank-' + name
-  }
-
-  if (active === 'menu') {
-    return active
+    name = 'blank-' + name
+  } else if (active === 'menu' && isBreakpointMd) {
+    name = active
   }
 
   return name

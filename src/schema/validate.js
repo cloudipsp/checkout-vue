@@ -1,6 +1,6 @@
 import { findGetParameter } from '@/utils/helpers'
 import Model from '@/class/model'
-import { isExist, isPlainObject } from '@/utils/inspect'
+import { isPlainObject } from '@/utils/inspect'
 import configTheme from '@/config/theme'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
@@ -106,14 +106,8 @@ class Validate extends Model {
   }
 
   showMenuFirst() {
-    const name = 'data.options.show_menu_first'
-    let show_menu_first = this.attr(name)
-    let full_screen = this.attr('data.options.full_screen')
-
-    if (!isExist(full_screen)) return
-    if (isExist(show_menu_first)) return
-
-    this.attr(name, !full_screen)
+    if (this.attr('data.options.active_tab'))
+      return this.attr('data.options.show_menu_first', false)
   }
 
   preset() {

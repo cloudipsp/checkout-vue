@@ -32,6 +32,7 @@ import FAlertNotificationWrapper from '@/components/alert/alert-notification-wra
 import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
+import { resizeMixin } from '@/mixins/resize'
 
 let model3ds
 
@@ -44,7 +45,7 @@ export default {
     FAlertGdprWrapper,
     FAlertNotificationWrapper,
   },
-  mixins: [timeoutMixin],
+  mixins: [timeoutMixin, resizeMixin],
   provide() {
     return {
       formRequest: this.formRequest,
@@ -55,6 +56,7 @@ export default {
       timeoutId: 0,
       show3ds: false,
       duration3ds: 0,
+      needRoute: '',
     }
   },
   computed: {
@@ -154,7 +156,9 @@ export default {
     appFinally(model) {
       if (!model) return
 
-      this.store.infoSuccess(model.instance(model.attr('info')))
+      this.needRoute = this.store.infoSuccess(
+        model.instance(model.attr('info'))
+      )
       this.orderSuccess(model.instance(model.attr('order')))
       this.cards = model.attr('cards')
     },
@@ -242,8 +246,9 @@ export default {
     locationMethod() {
       let name = getRouteName(
         this.methods,
-        this.$route.name || this.$route.params.method,
-        this.has_fields
+        this.needRoute || this.$route.name || this.$route.params.method,
+        this.has_fields,
+        this.isBreakpointMd
       )
 
       this.$router.push({ name }).catch(() => {})
