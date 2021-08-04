@@ -9,14 +9,18 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
+import {
+  PROP_TYPE_STRING,
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_NUMBER,
+} from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
 export default {
   inheritAttrs: false,
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
-    value: makeProp(PROP_TYPE_STRING),
+    value: makeProp(PROP_TYPE_NUMBER, 0),
     recurring: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
