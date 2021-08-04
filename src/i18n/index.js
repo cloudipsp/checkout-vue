@@ -4,6 +4,7 @@ import { messages, validate as validateEn } from '@/i18n/lang/en'
 import { localize } from 'vee-validate'
 import configLocales from '@/config/locales.json'
 import { loadLang } from '@/import'
+import { api } from '@/utils/api'
 
 Vue.use(VueI18n)
 
@@ -31,6 +32,13 @@ export const loadLanguageAsync = (lang, store) => {
       lang,
       Object.assign({}, messages, store.state.messages[lang])
     )
+
+    api.extendParams({
+      messages: {
+        modalHeader: i18n.t('3ds_title'),
+        modalLinkLabel: i18n.t('3ds_link'),
+      },
+    })
 
     return setI18nLanguage(lang)
   })
