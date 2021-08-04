@@ -8,22 +8,16 @@ html {
   .ipsp-modal {
     width: 100%;
     max-width: 590px;
-    &-header {
-      height: 0;
-    }
-    &-close {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-    &-title {
-      display: none;
-    }
-    &-content {
-      min-height: 600px;
-    }
-    &-iframe {
-      height: 600px;
-    }
+  }
+  .ipsp-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .ipsp-modal-content {
+    min-height: 600px;
+  }
+  .ipsp-modal-iframe {
+    height: 600px;
   }
 }
