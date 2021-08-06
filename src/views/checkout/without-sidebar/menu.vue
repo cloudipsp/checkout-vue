@@ -37,7 +37,9 @@ export default {
     },
   },
   watch: {
-    has_fields() {
+    has_fields(value) {
+      if (!value) return
+
       destroyedButtonPayWallet()
     },
   },
@@ -45,6 +47,11 @@ export default {
     if (this.has_fields) return
 
     mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+  },
+  destroyed() {
+    if (this.has_fields) return
+
+    destroyedButtonPayWallet()
   },
 }
 </script>

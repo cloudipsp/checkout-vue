@@ -3,11 +3,17 @@
 </template>
 
 <script>
-import { mountedButtonPayWallet } from '@/components/button-pay-wallet'
+import {
+  mountedButtonPayWallet,
+  destroyedButtonPayWallet,
+} from '@/components/button-pay-wallet'
 
 export default {
   mounted() {
     mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+  },
+  destroyed() {
+    destroyedButtonPayWallet()
   },
 }
 </script>

@@ -21,6 +21,8 @@ export const mountedButtonPayWallet = el => {
 }
 
 export const destroyedButtonPayWallet = () => {
+  vm.$refs.inner.load = false
+
   if (!vm.$el.parentNode) return
 
   vm.$el.parentNode.removeChild(vm.$el)

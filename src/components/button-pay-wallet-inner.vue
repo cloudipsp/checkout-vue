@@ -6,7 +6,12 @@
       :variant="variant"
       block
       @click="click"
-    />
+    >
+      <span v-if="isGooglePay">
+        <iframe :src="src" @load="onLoad" />
+      </span>
+      <div class="f-wallet-pay-button-click" />
+    </f-button>
   </transition>
 </template>
 
@@ -18,7 +23,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { timeoutMixin } from '@/mixins/timeout'
 import { errorHandler, key } from '@/utils/helpers'
-import { btn, pay, wallet, variant } from '@/config/const'
+import { btn, pay, wallet, variant, color } from '@/config/const'
 import { setAttr, setStyle } from '@/utils/dom'
 
 export default {
@@ -33,11 +38,13 @@ export default {
   data() {
     return {
       init: false,
+      load: false,
     }
   },
   computed: {
     ...mapState('css_class', {
       variant: key(btn, pay, wallet, variant),
+      color: key(btn, pay, wallet, color),
     }),
     ...mapState('params', ['amount']),
     ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
@@ -48,10 +55,19 @@ export default {
       return [
         'f-wallet-pay-button',
         `f-wallet-pay-button-${this.can_make_payment}-${this.variant}`,
+        {
+          [`f-wallet-pay-button-${this.can_make_payment}-load`]: this.load,
+        },
       ]
     },
     show() {
       return this.init
+    },
+    isGooglePay() {
+      return this.can_make_payment === 'google'
+    },
+    src() {
+      return `https://pay.google.com/gp/p/generate_gpay_btn_img?buttonColor=${this.color}&browserLocale=${this.$i18n.locale}&buttonSizeMode=fill`
     },
   },
   watch: {
@@ -125,6 +141,9 @@ export default {
       } else {
         this.button.click()
       }
+    },
+    onLoad() {
+      this.load = true
     },
   },
 }

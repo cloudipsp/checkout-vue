@@ -1,5 +1,5 @@
 <template>
-  <button-pay-wallet-inner v-if="show" />
+  <button-pay-wallet-inner v-if="show" ref="inner" />
 </template>
 
 <script>

@@ -7,6 +7,11 @@
     background-size: contain;
   }
 
+  iframe {
+    height: 100%;
+    border: 0;
+  }
+
   .f-sidebar & {
     margin-bottom: px-to-rem(32px);
   }
@@ -21,6 +26,20 @@
   font-weight: 300;
 }
 
+.f-wallet-pay-button-click {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.f-wallet-pay-button-google-light,
+.f-wallet-pay-button-google-dark {
+  padding: 0;
+}
+
 .f-wallet-pay-button-google-light::after,
 .f-wallet-pay-button-card-light::after {
   background-image: url('https://www.gstatic.com/instantbuy/svg/light_gpay.svg');
@@ -29,6 +48,10 @@
 .f-wallet-pay-button-google-dark::after,
 .f-wallet-pay-button-card-dark::after {
   background-image: url('https://www.gstatic.com/instantbuy/svg/dark_gpay.svg');
+}
+
+.f-wallet-pay-button-google-load::after {
+  background-image: none;
 }
 
 .f-wallet-pay-button-apple-light::after {
