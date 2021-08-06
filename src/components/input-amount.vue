@@ -21,7 +21,7 @@ export default {
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
     value: makeProp(PROP_TYPE_NUMBER, 0),
-    recurring: makeProp(PROP_TYPE_BOOLEAN, false),
+    subscription: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
@@ -45,7 +45,7 @@ export default {
       }
     },
     form() {
-      return this.recurring ? this.params.recurring_data : this.params
+      return this.subscription ? this.params.recurring_data : this.params
     },
   },
   created() {

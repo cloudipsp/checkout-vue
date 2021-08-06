@@ -17,7 +17,7 @@
           class="f-subscription-amount"
           name="amount"
           label="subscription_amount"
-          recurring
+          subscription
           :disabled="readonly"
         />
         <f-form-group

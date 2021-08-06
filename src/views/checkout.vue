@@ -173,7 +173,7 @@ export default {
 
       if (!order_data) return
 
-      this.amount = parseInt(order_data.amount)
+      this.amount = parseInt(order_data.amount, 10)
       this.currency = order_data.currency
       this.merchant_id = order_data.merchant_id
       this.store.state.params.email =
