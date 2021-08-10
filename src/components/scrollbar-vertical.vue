@@ -110,7 +110,7 @@ export default {
 
       let activeElement = document.activeElement
 
-      if (activeElement.tagName !== 'INPUT') return
+      if (activeElement?.tagName !== 'INPUT') return
 
       if (!contains(this.$refs.wrap, activeElement)) return
 
