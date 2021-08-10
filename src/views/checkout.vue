@@ -33,6 +33,7 @@ import { errorHandler, getRouteName } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
+import { isError } from '@/utils/inspect'
 
 let model3ds
 
@@ -150,7 +151,10 @@ export default {
       this.appFinally(model)
     },
     appError(model) {
-      this.appFinally(model)
+      if (!isError(model)) {
+        this.appFinally(model)
+      }
+
       return Promise.reject(model)
     },
     appFinally(model) {

@@ -28,6 +28,8 @@ import initFavicon from '@/store/favicon'
 import { loadStyleAdaptive } from '@/import'
 import { arrayIncludes } from '@/utils/array'
 import { formatKiev } from '@/utils/date'
+import locales from '@/config/locales.json'
+import { keys } from '@/utils/object'
 
 Vue.use(store)
 
@@ -56,9 +58,11 @@ class Store extends Model {
   infoSuccess(model) {
     this.info(model)
 
-    this.state.params.lang = this.user.params?.lang || model.attr('lang')
-
-    this.initLang()
+    let lang = model.attr('lang')
+    if (arrayIncludes(keys(locales), lang) && !this.user.params?.lang) {
+      this.state.params.lang = lang
+      this.initLang()
+    }
     this.initHasFields()
     this.initIsOnlyCard()
     return this.getRouteName(model)

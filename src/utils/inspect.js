@@ -54,3 +54,5 @@ export const isRegExp = val => toRawType(val) === 'RegExp'
 
 export const isPromise = val =>
   !isUndefinedOrNull(val) && isFunction(val.then) && isFunction(val.catch)
+
+export const isError = val => val instanceof Error

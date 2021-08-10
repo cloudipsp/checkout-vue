@@ -1,5 +1,6 @@
-import { isPlainObject } from '@/utils/inspect'
+import { isError, isPlainObject } from '@/utils/inspect'
 import { arrayIncludes } from '@/utils/array'
+import { captureMessage } from '@/sentry'
 
 export const getCookie = name => {
   let matches = document.cookie.match(
@@ -58,7 +59,10 @@ export const loadStyle = css => {
 }
 
 export const errorHandler = error => {
-  if (error instanceof Error) console.log(error)
+  if (isError(error)) {
+    console.log(error)
+    captureMessage('error', 'error', error)
+  }
 }
 
 export const clearEmptyValue = object => {
