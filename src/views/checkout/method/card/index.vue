@@ -140,7 +140,12 @@ export default {
       'code',
       'hash',
     ]),
-    ...mapStateGetSet(['card_type_fee', 'actual_amount', 'notification']),
+    ...mapStateGetSet([
+      'card_type_fee',
+      'actual_amount',
+      'notification',
+      'amount_readonly',
+    ]),
     validExpiryDate() {
       if (!this.need_validate_card) return {}
 
@@ -199,6 +204,8 @@ export default {
   },
   methods: {
     success(model) {
+      if (!this.amount_readonly) return
+
       this.notification = model.attr('message')
 
       if (model.attr('actual_amount')) {
