@@ -17,6 +17,7 @@ _('rule_min')
 _('rule_numeric')
 _('rule_required')
 _('rule_regex')
+_('rule_on_zero')
 
 _('rule_customer_name')
 _('rule_customer_field')
