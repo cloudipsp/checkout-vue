@@ -84,7 +84,7 @@ Name                  | Type        | Default                 | Description     
 ---                   | ---         | ---                     | ---                         | ---
 `merchant_id`         | Integer     | 1396424                 |                             |
 `order_desc`          | String      |                         |                             | options or server
-`amount`              | Integer     | 0                       |                             |
+`amount`              | Integer     | null                    |                             |
 `currency`            | String      | 'USD'                   |                             |
 `response_url`        | String      |                         | format url                  |
 `lang`                | String      | browser language        |                             | server or options

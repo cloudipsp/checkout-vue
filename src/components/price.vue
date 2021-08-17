@@ -2,33 +2,45 @@
   <div v-if="show" class="f-price">
     <f-preloader :condition="showAmount" :size="sizePreloader">
       <template v-if="showAmountReadOnly">
-        <f-amount
-          :value="valueAmount"
-          :currency="currency"
-          amount-class="f-amount"
-          currency-class="f-currency"
-          sup
-        />
-        <table v-if="card_type_fee" class="f-table">
-          <tr>
-            <td class="f-pr-3" v-text="$t('total_amount')" />
-            <td><f-amount :value="amount" /></td>
-          </tr>
-          <tr>
-            <td class="f-pr-3" v-text="labelCardTypeFee" />
-            <td><f-amount :value="card_type_fee" /></td>
-          </tr>
-        </table>
-        <table v-else-if="showFeeAmount" class="f-table">
-          <tr>
-            <td class="f-pr-3" v-text="$t('total_amount')" />
-            <td><f-amount :value="amount" /></td>
-          </tr>
-          <tr>
-            <td class="f-pr-3" v-text="$t('fee')" />
-            <td><f-amount :value="feeAmount" /></td>
-          </tr>
-        </table>
+        <template v-if="isTrialPeriod">
+          <span v-text="$t('trial_period')" />: {{ trial_quantity }}
+          {{ trial_period }}
+        </template>
+        <template v-else-if="isFirstPayment">
+          <template v-if="start_time">
+            <span v-text="$t('first_payment')" />:
+            <f-date :value="start_time" />
+          </template>
+        </template>
+        <template v-else>
+          <f-amount
+            :value="valueAmount"
+            :currency="currency"
+            amount-class="f-amount"
+            currency-class="f-currency"
+            sup
+          />
+          <table v-if="card_type_fee" class="f-table">
+            <tr>
+              <td class="f-pr-3" v-text="$t('total_amount')" />
+              <td><f-amount :value="amount" /></td>
+            </tr>
+            <tr>
+              <td class="f-pr-3" v-text="labelCardTypeFee" />
+              <td><f-amount :value="card_type_fee" /></td>
+            </tr>
+          </table>
+          <table v-else-if="showFeeAmount" class="f-table">
+            <tr>
+              <td class="f-pr-3" v-text="$t('total_amount')" />
+              <td><f-amount :value="amount" /></td>
+            </tr>
+            <tr>
+              <td class="f-pr-3" v-text="$t('fee')" />
+              <td><f-amount :value="feeAmount" /></td>
+            </tr>
+          </table>
+        </template>
       </template>
       <template v-else>
         <input-amount name="amount" label="amount">
@@ -49,17 +61,20 @@
 <script>
 import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
+import FDate from '@/components/base/date'
 import { InputAmount } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
+import { isNumber } from '@/utils/inspect'
 
 export default {
   components: {
     FPreloader,
     FAmount,
     InputAmount,
+    FDate,
   },
   props: {
     readonly: makeProp(PROP_TYPE_BOOLEAN, false),
@@ -72,13 +87,26 @@ export default {
   },
   computed: {
     ...mapState([
+      'order',
       'amount_readonly',
       'amount_with_fee',
       'card_type_fee',
       'actual_amount',
     ]),
     ...mapState('options', { showFee: 'fee' }),
-    ...mapState('params', ['currency', 'amount', 'fee', 'verification_type']),
+    ...mapState('params', [
+      'currency',
+      'amount',
+      'fee',
+      'verification_type',
+      'recurring',
+    ]),
+    ...mapState('options.subscription', ['trial', 'unlimited']),
+    ...mapState('params.recurring_data', [
+      'trial_period',
+      'trial_quantity',
+      'start_time',
+    ]),
     showFeeAmount() {
       return (
         this.showFee && this.amount && this.amount_with_fee && this.feeAmount
@@ -88,7 +116,7 @@ export default {
       return this.amount_readonly || this.readonly
     },
     showAmount() {
-      return this.amount || !this.amount_readonly
+      return isNumber(this.amount) || !this.amount_readonly
     },
     totalAmount() {
       return this.amount / 100
@@ -112,6 +140,18 @@ export default {
     },
     show() {
       return !this.verification_type
+    },
+    isSubscription() {
+      return this.recurring === 'y'
+    },
+    isTrial() {
+      return this.trial && !this.unlimited
+    },
+    isTrialPeriod() {
+      return !this.valueAmount && this.isSubscription && this.isTrial
+    },
+    isFirstPayment() {
+      return !this.valueAmount && this.isSubscription && !this.isTrial
     },
   },
   watch: {

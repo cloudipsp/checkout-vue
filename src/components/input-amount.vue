@@ -15,6 +15,7 @@ import {
   PROP_TYPE_NUMBER,
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
+import { isNumber } from '@/utils/inspect'
 
 export default {
   inheritAttrs: false,
@@ -23,25 +24,25 @@ export default {
     value: makeProp(PROP_TYPE_NUMBER, 0),
     subscription: makeProp(PROP_TYPE_BOOLEAN, false),
   },
-  data() {
-    return {
-      hasLastDot: false,
-    }
-  },
   computed: {
     ...mapState(['params']),
-    ...mapState('params', ['currency']),
+    ...mapState('params', ['currency', 'verification_type', 'recurring']),
     attrs() {
       return {
         ...this.$attrs,
         name: this.name,
         value: this.value,
-        rules: 'required|decimal:2',
+        rules: {
+          required: true,
+          decimal: 2,
+          on_zero: !(this.verification_type || this.recurring === 'y'),
+        },
         type: 'tel',
         inputmode: 'numeric',
         autocomplete: 'off',
         format: this.format,
         parse: this.parse,
+        last: '',
       }
     },
     form() {
@@ -53,19 +54,16 @@ export default {
   },
   methods: {
     format(value) {
-      value = parseInt(value)
+      if (/^(0|\d*\.0?)$/.test(this.last)) return this.last
 
-      let result = ''
-      if (value) {
-        result = String(value / 100)
-      }
-      if (this.hasLastDot) {
-        result += '.'
-      }
-      return result
+      value = parseInt(value, 10)
+
+      return isNumber(value) ? String(value / 100) : ''
     },
     parse(value) {
-      this.hasLastDot = value.slice(-1) === '.'
+      value = value.replace(',', '.')
+      this.last = value
+
       return Math.round(parseFloat(value).toFixed(2) * 100) || 0
     },
   },

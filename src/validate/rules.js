@@ -92,3 +92,9 @@ export const one = {
     return parseInt(value, 10) > 0
   },
 }
+
+export const on_zero = {
+  validate: value => {
+    return Math.round(parseFloat(value).toFixed(2) * 100) > 0
+  },
+}

@@ -7,16 +7,13 @@
 
 <script>
 import { mapState } from '@/utils/store'
-import {
-  PROP_TYPE_STRING_NUMBER_BOOLEAN,
-  PROP_TYPE_STRING,
-} from '@/constants/props'
+import { PROP_TYPE_STRING, PROP_TYPE_ANY } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
-    condition: makeProp(PROP_TYPE_STRING_NUMBER_BOOLEAN, undefined, true),
+    condition: makeProp(PROP_TYPE_ANY, undefined, true),
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
       arrayIncludes(['xs', 'sm'], value)
     ),

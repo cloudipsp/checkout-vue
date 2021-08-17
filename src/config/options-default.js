@@ -55,7 +55,7 @@ const config = {
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
-    amount: 0,
+    amount: null,
     fee: 0, // %
     currency: '',
     recurring: 'n',
