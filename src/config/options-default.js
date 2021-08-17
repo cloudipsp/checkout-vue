@@ -83,6 +83,7 @@ const config = {
     form: {}, // bank form fields
     order_id: '',
     save_card: true,
+    verification_type: null,
   },
   messages: {},
   validate: {},

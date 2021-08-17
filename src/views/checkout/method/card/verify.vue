@@ -57,7 +57,7 @@
     />
     <f-subscription-wrapper />
     <f-offer />
-    <f-button-pay :no-amount="type === 'amount'" />
+    <f-button-pay :no-amount="isAmount" />
   </div>
 </template>
 
@@ -83,13 +83,12 @@ export default {
   },
   computed: {
     ...mapState(['order']),
-    ...mapStateGetSet('options', ['title']),
     ...mapStateGetSet('params', [
       'card_number',
       'expiry_date',
       'cvv2',
-      'order_desc',
       'code',
+      'verification_type',
     ]),
     validCode() {
       return /EURT/.test(this.code) ? 'required' : 'required|digits:4'
@@ -101,19 +100,14 @@ export default {
         regex: '^\\d{1,7}([,.]\\d{1,2})?$',
       }
     },
-    type() {
-      return this.order.verification_type
-    },
     isCode() {
-      return this.type !== 'amount'
+      return this.verification_type !== 'amount'
     },
     isAmount() {
-      return this.type === 'amount'
+      return this.verification_type === 'amount'
     },
   },
   created() {
-    this.title = 'verification_t'
-    this.order_desc = 'verification_' + this.type + '_d'
     this.card_number = this.order.order_data.masked_card
     this.expiry_date = this.order.order_data.expiry_date || ''
     this.cvv2 = ''

@@ -47,7 +47,7 @@ export default {
   computed: {
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
-    ...mapState('params', ['amount', 'currency']),
+    ...mapState('params', ['amount', 'currency', 'verification_type']),
     ...mapState(['amount_with_fee', 'actual_amount']),
     disabled() {
       return this.isError && this.isSubmit
@@ -56,7 +56,11 @@ export default {
       return this.actual_amount || this.amount_with_fee || this.amount
     },
     showAmount() {
-      return !this.noAmount && this.show_button_amount
+      return (
+        this.verification_type !== 'amount' &&
+        !this.noAmount &&
+        this.show_button_amount
+      )
     },
     isDemo() {
       return this.disable_request

@@ -1,12 +1,19 @@
 <template>
-  <div class="f-info">
+  <div v-if="verification_type">
+    <div class="f-merchant-name" v-text="$t('verification_t')" />
+    <div
+      class="f-order-desc"
+      v-text="$t('verification_' + verification_type + '_d')"
+    />
+  </div>
+  <div v-else>
     <div v-if="title" class="f-merchant-name" v-text="$t(title)" />
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
     <f-preloader :condition="showOrderDesc" size="xs" class="f-order-desc">
       <div ref="wrapper" :class="classOrderDesc">
-        <span ref="desc">{{ order_desc_translation }}</span>
+        <div ref="desc">{{ order_desc_translation }}</div>
       </div>
       <a
         v-if="showMore"
@@ -42,16 +49,13 @@ export default {
   computed: {
     ...mapState(['order']),
     ...mapState('options', ['title', 'link']),
-    ...mapState('params', ['order_desc']),
+    ...mapState('params', ['order_desc', 'verification_type']),
     showOrderDesc() {
       return this.order_desc && this.order_desc !== ' '
     },
     order_desc_translation() {
       this.nextResize()
       return this.$t(this.order_desc)
-    },
-    verification_type() {
-      return this.order.verification_type
     },
     showMore() {
       return this.more && !this.verification_type

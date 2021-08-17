@@ -73,6 +73,7 @@ export default {
       'currency',
       'merchant_id',
       'order_id',
+      'verification_type',
     ]),
     ...mapState(['has_fields']),
     classNameContainer() {
@@ -179,6 +180,7 @@ export default {
       this.store.state.params.email =
         order_data.sender_email || this.store.state.params.email
       this.order_id = order_data.order_id
+      this.verification_type = model.data.verification_type
     },
     submit3dsSuccess(model) {
       if (!model.waitOn3dsDecline()) return

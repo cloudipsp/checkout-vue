@@ -111,7 +111,7 @@ export default {
       return this.card_type_fee < 0 ? this.$t('discount') : this.$t('fee')
     },
     show() {
-      return this.verification_type !== 'amount'
+      return !this.verification_type
     },
   },
   watch: {
