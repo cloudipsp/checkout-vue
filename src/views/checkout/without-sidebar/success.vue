@@ -5,7 +5,8 @@
       <svg-decline v-if="isDeclined" />
       <div class="f-title" v-text="$t(status)" />
     </div>
-    <f-info readonly />
+    <f-info />
+    <f-price readonly />
     <div class="f-success-form-group">
       <div class="f-row">
         <div class="f-col" v-text="$t('payment_id')" />
@@ -19,6 +20,7 @@
 
 <script>
 import FInfo from '@/components/info'
+import FPrice from '@/components/price'
 import SvgApproved from '@/svg/approved'
 import SvgDecline from '@/svg/decline'
 import { mapState } from '@/utils/store'
@@ -26,6 +28,7 @@ import { mapState } from '@/utils/store'
 export default {
   components: {
     FInfo,
+    FPrice,
     SvgDecline,
     SvgApproved,
   },

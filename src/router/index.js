@@ -21,7 +21,7 @@ import {
   ErrorModal,
   System,
   WithoutSidebar,
-  FMenu,
+  Menu,
   BlankWallets,
 } from '@/import'
 
@@ -138,7 +138,7 @@ export default name => {
               {
                 path: menu,
                 name: menu,
-                component: FMenu,
+                component: Menu,
               },
             ],
           },

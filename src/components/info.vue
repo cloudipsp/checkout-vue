@@ -20,26 +20,18 @@
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-text="$t(order_desc)" />
     </f-modal-base>
-    <f-price v-if="showPrice" :readonly="readonly" />
   </div>
 </template>
 
 <script>
 import FPreloader from '@/components/preloader'
 import FSvg from '@/components/svg'
-import FPrice from '@/components/price'
 import { mapState } from '@/utils/store'
-import { PROP_TYPE_BOOLEAN } from '@/constants/props'
-import { makeProp } from '@/utils/props'
 
 export default {
   components: {
     FPreloader,
     FSvg,
-    FPrice,
-  },
-  props: {
-    readonly: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
@@ -63,9 +55,6 @@ export default {
     },
     showMore() {
       return this.more && !this.verification_type
-    },
-    showPrice() {
-      return this.verification_type !== 'amount'
     },
     classOrderDesc() {
       return {

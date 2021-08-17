@@ -178,7 +178,7 @@ export const InputAmount = () =>
 export const WithoutSidebar = () =>
   import(/* webpackChunkName: "27" */ '@/views/checkout/without-sidebar')
 
-export const FMenu = () =>
+export const Menu = () =>
   import(/* webpackChunkName: "28" */ '@/views/checkout/without-sidebar/menu')
 
 export const FModalError = () =>
@@ -202,3 +202,6 @@ export const Emoney = () =>
 
 export const FAlertNotification = () =>
   import(/* webpackChunkName: "35" */ '@/components/alert/alert-notification')
+
+export const FSidebarInner = () =>
+  import(/* webpackChunkName: "36" */ '@/components/sidebar-inner')

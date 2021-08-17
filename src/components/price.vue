@@ -1,5 +1,5 @@
 <template>
-  <div class="f-price">
+  <div v-if="show" class="f-price">
     <f-preloader :condition="showAmount" :size="sizePreloader">
       <template v-if="showAmountReadOnly">
         <f-amount
@@ -78,7 +78,7 @@ export default {
       'actual_amount',
     ]),
     ...mapState('options', { showFee: 'fee' }),
-    ...mapState('params', ['currency', 'amount', 'fee']),
+    ...mapState('params', ['currency', 'amount', 'fee', 'verification_type']),
     showFeeAmount() {
       return (
         this.showFee && this.amount && this.amount_with_fee && this.feeAmount
@@ -109,6 +109,9 @@ export default {
     },
     labelCardTypeFee() {
       return this.card_type_fee < 0 ? this.$t('discount') : this.$t('fee')
+    },
+    show() {
+      return this.verification_type !== 'amount'
     },
   },
   watch: {
