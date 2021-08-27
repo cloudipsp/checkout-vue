@@ -35,7 +35,7 @@
     "core-js": "^3.13.0",
     "css-vars-ponyfill": "^2.4.5",
     "date-format-parse": "^0.2.6",
-    "ipsp-js-sdk": "^2.0.5",
+    "ipsp-js-sdk": "^2.0.6",
     "ismobilejs": "^1.1.1",
     "popper.js": "^1.16.1",
     "vee-validate": "^3.4.11",
