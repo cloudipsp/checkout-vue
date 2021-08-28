@@ -25,6 +25,41 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { errorHandler, key } from '@/utils/helpers'
 import { btn, pay, wallet, variant, color } from '@/config/const'
 import { setAttr, setStyle } from '@/utils/dom'
+import { arrayIncludes } from '@/utils/array'
+
+const supportLongSvg = [
+  'ar',
+  'bg',
+  'ca',
+  'zh',
+  'hr',
+  'cs',
+  'da',
+  'nl',
+  'en',
+  'et',
+  'fi',
+  'fr',
+  'de',
+  'el',
+  'id',
+  'it',
+  'ja',
+  'ko',
+  'ms',
+  'no',
+  'pl',
+  'pt',
+  'ru',
+  'sr',
+  'sk',
+  'sl',
+  'es',
+  'sv',
+  'th',
+  'tr',
+  'uk',
+]
 
 export default {
   components: {
@@ -64,7 +99,10 @@ export default {
       return this.init
     },
     isGooglePay() {
-      return this.can_make_payment === 'google'
+      return (
+        this.can_make_payment === 'google' &&
+        arrayIncludes(supportLongSvg, this.$i18n.locale)
+      )
     },
     src() {
       return `https://pay.google.com/gp/p/generate_gpay_btn_img?buttonColor=${this.color}&browserLocale=${this.$i18n.locale}&buttonSizeMode=fill`
@@ -76,6 +114,7 @@ export default {
       handler: 'changeParams',
       deep: true,
     },
+    '$i18n.locale': 'watchLocale',
   },
   mounted() {
     this.$nextTick().then(this.loadCheckout)
@@ -144,6 +183,15 @@ export default {
     },
     onLoad() {
       this.load = true
+    },
+    watchLocale(newValue, old) {
+      if (
+        arrayIncludes(supportLongSvg, newValue) &&
+        arrayIncludes(supportLongSvg, old)
+      )
+        return
+
+      this.load = false
     },
   },
 }
