@@ -256,6 +256,7 @@ export default {
         this.has_fields,
         this.isBreakpointMd
       )
+      this.needRoute = ''
 
       this.$router.push({ name }).catch(() => {})
     },
