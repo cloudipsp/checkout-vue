@@ -23,7 +23,7 @@
 <script>
 import getScrollbarWidth from '@/utils/scrollbar-width'
 import { resizeMixin } from '@/mixins/resize'
-import { isMobileFirefox, isDesktop } from '@/utils/mobile'
+import { isMobile } from '@/utils/mobile'
 import { contains } from '@/utils/dom'
 import { PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -106,7 +106,7 @@ export default {
       document.removeEventListener('mousemove', this.draging)
     },
     hideAutocomplete() {
-      if (isMobileFirefox) return
+      if (isMobile) return
 
       let activeElement = document.activeElement
 
@@ -116,13 +116,11 @@ export default {
 
       activeElement.blur()
 
-      if (isDesktop) {
-        let rectWrapper = this.$refs.wrap.getBoundingClientRect()
-        let rectActiveElement = activeElement.getBoundingClientRect()
+      let rectWrapper = this.$refs.wrap.getBoundingClientRect()
+      let rectActiveElement = activeElement.getBoundingClientRect()
 
-        if (rectActiveElement.top < rectWrapper.top) return
-        if (rectActiveElement.bottom > rectWrapper.bottom) return
-      }
+      if (rectActiveElement.top < rectWrapper.top) return
+      if (rectActiveElement.bottom > rectWrapper.bottom) return
 
       activeElement.focus()
     },
