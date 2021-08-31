@@ -183,7 +183,7 @@ export const Popper = Vue.extend({
       this.destroyPopper()
       // We use `el` rather than `this.$el` just in case the original
       // mountpoint root element type was changed by the template
-      let target = isElement(this.target.reference)
+      let target = isElement(this.target?.reference)
         ? this.target.reference
         : this.target
       this.$_popper = new PopperJs(target, el, this.popperConfig)
