@@ -81,7 +81,7 @@ export default {
       variant: key(btn, pay, wallet, variant),
       color: key(btn, pay, wallet, color),
     }),
-    ...mapState('params', ['amount']),
+    ...mapState('params', ['amount', 'token']),
     ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
     ...mapStateGetSet(['can_make_payment', 'need_validate_card']),
     ...mapState(['has_fields', 'params']),
@@ -139,7 +139,7 @@ export default {
           element: '#' + this.safeId(),
           origin: 'https://' + this.api_domain,
           endpoint: this.endpoint,
-          data: this.store.formParams(),
+          data: this.store.tokenFormParams(),
         })
         .process(this.process)
         .on('show', () => {
@@ -153,6 +153,7 @@ export default {
         })
     },
     update(newValue, oldValue) {
+      if (this.token) return
       if (!this.button?.connector) return
       if (!newValue && !oldValue) return
 
@@ -165,6 +166,7 @@ export default {
     },
     changeParams() {
       if (!this.show) return
+      if (this.token) return
 
       this.button.utils.extend(this.button.params, {
         data: this.store.formParams(),

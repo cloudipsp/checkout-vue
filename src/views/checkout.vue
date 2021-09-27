@@ -83,7 +83,7 @@ export default {
       return this.disable_request
     },
     createdFormParams() {
-      let result = this.token ? { token: this.token } : this.store.formParams()
+      let result = this.store.tokenFormParams()
 
       if (this.store.user.params?.lang) {
         result.lang = this.lang
@@ -228,7 +228,7 @@ export default {
     },
     getOrder() {
       this.store
-        .sendRequest('api.checkout.order', 'get', this.store.formParams())
+        .sendRequest('api.checkout.order', 'get', this.store.tokenFormParams())
         .finally(() => {
           this.store.formLoading(false)
         })

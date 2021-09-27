@@ -51,7 +51,7 @@ class Store extends Model {
     })
   }
   sendRequestInfo(data) {
-    this.sendRequest('api.checkout.info', 'get', this.formParams(data))
+    this.sendRequest('api.checkout.info', 'get', this.tokenFormParams(data))
       .then(model => this.info(model))
       .catch(errorHandler)
   }
@@ -354,6 +354,15 @@ class Store extends Model {
       embedded: !this.state.options.full_screen,
       location: location.href,
     }
+  }
+  tokenFormParams(data) {
+    return this.state.params.token
+      ? Object.assign(
+          { token: this.state.params.token },
+          data,
+          this.defaultParams()
+        )
+      : this.formParams()
   }
   formParams(data) {
     // copy params
