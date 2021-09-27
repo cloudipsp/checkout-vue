@@ -86,6 +86,7 @@ function parseField({
   hidden,
   required,
   valid = {},
+  readonly,
 }) {
   let { pattern, min_length, max_length } = valid
   let rules = {}
@@ -103,6 +104,7 @@ function parseField({
     custom: true,
     rules,
     autocomplete: 'on',
+    readonly,
   }
 }
 
