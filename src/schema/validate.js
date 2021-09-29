@@ -130,7 +130,6 @@ class Validate extends Model {
     if (this.data.params) {
       delete this.data.params.amount
       delete this.data.params.currency
-      delete this.data.params.merchant_id
     }
 
     this.attr('data.params.token', token)
