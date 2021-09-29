@@ -26,6 +26,7 @@ import { errorHandler, key } from '@/utils/helpers'
 import { btn, pay, wallet, variant, color } from '@/config/const'
 import { setAttr, setStyle } from '@/utils/dom'
 import { arrayIncludes } from '@/utils/array'
+import { captureMessage } from '@/sentry'
 
 const supportLongSvg = [
   'ar',
@@ -152,6 +153,7 @@ export default {
         .on('hide', () => {
           this.init = false
         })
+        .on('error', error => captureMessage('PaymentButton', 'error', error))
     },
     update(newValue, oldValue) {
       if (!this.button?.connector) return
