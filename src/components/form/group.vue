@@ -59,6 +59,7 @@ import { idMixin, props as idProps } from '@/mixins/id'
 import { isMountedMixin } from '@/mixins/is-mounted'
 import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
+import { timeoutMixin } from '@/mixins/timeout'
 
 export default {
   components: {
@@ -67,7 +68,7 @@ export default {
     FPlaceholder,
     FTooltipError,
   },
-  mixins: [idMixin, isMountedMixin],
+  mixins: [idMixin, isMountedMixin, timeoutMixin],
   inheritAttrs: false,
   props: {
     ...idProps,
@@ -176,7 +177,9 @@ export default {
       this.hover = false
     },
     watchShowErrorTooltip(value) {
-      this.showErrorTooltipFlag = value
+      this.timeout(() => {
+        this.showErrorTooltipFlag = value
+      })
     },
   },
 }
