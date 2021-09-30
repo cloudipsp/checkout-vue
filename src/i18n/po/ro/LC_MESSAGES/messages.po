@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-17 16:45+0300\n"
+"POT-Creation-Date: 2021-09-30 20:21+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -54,17 +54,14 @@ msgstr ""
 msgid "emoney"
 msgstr "Portofel electronic"
 
-#: src/i18n/process/regular-period.js:1
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "zi"
 
-#: src/i18n/process/regular-period.js:2
 #: src/i18n/process/subscription-period.js:2
 msgid "week"
 msgstr "săptămână"
 
-#: src/i18n/process/regular-period.js:3
 #: src/i18n/process/subscription-period.js:3
 msgid "month"
 msgstr "lună"
@@ -680,12 +677,32 @@ msgstr ""
 msgid "wallets_apple"
 msgstr ""
 
-#: src/i18n/process/translate.js:55
+#: src/i18n/process/translate.js:56
 msgid "3ds_title"
 msgstr ""
 
-#: src/i18n/process/translate.js:56
+#: src/i18n/process/translate.js:57
 msgid "3ds_link"
+msgstr ""
+
+#: src/i18n/process/translate.js:59
+msgid "qr_desc_mobile_sk_viamo"
+msgstr ""
+
+#: src/i18n/process/translate.js:60
+msgid "qr_desc_desktop_sk_viamo"
+msgstr ""
+
+#: src/i18n/process/translate.js:61
+msgid "qr_button_sk_viamo"
+msgstr ""
+
+#: src/i18n/process/translate.js:62
+msgid "qr_app_apple_sk_viamo"
+msgstr ""
+
+#: src/i18n/process/translate.js:63
+msgid "qr_app_google_sk_viamo"
 msgstr ""
 
 #~ msgid "code"
