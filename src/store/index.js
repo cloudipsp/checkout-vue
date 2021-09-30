@@ -83,6 +83,8 @@ class Store extends Model {
 
     if (!configAutoSubmit.includes(method)) return Promise.reject()
 
+    if (!this.state.tabs[method]) return Promise.reject()
+
     let systems = Object.keys(this.state.tabs[method])
 
     if (systems.length !== 1) return Promise.reject()
