@@ -197,6 +197,8 @@ export default {
       //        console.warn('model.needVerifyCode()', 'order.need_verify_code', model.needVerifyCode())
       //        console.warn('model.submitToMerchant()', model.submitToMerchant())
 
+      if (model.attr('action') === 'qr_page') return
+
       if (model.sendResponse()) return // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
 
       if (

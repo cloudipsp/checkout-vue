@@ -72,7 +72,11 @@ export default {
   methods: {
     click() {
       this.isSubmit = true
-      this.submit().catch(errorHandler)
+      this.submit()
+        .then(model => {
+          this.$emit('success', model)
+        })
+        .catch(errorHandler)
     },
     autoSubmit() {
       if (!this.$route.query.autoSubmit) return

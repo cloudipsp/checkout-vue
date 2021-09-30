@@ -14,7 +14,13 @@
       <f-fields-button />
       <f-fields-user />
       <f-offer />
-      <f-button-pay />
+      <f-button-pay @success="success" />
+      <f-modal-qr
+        :id="id"
+        v-model="showQrModal"
+        :qr="model.qr"
+        :button="model.button"
+      />
     </div>
   </div>
 </template>
@@ -28,6 +34,7 @@ import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
+import FModalQr from '@/components/modal/modal-qr'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -40,6 +47,7 @@ export default {
     FFieldsUser,
     FOffer,
     FButtonPay,
+    FModalQr,
   },
   data() {
     return {
@@ -47,10 +55,15 @@ export default {
       iban: '',
       logo: '',
       form: {},
+      showQrModal: false,
+      model: {},
     }
   },
   computed: {
     ...mapState(['tabs']),
+    id() {
+      return `${this.country}_${this.logo}`
+    },
   },
   watch: {
     $route: 'initSystem',
@@ -63,13 +76,21 @@ export default {
       this.$router.push({ name: this.$route.params.method }).catch(() => {})
     },
     initSystem() {
-      let { name, iban, logo, form } =
+      let { name, iban, logo, form, country } =
         this.tabs[this.$route.params.method][this.$route.params.system]
 
       this.name = name
       this.iban = iban
       this.logo = logo
       this.form = form || {}
+      this.country = country.toLowerCase()
+    },
+    success(model) {
+      this.model = model.attr('send_data')
+
+      if (model.attr('action') === 'qr_page') {
+        this.showQrModal = true
+      }
     },
   },
 }
