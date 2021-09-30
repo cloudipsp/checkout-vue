@@ -38,6 +38,7 @@
     "ipsp-js-sdk": "^2.0.8",
     "ismobilejs": "^1.1.1",
     "popper.js": "^1.16.1",
+    "qrcode-generator": "^1.4.4",
     "vee-validate": "^3.4.13",
     "vue": "^2.6.14",
     "vue-functional-data-merge": "^3.1.0",
