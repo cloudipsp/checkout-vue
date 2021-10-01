@@ -134,7 +134,7 @@ export default {
       return this.list.slice(0, this.more)
     },
     showCountry() {
-      return this.listCountry.length > 1
+      return this.enableCountry && this.listCountry.length > 1
     },
     showSearch() {
       return this.listSelect.length > 10
