@@ -30,6 +30,7 @@ import { arrayIncludes } from '@/utils/array'
 import { formatKiev } from '@/utils/date'
 import locales from '@/config/locales.json'
 import { keys } from '@/utils/object'
+import FButtonPayWallet from '@/components/button-pay-wallet-wrapper'
 
 Vue.use(store)
 
@@ -415,6 +416,34 @@ class Store extends Model {
     delete params.lang
 
     return Object.assign(params, data, this.defaultParams())
+  }
+
+  createdButtonPayWallet(formRequest, parent) {
+    if (this.initButtonPayWallet) return
+
+    this.initButtonPayWallet = true
+
+    this.vmButtonPayWallet = new FButtonPayWallet({
+      store: this,
+      provide() {
+        return { formRequest }
+      },
+      parent,
+    }).$mount()
+  }
+
+  mountedButtonPayWallet(el) {
+    el.appendChild(this.vmButtonPayWallet.$el)
+  }
+
+  destroyedButtonPayWallet() {
+    if (!this.vmButtonPayWallet.show) return
+    if (!this.vmButtonPayWallet.$el.parentNode) return
+
+    this.vmButtonPayWallet.$refs.inner.load = false
+    this.vmButtonPayWallet.$el.parentNode.removeChild(
+      this.vmButtonPayWallet.$el
+    )
   }
 }
 

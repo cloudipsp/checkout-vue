@@ -20,10 +20,6 @@ import FPrice from '@/components/price'
 import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
 import { mapState } from '@/utils/store'
-import {
-  mountedButtonPayWallet,
-  destroyedButtonPayWallet,
-} from '@/components/button-pay-wallet'
 
 export default {
   components: {
@@ -43,18 +39,18 @@ export default {
     has_fields(value) {
       if (!value) return
 
-      destroyedButtonPayWallet()
+      this.store.destroyedButtonPayWallet()
     },
   },
   mounted() {
     if (this.has_fields) return
 
-    mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
   },
   destroyed() {
     if (this.has_fields) return
 
-    destroyedButtonPayWallet()
+    this.store.destroyedButtonPayWallet()
   },
 }
 </script>

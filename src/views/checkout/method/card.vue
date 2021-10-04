@@ -21,10 +21,6 @@ import FInfo from '@/components/info'
 import FPrice from '@/components/price'
 import FIcons from '@/components/icons'
 import { resizeMixin } from '@/mixins/resize'
-import {
-  mountedButtonPayWallet,
-  destroyedButtonPayWallet,
-} from '@/components/button-pay-wallet'
 
 export default {
   components: {
@@ -41,7 +37,7 @@ export default {
       if (!value) return
 
       this.$nextTick(() => {
-        mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+        this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
       })
 
       // TODO need else destroyedButtonPayWallet()
@@ -50,12 +46,12 @@ export default {
   mounted() {
     if (!this.isBreakpointMd) return
 
-    mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
   },
   destroyed() {
     if (!this.isBreakpointMd) return
 
-    destroyedButtonPayWallet()
+    this.store.destroyedButtonPayWallet()
   },
 }
 </script>

@@ -18,10 +18,6 @@ import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import { resizeMixin } from '@/mixins/resize'
-import {
-  destroyedButtonPayWallet,
-  mountedButtonPayWallet,
-} from '@/components/button-pay-wallet'
 
 export default {
   components: {
@@ -33,10 +29,10 @@ export default {
   },
   mixins: [resizeMixin],
   mounted() {
-    mountedButtonPayWallet(this.$refs['button-pay-wallet'])
+    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
   },
   destroyed() {
-    destroyedButtonPayWallet()
+    this.store.destroyedButtonPayWallet()
   },
 }
 </script>
