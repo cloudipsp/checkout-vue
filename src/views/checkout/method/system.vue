@@ -86,7 +86,7 @@ export default {
       this.country = country.toLowerCase()
     },
     success(model) {
-      this.model = model.attr('send_data')
+      this.model = model.attr('send_data') || {}
 
       if (model.attr('action') === 'qr_page') {
         this.showQrModal = true
