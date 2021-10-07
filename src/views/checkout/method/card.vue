@@ -1,5 +1,6 @@
 <template>
   <div class="f-container-sm">
+    <f-novaposhta />
     <template v-if="isBreakpointMd">
       <f-info v-if="isOnlyCard" />
       <f-price />
@@ -20,6 +21,7 @@ import { mapState } from '@/utils/store'
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
 import FIcons from '@/components/icons'
+import FNovaposhta from '@/components/novaposhta'
 import { resizeMixin } from '@/mixins/resize'
 
 export default {
@@ -27,6 +29,7 @@ export default {
     FInfo,
     FPrice,
     FIcons,
+    FNovaposhta,
   },
   mixins: [resizeMixin],
   computed: {

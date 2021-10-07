@@ -1,0 +1,30 @@
+.f-tooltip-autocomplete {
+  .f-tooltip-inner {
+    min-width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    opacity: 1;
+  }
+}
+
+.f-autocomplete-wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.f-autocomplete-item {
+  display: flex;
+  padding: px-to-rem(10px) px-to-rem(20px);
+  line-height: px-to-rem(20px);
+  color: $main_color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s;
+
+  &:hover,
+  &.active {
+    background-color: $card_list_item_active_bg;
+  }
+}
