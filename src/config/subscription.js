@@ -18,7 +18,7 @@ export default {
     show_switch: true,
   },
   shown_edit_off: {
-    enabled: true,
+    enabled: false,
     show: true,
     enabled_switch: false,
     show_switch: true,

@@ -12,11 +12,12 @@ export default {
   },
   computed: {
     ...mapState(['ready']),
-    ...mapState('subscription', ['enabled']),
+    ...mapState('subscription', ['enabled', 'show']),
+    ...mapState('subscription', { showSubscription: 'show' }),
     ...mapState('params', ['token']),
     ...mapStateGetSet('params', ['recurring']),
     show() {
-      return this.enabled && (this.token ? this.ready : true)
+      return this.showSubscription && (this.token ? this.ready : true)
     },
   },
   watch: {
