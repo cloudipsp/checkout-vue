@@ -1,9 +1,10 @@
 import { listenOnWindowMixin } from '@/mixins/listen-on-window'
 import { mapState } from '@/utils/store'
 import { isFunction } from '@/utils/inspect'
+import { windowWidth } from '@/utils/helpers'
 
 function init() {
-  let width = window.innerWidth
+  let width = windowWidth()
 
   this.isBreakpointMd = this.full_screen ? width < 992 : true
   this.isWidthSm = width < 768

@@ -21,6 +21,7 @@ import {
 import { isBrowser } from '@/utils/env'
 import { isNull } from '@/utils/inspect'
 import { toFloat, toInteger } from '@/utils/number'
+import { windowWidth } from '@/utils/helpers'
 
 // --- Constants ---
 
@@ -144,7 +145,7 @@ const ModalManager = Vue.extend({
     checkScrollbar() {
       // Determine if the body element is overflowing
       const { left, right } = getBCR(document.body)
-      this.isBodyOverflowing = left + right < window.innerWidth
+      this.isBodyOverflowing = left + right < windowWidth()
     },
     setScrollbar() {
       const body = document.body

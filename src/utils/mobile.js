@@ -1,7 +1,12 @@
-import mobile from 'ismobilejs'
+import ismobilejs from 'ismobilejs'
 
-export const isPhone = mobile().phone
+const mobile = ismobilejs()
 
-export const isMobile = mobile().any
+export const isPhone = mobile.phone
 
-export const isDesktop = !mobile().any
+export const isMobile = mobile.any
+
+export const isDesktop = !mobile.any
+
+export const isIOS =
+  mobile.apple.phone || mobile.apple.tablet || mobile.apple.ipod

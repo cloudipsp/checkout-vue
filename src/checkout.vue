@@ -7,7 +7,7 @@
 <script>
 import { mapState } from '@/utils/store'
 import { resizeMixin } from '@/mixins/resize'
-import { errorHandler, getRouteName } from '@/utils/helpers'
+import { errorHandler, getRouteName, windowHeight } from '@/utils/helpers'
 import { PROP_TYPE_OBJECT } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
@@ -66,7 +66,7 @@ export default {
         .catch(errorHandler)
     },
     initHeight() {
-      this.height = this.full_screen ? window.innerHeight + 'px' : 'auto'
+      this.height = this.full_screen ? windowHeight() + 'px' : 'auto'
     },
     resize() {
       this.initHeight()

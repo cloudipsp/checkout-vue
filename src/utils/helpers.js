@@ -1,6 +1,7 @@
 import { isError, isPlainObject } from '@/utils/inspect'
 import { arrayIncludes } from '@/utils/array'
 import { captureMessage } from '@/sentry'
+import { isIOS } from '@/utils/mobile'
 
 export const getCookie = name => {
   let matches = document.cookie.match(
@@ -110,3 +111,7 @@ export const getRouteName = (
 
   return name
 }
+
+export const windowWidth = () => (isIOS ? screen.width : window.innerWidth)
+
+export const windowHeight = () => (isIOS ? screen.height : window.innerHeight)
