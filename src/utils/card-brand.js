@@ -22,7 +22,7 @@ export const parseCards = data => {
 
 function parse(item) {
   let card_number = item.card_number.replace(/ /g, '')
-  let expiry_date = item.expiry_date.replace(/ /g, '')
+  let expiry_date = (item.expiry_date || '').replace(/ /g, '')
   return {
     ...item,
     card_number,

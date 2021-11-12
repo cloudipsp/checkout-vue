@@ -37,10 +37,10 @@
         class="f-form-group-card"
         name="expiry_date"
         placeholder="expiry_date_p"
-        :rules="read_only ? '' : validExpiryDate"
+        :rules="validExpiryDate"
         mask="##/##"
         :masked="true"
-        :disabled="read_only"
+        :disabled="disabledExpiryDate"
         type="tel"
         inputmode="numeric"
         tooltip
@@ -128,6 +128,7 @@ export default {
   data() {
     return {
       config: [6, 1],
+      disabledExpiryDate: false,
     }
   },
   computed: {
@@ -147,6 +148,7 @@ export default {
       'amount_readonly',
     ]),
     validExpiryDate() {
+      if (this.disabledExpiryDate) return
       if (!this.need_validate_card) return {}
 
       let minDate = this.store.state.validate_expdate
@@ -200,6 +202,12 @@ export default {
         )
         .then(this.success)
         .catch(errorHandler)
+    },
+    read_only(value) {
+      if (!value) return
+      if (!this.expiry_date) return
+
+      this.disabledExpiryDate = true
     },
   },
   methods: {

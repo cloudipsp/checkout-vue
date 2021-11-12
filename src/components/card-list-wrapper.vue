@@ -1,5 +1,6 @@
 <template>
-  <a v-if="enableModal" href="#" @click.prevent="showModalCard = true">
+  <span v-if="read_only">{{ label }}</span>
+  <a v-else-if="enableModal" href="#" @click.prevent="showModalCard = true">
     {{ label }} <f-svg name="angle-down" size="lg" />
     <f-modal-base
       v-model="showModalCard"
@@ -62,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cards']),
+    ...mapState(['cards', 'read_only']),
     enableModal() {
       return isPhone || this.isWidthSm
     },
