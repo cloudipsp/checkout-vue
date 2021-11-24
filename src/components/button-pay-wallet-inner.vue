@@ -153,7 +153,19 @@ export default {
         .on('hide', () => {
           this.init = false
         })
-        .on('error', error => captureMessage('PaymentButton', 'error', error))
+        .on('error', error => {
+          let name = ['Payment Button']
+
+          if (error.code) {
+            name.push(error.code)
+          }
+
+          if (error.message) {
+            name.push(error.message)
+          }
+
+          captureMessage(name.join(' '), 'error', error)
+        })
     },
     update(newValue, oldValue) {
       if (!this.button?.connector) return
