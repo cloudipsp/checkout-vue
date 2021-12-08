@@ -10,6 +10,11 @@ export const loadLang = chunk => {
         /* webpackChunkName: "cs" */
         '@/i18n/lang/cs'
       )
+    case 'da':
+      return import(
+        /* webpackChunkName: "da" */
+        '@/i18n/lang/da'
+      )
     case 'de':
       return import(
         /* webpackChunkName: "de" */
@@ -21,6 +26,11 @@ export const loadLang = chunk => {
       return import(
         /* webpackChunkName: "es" */
         '@/i18n/lang/es'
+      )
+    case 'fi':
+      return import(
+        /* webpackChunkName: "fi" */
+        '@/i18n/lang/fi'
       )
     case 'fr':
       return import(
@@ -76,6 +86,11 @@ export const loadLang = chunk => {
       return import(
         /* webpackChunkName: "uk" */
         '@/i18n/lang/uk'
+      )
+    case 'zh':
+      return import(
+        /* webpackChunkName: "zh" */
+        '@/i18n/lang/zh'
       )
   }
 }

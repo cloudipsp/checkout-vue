@@ -1,9 +1,11 @@
 {
   "az": "Azərbaycan dili",
   "cs": "Čeština",
+  "da": "Dansk",
   "de": "Deutsch",
   "en": "English",
   "es": "Español",
+  "fi": "Suomi",
   "fr": "Français",
   "hu": "Magyar",
   "it": "Italiano",
@@ -14,5 +16,6 @@
   "ro": "Română",
   "ru": "Русский",
   "sk": "Slovenčina",
-  "uk": "Українська"
+  "uk": "Українська",
+  "zh": "中国人"
 }
