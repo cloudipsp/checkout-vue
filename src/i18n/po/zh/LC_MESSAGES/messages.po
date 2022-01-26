@@ -20,7 +20,7 @@ msgstr ""
 
 #: src/i18n/process/methods.js:1
 msgid "card"
-msgstr "卡"
+msgstr "银行卡"
 
 #: src/i18n/process/methods.js:2
 msgid "trustly"
@@ -64,7 +64,7 @@ msgstr "周"
 
 #: src/i18n/process/subscription-period.js:3
 msgid "month"
-msgstr "月份"
+msgstr "月"
 
 #: src/i18n/process/templates.js:1
 msgid "menu"
@@ -294,7 +294,7 @@ msgstr "无限制"
 
 #: src/i18n/process/templates.js:54
 msgid "subscription_every"
-msgstr "每个"
+msgstr "每"
 
 #: src/i18n/process/templates.js:55
 msgid "subscription_period"
@@ -480,7 +480,7 @@ msgstr "保存收据"
 
 #: src/i18n/process/templates.js:99
 msgid "save_qr_code"
-msgstr "保存到智能手机"
+msgstr "保存至手机"
 
 #: src/i18n/process/templates.js:100
 msgid "qr_code_text"
@@ -637,7 +637,7 @@ msgstr "通过终端现金"
 
 #: src/i18n/process/translate.js:40
 msgid "loans_tooltip"
-msgstr "现在购买，在15 天内支付. 佣金是 0%."
+msgstr "请问\"佣金\"是指的\"银行手续费\"吗？"
 
 #: src/i18n/process/translate.js:42
 msgid "button_expired_title"
