@@ -34,6 +34,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
+import { fib } from '@/utils/helpers'
 
 let model3ds
 
@@ -58,6 +59,7 @@ export default {
       show3ds: false,
       duration3ds: 0,
       needRoute: '',
+      count: 0,
     }
   },
   computed: {
@@ -224,9 +226,10 @@ export default {
       }
     },
     locationPending() {
+      this.count++
       this.store.formLoading(true)
-      this.timeout('getOrder', 15 * 1000)
-      this.timeout('getOrderClear', 60 * 1000, false)
+      this.timeout('getOrder', fib(this.count) * 1000)
+      this.timeout('getOrderClear', 4 * 60 * 1000, false)
     },
     getOrder() {
       this.store
@@ -238,7 +241,6 @@ export default {
         .catch(errorHandler)
     },
     getOrderClear() {
-      this.store.formLoading(false)
       this.clearTimeout('getOrder')
       this.clearTimeout('getOrderClear')
     },
