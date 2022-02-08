@@ -28,11 +28,11 @@
   },
   "unpkg": "dist/checkout.js",
   "dependencies": {
-    "@sentry/vue": "^6.17.2",
+    "@sentry/vue": "^6.17.5",
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^3.5.2",
     "axios": "^0.21.4",
-    "core-js": "^3.20.3",
+    "core-js": "^3.21.0",
     "css-vars-ponyfill": "^2.4.7",
     "date-format-parse": "^0.2.7",
     "ipsp-js-sdk": "^2.0.9-alpha.2",
