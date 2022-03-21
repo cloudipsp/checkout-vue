@@ -149,6 +149,7 @@ export default {
           this.can_make_payment = this.button.method
           this.wallets_icons = [this.button.method]
           this.init = true
+          this.need_validate_card = true
         })
         .on('hide', () => {
           this.init = false
