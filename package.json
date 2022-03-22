@@ -35,7 +35,7 @@
     "core-js": "^3.21.1",
     "css-vars-ponyfill": "^2.4.7",
     "date-format-parse": "^0.2.7",
-    "ipsp-js-sdk": "^2.0.8",
+    "ipsp-js-sdk": "^2.0.9-alpha.7",
     "ismobilejs": "^1.1.1",
     "popper.js": "^1.16.1",
     "qrcode-generator": "^1.4.4",
