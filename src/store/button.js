@@ -111,6 +111,7 @@ function parseField({
     rules,
     autocomplete: 'on',
     readonly,
+    disabled: readonly,
   }
 }
 
