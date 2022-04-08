@@ -68,6 +68,7 @@ import { errorHandler } from '@/utils/helpers'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { isNumber } from '@/utils/inspect'
+import { timeoutMixin } from '@/mixins/timeout'
 
 export default {
   components: {
@@ -76,6 +77,7 @@ export default {
     InputAmount,
     FDate,
   },
+  mixins: [timeoutMixin],
   props: {
     readonly: makeProp(PROP_TYPE_BOOLEAN, false),
   },
@@ -83,6 +85,7 @@ export default {
     return {
       cacheAmount: 0,
       left: 0,
+      loading: false,
     }
   },
   computed: {
@@ -109,7 +112,12 @@ export default {
     ]),
     showFeeAmount() {
       return (
-        this.showFee && this.amount && this.amount_with_fee && this.feeAmount
+        this.showFee &&
+        this.cacheAmount === this.amount &&
+        !this.loading &&
+        this.amount &&
+        this.amount_with_fee &&
+        this.feeAmount
       )
     },
     showAmountReadOnly() {
@@ -161,18 +169,21 @@ export default {
   created() {
     this.getAmountWithFee()
   },
-  mounted() {
-    this.setCacheAmount()
-  },
   methods: {
-    setCacheAmount() {
-      this.left = this.$refs.amount?.offsetWidth + 5
-      this.cacheAmount = this.amount
-    },
     getAmountWithFee() {
+      this.timeout('request', 300)
+    },
+    request() {
+      if (this.loading) return
+      this.loading = true
+      this.cacheAmount = this.amount
+
       this.store
         .getAmountWithFee()
-        .then(this.setCacheAmount)
+        .finally(() => {
+          this.loading = false
+          this.left = this.$refs.amount?.offsetWidth + 5
+        })
         .catch(errorHandler)
     },
   },
