@@ -28,6 +28,7 @@ function parseOptions({
   amount,
   params = {},
   currency,
+  currencies = [],
   merchant_id,
   lang,
   amount_readonly,
@@ -75,6 +76,7 @@ function parseOptions({
     amount_readonly: Boolean(amount_readonly),
     subscription:
       configSubscription[getType(button_type === 'recurring', recurring_state)],
+    currencies,
   }
 }
 

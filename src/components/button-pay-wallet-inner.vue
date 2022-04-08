@@ -111,6 +111,7 @@ export default {
   },
   watch: {
     amount: 'update',
+    'params.currency': 'update',
     params: {
       handler: 'changeParams',
       deep: true,

@@ -1,5 +1,22 @@
 <template>
-  <f-form-group v-model="form[name]" v-bind="attrs">
+  <div v-if="showCurrencies" class="f-input-group">
+    <f-form-group v-model="form[name]" v-bind="attrs" class="f-col">
+      <template #default="{ id }">
+        <slot :id="id" />
+      </template>
+    </f-form-group>
+    <f-form-group
+      v-model="currency"
+      component="select"
+      :options="list"
+      name="currencies"
+      label=""
+      rules="required"
+      class="f-col-3"
+      input-class="f-form-control-no-label"
+    />
+  </div>
+  <f-form-group v-else v-model="form[name]" v-bind="attrs">
     <template #default="{ id }">
       <slot :id="id" />
       <span class="f-form-group-currency" v-text="$t(currency)" />
@@ -8,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import {
   PROP_TYPE_STRING,
   PROP_TYPE_BOOLEAN,
@@ -16,6 +33,7 @@ import {
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { isNumber } from '@/utils/inspect'
+import { parseSelect } from '@/utils/sort'
 
 export default {
   inheritAttrs: false,
@@ -25,8 +43,9 @@ export default {
     subscription: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
-    ...mapState(['params']),
-    ...mapState('params', ['currency', 'verification_type', 'recurring']),
+    ...mapState(['params', 'currencies']),
+    ...mapState('params', ['verification_type', 'recurring']),
+    ...mapStateGetSet('params', ['currency']),
     attrs() {
       return {
         ...this.$attrs,
@@ -47,6 +66,12 @@ export default {
     },
     form() {
       return this.subscription ? this.params.recurring_data : this.params
+    },
+    showCurrencies() {
+      return this.currencies.length > 1
+    },
+    list() {
+      return this.currencies.map(parseSelect)
     },
   },
   created() {

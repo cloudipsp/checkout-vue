@@ -70,7 +70,6 @@
             inputmode="numeric"
             :disabled="readonly"
             :hide-error="true"
-            :input-class="'f-form-control-every'"
             @show-error="onShowError"
           />
           <f-form-group
@@ -82,7 +81,6 @@
             rules="required"
             :disabled="readonly"
             :hide-error="true"
-            :input-class="'f-form-control-period'"
             @show-error="onShowError"
           />
         </div>
