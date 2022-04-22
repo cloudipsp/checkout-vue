@@ -97,6 +97,8 @@
 .f-form-control-select {
   padding-right: px-to-rem(24px);
   background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: right px-to-rem(8px) center;
   appearance: none;
 
   // Hides the default caret in IE11
@@ -122,11 +124,12 @@
     color: initial;
   }
 
-  + .f-svg {
-    position: absolute;
-    top: 50%;
-    right: 0.5rem;
-    transform: translateY(-50%);
+  .f-theme-dark & {
+    background-image: escape-svg($input-select-arrow-dark);
+  }
+
+  .f-theme-light & {
+    background-image: escape-svg($input-select-arrow-light);
   }
 }
 

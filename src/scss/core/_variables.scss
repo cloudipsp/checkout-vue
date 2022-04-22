@@ -75,3 +75,6 @@ $loading-top: px-to-rem(3px);
 $loading-item: ($loading-width - $loading-top) / 2;
 
 $header-height: px-to-rem(74px);
+
+$input-select-arrow-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#989a9c'><path d='M2.47,5.47a.75.75,0,0,1,1.06,0L8,9.94l4.47-4.47a.75.75,0,0,1,1.06,1.06L8.88,11.18a1.26,1.26,0,0,1-1.76,0L2.47,6.53A.75.75,0,0,1,2.47,5.47Z'/></svg>");
+$input-select-arrow-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#818c99'><path d='M2.47,5.47a.75.75,0,0,1,1.06,0L8,9.94l4.47-4.47a.75.75,0,0,1,1.06,1.06L8.88,11.18a1.26,1.26,0,0,1-1.76,0L2.47,6.53A.75.75,0,0,1,2.47,5.47Z'/></svg>");
