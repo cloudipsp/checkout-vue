@@ -44,6 +44,10 @@ function parseOptions({
 }) {
   amount = Math.round(amount * 100) || 0
 
+  if (!currencies.includes(currency)) {
+    currencies.unshift(currency)
+  }
+
   if (expire && parse(expire, 'DD.MM.YYYY hh:mm') < createDate())
     return Promise.reject('button_expired')
 
