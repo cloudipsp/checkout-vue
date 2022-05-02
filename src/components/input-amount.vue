@@ -12,8 +12,9 @@
       name="currencies"
       label=""
       rules="required"
-      class="f-col-3"
+      class="f-col-4 f-col-sm-3"
       input-class="f-form-control-no-label"
+      :disabled="disabled"
     />
   </div>
   <f-form-group v-else v-model="form[name]" v-bind="attrs">
@@ -41,6 +42,7 @@ export default {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
     value: makeProp(PROP_TYPE_NUMBER, 0),
     subscription: makeProp(PROP_TYPE_BOOLEAN, false),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
     ...mapState(['params', 'currencies']),
@@ -62,6 +64,7 @@ export default {
         format: this.format,
         parse: this.parse,
         last: '',
+        disabled: this.disabled,
       }
     },
     form() {

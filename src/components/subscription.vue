@@ -14,7 +14,7 @@
     <transition name="f-collapse">
       <div v-if="enabled_switch" class="f-subscription-wrapper">
         <input-amount
-          class="f-subscription-amount"
+          class="f-form-group"
           name="amount"
           label="subscription_amount"
           subscription
