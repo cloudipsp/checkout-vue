@@ -36,6 +36,7 @@ class Validate extends Model {
     if (!isPlainObject(options)) return
 
     for (let prop in options) {
+      if (['messages', 'validate'].includes(prop)) continue
       if (Object.prototype.hasOwnProperty.call(options, prop)) {
         let modified = prop.replace(regex, function (match) {
           return '_' + match.toLowerCase()

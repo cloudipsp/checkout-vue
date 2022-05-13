@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 20:00+0300\n"
+"POT-Creation-Date: 2022-05-13 15:01+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -81,7 +81,8 @@ msgstr "virhe"
 #: src/i18n/process/templates.js:4
 msgid "gdpr_alert_text"
 msgstr ""
-"Käytämme tällä verkkosivustolla evästeitä parantaaksemme verkkomaksukokemustasi."
+"Käytämme tällä verkkosivustolla evästeitä parantaaksemme "
+"verkkomaksukokemustasi."
 
 #: src/i18n/process/templates.js:5
 msgid "learn_more"
@@ -98,18 +99,18 @@ msgstr "Se on turvallista"
 #: src/i18n/process/templates.js:8
 msgid "gdpr_modal_safe_title"
 msgstr ""
-"Korttitietosi on tokenoitu, mikä tekee siitä turvallista ja kätevää toistuviin "
-"ostoihin"
+"Korttitietosi on tokenoitu, mikä tekee siitä turvallista ja kätevää "
+"toistuviin ostoihin"
 
 #: src/i18n/process/templates.js:9
 msgid "gdpr_modal_safe"
 msgstr ""
-"<p>Emme tallenna korttitietojasi niitä syöttäessäsi. Itse asiassa me "
-"heti salaamme korttitiedot ja tallennamme ne tokenoidussa muodossa. Tokenit "
-"ovat sattunaisia numero- ja merkkiyhdistelmiä.<p>Aina kun teet "
-"toisen maksun, Fondy käyttää tokeneita korttitietojen sijasta, jotta "
-"mahdollinen huijari ei pysty sieppaamaan niitä. Token-tiedoilla ei ole arvoa "
-"Fondy-maksupalvelun ulkopuolella."
+"<p>Emme tallenna korttitietojasi niitä syöttäessäsi. Itse asiassa me heti "
+"salaamme korttitiedot ja tallennamme ne tokenoidussa muodossa. Tokenit ovat "
+"sattunaisia numero- ja merkkiyhdistelmiä.<p>Aina kun teet toisen maksun, "
+"Fondy käyttää tokeneita korttitietojen sijasta, jotta mahdollinen huijari ei "
+"pysty sieppaamaan niitä. Token-tiedoilla ei ole arvoa Fondy-maksupalvelun "
+"ulkopuolella."
 
 #: src/i18n/process/templates.js:10
 msgid "not_now"
@@ -130,8 +131,7 @@ msgstr "Maksaa"
 #: src/i18n/process/templates.js:14
 msgid "demo-desc"
 msgstr ""
-"Tämä on esitysjärjestelmä. Vaikka voit syöttää tietoja, maksua ei "
-"käsitellä."
+"Tämä on esitysjärjestelmä. Vaikka voit syöttää tietoja, maksua ei käsitellä."
 
 #: src/i18n/process/templates.js:15
 msgid "angle-down"
@@ -182,333 +182,340 @@ msgid "order_details"
 msgstr "Tilauksen tiedot"
 
 #: src/i18n/process/templates.js:28
+msgid "currencies"
+msgstr ""
+
+#: src/i18n/process/templates.js:31
 msgid "submit3ds_title"
 msgstr "Maksu jäi kesken"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:32
 msgid "submit3ds_text"
 msgstr "Syötä toinen vahvistuskoodi"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:33
 msgid "submit3ds_submit"
 msgstr "Yritä uudelleen"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:34
 msgid "submit3ds_wait"
 msgstr ""
-"Sinut siirretään pankin verkkosivustolle suorittamaan maksu {0} "
-"sekunnin kuluttua"
+"Sinut siirretään pankin verkkosivustolle suorittamaan maksu {0} sekunnin "
+"kuluttua"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:35
 msgid "show"
 msgstr "näytä"
 
-#: src/i18n/process/templates.js:33 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:36 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "Valitettavasti maksusi epäonnistui"
 
-#: src/i18n/process/templates.js:34
+#: src/i18n/process/templates.js:37
 msgid "server_trouble_title"
 msgstr "Oho..."
 
-#: src/i18n/process/templates.js:35
+#: src/i18n/process/templates.js:38
 msgid "server_trouble_desc"
 msgstr ""
-"Virhe on tapahtunut, ja pyrimme jo korjaamaan sitä. Palaa "
-"tilaukseesi ja suorita maksu uudelleen."
+"Virhe on tapahtunut, ja pyrimme jo korjaamaan sitä. Palaa tilaukseesi ja "
+"suorita maksu uudelleen."
 
-#: src/i18n/process/templates.js:36
+#: src/i18n/process/templates.js:39
 msgid "offer"
 msgstr "tarjous"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:40
 msgid "offer_t"
-msgstr ""
-"Hyväksyn <a href=\"{0}\" target=\"_blank\">tilauksen käyttöehdot. </a>"
+msgstr "Hyväksyn <a href=\"{0}\" target=\"_blank\">tilauksen käyttöehdot. </a>"
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:41
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:42
 msgid "trial_period"
 msgstr "Koeaika"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:43
 msgid "first_payment"
 msgstr "Ensimmäinen maksu"
 
-#: src/i18n/process/templates.js:41
+#: src/i18n/process/templates.js:44
 msgid "total_amount"
 msgstr "Kokonaissumman maksun eräpäivä"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:45
 msgid "fee"
 msgstr "Käsittelykulut"
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:46
 msgid "amount"
 msgstr "Maksun eräpäivä"
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:47
 msgid "discount"
 msgstr "alennus"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:48
 msgid "security"
 msgstr "turvallisuus"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:49
 msgid "security_title"
 msgstr "Vahva asiakastunnistus"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:50
 msgid "security_text"
 msgstr ""
 "<p>PCI DSS:n mukainen<p>Listattu Visa Global Registryssä ja varmistettu "
 "Mastercard"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:51
 msgid "other_payment_method"
 msgstr "Tai maksa käyttämällä"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:52
 msgid "switch"
 msgstr "vaihtaa"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:53
 msgid "subscription"
 msgstr "Toistaa tämäm maksun automaattisesti"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:54
 msgid "subscription_amount"
 msgstr "Toistuva maksusumma"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:55
 msgid "number_of_payments"
 msgstr "Maksujen määrä"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:56
 msgid "unlimited"
 msgstr "Rajoittamaton"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:57
 msgid "subscription_every"
 msgstr "Joka"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:58
 msgid "subscription_period"
 msgstr "Aikaväli"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:59
 msgid "subscription_start_time"
 msgstr "Aloituspäivämäärä"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:60
 msgid "subscription_end_time"
 msgstr "Päättymispäivä"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:61
 msgid "verification_desc"
 msgstr ""
-"Korttisi vahmistamiseksi pidätämme pankkitililtäsi pienen vahvistusmaksun "
-"15 minuutin ajan."
+"Korttisi vahmistamiseksi pidätämme pankkitililtäsi pienen vahvistusmaksun 15 "
+"minuutin ajan."
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:62
 msgid "customer_name"
 msgstr "Etunimi ja Sukunimi"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:63
 msgid "customer_name_utf8"
 msgstr "Etunimi ja Sukunimi"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:64
 msgid "customer_address"
 msgstr "Osoite (katu, talo, asunto)"
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:65
 msgid "customer_zip"
 msgstr "Postinumero"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:66
 msgid "customer_city"
 msgstr "Kaupunki/Kylä"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:67
 msgid "customer_country"
 msgstr "Maa"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:68
 msgid "customer_state"
 msgstr "Maakunta/Kunta/Alue"
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:69
 msgid "customer_phonemobile"
 msgstr "Puhelin"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:70
 msgid "customer_email"
 msgstr "Sähköposti"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:71
 msgid "demo-title"
 msgstr "Esittelymuoto"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:72
 msgid "verify"
 msgstr "vahvistaa"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:73
 msgid "success"
 msgstr "menestys"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:74
 msgid "default_country"
 msgstr "Hae maan mukaan"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:75
 msgid "system_search"
 msgstr "Hae pankin nimen, IBAN:in tai BIC:in mukaan"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:76
 msgid "load_more"
 msgstr "Näytä lisä..."
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:77
 msgid "pay_with_card"
 msgstr "Maksaa kortilla"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:78
 msgid "card_number"
 msgstr "Korttinumero"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:79
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:80
 msgid "expiry_date"
 msgstr "KK/VV"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:81
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:82
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:83
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:84
 msgid "cvv2_help"
 msgstr "{0}-numeroinen koodi korttisi takapuolella"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:85
 msgid "verification_code"
 msgstr "Vahvistuskoodi"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:86
 msgid "verification_amount"
 msgstr "Vahvistusmäärä"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:87
 msgid "mfo_title"
 msgstr "Tilauksen nro {0} maksutiedot"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:88
 msgid "ibox_title"
 msgstr "Tilausnumero (maksettava iBoxin kautta)"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:89
 msgid "full_requesites"
 msgstr "Saajan pankkitiedot"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:90
 msgid "full_requesites_explain"
 msgstr ""
 "Sinun ei tarvitse ilmoittaa niitä maksaessasi, mutta niiden tallentaminen "
 "viitteeksi saattaa olla hyödyllistä."
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:91
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:92
 msgid "receiver"
 msgstr "Maksunsaaja"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:93
 msgid "current_bill"
 msgstr "Pankkitilin numero (IBAN)"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:94
 msgid "usreou"
 msgstr "Verotunnus"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:95
 msgid "bank"
 msgstr "Pankin nimi"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:96
 msgid "mfo"
 msgstr "Pankin koodi (BIC tai MFO)"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:97
 msgid "purpose"
 msgstr "Kuvaus"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:98
 msgid "receipt_id"
 msgstr "Tilausnumero"
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:99
 msgid "end_date"
 msgstr "Maksun määräaika"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:100
 msgid "ibox_desc"
 msgstr ""
-"Kaikki maksuja hyväksyvät iBox-päätteet on merkitty <a href=\"https://"
-"ibox.ua/map\" target=\"_blank\">kartalle</a> :ltä"
+"Kaikki maksuja hyväksyvät iBox-päätteet on merkitty <a href=\"https://ibox."
+"ua/map\" target=\"_blank\">kartalle</a> :ltä"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:101
 msgid "save_receipt"
 msgstr "Tallenna kuitti"
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:102
 msgid "save_qr_code"
 msgstr "Tallenna älypuhelimeen"
 
-#: src/i18n/process/templates.js:100
+#: src/i18n/process/templates.js:103
 msgid "qr_code_text"
 msgstr "Skannaa tama QR-koodi tallentaaksesi kuitin alypuhelimeesi"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:104
 msgid "ibox_info"
 msgstr ""
-"<p>Maksa tilaus käyttämällä Haku-vaihtoehtoa "
-"löytääksesi Fondy-maksupalvelun iBox-päätteestä.<p>Tilauksesi automaattisesti "
-"peruuntuu määräajan jälkeen.<p>Emme voi hyväksyä tämän tilauksen maksua "
-"muiden kuin iBox-päätteiden kautta."
+"<p>Maksa tilaus käyttämällä Haku-vaihtoehtoa löytääksesi Fondy-maksupalvelun "
+"iBox-päätteestä.<p>Tilauksesi automaattisesti peruuntuu määräajan jälkeen."
+"<p>Emme voi hyväksyä tämän tilauksen maksua muiden kuin iBox-päätteiden "
+"kautta."
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:105
 msgid "sepa_t"
 msgstr "Syötä pankkitilisi tiedot"
 
-#: src/i18n/process/templates.js:103 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:106 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "Nimi"
 
-#: src/i18n/process/templates.js:104
+#: src/i18n/process/templates.js:107
 msgid "bank_desc"
 msgstr "Sinut siirretään pankin verkkosivustolle suorittamaan maksu"
 
-#: src/i18n/process/templates.js:105
+#: src/i18n/process/templates.js:108
 msgid "payment_id"
 msgstr "Maksutunnus"
+
+#: src/i18n/process/templates.js:29
+msgid "\""
+msgstr ""
 
 #: src/i18n/process/translate.js:2
 msgid "approved"
@@ -517,15 +524,14 @@ msgstr "Kiitos! Maksusi on hyväksytty"
 #: src/i18n/process/translate.js:5
 msgid "verification_code_d"
 msgstr ""
-"Korttisi vahvistamiseksi pidätämme pankkitililtäsi pienen vahvistusmaksun "
-"15 minuutin ajan."
+"Korttisi vahvistamiseksi pidätämme pankkitililtäsi pienen vahvistusmaksun 15 "
+"minuutin ajan."
 
 #: src/i18n/process/translate.js:6
 msgid "verification_amount_d"
 msgstr ""
-"Pankkitililtäsi veloitetaan pieni maksu 15 minuutin ajan kortin "
-"omistajuuden vahvistamiseksi. Syötä tililtäsi pidätetty "
-"vahvistussumma."
+"Pankkitililtäsi veloitetaan pieni maksu 15 minuutin ajan kortin omistajuuden "
+"vahvistamiseksi. Syötä tililtäsi pidätetty vahvistussumma."
 
 #: src/i18n/process/translate.js:8
 msgid "rule_default"
@@ -681,8 +687,7 @@ msgstr "Apple Pay"
 
 #: src/i18n/process/translate.js:56
 msgid "3ds_title"
-msgstr ""
-"Sinut siirretään 3ds-sivulle. Jos et näe sitä, napsauta"
+msgstr "Sinut siirretään 3ds-sivulle. Jos et näe sitä, napsauta"
 
 #: src/i18n/process/translate.js:57
 msgid "3ds_link"
@@ -707,6 +712,66 @@ msgstr "https://apps.apple.com/app/viamo-plus/id1576498062"
 #: src/i18n/process/translate.js:63
 msgid "qr_app_google_sk_viamo"
 msgstr "https://play.google.com/store/apps/details?id=sk.viamo.plus"
+
+#: src/i18n/process/translate.js:65
+msgid "ACCOUNT_NUMBER"
+msgstr ""
+
+#: src/i18n/process/translate.js:66
+msgid "CODE"
+msgstr ""
+
+#: src/i18n/process/translate.js:67
+msgid "Email address"
+msgstr ""
+
+#: src/i18n/process/translate.js:68
+msgid "IBAN"
+msgstr ""
+
+#: src/i18n/process/translate.js:69
+msgid "name"
+msgstr ""
+
+#: src/i18n/process/translate.js:70
+msgid "SORT_CODE"
+msgstr ""
+
+#: src/i18n/process/translate.js:71
+msgid "specin.address"
+msgstr ""
+
+#: src/i18n/process/translate.js:72
+msgid "specin.bic"
+msgstr ""
+
+#: src/i18n/process/translate.js:73
+msgid "specin.city"
+msgstr ""
+
+#: src/i18n/process/translate.js:74
+msgid "specin.consumerref"
+msgstr ""
+
+#: src/i18n/process/translate.js:75
+msgid "specin.dob"
+msgstr ""
+
+#: src/i18n/process/translate.js:76
+msgid "specin.email"
+msgstr ""
+
+#: src/i18n/process/translate.js:77
+msgid "specin.iban"
+msgstr ""
+
+#: src/i18n/process/translate.js:78
+msgid "specin.nationalid"
+msgstr ""
+
+#: src/i18n/process/translate.js:79
+msgid "specin.zipcode"
+msgstr ""
 
 #~ msgid "code"
 #~ msgstr "koodi"
