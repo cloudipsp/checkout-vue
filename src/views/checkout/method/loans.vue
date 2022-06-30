@@ -1,11 +1,10 @@
 <template>
-  <f-bank :config="config" @system="system" />
+  <f-bank :config="config" />
 </template>
 
 <script>
 import { mapState } from '@/utils/store'
 import FBank from '@/views/checkout/method/bank'
-import { errorHandler } from '@/utils/helpers'
 
 export default {
   components: {
@@ -16,11 +15,6 @@ export default {
     ...mapState('tabs', ['loans']),
     config() {
       return this.loans || {}
-    },
-  },
-  methods: {
-    system(payment_system) {
-      this.submit({ payment_system }).catch(errorHandler)
     },
   },
 }

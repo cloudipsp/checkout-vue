@@ -11,6 +11,7 @@ import {
   CardVerify,
   Banklinks_eu,
   Local_methods,
+  Crypto,
   Sepa,
   Receipt,
   Wallets,
@@ -29,6 +30,7 @@ const card = 'card'
 const verify = 'verify'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
+const crypto = 'crypto'
 const sepa = 'sepa'
 const receipt = 'receipt'
 const wallets = 'wallets'
@@ -93,6 +95,11 @@ export default name => {
                 path: local_methods,
                 name: local_methods,
                 component: Local_methods,
+              },
+              {
+                path: crypto,
+                name: crypto,
+                component: Crypto,
               },
               {
                 path: sepa,

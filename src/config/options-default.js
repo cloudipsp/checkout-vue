@@ -13,6 +13,7 @@ const config = {
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
     local_methods_icons: [],
+    crypto_icons: ['bitcoincore', 'coinbase', 'binance'],
     loans_icons: [],
     emoney_icons: [],
     wallets_icons: [],

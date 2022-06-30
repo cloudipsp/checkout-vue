@@ -1,5 +1,5 @@
 <template>
-  <f-bank :config="config" enable-country />
+  <f-bank :config="config" />
 </template>
 
 <script>
@@ -10,10 +10,11 @@ export default {
   components: {
     FBank,
   },
+  inject: ['submit'],
   computed: {
-    ...mapState('tabs', ['banklinks_eu']),
+    ...mapState('tabs', ['crypto']),
     config() {
-      return this.banklinks_eu || {}
+      return this.crypto || {}
     },
   },
 }

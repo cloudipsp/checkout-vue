@@ -34,22 +34,22 @@
     </div>
     <div class="f-row f-bank-list">
       <a
-        v-for="{ id, name, method, logo, iban } in listMin"
-        :key="id"
+        v-for="item in listMin"
+        :key="item.id"
         href="#"
         :class="classBankItem"
-        @click.prevent="goSystem(id)"
+        @click.prevent="goSystem(item)"
       >
         <f-icon
-          :name="logo"
-          :type="method"
+          :name="item.logo"
+          :type="item.method"
           :class="classBankIcon"
           :size="sizeBankIcon"
         />
         <div :class="classBankItemWrapper">
-          <div class="f-bank-name" v-text="$t(name)" />
+          <div class="f-bank-name" v-text="$t(item.name)" />
           <div v-if="isGermany" class="f-bank-iban">
-            {{ iban }}
+            {{ item.iban }}
           </div>
         </div>
       </a>
@@ -70,7 +70,7 @@ import FIcon from '@/components/icon'
 import FButton from '@/components/button/button'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { removeDuplicate } from '@/utils/helpers'
+import { errorHandler, removeDuplicate } from '@/utils/helpers'
 import { timeoutMixin } from '@/mixins/timeout'
 import { PROP_TYPE_OBJECT, PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -83,6 +83,7 @@ export default {
     FButton,
   },
   mixins: [timeoutMixin],
+  inject: ['submit'],
   props: {
     // {147209: {country: 'PL', name: '', logo: 'mbank'}}
     config: makeProp(PROP_TYPE_OBJECT, {}),
@@ -98,7 +99,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['ready']),
+    ...mapState(['ready', 'has_fields']),
     ...mapState('options', ['countries']),
     ...mapStateGetSet('options', ['default_country']),
     // [{id: 147209, country: 'PL', name: '', logo: 'mbank'}]
@@ -191,7 +192,14 @@ export default {
     }
   },
   methods: {
-    goSystem(id) {
+    goSystem({ id, form, method }) {
+      if (form?.fields || this.has_fields) {
+        this.$router
+          .push({ name: 'system', params: { method, system: id } })
+          .catch(() => {})
+      } else {
+        this.submit({ payment_system: id }).catch(errorHandler)
+      }
       this.$emit('system', id)
     },
     clear() {

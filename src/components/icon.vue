@@ -27,11 +27,7 @@ export default {
     }
   },
   computed: {
-    skip() {
-      return this.name === 'no_logo'
-    },
     style() {
-      if (this.skip) return {}
       return {
         'background-image': `url(${CDN}svg/${
           this.map[this.type] || this.type

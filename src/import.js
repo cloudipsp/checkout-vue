@@ -220,3 +220,6 @@ export const FAlertNotification = () =>
 
 export const FSidebarInner = () =>
   import(/* webpackChunkName: "36" */ '@/components/sidebar-inner')
+
+export const Crypto = () =>
+  import(/* webpackChunkName: "37" */ '@/views/checkout/method/crypto')

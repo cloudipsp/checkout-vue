@@ -1,5 +1,5 @@
 <template>
-  <f-bank :config="config" @system="system" />
+  <f-bank :config="config" />
 </template>
 
 <script>
@@ -14,13 +14,6 @@ export default {
     ...mapState('tabs', ['local_methods']),
     config() {
       return this.local_methods || {}
-    },
-  },
-  methods: {
-    system(system) {
-      this.$router
-        .push({ name: 'system', params: { method: 'local_methods', system } })
-        .catch(() => {})
     },
   },
 }

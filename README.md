@@ -34,6 +34,10 @@ Name                  | Type        | Default                 | Description     
 `card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners`, `american_express` , `jcb`, `maestro`, `union_pay`.|
 `banklinks_eu_icons`  | Array       | []                      |                                                                                     |
 `local_methods_icons` | Array       | []                      |                                                                                     |
+`crypto_icons`        | Array       | []                      |                                                                                     |
+`loans_icons`         | Array       | []                      |                                                                                     |
+`emoney_icons`        | Array       | []                      |                                                                                     |
+`wallets_icons`       | Array       | []                      |                                                                                     |
 `title`               | String      |                         |                                                                                     | options or server
 `link`                | String      |                         | format url                                                                          | server or options
 `full_screen`         | Boolean     | true                    |                                                                                     |

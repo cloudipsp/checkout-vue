@@ -531,9 +531,20 @@
               token: '7ae518219e986fe062848ff2122842cfd09fa7ed',
             },
           },
+          crypto: {
+            options: {
+              api_domain: 'dev1.pay.fondy.eu',
+              methods: ['crypto'],
+            },
+            params: {
+              currency: 'EUR',
+              merchant_id: 1605472,
+              amount: 100,
+            },
+          },
         }
 
-        window.app = render('#app', 'max')
+        window.app = render('#app', 'crypto')
         // render('#app2', 'min')
         // render('#app3', 'max2')
 
