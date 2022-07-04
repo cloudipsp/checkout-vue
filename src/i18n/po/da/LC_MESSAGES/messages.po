@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-13 15:01+0300\n"
+"POT-Creation-Date: 2022-07-07 18:50+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -53,6 +53,10 @@ msgstr "Delbetaling på nettet"
 #: src/i18n/process/methods.js:9 src/i18n/process/translate.js:37
 msgid "emoney"
 msgstr "Digital tegnebog"
+
+#: src/i18n/process/methods.js:10
+msgid "crypto"
+msgstr ""
 
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
@@ -778,6 +782,46 @@ msgstr ""
 
 #: src/i18n/process/translate.js:79
 msgid "specin.zipcode"
+msgstr ""
+
+#: src/i18n/process/translate.js:81
+msgid "most_popular"
+msgstr ""
+
+#: src/i18n/process/translate.js:82
+msgid "search_country"
+msgstr ""
+
+#: src/i18n/process/translate.js:83
+msgid "see_all_other_methods"
+msgstr ""
+
+#: src/i18n/process/translate.js:84
+msgid "all_methods"
+msgstr ""
+
+#: src/i18n/process/translate.js:86
+msgid "label_ACCOUNT_NUMBER"
+msgstr ""
+
+#: src/i18n/process/translate.js:87
+msgid "placeholder_ACCOUNT_NUMBER"
+msgstr ""
+
+#: src/i18n/process/translate.js:88
+msgid "label_SORT_CODE"
+msgstr ""
+
+#: src/i18n/process/translate.js:89
+msgid "placeholder_SORT_CODE"
+msgstr ""
+
+#: src/i18n/process/translate.js:90
+msgid "address_number"
+msgstr ""
+
+#: src/i18n/process/translate.js:91
+msgid "address_street"
 msgstr ""
 
 #~ msgid "code"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-13 15:01+0300\n"
+"POT-Creation-Date: 2022-07-04 14:08+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -44,7 +44,7 @@ msgstr "Local payment methods"
 
 #: src/i18n/process/methods.js:7
 msgid "wallets"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/methods.js:8
 msgid "loans"
@@ -53,6 +53,10 @@ msgstr "Online installments"
 #: src/i18n/process/methods.js:9 src/i18n/process/translate.js:37
 msgid "emoney"
 msgstr "Digital wallet"
+
+#: src/i18n/process/methods.js:10
+msgid "crypto"
+msgstr "Crypto wallets"
 
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
@@ -68,15 +72,15 @@ msgstr "Month"
 
 #: src/i18n/process/templates.js:1
 msgid "menu"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:2
 msgid "error_modal"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:3
 msgid "error"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:4
 msgid "gdpr_alert_text"
@@ -147,7 +151,7 @@ msgstr "Expiry date"
 
 #: src/i18n/process/templates.js:19
 msgid "system"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:20
 msgid "email"
@@ -155,7 +159,7 @@ msgstr "Email"
 
 #: src/i18n/process/templates.js:21
 msgid "label"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:22
 msgid "datepicker"
@@ -163,7 +167,7 @@ msgstr "-"
 
 #: src/i18n/process/templates.js:23
 msgid "model"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:24 src/i18n/process/translate.js:4
 msgid "verification_t"
@@ -171,7 +175,7 @@ msgstr "Card verification"
 
 #: src/i18n/process/templates.js:25
 msgid "verification_"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:26
 msgid "see_more"
@@ -183,7 +187,7 @@ msgstr "Order details"
 
 #: src/i18n/process/templates.js:28
 msgid "currencies"
-msgstr ""
+msgstr "currencies"
 
 #: src/i18n/process/templates.js:31
 msgid "submit3ds_title"
@@ -256,7 +260,7 @@ msgstr "Amount due"
 
 #: src/i18n/process/templates.js:47
 msgid "discount"
-msgstr ""
+msgstr "discount"
 
 #: src/i18n/process/templates.js:48
 msgid "security"
@@ -278,7 +282,7 @@ msgstr "Or pay with"
 
 #: src/i18n/process/templates.js:52
 msgid "switch"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:53
 msgid "subscription"
@@ -360,11 +364,11 @@ msgstr "Demo mode"
 
 #: src/i18n/process/templates.js:72
 msgid "verify"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:73
 msgid "success"
-msgstr ""
+msgstr "-"
 
 #: src/i18n/process/templates.js:74
 msgid "default_country"
@@ -775,6 +779,46 @@ msgstr "Passport ID"
 #: src/i18n/process/translate.js:79
 msgid "specin.zipcode"
 msgstr "Zip code"
+
+#: src/i18n/process/translate.js:81
+msgid "most_popular"
+msgstr "Most popular"
+
+#: src/i18n/process/translate.js:82
+msgid "search_country"
+msgstr "Search for country"
+
+#: src/i18n/process/translate.js:83
+msgid "see_all_other_methods"
+msgstr "See all other methods"
+
+#: src/i18n/process/translate.js:84
+msgid "all_methods"
+msgstr "All Methods"
+
+#: src/i18n/process/translate.js:86
+msgid "label_ACCOUNT_NUMBER"
+msgstr "Account number"
+
+#: src/i18n/process/translate.js:87
+msgid "placeholder_ACCOUNT_NUMBER"
+msgstr "Enter your bank account number"
+
+#: src/i18n/process/translate.js:88
+msgid "label_SORT_CODE"
+msgstr "Sort code"
+
+#: src/i18n/process/translate.js:89
+msgid "placeholder_SORT_CODE"
+msgstr "Enter your bank sort code"
+
+#: src/i18n/process/translate.js:90
+msgid "address_number"
+msgstr "Street number, apartment number, suite, etc."
+
+#: src/i18n/process/translate.js:91
+msgid "address_street"
+msgstr "Street address"
 
 #~ msgid "code"
 #~ msgstr "-"

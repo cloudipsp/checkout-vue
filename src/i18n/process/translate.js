@@ -77,3 +77,16 @@ _('specin.email')
 _('specin.iban')
 _('specin.nationalid')
 _('specin.zipcode')
+
+_('most_popular')
+_('search_country')
+_('see_all_other_methods')
+_('all_methods')
+
+_('label_ACCOUNT_NUMBER')
+_('placeholder_ACCOUNT_NUMBER')
+_('label_SORT_CODE')
+_('placeholder_SORT_CODE')
+_('address_number')
+_('address_street')
+
