@@ -17,13 +17,13 @@ import { mapState } from '@/utils/store'
 
 export default {
   computed: {
-    ...mapState('options', ['email', 'customer_fields']),
-    ...mapState(['params']),
+    ...mapState('options', ['email']),
+    ...mapState(['params', 'fields_customer']),
     show() {
       return this.list.length
     },
     list() {
-      return this.customer_fields
+      return this.fields_customer
         .filter(name => name !== 'email' || !this.email)
         .filter(name => config[name])
         .map(name => {

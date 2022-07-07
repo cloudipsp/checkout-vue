@@ -122,8 +122,7 @@ class Store extends Model {
       this.state.options.default_country || model.attr('default_country')
 
     this.state.params.fee = model.attr('client_fee') || 0
-    this.state.options.customer_fields =
-      model.attr('customer_required_data') || []
+    this.state.fields_customer = model.attr('customer_required_data') || []
 
     this.state.params.order_desc =
       this.state.params.order_desc || model.attr('order.order_desc') || ' '
@@ -203,7 +202,7 @@ class Store extends Model {
   initHasFields() {
     this.state.has_fields =
       !this.state.amount_readonly ||
-      this.state.options.customer_fields.length ||
+      this.state.fields_customer.length ||
       this.state.fields.length ||
       this.state.options.fields ||
       this.state.options.offerta_url
