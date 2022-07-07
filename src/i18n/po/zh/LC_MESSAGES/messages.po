@@ -220,7 +220,7 @@ msgstr "我同意接受 <a href=\"{0}\" target=\"_blank\">bid 条件和条款. <
 
 #: src/i18n/process/templates.js:41
 msgid "offerta_url"
-msgstr "offerta_url"
+msgstr ""
 
 #: src/i18n/process/templates.js:42
 msgid "trial_period"

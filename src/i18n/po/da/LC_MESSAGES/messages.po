@@ -235,7 +235,7 @@ msgstr ""
 
 #: src/i18n/process/templates.js:41
 msgid "offerta_url"
-msgstr "tilbuda_url"
+msgstr ""
 
 #: src/i18n/process/templates.js:42
 msgid "trial_period"
