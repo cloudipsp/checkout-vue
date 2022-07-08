@@ -2,7 +2,6 @@
   transition: box-shadow ease-in-out 0.15s;
 
   &:focus {
-    position: relative;
     outline: 0;
     box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
       0 0 0 px-to-rem(4px) $outline_border;

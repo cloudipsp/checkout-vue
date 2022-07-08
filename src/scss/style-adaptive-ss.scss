@@ -67,6 +67,7 @@
 
 .f-placeholder {
   @include media-breakpoint-up(ss) {
+    top: px-to-rem(18px);
     font-size: px-to-rem(20px);
     line-height: px-to-rem(25px);
   }

@@ -107,6 +107,10 @@
       background-color: inherit;
     }
 
+    &:focus {
+      padding: 0;
+    }
+
     &:-webkit-autofill {
       -webkit-text-fill-color: $card_input_color;
 

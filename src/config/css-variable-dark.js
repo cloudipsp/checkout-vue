@@ -90,7 +90,7 @@ export default createConfig(namesTheme, [
   '#898C8E', // input_hover_border
   white_06, // input_focus_border
   white_06, // input_readonly_color
-  grey_9, // input_prepend_color
+  white_04, // input_prepend_color
   white_04, // checkbox_default_border
   '#585B5F', // checkbox_default_hover_bg
   white_04, // checkbox_default_hover_border
