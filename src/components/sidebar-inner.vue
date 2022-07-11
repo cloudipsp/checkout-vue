@@ -10,14 +10,12 @@
       v-text="$t('other_payment_method')"
     />
     <f-menu />
-    <f-fast-access />
   </div>
 </template>
 
 <script>
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
-import FFastAccess from '@/components/fast-access'
 import FMenu from '@/components/menu'
 import { mapState } from '@/utils/store'
 
@@ -25,7 +23,6 @@ export default {
   components: {
     FInfo,
     FPrice,
-    FFastAccess,
     FMenu,
   },
   computed: {

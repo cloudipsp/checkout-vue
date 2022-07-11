@@ -37,12 +37,6 @@
   }
 }
 
-.f-fast-access-icon {
-  @include media-breakpoint-up(sm) {
-    margin-right: 30px; // 360px
-  }
-}
-
 .f-receipt-row {
   @include media-breakpoint-up(sm) {
     display: flex;

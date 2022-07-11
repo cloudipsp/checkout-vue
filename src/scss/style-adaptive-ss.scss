@@ -55,16 +55,6 @@
   }
 }
 
-.f-fast-access-icon {
-  @include media-breakpoint-up(ss) {
-    margin-right: 23px; // 335px
-
-    &:nth-child(5n) {
-      margin-right: 0;
-    }
-  }
-}
-
 .f-placeholder {
   @include media-breakpoint-up(ss) {
     top: px-to-rem(18px);

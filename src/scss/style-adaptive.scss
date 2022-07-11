@@ -249,12 +249,6 @@
   }
 }
 
-.f-fast-access-icon {
-  @include media-breakpoint-up(lg) {
-    margin-right: 22px; // 328px
-  }
-}
-
 .f-gdpr {
   @include media-breakpoint-up(md) {
     right: px-to-rem(32px);
