@@ -7,7 +7,7 @@
     <f-fields-button />
     <f-fields-user />
     <f-offer />
-    <div ref="button-pay-wallet" />
+    <f-button-wallet-el />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsButton from '@/components/fields/button'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
+import FButtonWalletEl from '@/components/button-pay-wallet-el'
 import { resizeMixin } from '@/mixins/resize'
 
 export default {
@@ -26,13 +27,8 @@ export default {
     FFieldsButton,
     FFieldsUser,
     FOffer,
+    FButtonWalletEl,
   },
   mixins: [resizeMixin],
-  mounted() {
-    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
-  },
-  destroyed() {
-    this.store.destroyedButtonPayWallet()
-  },
 }
 </script>

@@ -3,7 +3,7 @@
     <template v-if="isBreakpointMd">
       <f-info v-if="isOnlyCard" />
       <f-price />
-      <div ref="button-pay-wallet" />
+      <f-button-wallet-el />
       <f-icons
         v-if="isOnlyCard"
         class="f-mb-3"
@@ -20,6 +20,7 @@ import { mapState } from '@/utils/store'
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
 import FIcons from '@/components/icons'
+import FButtonWalletEl from '@/components/button-pay-wallet-el'
 import { resizeMixin } from '@/mixins/resize'
 
 export default {
@@ -27,31 +28,11 @@ export default {
     FInfo,
     FPrice,
     FIcons,
+    FButtonWalletEl,
   },
   mixins: [resizeMixin],
   computed: {
-    ...mapState(['isOnlyCard', 'has_fields']),
-  },
-  watch: {
-    isBreakpointMd(value) {
-      if (!value) return
-
-      this.$nextTick(() => {
-        this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
-      })
-
-      // TODO need else destroyedButtonPayWallet()
-    },
-  },
-  mounted() {
-    if (!this.isBreakpointMd) return
-
-    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
-  },
-  destroyed() {
-    if (!this.isBreakpointMd) return
-
-    this.store.destroyedButtonPayWallet()
+    ...mapState(['isOnlyCard']),
   },
 }
 </script>

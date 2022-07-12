@@ -1,14 +1,13 @@
 <template>
-  <div ref="button-pay-wallet" />
+  <f-button-wallet-el />
 </template>
 
 <script>
+import FButtonWalletEl from '@/components/button-pay-wallet-el'
+
 export default {
-  mounted() {
-    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
-  },
-  destroyed() {
-    this.store.destroyedButtonPayWallet()
+  components: {
+    FButtonWalletEl,
   },
 }
 </script>

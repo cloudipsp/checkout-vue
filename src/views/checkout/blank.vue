@@ -3,9 +3,5 @@
 </template>
 
 <script>
-import { createdButtonPayWalletMixin } from '@/mixins/created-button-pay-wallet'
-
-export default {
-  mixins: [createdButtonPayWalletMixin],
-}
+export default {}
 </script>

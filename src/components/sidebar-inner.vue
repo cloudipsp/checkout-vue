@@ -3,7 +3,7 @@
     <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
     <f-info />
     <f-price />
-    <div ref="button-pay-wallet" />
+    <f-button-wallet-el v-show="!has_fields" />
     <div
       v-if="showTitle"
       class="f-wallet-pay-title"
@@ -16,6 +16,7 @@
 <script>
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
+import FButtonWalletEl from '@/components/button-pay-wallet-el'
 import FMenu from '@/components/menu'
 import { mapState } from '@/utils/store'
 
@@ -23,6 +24,7 @@ export default {
   components: {
     FInfo,
     FPrice,
+    FButtonWalletEl,
     FMenu,
   },
   computed: {
@@ -31,23 +33,6 @@ export default {
     showTitle() {
       return this.can_make_payment && !this.has_fields
     },
-  },
-  watch: {
-    has_fields(value) {
-      if (!value) return
-
-      this.store.destroyedButtonPayWallet()
-    },
-  },
-  mounted() {
-    if (this.has_fields) return
-
-    this.store.mountedButtonPayWallet(this.$refs['button-pay-wallet'])
-  },
-  destroyed() {
-    if (this.has_fields) return
-
-    this.store.destroyedButtonPayWallet()
   },
 }
 </script>
