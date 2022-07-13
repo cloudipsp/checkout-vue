@@ -24,4 +24,8 @@
   padding-left: ($grid-gutter-width / 2);
 }
 
-@include make-grid-columns();
+@include make-grid-columns(
+  $grid-columns,
+  $grid-gutter-width,
+  $grid-breakpoints-mobile
+);

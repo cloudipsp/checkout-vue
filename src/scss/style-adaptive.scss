@@ -3,6 +3,12 @@
 @import 'core/variables';
 @import 'core/mixins/index';
 
+@include make-grid-columns(
+  $grid-columns,
+  $grid-gutter-width,
+  $grid-breakpoints-adaptive
+);
+
 // stylelint-disable-next-line selector-max-id
 #f {
   @include media-breakpoint-up(xl) {

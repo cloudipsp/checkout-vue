@@ -1,10 +1,18 @@
-$grid-breakpoints: (
+$grid-breakpoints-mobile: (
   xs: 0,
   ss: 375px,
   sm: 576px,
+);
+
+$grid-breakpoints-adaptive: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
+);
+
+$grid-breakpoints: map-merge(
+  $grid-breakpoints-mobile,
+  $grid-breakpoints-adaptive
 );
 
 // Spacing
