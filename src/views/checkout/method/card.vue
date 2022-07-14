@@ -1,6 +1,6 @@
 <template>
   <div class="f-container-sm">
-    <template v-if="isBreakpointMd">
+    <template v-if="isBreakpointDownLg">
       <f-info v-if="isOnlyCard" />
       <f-price />
       <f-button-wallet-el />

@@ -100,13 +100,13 @@ export const getRouteName = (
   methods,
   active,
   has_fields,
-  isBreakpointMd = false
+  isBreakpointDownLg = false
 ) => {
   let name = arrayIncludes(methods, active) ? active : methods[0]
 
   if (methods.length === 1 && methods[0] === 'wallets' && !has_fields) {
     name = 'blank-' + name
-  } else if (active === 'menu' && isBreakpointMd) {
+  } else if (active === 'menu' && isBreakpointDownLg) {
     name = active
   }
 

@@ -40,7 +40,7 @@ export default {
     },
   },
   watch: {
-    isBreakpointMd(value) {
+    isBreakpointDownLg(value) {
       if (value) return
 
       let name = getRouteName(this.methods, this.last, this.has_fields)
@@ -72,7 +72,7 @@ export default {
       this.initHeight()
     },
     go() {
-      if (this.isBreakpointMd && this.show_menu_first) {
+      if (this.isBreakpointDownLg && this.show_menu_first) {
         this.goMenu()
       } else {
         this.goMethod()

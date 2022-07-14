@@ -6,7 +6,8 @@ import { windowWidth } from '@/utils/helpers'
 function init() {
   let width = windowWidth()
 
-  this.isBreakpointMd = this.full_screen ? width < 992 : true
+  this.isBreakpointDownMd = this.full_screen ? width < 768 : true
+  this.isBreakpointDownLg = this.full_screen ? width < 992 : true
   this.isWidthSm = width < 768
 }
 
@@ -22,7 +23,8 @@ export const resizeMixin = {
   mixins: [listenOnWindowMixin],
   data() {
     return {
-      isBreakpointMd: false,
+      isBreakpointDownMd: false,
+      isBreakpointDownLg: false,
       isWidthSm: false,
     }
   },

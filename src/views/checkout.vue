@@ -258,7 +258,7 @@ export default {
         this.methods,
         this.needRoute || this.$route.name || this.$route.params.method,
         this.has_fields,
-        this.isBreakpointMd
+        this.isBreakpointDownLg
       )
       this.needRoute = ''
 

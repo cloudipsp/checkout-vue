@@ -72,7 +72,7 @@ export default {
               (this.$route.name === item ||
                 this.$route.params.method === item ||
                 this.$route.meta.method === item) &&
-              !this.isBreakpointMd,
+              !this.isBreakpointDownLg,
           },
         ]
       }

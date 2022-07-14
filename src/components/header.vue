@@ -70,7 +70,7 @@ export default {
       return this.locales.map(parseSelect).sort(sort('text'))
     },
     showBack() {
-      return !this.isOnlyCard && this.isBreakpointMd && this.back
+      return !this.isOnlyCard && this.isBreakpointDownLg && this.back
     },
     showLogoCustom() {
       return this.logo_url && this.full_screen

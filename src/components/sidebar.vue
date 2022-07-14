@@ -19,7 +19,7 @@ export default {
   mixins: [resizeMixin],
   computed: {
     show() {
-      return !this.isBreakpointMd
+      return !this.isBreakpointDownLg
     },
   },
 }
