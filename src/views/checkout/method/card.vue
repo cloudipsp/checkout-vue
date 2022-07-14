@@ -6,7 +6,7 @@
       <f-button-wallet-el />
       <f-icons
         v-if="isOnlyCard"
-        class="f-mb-3"
+        class="f-mb-16"
         title="pay_with_card"
         :count="5"
       />

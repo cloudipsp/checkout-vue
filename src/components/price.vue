@@ -22,21 +22,21 @@
           />
           <table v-if="card_type_fee" class="f-table">
             <tr>
-              <td class="f-pr-3" v-text="$t('total_amount')" />
+              <td class="f-pr-16" v-text="$t('total_amount')" />
               <td><f-amount :value="amount" /></td>
             </tr>
             <tr>
-              <td class="f-pr-3" v-text="labelCardTypeFee" />
+              <td class="f-pr-16" v-text="labelCardTypeFee" />
               <td><f-amount :value="card_type_fee" /></td>
             </tr>
           </table>
           <table v-else-if="showFeeAmount" class="f-table">
             <tr>
-              <td class="f-pr-3" v-text="$t('total_amount')" />
+              <td class="f-pr-16" v-text="$t('total_amount')" />
               <td><f-amount :value="amount" /></td>
             </tr>
             <tr>
-              <td class="f-pr-3" v-text="$t('fee')" />
+              <td class="f-pr-16" v-text="$t('fee')" />
               <td><f-amount :value="feeAmount" /></td>
             </tr>
           </table>

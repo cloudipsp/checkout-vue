@@ -366,3 +366,5 @@
     border-radius: px-to-rem(16px) 0 0 px-to-rem(16px);
   }
 }
+
+@include api-utility($grid-breakpoints-adaptive);

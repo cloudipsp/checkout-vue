@@ -1,3 +1,5 @@
+$enable-important-utilities: false;
+
 $grid-breakpoints-mobile: (
   xs: 0,
   ss: 375px,
@@ -20,19 +22,12 @@ $spacer: 1rem;
 
 $spacers: (
   0: 0,
-  1: (
-    $spacer * 0.25,
-  ),
-  2: (
-    $spacer * 0.5,
-  ),
-  3: $spacer,
-  4: (
-    $spacer * 1.5,
-  ),
-  5: (
-    $spacer * 3,
-  ),
+  4: px-to-rem(4px),
+  8: px-to-rem(8px),
+  12: px-to-rem(12px),
+  16: px-to-rem(16px),
+  20: px-to-rem(20px),
+  24: px-to-rem(24px),
 );
 
 // Characters which are escaped by the escape-svg function
@@ -97,3 +92,96 @@ $input-error-border-width: px-to-rem(2px);
 // stylelint-disable-next-line scss/operator-no-newline-after
 $input-error-padding-start: $input-padding-start -
   ($input-error-border-width - $input-border-width);
+
+$utilities: (
+  'margin': (
+    responsive: true,
+    property: margin,
+    class: m,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  'margin-top': (
+    responsive: true,
+    property: margin-top,
+    class: mt,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  'margin-end': (
+    responsive: true,
+    property: margin-right,
+    class: mr,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  'margin-bottom': (
+    responsive: true,
+    property: margin-bottom,
+    class: mb,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  'margin-start': (
+    responsive: true,
+    property: margin-left,
+    class: ml,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  'padding': (
+    responsive: true,
+    property: padding,
+    class: p,
+    values: $spacers,
+  ),
+  'padding-top': (
+    responsive: true,
+    property: padding-top,
+    class: pt,
+    values: $spacers,
+  ),
+  'padding-end': (
+    responsive: true,
+    property: padding-right,
+    class: pr,
+    values: $spacers,
+  ),
+  'padding-bottom': (
+    responsive: true,
+    property: padding-bottom,
+    class: pb,
+    values: $spacers,
+  ),
+  'padding-start': (
+    responsive: true,
+    property: padding-left,
+    class: pl,
+    values: $spacers,
+  ),
+);

@@ -4,7 +4,7 @@
       v-if="show_switch"
       v-model="enabled_switch"
       name="switch"
-      class="f-mb-1"
+      class="f-mb-4"
       component="checkbox"
       switch
     >

@@ -1,34 +1,11 @@
-@each $prop, $abbrev in (margin: m, padding: p) {
-  @each $size, $length in $spacers {
-    .f-#{$abbrev}-#{$size} {
-      // stylelint-disable-next-line declaration-no-important
-      #{$prop}: $length !important;
-    }
-    .f-#{$abbrev}t-#{$size},
-    .f-#{$abbrev}y-#{$size} {
-      // stylelint-disable-next-line declaration-no-important
-      #{$prop}-top: $length !important;
-    }
-    .f-#{$abbrev}r-#{$size},
-    .f-#{$abbrev}x-#{$size} {
-      // stylelint-disable-next-line declaration-no-important
-      #{$prop}-right: $length !important;
-    }
-    .f-#{$abbrev}b-#{$size},
-    .f-#{$abbrev}y-#{$size} {
-      // stylelint-disable-next-line declaration-no-important
-      #{$prop}-bottom: $length !important;
-    }
-    .f-#{$abbrev}l-#{$size},
-    .f-#{$abbrev}x-#{$size} {
-      // stylelint-disable-next-line declaration-no-important
-      #{$prop}-left: $length !important;
-    }
-  }
-}
+@include api-utility($grid-breakpoints-mobile);
 
 .f-w-100 {
   width: 100%;
+}
+
+.f-w-48 {
+  width: px-to-rem(48px);
 }
 
 .f-text-right {

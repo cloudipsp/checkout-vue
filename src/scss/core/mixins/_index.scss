@@ -1,8 +1,10 @@
+@import '../vendor/rfs';
 @import 'breakpoints';
 @import 'hover';
 @import 'grid';
 @import 'grid-framework';
 @import 'text-truncate';
+@import 'utilities';
 
 @mixin sticky-top($top: 0, $zindex: $zindex-sticky) {
   @supports (position: sticky) {

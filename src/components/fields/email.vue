@@ -1,5 +1,5 @@
 <template>
-  <f-preloader :condition="show" class="f-mb-3">
+  <f-preloader :condition="show" class="f-mb-16">
     <f-form-group
       v-model.trim="email"
       input-class="f-checkout-email"
