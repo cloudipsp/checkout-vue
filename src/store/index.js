@@ -98,7 +98,7 @@ class Store extends Model {
       this.state.validate_expdate = model.attr('validate_expdate')
     }
     this.state.options.link =
-      model.attr('merchant_url') || this.state.options.link
+      model.attr('merchant.merchant_url') || this.state.options.link
     this.state.options.email =
       model.attr('checkout_email_required') || this.state.options.email
     this.state.options.title =
