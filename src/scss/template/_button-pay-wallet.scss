@@ -55,9 +55,9 @@
 }
 
 .f-wallet-pay-button-apple-light::after {
-  background-image: url('../assets/apple-pay-light.svg');
+  background-image: url('#{$cdn}svg/wallets/apple-pay-light.svg');
 }
 
 .f-wallet-pay-button-apple-dark::after {
-  background-image: url('../assets/apple-pay-dark.svg');
+  background-image: url('#{$cdn}svg/wallets/apple-pay-dark.svg');
 }
