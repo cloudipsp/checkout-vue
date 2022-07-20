@@ -56,6 +56,7 @@ export default {
         banklinks_eu: 'bank',
         local_methods: 'local',
         emoney: 'wallet',
+        most_popular: 'star',
       },
     }
   },

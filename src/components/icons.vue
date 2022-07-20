@@ -2,11 +2,11 @@
   <div v-if="show" class="f-icons">
     <span v-if="showTitle" class="f-icons-title" v-text="$t(title)" />
     <f-icon
-      v-for="item in listFirst"
-      :key="item"
+      v-for="{ logo, method } in listFirst"
+      :key="logo"
       size="sm"
-      :name="item"
-      :type="type"
+      :name="logo"
+      :type="method"
     />
     <a
       v-if="showCount"
@@ -23,11 +23,11 @@
       :target="() => $refs.last"
     >
       <f-icon
-        v-for="item in listLast"
-        :key="item"
+        v-for="{ logo, method } in listLast"
+        :key="logo"
         size="sm"
-        :name="item"
-        :type="type"
+        :name="logo"
+        :type="method"
       />
     </f-tooltip-default>
   </div>
@@ -41,6 +41,7 @@ import configMethods from '@/config/methods.json'
 import { PROP_TYPE_STRING, PROP_TYPE_NUMBER } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
+import { isString } from '@/utils/inspect'
 
 export default {
   components: {
@@ -60,7 +61,9 @@ export default {
       return this.title
     },
     list() {
-      return this.options[this.type + '_icons'] || []
+      return (this.options[this.type + '_icons'] || []).map(item =>
+        isString(item) ? { logo: item, method: this.type } : item
+      )
     },
     listFirst() {
       if (this.list.length <= this.count + 1) return this.list

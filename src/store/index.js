@@ -17,7 +17,7 @@ import store from '@/store/setup'
 import loadButton, { getLabel } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadCardImg from '@/store/card-img'
-import { methods, tabs } from '@/utils/compatibility'
+import { methods, most_popular_icons, tabs, tabs_order } from '@/store/parse'
 import { localStorage } from '@/utils/store'
 import configSubscription from '@/config/subscription'
 import configAutoSubmit from '@/config/auto-submit'
@@ -109,16 +109,18 @@ class Store extends Model {
       this.state.options.offerta_url || model.attr('merchant.offerta_url')
     this.state.region = (model.attr('merchant.country') || '').toLowerCase()
 
-    if (model.attr('tabs_order') && model.attr('tabs_order').length) {
-      this.state.options.methods = methods(
-        this.state.options.methods,
-        model.attr('tabs_order'),
-        this.state.options.methods_disabled
-      )
-    }
-    this.state.tabs = tabs(model.attr('tabs'))
     this.state.options.default_country =
       this.state.options.default_country || model.attr('default_country')
+    this.state.tabs = tabs(
+      model.attr('tabs'),
+      this.state.options.default_country
+    )
+    this.state.options.methods = methods(
+      this.state.options.methods,
+      tabs_order(model.attr('tabs_order'), this.state.tabs),
+      this.state.options.methods_disabled
+    )
+    this.state.options.most_popular_icons = most_popular_icons(this.state.tabs)
 
     this.state.params.fee = model.attr('client_fee') || 0
     this.state.fields_customer = model.attr('customer_required_data') || []

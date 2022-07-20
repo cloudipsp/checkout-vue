@@ -3,7 +3,7 @@
     <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
     <f-info />
     <f-price />
-    <f-button-wallet-el v-show="!has_fields" />
+    <f-button-wallet-el v-if="!has_fields" />
     <div
       v-if="showTitle"
       class="f-wallet-pay-title"

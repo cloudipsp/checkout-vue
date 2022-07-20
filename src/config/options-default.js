@@ -10,6 +10,7 @@ const config = {
   options: {
     methods: ['card'],
     methods_disabled: [],
+    most_popular_icons: [],
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
     local_methods_icons: [],

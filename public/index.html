@@ -29,6 +29,7 @@
         z-index: 1021;
         left: 0;
         bottom: 0;
+        display: none;
       }
     </style>
     <link rel="preload" href="https://pay.fondy.eu/icons/dist/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -542,9 +543,21 @@
               amount: 100,
             },
           },
+          most_popular: {
+            options: {
+              methods: ['most_popular'],
+              active_tab: 'most_popular',
+              api_domain: 'dev2.pay.fondy.eu',
+            },
+            params: {
+              currency: 'EUR',
+              merchant_id: 900158,
+              amount: 100,
+            },
+          },
         }
 
-        window.app = render('#app', 'crypto')
+        window.app = render('#app', 'most_popular')
         // render('#app2', 'min')
         // render('#app3', 'max2')
 

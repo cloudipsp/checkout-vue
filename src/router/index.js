@@ -24,6 +24,7 @@ import {
   WithoutSidebar,
   Menu,
   BlankWallets,
+  MostPopular,
 } from '@/import'
 
 const card = 'card'
@@ -36,6 +37,7 @@ const receipt = 'receipt'
 const wallets = 'wallets'
 const loans = 'loans'
 const emoney = 'emoney'
+const most_popular = 'most_popular'
 const success = 'success'
 const error = 'error'
 const error_modal = 'error_modal'
@@ -125,6 +127,11 @@ export default name => {
                 path: emoney,
                 name: emoney,
                 component: Emoney,
+              },
+              {
+                path: most_popular,
+                name: most_popular,
+                component: MostPopular,
               },
               {
                 path: ':method/:system',

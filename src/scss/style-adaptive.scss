@@ -73,7 +73,6 @@
   }
 
   @include media-breakpoint-up(xl) {
-    flex: 1;
     padding: px-to-rem(24px) px-to-rem(24px) 0 0;
   }
 }
@@ -245,13 +244,6 @@
 .f-menu-icon {
   @include media-breakpoint-up(lg) {
     color: $menu_icon_lg_color;
-  }
-}
-
-.f-bank-item {
-  @include media-breakpoint-up(md) {
-    flex: 0 0 33.3%;
-    max-width: 33.3%;
   }
 }
 

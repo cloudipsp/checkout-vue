@@ -8,7 +8,8 @@
           class="f-btn-methods"
           @click="goMenu"
         >
-          <f-svg name="back" size="lg" />
+          <f-svg class="f-mr-8" name="bars" size="lg" />
+          <span v-text="$t('all_methods')" />
         </f-button-link>
         <div
           v-else-if="showLogoCustom"
@@ -70,7 +71,13 @@ export default {
       return this.locales.map(parseSelect).sort(sort('text'))
     },
     showBack() {
-      return !this.isOnlyCard && this.isBreakpointDownLg && this.back
+      return !this.isLogo && this.isBreakpointDownLg && this.back
+    },
+    isLogo() {
+      return (
+        (this.isOnlyCard && this.$route.name === 'card') ||
+        this.$route.name === 'most_popular'
+      )
     },
     showLogoCustom() {
       return this.logo_url && this.full_screen
@@ -93,11 +100,7 @@ export default {
       this.store.sendRequestInfo({ lang: value })
     },
     goMenu() {
-      this.$router
-        .push({
-          name: 'menu',
-        })
-        .catch(() => {})
+      this.$router.push({ name: 'menu' }).catch(() => {})
     },
   },
 }

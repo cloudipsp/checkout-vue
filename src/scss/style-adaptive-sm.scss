@@ -9,13 +9,6 @@
   }
 }
 
-.f-bank-item {
-  @include media-breakpoint-up(sm) {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
 .f-bank-country {
   @include media-breakpoint-up(sm) {
     flex: 0 0 px-to-rem(220px);

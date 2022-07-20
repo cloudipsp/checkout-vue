@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import FButton from '@/components/button/button'
 import { loadCheckout } from '@/import'
 import { api } from '@/utils/api'
@@ -62,7 +63,7 @@ const supportLongSvg = [
   'uk',
 ]
 
-export default {
+export default Vue.extend({
   components: {
     FButton,
   },
@@ -85,8 +86,9 @@ export default {
     ...mapState('params', ['amount', 'merchant_id']),
     ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
     ...mapStateGetSet(['can_make_payment', 'need_validate_card']),
-    ...mapState(['has_fields', 'params']),
+    ...mapState(['has_fields', 'params', 'ready']),
     ...mapStateGetSet('options', ['wallets_icons']),
+    ...mapStateGetSet('tabs', ['most_popular']),
     classButton() {
       return [
         'f-wallet-pay-button',
@@ -118,6 +120,7 @@ export default {
     },
     '$i18n.locale': 'watchLocale',
     merchant_id: 'watchMerchantId',
+    ready: 'watchReady',
   },
   mounted() {
     this.$nextTick().then(this.loadCheckout)
@@ -146,11 +149,13 @@ export default {
         })
         .process(this.process)
         .on('show', () => {
+          const system = this.button.method
           this.$root.$emit('show-pay')
-          this.can_make_payment = this.button.method
-          this.wallets_icons = [this.button.method]
+          this.can_make_payment = system
+          this.wallets_icons = [system]
           this.init = true
           this.need_validate_card = true
+          this.addMostPopular()
         })
         .on('hide', () => {
           this.init = false
@@ -215,6 +220,25 @@ export default {
 
       this.button.payment.setMerchant(value)
     },
+    watchReady() {
+      if (!this.init) return
+
+      this.addMostPopular()
+    },
+    addMostPopular() {
+      const system = this.button.method
+
+      if (!this.most_popular) return
+
+      this.$set(this.most_popular, system, {
+        id: system,
+        method: 'wallets',
+        logo: system,
+        name: `wallets_${system}`,
+        user_priority: 98,
+        country: 'XX',
+      })
+    },
   },
-}
+})
 </script>

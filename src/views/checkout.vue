@@ -105,9 +105,11 @@ export default {
       })
       .finally(() => {
         this.store.formLoading(false)
-        this.ready = true
       })
       .then(this.appSuccess)
+      .finally(() => {
+        this.ready = true
+      })
       .catch(this.appError)
       .catch(errorHandler)
   },

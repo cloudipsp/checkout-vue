@@ -59,6 +59,18 @@ module.exports = {
     ? publicPath
     : '/',
   pluginOptions: {},
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: [
+          '@import \'~@/scss/core/functions\';',
+          '@import \'~@/scss/core/colors\';',
+          '@import \'~@/scss/core/variables\';',
+          '@import \'~@/scss/core/mixins/index\';',
+        ].join('')
+      },
+    }
+  },
   chainWebpack: config => {
     config
       .when(isProduction, config => {

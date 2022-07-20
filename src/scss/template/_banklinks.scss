@@ -1,16 +1,9 @@
 $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
 
 .f-bank-item {
-  display: flex;
-  flex: 0 0 100%;
   align-items: center;
-  max-width: 100%;
-  padding-top: px-to-rem(8px);
-  padding-bottom: px-to-rem(8px);
-  margin-bottom: px-to-rem(8px);
   color: $bank_item_color;
   cursor: pointer;
-  border-radius: px-to-rem(8px);
 
   &:hover {
     color: $bank_item_hover_color;
@@ -18,26 +11,14 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   }
 }
 
-.f-bank-item.f-bank-item-list {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-// stylelint-disable-next-line selector-class-pattern
-.f-bank-item-DE {
-  align-items: flex-start;
-}
-
 .f-bank-item-wrapper-list {
   display: flex;
-  flex-grow: 1;
   align-items: center;
   justify-content: space-between;
 }
 
 .f-bank-icon {
   min-width: px-to-rem(48px);
-  margin-right: px-to-rem(12px);
   border-radius: px-to-rem(8px);
   box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $bank_icon_shadow;
 }

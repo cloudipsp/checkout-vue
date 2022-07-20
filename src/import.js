@@ -223,3 +223,6 @@ export const FSidebarInner = () =>
 
 export const Crypto = () =>
   import(/* webpackChunkName: "37" */ '@/views/checkout/method/crypto')
+
+export const MostPopular = () =>
+  import(/* webpackChunkName: "38" */ '@/views/checkout/method/most_popular')
