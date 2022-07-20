@@ -82,6 +82,7 @@ _('most_popular')
 _('search_country')
 _('see_all_other_methods')
 _('all_methods')
+_('credit_debit_cards')
 
 _('label_ACCOUNT_NUMBER')
 _('placeholder_ACCOUNT_NUMBER')
