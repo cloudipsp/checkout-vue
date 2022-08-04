@@ -38,10 +38,8 @@ export const tabs = (tabs = {}, default_country) => {
       ({ user_priority, country_priority }) =>
         user_priority > 0 || country_priority > 0
     )
-    .filter(
-      ({ method, country }) =>
-        (method === banklinks_eu && country === default_country) ||
-        method !== banklinks_eu
+    .filter(({ method, country }) =>
+      method === banklinks_eu ? country === default_country : true
     )
 
   if (most_popular.length) {
@@ -64,7 +62,7 @@ export const tabs = (tabs = {}, default_country) => {
   return Object.fromEntries(result)
 }
 
-export const tabs_order = (tabs_order, { most_popular }) => {
+export const tabs_order = (tabs_order = [], { most_popular }) => {
   if (most_popular) {
     tabs_order.unshift('most_popular')
   }
