@@ -33,6 +33,7 @@
     "async-validator": "^3.5.2",
     "axios": "^0.21.4",
     "core-js": "^3.23.3",
+    "countries-languages": "github:arash16/countries-languages",
     "css-vars-ponyfill": "^2.4.7",
     "date-format-parse": "^0.2.7",
     "ipsp-js-sdk": "^2.0.9-alpha.10",
