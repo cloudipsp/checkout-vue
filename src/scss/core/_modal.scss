@@ -58,28 +58,18 @@ html {
 // Shell div to position the modal with bottom padding
 .f-modal-dialog {
   position: relative;
+  display: flex;
+  align-items: flex-end;
   width: auto;
+  min-height: 100%;
   margin: 0;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
 }
 
 .f-modal-dialog-scrollable {
-  max-height: subtract(100%, $modal-dialog-margin * 2);
-
-  .f-modal-content {
-    overflow: hidden;
-  }
-
-  .f-modal-body {
-    overflow-y: auto;
-  }
-}
-
-.f-modal-dialog-centered {
-  display: flex;
-  align-items: flex-end;
-  min-height: 100%;
+  align-items: normal;
+  height: 100%;
 }
 
 // Actual modal
@@ -89,7 +79,7 @@ html {
   flex-direction: column;
   width: 100%; // Ensure `.f-modal-content` extends the full width of the parent `.f-modal-dialog`
   padding: px-to-rem(20px) 0 0;
-  margin-top: px-to-rem(64px);
+  margin-top: px-to-rem(88px);
   font-size: px-to-rem(14px);
   // counteract the pointer-events: none; in the .f-modal-dialog
   color: $modal_content_color;
@@ -155,6 +145,7 @@ html {
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when there should be a fixed height on `.f-modal-dialog`.
   flex: 1 1 auto;
+  height: 100%;
   padding: 0 px-to-rem(20px) px-to-rem(20px);
   line-height: 1.5;
 }

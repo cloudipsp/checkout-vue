@@ -100,7 +100,6 @@ export default {
     ignoreEnforceFocusSelector: makeProp(PROP_TYPE_ARRAY_STRING),
     lazy: makeProp(PROP_TYPE_BOOLEAN, false),
     modalClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    noCentered: makeProp(PROP_TYPE_BOOLEAN, false),
     noCloseOnBackdrop: makeProp(PROP_TYPE_BOOLEAN, false),
     noCloseOnEsc: makeProp(PROP_TYPE_BOOLEAN, false),
     noEnforceFocus: makeProp(PROP_TYPE_BOOLEAN, false),
@@ -194,7 +193,6 @@ export default {
       return [
         {
           [`f-modal-${this.size}`]: this.size,
-          'f-modal-dialog-centered': !this.noCentered,
           'f-modal-dialog-scrollable': this.scrollable,
         },
         this.dialogClass,

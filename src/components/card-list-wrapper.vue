@@ -4,7 +4,6 @@
     {{ label }} <f-svg name="angle-down" size="lg" />
     <f-modal-base
       v-model="showModalCard"
-      content-class="f-modal-content-card-list"
       header-class="f-p-0"
       body-class="f-modal-body-card-list"
       :return-focus="returnFocus"
