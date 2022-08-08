@@ -6,8 +6,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:dist": "serve -s dist",
-    "build": "npm run locale && vue-cli-service build",
-    "build:localhost": "npm run locale && vue-cli-service build --public-path=http://localhost:5000/",
+    "build": "npm run gulp && vue-cli-service build",
+    "build:localhost": "npm run gulp && vue-cli-service build --public-path=http://localhost:5000/",
     "build:npm": "npm ci && vue-cli-service build --public-path=https://pay.fondy.eu/latest/checkout-vue/",
     "lint": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
@@ -17,7 +17,7 @@
     "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --syntax scss --color --formatter verbose --fix",
     "eslint:fix": "eslint src/**/*.{js,vue} --fix",
     "prettier:fix": "prettier src/**/*.{js,vue,scss} --write",
-    "locale": "./node_modules/gulp/bin/gulp.js locale"
+    "gulp": "./node_modules/gulp/bin/gulp.js"
   },
   "files": [
     "dist"

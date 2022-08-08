@@ -1,3 +1,4 @@
 vue.config.js
 src/i18n/process/templates.js
 /lib/*
+src/config/countries-search.js
