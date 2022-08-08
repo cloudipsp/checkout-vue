@@ -5,11 +5,10 @@
       v-model="innerValue"
       :class="classInput"
       v-bind="attrs"
-      @focus="$emit('focus')"
-      @blur="$emit('blur')"
+      v-on="$listeners"
       @keyup.enter="onEnter"
     />
-    <slot />
+    <slot :id="id" />
   </ValidationProvider>
 </template>
 

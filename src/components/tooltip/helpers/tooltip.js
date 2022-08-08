@@ -39,6 +39,7 @@ import { toInteger } from '@/utils/number'
 import { keys } from '@/utils/object'
 import { FEvent } from '@/utils/event.class'
 import { TooltipTemplate } from '@/import'
+import { CODE_DOWN, CODE_ENTER, CODE_SPACE } from '@/constants/key-codes'
 
 // Modal container selector for appending tooltip/popover
 const MODAL_SELECTOR = '.f-modal-content'
@@ -648,6 +649,15 @@ export const Tooltip = Vue.extend({
       this.computedTriggers.forEach(trigger => {
         if (trigger === 'click') {
           eventOn(el, 'click', this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
+        } else if (trigger === 'clickout') {
+          eventOn(
+            document,
+            'click',
+            this.clickOutHandler,
+            EVENT_OPTIONS_NO_CAPTURE
+          )
+        } else if (trigger === 'keydown') {
+          eventOn(el, 'keydown', this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
         } else if (trigger === 'focus') {
           eventOn(el, 'focusin', this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
           eventOn(el, 'focusout', this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
@@ -664,6 +674,7 @@ export const Tooltip = Vue.extend({
       // Remove trigger event handlers
       const events = [
         'click',
+        'keydown',
         'focusin',
         'focusout',
         'mouseenter',
@@ -679,6 +690,18 @@ export const Tooltip = Vue.extend({
         target &&
           eventOff(target, evt, this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
       }, this)
+
+      eventOff(
+        document,
+        'click',
+        this.clickOutHandler,
+        EVENT_OPTIONS_NO_CAPTURE
+      )
+    },
+    clickOutHandler({ target }) {
+      if (!this.localShow || contains(this.getTemplateElement(), target)) return
+
+      this.hide()
     },
     setRootListener(on) {
       // Listen for global `bv::{hide|show}::{tooltip|popover}` hide request event
@@ -772,11 +795,15 @@ export const Tooltip = Vue.extend({
         // close until no longer disabled or forcefully closed
         return
       }
-      const type = evt.type
+      const { type, keyCode } = evt
       const triggers = this.computedTriggers
 
       if (type === 'click' && arrayIncludes(triggers, 'click')) {
         this.click(evt)
+      } else if (type === 'keydown' && arrayIncludes(triggers, 'keydown')) {
+        if ([CODE_ENTER, CODE_SPACE, CODE_DOWN].includes(keyCode)) {
+          this.toggle()
+        }
       } else if (type === 'mouseenter' && arrayIncludes(triggers, 'hover')) {
         // `mouseenter` is a non-bubbling event
         this.enter(evt)

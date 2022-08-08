@@ -16,7 +16,14 @@
         @focus="onFocus"
         @blur="blur"
       >
-        <slot :id="safeId()" />
+        <slot v-for="slot in Object.keys($slots)" :slot="slot" :name="slot" />
+        <template
+          v-for="slot in Object.keys($scopedSlots)"
+          :slot="slot"
+          slot-scope="slotData"
+        >
+          <slot :name="slot" v-bind="slotData" />
+        </template>
       </f-form-item>
       <slot
         :id="safeId()"

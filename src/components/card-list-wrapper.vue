@@ -21,18 +21,19 @@
   >
     {{ label }}
     <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
-    <f-tooltip-card
+    <f-tooltip-select
       :show.sync="showTooltipCard"
       :target="() => $refs.label && $refs.label.$el"
+      triggers="click focus blur"
     >
       <f-card-list :list="list" @input="setCardNumber" @add="addCardNumber" />
-    </f-tooltip-card>
+    </f-tooltip-select>
   </a>
 </template>
 
 <script>
 import FSvg from '@/components/svg'
-import FTooltipCard from '@/components/tooltip/tooltip-card'
+import FTooltipSelect from '@/components/tooltip/tooltip-select'
 import FCardList from '@/components/card-list'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
@@ -46,7 +47,7 @@ import { makeProp } from '@/utils/props'
 export default {
   components: {
     FSvg,
-    FTooltipCard,
+    FTooltipSelect,
     FCardList,
   },
   mixins: [timeoutMixin, resizeMixin],

@@ -10,9 +10,9 @@ export default {
   computed: {
     attrs() {
       return {
-        triggers: 'click focus blur',
+        triggers: 'click clickout keydown',
         placement: 'bottom',
-        'custom-class': 'f-tooltip-card',
+        'custom-class': 'f-tooltip-select',
         variant: 'secondary',
         ...this.$attrs,
       }

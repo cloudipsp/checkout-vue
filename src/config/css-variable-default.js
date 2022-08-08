@@ -1,8 +1,10 @@
 import { createConfig } from '@/utils/helpers'
 import { namesDefault } from '@/config/css-variable-names'
 import {
-  ash_400,
+  ash_100,
+  ash_200,
   ash_300,
+  ash_400,
   ash_500,
   ash_600,
   ash_700,
@@ -30,7 +32,8 @@ export default createConfig(namesDefault, [
   white, // card_label_color
   white, // card_input_color
   black, // card_input_shadow
-  ash_300, // card_list_item_active_bg
+  ash_200, // card_list_item_active_bg
+  ash_100, // card_list_item_hover_bg
   grey, // card_list_number_color
   grey_2, // card_list_expiry_date_color
   white, // btn_success_color

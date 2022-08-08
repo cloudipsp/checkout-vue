@@ -91,6 +91,7 @@ export const namesDefault = [
   [card, input, color],
   [card, input, shadow],
   [card, list, item, active, bg],
+  [card, list, item, hover, bg],
   [card, list, number, color],
   [card, list, expiry, date, color],
   [btn, success, color],

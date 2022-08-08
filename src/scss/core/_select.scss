@@ -1,0 +1,79 @@
+.f-select-wrap {
+  padding: 0 px-to-rem(20px) px-to-rem(20px);
+}
+
+.f-select-text {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.f-select-item {
+  display: flex;
+  align-items: center;
+  padding: px-to-rem(14px) px-to-rem(12px);
+  font-size: px-to-rem(16px);
+  font-weight: 400;
+  line-height: px-to-rem(20px);
+  color: $card_list_number_color;
+  cursor: pointer;
+  border-top: px-to-rem(1px) solid #eef0f2;
+  transition: background-color ease-in-out 0.15s;
+
+  &:first-of-type {
+    border-top: none;
+  }
+
+  &:hover {
+    background-color: $card_list_item_hover_bg;
+  }
+}
+
+.f-select-item:hover,
+.f-select-item-active,
+.f-select-item-focus {
+  text-decoration: none;
+  border-color: transparent;
+  border-radius: px-to-rem(8px);
+
+  + .f-select-item {
+    border-color: transparent;
+  }
+}
+
+.f-select-item-focus {
+  background-color: $card_list_item_hover_bg;
+}
+
+.f-select-item-active {
+  background-color: $card_list_item_active_bg;
+}
+
+.f-select-arrow {
+  margin-left: auto;
+  color: $label_color;
+  transition: transform 0.225s cubic-bezier(0.4, 0, 0.6, 1);
+  transform: rotate(0deg);
+}
+
+.f-select-arrow-open {
+  color: $input_color;
+  transform: rotate(-180deg);
+}
+
+.f-select-search {
+  padding-top: px-to-rem(4px);
+  padding-bottom: px-to-rem(20px);
+  background-image: linear-gradient(
+    to bottom,
+    $white,
+    $white calc(100% - #{px-to-rem(20px)}),
+    fade($white, 0)
+  );
+  @include sticky-top();
+}

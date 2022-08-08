@@ -30,14 +30,28 @@
 
 .f-tooltip-error {
   .f-tooltip-inner {
+    align-items: center;
     color: $tooltip_error_color;
   }
 }
 
-.f-tooltip-card {
+.f-tooltip-select {
+  &.f-tooltip-auto {
+    padding: px-to-rem(4px) 0;
+  }
+
+  .f-tooltip-arrow {
+    display: none;
+  }
+
   .f-tooltip-inner {
-    padding: px-to-rem(8px) 0;
+    max-height: px-to-rem(400px);
+    padding: px-to-rem(20px) 0 0;
     color: $tooltip_card_color;
+  }
+
+  .f-scrollbar {
+    height: auto;
   }
 }
 
