@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:82
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 11:41+0300\n"
+"POT-Creation-Date: 2022-08-08 13:44+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
 
-#: src/i18n/process/methods.js:1 src/i18n/process/templates.js:91
+#: src/i18n/process/methods.js:1
 msgid "card"
 msgstr "Card"
 
@@ -153,368 +153,380 @@ msgstr "Enter another card"
 msgid "expires_on"
 msgstr "Expiry date"
 
-#: src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:20
 msgid "email"
 msgstr "Email"
 
-#: src/i18n/process/templates.js:19
+#: src/i18n/process/templates.js:21
 msgid "label"
 msgstr "-"
 
-#: src/i18n/process/templates.js:20
+#: src/i18n/process/templates.js:22
+msgid "warning"
+msgstr ""
+
+#: src/i18n/process/templates.js:23
 msgid "datepicker"
 msgstr "-"
 
-#: src/i18n/process/templates.js:21
+#: src/i18n/process/templates.js:24
 msgid "model"
 msgstr "-"
 
-#: src/i18n/process/templates.js:22
+#: src/i18n/process/templates.js:25
+msgid "default_country"
+msgstr "Search by country:"
+
+#: src/i18n/process/templates.js:26
+msgid "check"
+msgstr ""
+
+#: src/i18n/process/templates.js:27
 msgid "bars"
 msgstr ""
 
-#: src/i18n/process/templates.js:23 src/i18n/process/translate.js:84
+#: src/i18n/process/templates.js:28 src/i18n/process/translate.js:84
 msgid "all_methods"
 msgstr "All Methods"
 
-#: src/i18n/process/templates.js:24 src/i18n/process/translate.js:4
+#: src/i18n/process/templates.js:29 src/i18n/process/translate.js:4
 msgid "verification_t"
 msgstr "Card verification"
 
-#: src/i18n/process/templates.js:25
+#: src/i18n/process/templates.js:30
 msgid "verification_"
 msgstr "-"
 
-#: src/i18n/process/templates.js:26
+#: src/i18n/process/templates.js:31
 msgid "see_more"
 msgstr "Show in full"
 
-#: src/i18n/process/templates.js:27
+#: src/i18n/process/templates.js:32
 msgid "order_details"
 msgstr "Order details"
 
-#: src/i18n/process/templates.js:28
+#: src/i18n/process/templates.js:33
 msgid "currencies"
 msgstr "currencies"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:36
 msgid "submit3ds_title"
 msgstr "Payment incomplete"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:37
 msgid "submit3ds_text"
 msgstr "Please enter another confirmation code"
 
-#: src/i18n/process/templates.js:33
+#: src/i18n/process/templates.js:38
 msgid "submit3ds_submit"
 msgstr "Please try again"
 
-#: src/i18n/process/templates.js:34
+#: src/i18n/process/templates.js:39
 msgid "submit3ds_wait"
 msgstr ""
 "You will be redirected to the bank's website to complete your payment in {0} "
 "seconds"
 
-#: src/i18n/process/templates.js:35
+#: src/i18n/process/templates.js:40
 msgid "show"
 msgstr "-"
 
-#: src/i18n/process/templates.js:36 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "Unfortunately, your payment was unsuccessful"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:42
 msgid "server_trouble_title"
 msgstr "Oops.."
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:43
 msgid "server_trouble_desc"
 msgstr ""
 "A problem has occurred, and we are already working on it. Please return to "
 "your order and check out again."
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:44
 msgid "offer"
 msgstr "-"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:45
 msgid "offer_t"
 msgstr ""
 "I accept the <a href=\"{0}\" target=\"_blank\">bid terms and conditions. </a>"
 
-#: src/i18n/process/templates.js:41
+#: src/i18n/process/templates.js:46
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:47
 msgid "trial_period"
 msgstr "Trial period"
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:48
 msgid "first_payment"
 msgstr "First payment"
 
-#: src/i18n/process/templates.js:44
+#: src/i18n/process/templates.js:49
 msgid "total_amount"
 msgstr "Total amount due"
 
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:50
 msgid "fee"
 msgstr "Commission"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:51
 msgid "amount"
 msgstr "Amount due"
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:52
 msgid "discount"
 msgstr "discount"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:53
 msgid "security"
 msgstr "-"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:54
 msgid "security_title"
 msgstr "Strong customer authentication"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:55
 msgid "security_text"
 msgstr ""
 "<p>In compliance with PCI DSS<p>Listed on Visa Global Registry and verified "
 "by Mastercard"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:56
 msgid "other_payment_method"
 msgstr "Or pay with"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:57
 msgid "switch"
 msgstr "-"
 
-#: src/i18n/process/templates.js:53
+#: src/i18n/process/templates.js:58
 msgid "subscription"
 msgstr "Repeat this payment automatically"
 
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:59
 msgid "subscription_amount"
 msgstr "Recurring payment amount"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:60
 msgid "number_of_payments"
 msgstr "Number of payments"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:61
 msgid "unlimited"
 msgstr "Unlimited"
 
-#: src/i18n/process/templates.js:57
+#: src/i18n/process/templates.js:62
 msgid "subscription_every"
 msgstr "Every"
 
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:63
 msgid "subscription_period"
 msgstr "Time span"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:64
 msgid "subscription_start_time"
 msgstr "Start date"
 
-#: src/i18n/process/templates.js:60
+#: src/i18n/process/templates.js:65
 msgid "subscription_end_time"
 msgstr "End date"
 
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:66
 msgid "verification_desc"
 msgstr ""
 "To verify your card we will hold a small verification fee on your bank "
 "account for 15 minutes."
 
-#: src/i18n/process/templates.js:62
+#: src/i18n/process/templates.js:67
 msgid "customer_name"
 msgstr "Name and Surname"
 
-#: src/i18n/process/templates.js:63
+#: src/i18n/process/templates.js:68
 msgid "customer_name_utf8"
 msgstr "Name and Surname"
 
-#: src/i18n/process/templates.js:64
+#: src/i18n/process/templates.js:69
 msgid "customer_address"
 msgstr "Address (street, building, apartment)"
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:70
 msgid "customer_zip"
 msgstr "ZIP/Postal code"
 
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:71
 msgid "customer_city"
 msgstr "City/Town"
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:72
 msgid "customer_country"
 msgstr "Country"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:73
 msgid "customer_state"
 msgstr "State/Province/Region"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:74
 msgid "customer_phonemobile"
 msgstr "Phone"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:75
 msgid "customer_email"
 msgstr "Email"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:76
 msgid "demo-title"
 msgstr "Demo mode"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:77
 msgid "verify"
 msgstr "-"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:78
 msgid "success"
 msgstr "-"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:79
 msgid "system"
 msgstr "-"
 
-#: src/i18n/process/templates.js:75
-msgid "default_country"
-msgstr "Search by country"
-
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:80
 msgid "system_search"
 msgstr "Search by bank name, IBAN or BIC"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:81
 msgid "load_more"
 msgstr "Show more..."
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:83
 msgid "pay_with_card"
 msgstr "Pay with card"
 
-#: src/i18n/process/templates.js:80
+#: src/i18n/process/templates.js:84
 msgid "card_number"
 msgstr "Card number"
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:85
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:86
 msgid "expiry_date"
 msgstr "MM/YY"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:87
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:88
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:89
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:90
 msgid "cvv2_help"
 msgstr "{0}-digit code on the back of your card"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:91
 msgid "verification_code"
 msgstr "Confirmation code"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:92
 msgid "verification_amount"
 msgstr "Verification amount"
 
-#: src/i18n/process/templates.js:89 src/i18n/process/translate.js:83
+#: src/i18n/process/templates.js:93
+msgid "most_popular_methods_in"
+msgstr "Most popular methods in:"
+
+#: src/i18n/process/templates.js:94 src/i18n/process/translate.js:83
 msgid "see_all_other_methods"
 msgstr "See all other methods"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:95
 msgid "arrow-right"
 msgstr ""
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:96
 msgid "mfo_title"
 msgstr "Payment details for order # {0}"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:97
 msgid "ibox_title"
 msgstr "Order ID (to be paid via iBox)"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:98
 msgid "full_requesites"
 msgstr "Recipient's bank details"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:99
 msgid "full_requesites_explain"
 msgstr ""
 "You won't have to indicate them while making payment, but saving them for "
 "reference might be helpful."
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:100
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:101
 msgid "receiver"
 msgstr "Recipient"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:102
 msgid "current_bill"
 msgstr "Bank account number (IBAN)"
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:103
 msgid "usreou"
 msgstr "Tax identification number (TIN)"
 
-#: src/i18n/process/templates.js:100
+#: src/i18n/process/templates.js:104
 msgid "bank"
 msgstr "Bank name"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:105
 msgid "mfo"
 msgstr "Bank code (BIC or MFO)"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:106
 msgid "purpose"
 msgstr "Description"
 
-#: src/i18n/process/templates.js:103
+#: src/i18n/process/templates.js:107
 msgid "receipt_id"
 msgstr "Order ID"
 
-#: src/i18n/process/templates.js:104
+#: src/i18n/process/templates.js:108
 msgid "end_date"
 msgstr "Payment deadline"
 
-#: src/i18n/process/templates.js:105
+#: src/i18n/process/templates.js:109
 msgid "ibox_desc"
 msgstr ""
 "All iBox terminals that accept payments are tagged on the <a href=\"https://"
 "ibox.ua/map\" target=\"_blank\">map</a>"
 
-#: src/i18n/process/templates.js:106
+#: src/i18n/process/templates.js:110
 msgid "save_receipt"
 msgstr "Save receipt"
 
-#: src/i18n/process/templates.js:107
+#: src/i18n/process/templates.js:111
 msgid "save_qr_code"
 msgstr "Save onto smartphone"
 
-#: src/i18n/process/templates.js:108
+#: src/i18n/process/templates.js:112
 msgid "qr_code_text"
 msgstr "Scan this QR-code to save the receipt onto your smartphone"
 
-#: src/i18n/process/templates.js:109
+#: src/i18n/process/templates.js:113
 msgid "ibox_info"
 msgstr ""
 "<p>To pay the order, please use the Search option to locate the Fondy "
@@ -522,23 +534,23 @@ msgstr ""
 "cancelled after the deadline.<p>We cannot accept payment for this order via "
 "terminals other than iBox."
 
-#: src/i18n/process/templates.js:110
+#: src/i18n/process/templates.js:114
 msgid "sepa_t"
 msgstr "Provide your bank account details"
 
-#: src/i18n/process/templates.js:111 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:115 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "Name"
 
-#: src/i18n/process/templates.js:112
+#: src/i18n/process/templates.js:116
 msgid "bank_desc"
 msgstr "You will be redirected to the bank's website to complete your payment"
 
-#: src/i18n/process/templates.js:113
+#: src/i18n/process/templates.js:117
 msgid "payment_id"
 msgstr "Payment ID"
 
-#: src/i18n/process/templates.js:29
+#: src/i18n/process/templates.js:34 src/i18n/process/templates.js:18
 msgid "\""
 msgstr ""
 
