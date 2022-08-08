@@ -10,8 +10,10 @@
     <f-bank
       :config="config"
       enable-country
-      :more="false"
+      no-more
+      no-search
       breakpoint="lg"
+      label="most_popular_methods_in"
       @select="select"
     />
     <div v-if="isBreakpointDownLg" :class="$style.btn">

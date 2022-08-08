@@ -26,6 +26,9 @@ export const props = {
 // @vue/component
 export const formControlMixin = {
   props,
+  watch: {
+    autofocus: 'handleAutofocus',
+  },
   mounted() {
     this.handleAutofocus()
   },

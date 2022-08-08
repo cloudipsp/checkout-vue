@@ -138,7 +138,8 @@
       "no-descending-specificity": null,
       "media-feature-name-no-unknown": null,
       "scss/dollar-variable-default": null,
-      "scss/dollar-variable-pattern": "^[a-z][a-z-\\d_]*$"
+      "scss/dollar-variable-pattern": "^[a-z][a-z-\\d_]*$",
+      "selector-class-pattern": "^[a-z][a-z0-9\\-_]*[a-z0-9]$"
     }
   },
   "prettier": {

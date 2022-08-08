@@ -3,12 +3,10 @@
     <div v-if="ready">
       <div class="f-row">
         <div v-if="showCountry" class="f-col f-bank-country">
-          <f-form-group
+          <f-country
             v-model="default_country"
             :options="country"
-            name="default_country"
-            size="sm"
-            component="select"
+            :description="label"
             @input="clear"
           />
         </div>
@@ -40,14 +38,12 @@
           :class="classBankItemWrapper"
         >
           <a href="#" :class="classBankItem" @click.prevent="goSystem(item)">
-            <div class="f-col-auto f-pr-4">
-              <f-icon
-                :name="item.logo"
-                :type="item.method"
-                :class="classBankIcon"
-                :size="sizeBankIcon"
-              />
-            </div>
+            <f-icon
+              :name="item.logo"
+              :type="item.method"
+              :class="classBankIcon"
+              :size="sizeBankIcon"
+            />
             <div :class="classBankItemBody">
               <div class="f-bank-name" v-text="$t(item.name)" />
               <div v-if="isGermany" class="f-bank-iban">
@@ -71,11 +67,9 @@
           :key="item"
           :class="classBankItemWrapper"
         >
-          <div class="f-row f-bank-item">
-            <div class="f-col-auto f-pr-4">
-              <div class="f-w-48 f-preloader f-preloader-48" />
-            </div>
-            <div class="f-col">
+          <div class="f-bank-item">
+            <div class="f-mr-12 f-w-48 f-preloader f-preloader-48" />
+            <div class="f-bank-item-wrapper">
               <div class="f-preloader f-preloader-20" />
             </div>
           </div>
@@ -90,6 +84,7 @@ import FFormBase from '@/components/form/form/form-base'
 import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
 import FButton from '@/components/button/button'
+import { FCountry } from '@/import'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { errorHandler, removeDuplicate } from '@/utils/helpers'
@@ -117,6 +112,7 @@ export default {
     FSvg,
     FIcon,
     FButton,
+    FCountry,
   },
   mixins: [timeoutMixin, resizeMixin],
   inject: ['submit'],
@@ -125,14 +121,16 @@ export default {
     config: makeProp(PROP_TYPE_OBJECT, {}),
     enableCountry: makeProp(PROP_TYPE_BOOLEAN, false),
     breakpoint: makeProp(PROP_TYPE_STRING, 'md'),
-    more: makeProp(PROP_TYPE_BOOLEAN, true),
+    noMore: makeProp(PROP_TYPE_BOOLEAN, false),
+    noSearch: makeProp(PROP_TYPE_BOOLEAN, false),
+    label: makeProp(PROP_TYPE_STRING, ''),
   },
   data() {
     return {
       search: '',
       counts: 0,
       spin: false,
-      view: 'bar',
+      view_: 'bar',
     }
   },
   computed: {
@@ -145,7 +143,7 @@ export default {
     },
     // [{id: 'PL', name:''}]
     country() {
-      return this.listCountry.map(parseSelect).sort(sort('text'))
+      return this.listCountry.map(parseSelect)
     },
     listCountry() {
       return this.countries && this.countries.length
@@ -166,7 +164,7 @@ export default {
       let search = this.search.toLowerCase()
       if (search) {
         return this.listSelect.filter(
-          ({ name, iban }) =>
+          ({ name = '', iban = '' }) =>
             name.toLowerCase().includes(search) ||
             iban.toLowerCase().includes(search)
         )
@@ -178,35 +176,40 @@ export default {
       return this.list.slice(0, this.counts)
     },
     showCountry() {
-      return this.enableCountry && this.listCountry.length > 1
+      return this.enableCountry && this.listCountry.length > 0
     },
     showSearch() {
-      return this.listSelect.length > 10
+      return !this.noSearch && this.listSelect.length > 10
     },
     showView() {
       return this.isGermany
     },
     showMore() {
-      return this.more && this.list.length > this.counts
+      return !this.noMore && this.list.length > this.counts
     },
     isBar() {
-      return this.view === 'bar'
+      return this.view_ === 'bar'
     },
     isList() {
-      return this.view === 'list'
+      return this.view_ === 'list'
+    },
+    isMin() {
+      return this.values.length < 4 && this.isBreakpoint && this.ready
+    },
+    view() {
+      return this.isMin ? 'min' : this.view_
     },
     classBankItemWrapper() {
-      return [
-        {
-          [`f-col-6 f-col-${this.breakpoint}-4`]: this.isBar,
-          'f-col-12': this.isList,
-        },
-        'f-mb-20',
-        `f-mb-${this.breakpoint}-24`,
-      ]
+      let className
+      if (this.isMin || this.isList) {
+        className = 'f-col-12'
+      } else if (this.isBar) {
+        className = `f-col-6 f-col-${this.breakpoint}-4`
+      }
+      return [className, 'f-mb-12', `f-mb-${this.breakpoint}-16`]
     },
     classBankItem() {
-      return ['f-row', 'f-bank-item']
+      return [`f-bank-item_${this.view}`, 'f-bank-item']
     },
     classBankViewBar() {
       return [{ 'f-active': this.isBar }, 'f-bank-view-icon']
@@ -215,10 +218,10 @@ export default {
       return [{ 'f-active': this.isList }, 'f-bank-view-icon']
     },
     classBankIcon() {
-      return ['f-col-auto', 'f-bank-icon', `f-bank-icon-${this.view}`]
+      return ['f-bank-icon', `f-bank-icon_${this.view}`]
     },
     classBankItemBody() {
-      return ['f-col', `f-bank-item-wrapper-${this.view}`]
+      return ['f-bank-item-wrapper', `f-bank-item-wrapper_${this.view}`]
     },
     isGermany() {
       return this.default_country === 'DE'
@@ -269,7 +272,7 @@ export default {
       }, 300)
     },
     setView(view) {
-      this.view = view
+      this.view_ = view
     },
     listSelectFilter({ country, method }) {
       return this.enableCountry && method === 'banklinks_eu'

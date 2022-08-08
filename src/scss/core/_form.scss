@@ -91,7 +91,7 @@
 }
 
 .f-form-item-sm + .f-control-label-p {
-  top: px-to-rem(12px);
+  top: px-to-rem(10px);
 }
 
 .f-form-control-select-wrapper {
@@ -145,6 +145,7 @@
 
 .f-control-label {
   font-size: px-to-rem(16px);
+  line-height: px-to-rem(24px);
   color: $label_color;
 }
 

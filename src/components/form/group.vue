@@ -46,7 +46,7 @@
       :show.sync="showErrorTooltipFlag"
       :target="() => $refs.item && $refs.item.$el"
     >
-      <f-svg name="warning" size="md" />
+      <f-svg class="f-mr-8" name="warning" size="md" />
       {{ error }}
     </f-tooltip-error>
     <transition name="f-slide-fade">

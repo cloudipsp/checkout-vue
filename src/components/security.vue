@@ -21,14 +21,8 @@
       </f-modal-base>
     </template>
     <template v-else>
-      <a
-        ref="security"
-        href="#"
-        class="f-title-security"
-        tabindex="-1"
-        @click.prevent
-      >
-        <f-svg ref="reference" name="security" size="2x" tabindex="0" />
+      <a ref="security" href="#" class="f-title-security" @click.prevent>
+        <f-svg ref="reference" name="security" size="2x" />
         <span v-text="$t('security_title')" />
       </a>
       <f-tooltip-default :target="() => $refs.security" @shown="shown">

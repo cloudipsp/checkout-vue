@@ -226,3 +226,9 @@ export const Crypto = () =>
 
 export const MostPopular = () =>
   import(/* webpackChunkName: "38" */ '@/views/checkout/method/most_popular')
+
+export const FCountry = () =>
+  import(/* webpackChunkName: "39" */ '@/components/country')
+
+export const countriesSearch = () =>
+  import(/* webpackChunkName: "40" */ '@/config/countries-search')

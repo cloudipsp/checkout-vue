@@ -1,17 +1,37 @@
 $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
 
 .f-bank-item {
+  display: flex;
   align-items: center;
+  width: 100%;
   color: $bank_item_color;
   cursor: pointer;
+  border-radius: px-to-rem(8px);
+  transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
 
   &:hover {
     color: $bank_item_hover_color;
-    transition: all ease-in-out 0.15s;
   }
 }
 
-.f-bank-item-wrapper-list {
+.f-bank-item_min {
+  flex-direction: row-reverse;
+  padding: px-to-rem(12px);
+  border: px-to-rem(1px) solid $menu_item_border;
+
+  &:hover {
+    padding: px-to-rem(13px);
+    background: $menu_item_hover_bg;
+    border: none;
+  }
+}
+
+.f-bank-item-wrapper {
+  flex-grow: 1;
+}
+
+.f-bank-item-wrapper_list {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,14 +39,19 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
 
 .f-bank-icon {
   min-width: px-to-rem(48px);
+  margin-right: px-to-rem(12px);
   border-radius: px-to-rem(8px);
   box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $bank_icon_shadow;
 }
 
-.f-bank-icon-list {
+.f-bank-icon_list {
   min-width: px-to-rem(24px);
   border-radius: px-to-rem(3px);
   box-shadow: none;
+}
+
+.f-bank-icon_min {
+  margin: 0;
 }
 
 .f-bank-name {

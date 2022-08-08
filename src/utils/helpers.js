@@ -118,3 +118,11 @@ export const windowWidth = () => (isIOS ? screen.width : window.innerWidth)
 export const windowHeight = () => (isIOS ? screen.height : window.innerHeight)
 
 export const fib = memoize(x => (x <= 1 ? x : fib(x - 1) + fib(x - 2)))
+
+export const codeToFlag = code => {
+  if (String.fromCodePoint) {
+    return String.fromCodePoint(
+      ...[...code].map(c => 127462 - 65 + c.charCodeAt(0))
+    )
+  }
+}
