@@ -9,6 +9,7 @@ import {
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
+import { attemptFocus } from '@/utils/dom'
 
 // @vue/component
 export const itemMixin = {
@@ -87,6 +88,9 @@ export const itemMixin = {
     },
     onEnter() {
       this.submit().catch(errorHandler)
+    },
+    focused() {
+      attemptFocus(this.$refs.input.$el)
     },
   },
 }

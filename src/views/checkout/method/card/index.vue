@@ -252,7 +252,7 @@ export default {
           return this.$nextTick()
         })
         .then(() => {
-          this.$refs[next].$children[0].$children[0].$refs.input.$el.focus()
+          this.$refs[next].focused()
         })
         .catch(errorHandler)
     },

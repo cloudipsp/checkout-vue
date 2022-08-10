@@ -13,9 +13,8 @@
         ref="item"
         v-bind="attrs"
         v-on="$listeners"
-        @focus="focus"
+        @focus="onFocus"
         @blur="blur"
-        @input="input"
       >
         <slot :id="safeId()" />
       </f-form-item>
@@ -29,6 +28,7 @@
           v-if="label"
           :class="classLabel"
           :for="safeId()"
+          @click="focused"
           v-text="$t(label)"
         />
       </slot>
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      focused: false,
+      focus: false,
       hover: false,
       value: null,
       showErrorTooltipFlag: false,
@@ -136,9 +136,10 @@ export default {
         {
           'f-control-label-p': !this.noLabelFloating,
           'f-control-label-active':
-            (isExist(this.value) && this.value !== '') || this.focused,
+            (isExist(this.$attrs.value) && this.$attrs.value !== '') ||
+            this.focus,
           'f-control-label-hover': this.hover,
-          'f-control-label-focused': this.focused,
+          'f-control-label-focused': this.focus,
         },
       ]
     },
@@ -146,12 +147,12 @@ export default {
       return this.error && (this.touched || this.isSubmit)
     },
     showError() {
-      let showError = !this.tooltip && this.hasError && this.focused
+      let showError = !this.tooltip && this.hasError && this.focus
       this.$emit('show-error', showError, this.error)
       return showError && !this.hideError
     },
     showErrorTooltip() {
-      return this.tooltip && this.hasError && this.focused
+      return this.tooltip && this.hasError && this.focus
     },
     showPlaceholder() {
       return this.noLabelFloating && this.safeId()
@@ -161,14 +162,11 @@ export default {
     showErrorTooltip: 'watchShowErrorTooltip',
   },
   methods: {
-    focus() {
-      this.focused = true
+    onFocus() {
+      this.focus = true
     },
     blur() {
-      this.focused = false
-    },
-    input(value) {
-      this.value = value
+      this.focus = false
     },
     mouseenter() {
       this.hover = true
@@ -180,6 +178,9 @@ export default {
       this.timeout(() => {
         this.showErrorTooltipFlag = value
       })
+    },
+    focused() {
+      this.$refs.item.focused()
     },
   },
 }

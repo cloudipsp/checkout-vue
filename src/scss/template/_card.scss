@@ -78,6 +78,10 @@
   flex-direction: column;
   margin: 0 px-to-rem(20px) 0 0;
 
+  .f-form-item-input {
+    z-index: 1;
+  }
+
   .f-control-label {
     order: -1;
     margin-bottom: px-to-rem(6px);

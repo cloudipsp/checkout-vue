@@ -1,5 +1,11 @@
 <template>
-  <component :is="name" :class="className" v-bind="$attrs" v-on="$listeners">
+  <component
+    :is="name"
+    ref="item"
+    :class="className"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <slot v-for="slot in Object.keys($slots)" :slot="slot" :name="slot" />
   </component>
 </template>
@@ -35,6 +41,11 @@ export default {
           ['f-form-item-' + this.$attrs.size]: this.$attrs.size,
         },
       ]
+    },
+  },
+  methods: {
+    focused() {
+      this.$refs.item.focused()
     },
   },
 }
