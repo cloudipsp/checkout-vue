@@ -844,6 +844,18 @@ msgstr "Street number, apartment number, suite, etc."
 msgid "address_street"
 msgstr "Street address"
 
+msgid "gdpr_yapily"
+msgstr "<p>Yapily Connect Ltd is authorised and regulated by the Financial Conduct Authority under the Payment Service Regulations 2017 [827001] for the provision of Account Information and Payment Initiation services.<p>By clicking 'Pay' you agree that Yapily Connect Ltd can initiate this payment for you in accordance with their <a href='https://www.yapily.com/legal/yapilyconnect-terms-and-conditions/' target='_blank'>Terms & Conditions</a>"
+
+msgid "gdpr_modal_text_ua"
+msgstr ""
+
+msgid "gdpr_modal_text_ru"
+msgstr ""
+
+msgid "gdpr_modal_text_eu"
+msgstr ""
+
 #~ msgid "code"
 #~ msgstr "-"
 

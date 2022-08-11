@@ -54,7 +54,11 @@ h6 {
 // Similarly, the top margin on `<p>`s get reset. However, we also reset the
 // bottom margin to use `rem` units instead of `em`.
 p {
-  margin: px-to-rem(8px) 0;
+  margin: 0 0 px-to-rem(16px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 ul {

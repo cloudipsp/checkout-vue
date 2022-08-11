@@ -22,6 +22,7 @@
         :button="model.button"
       />
     </div>
+    <f-alert-gdpr-yapily-wrapper v-if="showGdprYapily" />
   </div>
 </template>
 
@@ -35,6 +36,7 @@ import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import FModalQr from '@/components/modal/modal-qr'
+import FAlertGdprYapilyWrapper from '@/components/alert/alert-gdpr-yapily-wrapper'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -48,6 +50,7 @@ export default {
     FOffer,
     FButtonPay,
     FModalQr,
+    FAlertGdprYapilyWrapper,
   },
   data() {
     return {
@@ -63,6 +66,9 @@ export default {
     ...mapState(['tabs']),
     id() {
       return `${this.country}_${this.logo}`
+    },
+    showGdprYapily() {
+      return this.country === 'gb'
     },
   },
   watch: {

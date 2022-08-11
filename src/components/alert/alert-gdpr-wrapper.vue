@@ -1,28 +1,21 @@
 <template>
-  <f-alert-gdpr v-if="show" v-model="showInner" />
+  <f-alert-gdpr v-if="show" />
 </template>
 
 <script>
 import { mapState, localStorage, sessionStorage } from '@/utils/store'
 import { FAlertGdpr } from '@/import'
 
+const name = 'show_gdpr_frame'
+
 export default {
   components: {
     FAlertGdpr,
   },
-  data() {
-    return {
-      showInner: true,
-    }
-  },
   computed: {
-    ...mapState(['show_gdpr_frame']),
+    ...mapState([name]),
     show() {
-      return (
-        !localStorage.get('show_gdpr_frame') &&
-        !sessionStorage.get('show_gdpr_frame') &&
-        this.show_gdpr_frame
-      )
+      return !localStorage.get(name) && !sessionStorage.get(name) && this[name]
     },
   },
 }
