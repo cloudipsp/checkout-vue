@@ -1,15 +1,14 @@
 <template>
   <div class="f-security">
     <template v-if="enableModal">
-      <a
-        href="#"
-        class="f-title-security"
-        @click.prevent="open"
-        @keyup.space="open"
+      <button
+        class="f-title-security f-btn-unstyled"
+        type="button"
+        @click="open"
       >
         <f-svg ref="security" name="security" size="2x" />
         <span v-text="$t('security_title')" />
-      </a>
+      </button>
       <f-modal-base v-model="showModal">
         <div class="f-modal-security-title">
           <f-svg name="security" size="lg" />
@@ -21,10 +20,14 @@
       </f-modal-base>
     </template>
     <template v-else>
-      <a ref="security" href="#" class="f-title-security" @click.prevent>
+      <button
+        ref="security"
+        class="f-title-security f-btn-unstyled"
+        type="button"
+      >
         <f-svg ref="reference" name="security" size="2x" />
         <span v-text="$t('security_title')" />
-      </a>
+      </button>
       <f-tooltip-default :target="() => $refs.security" @shown="shown">
         <div>
           <f-security-icons

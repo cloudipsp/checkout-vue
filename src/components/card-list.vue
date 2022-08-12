@@ -1,15 +1,23 @@
 <template>
   <div class="f-card-list">
-    <a href="#" :class="['f-card-list-add']" @click.prevent="addCardNumber()">
+    <button
+      :class="['f-card-list-add', 'f-btn-unstyled']"
+      type="button"
+      @click="addCardNumber()"
+    >
       <f-svg name="plus-circle" class="f-card-list-icon" size="lg" fw />
       <div v-text="$t('use_other_card')" />
-    </a>
-    <a
+    </button>
+    <button
       v-for="item in list"
       :key="item.card_number"
-      href="#"
-      :class="['f-card-list-item', { active: hasActive(item) }]"
-      @click.prevent="setCardNumber(item)"
+      :class="[
+        'f-card-list-item',
+        'f-btn-unstyled',
+        { active: hasActive(item) },
+      ]"
+      type="button"
+      @click="setCardNumber(item)"
     >
       <f-icon
         v-if="item.card_brand"
@@ -23,7 +31,7 @@
           <span v-text="$t('expires_on')" /> {{ item.expiry_date }}
         </div>
       </div>
-    </a>
+    </button>
   </div>
 </template>
 

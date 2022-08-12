@@ -21,11 +21,11 @@
           @keydown="navigate"
         />
       </f-form-base>
-      <a
+      <button
         v-for="(item, key) in list"
         :key="key"
         ref="items"
-        href="#"
+        type="button"
         :class="classItem(item, key)"
         @click="click(item.value)"
         @keydown="navigate"
@@ -35,7 +35,7 @@
           {{ item.text }}
         </slot>
         <f-svg v-if="isActive(item)" class="f-ml-auto" name="check" size="lg" />
-      </a>
+      </button>
     </template>
   </f-modal-tooltip>
 </template>
@@ -91,7 +91,7 @@ export default {
     },
     classItem() {
       return (item, index) => [
-        'f-select-item',
+        'f-select-item f-btn-unstyled',
         {
           'f-select-item-active': this.isActive(item),
           'f-select-item-focus': index === this.index,

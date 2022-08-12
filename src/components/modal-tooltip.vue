@@ -1,9 +1,15 @@
 <template>
   <keep-alive>
-    <span v-if="disabled" :disabled="disabled">
+    <button v-if="disabled" :class="className" :disabled="disabled">
       <slot name="text" />
-    </span>
-    <a v-else-if="isPhone" key="modal" href="#" @click="modal = true">
+    </button>
+    <button
+      v-else-if="isPhone"
+      key="modal"
+      :class="className"
+      type="button"
+      @click="modal = true"
+    >
       <slot name="text" />
       <f-modal-base
         v-model="modal"
@@ -17,8 +23,8 @@
           <slot />
         </component>
       </f-modal-base>
-    </a>
-    <a v-else key="tooltip" ref="target" href="#">
+    </button>
+    <button v-else key="tooltip" ref="target" :class="className" type="button">
       <slot name="text" />
       <f-tooltip-select
         class="asd"
@@ -32,7 +38,7 @@
           <slot />
         </component>
       </f-tooltip-select>
-    </a>
+    </button>
   </keep-alive>
 </template>
 
@@ -62,6 +68,9 @@ export default {
     }
   },
   computed: {
+    className() {
+      return 'f-btn-unstyle'
+    },
     isPhone() {
       return isPhone || this.isWidthSm
     },

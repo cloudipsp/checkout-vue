@@ -1,33 +1,35 @@
-.f-outline {
+@mixin focus-visible($width, $border, $offset: null, $bg: null) {
   transition: box-shadow ease-in-out 0.15s;
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
-      0 0 0 px-to-rem(4px) $outline_border;
+
+    @if $offset {
+      box-shadow: 0 0 0 $offset $bg, 0 0 0 $width + $offset $border;
+    } @else {
+      box-shadow: 0 0 0 $width $border;
+    }
   }
 }
 
-.f-form-control:focus {
-  @extend .f-outline:focus;
-}
-
-// sm
-.f-outline-sm:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
-    0 0 0 px-to-rem(3.5px) $outline_border;
+.f-btn-unstyled:focus {
+  position: relative;
+  z-index: 0;
+  outline: 0;
+  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
 }
 
 .f-switch:focus + .f-switch-label,
 .f-checkbox:focus + .f-checkbox-label {
   background: $outline_bg;
-  @extend .f-outline:focus;
-  @extend .f-outline-sm:focus;
+  border-radius: px-to-rem(1px);
+  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+    0 0 0 px-to-rem(3.5px) $outline_border;
 }
 
 a {
-  @extend .f-outline;
-  @extend .f-outline-sm;
+  @include focus-visible(px-to-rem(1.5px), $outline_border);
+  border-radius: px-to-rem(1px);
 }
 
 .f-btn-success:focus {
@@ -35,25 +37,26 @@ a {
     0 0 0 px-to-rem(4px) $btn_success_bg;
 }
 
-.f-btn-default:focus,
-.f-btn-secondary:focus,
-.f-btn-light:focus,
-.f-btn-dark:focus,
-.f-btn-outline:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
-    0 0 0 px-to-rem(4px) $outline_border;
+.f-btn-default,
+.f-btn-secondary,
+.f-btn-light,
+.f-btn-dark,
+.f-btn-outline,
+.f-form-control,
+.f-menu-item,
+.f-bank-item_min {
+  @include focus-visible(
+    px-to-rem(2px),
+    $outline_border,
+    px-to-rem(2),
+    $container_bg
+  );
 }
 
 .f-btn-link:focus,
-.f-bank-item:focus {
+.f-close:focus,
+.f-header .f-form-control-select:focus {
   box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
-}
-
-a,
-.f-svg,
-.f-switch-label,
-.f-checkbox-label {
-  border-radius: px-to-rem(1px);
 }
 
 // subscription
@@ -67,10 +70,6 @@ a,
     box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
       0 0 0 px-to-rem(3.5px) $outline_border;
   }
-}
-
-.f-close:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
 }
 
 // gdpr
@@ -100,10 +99,6 @@ a,
 .f-modal .f-btn-secondary:focus {
   box-shadow: 0 0 0 px-to-rem(2px) #fff,
     0 0 0 px-to-rem(4px) $outline_secondary_border;
-}
-
-.f-header .f-form-control-select:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
 }
 
 .f-form-group-card .f-form-control:focus {

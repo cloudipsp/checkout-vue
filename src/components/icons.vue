@@ -8,15 +8,14 @@
       :name="logo"
       :type="method"
     />
-    <a
+    <button
       v-if="showCount"
       ref="last"
-      href="#"
-      class="f-icons-count"
-      @click.prevent
+      class="f-btn-unstyled f-icons-count"
+      type="button"
     >
       +{{ countLast }}
-    </a>
+    </button>
     <f-tooltip-default
       custom-class="f-tooltip-icons"
       placement="topleft"

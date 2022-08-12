@@ -1,6 +1,11 @@
 <template>
   <span v-if="read_only">{{ label }}</span>
-  <a v-else-if="enableModal" href="#" @click.prevent="showModalCard = true">
+  <button
+    v-else-if="enableModal"
+    class="f-btn-unstyled"
+    type="button"
+    @click="showModalCard = true"
+  >
     {{ label }} <f-svg name="angle-down" size="lg" />
     <f-modal-base
       v-model="showModalCard"
@@ -10,17 +15,17 @@
     >
       <f-card-list :list="list" @input="setCardNumber" @add="addCardNumber" />
     </f-modal-base>
-  </a>
-  <a
+  </button>
+  <button
     v-else
     ref="tooltip"
-    href="#"
-    tabindex="-1"
-    @click.prevent="showTooltipCard = true"
+    class="f-btn-unstyled"
+    type="button"
+    @click="showTooltipCard = true"
     @blur="blurTooltipCard"
   >
     {{ label }}
-    <f-svg ref="label" name="angle-down" size="lg" tabindex="0" />
+    <f-svg ref="label" name="angle-down" size="lg" tabindex="-1" />
     <f-tooltip-select
       :show.sync="showTooltipCard"
       :target="() => $refs.label && $refs.label.$el"
@@ -28,7 +33,7 @@
     >
       <f-card-list :list="list" @input="setCardNumber" @add="addCardNumber" />
     </f-tooltip-select>
-  </a>
+  </button>
 </template>
 
 <script>

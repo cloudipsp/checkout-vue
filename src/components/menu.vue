@@ -6,7 +6,7 @@
         :ref="method"
         type="button"
         :class="className(method)"
-        @click.prevent="click(method)"
+        @click="click(method)"
       >
         <f-svg
           class="f-menu-icon"
@@ -67,7 +67,6 @@ export default {
       return function (item) {
         return [
           'f-menu-item',
-          'f-outline',
           {
             active:
               (this.$route.name === item ||

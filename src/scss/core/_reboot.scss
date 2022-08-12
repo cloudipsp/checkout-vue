@@ -75,10 +75,6 @@ a {
   @include hover() {
     text-decoration: underline;
   }
-
-  &:focus {
-    outline: 0;
-  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href).

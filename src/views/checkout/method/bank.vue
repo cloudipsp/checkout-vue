@@ -37,7 +37,7 @@
           :key="item.id"
           :class="classBankItemWrapper"
         >
-          <a href="#" :class="classBankItem" @click.prevent="goSystem(item)">
+          <button :class="classBankItem" type="button" @click="goSystem(item)">
             <f-icon
               :name="item.logo"
               :type="item.method"
@@ -50,7 +50,7 @@
                 {{ item.iban }}
               </div>
             </div>
-          </a>
+          </button>
         </div>
       </div>
       <div class="f-bank-footer">
@@ -209,7 +209,7 @@ export default {
       return [className, 'f-mb-12', `f-mb-${this.breakpoint}-16`]
     },
     classBankItem() {
-      return [`f-bank-item_${this.view}`, 'f-bank-item']
+      return [`f-bank-item_${this.view}`, 'f-bank-item', 'f-btn-unstyled']
     },
     classBankViewBar() {
       return [{ 'f-active': this.isBar }, 'f-bank-view-icon']

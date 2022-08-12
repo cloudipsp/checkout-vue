@@ -15,14 +15,14 @@
       <div ref="wrapper" :class="classOrderDesc">
         <div ref="desc">{{ order_desc_translation }}</div>
       </div>
-      <a
+      <button
         v-if="showMore"
-        class="f-order-desc-more"
-        href="#"
-        @click.prevent="clickMore"
+        class="f-order-desc-more f-btn-unstyled"
+        type="button"
+        @click="clickMore"
       >
         <span v-text="$t('see_more')" /> <f-svg name="angle-right" />
-      </a>
+      </button>
     </f-preloader>
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-text="$t(order_desc)" />
