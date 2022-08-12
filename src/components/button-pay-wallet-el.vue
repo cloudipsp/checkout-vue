@@ -4,11 +4,9 @@
 
 <script>
 import ButtonPayWalletInner from '@/components/button-pay-wallet-inner'
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
-let init
-let vm
 
 export default {
   inject: ['formRequest', '$_veeObserver'],
@@ -16,6 +14,7 @@ export default {
     onlyInit: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
+    ...mapStateGetSet(['init_wallets', 'vm_wallets']),
     ...mapState('options', ['methods_disabled']),
     show() {
       return !this.methods_disabled.includes('wallets')
@@ -30,11 +29,11 @@ export default {
   methods: {
     init() {
       if (!this.show) return
-      if (init) return
+      if (this.init_wallets) return
 
-      init = true
+      this.init_wallets = true
 
-      vm = new ButtonPayWalletInner({
+      this.vm_wallets = new ButtonPayWalletInner({
         store: this.store,
         provide() {
           return { formRequest: this.formRequest }
@@ -47,11 +46,11 @@ export default {
     append() {
       if (this.onlyInit) return
       if (!this.show) return
-      vm.load = false
-      this.$el.appendChild(vm.$el)
+      this.vm_wallets.load = false
+      this.$el.appendChild(this.vm_wallets.$el)
     },
     click() {
-      vm.click()
+      this.vm_wallets.click()
     },
   },
 }

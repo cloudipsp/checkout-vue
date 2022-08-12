@@ -121,6 +121,8 @@ const config = {
   card_type_fee: 0,
   notification: '',
   currencies: [],
+  init_wallets: false,
+  vm_wallets: null,
 }
 
 locales.forEach(function (locale) {
