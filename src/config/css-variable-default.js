@@ -23,11 +23,9 @@ import {
 } from '@/config/color'
 
 export default createConfig(namesDefault, [
+  white,
   warning,
-  error, // input_error_color
-  error, // input_error_border
-  error, // text_error_color
-  error, // tooltip_error_color
+  error,
   main, // card_bg
   white, // card_label_color
   white, // card_input_color
@@ -74,4 +72,11 @@ export default createConfig(namesDefault, [
   ash_500, // datepicker_cell_not_current_month_color
   ash_700, // datepicker_th_color
   grey, // datepicker_btn_text_color
+  white, // input_secondary_bg,
+  grey, // input_secondary_color,
+  ash_500, // input_secondary_border,
+  white, // input_secondary_hover_bg
+  ash_700, // input_secondary_hover_border
+  grey_2, // input_secondary_focus_border
+  grey_1, // input_secondary_disabled_color
 ])

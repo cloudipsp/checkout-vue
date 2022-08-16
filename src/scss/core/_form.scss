@@ -1,3 +1,41 @@
+@mixin form-control-variant(
+  $bg,
+  $border,
+  $color,
+  $bg-hover,
+  $border-hover,
+  $border-focus,
+  $color-disabled
+) {
+  color: $color;
+  background-color: $bg;
+  border-color: $border;
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $color;
+
+    &::first-line {
+      color: $color;
+    }
+  }
+
+  &:hover {
+    background-color: $bg-hover;
+    border-color: $border-hover;
+  }
+
+  &:focus {
+    border-color: $border-focus;
+  }
+
+  &[disabled],
+  .f-disabled > & {
+    color: $color-disabled;
+    border-color: $border;
+    -webkit-text-fill-color: $color-disabled;
+  }
+}
+
 .f-form-group {
   position: relative;
   margin-bottom: px-to-rem(16px);
@@ -21,9 +59,8 @@
   padding: px-to-rem(26px) $input-padding-start px-to-rem(8px);
   font-size: px-to-rem(16px);
   font-weight: 500;
-  color: $input_color;
-  background-color: $input_bg;
-  border: $input-border-width solid $input_border;
+  border-style: solid;
+  border-width: $input-border-width;
   border-radius: px-to-rem(8px);
   transition: all ease-in-out 0.15s;
 
@@ -31,33 +68,22 @@
     @include plain-hover-focus-active() {
       transition: background-color 99999s;
     }
-    -webkit-text-fill-color: $input_color;
 
     &::first-line {
       font-size: px-to-rem(16px);
       font-weight: 500;
-      color: $input_color;
     }
-  }
-
-  &:hover {
-    background-color: $input_hover_bg;
-    border-color: $input_hover_border;
   }
 
   &:focus {
     position: relative;
     z-index: 1; // f-input-group
     padding-left: $input-focus-padding-start;
-    border-color: $input_focus_border;
     border-width: $input-focus-border-width;
   }
 
   &[disabled],
   .f-disabled > & {
-    color: $input_readonly_color;
-    border-color: $input_border;
-    -webkit-text-fill-color: $input_readonly_color;
     opacity: 1;
   }
 
@@ -67,12 +93,12 @@
 
   .f-has-error & {
     padding-left: $input-error-padding-start;
-    color: $input_error_color;
-    border: $input-error-border-width solid $input_error_border;
+    color: $error;
+    border-color: $error;
+    border-width: $input-error-border-width;
 
     &:focus {
       padding-left: $input-focus-padding-start;
-      border-color: $input_focus_border;
       border-width: $input-focus-border-width;
     }
   }
@@ -82,6 +108,30 @@
   &[type='date'] {
     appearance: none;
   }
+}
+
+.f-form-control-default {
+  @include form-control-variant(
+    $input_bg,
+    $input_border,
+    $input_color,
+    $input_hover_bg,
+    $input_hover_border,
+    $input_focus_border,
+    $input_disabled_color
+  );
+}
+
+.f-form-control-secondary {
+  @include form-control-variant(
+    $input_secondary_bg,
+    $input_secondary_border,
+    $input_secondary_color,
+    $input_secondary_hover_bg,
+    $input_secondary_hover_border,
+    $input_secondary_focus_border,
+    $input_secondary_disabled_color
+  );
 }
 
 .f-control-sm {
@@ -183,7 +233,7 @@
 .f-error {
   margin-top: px-to-rem(4px);
   font-weight: 500;
-  color: $text_error_color;
+  color: $error;
 }
 
 .f-form-control-prepend {

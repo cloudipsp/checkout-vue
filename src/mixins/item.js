@@ -24,6 +24,9 @@ export const itemMixin = {
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
       arrayIncludes(['sm'], value)
     ),
+    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+      arrayIncludes(['default', 'secondary'], value)
+    ),
   },
   data() {
     return {
@@ -60,6 +63,7 @@ export const itemMixin = {
     classInput() {
       return [
         'f-form-control',
+        `f-form-control-${this.variant}`,
         this.inputClass,
         {
           ['f-control-' + this.size]: this.size,

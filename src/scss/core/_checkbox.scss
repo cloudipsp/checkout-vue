@@ -16,7 +16,7 @@
       border-color: $border;
 
       .f-has-error & {
-        border-color: $input_error_border;
+        border-color: $error;
       }
     }
 

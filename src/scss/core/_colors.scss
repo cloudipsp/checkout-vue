@@ -1,16 +1,13 @@
 $prefix: --fondy-;
 
-$white: #fff;
 $black: #000;
 $demo: #30d769;
 $preloader_bg: #d5dae0;
 $preloader_inner_bg: #f7f8f9;
 // default
+$white: var(#{$prefix}white);
 $warning: var(#{$prefix}warning);
-$input_error_color: var(#{$prefix}input_error_color);
-$input_error_border: var(#{$prefix}input_error_border);
-$text_error_color: var(#{$prefix}text_error_color);
-$tooltip_error_color: var(#{$prefix}tooltip_error_color);
+$error: var(#{$prefix}error);
 $card_bg: var(#{$prefix}card_bg);
 $card_label_color: var(#{$prefix}card_label_color);
 $card_input_color: var(#{$prefix}card_input_color);
@@ -59,6 +56,13 @@ $datepicker_cell_not_current_month_color: var(
 );
 $datepicker_th_color: var(#{$prefix}datepicker_th_color);
 $datepicker_btn_text_color: var(#{$prefix}datepicker_btn_text_color);
+$input_secondary_bg: var(#{$prefix}input_secondary_bg);
+$input_secondary_color: var(#{$prefix}input_secondary_color);
+$input_secondary_border: var(#{$prefix}input_secondary_border);
+$input_secondary_hover_bg: var(#{$prefix}input_secondary_hover_bg);
+$input_secondary_hover_border: var(#{$prefix}input_secondary_hover_border);
+$input_secondary_focus_border: var(#{$prefix}input_secondary_focus_border);
+$input_secondary_disabled_color: var(#{$prefix}input_secondary_disabled_color);
 
 // theme
 $main: var(#{$prefix}main);
@@ -129,7 +133,7 @@ $input_border: var(#{$prefix}input_border);
 $input_hover_bg: var(#{$prefix}input_hover_bg);
 $input_hover_border: var(#{$prefix}input_hover_border);
 $input_focus_border: var(#{$prefix}input_focus_border);
-$input_readonly_color: var(#{$prefix}input_readonly_color);
+$input_disabled_color: var(#{$prefix}input_disabled_color);
 $input_prepend_color: var(#{$prefix}input_prepend_color);
 $checkbox_default_border: var(#{$prefix}checkbox_default_border);
 $checkbox_default_hover_bg: var(#{$prefix}checkbox_default_hover_bg);

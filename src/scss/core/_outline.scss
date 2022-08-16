@@ -42,7 +42,7 @@ a {
 .f-btn-light,
 .f-btn-dark,
 .f-btn-outline,
-.f-form-control,
+.f-form-control-default,
 .f-menu-item,
 .f-bank-item_min {
   @include focus-visible(
@@ -51,6 +51,10 @@ a {
     px-to-rem(2),
     $container_bg
   );
+}
+
+.f-form-control-secondary {
+  @include focus-visible(px-to-rem(2px), $outline_border, px-to-rem(2), $white);
 }
 
 .f-btn-link:focus,

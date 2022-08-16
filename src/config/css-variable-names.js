@@ -78,14 +78,13 @@ import {
   value,
   view,
   warning,
+  white,
 } from '@/config/const'
 
 export const namesDefault = [
+  [white],
   [warning],
-  [input, error, color],
-  [input, error, border],
-  [text, error, color],
-  [tooltip, error, color],
+  [error],
   [card, bg],
   [card, label, color],
   [card, input, color],
@@ -132,6 +131,13 @@ export const namesDefault = [
   [datepicker, cell, not, current, month, color],
   [datepicker, th, color],
   [datepicker, btn, text, color],
+  [input, secondary, bg],
+  [input, secondary, color],
+  [input, secondary, border],
+  [input, secondary, hover, bg],
+  [input, secondary, hover, border],
+  [input, secondary, focus, border],
+  [input, secondary, disabled, color],
 ]
 
 export const namesTheme = [

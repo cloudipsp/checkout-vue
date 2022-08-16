@@ -89,7 +89,7 @@ export default createConfig(namesTheme, [
   white_005, // input_hover_bg
   '#898C8E', // input_hover_border
   white_06, // input_focus_border
-  white_06, // input_readonly_color
+  white_06, // input_disabled_color
   white_04, // input_prepend_color
   white_04, // checkbox_default_border
   '#585B5F', // checkbox_default_hover_bg

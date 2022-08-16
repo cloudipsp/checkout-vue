@@ -17,6 +17,7 @@
           prepend="search"
           :autofocus="autofocus"
           autocomplete="off"
+          variant="secondary"
           @input="input"
           @keydown="navigate"
         />
