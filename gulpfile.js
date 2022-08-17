@@ -77,7 +77,7 @@ gulp.task('countries', function (done) {
       let obj = JSON.parse(content)
       let result = Object.entries(obj).reduce(
         (
-          acum,
+          accum,
           [
             key,
             {
@@ -94,18 +94,38 @@ gulp.task('countries', function (done) {
             ...translations,
           }).map(({ common }) => common)
 
+          const regexp =
+            / (of|de|in|e|i|et|и|y|ja|and|a|en|du|do|la|the|des|wa|da|di|del|ko|o|und|im|в|na|dé|ya|oa|ta'|na|ng|er|—|y'u|og|aṣ|al|as|at|for|von|die|les|ye|dos|los) /g
+          const start = /^(the|a|aṣ|al) /
+          const end = / (of|a|us|the)$/
+
           common = [
-            ...common,
             iso_3166_1_alpha2,
             iso_3166_1_alpha3,
+            ...common,
             name.common,
             ...(alt_spellings || []),
           ]
-            .filter((item, key, self) => self.indexOf(item) === key)
             .map(item => item.toLowerCase())
+            .map(item => item.replace(/[,().]/g, ''))
+            .map(item =>
+              item.replace(
+                /([\u00BF-\u1FFF\u2C00-\uD7FF\w])-([\u00BF-\u1FFF\u2C00-\uD7FF\w])/g,
+                '$1 $2'
+              )
+            )
+            .map(item => item.replace(start, ''))
+            .map(item => item.replace(start, ''))
+            .map(item => item.replace(end, ''))
+            .map(item => item.replace(end, ''))
+            .map(item => item.replace(regexp, ' '))
+            .map(item => item.replace(regexp, ' '))
+            .filter(item => item.split(' ').length < 4)
+            .reduce((accum, value) => [...accum, ...value.split(' ')], [])
+            .filter((item, key, self) => self.indexOf(item) === key)
 
-          acum[key] = common
-          return acum
+          accum[key] = common
+          return accum
         },
         {}
       )
