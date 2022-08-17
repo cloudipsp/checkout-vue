@@ -111,10 +111,7 @@ class Store extends Model {
 
     this.state.options.default_country =
       this.state.options.default_country || model.attr('default_country')
-    this.state.tabs = tabs(
-      model.attr('tabs'),
-      this.state.options.default_country
-    )
+    this.state.tabs = tabs(model.attr('tabs'))
     this.state.options.methods = methods(
       this.state.options.methods,
       tabs_order(model.attr('tabs_order'), this.state.tabs),

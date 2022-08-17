@@ -21,7 +21,7 @@ export const methods = (user, server = [], disable) => {
     .filter(excludes(disable))
 }
 
-export const tabs = (tabs = {}, default_country) => {
+export const tabs = (tabs = {}) => {
   let result = Object.entries(tabs).map(([name, { payment_systems }]) => {
     name = mapped(name)
     return [name, parse(payment_systems, name)]
@@ -33,14 +33,10 @@ export const tabs = (tabs = {}, default_country) => {
     ],
     []
   )
-  let most_popular = allPaymentSystems
-    .filter(
-      ({ user_priority, country_priority }) =>
-        user_priority > 0 || country_priority > 0
-    )
-    .filter(({ method, country }) =>
-      method === banklinks_eu ? country === default_country : true
-    )
+  let most_popular = allPaymentSystems.filter(
+    ({ user_priority, country_priority }) =>
+      user_priority > 0 || country_priority > 0
+  )
 
   if (most_popular.length) {
     if (allPaymentSystems.some(({ id }) => id === 'card')) {

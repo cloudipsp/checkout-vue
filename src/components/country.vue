@@ -23,10 +23,15 @@ import { codeToFlag } from '@/utils/helpers'
 import { attrsMixin } from '@/mixins/attrs'
 import { listenersMixin } from '@/mixins/listeners'
 import { countriesSearch } from '@/import'
-import { sort } from '@/utils/sort'
+import { sort, parseSelect } from '@/utils/sort'
+import { makeProp } from '@/utils/props'
+import { PROP_TYPE_ARRAY } from '@/constants/props'
 
 export default {
   mixins: [attrsMixin, listenersMixin],
+  props: {
+    list: makeProp(PROP_TYPE_ARRAY, []),
+  },
   data() {
     return {
       search: '',
@@ -47,7 +52,8 @@ export default {
       }
     },
     options() {
-      return this.fAttrs.options
+      return this.list
+        .map(parseSelect)
         .map(item => ({
           ...item,
           order:
@@ -71,13 +77,17 @@ export default {
     },
   },
   created() {
-    if (this.fAttrs.options.length > 10) {
+    this.load()
+    this.setCountry()
+  },
+  methods: {
+    load() {
+      if (this.list.length <= 10) return
+
       countriesSearch().then(({ countriesSearch }) => {
         this.countriesSearch = countriesSearch
       })
-    }
-  },
-  methods: {
+    },
     filter(search) {
       return ({ value, text }) =>
         this.countriesSearch
@@ -88,6 +98,13 @@ export default {
     },
     onSearch(value) {
       this.search = value
+    },
+    setCountry() {
+      if (this.list.includes(this.fAttrs.value)) return
+
+      if (this.options.length > 0) {
+        this.fAttrs.value = this.options[0].value
+      }
     },
   },
 }

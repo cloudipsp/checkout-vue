@@ -1,11 +1,11 @@
 <template>
   <transition name="f-fade-enter">
-    <div v-if="ready">
+    <div v-if="ready" key="1">
       <div class="f-row">
         <div v-if="showCountry" class="f-col f-bank-country">
           <f-country
             v-model="default_country"
-            :options="country"
+            :list="listCountry"
             :description="label"
             @input="clear"
           />
@@ -60,7 +60,7 @@
         </f-button>
       </div>
     </div>
-    <div v-else>
+    <div v-else key="2">
       <div class="f-row">
         <div
           v-for="item in preloader"
@@ -85,7 +85,7 @@ import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
 import FButton from '@/components/button/button'
 import { FCountry } from '@/import'
-import { sort, parseSelect } from '@/utils/sort'
+import { sort } from '@/utils/sort'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { errorHandler, removeDuplicate } from '@/utils/helpers'
 import { timeoutMixin } from '@/mixins/timeout'
@@ -140,10 +140,6 @@ export default {
     // [{id: 147209, country: 'PL', name: '', logo: 'mbank'}]
     values() {
       return Object.values(this.config)
-    },
-    // [{id: 'PL', name:''}]
-    country() {
-      return this.listCountry.map(parseSelect)
     },
     listCountry() {
       return this.countries && this.countries.length
@@ -239,13 +235,8 @@ export default {
       return this[`isBreakpointDown${upperFirst(this.breakpoint)}`]
     },
   },
-  watch: {
-    ready: 'setCountry',
-  },
   created() {
     this.counts = this.count
-
-    this.setCountry()
   },
   methods: {
     goSystem(item) {
@@ -278,14 +269,6 @@ export default {
       return this.enableCountry && method === 'banklinks_eu'
         ? [this.default_country, 'XX'].includes(country)
         : true
-    },
-    setCountry() {
-      if (!this.enableCountry) return
-      if (this.listCountry.includes(this.default_country)) return
-
-      if (this.listCountry.length > 0) {
-        this.default_country = this.listCountry[0]
-      }
     },
   },
 }
