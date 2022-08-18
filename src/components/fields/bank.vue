@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <f-form-group
-      v-for="field in list"
-      :key="field.name"
-      v-bind="field"
-      v-model="params.form[field.name]"
-    />
-  </div>
+  <f-form-save name="params.form" :includes="includes">
+    <template #default="{ input }">
+      <f-form-group
+        v-for="field in list"
+        :key="field.name"
+        v-bind="field"
+        v-model="params.form[field.name]"
+        @input="input(field.name, $event)"
+      />
+    </template>
+  </f-form-save>
 </template>
 
 <script>
+import FFormSave from '@/components/form/form/form-save'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_ARRAY } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
 export default {
+  components: {
+    FFormSave,
+  },
   props: {
     fields: makeProp(PROP_TYPE_ARRAY, []),
   },
@@ -22,6 +29,9 @@ export default {
     ...mapState(['params']),
     list() {
       return this.fields.map(this.parseField)
+    },
+    includes() {
+      return this.list.map(({ name }) => name)
     },
   },
   methods: {
