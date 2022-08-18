@@ -4,7 +4,7 @@
       <span v-text="$t('gdpr_alert_text')" />&nbsp;
       <a href="#" @click="showGdprText = true" v-text="$t('learn_more')" />
       <f-modal-base v-model="showGdprText" header-class="f-p-0">
-        <span v-text="$t(`gdpr_modal_text_${region}`)" />
+        <span v-text="$t('gdpr_modal_text')" />
       </f-modal-base>
     </div>
 
@@ -38,7 +38,7 @@ import FAlertStorage from '@/components/alert/alert-storage'
 import FFormBase from '@/components/form/form/form-base'
 import SvgSafe from '@/svg/safe'
 
-import { mapState, mapStateGetSet, localStorage } from '@/utils/store'
+import { mapStateGetSet, localStorage } from '@/utils/store'
 
 export default {
   components: {
@@ -53,7 +53,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['region']),
     ...mapStateGetSet('params', ['save_card']),
   },
   methods: {

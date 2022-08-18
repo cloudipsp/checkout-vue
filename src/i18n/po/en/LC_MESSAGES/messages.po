@@ -837,11 +837,11 @@ msgid "placeholder_SORT_CODE"
 msgstr "Enter your bank sort code"
 
 #: src/i18n/process/translate.js:91
-msgid "address_number"
+msgid "message_address_number"
 msgstr "Street number, apartment number, suite, etc."
 
 #: src/i18n/process/translate.js:92
-msgid "address_street"
+msgid "message_address_street"
 msgstr "Street address"
 
 msgid "gdpr_yapily"
@@ -855,6 +855,33 @@ msgstr ""
 
 msgid "gdpr_modal_text_eu"
 msgstr ""
+
+#: src/i18n/process/translate.js:93
+msgid "message_customer_name_utf8"
+msgstr "Name and Surname"
+
+#: src/i18n/process/translate.js:94
+msgid "placeholder_customer_name_utf8"
+msgstr "Enter your Name and Surname"
+
+#: src/i18n/process/translate.js:95
+msgid "placeholder_address_street"
+msgstr "Enter your Street address"
+
+#: src/i18n/process/translate.js:97
+msgid "gdpr_modal_text"
+msgstr ""
+"Our website uses “cookies” and other technologies, which store information "
+"on your computer or device, to allow certain data relating to your web "
+"browser to be collected. Cookies are widely used on the Internet and allow a "
+"website/portal to recognise a user’s device, without uniquely identifying "
+"the individual person using the computer. These technologies help to make it "
+"easier for you to log on and use the site and provide feedback to us as to "
+"which parts of the website you visit, so we can assess the effectiveness of "
+"the site and provide a better user experience or serve Fondy adverts to you "
+"whilst browsing other sites. For more information, please visit <a "
+"href='https://fondy.io/privacy-notice/' target='_blank'>https://fondy.io/"
+"privacy-notice/</a>"
 
 #~ msgid "code"
 #~ msgstr "-"
