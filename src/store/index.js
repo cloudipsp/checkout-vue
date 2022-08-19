@@ -330,9 +330,12 @@ class Store extends Model {
     this.state.error.message = message
     this.state.error.show = true
   }
+  hideError() {
+    this.state.error.show = false
+  }
   formLoading(loading) {
     if (loading) {
-      this.state.error.show = false
+      this.hideError()
     }
 
     this.state.loading = loading

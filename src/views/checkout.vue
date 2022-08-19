@@ -203,7 +203,11 @@ export default {
 
       if (model.attr('action') === 'qr_page') return
 
-      if (model.sendResponse()) return // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
+      // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
+      if (model.sendResponse()) {
+        this.store.formLoading(true)
+        return
+      }
 
       if (
         this.$root._events.callback &&
@@ -212,13 +216,19 @@ export default {
       )
         return this.$root.$emit('callback', model)
 
-      if (model.submitToMerchant()) return // ready_to_submit && response_url && order_data formDataSubmit()
+      // ready_to_submit && response_url && order_data formDataSubmit()
+      if (model.submitToMerchant()) {
+        this.store.formLoading(true)
+        return
+      }
 
       if (model.needVerifyCode()) {
         this.$router.push({ name: 'verify' }).catch(() => {})
       } else if (model.inProgress() && model.waitForResponse()) {
+        this.store.formLoading(true)
         this.locationPending()
       } else if (model.inProgress()) {
+        this.store.hideError()
         this.$router.push({ name: 'success' }).catch(() => {})
       } else {
         this.store
@@ -229,7 +239,6 @@ export default {
     },
     locationPending() {
       this.count++
-      this.store.formLoading(true)
       this.timeout('getOrder', fib(this.count) * 1000)
       this.timeout('getOrderClear', 4 * 60 * 1000, false)
     },
