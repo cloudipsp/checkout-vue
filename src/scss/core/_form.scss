@@ -46,6 +46,8 @@
   }
 
   &:focus {
+    position: relative;
+    z-index: 1; // f-input-group
     padding-left: $input-focus-padding-start;
     border-color: $input_focus_border;
     border-width: $input-focus-border-width;
@@ -156,6 +158,7 @@
   @include text-truncate();
 
   &.f-control-label-active {
+    z-index: 1; // f-input-group
     transform: translateY(-8px) scale(0.75);
   }
 
