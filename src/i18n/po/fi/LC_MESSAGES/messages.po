@@ -618,7 +618,7 @@ msgid "rule_regex"
 msgstr "Väärä muoto"
 
 #: src/i18n/process/translate.js:20
-msgid "rule_on_zero"
+msgid "rule_no_zero"
 msgstr "Määrä enemmän nollaa"
 
 #: src/i18n/process/translate.js:22

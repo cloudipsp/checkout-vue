@@ -93,7 +93,7 @@ export const one = {
   },
 }
 
-export const on_zero = {
+export const no_zero = {
   validate: value => {
     return Math.round(parseFloat(value).toFixed(2) * 100) > 0
   },

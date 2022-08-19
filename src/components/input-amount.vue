@@ -56,7 +56,7 @@ export default {
         rules: {
           required: true,
           decimal: 2,
-          on_zero: !(this.verification_type || this.recurring === 'y'),
+          no_zero: !(this.verification_type || this.recurring === 'y'),
         },
         type: 'tel',
         inputmode: 'numeric',

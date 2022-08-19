@@ -620,7 +620,7 @@ msgid "rule_regex"
 msgstr "Invalid format"
 
 #: src/i18n/process/translate.js:20
-msgid "rule_on_zero"
+msgid "rule_no_zero"
 msgstr "Amount more zero"
 
 #: src/i18n/process/translate.js:22

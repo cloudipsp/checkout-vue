@@ -623,7 +623,7 @@ msgid "rule_regex"
 msgstr "Formatet er ikke korrekt"
 
 #: src/i18n/process/translate.js:20
-msgid "rule_on_zero"
+msgid "rule_no_zero"
 msgstr "Beløb større end nul"
 
 #: src/i18n/process/translate.js:22

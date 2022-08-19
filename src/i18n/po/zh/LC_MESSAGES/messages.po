@@ -597,7 +597,7 @@ msgid "rule_regex"
 msgstr "无效的格式"
 
 #: src/i18n/process/translate.js:20
-msgid "rule_on_zero"
+msgid "rule_no_zero"
 msgstr "金额大于零"
 
 #: src/i18n/process/translate.js:22

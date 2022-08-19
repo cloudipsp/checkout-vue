@@ -618,8 +618,8 @@ msgid "rule_regex"
 msgstr "yanlış format"
 
 #: src/i18n/process/translate.js:20
-msgid "rule_on_zero"
-msgstr ""
+msgid "rule_no_zero"
+msgstr "Amount more zero"
 
 #: src/i18n/process/translate.js:22
 msgid "rule_customer_name"
