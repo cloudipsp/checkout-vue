@@ -9,7 +9,7 @@
         </div>
         <div :class="className">
           <transition name="f-fade-enter">
-            <router-view />
+            <router-view class="f-pb-32" />
           </transition>
           <f-security class="f-center-security" />
         </div>
