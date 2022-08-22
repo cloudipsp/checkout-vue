@@ -12,7 +12,6 @@
         placeholder="card_number_p"
         :rules="validCardNumber"
         mask="XXXX XXXX XXXX XXXX XXX"
-        :masked="false"
         :maxlength="23"
         :disabled="read_only"
         type="tel"
@@ -39,14 +38,13 @@
         placeholder="expiry_date_p"
         :rules="validExpiryDate"
         mask="##/##"
-        :masked="true"
+        masked
         :disabled="disabledExpiryDate"
         type="tel"
         inputmode="numeric"
         tooltip
         no-label-floating
         autocomplete="cc-exp"
-        :format="format"
         @input="inputExpiryDate"
       />
       <f-form-group
@@ -232,21 +230,19 @@ export default {
     },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {
-        this.focus('card_number', value, 'expiry_date')
+        this.focus('card_number', 'expiry_date')
       } else {
         this.hash = ''
       }
     },
-    inputExpiryDate(value) {
-      this.focus('expiry_date', value, 'cvv2')
+    inputExpiryDate() {
+      this.focus('expiry_date', 'cvv2')
     },
-    focus(name, value, next) {
+    focus(name, next) {
       if (!this.isMounted) return
       // wait for computed property validCardNumber
       this.$nextTick()
-        .then(() =>
-          this.$refs[name].$children[0].$children[0].$refs.validation.validate()
-        )
+        .then(() => this.$refs[name].validation.validate())
         .then(({ valid }) => {
           if (!valid) return Promise.reject()
           return this.$nextTick()

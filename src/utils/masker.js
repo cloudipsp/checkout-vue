@@ -7,14 +7,15 @@ const tokens = {
   '!': { escape: true },
 }
 
-export default function maskit(value = '', mask, masked = true) {
+export default function maskit(value = '', mask, masked = true, last) {
   if (!mask) return value
 
   value = String(value)
   let iMask = 0
   let iValue = 0
   let output = ''
-  while (iMask < mask.length && iValue < value.length) {
+  let valueLength = value.length + (last ? 1 : 0)
+  while (iMask < mask.length && iValue < valueLength) {
     let cMask = mask[iMask]
     let masker = tokens[cMask]
     let cValue = value[iValue]

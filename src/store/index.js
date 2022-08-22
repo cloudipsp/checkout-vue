@@ -283,20 +283,23 @@ class Store extends Model {
   setCardNumber({
     card_number = '',
     expiry_date = '',
-    email = this.state.params.email,
+    email,
     hash,
     read_only,
   } = {}) {
-    this.setState({
+    let options = {
       params: {
         card_number,
         expiry_date,
-        email,
         hash,
         cvv2: '',
       },
       read_only,
-    })
+    }
+    if (email) {
+      options.params.email = email
+    }
+    this.setState(options)
 
     let el = document.getElementById('f-cvv2')
     if (card_number && expiry_date && el) {
