@@ -5,7 +5,9 @@
       v-model="innerValue"
       :class="classInput"
       v-bind="attrs"
-      v-on="$listeners"
+      @focus="$emit('focus')"
+      @blur="$emit('blur')"
+      @keydown="$emit('keydown', $event)"
       @keyup.enter="onEnter"
     />
     <slot :id="id" />

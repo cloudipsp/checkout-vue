@@ -45,6 +45,7 @@
         tooltip
         no-label-floating
         autocomplete="cc-exp"
+        :format="format"
         @input="inputExpiryDate"
       />
       <f-form-group

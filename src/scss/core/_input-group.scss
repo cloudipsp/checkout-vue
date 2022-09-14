@@ -37,4 +37,15 @@
       }
     }
   }
+
+  .f-form-control {
+    &:focus {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .f-control-label-p.f-control-label-active {
+    z-index: 1;
+  }
 }
