@@ -3,6 +3,7 @@ const fsp = require('fs').promises
 const gulp = require('gulp')
 const nodeGettextGenerator = require('node-gettext-generator')
 const configLocale = require('./src/config/locales.json')
+const uk = require('@umpirsky/country-list/data/uk/country.json')
 
 const locales = Object.keys(configLocale)
 
@@ -99,6 +100,9 @@ gulp.task('countries', function (done) {
           const start = /^(the|a|aṣ|al) /
           const end = / (of|a|us|the)$/
 
+          if (uk[key]) {
+            common.push(uk[key])
+          }
           common = [
             iso_3166_1_alpha2,
             iso_3166_1_alpha3,
