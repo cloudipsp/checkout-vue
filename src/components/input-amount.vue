@@ -63,7 +63,6 @@ export default {
         autocomplete: 'off',
         format: this.format,
         parse: this.parse,
-        last: '',
         disabled: this.disabled,
       }
     },

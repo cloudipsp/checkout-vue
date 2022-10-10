@@ -1,9 +1,4 @@
-import {
-  extend,
-  localize,
-  ValidationProvider,
-  ValidationObserver,
-} from 'vee-validate'
+import { extend, ValidationProvider, ValidationObserver } from 'vee-validate'
 import {
   required,
   email,
@@ -15,7 +10,6 @@ import {
   regex,
 } from 'vee-validate/dist/rules'
 import * as customRules from '@/validate/rules'
-import { validate as messages } from '@/i18n/lang/en'
 
 const install = Vue => {
   let rules = Object.assign(
@@ -34,8 +28,6 @@ const install = Vue => {
   Object.entries(rules).forEach(([name, value]) => {
     extend(name, value)
   })
-
-  localize('en', messages)
 
   Vue.component('ValidationProvider', ValidationProvider)
   Vue.component('ValidationObserver', ValidationObserver)
