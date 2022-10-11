@@ -1,6 +1,6 @@
 import { findGetParameter } from '@/utils/helpers'
 import Model from '@/class/model'
-import { isPlainObject } from '@/utils/inspect'
+import { isPlainObject, isExist } from '@/utils/inspect'
 import configTheme from '@/config/theme'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
@@ -115,7 +115,7 @@ class Validate extends Model {
     const preset = this.data.options?.theme?.preset
     const theme = this.data.options?.theme?.type
 
-    if (preset || !theme) return
+    if (isExist(preset) || !theme) return
 
     this.attr('data.options.theme.preset', configTheme[theme])
   }

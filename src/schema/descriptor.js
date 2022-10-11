@@ -8,7 +8,7 @@ import configTheme from '@/config/theme'
 import configOptionsDefault from '@/config/options-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
-import { isPlainObject } from '@/utils/inspect'
+import { isPlainObject, isString } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
 
 const countries = Object.keys(configCountries)
@@ -36,7 +36,14 @@ const subscription = Object.keys(configOptionsDefault.options.subscription)
 const theme = Object.keys(configOptionsDefault.options.theme)
 const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
 const subscriptionType = Object.keys(configSubscription)
-const config = ['options', 'params', 'messages', 'validate', 'css_variable']
+const config = [
+  'options',
+  'params',
+  'messages',
+  'validate',
+  'css_variable',
+  'button',
+]
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/[\w+;]+?,)/
 const messageEnum = 'is not equal to one of'
 const messageExclude = 'should not include one of'
@@ -161,6 +168,27 @@ function validatorNotEmpty() {
   }
 }
 
+function validatorPreset() {
+  return {
+    validator(...args) {
+      let [rule, value] = args
+      return loadAsyncValidator().then(Schema => {
+        let type
+        if (!isString(value)) {
+          type = 'string'
+        } else if (value.charAt(0) === '#') {
+          type = 'pattern'
+          rule.pattern = /^#[0-9a-fA-F]{6}$/
+        } else {
+          type = 'enum'
+          rule.enum = preset
+        }
+        return Schema.validators[type](...args)
+      })
+    },
+  }
+}
+
 let messages = enumObject(locales)
 
 locales.forEach(function (locale) {
@@ -242,7 +270,7 @@ export default {
             ...enumObject(theme),
             fields: {
               type: typeEnum(themeType),
-              preset: typeEnum(preset),
+              preset: validatorPreset(),
             },
           },
           disable_request: typeBoolean,

@@ -59,7 +59,8 @@ Name                  | Type        | Default                 | Description     
 `disable_request`     | Boolean     | false                   | no requests are sent to the server                                                  |
 `show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
 `subscription`        | Object      |                         |                                                                                     |
-`loading`             | String      |                         | format url                                                                                   |
+`loading`             | String      |                         | format url                                                                          |
+`button`              | Object      | {}                      | button config                                                                       |
 
 ### options.endpoint
 Name                  | Type        | Default                                 | Description

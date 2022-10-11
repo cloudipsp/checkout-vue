@@ -63,7 +63,7 @@
         <div class="f-input-group">
           <f-form-group
             v-model.number="every"
-            class="f-col-4 f-col-ss-3"
+            class="f-col-4"
             name="subscription_every"
             rules="required|numeric|one"
             type="tel"

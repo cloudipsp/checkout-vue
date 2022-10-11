@@ -86,6 +86,9 @@ const config = {
     save_card: true,
     verification_type: null,
   },
+  button: {
+    token: '',
+  },
   messages: {},
   validate: {},
   css_variable: {},

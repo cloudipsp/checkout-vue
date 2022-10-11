@@ -8,8 +8,11 @@ import { sort } from '@/utils/sort'
 
 let config = {}
 
-export default function (api_domain, button) {
+export default function (api_domain, button, button_body) {
+  if (button_body.token)
+    return Promise.resolve(button_body).then(parseOptions, () => {})
   if (!button) return Promise.resolve()
+
   let domain = `https://${api_domain}`
   if (ENVIRONMENT === 'development') domain = ''
 
@@ -41,6 +44,8 @@ function parseOptions({
   response_url,
   expire,
   status,
+  host,
+  token,
 }) {
   amount = Math.round(amount * 100) || 0
 
@@ -63,6 +68,7 @@ function parseOptions({
         trial: recurring_trial,
         readonly: recurring_readonly,
       },
+      api_domain: host,
     },
     params: {
       ...params,
@@ -75,6 +81,7 @@ function parseOptions({
         amount: Math.round(recurring.amount * 100) || amount,
       },
       response_url,
+      button: token,
     },
     fields: Object.values(fields).sort(sort('p')).map(parseField),
     amount_readonly: Boolean(amount_readonly),

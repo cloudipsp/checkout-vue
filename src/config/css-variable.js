@@ -13,6 +13,6 @@ export default function ({ type, preset }) {
       light: cssVariableLight,
       dark: cssVariableDark,
     }[type],
-    presets[preset]
+    presets[preset] || { main: preset }
   )
 }

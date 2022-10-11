@@ -147,6 +147,7 @@ class Store extends Model {
 
     deepMerge(this.state.params, this.user.params, notSet.params)
     deepMerge(this.state.options, this.user.options, notSet.options)
+    Object.assign(this.state.button, this.user.button)
     Object.assign(this.state.messages, this.user.messages)
     Object.assign(this.state.validate, userConfig.validate) // userConfig because functions are removed in this.user
     Object.assign(
@@ -246,7 +247,8 @@ class Store extends Model {
   loadButton() {
     return loadButton(
       this.state.options.api_domain,
-      this.state.params.button
+      this.state.params.button,
+      this.state.button
     ).then(config => {
       if (!config) return
       if (this.state.options.full_screen) {
