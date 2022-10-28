@@ -11,6 +11,13 @@
     </div>
     <div class="f-scrollbar-track">
       <div
+        v-if="isMobile"
+        ref="thumb"
+        class="f-scrollbar-thumb"
+        :style="styleThumb"
+      />
+      <div
+        v-else
         ref="thumb"
         class="f-scrollbar-thumb"
         :style="styleThumb"
@@ -38,6 +45,7 @@ export default {
       scrollbarWidth: 0,
       thumbTop: '',
       thumbHeight: '',
+      isMobile: isMobile,
     }
   },
   computed: {
@@ -106,7 +114,7 @@ export default {
       document.removeEventListener('mousemove', this.draging)
     },
     hideAutocomplete() {
-      if (isMobile) return
+      if (this.isMobile) return
 
       let activeElement = document.activeElement
 

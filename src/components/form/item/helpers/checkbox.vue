@@ -3,7 +3,7 @@
     :checked="value"
     v-bind="$attrs"
     type="checkbox"
-    @input="input"
+    @change="change"
     @focus="focus"
     @blur="blur"
     @keyup="keyup"
@@ -19,7 +19,7 @@ export default {
     value: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   methods: {
-    input($event) {
+    change($event) {
       this.$emit('input', $event.target.checked)
     },
     focus($event) {

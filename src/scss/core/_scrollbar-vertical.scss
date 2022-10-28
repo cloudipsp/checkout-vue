@@ -33,6 +33,7 @@
   width: 100%;
   height: 0;
   cursor: pointer;
+  user-select: none;
   background-color: fade($scrollbar_thumb_bg, 30%);
   border-radius: inherit;
 }
