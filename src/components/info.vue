@@ -11,7 +11,7 @@
     <div v-if="link" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
-    <f-preloader :condition="showOrderDesc" size="xs" class="f-order-desc">
+    <f-preloader :condition="showOrderDesc" size="20" class="f-order-desc">
       <div ref="wrapper" :class="classOrderDesc">
         <div ref="desc">{{ order_desc_translation }}</div>
       </div>

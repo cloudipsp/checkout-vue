@@ -15,7 +15,7 @@ export default {
   props: {
     condition: makeProp(PROP_TYPE_ANY, undefined, true),
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
-      arrayIncludes(['xs', 'sm'], value)
+      arrayIncludes(['20', '38'], value)
     ),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
@@ -31,7 +31,7 @@ export default {
       return [
         'f-preloader',
         {
-          [`f-preloader-${this.size}`]: this.size,
+          [`f-h-${this.size}`]: this.size,
         },
       ]
     },

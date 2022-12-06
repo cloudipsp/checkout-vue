@@ -11,22 +11,6 @@
   animation: f-preloader 2s ease-in-out infinite;
 }
 
-.f-preloader-20 {
-  height: px-to-rem(20px);
-}
-
-.f-preloader-48 {
-  height: px-to-rem(48px);
-}
-
-.f-preloader-xs {
-  height: px-to-rem(20px);
-}
-
-.f-preloader-sm {
-  height: px-to-rem(38px);
-}
-
 @keyframes f-preloader {
   0% {
     background-position: 80% 0;

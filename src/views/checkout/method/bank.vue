@@ -68,9 +68,9 @@
           :class="classBankItemWrapper"
         >
           <div class="f-bank-item">
-            <div class="f-mr-12 f-w-48 f-preloader f-preloader-48" />
+            <div class="f-mr-12 f-w-48 f-preloader f-h-48" />
             <div class="f-bank-item-wrapper">
-              <div class="f-preloader f-preloader-20" />
+              <div class="f-preloader f-h-20" />
             </div>
           </div>
         </div>

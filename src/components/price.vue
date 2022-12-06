@@ -136,7 +136,7 @@ export default {
       return this.actual_amount || this.amount_with_fee || this.amount
     },
     sizePreloader() {
-      return this.amount_readonly ? 'sm' : null
+      return this.amount_readonly ? '38' : null
     },
     style() {
       return {
