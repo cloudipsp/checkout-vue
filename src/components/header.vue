@@ -1,6 +1,6 @@
 <template>
-  <div class="f-header">
-    <div class="f-header-logo">
+  <div v-if="show" class="f-header">
+    <div v-if="showLeft" class="f-header-logo">
       <transition name="f-fade-enter">
         <f-button-link
           v-if="showBack"
@@ -22,10 +22,9 @@
         </div>
       </transition>
     </div>
-    <div v-if="full_screen" class="f-header-menu">
+    <div v-if="showLang" class="f-header-menu">
       <f-form-base>
         <f-form-item-select
-          v-if="showLang"
           input-class="f-lang"
           :value="lang"
           :options="locale"
@@ -67,6 +66,12 @@ export default {
     ...mapState('options', {
       optionsLang: 'lang',
     }),
+    show() {
+      return this.showLeft || this.showLang
+    },
+    showLeft() {
+      return this.showBack || this.showLogoCustom || this.showLogo
+    },
     locale() {
       return this.locales.map(parseSelect).sort(sort('text'))
     },
@@ -91,7 +96,7 @@ export default {
       }
     },
     showLang() {
-      return this.optionsLang && this.locales.length > 1
+      return this.full_screen && this.optionsLang && this.locales.length > 1
     },
   },
   methods: {
