@@ -53,6 +53,7 @@ const config = {
       readonly: false,
     },
     loading: '',
+    hide_button_title: false,
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod

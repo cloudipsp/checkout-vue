@@ -290,6 +290,7 @@ export default {
             type: 'string',
             pattern: patternUrlImg,
           },
+          hide_button_title: typeBoolean,
         },
       },
       params: {

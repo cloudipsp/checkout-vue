@@ -20,6 +20,7 @@ npm run build
 {
   options: {},
   params: {},
+  button: {}, // button config 
   messages: {},
   validate: {},
   css_variable: {},
@@ -60,7 +61,7 @@ Name                  | Type        | Default                 | Description     
 `show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
 `subscription`        | Object      |                         |                                                                                     |
 `loading`             | String      |                         | format url                                                                          |
-`button`              | Object      | {}                      | button config                                                                       |
+`hide_button_title`   | Boolean     | false                   |                                                                                     |
 
 ### options.endpoint
 Name                  | Type        | Default                                 | Description
