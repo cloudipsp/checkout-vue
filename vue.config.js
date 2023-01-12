@@ -75,20 +75,6 @@ module.exports = {
     config
       .when(isProduction, config => {
         config
-          .module
-            .rule('scss')
-              .oneOf('normal')
-                .use('extract-css-loader')
-                  .tap(options => {
-                    return {
-                      ...options,
-                      publicPath: ''
-                    }
-                  })
-                  .end()
-                .end()
-              .end()
-            .end()
           .optimization
             .splitChunks(false)
             .minimizer('terser')
@@ -184,16 +170,6 @@ module.exports = {
         .rule('scss')
           .oneOf('vue').use('postcss-loader').tap(addF).end().end()
           .oneOf('normal').use('postcss-loader').tap(addF).end().end()
-          .end()
-        .rule('images')
-          .use('image-webpack-loader')
-            .loader('image-webpack-loader')
-            .end()
-          .end()
-        .rule('svg')
-          .use('image-webpack-loader')
-            .loader('image-webpack-loader')
-            .end()
           .end()
         .end()
       .plugin('define-plugin')
