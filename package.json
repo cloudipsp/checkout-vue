@@ -43,7 +43,7 @@
     "vee-validate": "^3.4.14",
     "vue": "^2.6.14",
     "vue-functional-data-merge": "^3.1.0",
-    "vue-i18n": "^8.27.2",
+    "vue-i18n": "^8.28.2",
     "vue-router": "^3.5.4",
     "vue2-datepicker": "~3.8.2"
   },

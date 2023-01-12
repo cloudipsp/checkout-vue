@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueI18n from '../../lib/vue-i18n.esm'
+import VueI18n from 'vue-i18n'
 import { messages, validate as validateEn } from '@/i18n/lang/en'
 import { localize } from 'vee-validate'
 import configLocales from '@/config/locales.json'
