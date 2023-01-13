@@ -17,7 +17,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
   computed: {
-    ...mapStateGetSet('params', ['offer']),
+    ...mapStateGetSet('params', ['offer', 'lang']),
     ...mapState('options', ['offerta_url']),
     show() {
       return this.url
@@ -29,7 +29,9 @@ export default {
       return this.$t('offer_t', [this.url])
     },
     url() {
-      return this.$te('offerta_url') ? this.$t('offerta_url') : this.offerta_url
+      return this.$te('offerta_url')
+        ? this.$t('offerta_url')
+        : this.offerta_url.replace(/{lang}/g, this.lang)
     },
   },
 }
