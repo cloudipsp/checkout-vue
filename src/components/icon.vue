@@ -4,15 +4,15 @@
 
 <script>
 import configMethods from '@/config/methods.json'
-import { PROP_TYPE_STRING } from '@/constants/props'
+import { PROP_TYPE_NUMBER_STRING, PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
-    size: makeProp(PROP_TYPE_STRING, 'md', value => {
-      return arrayIncludes(['sm', 'md', 'lg'], value)
+    size: makeProp(PROP_TYPE_NUMBER_STRING, 'md', value => {
+      return arrayIncludes(['sm', 'md', 'lg', 36, 48], value)
     }),
     type: makeProp(PROP_TYPE_STRING, 'card', value => {
       return arrayIncludes([...configMethods, 'card/max'], value)
