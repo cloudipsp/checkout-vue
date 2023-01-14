@@ -4,8 +4,7 @@
       >{{ integer }}<component :is="tagFractional">{{ fractional }}</component>
     </b>
     <template v-if="currency">
-      &nbsp;
-      <span :class="currencyClass" v-text="$t(currency)" />
+      <span :class="currencyClasses" v-text="$t(currency)" />
     </template>
   </span>
 </template>
@@ -56,6 +55,9 @@ export default {
     tagFractional() {
       return this.sup ? 'sup' : 'span'
     },
+    currencyClasses() {
+      return [this.currencyClass, this.$style.currency]
+    },
   },
   created() {
     try {
@@ -65,3 +67,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.currency {
+  margin-left: px-to-rem(4px);
+}
+</style>
