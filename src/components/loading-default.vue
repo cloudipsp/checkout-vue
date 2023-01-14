@@ -1,10 +1,47 @@
-.f-loading {
+<template>
+  <div :class="className">
+    <div v-if="backdrop" :class="$style.backdrop" />
+    <div :class="$style.loader">
+      <f-svg name="sota" :class="$style.item" />
+      <f-svg name="sota" :class="$style.item" />
+      <f-svg name="sota" :class="$style.item" />
+    </div>
+  </div>
+</template>
+
+<script>
+import FSvg from '@/components/svg'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { makeProp } from '@/utils/props'
+
+export default {
+  components: {
+    FSvg,
+  },
+  props: {
+    backdrop: makeProp(PROP_TYPE_BOOLEAN, false),
+  },
+  computed: {
+    className() {
+      return [
+        this.$style.wrapper,
+        {
+          [this.$style.wrapper_backdrop]: this.backdrop,
+        },
+      ]
+    },
+  },
+}
+</script>
+
+<style lang="scss" module>
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.f-loading-wrapper {
+.wrapper_backdrop {
   position: absolute;
   top: 0;
   right: 0;
@@ -13,7 +50,7 @@
   z-index: $zindex-loading;
 }
 
-.f-loading-backdrop {
+.backdrop {
   position: absolute;
   top: 0;
   right: 0;
@@ -23,37 +60,29 @@
   opacity: $modal-backdrop-opacity;
 }
 
-.f-loading-custom {
-  width: px-to-rem(64px);
-  height: px-to-rem(64px);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: contain;
-}
-
-.f-loading-loader {
+.loader {
   position: relative;
   width: $loading-width;
   height: $loading-width;
 }
 
-.f-loading-item {
+.item {
   position: absolute;
-  font-size: $loading-item;
   color: #08a835;
+  font-size: $loading-item;
 
   animation-duration: 6s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-.f-loading-item:nth-child(1) {
+.item:nth-child(1) {
   animation-name: f-loading-left1;
 }
-.f-loading-item:nth-child(2) {
+.item:nth-child(2) {
   animation-name: f-loading-left2;
 }
-.f-loading-item:nth-child(3) {
+.item:nth-child(3) {
   color: #000;
   animation-name: f-loading-right;
 }
@@ -165,3 +194,4 @@
     @include loading-button-left();
   }
 }
+</style>

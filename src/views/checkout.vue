@@ -11,7 +11,7 @@
     <transition name="f-fade-enter">
       <router-view class="f-loyaut" />
     </transition>
-    <f-loading v-if="loading" backdrop />
+    <f-loading v-if="showLoading" backdrop />
     <f-modal-error-wrapper />
     <f-modal-3ds
       v-model="show3ds"
@@ -24,7 +24,6 @@
 
 <script>
 import FForm from '@/components/form/form'
-import FLoading from '@/components/loading'
 import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
@@ -35,6 +34,7 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
+import { FLoading } from '@/import'
 
 let model3ds
 
@@ -78,6 +78,9 @@ export default {
       'verification_type',
     ]),
     ...mapState(['has_fields']),
+    showLoading() {
+      return !this.$route.meta.noLoading && this.loading
+    },
     classNameContainer() {
       return [`f-page-${this.$route.name}`, `f-theme-${this.type}`]
     },
@@ -103,9 +106,6 @@ export default {
       .sendRequest('api.checkout', 'app', this.createdFormParams, {
         cached: this.token,
       })
-      .finally(() => {
-        this.store.formLoading(false)
-      })
       .then(this.appSuccess)
       .finally(() => {
         this.ready = true
@@ -126,9 +126,6 @@ export default {
           {},
           this.submitProgress
         )
-        .finally(() => {
-          this.store.formLoading(false)
-        })
         .then(this.submitSuccess, this.submitError)
     },
     submitProgress(model) {
@@ -201,32 +198,38 @@ export default {
       //        console.warn('model.needVerifyCode()', 'order.need_verify_code', model.needVerifyCode())
       //        console.warn('model.submitToMerchant()', model.submitToMerchant())
 
-      if (model.attr('action') === 'qr_page') return
+      if (model.attr('action') === 'qr_page') {
+        this.store.formLoading(false)
+
+        return
+      }
 
       // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
-      if (model.sendResponse()) {
-        this.store.formLoading(true)
-        return
-      }
+      if (model.sendResponse()) return
 
       if (
-        this.$root._events.callback &&
-        this.$root._events.callback.length &&
+        this.$root._events.callback?.length &&
         model.attr('ready_to_submit')
-      )
-        return this.$root.$emit('callback', model)
+      ) {
+        this.store.formLoading(false)
+        this.$root.$emit('callback', model)
 
-      // ready_to_submit && response_url && order_data formDataSubmit()
-      if (model.submitToMerchant()) {
-        this.store.formLoading(true)
         return
       }
+
+      // ready_to_submit && response_url && order_data formDataSubmit()
+      if (model.submitToMerchant()) return
+
+      if (model.inProgress() && model.waitForResponse()) {
+        this.locationPending()
+
+        return
+      }
+
+      this.store.formLoading(false)
 
       if (model.needVerifyCode()) {
         this.$router.push({ name: 'verify' }).catch(() => {})
-      } else if (model.inProgress() && model.waitForResponse()) {
-        this.store.formLoading(true)
-        this.locationPending()
       } else if (model.inProgress()) {
         this.store.hideError()
         this.$router.push({ name: 'success' }).catch(() => {})
@@ -245,9 +248,6 @@ export default {
     getOrder() {
       this.store
         .sendRequest('api.checkout.order', 'get', this.store.tokenFormParams())
-        .finally(() => {
-          this.store.formLoading(false)
-        })
         .then(this.orderSuccess)
         .catch(errorHandler)
     },
