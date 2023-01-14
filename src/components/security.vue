@@ -6,7 +6,7 @@
         type="button"
         @click="open"
       >
-        <f-svg ref="security" name="security" size="2x" />
+        <f-svg ref="security" name="security" :size="24" />
         <span v-text="$t('security_title')" />
       </button>
       <f-modal-base v-model="showModal">
@@ -25,7 +25,7 @@
         class="f-title-security f-btn-unstyled"
         type="button"
       >
-        <f-svg ref="reference" name="security" size="2x" />
+        <f-svg ref="reference" name="security" :size="svgSize" />
         <span v-text="$t('security_title')" />
       </button>
       <f-tooltip-default :target="() => $refs.security" @shown="shown">
@@ -68,6 +68,9 @@ export default {
   computed: {
     enableModal() {
       return isPhone || this.isWidthSm
+    },
+    svgSize() {
+      return this.isBreakpointDownLg ? 24 : 32
     },
   },
   mounted() {

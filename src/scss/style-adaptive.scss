@@ -149,10 +149,9 @@
     text-align: left;
     background-color: $container_bg;
 
-    .f-svg {
+    svg {
       min-width: px-to-rem(32px);
       margin-right: px-to-rem(2px);
-      font-size: px-to-rem(32px);
     }
 
     span {
