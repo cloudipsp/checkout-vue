@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<script src="https://unpkg.com/ipsp-js-sdk"></script>
+<div class="payment-button-container"></div>
+<script>
+  $checkout.get('PaymentButton', {
+    element: '.payment-button-container',
+    style: {
+      type: 'long', // short|long
+      color: 'black', // black|white
+      height: 38 // button height
+    },
+    data: {
+      merchant_id: 1396424,
+      currency: 'UAH',
+      amount: 200
+    }
+  }).on('success', function(model) {
+    console.log('success', model);
+  }).on('error', function(model) {
+    console.log('error', model);
+  });
+</script>
+</body>
+</html>
