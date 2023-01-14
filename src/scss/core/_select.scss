@@ -2,7 +2,7 @@
   padding: 0 px-to-rem(20px) px-to-rem(20px);
 }
 
-.f-select-text {
+.f-select-no-floating {
   display: flex;
   align-items: center;
   padding-top: 0;
@@ -10,6 +10,15 @@
 
   &:hover {
     text-decoration: none;
+  }
+}
+
+.f-select-floating {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-top: px-to-rem(-16px);
   }
 }
 

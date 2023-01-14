@@ -49,7 +49,7 @@ import { makeProp } from '@/utils/props'
 import {
   PROP_TYPE_ARRAY,
   PROP_TYPE_FUNCTION,
-  PROP_TYPE_STRING,
+  PROP_TYPE_NUMBER_STRING,
 } from '@/constants/props'
 import { attemptFocus, requestAF } from '@/utils/dom'
 import { CODE_DOWN, CODE_ENTER, CODE_UP } from '@/constants/key-codes'
@@ -62,9 +62,13 @@ export default {
     FSvg,
   },
   mixins: [attrsMixin],
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
   props: {
-    value: makeProp(PROP_TYPE_STRING),
-    options: makeProp(PROP_TYPE_ARRAY),
+    value: makeProp(PROP_TYPE_NUMBER_STRING),
+    options: makeProp(PROP_TYPE_ARRAY, []),
     filter: makeProp(
       PROP_TYPE_FUNCTION,
       search =>
@@ -105,7 +109,7 @@ export default {
   },
   methods: {
     click(value) {
-      this.$emit('input', value)
+      this.$emit('change', value)
       this.$refs.mt.$emit('hide')
     },
     shown() {

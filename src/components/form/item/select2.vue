@@ -1,8 +1,9 @@
 <template>
   <ValidationProvider ref="validation" v-bind="attrsValidation">
     <f-select
+      ref="input"
       v-model="innerValue"
-      :class="['f-select-text', classInput]"
+      :class="className"
       v-bind="attrs"
       v-on="$listeners"
     >
@@ -21,11 +22,27 @@
 <script>
 import FSelect from '@/components/form/item/helpers/select'
 import { itemMixin } from '@/mixins/item'
+import { makeProp } from '@/utils/props'
+import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 
 export default {
   components: {
     FSelect,
   },
   mixins: [itemMixin],
+  props: {
+    noLabelFloating: makeProp(PROP_TYPE_BOOLEAN, false),
+  },
+  computed: {
+    className() {
+      return [
+        {
+          'f-select-no-floating': this.noLabelFloating,
+          'f-select-floating': !this.noLabelFloating,
+        },
+        this.classInput,
+      ]
+    },
+  },
 }
 </script>
