@@ -29,7 +29,7 @@ export default {
       )
     ),
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
-      arrayIncludes(['sm', 'lg'], value)
+      arrayIncludes(['sm', 'lg', 'icon'], value)
     ),
     tag: makeProp(PROP_TYPE_STRING, 'button'),
     text: makeProp(PROP_TYPE_STRING),

@@ -366,6 +366,13 @@
   font-size: px-to-rem(18px);
 }
 
+.f-btn-icon {
+  width: px-to-rem(48px);
+  height: px-to-rem(48px);
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .f-btn-link {
   text-align: left;
   white-space: nowrap;
