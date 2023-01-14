@@ -74,8 +74,6 @@
 
 .f-form-group-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
   margin: 0 px-to-rem(20px) 0 0;
 
   .f-form-item-input {
@@ -83,7 +81,6 @@
   }
 
   .f-control-label {
-    order: -1;
     margin-bottom: px-to-rem(6px);
     font-size: px-to-rem(10px);
     line-height: px-to-rem(12px);

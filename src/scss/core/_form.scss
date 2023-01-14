@@ -43,8 +43,6 @@
 
 .f-form-group-inner {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .f-form-group-inner-select {
@@ -137,8 +135,8 @@
   padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
 }
 
-.f-form-item-sm + .f-control-label-p {
-  top: px-to-rem(10px);
+.f-control-48 {
+  height: px-to-rem(48px);
 }
 
 .f-form-control-select-wrapper {
@@ -191,8 +189,6 @@
 }
 
 .f-control-label {
-  font-size: px-to-rem(16px);
-  line-height: px-to-rem(24px);
   color: $label_color;
 }
 
@@ -201,6 +197,8 @@
   top: px-to-rem(17px);
   right: px-to-rem(28px);
   left: px-to-rem(12px);
+  font-size: px-to-rem(16px);
+  line-height: px-to-rem(24px);
   transition: transform ease-in-out 0.15s;
   transform-origin: 0 0;
   @include text-truncate();
@@ -212,6 +210,10 @@
   .f-form-group-amount & {
     padding-right: px-to-rem(40px);
   }
+}
+
+.f-control-label-p-sm {
+  top: px-to-rem(10px);
 }
 
 .f-control-label-hover {
@@ -243,7 +245,7 @@
   margin: 0;
   color: $input_prepend_color;
 
-  + div .f-form-control {
+  ~ div .f-form-control {
     padding-left: px-to-rem(40px);
 
     &:focus {

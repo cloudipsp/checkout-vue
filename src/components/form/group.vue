@@ -5,10 +5,32 @@
       class="f-form-control-description"
       v-text="$t(description)"
     />
+    <slot
+      v-if="noLabelFloating"
+      :id="safeId()"
+      name="label"
+      :classLabel="classLabel"
+      :label="$t(label)"
+    >
+      <label
+        v-if="label"
+        :class="classLabel"
+        :for="safeId()"
+        @click="focused"
+        v-text="$t(label)"
+      />
+    </slot>
     <div :class="classGroupInner">
       <label v-if="prepend" :for="safeId()" class="f-form-control-prepend">
         <f-svg :name="prepend" fw />
       </label>
+      <label
+        v-if="!noLabelFloating && label"
+        :class="classLabel"
+        :for="safeId()"
+        @click="focused"
+        v-text="$t(label)"
+      />
       <f-form-item
         ref="item"
         v-bind="attrs"
@@ -25,20 +47,6 @@
           <slot :name="slot" v-bind="slotData" />
         </template>
       </f-form-item>
-      <slot
-        :id="safeId()"
-        name="label"
-        :classLabel="classLabel"
-        :label="$t(label)"
-      >
-        <label
-          v-if="label"
-          :class="classLabel"
-          :for="safeId()"
-          @click="focused"
-          v-text="$t(label)"
-        />
-      </slot>
       <f-placeholder v-if="showPlaceholder" v-bind="attrs" />
     </div>
     <f-tooltip-error
@@ -116,6 +124,7 @@ export default {
         ...this.$attrs,
         id: this.safeId(),
         name: `f-${this.name}`,
+        noLabelFloating: this.noLabelFloating,
       }
     },
     classGroup() {
@@ -142,6 +151,8 @@ export default {
         'f-control-label',
         {
           'f-control-label-p': !this.noLabelFloating,
+          [`f-control-label-p-${this.$attrs.size}`]:
+            !this.noLabelFloating && this.$attrs.size,
           'f-control-label-active':
             (isExist(this.$attrs.value) && this.$attrs.value !== '') ||
             this.focus,
