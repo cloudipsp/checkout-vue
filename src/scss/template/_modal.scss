@@ -1,4 +1,6 @@
 .f-modal-security-title {
+  display: flex;
+  align-items: center;
   margin-bottom: px-to-rem(32px);
   color: $modal_security_title_color;
 

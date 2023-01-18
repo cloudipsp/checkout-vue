@@ -12,6 +12,7 @@
     />
     <date-picker
       v-else
+      ref="input"
       v-model="innerValue"
       v-bind="attrsDatepicker"
       v-on="$listeners"

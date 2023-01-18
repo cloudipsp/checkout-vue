@@ -115,7 +115,8 @@
 
 .f-btn-methods {
   left: -(px-to-rem(8px));
-  display: block;
+  display: flex;
+  align-items: center;
   padding: px-to-rem(8px) px-to-rem(8px);
 }
 

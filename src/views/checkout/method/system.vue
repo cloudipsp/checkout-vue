@@ -64,6 +64,12 @@ export default {
   },
   computed: {
     ...mapState(['tabs']),
+    method() {
+      return this.$route.params.method
+    },
+    system() {
+      return this.$route.params.system
+    },
     id() {
       return `${this.country}_${this.logo}`
     },
@@ -79,16 +85,20 @@ export default {
   },
   methods: {
     goMethod() {
-      this.$router.push({ name: this.$route.params.method }).catch(() => {})
+      this.$router.push({ name: this.method }).catch(() => {})
     },
     initSystem() {
-      let { name, iban, logo, form, country, method } =
-        this.tabs[this.$route.params.method][this.$route.params.system]
+      let {
+        name,
+        iban,
+        logo,
+        form,
+        country = '',
+      } = this.tabs[this.method][this.system]
 
       this.name = name
       this.iban = iban
       this.logo = logo
-      this.method = method
       this.form = form || {}
       this.country = country.toLowerCase()
     },

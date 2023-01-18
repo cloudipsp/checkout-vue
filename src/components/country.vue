@@ -4,6 +4,7 @@
     component="select2"
     size="sm"
     v-bind="attrs"
+    no-label-floating
     v-on="fListeners"
     @search="onSearch"
   >

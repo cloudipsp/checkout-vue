@@ -3,7 +3,7 @@
     <f-header />
     <div class="f-wrapper">
       <f-scrollbar-vertical class="f-center" wrap-class="f-center-wrap">
-        <div v-if="full_screen" class="f-top">
+        <div v-if="showTop" class="f-top">
           <div class="f-top-inner" />
         </div>
         <div class="f-method">
@@ -31,6 +31,9 @@ export default {
   },
   computed: {
     ...mapState('options', ['full_screen']),
+    showTop() {
+      return this.full_screen && !this.$route.meta.noTop
+    },
   },
 }
 </script>

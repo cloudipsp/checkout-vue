@@ -147,10 +147,11 @@
 }
 
 .f-title-security {
+  display: inline-flex;
+  align-items: center;
   padding: px-to-rem(3px);
   font-size: px-to-rem(12px);
   color: $security_color;
-  text-align: center;
   cursor: pointer;
   transition: color ease-in-out 0.15s;
 

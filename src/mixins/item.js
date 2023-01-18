@@ -22,7 +22,7 @@ export const itemMixin = {
     inputClass: makeProp(PROP_TYPE_STRING),
     rules: makeProp(PROP_TYPE_OBJECT_STRING),
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
-      arrayIncludes(['sm'], value)
+      arrayIncludes(['sm', '48'], value)
     ),
     variant: makeProp(PROP_TYPE_STRING, 'default', value =>
       arrayIncludes(['default', 'secondary'], value)

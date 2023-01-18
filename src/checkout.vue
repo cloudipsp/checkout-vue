@@ -28,20 +28,30 @@ export default {
       'full_screen',
       'active_tab',
       'methods',
+      'theme',
     ]),
     ...mapState(['has_fields']),
     className() {
-      return { 'f-embed': !this.full_screen }
+      return [
+        `f-theme-${this.theme.type}`,
+        {
+          'f-embed': !this.full_screen,
+          'f-no-embed': this.full_screen,
+        },
+      ]
     },
     style() {
       return {
         height: this.height,
       }
     },
+    isMenu() {
+      return this.$route.name === 'menu'
+    },
   },
   watch: {
     isBreakpointDownLg(value) {
-      if (value) return
+      if (value || !this.isMenu) return
 
       let name = getRouteName(this.methods, this.last, this.has_fields)
 
@@ -95,7 +105,7 @@ export default {
       this.$router.push({ name: 'error', query: { errors } }).catch(() => {})
     },
     watchRoute() {
-      if (this.$route.name === 'menu') return
+      if (this.isMenu) return
 
       this.last = this.$route.name
     },

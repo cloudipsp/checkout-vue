@@ -9,14 +9,14 @@
 
 <script>
 import mask from '@/utils/masker'
-import { PROP_TYPE_STRING } from '@/constants/props'
+import { PROP_TYPE_NUMBER_STRING, PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
 export default {
   inheritAttrs: false,
   props: {
     id: makeProp(PROP_TYPE_STRING, undefined, true),
-    value: makeProp(PROP_TYPE_STRING),
+    value: makeProp(PROP_TYPE_NUMBER_STRING),
     placeholder: makeProp(PROP_TYPE_STRING),
     mask: makeProp(PROP_TYPE_STRING),
   },
