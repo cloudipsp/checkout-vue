@@ -156,7 +156,7 @@ export default {
           'f-control-label-active':
             (isExist(this.$attrs.value) && this.$attrs.value !== '') ||
             this.focus,
-          'f-control-label-hover': this.hover,
+          'f-control-label-hover': !this.noLabelFloating && this.hover,
           'f-control-label-focused': this.focus,
         },
       ]

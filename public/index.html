@@ -625,9 +625,26 @@
               merchant_id: 1601840,
             },
           },
+          installments: {
+            options: {
+              methods: ['installments'],
+              api_domain: 'dev2.pay.fondy.eu',
+              active_tab: 'installments',
+              theme: {
+                type: 'dark',
+                preset: 'euphoric_pink',
+              },
+            },
+            params: {
+              // amount: 500000,
+              // currency: 'UAH',
+              // merchant_id: 5198,
+              token: '77b4d55873c090dfe74a48378c2977854d13ddac',
+            },
+          }
         }
 
-        window.app = render('#app', 'button')
+        window.app = render('#app', 'max')
         // render('#app2', 'min')
         // render('#app3', 'max2')
 

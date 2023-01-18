@@ -1,0 +1,325 @@
+<template>
+  <div
+    :class="$style.wrapper"
+    role="listitem"
+    tabindex="0"
+    @keydown.enter="click"
+    @click="click"
+  >
+    <f-icon
+      :name="item.logo"
+      :type="item.method"
+      :class="$style.icon"
+      :size="iconSize"
+    />
+    <div :class="$style.header">
+      <div :class="$style.name">{{ item.name }}</div>
+      <div :class="$style.desc">
+        <span v-text="$t('from_amount_month', [amountMonth])" />
+        <span> {{ min }}–{{ max }} {{ $t('payments') }}</span>
+      </div>
+    </div>
+    <div :class="$style['col-parts']">
+      <f-form-group
+        v-model="parts"
+        :class="$style.parts"
+        component="select2"
+        :options="list"
+        :name="$t('Payments')"
+        :input-class="$style.select"
+        no-label-floating
+        size="48"
+        @input="input"
+      />
+    </div>
+    <div :class="$style['col-amount']">
+      <div :class="$style['wrapper-amount']">
+        <f-amount
+          :value="amountTotal"
+          :currency="$t('currency_month', [$t(currency)])"
+          :amount-class="$style.amount"
+          :currency-class="$style.currency"
+          sup
+        />
+      </div>
+    </div>
+    <div :class="$style['col-btn']">
+      <f-button variant="success" size="icon" @click="goSystem">
+        <span><f-svg name="arrow-right" size="lg" /></span>
+      </f-button>
+    </div>
+  </div>
+</template>
+
+<script>
+import FIcon from '@/components/icon'
+import FSvg from '@/components/svg'
+import FAmount from '@/components/base/amount'
+import FButton from '@/components/button/button'
+import { makeProp } from '@/utils/props'
+import { PROP_TYPE_OBJECT } from '@/constants/props'
+import { mapState } from '@/utils/store'
+import { parseSelect } from '@/utils/sort'
+import { resizeMixin } from '@/mixins/resize'
+
+export default {
+  components: {
+    FIcon,
+    FSvg,
+    FAmount,
+    FButton,
+  },
+  mixins: [resizeMixin],
+  props: {
+    item: makeProp(PROP_TYPE_OBJECT),
+  },
+  data() {
+    return {
+      parts: 0,
+      amountTotal: 0,
+    }
+  },
+  computed: {
+    ...mapState('params', ['currency', 'token', 'button', 'amount']),
+    min() {
+      return this.item.available_payments_number[0]
+    },
+    max() {
+      return this.item.available_payments_number[
+        this.item.available_payments_number.length - 1
+      ]
+    },
+    amount_min() {
+      return this.item.amount_min
+    },
+    amountMonth() {
+      return (
+        this.$n(this.amount_min / 100, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }) +
+        ' ' +
+        this.$t(this.currency)
+      )
+    },
+    list() {
+      return this.item.available_payments_number.map(parseSelect)
+    },
+    iconSize() {
+      return this.isBreakpointDownMd ? 36 : 48
+    },
+  },
+  created() {
+    this.parts = this.max
+    this.amountTotal = this.amount_min
+  },
+  methods: {
+    goSystem() {
+      this.$router
+        .push({
+          name: 'installments-system',
+          params: { method: 'installments', system: this.item.id },
+          query: { parts: this.parts },
+        })
+        .catch(() => {})
+    },
+    click() {
+      if (!this.isBreakpointDownMd) return
+
+      this.goSystem()
+    },
+    input(value) {
+      this.store
+        .sendRequest(
+          'api.checkout.partial',
+          'calc',
+          {
+            payment_id: this.item.id,
+            payment_parts: value,
+            token: this.token,
+            button: this.button,
+            amount: this.token || this.button ? undefined : this.amount,
+          },
+          { cached: true }
+        )
+        .then(model => {
+          this.amountTotal = model.attr('amount_partial')
+        })
+    },
+  },
+}
+</script>
+
+<style lang="scss" module>
+.wrapper {
+  display: flex;
+  cursor: pointer;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      cursor: default;
+    }
+  }
+}
+
+.icon {
+  margin-right: px-to-rem(12px);
+  border-radius: px-to-rem(8px);
+  box-shadow: 0 px-to-rem(1px) px-to-rem(4px) $bank_icon_shadow;
+}
+
+.header {
+  flex-basis: 0;
+  flex-grow: 1;
+  padding-right: px-to-rem(32px);
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: px-to-rem(16px);
+  line-height: px-to-rem(18px);
+  min-height: px-to-rem(36px);
+  margin-bottom: px-to-rem(8px);
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      min-height: px-to-rem(48px);
+      font-size: px-to-rem(14px);
+      line-height: px-to-rem(20px);
+    }
+  }
+
+  :global(.f-theme-light) & {
+    color: #3d3d3d;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #fff;
+  }
+}
+
+.desc {
+  font-size: px-to-rem(14px);
+  line-height: px-to-rem(20px);
+
+  :global(.f-theme-light) & {
+    color: #818c99;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #838688;
+  }
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.col-parts {
+  display: none;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      display: block;
+      flex-basis: 0;
+      flex-grow: 1;
+      padding-right: px-to-rem(32px);
+    }
+  }
+}
+
+.parts {
+  display: flex;
+  align-items: center;
+
+  label {
+    font-weight: 400;
+    font-size: px-to-rem(14px);
+    line-height: px-to-rem(20px);
+    margin-right: px-to-rem(10px);
+
+    :global(.f-theme-light) & {
+      color: #818c99;
+    }
+
+    :global(.f-theme-dark) & {
+      color: #838688;
+    }
+  }
+
+  :global(.f-form-group-inner) {
+    width: px-to-rem(72px);
+  }
+}
+
+.select {
+  width: px-to-rem(72px);
+}
+
+.col-amount {
+  display: none;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      display: block;
+      flex-basis: 0;
+      flex-grow: 1;
+      padding-right: px-to-rem(32px);
+    }
+  }
+}
+
+.wrapper-amount {
+  display: flex;
+  align-items: center;
+  min-height: px-to-rem(48px);
+  white-space: nowrap;
+}
+
+.amount {
+  font-weight: 600;
+  font-size: px-to-rem(24px);
+  line-height: px-to-rem(28px);
+
+  :global(.f-theme-light) & {
+    color: #3d3d3d;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #fff;
+  }
+
+  sup {
+    font-size: px-to-rem(14px);
+  }
+}
+
+.currency {
+  font-weight: 400;
+  font-size: px-to-rem(14px);
+  line-height: px-to-rem(18px);
+
+  :global(.f-theme-light) & {
+    color: #818c99;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #838688;
+  }
+}
+
+.col-btn {
+  display: none;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+}
+</style>

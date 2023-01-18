@@ -57,6 +57,7 @@ export default {
         local_methods: 'local',
         emoney: 'wallet',
         most_popular: 'star',
+        installments: 'loans',
       },
     }
   },

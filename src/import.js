@@ -244,3 +244,16 @@ export const FLoadingDefault = () =>
 
 export const FLoadingCustom = () =>
   import(/* webpackChunkName: "44" */ '@/components/loading-custom')
+
+export const LoadingMono = () =>
+  import(/* webpackChunkName: "45" */ '@/views/checkout/loading-monobank')
+
+export const Installments = () =>
+  import(
+    /* webpackChunkName: "46" */ '@/views/checkout/method/installments/list'
+  )
+
+export const InstallmentsSystem = () =>
+  import(
+    /* webpackChunkName: "47" */ '@/views/checkout/method/installments/system'
+  )

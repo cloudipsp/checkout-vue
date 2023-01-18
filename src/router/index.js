@@ -25,6 +25,9 @@ import {
   Menu,
   BlankWallets,
   MostPopular,
+  Installments,
+  InstallmentsSystem,
+  LoadingMono,
 } from '@/import'
 
 const card = 'card'
@@ -36,6 +39,7 @@ const sepa = 'sepa'
 const receipt = 'receipt'
 const wallets = 'wallets'
 const loans = 'loans'
+const installments = 'installments'
 const emoney = 'emoney'
 const most_popular = 'most_popular'
 const success = 'success'
@@ -124,6 +128,11 @@ export default name => {
                 component: Loans,
               },
               {
+                path: installments,
+                name: installments,
+                component: Installments,
+              },
+              {
                 path: emoney,
                 name: emoney,
                 component: Emoney,
@@ -132,6 +141,11 @@ export default name => {
                 path: most_popular,
                 name: most_popular,
                 component: MostPopular,
+              },
+              {
+                path: 'installments/:system',
+                name: 'installments-system',
+                component: InstallmentsSystem,
               },
               {
                 path: ':method/:system',
@@ -153,6 +167,15 @@ export default name => {
                 path: menu,
                 name: menu,
                 component: Menu,
+              },
+              {
+                name: 'loading-monobank',
+                path: 'loading-monobank/:system',
+                component: LoadingMono,
+                meta: {
+                  noLoading: true,
+                  noTop: true,
+                },
               },
             ],
           },
