@@ -14,7 +14,7 @@ import { sendRequest } from '@/utils/api'
 import { isExist } from '@/utils/inspect'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from '@/store/setup'
-import loadButton, { getLabel } from '@/store/button'
+import loadButton from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadCardImg from '@/store/card-img'
 import { methods, most_popular_icons, tabs, tabs_order } from '@/store/parse'
@@ -384,11 +384,17 @@ class Store extends Model {
 
     params.custom = Object.fromEntries(
       Object.entries(params.custom).map(([name, value]) => {
+        let fields = Object.fromEntries(
+          this.state.fields.map(({ name, label, description }) => [
+            name,
+            description || label,
+          ])
+        )
         return [
           name,
           {
             value,
-            label: getLabel(name) || i18n.t(name),
+            label: fields[name] || i18n.t(name),
           },
         ]
       })

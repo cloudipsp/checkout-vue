@@ -6,8 +6,6 @@ import { parse, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
 import { sort } from '@/utils/sort'
 
-let config = {}
-
 export default function (api_domain, button, button_body) {
   if (button_body.token)
     return Promise.resolve(button_body).then(parseOptions, () => {})
@@ -18,10 +16,7 @@ export default function (api_domain, button, button_body) {
 
   return loadAxios()
     .then(axios => axios.get(`${domain}/buttons/${button}.json`))
-    .then(({ data }) => {
-      config = data
-      return data
-    })
+    .then(({ data }) => data)
     .then(parseOptions, () => {})
 }
 
@@ -55,7 +50,7 @@ function parseOptions({
 
   if (expire && parse(expire, 'DD.MM.YYYY hh:mm') < createDate())
     return Promise.reject('button_expired')
-
+  console.log(status)
   if (status && status !== 'enabled')
     return Promise.reject('button_status_not_active')
 
@@ -92,7 +87,7 @@ function parseOptions({
 }
 
 function parseField({
-  value,
+  value = '',
   name,
   label,
   placeholder,
@@ -120,10 +115,4 @@ function parseField({
     readonly,
     disabled: readonly,
   }
-}
-
-export const getLabel = name => {
-  if (!config.fields) return
-  if (!config.fields[name]) return
-  return config.fields[name].label
 }
