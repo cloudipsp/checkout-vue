@@ -292,6 +292,7 @@ export default {
             pattern: patternUrlImg,
           },
           hide_button_title: typeBoolean,
+          amount_readonly: typeBoolean,
         },
       },
       params: {

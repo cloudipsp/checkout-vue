@@ -63,6 +63,7 @@ Name                  | Type        | Default                 | Description     
 `subscription`        | Object      |                         |                                                                                     |
 `loading`             | String      |                         | format url                                                                          |
 `hide_button_title`   | Boolean     | false                   |                                                                                     |
+`amount_readonly`     | Boolean     | true                    |                                                                                     |
 
 ### options.endpoint
 Name                  | Type        | Default                                 | Description

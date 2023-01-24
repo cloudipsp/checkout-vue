@@ -55,6 +55,7 @@ const config = {
     },
     loading: '',
     hide_button_title: false,
+    amount_readonly: true,
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
@@ -115,7 +116,6 @@ const config = {
   validate_expdate: true,
   isOnlyCard: true,
   region: '',
-  amount_readonly: true,
   show_gdpr_frame: false,
   subscription: configSubscription.disabled,
   can_make_payment: '',

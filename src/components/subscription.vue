@@ -165,7 +165,7 @@ export default {
       'period',
     ]),
     ...mapState('params', ['amount']),
-    ...mapState(['amount_readonly']),
+    ...mapState('options', ['amount_readonly']),
     showTrial() {
       return this.optionTrial && !this.unlimited
     },

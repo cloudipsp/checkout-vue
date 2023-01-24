@@ -89,13 +89,8 @@ export default {
     }
   },
   computed: {
-    ...mapState([
-      'order',
-      'amount_readonly',
-      'amount_with_fee',
-      'card_type_fee',
-      'actual_amount',
-    ]),
+    ...mapState(['order', 'amount_with_fee', 'card_type_fee', 'actual_amount']),
+    ...mapState('options', ['amount_readonly']),
     ...mapState('options', { showFee: 'fee' }),
     ...mapState('params', [
       'currency',

@@ -64,6 +64,7 @@ function parseOptions({
         readonly: recurring_readonly,
       },
       api_domain: host,
+      amount_readonly: Boolean(amount_readonly),
     },
     params: {
       ...params,
@@ -79,7 +80,6 @@ function parseOptions({
       button: token,
     },
     fields: Object.values(fields).sort(sort('p')).map(parseField),
-    amount_readonly: Boolean(amount_readonly),
     subscription:
       configSubscription[getType(button_type === 'recurring', recurring_state)],
     currencies,

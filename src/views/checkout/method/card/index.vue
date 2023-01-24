@@ -132,7 +132,12 @@ export default {
   },
   computed: {
     ...mapState(['read_only', 'cards', 'submited']),
-    ...mapStateGetSet(['need_validate_card']),
+    ...mapStateGetSet([
+      'need_validate_card',
+      'card_type_fee',
+      'actual_amount',
+      'notification',
+    ]),
     ...mapState('params', ['token', 'button', 'merchant_id']),
     ...mapStateGetSet('params', [
       'cvv2',
@@ -141,12 +146,7 @@ export default {
       'code',
       'hash',
     ]),
-    ...mapStateGetSet([
-      'card_type_fee',
-      'actual_amount',
-      'notification',
-      'amount_readonly',
-    ]),
+    ...mapState('options', ['amount_readonly']),
     validExpiryDate() {
       if (this.disabledExpiryDate) return
       if (!this.need_validate_card) return {}

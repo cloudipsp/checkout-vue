@@ -133,6 +133,10 @@ class Validate extends Model {
       delete this.data.params.currency
     }
 
+    if (this.data.options) {
+      delete this.data.options.amount_readonly
+    }
+
     this.attr('data.params.token', token)
   }
 }
