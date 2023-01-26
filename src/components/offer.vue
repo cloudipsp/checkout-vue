@@ -31,7 +31,7 @@ export default {
     url() {
       return this.$te('offerta_url')
         ? this.$t('offerta_url')
-        : this.offerta_url.replace(/{lang}/g, this.lang)
+        : (this.offerta_url || '').replace(/{lang}/g, this.lang)
     },
   },
 }
