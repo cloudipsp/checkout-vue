@@ -6,6 +6,7 @@
         :ref="method"
         type="button"
         :class="className(method)"
+        :data-e2e-menu-item="method"
         @click="click(method)"
       >
         <f-svg

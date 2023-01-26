@@ -28,6 +28,7 @@
         ref="items"
         type="button"
         :class="classItem(item, key)"
+        :data-e2e-select-item="item.value"
         @click="click(item.value)"
         @keydown="navigate"
         @focus="focus(key)"

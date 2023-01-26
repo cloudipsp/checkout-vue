@@ -4,6 +4,7 @@
     component="select2"
     size="sm"
     v-bind="attrs"
+    data-e2e-country
     no-label-floating
     v-on="fListeners"
     @search="onSearch"
@@ -30,6 +31,7 @@ import { PROP_TYPE_ARRAY } from '@/constants/props'
 
 export default {
   mixins: [attrsMixin, listenersMixin],
+  inheritAttrs: false,
   props: {
     list: makeProp(PROP_TYPE_ARRAY, []),
   },
