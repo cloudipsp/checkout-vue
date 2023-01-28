@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:66
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 13:44+0300\n"
+"POT-Creation-Date: 2023-01-30 23:22+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -62,6 +62,10 @@ msgstr ""
 msgid "most_popular"
 msgstr ""
 
+#: src/i18n/process/methods.js:12
+msgid "installments"
+msgstr ""
+
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "Dag"
@@ -87,30 +91,38 @@ msgid "error"
 msgstr "fejl"
 
 #: src/i18n/process/templates.js:4
+msgid "gdpr_yapily"
+msgstr ""
+
+#: src/i18n/process/templates.js:5
 msgid "gdpr_alert_text"
 msgstr ""
 "Vi bruger cookies på dette websted for at gøre det nemmere for dig at "
 "foretage onlinebetalinger."
 
-#: src/i18n/process/templates.js:5
+#: src/i18n/process/templates.js:6
 msgid "learn_more"
 msgstr "Lær mere"
 
-#: src/i18n/process/templates.js:6
+#: src/i18n/process/templates.js:7 src/i18n/process/translate.js:97
+msgid "gdpr_modal_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:8
 msgid "save_card"
 msgstr "Gem mit kort til senere betalinger"
 
-#: src/i18n/process/templates.js:7
+#: src/i18n/process/templates.js:9
 msgid "its_safe"
 msgstr "Det er sikkert"
 
-#: src/i18n/process/templates.js:8
+#: src/i18n/process/templates.js:10
 msgid "gdpr_modal_safe_title"
 msgstr ""
 "Dine kortdata er tokeniseret, denne metode er sikrere og mere bekvem at "
 "genbruge dem køb"
 
-#: src/i18n/process/templates.js:9
+#: src/i18n/process/templates.js:11
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>Vi registrerer ikke dine kortoplysninger, når du indtaster dem. Faktisk "
@@ -121,415 +133,355 @@ msgstr ""
 "dem. Tokendata har ikke mulighed for at være af værdi uden for Fondy "
 "betalingstjeneste."
 
-#: src/i18n/process/templates.js:10
-msgid "not_now"
-msgstr "Ikke nu"
-
-#: src/i18n/process/templates.js:11
-msgid "accept"
-msgstr "Jeg er enig"
-
 #: src/i18n/process/templates.js:12
 msgid "close"
 msgstr "Lukke"
 
 #: src/i18n/process/templates.js:13
+msgid "not_now"
+msgstr "Ikke nu"
+
+#: src/i18n/process/templates.js:14
+msgid "accept"
+msgstr "Jeg er enig"
+
+#: src/i18n/process/templates.js:15
 msgid "pay"
 msgstr "Betale"
 
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:16
 msgid "demo-desc"
 msgstr ""
 "Dette er et demosystem. Mens du indtaster dine kortoplysninger, vil "
 "betalingen ikke blive behandlet."
 
-#: src/i18n/process/templates.js:15
-msgid "angle-down"
-msgstr "vippe"
-
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:17
 msgid "use_other_card"
 msgstr "Indtast detaljerne for et andet kort"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:18
 msgid "expires_on"
 msgstr "Udløbsdato"
 
-#: src/i18n/process/templates.js:20
-msgid "email"
-msgstr "E-mail"
-
-#: src/i18n/process/templates.js:21
-msgid "label"
-msgstr "mærke"
-
-#: src/i18n/process/templates.js:22
-msgid "warning"
-msgstr ""
-
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:19
 msgid "datepicker"
 msgstr "vindue til valg af dato eller datointerval"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:20
 msgid "model"
 msgstr "model"
 
-#: src/i18n/process/templates.js:25
-msgid "default_country"
-msgstr "Søg efter land"
-
-#: src/i18n/process/templates.js:26
-msgid "check"
-msgstr ""
-
-#: src/i18n/process/templates.js:27
-msgid "bars"
-msgstr ""
-
-#: src/i18n/process/templates.js:28 src/i18n/process/translate.js:84
+#: src/i18n/process/templates.js:21 src/i18n/process/translate.js:84
 msgid "all_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:29 src/i18n/process/translate.js:4
+#: src/i18n/process/templates.js:22 src/i18n/process/translate.js:4
 msgid "verification_t"
 msgstr "Bekræftelse af kort"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:23
 msgid "verification_"
 msgstr "verifikation_"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:24
 msgid "see_more"
 msgstr "Vis det fuldt ud"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:25
 msgid "order_details"
 msgstr "Bestillingsoplysninger"
 
-#: src/i18n/process/templates.js:33
-msgid "currencies"
-msgstr ""
-
-#: src/i18n/process/templates.js:36
+#: src/i18n/process/templates.js:28
 msgid "submit3ds_title"
 msgstr "Betalingen er ikke gennemført"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:29
 msgid "submit3ds_text"
 msgstr "Indtast venligst en anden kode for at bekræfte"
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:30
 msgid "submit3ds_submit"
 msgstr "Vær så venlig, prøv igen"
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:31
 msgid "submit3ds_wait"
 msgstr ""
 "Du vil derefter blive omdirigeret til bankens websted for at gennemføre "
 "betalingen inden for {0} sekunder"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:32
 msgid "show"
 msgstr "vise"
 
-#: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:33 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "Vi beklager, men din betaling mislykkedes"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:34
 msgid "server_trouble_title"
 msgstr "Ups.."
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:35
 msgid "server_trouble_desc"
 msgstr ""
 "Der var et problem, og vi forsøger at løse det. Venligst gå tilbage til din "
 "ordre og tjek igen."
 
-#: src/i18n/process/templates.js:44
-msgid "offer"
-msgstr "tilbud"
-
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:36
 msgid "offer_t"
 msgstr ""
 "tilbud_tJeg accepterer <a href=\"{0}\" target=\"_blank\">bid vilkår og "
 "betingelser. </a>"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:37
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:38
 msgid "trial_period"
 msgstr "Prøvetid"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:39
 msgid "first_payment"
 msgstr "Første betaling"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:40
 msgid "total_amount"
 msgstr "Det samlede beløb, der skal betales"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:41
 msgid "fee"
 msgstr "provisionsbetaling"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:42
 msgid "amount"
 msgstr "skyldigt beløb"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:43
 msgid "discount"
 msgstr "rabat"
 
-#: src/i18n/process/templates.js:53
-msgid "security"
-msgstr "sikkerhed"
-
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:44
 msgid "security_title"
 msgstr "Stærk autentificering af kunder"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:45
 msgid "security_text"
 msgstr ""
 "<p>I henhold til  PCI DSS standarden<p>optaget i det Globale Visa-register "
 "og bekræftet af Mastercard"
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:46
 msgid "other_payment_method"
 msgstr "Eller betal med"
 
-#: src/i18n/process/templates.js:57
-msgid "switch"
-msgstr "skifte"
-
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:47
 msgid "subscription"
 msgstr "Gentag automatisk denne betaling"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:48
 msgid "subscription_amount"
 msgstr "Beløb af gentagen betaling"
 
-#: src/i18n/process/templates.js:60
-msgid "number_of_payments"
-msgstr "Antallet af betalinger"
-
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:49
 msgid "unlimited"
 msgstr "ubegrænset"
 
-#: src/i18n/process/templates.js:62
-msgid "subscription_every"
-msgstr "Hver"
-
-#: src/i18n/process/templates.js:63
-msgid "subscription_period"
-msgstr "Tidsinterval"
-
-#: src/i18n/process/templates.js:64
-msgid "subscription_start_time"
-msgstr "Start dato"
-
-#: src/i18n/process/templates.js:65
-msgid "subscription_end_time"
-msgstr "Afslutningsdato"
-
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:50
 msgid "verification_desc"
 msgstr ""
 "For at bekræfte dit kort skal vi opkræve et mindre bekræftelsesgebyr på din "
 "bank konto inden for 15 minutter."
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:51
 msgid "customer_name"
 msgstr "Navn og Efternavn"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:52
 msgid "customer_name_utf8"
 msgstr "Navn og Efternavn"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:53
 msgid "customer_address"
 msgstr "Adresse (gade, hus, lejlighed)"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:54
 msgid "customer_zip"
 msgstr "Postnummer"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:55
 msgid "customer_city"
 msgstr "By"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:56
 msgid "customer_country"
 msgstr "Land"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:57
 msgid "customer_state"
 msgstr "Stat/Provins/Region"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:58
 msgid "customer_phonemobile"
 msgstr "Telefon"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:59
 msgid "customer_email"
 msgstr "E-mail"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:60
 msgid "demo-title"
 msgstr "Demo-tilstand"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:61
 msgid "verify"
 msgstr "verificere"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:62
 msgid "success"
 msgstr "succesfuldt"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:63
 msgid "system"
 msgstr "system"
 
-#: src/i18n/process/templates.js:80
-msgid "system_search"
-msgstr "Søg på banknavn, IBAN eller BIC"
+#: src/i18n/process/templates.js:64
+msgid "use_monobank_application"
+msgstr ""
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:65
 msgid "load_more"
 msgstr "Vis mere..."
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:67
 msgid "pay_with_card"
 msgstr "Betal med kort"
 
-#: src/i18n/process/templates.js:84
-msgid "card_number"
-msgstr "Kortnummer"
-
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:68
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:86
-msgid "expiry_date"
-msgstr "Måned/år"
-
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:69
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:88
-msgid "cvv2"
-msgstr "CVV2/CVC2"
-
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:70
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:71
 msgid "cvv2_help"
 msgstr "{0}-numerisk kode på bagsiden af ​​kortet"
 
-#: src/i18n/process/templates.js:91
-msgid "verification_code"
-msgstr "Bekræftelseskode"
+#: src/i18n/process/templates.js:72
+msgid "from_amount_month"
+msgstr ""
 
-#: src/i18n/process/templates.js:92
-msgid "verification_amount"
-msgstr "Beløbet for tjek"
+#: src/i18n/process/templates.js:73
+msgid "payments"
+msgstr ""
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:74
+msgid "Payments"
+msgstr ""
+
+#: src/i18n/process/templates.js:75
+msgid "currency_month"
+msgstr ""
+
+#: src/i18n/process/templates.js:76
+msgid "installments-system"
+msgstr ""
+
+#: src/i18n/process/templates.js:77
+msgid "conditions"
+msgstr ""
+
+#: src/i18n/process/templates.js:78
+msgid "loading-monobank"
+msgstr ""
+
+#: src/i18n/process/templates.js:79
 msgid "most_popular_methods_in"
 msgstr ""
 
-#: src/i18n/process/templates.js:94 src/i18n/process/translate.js:83
+#: src/i18n/process/templates.js:80 src/i18n/process/translate.js:83
 msgid "see_all_other_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:95
-msgid "arrow-right"
-msgstr ""
-
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:81
 msgid "mfo_title"
 msgstr "Betalingsoplysninger for ordren # {0}"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:82
 msgid "ibox_title"
 msgstr "Dit ordre-id (betales via iBox)"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:83
 msgid "full_requesites"
 msgstr "Modtagers bankoplysninger"
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:84
 msgid "full_requesites_explain"
 msgstr ""
 "Du behøver ikke at angive betalingsoplysninger, men det kan være nyttigt at "
 "gemme dem til reference."
 
-#: src/i18n/process/templates.js:100
+#: src/i18n/process/templates.js:85
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:86
 msgid "receiver"
 msgstr "Modtager"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:87
 msgid "current_bill"
 msgstr "Bankkontonummer (IBAN)"
 
-#: src/i18n/process/templates.js:103
+#: src/i18n/process/templates.js:88
 msgid "usreou"
 msgstr "Skatteidentifikationsnummer(TIN)"
 
-#: src/i18n/process/templates.js:104
+#: src/i18n/process/templates.js:89
 msgid "bank"
 msgstr "Bank-navn"
 
-#: src/i18n/process/templates.js:105
+#: src/i18n/process/templates.js:90
 msgid "mfo"
 msgstr "Bankkode (BIC or MFO)"
 
-#: src/i18n/process/templates.js:106
+#: src/i18n/process/templates.js:91
 msgid "purpose"
 msgstr "Beskrivelse"
 
-#: src/i18n/process/templates.js:107
+#: src/i18n/process/templates.js:92
 msgid "receipt_id"
 msgstr "Ordre ID"
 
-#: src/i18n/process/templates.js:108
+#: src/i18n/process/templates.js:93
 msgid "end_date"
 msgstr "Betalingsfristen"
 
-#: src/i18n/process/templates.js:109
+#: src/i18n/process/templates.js:94
 msgid "ibox_desc"
 msgstr ""
 "Alle iBox-terminaler, der accepterer betalinger, er angivet på <a href="
 "\"https://ibox.ua/map\" target=\"_blank\">kortet</a>"
 
-#: src/i18n/process/templates.js:110
+#: src/i18n/process/templates.js:95
 msgid "save_receipt"
 msgstr "Gem kvittering"
 
-#: src/i18n/process/templates.js:111
+#: src/i18n/process/templates.js:96
 msgid "save_qr_code"
 msgstr "Gem på smartphone"
 
-#: src/i18n/process/templates.js:112
+#: src/i18n/process/templates.js:97
 msgid "qr_code_text"
 msgstr "Scan denne QR-kode for at gemme kvitteringen på din smartphone"
 
-#: src/i18n/process/templates.js:113
+#: src/i18n/process/templates.js:98
 msgid "ibox_info"
 msgstr ""
 "<p>For at betale for din ordre skal du bruge søgefunktionen til at finde "
@@ -537,23 +489,23 @@ msgstr ""
 "annulleret efter udløbet af den angivne periode.<p>Vi kan ikke acceptere "
 "betaling for denne ordre gennem andre terminaler end iBox."
 
-#: src/i18n/process/templates.js:114
+#: src/i18n/process/templates.js:99
 msgid "sepa_t"
 msgstr "Angiv dine bankkontooplysninger"
 
-#: src/i18n/process/templates.js:115 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:100 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "Navn"
 
-#: src/i18n/process/templates.js:116
+#: src/i18n/process/templates.js:101
 msgid "bank_desc"
 msgstr "Vi omdirigerer dig til bankens hjemmeside for at gennemføre betalingen"
 
-#: src/i18n/process/templates.js:117
+#: src/i18n/process/templates.js:102
 msgid "payment_id"
 msgstr "Betalings-id"
 
-#: src/i18n/process/templates.js:34 src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:26
 msgid "\""
 msgstr ""
 
@@ -841,12 +793,99 @@ msgid "placeholder_SORT_CODE"
 msgstr ""
 
 #: src/i18n/process/translate.js:91
-msgid "address_number"
+msgid "message_address_number"
 msgstr ""
 
 #: src/i18n/process/translate.js:92
-msgid "address_street"
+msgid "message_address_street"
 msgstr ""
+
+#: src/i18n/process/translate.js:93
+msgid "message_customer_name_utf8"
+msgstr ""
+
+#: src/i18n/process/translate.js:94
+msgid "placeholder_customer_name_utf8"
+msgstr ""
+
+#: src/i18n/process/translate.js:95
+msgid "placeholder_address_street"
+msgstr ""
+
+#: src/i18n/process/translate.js:99
+msgid "email"
+msgstr "E-mail"
+
+#: src/i18n/process/translate.js:100
+msgid "currencies"
+msgstr ""
+
+#: src/i18n/process/translate.js:101
+msgid "number_of_payments"
+msgstr "Antallet af betalinger"
+
+#: src/i18n/process/translate.js:102
+msgid "subscription_every"
+msgstr "Hver"
+
+#: src/i18n/process/translate.js:103
+msgid "subscription_period"
+msgstr "Tidsinterval"
+
+#: src/i18n/process/translate.js:104
+msgid "subscription_start_time"
+msgstr "Start dato"
+
+#: src/i18n/process/translate.js:105
+msgid "subscription_end_time"
+msgstr "Afslutningsdato"
+
+#: src/i18n/process/translate.js:106
+msgid "default_country"
+msgstr "Søg efter land"
+
+#: src/i18n/process/translate.js:107
+msgid "system_search"
+msgstr "Søg på banknavn, IBAN eller BIC"
+
+#: src/i18n/process/translate.js:108
+msgid "card_number"
+msgstr "Kortnummer"
+
+#: src/i18n/process/translate.js:109
+msgid "expiry_date"
+msgstr "Måned/år"
+
+#: src/i18n/process/translate.js:110
+msgid "cvv2"
+msgstr "CVV2/CVC2"
+
+#: src/i18n/process/translate.js:111
+msgid "verification_code"
+msgstr "Bekræftelseskode"
+
+#: src/i18n/process/translate.js:112
+msgid "verification_amount"
+msgstr "Beløbet for tjek"
+
+#: src/i18n/process/translate.js:114
+msgid "installments_desc_monobank"
+msgstr ""
+
+#~ msgid "angle-down"
+#~ msgstr "vippe"
+
+#~ msgid "label"
+#~ msgstr "mærke"
+
+#~ msgid "offer"
+#~ msgstr "tilbud"
+
+#~ msgid "security"
+#~ msgstr "sikkerhed"
+
+#~ msgid "switch"
+#~ msgstr "skifte"
 
 #~ msgid "code"
 #~ msgstr "-"

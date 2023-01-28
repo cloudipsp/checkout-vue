@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:66
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 13:44+0300\n"
+"POT-Creation-Date: 2023-01-30 23:22+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -62,6 +62,10 @@ msgstr ""
 msgid "most_popular"
 msgstr ""
 
+#: src/i18n/process/methods.js:12
+msgid "installments"
+msgstr ""
+
 #: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "日"
@@ -87,26 +91,34 @@ msgid "error"
 msgstr "错误"
 
 #: src/i18n/process/templates.js:4
+msgid "gdpr_yapily"
+msgstr ""
+
+#: src/i18n/process/templates.js:5
 msgid "gdpr_alert_text"
 msgstr "我们在本网站上使用 cookie 来增强你的在线支付体验."
 
-#: src/i18n/process/templates.js:5
+#: src/i18n/process/templates.js:6
 msgid "learn_more"
 msgstr "了解更多"
 
-#: src/i18n/process/templates.js:6
+#: src/i18n/process/templates.js:7 src/i18n/process/translate.js:97
+msgid "gdpr_modal_text"
+msgstr ""
+
+#: src/i18n/process/templates.js:8
 msgid "save_card"
 msgstr "保存我的卡以备将来支付"
 
-#: src/i18n/process/templates.js:7
+#: src/i18n/process/templates.js:9
 msgid "its_safe"
 msgstr "这是安全的"
 
-#: src/i18n/process/templates.js:8
+#: src/i18n/process/templates.js:10
 msgid "gdpr_modal_safe_title"
 msgstr "你的卡详细信息已标记化，可安全方便地重复 购买"
 
-#: src/i18n/process/templates.js:9
+#: src/i18n/process/templates.js:11
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>我们不会在你输入时记录你的卡详细信息. 事实上，立即加密卡详细信息并以标记化"
@@ -114,423 +126,363 @@ msgstr ""
 "令牌而不是卡的详细信息，以便 潜在的欺诈者将无法拦截它们. 令牌数据没有价值 在 "
 "Fondy 支付服务之外."
 
-#: src/i18n/process/templates.js:10
-msgid "not_now"
-msgstr "现在不行"
-
-#: src/i18n/process/templates.js:11
-msgid "accept"
-msgstr "我同意"
-
 #: src/i18n/process/templates.js:12
 msgid "close"
 msgstr "关闭"
 
 #: src/i18n/process/templates.js:13
+msgid "not_now"
+msgstr "现在不行"
+
+#: src/i18n/process/templates.js:14
+msgid "accept"
+msgstr "我同意"
+
+#: src/i18n/process/templates.js:15
 msgid "pay"
 msgstr "支付"
 
-#: src/i18n/process/templates.js:14
+#: src/i18n/process/templates.js:16
 msgid "demo-desc"
 msgstr "这是一个演示系统. 当你输入数据时, 付款不会 受到处理."
 
-#: src/i18n/process/templates.js:15
-msgid "angle-down"
-msgstr "-"
-
-#: src/i18n/process/templates.js:16
+#: src/i18n/process/templates.js:17
 msgid "use_other_card"
 msgstr "输入其他卡"
 
-#: src/i18n/process/templates.js:17
+#: src/i18n/process/templates.js:18
 msgid "expires_on"
 msgstr "到期日"
 
-#: src/i18n/process/templates.js:20
-msgid "email"
-msgstr "电子邮件"
-
-#: src/i18n/process/templates.js:21
-msgid "label"
-msgstr "标签"
-
-#: src/i18n/process/templates.js:22
-msgid "warning"
-msgstr ""
-
-#: src/i18n/process/templates.js:23
+#: src/i18n/process/templates.js:19
 msgid "datepicker"
 msgstr "-"
 
-#: src/i18n/process/templates.js:24
+#: src/i18n/process/templates.js:20
 msgid "model"
 msgstr "模型"
 
-#: src/i18n/process/templates.js:25
-msgid "default_country"
-msgstr "按国家搜索"
-
-#: src/i18n/process/templates.js:26
-msgid "check"
-msgstr ""
-
-#: src/i18n/process/templates.js:27
-msgid "bars"
-msgstr ""
-
-#: src/i18n/process/templates.js:28 src/i18n/process/translate.js:84
+#: src/i18n/process/templates.js:21 src/i18n/process/translate.js:84
 msgid "all_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:29 src/i18n/process/translate.js:4
+#: src/i18n/process/templates.js:22 src/i18n/process/translate.js:4
 msgid "verification_t"
 msgstr "卡验证"
 
-#: src/i18n/process/templates.js:30
+#: src/i18n/process/templates.js:23
 msgid "verification_"
 msgstr "验证_"
 
-#: src/i18n/process/templates.js:31
+#: src/i18n/process/templates.js:24
 msgid "see_more"
 msgstr "完整显示"
 
-#: src/i18n/process/templates.js:32
+#: src/i18n/process/templates.js:25
 msgid "order_details"
 msgstr "订单详细信息"
 
-#: src/i18n/process/templates.js:33
-msgid "currencies"
-msgstr ""
-
-#: src/i18n/process/templates.js:36
+#: src/i18n/process/templates.js:28
 msgid "submit3ds_title"
 msgstr "付款未完成"
 
-#: src/i18n/process/templates.js:37
+#: src/i18n/process/templates.js:29
 msgid "submit3ds_text"
 msgstr "请输入另一个确认码"
 
-#: src/i18n/process/templates.js:38
+#: src/i18n/process/templates.js:30
 msgid "submit3ds_submit"
 msgstr "请再试一次"
 
-#: src/i18n/process/templates.js:39
+#: src/i18n/process/templates.js:31
 msgid "submit3ds_wait"
 msgstr "你将被重定向到银行网站以在{0} 秒内完成支付"
 
-#: src/i18n/process/templates.js:40
+#: src/i18n/process/templates.js:32
 msgid "show"
 msgstr "-"
 
-#: src/i18n/process/templates.js:41 src/i18n/process/translate.js:1
+#: src/i18n/process/templates.js:33 src/i18n/process/translate.js:1
 msgid "declined"
 msgstr "很抱歉，你的付款未成功"
 
-#: src/i18n/process/templates.js:42
+#: src/i18n/process/templates.js:34
 msgid "server_trouble_title"
 msgstr "哎呀.."
 
-#: src/i18n/process/templates.js:43
+#: src/i18n/process/templates.js:35
 msgid "server_trouble_desc"
 msgstr "出现问题，我们已经在处理. 请返回到 你的订单，然后再结帐."
 
-#: src/i18n/process/templates.js:44
-msgid "offer"
-msgstr "-"
-
-#: src/i18n/process/templates.js:45
+#: src/i18n/process/templates.js:36
 msgid "offer_t"
 msgstr "我同意接受 <a href=\"{0}\" target=\"_blank\">bid 条件和条款. </a>"
 
-#: src/i18n/process/templates.js:46
+#: src/i18n/process/templates.js:37
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:47
+#: src/i18n/process/templates.js:38
 msgid "trial_period"
 msgstr "试用期"
 
-#: src/i18n/process/templates.js:48
+#: src/i18n/process/templates.js:39
 msgid "first_payment"
 msgstr "第一次付款"
 
-#: src/i18n/process/templates.js:49
+#: src/i18n/process/templates.js:40
 msgid "total_amount"
 msgstr "应付总额"
 
-#: src/i18n/process/templates.js:50
+#: src/i18n/process/templates.js:41
 msgid "fee"
 msgstr "佣金"
 
-#: src/i18n/process/templates.js:51
+#: src/i18n/process/templates.js:42
 msgid "amount"
 msgstr "应付金额"
 
-#: src/i18n/process/templates.js:52
+#: src/i18n/process/templates.js:43
 msgid "discount"
 msgstr "折扣"
 
-#: src/i18n/process/templates.js:53
-msgid "security"
-msgstr "-"
-
-#: src/i18n/process/templates.js:54
+#: src/i18n/process/templates.js:44
 msgid "security_title"
 msgstr "强大的客户身份验证"
 
-#: src/i18n/process/templates.js:55
+#: src/i18n/process/templates.js:45
 msgid "security_text"
 msgstr "<p>符合 PCI DSS<p>在Visa Global Registry上列出并通过Mastercard 验证 "
 
-#: src/i18n/process/templates.js:56
+#: src/i18n/process/templates.js:46
 msgid "other_payment_method"
 msgstr "支付方式"
 
-#: src/i18n/process/templates.js:57
-msgid "switch"
-msgstr "切换"
-
-#: src/i18n/process/templates.js:58
+#: src/i18n/process/templates.js:47
 msgid "subscription"
 msgstr "自动重复支付"
 
-#: src/i18n/process/templates.js:59
+#: src/i18n/process/templates.js:48
 msgid "subscription_amount"
 msgstr "定期支付金额"
 
-#: src/i18n/process/templates.js:60
-msgid "number_of_payments"
-msgstr "付款次数"
-
-#: src/i18n/process/templates.js:61
+#: src/i18n/process/templates.js:49
 msgid "unlimited"
 msgstr "无限制"
 
-#: src/i18n/process/templates.js:62
-msgid "subscription_every"
-msgstr "每"
-
-#: src/i18n/process/templates.js:63
-msgid "subscription_period"
-msgstr "时间跨度"
-
-#: src/i18n/process/templates.js:64
-msgid "subscription_start_time"
-msgstr "开始日期"
-
-#: src/i18n/process/templates.js:65
-msgid "subscription_end_time"
-msgstr "结束日期"
-
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:50
 msgid "verification_desc"
 msgstr "为了验证你的卡，我们将在你的银行帐户中收取少量的验证费用，持续15分钟."
 
-#: src/i18n/process/templates.js:67
+#: src/i18n/process/templates.js:51
 msgid "customer_name"
 msgstr "名和姓"
 
-#: src/i18n/process/templates.js:68
+#: src/i18n/process/templates.js:52
 msgid "customer_name_utf8"
 msgstr "名和姓"
 
-#: src/i18n/process/templates.js:69
+#: src/i18n/process/templates.js:53
 msgid "customer_address"
 msgstr "地址 (街道, 建筑, 公寓)"
 
-#: src/i18n/process/templates.js:70
+#: src/i18n/process/templates.js:54
 msgid "customer_zip"
 msgstr "邮编/邮政编码"
 
-#: src/i18n/process/templates.js:71
+#: src/i18n/process/templates.js:55
 msgid "customer_city"
 msgstr "城市/镇"
 
-#: src/i18n/process/templates.js:72
+#: src/i18n/process/templates.js:56
 msgid "customer_country"
 msgstr "国家"
 
-#: src/i18n/process/templates.js:73
+#: src/i18n/process/templates.js:57
 msgid "customer_state"
 msgstr "州/省/区"
 
-#: src/i18n/process/templates.js:74
+#: src/i18n/process/templates.js:58
 msgid "customer_phonemobile"
 msgstr "电话"
 
-#: src/i18n/process/templates.js:75
+#: src/i18n/process/templates.js:59
 msgid "customer_email"
 msgstr "电子邮件"
 
-#: src/i18n/process/templates.js:76
+#: src/i18n/process/templates.js:60
 msgid "demo-title"
 msgstr "演示模式"
 
-#: src/i18n/process/templates.js:77
+#: src/i18n/process/templates.js:61
 msgid "verify"
 msgstr "验证"
 
-#: src/i18n/process/templates.js:78
+#: src/i18n/process/templates.js:62
 msgid "success"
 msgstr "成功"
 
-#: src/i18n/process/templates.js:79
+#: src/i18n/process/templates.js:63
 msgid "system"
 msgstr "系统"
 
-#: src/i18n/process/templates.js:80
-msgid "system_search"
-msgstr "按银行名称, IBAN 或 BIC搜索"
+#: src/i18n/process/templates.js:64
+msgid "use_monobank_application"
+msgstr ""
 
-#: src/i18n/process/templates.js:81
+#: src/i18n/process/templates.js:65
 msgid "load_more"
 msgstr "展示更多..."
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:67
 msgid "pay_with_card"
 msgstr "使用卡进行支付"
 
-#: src/i18n/process/templates.js:84
-msgid "card_number"
-msgstr "卡号"
-
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:68
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:86
-msgid "expiry_date"
-msgstr "月份/年份"
-
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:69
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:88
-msgid "cvv2"
-msgstr "CVV2/CVC2"
-
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:70
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:71
 msgid "cvv2_help"
 msgstr "{0}-卡背面的数字代码"
 
-#: src/i18n/process/templates.js:91
-msgid "verification_code"
-msgstr "确认码"
+#: src/i18n/process/templates.js:72
+msgid "from_amount_month"
+msgstr ""
 
-#: src/i18n/process/templates.js:92
-msgid "verification_amount"
-msgstr "验证金额"
+#: src/i18n/process/templates.js:73
+msgid "payments"
+msgstr ""
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:74
+msgid "Payments"
+msgstr ""
+
+#: src/i18n/process/templates.js:75
+msgid "currency_month"
+msgstr ""
+
+#: src/i18n/process/templates.js:76
+msgid "installments-system"
+msgstr ""
+
+#: src/i18n/process/templates.js:77
+msgid "conditions"
+msgstr ""
+
+#: src/i18n/process/templates.js:78
+msgid "loading-monobank"
+msgstr ""
+
+#: src/i18n/process/templates.js:79
 msgid "most_popular_methods_in"
 msgstr ""
 
-#: src/i18n/process/templates.js:94 src/i18n/process/translate.js:83
+#: src/i18n/process/templates.js:80 src/i18n/process/translate.js:83
 msgid "see_all_other_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:95
-msgid "arrow-right"
-msgstr ""
-
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:81
 msgid "mfo_title"
 msgstr "订单的付款详情 # {0}"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:82
 msgid "ibox_title"
 msgstr "订单编号 (通过 iBox 支付)"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:83
 msgid "full_requesites"
 msgstr "收款人的银行资料"
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:84
 msgid "full_requesites_explain"
 msgstr "你不必在付款时指明它们，但保存它们以供 参考可能会有所帮助."
 
-#: src/i18n/process/templates.js:100
+#: src/i18n/process/templates.js:85
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:86
 msgid "receiver"
 msgstr "收款人"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:87
 msgid "current_bill"
 msgstr "银行帐号 (IBAN)"
 
-#: src/i18n/process/templates.js:103
+#: src/i18n/process/templates.js:88
 msgid "usreou"
 msgstr "税务识别号码 (TIN)"
 
-#: src/i18n/process/templates.js:104
+#: src/i18n/process/templates.js:89
 msgid "bank"
 msgstr "银行名称"
 
-#: src/i18n/process/templates.js:105
+#: src/i18n/process/templates.js:90
 msgid "mfo"
 msgstr "银行代码 (BIC 或 MFO)"
 
-#: src/i18n/process/templates.js:106
+#: src/i18n/process/templates.js:91
 msgid "purpose"
 msgstr "描述"
 
-#: src/i18n/process/templates.js:107
+#: src/i18n/process/templates.js:92
 msgid "receipt_id"
 msgstr "订单编号"
 
-#: src/i18n/process/templates.js:108
+#: src/i18n/process/templates.js:93
 msgid "end_date"
 msgstr "付款期限"
 
-#: src/i18n/process/templates.js:109
+#: src/i18n/process/templates.js:94
 msgid "ibox_desc"
 msgstr ""
 "所有接受付款的 iBox 终端都标记在 <a href=\"https://ibox.ua/map\" target="
 "\"_blank\">地图</a>"
 
-#: src/i18n/process/templates.js:110
+#: src/i18n/process/templates.js:95
 msgid "save_receipt"
 msgstr "保存收据"
 
-#: src/i18n/process/templates.js:111
+#: src/i18n/process/templates.js:96
 msgid "save_qr_code"
 msgstr "保存至手机"
 
-#: src/i18n/process/templates.js:112
+#: src/i18n/process/templates.js:97
 msgid "qr_code_text"
 msgstr "扫描该二维码，将收据保存到你的智能手机上"
 
-#: src/i18n/process/templates.js:113
+#: src/i18n/process/templates.js:98
 msgid "ibox_info"
 msgstr ""
 "<p>要支付订单，请使用搜索选项找到 iBox 终端中的Fondy支付服务.<p>你的订单将自"
 "动 在截止日期后取消.<p>我们不能通过iBox 以外的 终端接受该订单的付款."
 
-#: src/i18n/process/templates.js:114
+#: src/i18n/process/templates.js:99
 msgid "sepa_t"
 msgstr "提供你的银行帐户详细信息"
 
-#: src/i18n/process/templates.js:115 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:100 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "名字"
 
-#: src/i18n/process/templates.js:116
+#: src/i18n/process/templates.js:101
 msgid "bank_desc"
 msgstr "你将被重定向到银行的网站以完成付款"
 
-#: src/i18n/process/templates.js:117
+#: src/i18n/process/templates.js:102
 msgid "payment_id"
 msgstr "付款编号"
 
-#: src/i18n/process/templates.js:34 src/i18n/process/templates.js:18
+#: src/i18n/process/templates.js:26
 msgid "\""
 msgstr ""
 
@@ -813,12 +765,99 @@ msgid "placeholder_SORT_CODE"
 msgstr ""
 
 #: src/i18n/process/translate.js:91
-msgid "address_number"
+msgid "message_address_number"
 msgstr ""
 
 #: src/i18n/process/translate.js:92
-msgid "address_street"
+msgid "message_address_street"
 msgstr ""
+
+#: src/i18n/process/translate.js:93
+msgid "message_customer_name_utf8"
+msgstr ""
+
+#: src/i18n/process/translate.js:94
+msgid "placeholder_customer_name_utf8"
+msgstr ""
+
+#: src/i18n/process/translate.js:95
+msgid "placeholder_address_street"
+msgstr ""
+
+#: src/i18n/process/translate.js:99
+msgid "email"
+msgstr "电子邮件"
+
+#: src/i18n/process/translate.js:100
+msgid "currencies"
+msgstr ""
+
+#: src/i18n/process/translate.js:101
+msgid "number_of_payments"
+msgstr "付款次数"
+
+#: src/i18n/process/translate.js:102
+msgid "subscription_every"
+msgstr "每"
+
+#: src/i18n/process/translate.js:103
+msgid "subscription_period"
+msgstr "时间跨度"
+
+#: src/i18n/process/translate.js:104
+msgid "subscription_start_time"
+msgstr "开始日期"
+
+#: src/i18n/process/translate.js:105
+msgid "subscription_end_time"
+msgstr "结束日期"
+
+#: src/i18n/process/translate.js:106
+msgid "default_country"
+msgstr "按国家搜索"
+
+#: src/i18n/process/translate.js:107
+msgid "system_search"
+msgstr "按银行名称, IBAN 或 BIC搜索"
+
+#: src/i18n/process/translate.js:108
+msgid "card_number"
+msgstr "卡号"
+
+#: src/i18n/process/translate.js:109
+msgid "expiry_date"
+msgstr "月份/年份"
+
+#: src/i18n/process/translate.js:110
+msgid "cvv2"
+msgstr "CVV2/CVC2"
+
+#: src/i18n/process/translate.js:111
+msgid "verification_code"
+msgstr "确认码"
+
+#: src/i18n/process/translate.js:112
+msgid "verification_amount"
+msgstr "验证金额"
+
+#: src/i18n/process/translate.js:114
+msgid "installments_desc_monobank"
+msgstr ""
+
+#~ msgid "angle-down"
+#~ msgstr "-"
+
+#~ msgid "label"
+#~ msgstr "标签"
+
+#~ msgid "offer"
+#~ msgstr "-"
+
+#~ msgid "security"
+#~ msgstr "-"
+
+#~ msgid "switch"
+#~ msgstr "切换"
 
 #~ msgid "code"
 #~ msgstr "-"

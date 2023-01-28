@@ -95,9 +95,6 @@ _('placeholder_customer_name_utf8')
 _('placeholder_address_street')
 
 _('gdpr_modal_text')
-_('gdpr_modal_text_ua')
-_('gdpr_modal_text_ru')
-_('gdpr_modal_text_eu')
 
 _('email')
 _('currencies')
@@ -113,3 +110,5 @@ _('expiry_date')
 _('cvv2')
 _('verification_code')
 _('verification_amount')
+
+_('installments_desc_monobank')
