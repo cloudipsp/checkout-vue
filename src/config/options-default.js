@@ -28,6 +28,7 @@ const config = {
       button: '/latest/checkout-v2/button/index.html',
     },
     active_tab: '',
+    active_method: '',
     logo_url: '',
     offerta_url: '',
     button: true,

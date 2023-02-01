@@ -28,7 +28,7 @@ import FModalErrorWrapper from '@/components/modal/modal-error-wrapper'
 import FModal3ds from '@/components/modal/modal-3ds'
 import FAlertGdprWrapper from '@/components/alert/alert-gdpr-wrapper'
 import FAlertNotificationWrapper from '@/components/alert/alert-notification-wrapper'
-import { errorHandler, getRouteName } from '@/utils/helpers'
+import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
@@ -58,7 +58,6 @@ export default {
       timeoutId: 0,
       show3ds: false,
       duration3ds: 0,
-      needRoute: '',
       count: 0,
     }
   },
@@ -162,9 +161,7 @@ export default {
     appFinally(model) {
       if (!model) return
 
-      this.needRoute = this.store.infoSuccess(
-        model.instance(model.attr('info'))
-      )
+      this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.cards = model.attr('cards')
     },
@@ -233,11 +230,13 @@ export default {
       } else if (model.inProgress()) {
         this.store.hideError()
         this.$router.push({ name: 'success' }).catch(() => {})
-      } else {
-        this.store
-          .autoSubmit()
-          .then(this.autoSubmit, this.locationMethod)
-          .catch(errorHandler)
+      } else if (!this.flag && this.store.location(this.isBreakpointDownLg)) {
+        this.flag = true
+        this.$router
+          .push(this.store.location(this.isBreakpointDownLg))
+          .catch(() => {})
+      } else if (this.$route.query.next) {
+        this.$router.push(this.$route.query.next).catch(() => {})
       }
     },
     locationPending() {
@@ -254,26 +253,6 @@ export default {
     getOrderClear() {
       this.clearTimeout('getOrder')
       this.clearTimeout('getOrderClear')
-    },
-    autoSubmit({ method, system }) {
-      this.$router
-        .push({
-          name: 'system',
-          params: { method, system },
-          query: { autoSubmit: true },
-        })
-        .catch(() => {})
-    },
-    locationMethod() {
-      let name = getRouteName(
-        this.methods,
-        this.needRoute || this.$route.name || this.$route.params.method,
-        this.has_fields,
-        this.isBreakpointDownLg
-      )
-      this.needRoute = ''
-
-      this.$router.push({ name }).catch(() => {})
     },
     submit3ds() {
       model3ds.submit3dsForm()

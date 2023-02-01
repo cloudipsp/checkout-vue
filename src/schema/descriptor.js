@@ -259,6 +259,7 @@ export default {
           },
           fee: typeBoolean,
           active_tab: typeEnum(methods),
+          active_method: typeString,
           logo_url: {
             ...typeString,
             pattern: patternUrlImg,

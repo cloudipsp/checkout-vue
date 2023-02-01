@@ -143,7 +143,7 @@ export default name => {
                 component: MostPopular,
               },
               {
-                path: 'installments/:system',
+                path: ':method(installments)/:system',
                 name: 'installments-system',
                 component: InstallmentsSystem,
               },

@@ -9,6 +9,7 @@ import {
   deepMerge,
   errorHandler,
   removeWallets,
+  getRouteName,
 } from '@/utils/helpers'
 import { sendRequest } from '@/utils/api'
 import { isExist } from '@/utils/inspect'
@@ -21,6 +22,9 @@ import { methods, most_popular_icons, tabs, tabs_order } from '@/store/parse'
 import { localStorage } from '@/utils/store'
 import configSubscription from '@/config/subscription'
 import configAutoSubmit from '@/config/auto-submit'
+import { activeMethod } from '@/config/active-method'
+import { methodRoute } from '@/config/method-route'
+import { mappingMethod } from '@/config/mapping-method'
 import { subscription } from '@/store/subscription'
 import validate from '@/schema/validate'
 import Model from '@/class/model'
@@ -58,6 +62,11 @@ class Store extends Model {
   infoSuccess(model) {
     this.info(model)
 
+    this.state.active_tab =
+      this.parseActiveTab(model) || this.state.options.active_tab
+    this.state.active_method =
+      model.attr('active_method') || this.state.options.active_method
+
     let lang = model.attr('lang')
     if (arrayIncludes(keys(locales), lang) && !this.user.params?.lang) {
       this.state.params.lang = lang
@@ -65,7 +74,19 @@ class Store extends Model {
     }
     this.initHasFields()
     this.initIsOnlyCard()
-    return this.getRouteName(model)
+  }
+  location(isBreakpointDownLg) {
+    return (
+      this.autoSubmit() ||
+      this.activeMethod() || {
+        name: getRouteName(
+          this.state.options.methods,
+          this.state.active_tab,
+          this.state.has_fields,
+          isBreakpointDownLg
+        ),
+      }
+    )
   }
   autoSubmit() {
     let methods = this.state.options.methods
@@ -77,21 +98,59 @@ class Store extends Model {
       methods = methods.filter(removeWallets)
     }
 
-    if (methods.length !== 1) return Promise.reject()
+    if (methods.length !== 1) return
 
     let method = methods[0]
 
-    if (!configAutoSubmit.includes(method)) return Promise.reject()
+    if (!configAutoSubmit.includes(method)) return
 
-    if (!this.state.tabs[method]) return Promise.reject()
+    if (!this.state.tabs[method]) return
 
     let systems = Object.keys(this.state.tabs[method])
 
-    if (systems.length !== 1) return Promise.reject()
+    if (systems.length !== 1) return
 
     let system = systems[0]
 
-    return Promise.resolve({ method, system })
+    return {
+      name: 'system',
+      params: { method, system },
+      query: { autoSubmit: true },
+    }
+  }
+  activeMethod() {
+    let active_method = this.state.active_method
+
+    if (!active_method) return
+
+    let paymentSystems = Object.entries(this.state.tabs)
+      .filter(([method]) => arrayIncludes(activeMethod, method))
+      .reduce(
+        (accum, [method, value]) => ({
+          ...accum,
+          ...Object.fromEntries(
+            Object.entries(value)
+              .filter(([, { alias }]) => alias)
+              .map(([id, { alias }]) => [alias, { system: id, method }])
+          ),
+        }),
+        {}
+      )
+
+    let paymentSystem = paymentSystems[active_method]
+
+    if (!paymentSystem) return
+
+    let { system, method } = paymentSystem
+
+    let name = methodRoute[method]
+
+    if (!name) return
+
+    return {
+      name,
+      params: { method, system },
+    }
   }
   info(model) {
     if (isExist(model.attr('validate_expdate'))) {
@@ -223,8 +282,10 @@ class Store extends Model {
       this.state.options.show_menu_first = false
     }
   }
-  getRouteName(model) {
-    let active_tab = model.active_tab === 'card' ? '' : model.active_tab
+  parseActiveTab(model) {
+    let active_tab = model.attr('active_tab')
+    active_tab = mappingMethod[active_tab] || active_tab
+    active_tab = active_tab === 'card' ? '' : active_tab
     let methodsLength = this.state.options.methods.filter(removeWallets).length
 
     if (!this.state.params.token) return

@@ -141,7 +141,9 @@ export default {
       this.available_payments_number = available_payments_number
       this.amountTotal = amount_min
 
-      this.params.payment_parts = this.$route.query.parts
+      this.params.payment_parts =
+        Number(this.$route.query.parts) ||
+        available_payments_number[available_payments_number.length - 1]
     },
     pay() {
       return this.$nextTick()

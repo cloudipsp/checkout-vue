@@ -2,11 +2,7 @@ import configMethods from '@/config/methods.json'
 import { removeDuplicate, includes, excludes } from '@/utils/helpers'
 import { isExist } from '@/utils/inspect'
 import { sort } from '@/utils/sort'
-
-const banklinks_eu = 'banklinks_eu'
-const config = {
-  trustly: banklinks_eu,
-}
+import { mappingMethod } from '@/config/mapping-method'
 
 export const methods = (user, server = [], disable) => {
   server = server.map(mapped)
@@ -79,7 +75,7 @@ function onlyConfig(item) {
 }
 
 function mapped(item) {
-  return config[item] || item
+  return mappingMethod[item] || item
 }
 
 function parse(systems, method) {

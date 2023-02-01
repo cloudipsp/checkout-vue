@@ -46,6 +46,7 @@ Name                  | Type        | Default                 | Description     
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
 `endpoint`            | Object      |                         |                                                                                     |
 `active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                                             | server or options
+`active_method`       | String      | ''                      |                                                                                     | server or options
 `logo_url`            | String      |                         | format url                                                                          | options or server
 `offerta_url`         | String      |                         | format url                                                                          | options or server
 `button`              | Boolean     | true                    |                                                                                     |
