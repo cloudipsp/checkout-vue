@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="f-offer">
+  <div v-if="show" :class="['f-offer', $style.wrapper]">
     <f-form-group
       v-model="offer"
       name="offer"
@@ -36,3 +36,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.wrapper {
+  margin-bottom: px-to-rem(20px);
+}
+</style>

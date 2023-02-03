@@ -56,6 +56,10 @@
   }
 }
 
+.f-form-item-checkbox {
+  line-height: px-to-rem(20px);
+}
+
 .f-checkbox {
   position: absolute;
   z-index: 1;
@@ -74,17 +78,16 @@
 }
 
 .f-checkbox-label {
-  $padding: px-to-rem(3px);
   position: relative;
-  left: -$padding;
-  padding: $padding $padding $padding px-to-rem(30px) + $padding;
+  padding: 0 0 0 px-to-rem(30px) + 0;
   font-size: px-to-rem(16px);
+  line-height: px-to-rem(20px);
   cursor: pointer;
 
   &::before {
     position: absolute;
-    top: px-to-rem(1px) + $padding;
-    left: $padding;
+    top: 0;
+    left: 0;
     width: px-to-rem(20px);
     height: px-to-rem(20px);
     content: '';
@@ -96,8 +99,8 @@
 
   &::after {
     position: absolute;
-    top: px-to-rem(6px) + $padding;
-    left: px-to-rem(5px) + $padding;
+    top: px-to-rem(5px);
+    left: px-to-rem(5px);
     width: px-to-rem(10px);
     height: px-to-rem(7px);
     content: '';
