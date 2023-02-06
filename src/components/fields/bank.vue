@@ -35,7 +35,7 @@ export default {
     },
   },
   methods: {
-    parseField({ label, placeholder, name, type, validate }) {
+    parseField({ label, placeholder, name, type, validate, mask }) {
       return {
         name,
         description: placeholder ? label : '',
@@ -43,6 +43,8 @@ export default {
         component: type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(validate),
         autocomplete: 'on',
+        type,
+        mask,
       }
     },
     parseValidate(validate) {
