@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:65
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 23:22+0200\n"
+"POT-Creation-Date: 2023-02-07 17:48+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -323,16 +323,16 @@ msgid "success"
 msgstr "成功"
 
 #: src/i18n/process/templates.js:63
-msgid "system"
-msgstr "系统"
-
-#: src/i18n/process/templates.js:64
 msgid "use_monobank_application"
 msgstr ""
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:64
 msgid "load_more"
 msgstr "展示更多..."
+
+#: src/i18n/process/templates.js:66
+msgid "system"
+msgstr "系统"
 
 #: src/i18n/process/templates.js:67
 msgid "pay_with_card"
@@ -355,15 +355,15 @@ msgid "cvv2_help"
 msgstr "{0}-卡背面的数字代码"
 
 #: src/i18n/process/templates.js:72
-msgid "from_amount_month"
+msgid "Payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:73
-msgid "payments"
+msgid "from_amount_month"
 msgstr ""
 
 #: src/i18n/process/templates.js:74
-msgid "Payments"
+msgid "payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:75
@@ -375,110 +375,118 @@ msgid "installments-system"
 msgstr ""
 
 #: src/i18n/process/templates.js:77
-msgid "conditions"
+msgid "expect_soon"
 msgstr ""
 
 #: src/i18n/process/templates.js:78
-msgid "loading-monobank"
+msgid "installments_oschadbank"
 msgstr ""
 
 #: src/i18n/process/templates.js:79
-msgid "most_popular_methods_in"
+msgid "conditions"
 msgstr ""
 
-#: src/i18n/process/templates.js:80 src/i18n/process/translate.js:83
-msgid "see_all_other_methods"
+#: src/i18n/process/templates.js:80
+msgid "loading-monobank"
 msgstr ""
 
 #: src/i18n/process/templates.js:81
+msgid "most_popular_methods_in"
+msgstr ""
+
+#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:83
+msgid "see_all_other_methods"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
 msgid "mfo_title"
 msgstr "订单的付款详情 # {0}"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:84
 msgid "ibox_title"
 msgstr "订单编号 (通过 iBox 支付)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:85
 msgid "full_requesites"
 msgstr "收款人的银行资料"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:86
 msgid "full_requesites_explain"
 msgstr "你不必在付款时指明它们，但保存它们以供 参考可能会有所帮助."
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:87
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:88
 msgid "receiver"
 msgstr "收款人"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:89
 msgid "current_bill"
 msgstr "银行帐号 (IBAN)"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:90
 msgid "usreou"
 msgstr "税务识别号码 (TIN)"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:91
 msgid "bank"
 msgstr "银行名称"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:92
 msgid "mfo"
 msgstr "银行代码 (BIC 或 MFO)"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:93
 msgid "purpose"
 msgstr "描述"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:94
 msgid "receipt_id"
 msgstr "订单编号"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:95
 msgid "end_date"
 msgstr "付款期限"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:96
 msgid "ibox_desc"
 msgstr ""
 "所有接受付款的 iBox 终端都标记在 <a href=\"https://ibox.ua/map\" target="
 "\"_blank\">地图</a>"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:97
 msgid "save_receipt"
 msgstr "保存收据"
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:98
 msgid "save_qr_code"
 msgstr "保存至手机"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:99
 msgid "qr_code_text"
 msgstr "扫描该二维码，将收据保存到你的智能手机上"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:100
 msgid "ibox_info"
 msgstr ""
 "<p>要支付订单，请使用搜索选项找到 iBox 终端中的Fondy支付服务.<p>你的订单将自"
 "动 在截止日期后取消.<p>我们不能通过iBox 以外的 终端接受该订单的付款."
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:101
 msgid "sepa_t"
 msgstr "提供你的银行帐户详细信息"
 
-#: src/i18n/process/templates.js:100 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "名字"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:103
 msgid "bank_desc"
 msgstr "你将被重定向到银行的网站以完成付款"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:104
 msgid "payment_id"
 msgstr "付款编号"
 

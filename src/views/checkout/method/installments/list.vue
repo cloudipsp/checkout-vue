@@ -54,8 +54,8 @@ export default {
       return [
         {
           id: 1,
-          logo: 'privatbank',
-          name: 'Оплата частинами від ПриватБанк',
+          logo: 'oschadbank',
+          name: this.$t('installments_oschadbank'),
           method: 'installments',
         },
       ]

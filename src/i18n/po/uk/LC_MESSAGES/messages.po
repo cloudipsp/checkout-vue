@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 19:14+0200\n"
+"POT-Creation-Date: 2023-02-07 17:48+0200\n"
 "PO-Revision-Date: 2020-09-30 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -391,8 +391,8 @@ msgid "expect_soon"
 msgstr "Очікуємо найближчим часом"
 
 #: src/i18n/process/templates.js:78
-msgid "Оплата частинами від ПриватБанк"
-msgstr ""
+msgid "installments_oschadbank"
+msgstr "Кредит розстрочка від Ощадбанку"
 
 #: src/i18n/process/templates.js:79
 msgid "conditions"

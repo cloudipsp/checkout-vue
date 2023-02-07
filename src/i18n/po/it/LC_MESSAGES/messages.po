@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:65
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 23:22+0200\n"
+"POT-Creation-Date: 2023-02-07 17:48+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -336,16 +336,16 @@ msgid "success"
 msgstr ""
 
 #: src/i18n/process/templates.js:63
-msgid "system"
-msgstr ""
-
-#: src/i18n/process/templates.js:64
 msgid "use_monobank_application"
 msgstr ""
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:64
 msgid "load_more"
 msgstr "Caricare di più..."
+
+#: src/i18n/process/templates.js:66
+msgid "system"
+msgstr ""
 
 #: src/i18n/process/templates.js:67
 msgid "pay_with_card"
@@ -368,15 +368,15 @@ msgid "cvv2_help"
 msgstr "{0}-codice numerico sul retro della carta"
 
 #: src/i18n/process/templates.js:72
-msgid "from_amount_month"
+msgid "Payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:73
-msgid "payments"
+msgid "from_amount_month"
 msgstr ""
 
 #: src/i18n/process/templates.js:74
-msgid "Payments"
+msgid "payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:75
@@ -388,94 +388,102 @@ msgid "installments-system"
 msgstr ""
 
 #: src/i18n/process/templates.js:77
-msgid "conditions"
+msgid "expect_soon"
 msgstr ""
 
 #: src/i18n/process/templates.js:78
-msgid "loading-monobank"
+msgid "installments_oschadbank"
 msgstr ""
 
 #: src/i18n/process/templates.js:79
-msgid "most_popular_methods_in"
+msgid "conditions"
 msgstr ""
 
-#: src/i18n/process/templates.js:80 src/i18n/process/translate.js:83
-msgid "see_all_other_methods"
+#: src/i18n/process/templates.js:80
+msgid "loading-monobank"
 msgstr ""
 
 #: src/i18n/process/templates.js:81
+msgid "most_popular_methods_in"
+msgstr ""
+
+#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:83
+msgid "see_all_other_methods"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
 msgid "mfo_title"
 msgstr "Dettagli di pagamento per l'ordine n. {0}"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:84
 msgid "ibox_title"
 msgstr "ID ordine (da pagare tramite iBox)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:85
 msgid "full_requesites"
 msgstr "Requisiti bancari del destinatario"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:86
 msgid "full_requesites_explain"
 msgstr ""
 "Non dovrà indicarli durante il pagamento, ma salvarli per riferimento "
 "potrebbe essere utile."
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:87
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:88
 msgid "receiver"
 msgstr "Destinatario"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:89
 msgid "current_bill"
 msgstr "Numero di conto bancario (IBAN)"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:90
 msgid "usreou"
 msgstr "Codice fiscale (C.F.)"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:91
 msgid "bank"
 msgstr "Nome della banca"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:92
 msgid "mfo"
 msgstr "Codice della banca (CAB)"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:93
 msgid "purpose"
 msgstr "Descrizione"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:94
 msgid "receipt_id"
 msgstr "ID ordine"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:95
 msgid "end_date"
 msgstr "Scadenza di pagamento"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:96
 msgid "ibox_desc"
 msgstr ""
 "Tutti i terminali iBox che accettano pagamenti sono contrassegnati nel file "
 "<a href=\"https://ibox.ua/map\" target=\"_blank\">map</a>"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:97
 msgid "save_receipt"
 msgstr "Salvare ricevuta"
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:98
 msgid "save_qr_code"
 msgstr "Salvare su smartphone"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:99
 msgid "qr_code_text"
 msgstr "Scansioni questo codice QR per salvare la ricevuta sul suo smartphone"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:100
 msgid "ibox_info"
 msgstr ""
 "<p>Per pagare l'ordine, utilizzare l'opzione Cerca per individuare il "
@@ -483,20 +491,20 @@ msgstr ""
 "automaticamente annullato oltre la scadenza.<p>Non accetteremo pagamenti per "
 "questo ordine tramite terminali diversi da iBox."
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:101
 msgid "sepa_t"
 msgstr "Dovrebbe fornire i requisiti del suo conto bancario"
 
-#: src/i18n/process/templates.js:100 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "Nome"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:103
 msgid "bank_desc"
 msgstr ""
 "Verrà reindirizzato al sito web della banca per completare il pagamento"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:104
 msgid "payment_id"
 msgstr "ID pagamento"
 

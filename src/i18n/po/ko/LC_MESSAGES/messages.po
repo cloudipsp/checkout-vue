@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:66
+#: src/i18n/process/templates.js:65
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 23:22+0200\n"
+"POT-Creation-Date: 2023-02-07 17:48+0200\n"
 "PO-Revision-Date: 2020-10-05 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -331,16 +331,16 @@ msgid "success"
 msgstr ""
 
 #: src/i18n/process/templates.js:63
-msgid "system"
-msgstr ""
-
-#: src/i18n/process/templates.js:64
 msgid "use_monobank_application"
 msgstr ""
 
-#: src/i18n/process/templates.js:65
+#: src/i18n/process/templates.js:64
 msgid "load_more"
 msgstr "더 많은 메시지를 로드합니다"
+
+#: src/i18n/process/templates.js:66
+msgid "system"
+msgstr ""
 
 #: src/i18n/process/templates.js:67
 msgid "pay_with_card"
@@ -363,15 +363,15 @@ msgid "cvv2_help"
 msgstr "귀하의 카드 뒷면에 표시되는 {0}-숫자 코드"
 
 #: src/i18n/process/templates.js:72
-msgid "from_amount_month"
+msgid "Payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:73
-msgid "payments"
+msgid "from_amount_month"
 msgstr ""
 
 #: src/i18n/process/templates.js:74
-msgid "Payments"
+msgid "payments"
 msgstr ""
 
 #: src/i18n/process/templates.js:75
@@ -383,111 +383,119 @@ msgid "installments-system"
 msgstr ""
 
 #: src/i18n/process/templates.js:77
-msgid "conditions"
+msgid "expect_soon"
 msgstr ""
 
 #: src/i18n/process/templates.js:78
-msgid "loading-monobank"
+msgid "installments_oschadbank"
 msgstr ""
 
 #: src/i18n/process/templates.js:79
-msgid "most_popular_methods_in"
+msgid "conditions"
 msgstr ""
 
-#: src/i18n/process/templates.js:80 src/i18n/process/translate.js:83
-msgid "see_all_other_methods"
+#: src/i18n/process/templates.js:80
+msgid "loading-monobank"
 msgstr ""
 
 #: src/i18n/process/templates.js:81
+msgid "most_popular_methods_in"
+msgstr ""
+
+#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:83
+msgid "see_all_other_methods"
+msgstr ""
+
+#: src/i18n/process/templates.js:83
 msgid "mfo_title"
 msgstr "# {0}주문의 위한 운행정보"
 
-#: src/i18n/process/templates.js:82
+#: src/i18n/process/templates.js:84
 msgid "ibox_title"
 msgstr "주문 ID (iBox를 통해 결제)"
 
-#: src/i18n/process/templates.js:83
+#: src/i18n/process/templates.js:85
 msgid "full_requesites"
 msgstr "수취인의 세부정보"
 
-#: src/i18n/process/templates.js:84
+#: src/i18n/process/templates.js:86
 msgid "full_requesites_explain"
 msgstr "결제 시  입력할 필요가 없지만, 저장하면 도움이 될 수도 있습니다."
 
-#: src/i18n/process/templates.js:85
+#: src/i18n/process/templates.js:87
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:86
+#: src/i18n/process/templates.js:88
 msgid "receiver"
 msgstr "수취인"
 
-#: src/i18n/process/templates.js:87
+#: src/i18n/process/templates.js:89
 msgid "current_bill"
 msgstr "국제은행계좌번호(IBAN)"
 
-#: src/i18n/process/templates.js:88
+#: src/i18n/process/templates.js:90
 msgid "usreou"
 msgstr "사업자등록번호 (TIN)"
 
-#: src/i18n/process/templates.js:89
+#: src/i18n/process/templates.js:91
 msgid "bank"
 msgstr "은행이름"
 
-#: src/i18n/process/templates.js:90
+#: src/i18n/process/templates.js:92
 msgid "mfo"
 msgstr "은행 코드"
 
-#: src/i18n/process/templates.js:91
+#: src/i18n/process/templates.js:93
 msgid "purpose"
 msgstr "지급내역"
 
-#: src/i18n/process/templates.js:92
+#: src/i18n/process/templates.js:94
 msgid "receipt_id"
 msgstr "주문 ID"
 
-#: src/i18n/process/templates.js:93
+#: src/i18n/process/templates.js:95
 msgid "end_date"
 msgstr "지불기한"
 
-#: src/i18n/process/templates.js:94
+#: src/i18n/process/templates.js:96
 msgid "ibox_desc"
 msgstr ""
 "결제를 허용하는 모든 iBox 터미널은 <a href=\"https://ibox.ua/map\" target="
 "\"_blank\">карте</a> 지도에 표시됩니다"
 
-#: src/i18n/process/templates.js:95
+#: src/i18n/process/templates.js:97
 msgid "save_receipt"
 msgstr "영수증 저장"
 
-#: src/i18n/process/templates.js:96
+#: src/i18n/process/templates.js:98
 msgid "save_qr_code"
 msgstr "스마트폰에 저장하기"
 
-#: src/i18n/process/templates.js:97
+#: src/i18n/process/templates.js:99
 msgid "qr_code_text"
 msgstr "스마트 폰에 영수증을 저장하려면이 QR 코드를 스캔하세요"
 
-#: src/i18n/process/templates.js:98
+#: src/i18n/process/templates.js:100
 msgid "ibox_info"
 msgstr ""
 "<p>결제하려면 '검색' 옵션을 사용하여 iBox 터미널에서 Fondy 결제 서비스를 찾으"
 "십시오.<p>일정 기간동안 송금을 하지 않으면 자동으로 주문이 취소됩니다."
 "<p>iBox 이외의 단말기를 사용해서 하는 결제를 허용하지 않습니다."
 
-#: src/i18n/process/templates.js:99
+#: src/i18n/process/templates.js:101
 msgid "sepa_t"
 msgstr "은행 계좌 상세정보를 입력해주십시오"
 
-#: src/i18n/process/templates.js:100 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:47
 msgid "sender_name"
 msgstr "이름"
 
-#: src/i18n/process/templates.js:101
+#: src/i18n/process/templates.js:103
 msgid "bank_desc"
 msgstr "결제를 완료하기 위해 은행 웹 사이트로 리디렉션됩니다"
 
-#: src/i18n/process/templates.js:102
+#: src/i18n/process/templates.js:104
 msgid "payment_id"
 msgstr "결제 ID"
 
