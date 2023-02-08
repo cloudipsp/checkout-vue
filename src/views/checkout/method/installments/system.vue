@@ -150,7 +150,7 @@ export default {
         .then(() => this.validate())
         .then(() => LoadingMono())
         .then(() => {
-          if (this.alias === 'monobank') {
+          if (this.alias === 'monobank_ua') {
             return this.$router.push({
               name: 'loading-monobank',
               params: {
