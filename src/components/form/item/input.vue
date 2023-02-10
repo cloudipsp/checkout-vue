@@ -16,14 +16,35 @@
 
 <script>
 import { itemMixin } from '@/mixins/item'
-import { maskMixin } from '@/mixins/mask'
 import { FFormInput } from '@/components/form/item/helpers/form-input'
 import { removeAddEventListenerMixin } from '@/mixins/remove-add-event-listener'
+import { makeProp } from '@/utils/props'
+import { PROP_TYPE_FUNCTION } from '@/constants/props'
 
 export default {
   components: {
     FFormInput,
   },
-  mixins: [itemMixin, maskMixin, removeAddEventListenerMixin],
+  mixins: [itemMixin, removeAddEventListenerMixin],
+  props: {
+    format: makeProp(PROP_TYPE_FUNCTION, value => value),
+    parse: makeProp(PROP_TYPE_FUNCTION, value => value),
+  },
+  methods: {
+    watchInnerValue(newValue) {
+      let value = this.format(this.parse(newValue))
+
+      if (newValue !== value) {
+        this.innerValue = value
+        this.$refs.input.localValue = value
+        this.$refs.input.vModelValue = value
+      } else {
+        this.$emit('input', this.parse(newValue))
+      }
+    },
+    watchValue(newValue) {
+      this.innerValue = this.format(newValue)
+    },
+  },
 }
 </script>

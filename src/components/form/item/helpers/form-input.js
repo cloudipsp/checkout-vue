@@ -16,6 +16,7 @@ import {
   PROP_TYPE_BOOLEAN_STRING,
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
+import mask from '@/utils/masker'
 
 // @vue/component
 export const FFormInput = {
@@ -41,11 +42,13 @@ export const FFormInput = {
     type: makeProp(PROP_TYPE_STRING, 'text'),
     // Disable mousewheel to prevent wheel from changing values (i.e. number/date)
     noWheel: makeProp(PROP_TYPE_BOOLEAN, false),
+    mask: makeProp(PROP_TYPE_STRING),
+    masked: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
-      localValue: toString(this.value),
-      vModelValue: this.value,
+      localValue: this.formatLocal(this.value),
+      vModelValue: this.parseModel(this.value),
     }
   },
   computed: {
@@ -88,22 +91,22 @@ export const FFormInput = {
       this.setWheelStopper(newVal)
     },
     value(newVal) {
-      const stringifyValue = toString(newVal)
-      if (stringifyValue !== this.localValue && newVal !== this.vModelValue) {
-        // Update the local values
-        this.localValue = stringifyValue
-        this.vModelValue = newVal
+      let localValue = this.formatLocal(newVal)
+      let vModelValue = this.parseModel(newVal)
+
+      if (localValue !== this.localValue && newVal !== this.vModelValue) {
+        this.localValue = localValue
+        this.vModelValue = vModelValue
       }
     },
   },
   mounted() {
-    // Preset the internal state
-    const value = this.value
-    const stringifyValue = toString(value)
+    let localValue = this.formatLocal(this.value)
+    let vModelValue = this.parseModel(this.value)
 
-    if (stringifyValue !== this.localValue && value !== this.vModelValue) {
-      this.localValue = stringifyValue
-      this.vModelValue = value
+    if (localValue !== this.localValue && vModelValue !== this.vModelValue) {
+      this.localValue = localValue
+      this.vModelValue = vModelValue
     }
 
     this.setWheelStopper(this.noWheel)
@@ -121,11 +124,51 @@ export const FFormInput = {
   },
   methods: {
     updateValue(value) {
-      this.localValue = value
-      if (value !== this.vModelValue) {
-        this.vModelValue = value
-        this.$emit('update', value)
+      let $input = this.$refs.input
+      let position = $input.selectionEnd
+      let isLast =
+        this.vModelValue &&
+        value.length === position &&
+        value.length > this.localValue.length
+
+      let localValue = this.formatLocal(value, isLast)
+      let vModelValue = this.parseModel(value)
+
+      this.localValue = localValue
+      if (vModelValue !== this.vModelValue) {
+        this.vModelValue = vModelValue
+        this.$emit('update', vModelValue)
+      } else {
+        if ($input && localValue !== $input.value) {
+          $input.value = localValue
+        }
       }
+
+      if (isLast) {
+        position = localValue.length
+      }
+
+      if (this.mask && $input === document.activeElement) {
+        let digit = value[position - 1]
+
+        while (
+          position < localValue.length &&
+          localValue.charAt(position - 1) !== digit
+        ) {
+          position++
+        }
+
+        this.$nextTick(() => {
+          // setSelectionRange after $input.value = localValue
+          $input.setSelectionRange(position, position)
+        })
+      }
+    },
+    formatLocal(value, last = false) {
+      return mask(toString(value), this.mask, true, last)
+    },
+    parseModel(value) {
+      return mask(value, this.mask, this.masked)
     },
     onInput(evt) {
       // `evt.target.composing` is set by Vue
@@ -142,7 +185,7 @@ export const FFormInput = {
       }
       const value = evt.target.value
       this.updateValue(value)
-      this.$emit('input', value)
+      this.$emit('input', this.vModelValue)
     },
     onChange(evt) {
       // Exit when prevented the input event
@@ -152,7 +195,7 @@ export const FFormInput = {
       }
       const value = evt.target.value
       this.updateValue(value)
-      this.$emit('change', value)
+      this.$emit('change', this.vModelValue)
     },
     onBlur(evt) {
       // Apply the `localValue` on blur to prevent cursor jumps
