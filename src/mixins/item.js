@@ -10,6 +10,7 @@ import {
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
 import { attemptFocus } from '@/utils/dom'
+import { mapState } from '@/utils/store'
 
 // @vue/component
 export const itemMixin = {
@@ -34,9 +35,17 @@ export const itemMixin = {
     }
   },
   computed: {
+    ...mapState(['isSubmit']),
     error() {
       if (!this.isMounted) return null
       return this.$refs.validation.errors[0]
+    },
+    touched() {
+      if (!this.isMounted) return
+      return this.$refs.validation.flags.touched
+    },
+    hasError() {
+      return this.error && (this.touched || this.isSubmit)
     },
     attrs() {
       return {
@@ -67,6 +76,7 @@ export const itemMixin = {
         this.inputClass,
         {
           ['f-control-' + this.size]: this.size,
+          'f-control-error': this.hasError,
         },
       ]
     },

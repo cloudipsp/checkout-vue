@@ -36,6 +36,7 @@ export default {
           'f-switch': this.switch,
           'f-checkbox': !this.switch,
           [`f-checkbox-${this.variant}`]: !this.switch,
+          'f-checkbox-error': this.hasError,
         },
         this.inputClass,
       ]

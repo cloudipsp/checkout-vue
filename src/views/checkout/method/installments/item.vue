@@ -14,15 +14,12 @@
     />
     <div :class="$style.header">
       <div :class="$style.name">{{ item.name }}</div>
-      <div :class="$style.desc">
-        <span v-text="$t('from_amount_month', [amountMonth])" />
-        <span> {{ min }}–{{ max }} {{ $t('payments') }}</span>
-      </div>
     </div>
     <div :class="$style['col-parts']">
       <f-form-group
         v-model="parts"
         :class="$style.parts"
+        :label-class="$style.label"
         component="select2"
         :options="list"
         :name="$t('Payments')"
@@ -47,6 +44,11 @@
       <f-button variant="success" size="icon" @click="goSystem">
         <span><f-svg name="arrow-right" size="lg" /></span>
       </f-button>
+    </div>
+    <div :class="$style.break" />
+    <div :class="$style.desc">
+      <span v-text="$t('from_amount_month', [amountMonth])" />
+      <span> {{ min }}–{{ max }} {{ $t('payments') }}</span>
     </div>
   </div>
 </template>
@@ -153,6 +155,7 @@ export default {
 <style lang="scss" module>
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
   cursor: pointer;
 
   :global(.f-no-embed) & {
@@ -200,9 +203,14 @@ export default {
   }
 }
 
+.break {
+  width: 100%;
+}
+
 .desc {
   font-size: px-to-rem(14px);
   line-height: px-to-rem(20px);
+  padding-left: px-to-rem(48px);
 
   :global(.f-theme-light) & {
     color: #818c99;
@@ -216,6 +224,7 @@ export default {
     @include media-breakpoint-up(md) {
       display: flex;
       flex-direction: column;
+      padding-left: px-to-rem(60px);
     }
   }
 }
@@ -236,24 +245,25 @@ export default {
 .parts {
   display: flex;
   align-items: center;
-
-  label {
-    font-weight: 400;
-    font-size: px-to-rem(14px);
-    line-height: px-to-rem(20px);
-    margin-right: px-to-rem(10px);
-
-    :global(.f-theme-light) & {
-      color: #818c99;
-    }
-
-    :global(.f-theme-dark) & {
-      color: #838688;
-    }
-  }
+  margin-bottom: 0;
 
   :global(.f-form-group-inner) {
     width: px-to-rem(72px);
+  }
+}
+
+.label {
+  font-weight: 400;
+  font-size: px-to-rem(14px);
+  line-height: px-to-rem(20px);
+  margin: 0 px-to-rem(10px) 0 0;
+
+  :global(.f-theme-light) & {
+    color: #818c99;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #838688;
   }
 }
 

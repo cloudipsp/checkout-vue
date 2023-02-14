@@ -9,15 +9,15 @@
   }
 }
 
-.f-form-group-card {
-  .f-control-label {
-    @include media-breakpoint-up(ss) {
-      margin-bottom: px-to-rem(3px);
-      font-size: px-to-rem(11px);
-      line-height: px-to-rem(18px);
-    }
+.f-card_label {
+  @include media-breakpoint-up(ss) {
+    margin-bottom: px-to-rem(3px);
+    font-size: px-to-rem(11px);
+    line-height: px-to-rem(18px);
   }
+}
 
+.f-form-group-card {
   .f-form-control {
     @include media-breakpoint-up(ss) {
       height: px-to-rem(25px);

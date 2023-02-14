@@ -446,9 +446,9 @@ class Store extends Model {
     params.custom = Object.fromEntries(
       Object.entries(params.custom).map(([name, value]) => {
         let fields = Object.fromEntries(
-          this.state.fields.map(({ name, label, description }) => [
+          this.state.fields.map(({ name, label, placeholder }) => [
             name,
-            description || label,
+            label || placeholder,
           ])
         )
         return [

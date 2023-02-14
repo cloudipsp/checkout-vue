@@ -36,11 +36,6 @@
   }
 }
 
-.f-form-group {
-  position: relative;
-  margin-bottom: px-to-rem(16px);
-}
-
 .f-form-group-inner {
   position: relative;
 }
@@ -51,16 +46,20 @@
 }
 
 .f-form-control {
+  --border: #{px-to-rem(1px)};
+
   display: block;
   width: 100%;
   height: px-to-rem(56px);
-  padding: px-to-rem(26px) $input-padding-start px-to-rem(8px);
+  padding: px-to-rem(26px) calc(#{px-to-rem(12px)} - var(--border))
+    px-to-rem(8px);
   font-size: px-to-rem(16px);
   font-weight: 500;
   border-style: solid;
-  border-width: $input-border-width;
+  border-width: var(--border);
   border-radius: px-to-rem(8px);
-  transition: all ease-in-out 0.15s;
+  transition: color ease-in-out 0.15s, box-shadow ease-in-out 0.15s,
+    border-color ease-in-out 0.15s;
 
   &:-webkit-autofill {
     @include plain-hover-focus-active() {
@@ -74,8 +73,7 @@
   }
 
   &:focus {
-    padding-left: $input-focus-padding-start;
-    border-width: $input-focus-border-width;
+    --border: #{px-to-rem(1px)};
   }
 
   &[disabled],
@@ -83,20 +81,8 @@
     opacity: 1;
   }
 
-  &:-webkit-autofill + .f-control-label-p {
+  &:-webkit-autofill + .f-control-label-floating {
     transform: translateY(-8px) scale(0.75);
-  }
-
-  .f-has-error & {
-    padding-left: $input-error-padding-start;
-    color: $error;
-    border-color: $error;
-    border-width: $input-error-border-width;
-
-    &:focus {
-      padding-left: $input-focus-padding-start;
-      border-width: $input-focus-border-width;
-    }
   }
 
   &[type='text'],
@@ -104,6 +90,10 @@
   &[type='date'] {
     appearance: none;
   }
+}
+
+.f-form-control-no-floating {
+  padding-top: px-to-rem(8px);
 }
 
 .f-form-control-default {
@@ -128,6 +118,12 @@
     $input_secondary_focus_border,
     $input_secondary_disabled_color
   );
+}
+
+.f-control-error {
+  --border: #{px-to-rem(2px)};
+  color: $error;
+  border-color: $error;
 }
 
 .f-control-sm {
@@ -183,22 +179,14 @@
   }
 }
 
-.f-form-control-description {
-  margin-bottom: px-to-rem(8px);
-  font-size: px-to-rem(14px);
-}
-
-.f-control-label {
-  color: $label_color;
-}
-
-.f-control-label-p {
+.f-control-label-floating {
   position: absolute;
   top: px-to-rem(17px);
   right: px-to-rem(28px);
   left: px-to-rem(12px);
   font-size: px-to-rem(16px);
   line-height: px-to-rem(24px);
+  color: $label_color;
   transition: transform ease-in-out 0.15s;
   transform-origin: 0 0;
   @include text-truncate();
@@ -212,7 +200,7 @@
   }
 }
 
-.f-control-label-p-sm {
+.f-control-label-floating-sm {
   top: px-to-rem(10px);
 }
 
@@ -224,8 +212,8 @@
   color: $label_focus_color;
 }
 
-.f-form-control[disabled] + .f-control-label,
-.f-disabled > .f-control-label {
+.f-form-control[disabled] + .f-control-label-floating,
+.f-disabled > .f-control-label-floating {
   color: $label_color;
 }
 
@@ -242,21 +230,28 @@
   left: 0;
   display: flex;
   align-items: center;
-  margin: 0;
   color: $input_prepend_color;
 
   ~ div .f-form-control {
-    padding-left: px-to-rem(40px);
-
-    &:focus {
-      // stylelint-disable-next-line scss/operator-no-newline-after
-      padding-left: px-to-rem(40px) -
-        ($input-focus-border-width - $input-border-width);
-    }
+    padding-left: calc(#{px-to-rem(40px)} - var(--border));
   }
 
-  ~ .f-control-label-p {
+  ~ .f-control-label-floating {
     left: px-to-rem(40px);
+  }
+}
+
+.f-form-control-prepend-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: px-to-rem(12px);
+  display: flex;
+  align-items: center;
+  color: $input_prepend_color;
+
+  ~ div .f-form-control {
+    padding-left: calc(#{px-to-rem(60px)} - var(--border));
   }
 }
 

@@ -8,6 +8,7 @@
         ref="card_number"
         v-model="card_number"
         class="f-form-group-card f-form-group-card-number"
+        label-class="f-card_label"
         name="card_number"
         placeholder="card_number_p"
         :rules="validCardNumber"
@@ -18,15 +19,12 @@
         inputmode="numeric"
         tooltip
         no-label-floating
+        dynamic-placeholder
         autocomplete="cc-number"
         @input="inputCardNumber"
       >
-        <template v-if="isCards" #label="{ classLabel, label }">
-          <f-card-list-wrapper
-            class="f-control-label-card-list"
-            :class="classLabel"
-            :label="label"
-          />
+        <template v-if="isCards" #label="{ label }">
+          <f-card-list-wrapper class="f-card_label" :label="label" />
         </template>
       </f-form-group>
 
@@ -34,6 +32,7 @@
         ref="expiry_date"
         v-model="expiry_date"
         class="f-form-group-card"
+        label-class="f-card_label"
         name="expiry_date"
         placeholder="expiry_date_p"
         :rules="validExpiryDate"
@@ -44,6 +43,7 @@
         inputmode="numeric"
         tooltip
         no-label-floating
+        dynamic-placeholder
         autocomplete="cc-exp"
         :format="format"
         @input="inputExpiryDate"
@@ -61,10 +61,11 @@
         :maxlength="digitsCvv"
         tooltip
         no-label-floating
+        dynamic-placeholder
         autocomplete="cc-csc"
       >
-        <template #label="{ classLabel, id, label }">
-          <label :class="classLabel" :for="id">
+        <template #label="{ id, label }">
+          <label class="f-card_label" :for="id">
             <span ref="label_cvv">{{ label }}</span>
           </label>
 
@@ -74,7 +75,7 @@
             :target="() => $refs.label_cvv"
             variant="secondary"
           >
-            <f-svg name="info-circle" size="md" />
+            <f-svg name="info-circle" class="f-mr-8" size="md" />
             <span v-text="$t('cvv2_help', [digitsCvv])" />
           </f-tooltip-default>
         </template>

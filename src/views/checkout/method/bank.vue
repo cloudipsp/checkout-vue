@@ -6,7 +6,7 @@
           <f-country
             v-model="default_country"
             :list="listCountry"
-            :description="label"
+            :label="label"
             @input="clear"
           />
         </div>

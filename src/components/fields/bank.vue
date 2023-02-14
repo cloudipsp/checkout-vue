@@ -35,16 +35,32 @@ export default {
     },
   },
   methods: {
-    parseField({ label, placeholder, name, type, validate, mask }) {
+    parseField({ label, placeholder, name, type, validate, mask = '' }) {
+      let noLabelFloating = Boolean(
+        (label && placeholder) || (!label && !placeholder)
+      )
+      let prependText
+      let lastNumberIndex = mask.search(/(\d+)(?!.*\d)/) + 1
+
+      if (lastNumberIndex) {
+        prependText = mask.slice(0, lastNumberIndex)
+        mask = mask.slice(lastNumberIndex)
+        noLabelFloating = true
+        label = label || placeholder
+        placeholder = ''
+      }
+
       return {
         name,
-        description: placeholder ? label : '',
-        label: placeholder ? placeholder : label,
+        noLabelFloating,
+        label: label || placeholder,
+        placeholder: noLabelFloating ? placeholder : '',
         component: type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(validate),
         autocomplete: 'on',
         type,
         mask,
+        prependText,
       }
     },
     parseValidate(validate) {

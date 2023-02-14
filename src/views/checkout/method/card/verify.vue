@@ -12,9 +12,10 @@
         mask="XXXX XXXX XXXX XXXX XXX"
         :disabled="true"
         no-label-floating
+        dynamic-placeholder
       >
-        <template #label="{ classLabel, label }">
-          <label :class="classLabel">
+        <template #label="{ label }">
+          <label class="f-card_label">
             {{ label }} <f-svg name="lock-alt" size="lg" />
           </label>
         </template>
@@ -23,20 +24,24 @@
       <f-form-group
         :value="expiry_date"
         class="f-form-group-card"
+        label-class="f-card_label"
         name="expiry_date"
         placeholder="expiry_date_p"
         mask="##/##"
         :disabled="true"
         no-label-floating
+        dynamic-placeholder
       />
       <f-form-group
         :value="cvv2"
         class="f-form-group-card"
+        label-class="f-card_label"
         name="cvv2"
         placeholder="cvv2_p"
         mask="####"
         :disabled="true"
         no-label-floating
+        dynamic-placeholder
       />
     </div>
     <f-field-email />

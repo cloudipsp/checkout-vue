@@ -1,19 +1,8 @@
 <template>
   <div :class="classGroup" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <div
-      v-if="description"
-      class="f-form-control-description"
-      v-text="$t(description)"
-    />
-    <slot
-      v-if="noLabelFloating"
-      :id="safeId()"
-      name="label"
-      :classLabel="classLabel"
-      :label="$t(label)"
-    >
+    <slot v-if="noLabelFloating" :id="safeId()" name="label" :label="$t(label)">
       <label
-        v-if="label"
+        v-if="showLabel"
         :class="classLabel"
         :for="safeId()"
         @click="focused"
@@ -21,12 +10,19 @@
       />
     </slot>
     <div :class="classGroupInner">
+      <label
+        v-if="prependText"
+        :for="safeId()"
+        class="f-form-control-prepend-text"
+      >
+        {{ prependText }}
+      </label>
       <label v-if="prepend" :for="safeId()" class="f-form-control-prepend">
         <f-svg :name="prepend" fw />
       </label>
       <label
-        v-if="!noLabelFloating && label"
-        :class="classLabel"
+        v-if="!noLabelFloating && showLabel"
+        :class="classLabelFloating"
         :for="safeId()"
         @click="focused"
         v-text="$t(label)"
@@ -75,6 +71,7 @@ import { isMountedMixin } from '@/mixins/is-mounted'
 import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { timeoutMixin } from '@/mixins/timeout'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
@@ -87,15 +84,17 @@ export default {
   inheritAttrs: false,
   props: {
     ...idProps,
-    description: makeProp(PROP_TYPE_STRING),
     name: makeProp(PROP_TYPE_STRING, undefined, true),
     label: makeProp(PROP_TYPE_STRING, function () {
-      return this.$attrs.component === 'checkbox' ? '' : this.name
+      return this.name
     }),
+    labelClass: makeProp(PROP_TYPE_STRING),
     noLabelFloating: makeProp(PROP_TYPE_BOOLEAN, false),
     tooltip: makeProp(PROP_TYPE_BOOLEAN, false),
     hideError: makeProp(PROP_TYPE_BOOLEAN, false),
     prepend: makeProp(PROP_TYPE_STRING),
+    prependText: makeProp(PROP_TYPE_STRING),
+    dynamicPlaceholder: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
@@ -128,12 +127,7 @@ export default {
       }
     },
     classGroup() {
-      return [
-        'f-form-group',
-        {
-          'f-has-error': this.hasError,
-        },
-      ]
+      return ['f-form-group', this.$style.wrapper]
     },
     classGroupInner() {
       return [
@@ -147,16 +141,18 @@ export default {
       ]
     },
     classLabel() {
+      return [this.$style['label-no-floating'], this.labelClass]
+    },
+    classLabelFloating() {
       return [
         'f-control-label',
+        'f-control-label-floating',
         {
-          'f-control-label-p': !this.noLabelFloating,
-          [`f-control-label-p-${this.$attrs.size}`]:
-            !this.noLabelFloating && this.$attrs.size,
+          [`f-control-label-floating-${this.$attrs.size}`]: this.$attrs.size,
           'f-control-label-active':
             (isExist(this.$attrs.value) && this.$attrs.value !== '') ||
             this.focus,
-          'f-control-label-hover': !this.noLabelFloating && this.hover,
+          'f-control-label-hover': this.hover,
           'f-control-label-focused': this.focus,
         },
       ]
@@ -173,7 +169,10 @@ export default {
       return this.tooltip && this.hasError && this.focus
     },
     showPlaceholder() {
-      return this.noLabelFloating && this.safeId()
+      return this.dynamicPlaceholder && this.noLabelFloating && this.safeId()
+    },
+    showLabel() {
+      return !arrayIncludes(['checkbox'], this.$attrs.component) && this.label
     },
   },
   watch: {
@@ -203,3 +202,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.wrapper {
+  position: relative;
+  margin-bottom: px-to-rem(16px);
+}
+
+.label-no-floating {
+  margin-bottom: px-to-rem(8px);
+  font-size: px-to-rem(14px);
+}
+</style>

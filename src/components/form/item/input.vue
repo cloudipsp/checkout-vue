@@ -3,7 +3,7 @@
     <f-form-input
       ref="input"
       v-model="innerValue"
-      :class="classInput"
+      :class="className"
       v-bind="attrs"
       @focus="$emit('focus')"
       @blur="$emit('blur')"
@@ -19,7 +19,7 @@ import { itemMixin } from '@/mixins/item'
 import { FFormInput } from '@/components/form/item/helpers/form-input'
 import { removeAddEventListenerMixin } from '@/mixins/remove-add-event-listener'
 import { makeProp } from '@/utils/props'
-import { PROP_TYPE_FUNCTION } from '@/constants/props'
+import { PROP_TYPE_BOOLEAN, PROP_TYPE_FUNCTION } from '@/constants/props'
 
 export default {
   components: {
@@ -29,6 +29,17 @@ export default {
   props: {
     format: makeProp(PROP_TYPE_FUNCTION, value => value),
     parse: makeProp(PROP_TYPE_FUNCTION, value => value),
+    noLabelFloating: makeProp(PROP_TYPE_BOOLEAN, false),
+  },
+  computed: {
+    className() {
+      return [
+        {
+          'f-form-control-no-floating': this.noLabelFloating,
+        },
+        this.classInput,
+      ]
+    },
   },
   methods: {
     watchInnerValue(newValue) {

@@ -13,6 +13,7 @@
       <f-form-group
         value=""
         :class="$style.parts"
+        :label-class="$style.label"
         component="select2"
         :name="$t('Payments')"
         :input-class="$style.select"
@@ -116,23 +117,23 @@ export default {
   display: flex;
   align-items: center;
 
-  label {
-    font-weight: 400;
-    font-size: px-to-rem(14px);
-    line-height: px-to-rem(20px);
-    margin-right: px-to-rem(10px);
-
-    :global(.f-theme-light) & {
-      color: #818c99;
-    }
-
-    :global(.f-theme-dark) & {
-      color: #6f7274;
-    }
-  }
-
   :global(.f-form-group-inner) {
     width: px-to-rem(72px);
+  }
+}
+
+.label {
+  font-weight: 400;
+  font-size: px-to-rem(14px);
+  line-height: px-to-rem(20px);
+  margin: 0 px-to-rem(10px) 0 0;
+
+  :global(.f-theme-light) & {
+    color: #818c99;
+  }
+
+  :global(.f-theme-dark) & {
+    color: #6f7274;
   }
 }
 
