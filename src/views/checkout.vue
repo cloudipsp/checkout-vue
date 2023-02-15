@@ -130,6 +130,7 @@ export default {
     submitProgress(model) {
       if (!model) return
 
+      this.apiCheckoutFormToken = model.attr('token')
       this.location(model.instance(model.alt('order', model.data)))
       this.submit3dsSuccess(model)
 
@@ -246,7 +247,9 @@ export default {
     },
     getOrder() {
       this.store
-        .sendRequest('api.checkout.order', 'get', this.store.tokenFormParams())
+        .sendRequest('api.checkout.order', 'get', {
+          token: this.token || this.apiCheckoutFormToken,
+        })
         .then(this.orderSuccess)
         .catch(errorHandler)
     },
