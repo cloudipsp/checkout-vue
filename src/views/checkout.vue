@@ -86,15 +86,6 @@ export default {
     isDemo() {
       return this.disable_request
     },
-    createdFormParams() {
-      let result = this.store.tokenFormParams()
-
-      if (this.store.user.params?.lang) {
-        result.lang = this.lang
-      }
-
-      return result
-    },
   },
   created() {
     if (this.token) {
@@ -102,9 +93,16 @@ export default {
     }
 
     this.store
-      .sendRequest('api.checkout', 'app', this.createdFormParams, {
-        cached: this.token,
-      })
+      .sendRequest(
+        'api.checkout',
+        'app',
+        this.store.infoParams(
+          this.store.user.params?.lang ? this.lang : undefined
+        ),
+        {
+          cached: this.token,
+        }
+      )
       .then(this.appSuccess)
       .finally(() => {
         this.ready = true

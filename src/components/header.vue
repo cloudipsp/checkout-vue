@@ -102,7 +102,7 @@ export default {
   methods: {
     changeLang(value) {
       this.store.changeLang(value)
-      this.store.sendRequestInfo({ lang: value })
+      this.store.sendRequestInfo()
     },
     goMenu() {
       this.$router.push({ name: 'menu' }).catch(() => {})

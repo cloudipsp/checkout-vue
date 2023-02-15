@@ -54,8 +54,12 @@ class Store extends Model {
       return Promise.reject(model)
     })
   }
-  sendRequestInfo(data) {
-    this.sendRequest('api.checkout.info', 'get', this.tokenFormParams(data))
+  sendRequestInfo() {
+    this.sendRequest(
+      'api.checkout.info',
+      'get',
+      this.infoParams(this.state.params.lang)
+    )
       .then(model => this.info(model))
       .catch(errorHandler)
   }
@@ -424,22 +428,16 @@ class Store extends Model {
       location: location.href,
     }
   }
-  tokenFormParams(data) {
+  infoParams(lang) {
     return this.state.params.token
-      ? Object.assign(
-          { token: this.state.params.token },
-          data,
-          this.defaultParams()
-        )
-      : this.formParams()
+      ? { token: this.state.params.token, lang }
+      : this.formParams({
+          lang,
+        })
   }
   formParams(data) {
     // copy params
     let params = JSON.parse(JSON.stringify(this.state.params))
-
-    params.referrer = document.referrer
-    params.embedded = !this.state.options.full_screen
-    params.location = location.href
 
     params.save_card = Boolean(localStorage.get('save_card'))
 
