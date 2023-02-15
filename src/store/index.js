@@ -433,6 +433,7 @@ class Store extends Model {
       ? { token: this.state.params.token, lang }
       : this.formParams({
           lang,
+          amount: this.state.params.amount,
         })
   }
   formParams(data) {
