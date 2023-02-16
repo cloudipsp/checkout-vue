@@ -5,9 +5,9 @@ import { sort } from '@/utils/sort'
 import { mappingMethod } from '@/config/mapping-method'
 
 export const methods = (user, server = [], disable) => {
-  server = server.map(mapped)
-  user = user.map(mapped)
-  disable = disable.map(mapped)
+  server = server.map(mappingMethod)
+  user = user.map(mappingMethod)
+  disable = disable.map(mappingMethod)
 
   return user
     .filter(includes(server))
@@ -19,7 +19,7 @@ export const methods = (user, server = [], disable) => {
 
 export const tabs = (tabs = {}) => {
   let result = Object.entries(tabs).map(([name, { payment_systems }]) => {
-    name = mapped(name)
+    name = mappingMethod(name)
     return [name, parse(payment_systems, name)]
   })
   let allPaymentSystems = result.reduce(
@@ -72,10 +72,6 @@ export const most_popular_icons = ({ most_popular }) =>
 
 function onlyConfig(item) {
   return configMethods.includes(item)
-}
-
-function mapped(item) {
-  return mappingMethod[item] || item
 }
 
 function parse(systems, method) {

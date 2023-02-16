@@ -35,6 +35,9 @@ import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
 import { FLoading } from '@/import'
+import configMethods from '@/config/methods.json'
+import { arrayIncludes } from '@/utils/array'
+import { mappingMethod } from '@/config/mapping-method'
 
 let model3ds
 
@@ -217,6 +220,13 @@ export default {
       if (model.submitToMerchant()) return
 
       if (model.inProgress() && model.waitForResponse()) {
+        let method = mappingMethod(model.attr('order_data.payment_system'))
+        if (
+          arrayIncludes(configMethods, method) &&
+          this.$route.meta.method !== method
+        ) {
+          this.$router.push({ name: method }).catch(() => {})
+        }
         this.locationPending()
 
         return

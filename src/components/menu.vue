@@ -71,10 +71,7 @@ export default {
           'f-menu-item',
           {
             active:
-              (this.$route.name === item ||
-                this.$route.params.method === item ||
-                this.$route.meta.method === item) &&
-              !this.isBreakpointDownLg,
+              this.$route.meta.method === item && !this.isBreakpointDownLg,
           },
         ]
       }

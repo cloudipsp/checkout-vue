@@ -81,6 +81,9 @@ export default name => {
                         })
                       else next()
                     },
+                    meta: {
+                      method: card,
+                    },
                   },
                   {
                     path: verify,
@@ -96,61 +99,97 @@ export default name => {
                 path: banklinks_eu,
                 name: banklinks_eu,
                 component: Banklinks_eu,
+                meta: {
+                  method: banklinks_eu,
+                },
               },
               {
                 path: local_methods,
                 name: local_methods,
                 component: Local_methods,
+                meta: {
+                  method: local_methods,
+                },
               },
               {
                 path: crypto,
                 name: crypto,
                 component: Crypto,
+                meta: {
+                  method: crypto,
+                },
               },
               {
                 path: sepa,
                 name: sepa,
                 component: Sepa,
+                meta: {
+                  method: sepa,
+                },
               },
               {
                 path: receipt,
                 name: receipt,
                 component: Receipt,
+                meta: {
+                  method: receipt,
+                },
               },
               {
                 path: wallets,
                 name: wallets,
                 component: Wallets,
+                meta: {
+                  method: wallets,
+                },
               },
               {
                 path: loans,
                 name: loans,
                 component: Loans,
+                meta: {
+                  method: loans,
+                },
               },
               {
                 path: installments,
                 name: installments,
                 component: Installments,
+                meta: {
+                  method: installments,
+                },
               },
               {
                 path: emoney,
                 name: emoney,
                 component: Emoney,
+                meta: {
+                  method: emoney,
+                },
               },
               {
                 path: most_popular,
                 name: most_popular,
                 component: MostPopular,
+                meta: {
+                  method: most_popular,
+                },
               },
               {
                 path: ':method(installments)/:system',
                 name: 'installments-system',
                 component: InstallmentsSystem,
+                meta: {
+                  method: installments,
+                },
               },
               {
                 path: ':method/:system',
                 name: 'system',
                 component: System,
+                meta: route => ({
+                  method: route.params.method,
+                }),
               },
             ],
           },
@@ -175,6 +214,7 @@ export default name => {
                 meta: {
                   noLoading: true,
                   noTop: true,
+                  method: installments,
                 },
               },
             ],

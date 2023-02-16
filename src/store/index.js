@@ -287,8 +287,7 @@ class Store extends Model {
     }
   }
   parseActiveTab(model) {
-    let active_tab = model.attr('active_tab')
-    active_tab = mappingMethod[active_tab] || active_tab
+    let active_tab = mappingMethod(model.attr('active_tab'))
     active_tab = active_tab === 'card' ? '' : active_tab
     let methodsLength = this.state.options.methods.filter(removeWallets).length
 
