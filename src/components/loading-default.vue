@@ -58,6 +58,12 @@ export default {
   left: 0;
   background-color: $container_bg;
   opacity: $modal-backdrop-opacity;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(xl) {
+      border-radius: px-to-rem(16px);
+    }
+  }
 }
 
 .loader {
