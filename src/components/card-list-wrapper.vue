@@ -79,12 +79,12 @@ export default {
   methods: {
     setCardNumber() {
       this.returnFocus =
-        this.$parent.$parent.$refs.cvv2.$children[0].$children[0].$refs.input.$el
+        this.$parent.$parent.$refs.cvv2.$refs.item.$children[0].$refs.input.$el
       this.hide()
     },
     addCardNumber() {
       this.returnFocus =
-        this.$parent.$parent.$refs.card_number.$children[0].$children[0].$refs.input.$el
+        this.$parent.$parent.$refs.card_number.$refs.item.$children[0].$refs.input.$el
       this.hide()
     },
     hide() {
