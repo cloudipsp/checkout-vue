@@ -25,6 +25,10 @@
     border-radius: px-to-rem(16px);
     box-shadow: 0 24px 40px fade($container_box_shadow, 60%);
   }
+
+  @include media-breakpoint-up(xxl) {
+    max-width: 1280px;
+  }
 }
 
 .f-demo {

@@ -9,6 +9,7 @@
     <div :class="$style.header">
       <div :class="$style.name">{{ item.name }}</div>
     </div>
+    <div :class="$style.break" />
     <div :class="$style['col-parts']">
       <f-form-group
         value=""
@@ -60,6 +61,7 @@ export default {
 <style lang="scss" module>
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .icon {
@@ -71,32 +73,59 @@ export default {
 .header {
   flex-basis: 0;
   flex-grow: 1;
-  padding-right: px-to-rem(32px);
-}
-
-.name {
+  padding-right: px-to-rem(20px);
   display: flex;
-  align-items: center;
-  font-weight: 500;
-  font-size: px-to-rem(16px);
-  line-height: px-to-rem(18px);
+  flex-direction: column;
+  justify-content: center;
   min-height: px-to-rem(36px);
   margin-bottom: px-to-rem(8px);
 
   :global(.f-no-embed) & {
     @include media-breakpoint-up(md) {
+      margin-bottom: 0;
       min-height: px-to-rem(48px);
+    }
+  }
+}
+
+.name {
+  font-weight: 500;
+  font-size: px-to-rem(16px);
+  line-height: px-to-rem(18px);
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
       font-size: px-to-rem(14px);
       line-height: px-to-rem(20px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: px-to-rem(2px);
     }
   }
 
   :global(.f-theme-light) & {
-    color: #a9b2bd;
+    color: #3d3d3d;
   }
 
   :global(.f-theme-dark) & {
-    color: #6f7274;
+    color: #fff;
+  }
+}
+
+.break {
+  :global(.f-no-embed) & {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+      width: 100%;
+      margin-bottom: px-to-rem(12px);
+    }
+
+    @include media-breakpoint-up(xxl) {
+      display: none;
+    }
   }
 }
 
@@ -108,7 +137,11 @@ export default {
       display: block;
       flex-basis: 0;
       flex-grow: 1;
-      padding-right: px-to-rem(32px);
+      padding-right: px-to-rem(20px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-left: px-to-rem(60px);
     }
   }
 }
@@ -116,6 +149,7 @@ export default {
 .parts {
   display: flex;
   align-items: center;
+  margin-bottom: 0;
 
   :global(.f-form-group-inner) {
     width: px-to-rem(72px);
@@ -149,7 +183,7 @@ export default {
       display: block;
       flex-basis: 0;
       flex-grow: 1;
-      padding-right: px-to-rem(32px);
+      padding-right: px-to-rem(20px);
     }
   }
 }

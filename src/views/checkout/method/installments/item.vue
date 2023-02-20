@@ -14,7 +14,12 @@
     />
     <div :class="$style.header">
       <div :class="$style.name">{{ item.name }}</div>
+      <div :class="[$style.desc, $style.desc_1]">
+        <span v-text="$t('from_amount_month', [amountMonth])" />
+        <span> {{ min }}–{{ max }} {{ $t('payments') }}</span>
+      </div>
     </div>
+    <div :class="$style.break" />
     <div :class="$style['col-parts']">
       <f-form-group
         v-model="parts"
@@ -45,8 +50,7 @@
         <span><f-svg name="arrow-right" size="lg" /></span>
       </f-button>
     </div>
-    <div :class="$style.break" />
-    <div :class="$style.desc">
+    <div :class="[$style.desc, $style.desc_2]">
       <span v-text="$t('from_amount_month', [amountMonth])" />
       <span> {{ min }}–{{ max }} {{ $t('payments') }}</span>
     </div>
@@ -174,23 +178,34 @@ export default {
 .header {
   flex-basis: 0;
   flex-grow: 1;
-  padding-right: px-to-rem(32px);
-}
-
-.name {
+  padding-right: px-to-rem(20px);
   display: flex;
-  align-items: center;
-  font-weight: 500;
-  font-size: px-to-rem(16px);
-  line-height: px-to-rem(18px);
+  flex-direction: column;
+  justify-content: center;
   min-height: px-to-rem(36px);
   margin-bottom: px-to-rem(8px);
 
   :global(.f-no-embed) & {
     @include media-breakpoint-up(md) {
+      margin-bottom: 0;
       min-height: px-to-rem(48px);
+    }
+  }
+}
+
+.name {
+  font-weight: 500;
+  font-size: px-to-rem(16px);
+  line-height: px-to-rem(18px);
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
       font-size: px-to-rem(14px);
       line-height: px-to-rem(20px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: px-to-rem(2px);
     }
   }
 
@@ -203,14 +218,9 @@ export default {
   }
 }
 
-.break {
-  width: 100%;
-}
-
 .desc {
   font-size: px-to-rem(14px);
   line-height: px-to-rem(20px);
-  padding-left: px-to-rem(48px);
 
   :global(.f-theme-light) & {
     color: #818c99;
@@ -219,12 +229,34 @@ export default {
   :global(.f-theme-dark) & {
     color: #838688;
   }
+}
+
+.desc_1 {
+  display: none;
 
   :global(.f-no-embed) & {
-    @include media-breakpoint-up(md) {
-      display: flex;
-      flex-direction: column;
-      padding-left: px-to-rem(60px);
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      display: none;
+    }
+  }
+}
+
+.break {
+  :global(.f-no-embed) & {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+      width: 100%;
+      margin-bottom: px-to-rem(12px);
+    }
+
+    @include media-breakpoint-up(xxl) {
+      display: none;
     }
   }
 }
@@ -237,7 +269,11 @@ export default {
       display: block;
       flex-basis: 0;
       flex-grow: 1;
-      padding-right: px-to-rem(32px);
+      padding-right: px-to-rem(20px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-left: px-to-rem(60px);
     }
   }
 }
@@ -279,7 +315,7 @@ export default {
       display: block;
       flex-basis: 0;
       flex-grow: 1;
-      padding-right: px-to-rem(32px);
+      padding-right: px-to-rem(20px);
     }
   }
 }
@@ -287,6 +323,7 @@ export default {
 .wrapper-amount {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   min-height: px-to-rem(48px);
   white-space: nowrap;
 }
@@ -329,6 +366,27 @@ export default {
   :global(.f-no-embed) & {
     @include media-breakpoint-up(md) {
       display: block;
+    }
+  }
+}
+
+.desc_2 {
+  padding-left: px-to-rem(48px);
+  width: 100%;
+
+  :global(.f-no-embed) & {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-direction: column;
+      padding-left: px-to-rem(60px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      display: flex;
     }
   }
 }
