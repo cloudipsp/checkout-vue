@@ -29,7 +29,7 @@ const AttachmentMap = {
   RIGHTTOP: 'right',
   RIGHTBOTTOM: 'right',
   BOTTOMLEFT: 'bottom-start',
-  BOTTOMRIGHT: 'bottom',
+  BOTTOMRIGHT: 'bottom-end',
   LEFTTOP: 'left',
   LEFTBOTTOM: 'left',
 }
@@ -44,7 +44,7 @@ const OffsetMap = {
   RIGHTBOTTOM: +1,
   BOTTOMLEFT: 0,
   BOTTOM: 0,
-  BOTTOMRIGHT: +1,
+  BOTTOMRIGHT: 0,
   LEFTTOP: -1,
   LEFT: 0,
   LEFTBOTTOM: +1,

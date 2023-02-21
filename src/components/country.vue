@@ -2,10 +2,13 @@
   <f-form-group
     name=""
     component="select2"
+    variant="secondary"
     size="sm"
     v-bind="attrs"
     data-e2e-country
     no-label-floating
+    search
+    :dropdown-wrapper-class="$style.dropdown"
     v-on="fListeners"
     @search="onSearch"
   >
@@ -13,9 +16,10 @@
       <span class="f-pr-8">{{ flag(item.value) }}</span>
       {{ item.text }}
     </template>
-    <template #item="{ item }">
+    <template #item="{ item, isActive }">
       <span class="f-pr-8">{{ flag(item.value) }}</span>
       {{ item.text }}
+      <f-svg v-if="isActive" class="f-ml-auto" name="check" size="lg" />
     </template>
   </f-form-group>
 </template>
@@ -28,8 +32,12 @@ import { countriesSearch } from '@/import'
 import { sort, parseSelect } from '@/utils/sort'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_ARRAY } from '@/constants/props'
+import FSvg from '@/components/svg'
 
 export default {
+  components: {
+    FSvg,
+  },
   mixins: [attrsMixin, listenersMixin],
   inheritAttrs: false,
   props: {
@@ -112,3 +120,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.dropdown {
+  padding: px-to-rem(20px);
+  max-height: px-to-rem(400px);
+}
+</style>

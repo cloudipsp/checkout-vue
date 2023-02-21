@@ -4,13 +4,15 @@
       <slot name="text" :item="active">
         {{ active.text }}
       </slot>
-      <f-svg :class="classArrow" name="angle-down" />
+      <span class="f-select-arrow-wrapper">
+        <f-svg :class="classArrow" name="angle-down" />
+      </span>
     </template>
     <template #default>
       <f-form-base v-if="showSearch" class="f-select-search">
         <f-form-group
           ref="search"
-          :value="search"
+          :value="text"
           class="f-mb-0"
           name="default_country"
           size="sm"
@@ -33,10 +35,10 @@
         @keydown="navigate"
         @focus="focus(key)"
       >
-        <slot name="item" :item="item">
+        <slot name="item" :item="item" :isActive="isActive(item)">
           {{ item.text }}
+          <span class="f-ml-auto f-pl-8" :style="style(item)">•</span>
         </slot>
-        <f-svg v-if="isActive(item)" class="f-ml-auto" name="check" size="lg" />
       </button>
     </template>
   </f-modal-tooltip>
@@ -49,12 +51,15 @@ import FSvg from '@/components/svg'
 import { makeProp } from '@/utils/props'
 import {
   PROP_TYPE_ARRAY,
+  PROP_TYPE_BOOLEAN,
   PROP_TYPE_FUNCTION,
   PROP_TYPE_NUMBER_STRING,
+  PROP_TYPE_STRING,
 } from '@/constants/props'
 import { attemptFocus, requestAF } from '@/utils/dom'
 import { CODE_DOWN, CODE_ENTER, CODE_UP } from '@/constants/key-codes'
 import { attrsMixin } from '@/mixins/attrs'
+import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
@@ -76,36 +81,46 @@ export default {
         ({ text }) =>
           text.toLowerCase().indexOf(search) === 0
     ),
+    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+      arrayIncludes(['default', 'secondary'], value)
+    ),
+    search: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
       open: false,
-      search: '',
+      text: '',
       autofocus: false,
       index: 0,
     }
   },
   computed: {
     showSearch() {
-      return this.options.length > 10
+      return this.search && this.options.length > 10
     },
     list() {
-      return this.options.filter(this.filter(this.search.toLowerCase()))
+      return this.options.filter(this.filter(this.text.toLowerCase()))
     },
     active() {
       return this.options.filter(({ value }) => value === this.value)[0] || {}
     },
     classItem() {
       return (item, index) => [
-        'f-select-item f-btn-unstyled',
+        `f-select-${this.variant}-item`,
+        'f-btn-unstyled',
         {
-          'f-select-item-active': this.isActive(item),
-          'f-select-item-focus': index === this.index,
+          [`f-select-${this.variant}-item_active`]: this.isActive(item),
+          [`f-select-${this.variant}-item_focus`]: index === this.index,
         },
       ]
     },
     classArrow() {
       return ['f-select-arrow', { 'f-select-arrow-open': this.open }]
+    },
+    style() {
+      return item => ({
+        visibility: this.isActive(item) ? 'visible' : 'hidden',
+      })
     },
   },
   methods: {
@@ -121,7 +136,7 @@ export default {
     },
     hide() {
       this.open = false
-      this.search = ''
+      this.text = ''
     },
     isActive(item) {
       return item.value === this.value
@@ -168,7 +183,7 @@ export default {
     },
     input(value) {
       this.$emit('search', value)
-      this.search = value
+      this.text = value
       requestAF(() => {
         this.reset()
         this.scroll()

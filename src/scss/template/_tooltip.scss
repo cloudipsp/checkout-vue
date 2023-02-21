@@ -45,13 +45,8 @@
   }
 
   .f-tooltip-inner {
-    max-height: px-to-rem(400px);
-    padding: px-to-rem(20px) 0 0;
-    color: $tooltip_card_color;
-  }
-
-  .f-scrollbar {
-    height: auto;
+    display: block;
+    padding: 0;
   }
 }
 

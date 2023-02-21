@@ -27,16 +27,16 @@
     <button v-else key="tooltip" ref="target" :class="className" type="button">
       <slot name="text" />
       <f-tooltip-select
-        class="asd"
         :show.sync="tooltip"
         :target="() => $refs.target"
-        placement="bottomleft"
+        :custom-class="dropdownClass"
+        :placement="dropdownPlacement"
         @shown="shown"
         @hide="hide"
       >
-        <component :is="component" v-bind="attrs">
+        <f-scrollbar-vertical :wrap-class="dropdownWrapperClass">
           <slot />
-        </component>
+        </f-scrollbar-vertical>
       </f-tooltip-select>
     </button>
   </keep-alive>
@@ -47,7 +47,7 @@ import FTooltipSelect from '@/components/tooltip/tooltip-select'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
-import { PROP_TYPE_BOOLEAN } from '@/constants/props'
+import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import FScrollbarVertical from '@/components/scrollbar-vertical'
 
@@ -60,6 +60,9 @@ export default {
   props: {
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
     scrollable: makeProp(PROP_TYPE_BOOLEAN, false),
+    dropdownClass: makeProp(PROP_TYPE_STRING, 'f-tooltip-select'),
+    dropdownWrapperClass: makeProp(PROP_TYPE_STRING, 'f-p-4'),
+    dropdownPlacement: makeProp(PROP_TYPE_STRING, 'bottomleft'),
   },
   data() {
     return {
@@ -80,10 +83,10 @@ export default {
     attrs() {
       return this.scrollable
         ? {
-            'wrap-class': 'f-select-wrap',
+            'wrap-class': 'f-p-20',
           }
         : {
-            class: 'f-select-wrap',
+            class: 'f-p-20',
           }
     },
   },

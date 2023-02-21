@@ -78,7 +78,6 @@ html {
   display: flex;
   flex-direction: column;
   width: 100%; // Ensure `.f-modal-content` extends the full width of the parent `.f-modal-dialog`
-  padding: px-to-rem(20px) 0 0;
   margin-top: px-to-rem(88px);
   font-size: px-to-rem(14px);
   // counteract the pointer-events: none; in the .f-modal-dialog
