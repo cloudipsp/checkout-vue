@@ -32,11 +32,11 @@
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^3.5.2",
     "axios": "^0.21.4",
-    "core-js": "^3.27.2",
+    "core-js": "^3.28.0",
     "countries-languages": "github:arash16/countries-languages",
     "css-vars-ponyfill": "^2.4.8",
     "date-format-parse": "^0.2.7",
-    "ipsp-js-sdk": "^2.0.9-alpha.10",
+    "ipsp-js-sdk": "^2.0.10",
     "ismobilejs": "^1.1.1",
     "popper.js": "^1.16.1",
     "qrcode-generator": "^1.4.4",
@@ -65,10 +65,10 @@
     "git-revision-webpack-plugin": "^3.0.6",
     "gulp": "^4.0.2",
     "lint-staged": "^10.5.4",
-    "minimist": "^1.2.7",
+    "minimist": "^1.2.8",
     "node-gettext-generator": "^0.2.13",
     "node-sass": "^6.0.1",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.4",
     "sass-loader": "^10.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -76,7 +76,7 @@
     "stylelint-prettier": "^1.2.0",
     "vue-svg-loader": "^0.17.0-beta.2",
     "vue-template-compiler": "^2.7.14",
-    "webpack-bundle-analyzer": "^4.7.0"
+    "webpack-bundle-analyzer": "^4.8.0"
   },
   "eslintConfig": {
     "globals": {
