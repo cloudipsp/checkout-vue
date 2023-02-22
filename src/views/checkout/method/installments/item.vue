@@ -28,7 +28,8 @@
         component="select2"
         :options="list"
         :name="$t('Payments')"
-        :input-class="$style.select"
+        :input-class="$style.w_72"
+        :dropdown-class="dropdownClass"
         no-label-floating
         size="48"
         @input="input"
@@ -113,6 +114,9 @@ export default {
     },
     iconSize() {
       return this.isBreakpointDownMd ? 36 : 48
+    },
+    dropdownClass() {
+      return `f-tooltip-select ${this.$style.w_72}`
     },
   },
   created() {
@@ -303,7 +307,7 @@ export default {
   }
 }
 
-.select {
+.w_72 {
   width: px-to-rem(72px);
 }
 

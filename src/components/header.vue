@@ -24,13 +24,13 @@
     </div>
     <div v-if="showLang" class="f-header-menu">
       <f-form-base>
-        <f-form-item-select
+        <f-form-item-select2
           input-class="f-lang"
           :value="lang"
           :options="locale"
-          size="sm"
-          dir="rtl"
-          @change="changeLang"
+          no-label-floating
+          dropdown-placement="bottomright"
+          @input="changeLang"
         />
       </f-form-base>
     </div>
@@ -47,6 +47,7 @@ import { mapState } from '@/utils/store'
 import { sort, parseSelect } from '@/utils/sort'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
+import FFormItemSelect2 from '@/components/form/item/select2'
 
 export default {
   components: {
@@ -54,6 +55,7 @@ export default {
     FSvg,
     SvgLogo,
     FFormBase,
+    FFormItemSelect2,
   },
   mixins: [resizeMixin],
   props: {

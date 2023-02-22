@@ -107,9 +107,15 @@
 }
 
 .f-lang {
-  padding: px-to-rem(8px) px-to-rem(28px) px-to-rem(8px) px-to-rem(8px);
+  height: px-to-rem(20px);
+  padding: 0;
   color: $btn_link_default_color;
+  background: none;
   border: none;
+
+  &:hover {
+    background: none;
+  }
 }
 
 .f-icons {
