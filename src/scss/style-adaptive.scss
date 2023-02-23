@@ -45,19 +45,23 @@
 
 .f-header-logo {
   @include media-breakpoint-up(md) {
-    padding: px-to-rem(24px) 0 0 px-to-rem(40px);
+    padding-left: px-to-rem(40px);
   }
+
   @include media-breakpoint-up(lg) {
     flex: 0 0 410px;
     max-width: 410px;
-    padding: px-to-rem(24px) 0 0 px-to-rem(40px);
     border-right: 2px solid $sidebar_border;
   }
+
   @include media-breakpoint-up(xl) {
+    border-right: 2px solid $sidebar_border;
+  }
+
+  @include media-breakpoint-up(xxl) {
     flex: 0 0 450px;
     max-width: 450px;
-    padding: px-to-rem(24px) 0 0 px-to-rem(60px);
-    border-right: 2px solid $sidebar_border;
+    padding-left: px-to-rem(60px);
   }
 
   .f-without-sidebar & {
@@ -96,10 +100,14 @@
     background-color: $container_bg;
     border-right: 2px solid $sidebar_border;
   }
+
   @include media-breakpoint-up(xl) {
+    border-radius: 0 0 0 px-to-rem(16px);
+  }
+
+  @include media-breakpoint-up(xxl) {
     flex: 0 0 450px;
     max-width: 450px;
-    border-radius: 0 0 0 px-to-rem(16px);
   }
 }
 
@@ -107,7 +115,8 @@
   @include media-breakpoint-up(lg) {
     padding: 0 px-to-rem(40px);
   }
-  @include media-breakpoint-up(xl) {
+
+  @include media-breakpoint-up(xxl) {
     padding: 0 px-to-rem(60px);
   }
 }
@@ -122,9 +131,13 @@
   @include media-breakpoint-up(md) {
     padding: 0 px-to-rem(40px);
   }
+
   @include media-breakpoint-up(lg) {
     min-height: auto;
-    padding: 0 px-to-rem(24px);
+  }
+
+  @include media-breakpoint-up(xxl) {
+    padding: 0 px-to-rem(60px);
   }
 }
 
