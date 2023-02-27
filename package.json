@@ -67,7 +67,7 @@
     "lint-staged": "^10.5.4",
     "minimist": "^1.2.8",
     "node-gettext-generator": "^0.2.13",
-    "node-sass": "^6.0.1",
+    "node-sass": "^8.0.0",
     "prettier": "^2.8.4",
     "sass-loader": "^10.4.1",
     "stylelint": "^13.13.1",
