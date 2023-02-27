@@ -37,7 +37,7 @@ export default {
   },
   phonemobile: {
     label: 'customer_phonemobile',
-    rules: 'required|phone',
+    rules: 'required|phonemobile',
     autocomplete: 'tel',
   },
   email: {

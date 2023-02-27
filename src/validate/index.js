@@ -22,6 +22,7 @@ const install = Vue => {
       max,
       digits,
       regex,
+      phone: digits,
     },
     customRules
   )

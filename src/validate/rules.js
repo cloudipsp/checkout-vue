@@ -52,7 +52,7 @@ export const customer_field_utf8 = {
     /^(?!\s+)[\u00BF-\u1FFF\u2C00-\uD7FF\w`\-\/.,\s]+$/.test(value),
 }
 
-export const phone = {
+export const phonemobile = {
   validate: value => /^\+?\d{7,14}$/.test(value),
 }
 

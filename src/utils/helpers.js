@@ -76,7 +76,7 @@ export const clearEmptyValue = object => {
 export const generateValidateMessage = translation =>
   Object.fromEntries(
     Object.entries(translation)
-      .filter(([k]) => /^rule_/.test(k))
+      .filter(([k, v]) => /^rule_/.test(k) && v)
       .map(([k, v]) => [k.replace('rule_', ''), v])
   )
 

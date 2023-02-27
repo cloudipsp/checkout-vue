@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 11:33+0200\n"
+"POT-Creation-Date: 2023-02-27 14:20+0200\n"
 "PO-Revision-Date: 2021-03-19 11:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -50,7 +50,7 @@ msgstr "cüzdan"
 msgid "loans"
 msgstr "online hissə-hissə ödəniş"
 
-#: src/i18n/process/methods.js:9 src/i18n/process/translate.js:37
+#: src/i18n/process/methods.js:9 src/i18n/process/translate.js:38
 msgid "emoney"
 msgstr "rəqəmsal cüzdan"
 
@@ -58,7 +58,7 @@ msgstr "rəqəmsal cüzdan"
 msgid "crypto"
 msgstr ""
 
-#: src/i18n/process/methods.js:11 src/i18n/process/translate.js:81
+#: src/i18n/process/methods.js:11 src/i18n/process/translate.js:82
 msgid "most_popular"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr "ödəmələrinizi asanlaşdırmaq üçün bu veb saytda cookies istifad�
 msgid "learn_more"
 msgstr "daha ətraflı"
 
-#: src/i18n/process/templates.js:7 src/i18n/process/translate.js:97
+#: src/i18n/process/templates.js:7 src/i18n/process/translate.js:98
 msgid "gdpr_modal_text"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr "datepicker"
 msgid "model"
 msgstr "model"
 
-#: src/i18n/process/templates.js:21 src/i18n/process/translate.js:84
+#: src/i18n/process/templates.js:21 src/i18n/process/translate.js:85
 msgid "all_methods"
 msgstr ""
 
@@ -406,7 +406,7 @@ msgstr ""
 msgid "most_popular_methods_in"
 msgstr ""
 
-#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:83
+#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:84
 msgid "see_all_other_methods"
 msgstr ""
 
@@ -494,7 +494,7 @@ msgstr ""
 msgid "sepa_t"
 msgstr "bank hesabınızın məlumatlarını verin"
 
-#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:47
+#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:48
 msgid "sender_name"
 msgstr "adı"
 
@@ -597,282 +597,286 @@ msgstr "xahiş edirik burada xüsusi simvollardan istifadə etməyin"
 
 #: src/i18n/process/translate.js:25
 msgid "rule_phone"
-msgstr "zəhmət olmasa ən azı 7 rəqəm daxil edin (0-9)"
+msgstr ""
 
 #: src/i18n/process/translate.js:26
+msgid "rule_phonemobile"
+msgstr "zəhmət olmasa ən azı 7 rəqəm daxil edin (0-9)"
+
+#: src/i18n/process/translate.js:27
 msgid "rule_numrange"
 msgstr "həddən artıq çox rəqəm daxil etdiniz"
 
-#: src/i18n/process/translate.js:27
+#: src/i18n/process/translate.js:28
 msgid "rule_ccard"
 msgstr "kart nömrəsi yanlışdır"
 
-#: src/i18n/process/translate.js:28
+#: src/i18n/process/translate.js:29
 msgid "rule_expiry_date"
 msgstr "son istifadə tarixi yanlışdır"
 
-#: src/i18n/process/translate.js:29
+#: src/i18n/process/translate.js:30
 msgid "rule_cvv"
 msgstr "CVV2/CVC2 yanlışdır"
 
-#: src/i18n/process/translate.js:30
+#: src/i18n/process/translate.js:31
 msgid "rule_one"
 msgstr "bu dəyər 1-dən az ola bilməz"
 
-#: src/i18n/process/translate.js:32
+#: src/i18n/process/translate.js:33
 msgid "price"
 msgstr "qiymət"
 
-#: src/i18n/process/translate.js:33
+#: src/i18n/process/translate.js:34
 msgid "shipping"
 msgstr "çatdırılma"
 
-#: src/i18n/process/translate.js:34
+#: src/i18n/process/translate.js:35
 msgid "vat"
 msgstr "vat"
 
-#: src/i18n/process/translate.js:35
+#: src/i18n/process/translate.js:36
 msgid "arbitrary_amount"
 msgstr "məbləğ"
 
-#: src/i18n/process/translate.js:38
+#: src/i18n/process/translate.js:39
 msgid "ibox_ua"
 msgstr "terminal vasitəsilə nağd pul"
 
-#: src/i18n/process/translate.js:40
+#: src/i18n/process/translate.js:41
 msgid "loans_tooltip"
 msgstr "indi al, 15 günə ödə. Komissiya 0%"
 
-#: src/i18n/process/translate.js:42
+#: src/i18n/process/translate.js:43
 msgid "button_expired_title"
 msgstr "ödəniş düyməsinin vaxtı keçib"
 
-#: src/i18n/process/translate.js:43
+#: src/i18n/process/translate.js:44
 msgid "button_expired_text"
 msgstr "problemi həll etmək üçün tacirlə əlaqə saxlayın"
 
-#: src/i18n/process/translate.js:44
+#: src/i18n/process/translate.js:45
 msgid "button_status_not_active_title"
 msgstr "ödəniş linki deaktivdir"
 
-#: src/i18n/process/translate.js:45
+#: src/i18n/process/translate.js:46
 msgid "button_status_not_active_text"
 msgstr ""
 "zəhmət olmasa aktual ödəniş linkini almaq üçün satıcı ilə əlaqə saxlayın"
 
-#: src/i18n/process/translate.js:48
+#: src/i18n/process/translate.js:49
 msgid "sender_familyName"
 msgstr "soyadı"
 
-#: src/i18n/process/translate.js:49
+#: src/i18n/process/translate.js:50
 msgid "bic"
 msgstr "bic"
 
-#: src/i18n/process/translate.js:50
+#: src/i18n/process/translate.js:51
 msgid "iban"
 msgstr "iban"
 
-#: src/i18n/process/translate.js:52
+#: src/i18n/process/translate.js:53
 msgid "wallets_google"
 msgstr ""
 
-#: src/i18n/process/translate.js:53
+#: src/i18n/process/translate.js:54
 msgid "wallets_card"
 msgstr ""
 
-#: src/i18n/process/translate.js:54
+#: src/i18n/process/translate.js:55
 msgid "wallets_apple"
 msgstr ""
 
-#: src/i18n/process/translate.js:56
+#: src/i18n/process/translate.js:57
 msgid "3ds_title"
 msgstr ""
 
-#: src/i18n/process/translate.js:57
+#: src/i18n/process/translate.js:58
 msgid "3ds_link"
 msgstr ""
 
-#: src/i18n/process/translate.js:59
+#: src/i18n/process/translate.js:60
 msgid "qr_desc_mobile_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:60
+#: src/i18n/process/translate.js:61
 msgid "qr_desc_desktop_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:61
+#: src/i18n/process/translate.js:62
 msgid "qr_button_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:62
+#: src/i18n/process/translate.js:63
 msgid "qr_app_apple_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:63
+#: src/i18n/process/translate.js:64
 msgid "qr_app_google_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:65
+#: src/i18n/process/translate.js:66
 msgid "ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:66
+#: src/i18n/process/translate.js:67
 msgid "CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:67
+#: src/i18n/process/translate.js:68
 msgid "Email address"
 msgstr ""
 
-#: src/i18n/process/translate.js:68
+#: src/i18n/process/translate.js:69
 msgid "IBAN"
 msgstr ""
 
-#: src/i18n/process/translate.js:69
+#: src/i18n/process/translate.js:70
 msgid "name"
 msgstr ""
 
-#: src/i18n/process/translate.js:70
+#: src/i18n/process/translate.js:71
 msgid "SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:71
+#: src/i18n/process/translate.js:72
 msgid "specin.address"
 msgstr ""
 
-#: src/i18n/process/translate.js:72
+#: src/i18n/process/translate.js:73
 msgid "specin.bic"
 msgstr ""
 
-#: src/i18n/process/translate.js:73
+#: src/i18n/process/translate.js:74
 msgid "specin.city"
 msgstr ""
 
-#: src/i18n/process/translate.js:74
+#: src/i18n/process/translate.js:75
 msgid "specin.consumerref"
 msgstr ""
 
-#: src/i18n/process/translate.js:75
+#: src/i18n/process/translate.js:76
 msgid "specin.dob"
 msgstr ""
 
-#: src/i18n/process/translate.js:76
+#: src/i18n/process/translate.js:77
 msgid "specin.email"
 msgstr ""
 
-#: src/i18n/process/translate.js:77
+#: src/i18n/process/translate.js:78
 msgid "specin.iban"
 msgstr ""
 
-#: src/i18n/process/translate.js:78
+#: src/i18n/process/translate.js:79
 msgid "specin.nationalid"
 msgstr ""
 
-#: src/i18n/process/translate.js:79
+#: src/i18n/process/translate.js:80
 msgid "specin.zipcode"
 msgstr ""
 
-#: src/i18n/process/translate.js:82
+#: src/i18n/process/translate.js:83
 msgid "search_country"
 msgstr ""
 
-#: src/i18n/process/translate.js:85
+#: src/i18n/process/translate.js:86
 msgid "credit_debit_cards"
 msgstr ""
 
-#: src/i18n/process/translate.js:87
+#: src/i18n/process/translate.js:88
 msgid "label_ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:88
+#: src/i18n/process/translate.js:89
 msgid "placeholder_ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:89
+#: src/i18n/process/translate.js:90
 msgid "label_SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:90
+#: src/i18n/process/translate.js:91
 msgid "placeholder_SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:91
+#: src/i18n/process/translate.js:92
 msgid "message_address_number"
 msgstr ""
 
-#: src/i18n/process/translate.js:92
+#: src/i18n/process/translate.js:93
 msgid "message_address_street"
 msgstr ""
 
-#: src/i18n/process/translate.js:93
+#: src/i18n/process/translate.js:94
 msgid "message_customer_name_utf8"
 msgstr ""
 
-#: src/i18n/process/translate.js:94
+#: src/i18n/process/translate.js:95
 msgid "placeholder_customer_name_utf8"
 msgstr ""
 
-#: src/i18n/process/translate.js:95
+#: src/i18n/process/translate.js:96
 msgid "placeholder_address_street"
 msgstr ""
 
-#: src/i18n/process/translate.js:99
+#: src/i18n/process/translate.js:100
 msgid "email"
 msgstr "email"
 
-#: src/i18n/process/translate.js:100
+#: src/i18n/process/translate.js:101
 msgid "currencies"
 msgstr ""
 
-#: src/i18n/process/translate.js:101
+#: src/i18n/process/translate.js:102
 msgid "number_of_payments"
 msgstr "ödənişlərin sayı"
 
-#: src/i18n/process/translate.js:102
+#: src/i18n/process/translate.js:103
 msgid "subscription_every"
 msgstr "hər biri"
 
-#: src/i18n/process/translate.js:103
+#: src/i18n/process/translate.js:104
 msgid "subscription_period"
 msgstr "vaxt müddəti"
 
-#: src/i18n/process/translate.js:104
+#: src/i18n/process/translate.js:105
 msgid "subscription_start_time"
 msgstr "starting on"
 
-#: src/i18n/process/translate.js:105
+#: src/i18n/process/translate.js:106
 msgid "subscription_end_time"
 msgstr "bitmə vaxtı"
 
-#: src/i18n/process/translate.js:106
+#: src/i18n/process/translate.js:107
 msgid "default_country"
 msgstr "ölkə üzrə axtarın"
 
-#: src/i18n/process/translate.js:107
+#: src/i18n/process/translate.js:108
 msgid "system_search"
 msgstr "bank adı, IBAN və ya BLZ ilə axtarın"
 
-#: src/i18n/process/translate.js:108
+#: src/i18n/process/translate.js:109
 msgid "card_number"
 msgstr "kart nömrəsi"
 
-#: src/i18n/process/translate.js:109
+#: src/i18n/process/translate.js:110
 msgid "expiry_date"
 msgstr "aa/ii"
 
-#: src/i18n/process/translate.js:110
+#: src/i18n/process/translate.js:111
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/translate.js:111
+#: src/i18n/process/translate.js:112
 msgid "verification_code"
 msgstr "təsdiqedici kod"
 
-#: src/i18n/process/translate.js:112
+#: src/i18n/process/translate.js:113
 msgid "verification_amount"
 msgstr "doğrulama məbləği"
 
-#: src/i18n/process/translate.js:114
+#: src/i18n/process/translate.js:115
 msgid "installments_desc_monobank_ua"
 msgstr ""
 
