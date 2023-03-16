@@ -88,6 +88,7 @@ const config = {
     order_id: '',
     save_card: true,
     verification_type: null,
+    token: '',
   },
   button: {
     token: '',

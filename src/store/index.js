@@ -487,6 +487,12 @@ class Store extends Model {
 
     return Object.assign(params, data, this.defaultParams())
   }
+  setToken(token) {
+    if (this.state.params.token) return
+    if (!this.state.options.amount_readonly) return
+
+    this.state.params.token = token
+  }
 }
 
 export default (name, fromCache) => {
