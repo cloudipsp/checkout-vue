@@ -30,7 +30,7 @@
           :options="locale"
           no-label-floating
           dropdown-placement="bottomright"
-          @input="changeLang"
+          @change="changeLang"
         />
       </f-form-base>
     </div>
