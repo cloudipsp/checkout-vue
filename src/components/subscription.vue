@@ -10,11 +10,10 @@
     >
       <span v-text="$t('subscription')" />
     </f-form-group>
-    <div v-else class="f-form-group" v-text="$t('subscription')" />
+    <div v-else v-text="$t('subscription')" />
     <transition name="f-collapse">
       <div v-if="enabled_switch" class="f-subscription-wrapper">
         <input-amount
-          class="f-form-group"
           name="amount"
           label="subscription_amount"
           subscription
@@ -60,7 +59,7 @@
             <span v-text="$t('unlimited')" />
           </f-form-group>
         </div>
-        <div class="f-input-group">
+        <div class="f-input-group f-mb-0">
           <f-form-group
             v-model.number="every"
             class="f-col-4"
@@ -84,7 +83,7 @@
             @show-error="onShowError"
           />
         </div>
-        <div class="f-form-group">
+        <div class="f-mb-16">
           <transition name="f-slide-fade">
             <div v-if="error" class="f-error">
               {{ error }}

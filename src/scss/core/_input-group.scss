@@ -2,6 +2,8 @@
   @extend .f-row;
   @extend .f-no-gutters;
 
+  margin-bottom: px-to-rem(16px);
+
   > :first-child .f-form-control {
     border-right: none;
     border-radius: px-to-rem(8px) 0 0 px-to-rem(8px);
@@ -45,7 +47,7 @@
     }
   }
 
-  .f-control-label-floation.f-control-label-active {
+  .f-control-label-floating.f-control-label-active {
     z-index: 2;
   }
 }
