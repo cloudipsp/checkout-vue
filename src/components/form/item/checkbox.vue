@@ -7,7 +7,9 @@
       v-on="$listeners"
       @keyup.enter="onEnter"
     />
-    <label :class="classLabel" :for="attrs.id"><slot /></label>
+    <label :class="classLabel" :for="attrs.id">
+      <slot>{{ $t(label) }}</slot>
+    </label>
   </ValidationProvider>
 </template>
 
@@ -28,6 +30,7 @@ export default {
       arrayIncludes(['default', 'secondary'], value)
     ),
     switch: makeProp(PROP_TYPE_BOOLEAN, false),
+    label: makeProp(PROP_TYPE_STRING),
   },
   computed: {
     classInput() {
@@ -46,6 +49,16 @@ export default {
         'f-switch-label': this.switch,
         'f-checkbox-label': !this.switch,
       }
+    },
+  },
+  created() {
+    if (this.rules.required) {
+      this.rules.required = { allowFalse: false }
+    }
+  },
+  methods: {
+    watchValue(newValue) {
+      this.innerValue = Boolean(newValue)
     },
   },
 }

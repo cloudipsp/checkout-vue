@@ -18,12 +18,12 @@ export default {
     },
   },
   computed: {
-    ...mapState(['fields']),
+    ...mapState(['fields_custom']),
     ...mapState('options', {
       optionsFields: 'fields',
     }),
     show() {
-      return !this.fields.length && this.optionsFields
+      return !this.fields_custom.length && this.optionsFields
     },
   },
 }

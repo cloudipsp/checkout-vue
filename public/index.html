@@ -641,7 +641,50 @@
               // merchant_id: 5198,
               token: '77b4d55873c090dfe74a48378c2977854d13ddac',
             },
-          }
+          },
+          fields_custom: {
+            options: {
+              api_domain: 'dev2.pay.fondy.eu',
+            },
+            params: {
+              amount: 200,
+              currency: 'UAH',
+              merchant_id: 1396424,
+            },
+            fields_custom: {
+              'id-1': {
+                name: 'id-1',
+                label: 'label1',
+                value: 'https://www.chernobyl-tour.com/public_offer_en.html',
+                readonly: true,
+                p: 1,
+              },
+              'id-2': {
+                name: 'id-2',
+                label: 'label2',
+                value: 'value2',
+                p: 2,
+              },
+              'id-3': {
+                name: 'id-3',
+                label: 'label3',
+                type: 'checkbox',
+                required: true,
+                p: 3,
+              },
+            },
+            messages: {
+              ru: {
+                label3: 'label3_ru',
+              },
+              en: {
+                label3: 'label3_en',
+              },
+              uk: {
+                label3: 'label3_uk',
+              },
+            },
+          },
         }
 
         window.app = render('#app', 'max')

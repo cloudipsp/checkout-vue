@@ -83,7 +83,7 @@
     </div>
     <f-field-email />
     <f-fields-customer />
-    <f-fields-button />
+    <f-fields-custom />
     <f-fields-user />
     <f-subscription-wrapper />
     <f-offer />
@@ -99,7 +99,7 @@ import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
 import FFieldsCustomer from '@/components/fields/customer'
-import FFieldsButton from '@/components/fields/button'
+import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
@@ -118,7 +118,7 @@ export default {
     FTooltipDefault,
     FFieldEmail,
     FFieldsCustomer,
-    FFieldsButton,
+    FFieldsCustom,
     FFieldsUser,
     FSubscriptionWrapper,
     FOffer,

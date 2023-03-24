@@ -15,7 +15,7 @@ import { sendRequest } from '@/utils/api'
 import { isExist } from '@/utils/inspect'
 import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from '@/store/setup'
-import loadButton from '@/store/button'
+import { loadButton } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
 import loadCardImg from '@/store/card-img'
 import { methods, most_popular_icons, tabs, tabs_order } from '@/store/parse'
@@ -211,6 +211,7 @@ class Store extends Model {
     deepMerge(this.state.params, this.user.params, notSet.params)
     deepMerge(this.state.options, this.user.options, notSet.options)
     Object.assign(this.state.button, this.user.button)
+    Object.assign(this.state.fields_custom, this.user.fields_custom)
     Object.assign(this.state.messages, this.user.messages)
     Object.assign(this.state.validate, userConfig.validate) // userConfig because functions are removed in this.user
     Object.assign(
@@ -265,7 +266,7 @@ class Store extends Model {
     this.state.has_fields =
       !this.state.options.amount_readonly ||
       this.state.fields_customer.length ||
-      this.state.fields.length ||
+      this.state.fields_custom.length ||
       this.state.options.fields ||
       this.state.options.offerta_url
   }
@@ -318,6 +319,12 @@ class Store extends Model {
       if (this.state.options.full_screen) {
         document.title = config.options.title
       }
+
+      config.fields_custom = [
+        ...config.fields_custom,
+        ...this.state.fields_custom,
+      ]
+
       this.setState(config)
       this.initLang()
       this.initHasFields()
@@ -444,7 +451,7 @@ class Store extends Model {
     params.custom = Object.fromEntries(
       Object.entries(params.custom).map(([name, value]) => {
         let fields = Object.fromEntries(
-          this.state.fields.map(({ name, label, placeholder }) => [
+          this.state.fields_custom.map(({ name, label, placeholder }) => [
             name,
             label || placeholder,
           ])

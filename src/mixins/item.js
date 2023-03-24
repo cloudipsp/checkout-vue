@@ -21,7 +21,7 @@ export const itemMixin = {
     ...idProps,
     value: makeProp(PROP_TYPE_STRING_NUMBER_BOOLEAN),
     inputClass: makeProp(PROP_TYPE_STRING),
-    rules: makeProp(PROP_TYPE_OBJECT_STRING),
+    rules: makeProp(PROP_TYPE_OBJECT_STRING, {}),
     size: makeProp(PROP_TYPE_STRING, undefined, value =>
       arrayIncludes(['sm', '48'], value)
     ),

@@ -4,7 +4,7 @@
       <f-price />
     </template>
     <f-fields-customer />
-    <f-fields-button />
+    <f-fields-custom />
     <f-fields-user />
     <f-offer />
     <f-button-wallet-el />
@@ -14,7 +14,7 @@
 <script>
 import FPrice from '@/components/price'
 import FFieldsCustomer from '@/components/fields/customer'
-import FFieldsButton from '@/components/fields/button'
+import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonWalletEl from '@/components/button-pay-wallet-el'
@@ -24,7 +24,7 @@ export default {
   components: {
     FPrice,
     FFieldsCustomer,
-    FFieldsButton,
+    FFieldsCustom,
     FFieldsUser,
     FOffer,
     FButtonWalletEl,

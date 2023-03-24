@@ -24,12 +24,12 @@ export default {
     FFormSave,
   },
   computed: {
-    ...mapState(['params', 'fields']),
+    ...mapState(['params', 'fields_custom']),
     show() {
-      return this.fields.length
+      return this.fields_custom.length
     },
     list() {
-      return this.fields
+      return this.fields_custom
     },
     includes() {
       return this.list.map(({ name }) => name)

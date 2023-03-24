@@ -23,7 +23,7 @@ export default {
       return this.url
     },
     rules() {
-      return { required: { allowFalse: false } }
+      return { required: true }
     },
     html() {
       return this.$t('offer_t', [this.url])

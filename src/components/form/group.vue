@@ -124,6 +124,7 @@ export default {
         id: this.safeId(),
         name: `f-${this.name}`,
         noLabelFloating: this.noLabelFloating,
+        label: this.label,
       }
     },
     classGroup() {

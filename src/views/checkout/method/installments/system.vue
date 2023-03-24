@@ -15,7 +15,7 @@
       <div class="f-mb-32">
         <f-fields-bank :fields="fields" />
         <f-fields-customer />
-        <f-fields-button />
+        <f-fields-custom />
         <f-fields-user />
         <div class="f-row f-mb-16">
           <div class="f-col-5">
@@ -61,7 +61,7 @@ import FIcon from '@/components/icon'
 import { FButtonClose } from '@/components/button/button-close'
 import FFieldsBank from '@/components/fields/bank'
 import FFieldsCustomer from '@/components/fields/customer'
-import FFieldsButton from '@/components/fields/button'
+import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButton from '@/components/button/button'
@@ -77,7 +77,7 @@ export default {
     FButtonClose,
     FFieldsBank,
     FFieldsCustomer,
-    FFieldsButton,
+    FFieldsCustom,
     FFieldsUser,
     FOffer,
     FButton,

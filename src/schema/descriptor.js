@@ -43,6 +43,7 @@ const config = [
   'validate',
   'css_variable',
   'button',
+  'fields_custom',
 ]
 const patternUrlImg = /^(http(s)?:\/\/|(url\()?data:image\/[\w+;]+?,)/
 const messageEnum = 'is not equal to one of'
@@ -55,6 +56,7 @@ const typeEnum = value => ({ type: 'enum', enum: value })
 const typeDate = { ...typeString, pattern: /^\d{4}-\d{2}-\d{2}$/ }
 const typeIntegerMax = max => ({ ...typeInteger, max })
 const typeObject = { type: 'object' }
+const typeArray = { type: 'array' }
 const digits12 = 999999999999
 
 function error(array, includes, rule, value, callback, message) {
@@ -73,7 +75,7 @@ function error(array, includes, rule, value, callback, message) {
 
 function enumArray(array) {
   return {
-    type: 'array',
+    ...typeArray,
     validator(rule, value, callback, source, options) {
       if (!Array.isArray(value))
         return loadAsyncValidator().then(Schema =>
@@ -330,6 +332,12 @@ export default {
       messages,
       validate,
       css_variable,
+      button: {
+        ...typeObject,
+      },
+      fields_custom: {
+        ...typeObject,
+      },
     },
   },
 }

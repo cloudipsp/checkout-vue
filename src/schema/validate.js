@@ -5,6 +5,8 @@ import configTheme from '@/config/theme'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
 import { loadAsyncValidator } from '@/import'
+import { sort } from '@/utils/sort'
+import { parseFieldsCustom } from '@/store/button'
 
 class Validate extends Model {
   constructor(data) {
@@ -13,10 +15,10 @@ class Validate extends Model {
   }
 
   init() {
+    this.format(this.data)
     this.compatibility()
     this.configDefault()
-    this.format(this.data)
-    return this.validate().then(this.priority.bind(this))
+    return this.validate().then(this.afterValidate.bind(this))
   }
 
   compatibility() {
@@ -64,8 +66,9 @@ class Validate extends Model {
       })
   }
 
-  priority() {
+  afterValidate() {
     this.token()
+    this.fieldsCustom()
   }
 
   subscription() {
@@ -138,6 +141,17 @@ class Validate extends Model {
     }
 
     this.attr('data.params.token', token)
+  }
+
+  fieldsCustom() {
+    let fields_custom = this.data.fields_custom
+
+    if (!fields_custom) return
+
+    this.attr(
+      'data.fields_custom',
+      Object.values(fields_custom).sort(sort('p')).map(parseFieldsCustom)
+    )
   }
 }
 

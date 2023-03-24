@@ -11,7 +11,7 @@
     <div class="f-container-sm">
       <f-fields-bank :fields="form.fields" />
       <f-fields-customer />
-      <f-fields-button />
+      <f-fields-custom />
       <f-fields-user />
       <f-offer />
       <f-button-pay @success="success" />
@@ -31,7 +31,7 @@ import FIcon from '@/components/icon'
 import { FButtonClose } from '@/components/button/button-close'
 import FFieldsBank from '@/components/fields/bank'
 import FFieldsCustomer from '@/components/fields/customer'
-import FFieldsButton from '@/components/fields/button'
+import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
@@ -45,7 +45,7 @@ export default {
     FButtonClose,
     FFieldsBank,
     FFieldsCustomer,
-    FFieldsButton,
+    FFieldsCustom,
     FFieldsUser,
     FOffer,
     FButtonPay,

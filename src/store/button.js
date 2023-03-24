@@ -6,9 +6,10 @@ import { parse, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
 import { sort } from '@/utils/sort'
 
-export default function (api_domain, button, button_body) {
+export const loadButton = (api_domain, button, button_body) => {
   if (button_body.token)
     return Promise.resolve(button_body).then(parseOptions, () => {})
+
   if (!button) return Promise.resolve()
 
   let domain = `https://${api_domain}`
@@ -50,7 +51,7 @@ function parseOptions({
 
   if (expire && parse(expire, 'DD.MM.YYYY hh:mm') < createDate())
     return Promise.reject('button_expired')
-  console.log(status)
+
   if (status && status !== 'enabled')
     return Promise.reject('button_status_not_active')
 
@@ -79,23 +80,24 @@ function parseOptions({
       response_url,
       button: token,
     },
-    fields: Object.values(fields).sort(sort('p')).map(parseField),
+    fields_custom: Object.values(fields).sort(sort('p')).map(parseFieldsCustom),
     subscription:
       configSubscription[getType(button_type === 'recurring', recurring_state)],
     currencies,
   }
 }
 
-function parseField({
+export const parseFieldsCustom = ({
   value = '',
   name,
   label,
   placeholder,
+  type = 'input',
   hidden,
   required,
   valid = {},
   readonly,
-}) {
+}) => {
   let { pattern, min_length, max_length } = valid
   let rules = {}
   if (required) rules.required = required
@@ -114,6 +116,7 @@ function parseField({
     label: label || placeholder,
     placeholder: noLabelFloating ? placeholder : '',
     componentName: hidden ? 'input-hidden' : 'f-form-group',
+    component: type,
     custom: true,
     rules,
     autocomplete: 'on',
