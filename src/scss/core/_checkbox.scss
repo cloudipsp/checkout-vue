@@ -75,9 +75,11 @@
 
 .f-checkbox-label {
   position: relative;
+  display: block;
   padding: 0 0 0 px-to-rem(30px) + 0;
   font-size: px-to-rem(16px);
   line-height: px-to-rem(20px);
+  word-wrap: break-word;
   cursor: pointer;
 
   &::before {

@@ -211,7 +211,9 @@ export default {
 }
 
 .label-no-floating {
+  display: block;
   margin-bottom: px-to-rem(8px);
   font-size: px-to-rem(14px);
+  word-wrap: break-word;
 }
 </style>
