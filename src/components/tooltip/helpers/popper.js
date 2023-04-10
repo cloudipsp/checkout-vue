@@ -84,7 +84,6 @@ export const Popper = Vue.extend({
     popperConfig() {
       const { placement } = this
       return {
-        positionFixed: true,
         placement: this.getAttachment(placement),
         modifiers: {
           offset: { offset: this.getOffset(placement) },
