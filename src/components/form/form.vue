@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: {
-    ...mapStateGetSet(['submited', 'isSubmit', 'need_validate_card']),
+    ...mapStateGetSet(['submited', 'isSubmit']),
     observer() {
       if (!this.isMounted) return
       return this.$refs.observer
@@ -47,7 +47,6 @@ export default {
     },
     submit(data) {
       this.submited = true
-      this.need_validate_card = true
       return this.$nextTick()
         .then(() => this.validate())
         .then(() => {

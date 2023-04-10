@@ -154,7 +154,6 @@ export default Vue.extend({
           this.can_make_payment = system
           this.wallets_icons = [system]
           this.init = true
-          this.need_validate_card = true
           this.addMostPopular()
         })
         .on('hide', () => {
@@ -198,6 +197,9 @@ export default Vue.extend({
         this.$nextTick()
           .then(() => this.validate())
           .then(() => this.button.click())
+          .finally(() => {
+            this.need_validate_card = true
+          })
           .catch(errorHandler)
       } else {
         this.button.click()
