@@ -148,6 +148,7 @@
 }
 
 .f-card_label {
+  display: inline-block;
   margin-bottom: px-to-rem(6px);
   font-size: px-to-rem(10px);
   line-height: px-to-rem(12px);
