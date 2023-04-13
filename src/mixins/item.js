@@ -9,7 +9,7 @@ import {
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
-import { attemptFocus } from '@/utils/dom'
+import { attemptFocus, isActiveElement } from '@/utils/dom'
 import { mapState } from '@/utils/store'
 
 // @vue/component
@@ -104,6 +104,8 @@ export const itemMixin = {
       this.submit().catch(errorHandler)
     },
     focused() {
+      if (isActiveElement(this.$refs.input.$el)) return
+
       attemptFocus(this.$refs.input.$el)
     },
   },

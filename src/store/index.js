@@ -370,13 +370,6 @@ class Store extends Model {
       options.params.email = email
     }
     this.setState(options)
-
-    let el = document.getElementById('f-cvv2')
-    if (card_number && expiry_date && el) {
-      setTimeout(() => {
-        el && el.focus()
-      }, 100)
-    }
   }
   getAmountWithFee() {
     if (!this.state.params.amount) return Promise.reject()
