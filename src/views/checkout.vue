@@ -4,9 +4,7 @@
     :class="classNameContainer"
     :data-e2e-ready="ready"
   >
-    <div v-if="isDemo" class="f-demo">
-      <div class="f-demo-title" v-text="$t('demo-title')" />
-    </div>
+    <f-mode v-if="isMode" />
     <f-alert-notification-wrapper />
     <transition name="f-fade-enter">
       <router-view class="f-loyaut" />
@@ -34,7 +32,7 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
-import { FLoading } from '@/import'
+import { FMode, FLoading } from '@/import'
 import configMethods from '@/config/methods.json'
 import { arrayIncludes } from '@/utils/array'
 import { mappingMethod } from '@/config/mapping-method'
@@ -43,6 +41,7 @@ let model3ds
 
 export default {
   components: {
+    FMode,
     FForm,
     FLoading,
     FModalErrorWrapper,
@@ -65,13 +64,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('options', ['disable_request']),
     ...mapState('options.theme', ['type']),
-    ...mapState(['loading']),
-    ...mapState('options', ['methods']),
+    ...mapState(['loading', 'mode_test']),
+    ...mapState('options', ['methods', 'disable_request']),
     ...mapState('params', ['token', 'lang']),
 
-    ...mapStateGetSet(['ready', 'cards', 'order']),
+    ...mapStateGetSet(['ready', 'order']),
     ...mapStateGetSet('params', [
       'amount',
       'currency',
@@ -86,8 +84,8 @@ export default {
     classNameContainer() {
       return [`f-page-${this.$route.name}`, `f-theme-${this.type}`]
     },
-    isDemo() {
-      return this.disable_request
+    isMode() {
+      return this.disable_request || this.mode_test
     },
   },
   created() {
@@ -165,7 +163,7 @@ export default {
 
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
-      this.cards = model.attr('cards')
+      this.store.cardSuccess(model.instance(model.attr('cards')))
     },
     orderSuccess(model) {
       this.location(model)

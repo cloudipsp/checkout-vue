@@ -50,9 +50,12 @@
   }
 }
 
-.f-tooltip-cvv {
+.f-tooltip-select-card {
   .f-tooltip-inner {
-    color: $tooltip_cvv_color;
+    display: block;
+    width: px-to-rem(400px);
+    max-width: px-to-rem(400px);
+    padding: px-to-rem(8px) 0;
   }
 }
 

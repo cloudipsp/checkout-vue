@@ -52,6 +52,20 @@ export const parse = (date, format) => {
   return createDate(d.year, d.month - 1, d.day, d.hour, d.minute)
 }
 
+export const format = (date, format = 'DD.MM.YYYY') => {
+  let DD = ('0' + date.getDate()).slice(-2)
+  let MM = ('0' + (date.getMonth() + 1)).slice(-2)
+  let YYYY = date.getFullYear()
+  let YY = String(YYYY).slice(-2)
+
+  return [
+    ['DD', DD],
+    ['MM', MM],
+    ['YYYY', YYYY],
+    ['YY', YY],
+  ].reduce((accum, [name, value]) => accum.replace(name, value), format)
+}
+
 export const formatMMYY = date => {
   let year = String(date.getFullYear()).slice(-2)
   let month = `0${date.getMonth() + 1}`.slice(-2)

@@ -1,5 +1,5 @@
-_('declined')
-_('approved')
+_('title-declined')
+_('title-approved')
 
 _('verification_t')
 _('verification_code_d')
@@ -113,3 +113,6 @@ _('verification_code')
 _('verification_amount')
 
 _('installments_desc_monobank_ua')
+
+_('approved')
+_('declined')
