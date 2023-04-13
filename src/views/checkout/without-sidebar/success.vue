@@ -3,7 +3,7 @@
     <div class="f-success-title">
       <svg-approved v-if="isApproved" />
       <svg-decline v-if="isDeclined" />
-      <div class="f-title" v-text="$t(status)" />
+      <div class="f-title" v-text="title" />
     </div>
     <f-info />
     <f-price readonly />
@@ -42,6 +42,9 @@ export default {
     },
     isDeclined() {
       return this.status === 'declined'
+    },
+    title() {
+      return this.$t(`title-${this.status}`)
     },
   },
 }

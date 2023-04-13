@@ -148,7 +148,7 @@
 }
 
 .f-card_label {
-  display: inline-block;
+  display: flex;
   margin-bottom: px-to-rem(6px);
   font-size: px-to-rem(10px);
   line-height: px-to-rem(12px);
@@ -158,25 +158,20 @@
   opacity: 0.7;
 }
 
-.f-card-list {
-  font-weight: 500;
-}
-
-.f-card-list-add,
 .f-card-list-item {
   display: flex;
   width: 100%;
   height: px-to-rem(60px);
-  padding: px-to-rem(11px) px-to-rem(20px);
-  margin-bottom: px-to-rem(13px);
+  padding: px-to-rem(10px);
+  margin-bottom: px-to-rem(4px);
   color: $main_color;
   text-decoration: none;
   cursor: pointer;
+  border-radius: 0;
   transition: background-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 
   &:last-child {
     margin-bottom: 0;
-    border-radius: 0 0 px-to-rem(8px) px-to-rem(8px);
   }
 
   &:hover,
@@ -186,8 +181,9 @@
   }
 }
 
-.f-card-list-add {
-  height: inherit;
+.f-card-list-item_add {
+  align-items: center;
+  font-weight: 500;
 }
 
 .f-card-list-icon {
@@ -196,14 +192,4 @@
   margin-right: px-to-rem(4px);
   color: $icon_color;
   border-radius: px-to-rem(6px);
-}
-
-.f-card-list-number {
-  color: $card_list_number_color;
-}
-
-.f-card-list-expiry-date {
-  font-size: px-to-rem(12px);
-  font-weight: 400;
-  color: $card_list_expiry_date_color;
 }

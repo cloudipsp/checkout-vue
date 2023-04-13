@@ -34,6 +34,7 @@ import { arrayIncludes } from '@/utils/array'
 import { formatKiev } from '@/utils/date'
 import locales from '@/config/locales.json'
 import { keys } from '@/utils/object'
+import { testCardNumbers } from '@/config/test-card-numbers'
 
 Vue.use(store)
 
@@ -78,6 +79,12 @@ class Store extends Model {
     }
     this.initHasFields()
     this.initIsOnlyCard()
+  }
+  cardSuccess({ data }) {
+    this.state.cards =
+      !this.state.options.disable_request && this.state.mode_test
+        ? testCardNumbers
+        : data
   }
   location(isBreakpointDownLg) {
     return (
@@ -193,6 +200,8 @@ class Store extends Model {
       .catch(errorHandler)
 
     this.state.show_gdpr_frame = model.attr('show_gdpr_frame')
+
+    this.state.mode_test = model.attr('istest')
   }
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(optionsDefault))
@@ -355,6 +364,7 @@ class Store extends Model {
     expiry_date = '',
     email,
     hash,
+    cvv2 = '',
     read_only,
   } = {}) {
     let options = {
@@ -362,7 +372,7 @@ class Store extends Model {
         card_number,
         expiry_date,
         hash,
-        cvv2: '',
+        cvv2,
       },
       read_only,
     }

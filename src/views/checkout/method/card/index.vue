@@ -70,7 +70,6 @@
           </label>
 
           <f-tooltip-default
-            custom-class="f-tooltip-cvv"
             placement="top"
             :target="() => $refs.label_cvv"
             variant="secondary"

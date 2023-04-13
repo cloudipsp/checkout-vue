@@ -1,7 +1,6 @@
 $prefix: --fondy-;
 
 $black: #000;
-$demo: #30d769;
 $preloader_bg: #d5dae0;
 $preloader_inner_bg: #f7f8f9;
 // default
@@ -31,8 +30,10 @@ $btn_light_color: var(#{$prefix}btn_light_color);
 $btn_dark_bg: var(#{$prefix}btn_dark_bg);
 $btn_dark_color: var(#{$prefix}btn_dark_color);
 $tooltip_card_color: var(#{$prefix}tooltip_card_color);
-$tooltip_cvv_color: var(#{$prefix}tooltip_cvv_color);
 $tooltip_secondary_bg: var(#{$prefix}tooltip_secondary_bg);
+$tooltip_secondary_color: var(#{$prefix}tooltip_secondary_color);
+$tooltip_secondary2_bg: var(#{$prefix}tooltip_secondary2_bg);
+$tooltip_secondary2_color: var(#{$prefix}tooltip_secondary2_color);
 $icon_color: var(#{$prefix}icon_color);
 $close_color: var(#{$prefix}close_color);
 $modal_backdrop_bg: var(#{$prefix}modal_backdrop_bg);

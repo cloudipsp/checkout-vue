@@ -257,3 +257,5 @@ export const InstallmentsSystem = () =>
   import(
     /* webpackChunkName: "47" */ '@/views/checkout/method/installments/system'
   )
+
+export const FMode = () => import(/* webpackChunkName: "48" */ '@/views/mode')

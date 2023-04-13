@@ -127,6 +127,7 @@ const config = {
   currencies: [],
   init_wallets: false,
   vm_wallets: null,
+  mode_test: false,
 }
 
 locales.forEach(function (locale) {

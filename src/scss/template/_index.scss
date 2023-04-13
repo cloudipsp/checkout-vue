@@ -200,15 +200,3 @@
     transform: translateY(7px);
   }
 }
-
-.f-demo-title {
-  position: absolute;
-  left: 50%;
-  padding: px-to-rem(1px) px-to-rem(16px);
-  font-size: px-to-rem(14px);
-  font-weight: 500;
-  color: $white;
-  background: $demo;
-  border-radius: 0 0 px-to-rem(8px) px-to-rem(8px);
-  transform: translateX(-50%);
-}

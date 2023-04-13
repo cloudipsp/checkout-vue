@@ -32,8 +32,6 @@ export default createConfig(namesDefault, [
   black, // card_input_shadow
   ash_200, // card_list_item_active_bg
   ash_100, // card_list_item_hover_bg
-  grey, // card_list_number_color
-  grey_2, // card_list_expiry_date_color
   white, // btn_success_color
   main, // btn_success_bg
   grey_3, // btn_secondary_color
@@ -49,8 +47,10 @@ export default createConfig(namesDefault, [
   black, // btn_dark_bg,
   white, // btn_dark_color,
   grey_2, // tooltip_card_color
-  grey_3, // tooltip_cvv_color
   white, // tooltip_secondary_bg
+  grey_3, // tooltip_secondary_color
+  grey_3, // tooltip_secondary2_bg
+  white, // tooltip_secondary2_color
   ash_800, // icon_color
   white, // close_color
   '#32353A', // modal_backdrop_bg
