@@ -224,26 +224,26 @@ export default {
     },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {
-        this.focus('card_number', 'expiry_date')
+        this.focus(['card_number', 'expiry_date', 'cvv2'])
       } else {
         this.hash = ''
       }
     },
     inputExpiryDate() {
-      this.focus('expiry_date', 'cvv2')
+      this.focus(['expiry_date', 'cvv2'])
     },
-    focus(name, next) {
-      if (!this.isMounted) return
-      // wait for computed property validCardNumber
-      this.$nextTick()
-        .then(() => this.$refs[name].validation.validate())
-        .then(({ valid }) => {
-          if (!valid) return Promise.reject()
-          return this.$nextTick()
-        })
-        .then(() => {
-          this.$refs[next].focused()
-        })
+    focus(fields) {
+      fields
+        .reduce((accum, name) => {
+          return accum
+            .then(() => this.$refs[name].validation.validate())
+            .then(({ valid }) => {
+              if (valid) return
+
+              this.$refs[name].focused()
+              return Promise.reject()
+            })
+        }, Promise.resolve())
         .catch(errorHandler)
     },
     format(value) {
