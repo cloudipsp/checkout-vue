@@ -15,7 +15,7 @@
         v-model="modal"
         content-class="f-p-0"
         header-class="f-p-0"
-        body-class="f-p-0"
+        :body-class="modalBodyClass"
         :scrollable="scrollable"
         @shown="shown"
         @hide="hide"
@@ -61,6 +61,8 @@ export default {
   props: {
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
     scrollable: makeProp(PROP_TYPE_BOOLEAN, false),
+    modalBodyClass: makeProp(PROP_TYPE_STRING, 'f-p-0'),
+    modalWrapperClass: makeProp(PROP_TYPE_STRING, 'f-p-20'),
     dropdownClass: makeProp(PROP_TYPE_STRING, 'f-tooltip-select'),
     dropdownWrapperClass: makeProp(PROP_TYPE_STRING, 'f-p-4'),
     dropdownPlacement: makeProp(PROP_TYPE_STRING, 'bottomleft'),
@@ -84,10 +86,10 @@ export default {
     attrs() {
       return this.scrollable
         ? {
-            'wrap-class': 'f-p-20',
+            'wrap-class': this.modalWrapperClass,
           }
         : {
-            class: 'f-p-20',
+            class: this.modalWrapperClass,
           }
     },
   },
