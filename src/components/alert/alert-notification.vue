@@ -5,7 +5,7 @@
     </div>
     <div class="f-notification-text">{{ notification }}</div>
     <div class="f-notification-btn">
-      <f-button-link @click="close" v-text="$t('close')" />
+      <f-button-link @click="close">{{ $t('close') }}</f-button-link>
     </div>
   </f-alert-base>
 </template>

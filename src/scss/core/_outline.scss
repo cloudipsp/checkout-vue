@@ -29,6 +29,7 @@
 
 a {
   @include focus-visible(px-to-rem(1.5px), $outline_border);
+
   border-radius: px-to-rem(1px);
 }
 
@@ -69,6 +70,7 @@ a {
     box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
       0 0 0 px-to-rem(4px) $outline_border;
   }
+
   .f-switch:focus + .f-switch-label,
   .f-checkbox:focus + .f-checkbox-label {
     box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,

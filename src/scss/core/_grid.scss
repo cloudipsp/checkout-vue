@@ -1,5 +1,5 @@
 .f-row {
-  @include make-row();
+  @include make-row;
 }
 
 .f-no-gutters {
@@ -20,8 +20,8 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  padding-right: ($grid-gutter-width / 2);
-  padding-left: ($grid-gutter-width / 2);
+  padding-right: calc($grid-gutter-width / 2);
+  padding-left: calc($grid-gutter-width / 2);
 }
 
 @include make-grid-columns(

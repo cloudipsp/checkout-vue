@@ -137,7 +137,7 @@
 
 .f-security {
   @include media-breakpoint-up(lg) {
-    @include sticky-bottom();
+    @include sticky-bottom;
   }
 }
 
@@ -176,6 +176,7 @@
     &.f-fade .f-modal-dialog {
       transform: translate(0, -50px);
     }
+
     &.f-show .f-modal-dialog {
       transform: none;
     }
@@ -258,6 +259,7 @@
     right: px-to-rem(32px);
     bottom: px-to-rem(32px);
     left: px-to-rem(32px);
+
     //display: flex;
     padding-bottom: px-to-rem(24px);
     border-radius: px-to-rem(16px);

@@ -1,5 +1,6 @@
 .f-title {
-  @include title();
+  @include title;
+
   color: $title_color;
 }
 

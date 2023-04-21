@@ -10,7 +10,9 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
   left: 0;
   z-index: -1; // Put the input behind the label so it doesn't overlay text
   width: $switch-indicator-size;
-  height: ($font-size-base * $line-height-base + $switch-indicator-size) / 2;
+  height: calc(
+    ($font-size-base * $line-height-base + $switch-indicator-size) / 2
+  );
   opacity: 0;
 
   &:checked + .f-switch-label {
@@ -19,7 +21,7 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
     }
 
     &::after {
-      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgba(0, 0, 0, 0.25);
+      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgb(0 0 0 / 25%);
       transform: translateX($switch-indicator-transform);
     }
   }
@@ -27,6 +29,7 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
 
 .f-switch-label {
   $padding: px-to-rem(3px);
+
   position: relative;
   right: -$padding;
   display: block;
@@ -35,7 +38,8 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
 
   &::before {
     position: absolute;
-    top: ($font-size-base * $line-height-base - $switch-height) / 2 + $padding;
+    top: calc(($font-size-base * $line-height-base - $switch-height) / 2) +
+      $padding;
     right: $padding;
     display: block;
     width: $switch-width;
@@ -50,17 +54,18 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
   &::after {
     position: absolute;
     // stylelint-disable-next-line scss/operator-no-newline-after
-    top: ($font-size-base * $line-height-base - $switch-indicator-size) / 2 +
-      $padding;
+    top: calc(
+        ($font-size-base * $line-height-base - $switch-indicator-size) / 2
+      ) + $padding;
     // stylelint-disable-next-line scss/operator-no-newline-after
     right: $switch-width - $switch-indicator-size -
-      ($switch-height - $switch-indicator-size) / 2 + $padding;
+      calc(($switch-height - $switch-indicator-size) / 2) + $padding;
     width: $switch-indicator-size;
     height: $switch-indicator-size;
     content: '';
     background-color: $switch_indicator_bg;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 25%);
     transition: transform ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   }
 
@@ -68,8 +73,9 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
     &::before {
       background-color: $switch_hover_bg;
     }
+
     &::after {
-      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgba(0, 0, 0, 0.25);
+      box-shadow: 0 px-to-rem(2px) px-to-rem(4px) rgb(0 0 0 / 25%);
     }
   }
 }

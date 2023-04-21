@@ -35,7 +35,7 @@
         @keydown="navigate"
         @focus="focus(key)"
       >
-        <slot name="item" :item="item" :isActive="isActive(item)">
+        <slot name="item" :item="item" :is-active="isActive(item)">
           {{ item.text }}
           <span class="f-ml-auto f-pl-8" :style="style(item)">•</span>
         </slot>

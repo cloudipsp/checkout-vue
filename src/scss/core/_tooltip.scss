@@ -47,7 +47,7 @@ $tooltip-arrow-height: px-to-rem(7px);
 
     &::before {
       top: 0;
-      border-width: $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+      border-width: $tooltip-arrow-height calc($tooltip-arrow-width / 2) 0;
     }
   }
 }
@@ -62,8 +62,8 @@ $tooltip-arrow-height: px-to-rem(7px);
 
     &::before {
       right: 0;
-      border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height
-        ($tooltip-arrow-width / 2) 0;
+      border-width: calc($tooltip-arrow-width / 2) $tooltip-arrow-height
+        calc($tooltip-arrow-width / 2) 0;
     }
   }
 }
@@ -76,7 +76,7 @@ $tooltip-arrow-height: px-to-rem(7px);
 
     &::before {
       bottom: 0;
-      border-width: 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+      border-width: 0 calc($tooltip-arrow-width / 2) $tooltip-arrow-height;
     }
   }
 }
@@ -91,8 +91,8 @@ $tooltip-arrow-height: px-to-rem(7px);
 
     &::before {
       left: 0;
-      border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2)
-        $tooltip-arrow-height;
+      border-width: calc($tooltip-arrow-width / 2) 0
+        calc($tooltip-arrow-width / 2) $tooltip-arrow-height;
     }
   }
 }
@@ -101,12 +101,15 @@ $tooltip-arrow-height: px-to-rem(7px);
   &[x-placement^='top'] {
     @extend .f-tooltip-top;
   }
+
   &[x-placement^='right'] {
     @extend .f-tooltip-right;
   }
+
   &[x-placement^='bottom'] {
     @extend .f-tooltip-bottom;
   }
+
   &[x-placement^='left'] {
     @extend .f-tooltip-left;
   }

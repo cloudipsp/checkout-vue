@@ -50,6 +50,7 @@
 
 .f-datepicker-calendar-decade-separator {
   margin: 0 px-to-rem(2px);
+
   &::after {
     content: '~';
   }
@@ -140,7 +141,7 @@
   height: px-to-rem(10px);
   vertical-align: middle;
   content: '';
-  border-color: currentColor;
+  border-color: currentcolor;
   border-style: solid;
   border-width: px-to-rem(2px) 0 0 px-to-rem(2px);
   border-radius: px-to-rem(1px);

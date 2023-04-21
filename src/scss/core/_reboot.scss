@@ -75,7 +75,7 @@ a {
   text-decoration: none;
   background-color: transparent; // Remove the gray background on active links in IE 10.
 
-  @include hover() {
+  @include hover {
     text-decoration: underline;
   }
 }
@@ -89,7 +89,7 @@ a:not([href]) {
   color: inherit;
   text-decoration: none;
 
-  @include hover() {
+  @include hover {
     color: inherit;
     text-decoration: none;
   }

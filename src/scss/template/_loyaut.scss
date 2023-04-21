@@ -69,7 +69,7 @@
     $container_bg,
     fade($container_bg, 0)
   );
-  @include sticky-top();
+  @include sticky-top;
 }
 
 .f-top-inner {

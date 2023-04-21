@@ -51,6 +51,7 @@
         box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($shadow-hover, 60%);
       }
     }
+
     &::after {
       background-color: $background-hover;
       @if $border-hover {
@@ -76,7 +77,7 @@
     }
   }
 
-  @include disabled();
+  @include disabled;
 }
 
 @mixin button-link-variant($color, $color-hover, $color-active) {
@@ -106,7 +107,7 @@
     }
   }
 
-  @include disabled();
+  @include disabled;
 }
 
 .f-btn {
@@ -140,6 +141,7 @@
     border-radius: px-to-rem(16px);
     transition: all ease-in-out 0.15s;
   }
+
   &::after {
     position: absolute;
     top: 0;
@@ -164,7 +166,7 @@
     transform: translateY(0);
   }
 
-  :not(:disabled):not(.disabled) {
+  :not(:disabled, .disabled) {
     cursor: pointer;
   }
 }
@@ -187,7 +189,7 @@
 
   .f-theme-dark & {
     &::before {
-      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgba(0, 0, 0, 0.6);
+      box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgb(0 0 0 / 60%);
     }
   }
 }
@@ -232,7 +234,7 @@
     }
   }
 
-  @include disabled();
+  @include disabled;
 }
 
 .f-btn-success-gradient-custom {
@@ -257,7 +259,7 @@
     }
   }
 
-  @include disabled();
+  @include disabled;
 }
 
 .f-btn-default {

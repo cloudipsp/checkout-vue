@@ -35,7 +35,7 @@
     font-weight: 500;
     color: $merchant_url_color;
 
-    @include hover() {
+    @include hover {
       color: darken($merchant_url_color, 20%);
     }
   }
@@ -54,7 +54,7 @@
   font-weight: 600;
   color: $order_desc_more_color;
 
-  @include hover() {
+  @include hover {
     color: darken($order_desc_more_color, 20%);
   }
 }
@@ -150,7 +150,7 @@
   border-radius: px-to-rem(3px);
   transition: all ease-in-out 0.15s;
 
-  @include hover() {
+  @include hover {
     color: darken($menu_count_color, 20%);
     text-decoration: none;
   }

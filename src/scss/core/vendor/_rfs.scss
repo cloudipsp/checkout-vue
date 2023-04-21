@@ -72,23 +72,26 @@ $rfs-base-value-unit: unit($rfs-base-value);
   @if $divisor == 0 {
     @error "Cannot divide by 0";
   }
+
   $remainder: $dividend;
   $result: 0;
   $factor: 10;
-  @while ($remainder > 0 and $precision >= 0) {
+  @while $remainder > 0 and $precision >= 0 {
     $quotient: 0;
-    @while ($remainder >= $divisor) {
+    @while $remainder >= $divisor {
       $remainder: $remainder - $divisor;
       $quotient: $quotient + 1;
     }
+
     $result: $result * 10 + $quotient;
     $factor: $factor * 0.1;
     $remainder: $remainder * 10;
     $precision: $precision - 1;
-    @if ($precision < 0 and $remainder >= $divisor * 5) {
+    @if $precision < 0 and $remainder >= $divisor * 5 {
       $result: $result + 1;
     }
   }
+
   $result: $result * $factor * $sign;
   $dividend-unit: unit($dividend);
   $divisor-unit: unit($divisor);
@@ -192,7 +195,7 @@ $rfs-mq-property-height: if(
       @content;
     }
 
-    @include _rfs-media-query() {
+    @include _rfs-media-query {
       .enable-rfs &,
       &.enable-rfs {
         @content;
@@ -205,7 +208,7 @@ $rfs-mq-property-height: if(
         @content;
       }
     }
-    @include _rfs-media-query() {
+    @include _rfs-media-query {
       @content;
     }
   }
@@ -215,7 +218,6 @@ $rfs-mq-property-height: if(
 @function rfs-value($values) {
   // Convert to list
   $values: if(type-of($values) != list, ($values), $values);
-
   $val: '';
 
   // Loop over each value and calculate value
@@ -259,7 +261,6 @@ $rfs-mq-property-height: if(
 @function rfs-fluid-value($values) {
   // Convert to list
   $values: if(type-of($values) != list, ($values), $values);
-
   $val: '';
 
   // Loop over each value and calculate value
@@ -343,14 +344,14 @@ $rfs-mq-property-height: if(
     @if $val == $fluid-val {
       #{$property}: $val;
     } @else {
-      @include _rfs-rule() {
+      @include _rfs-rule {
         #{$property}: if($rfs-mode == max-media-query, $val, $fluid-val);
 
         // Include safari iframe resize fix if needed
         min-width: if($rfs-safari-iframe-resize-bug-fix, (0 * 1vw), null);
       }
 
-      @include _rfs-media-query-rule() {
+      @include _rfs-media-query-rule {
         #{$property}: if($rfs-mode == max-media-query, $fluid-val, $val);
       }
     }

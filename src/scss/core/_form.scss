@@ -62,7 +62,7 @@
     border-color ease-in-out 0.15s;
 
   &:-webkit-autofill {
-    @include plain-hover-focus-active() {
+    @include plain-hover-focus-active {
       transition: background-color 99999s;
     }
 
@@ -122,6 +122,7 @@
 
 .f-control-error {
   --border: #{px-to-rem(2px)};
+
   color: $error;
   border-color: $error;
 }
@@ -189,7 +190,7 @@
   color: $label_color;
   transition: transform ease-in-out 0.15s;
   transform-origin: 0 0;
-  @include text-truncate();
+  @include text-truncate;
 
   &.f-control-label-active {
     transform: translateY(-8px) scale(0.75);

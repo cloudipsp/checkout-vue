@@ -95,7 +95,7 @@ export default {
 
 @mixin loading-top-center {
   top: $loading-top;
-  left: ($loading-width - $loading-item) / 2;
+  left: calc(($loading-width - $loading-item) / 2);
 }
 
 @mixin loading-right-button {
@@ -109,94 +109,94 @@ export default {
 }
 
 @keyframes f-loading-right {
-  #{100 / 12 * 0%} {
+  #{calc(100 / 12) * 0%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 1%} {
+  #{calc(100 / 12) * 1%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 2%} {
+  #{calc(100 / 12) * 2%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 3%} {
+  #{calc(100 / 12) * 3%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 4%} {
+  #{calc(100 / 12) * 4%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 5%} {
+  #{calc(100 / 12) * 5%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 6%} {
+  #{calc(100 / 12) * 6%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 7%} {
+  #{calc(100 / 12) * 7%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 8%} {
+  #{calc(100 / 12) * 8%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 9%} {
+  #{calc(100 / 12) * 9%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 10%} {
+  #{calc(100 / 12) * 10%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 11%} {
+  #{calc(100 / 12) * 11%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 12%} {
+  #{calc(100 / 12) * 12%} {
     @include loading-top-center();
   }
 }
 
 @keyframes f-loading-left1 {
-  #{100 / 12 * 0%} {
+  #{calc(100 / 12) * 0%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 1%} {
+  #{calc(100 / 12) * 1%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 4%} {
+  #{calc(100 / 12) * 4%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 5%} {
+  #{calc(100 / 12) * 5%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 8%} {
+  #{calc(100 / 12) * 8%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 9%} {
+  #{calc(100 / 12) * 9%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 12%} {
+  #{calc(100 / 12) * 12%} {
     @include loading-right-button();
   }
 }
 
 @keyframes f-loading-left2 {
-  #{100 / 12 * 0%} {
+  #{calc(100 / 12) * 0%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 2%} {
+  #{calc(100 / 12) * 2%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 3%} {
+  #{calc(100 / 12) * 3%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 6%} {
+  #{calc(100 / 12) * 6%} {
     @include loading-right-button();
   }
-  #{100 / 12 * 7%} {
+  #{calc(100 / 12) * 7%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 10%} {
+  #{calc(100 / 12) * 10%} {
     @include loading-top-center();
   }
-  #{100 / 12 * 11%} {
+  #{calc(100 / 12) * 11%} {
     @include loading-button-left();
   }
-  #{100 / 12 * 12%} {
+  #{calc(100 / 12) * 12%} {
     @include loading-button-left();
   }
 }

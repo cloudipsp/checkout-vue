@@ -1,3 +1,8 @@
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:meta';
+
 /*
 * SASS preserves units in arithmetic operations. For example:
 * 12em * 0 = 0em. This function return the unit of a numeric value.
@@ -9,7 +14,7 @@
 }
 
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
     @return $number / extract-unit($number);
   }
 
@@ -17,11 +22,11 @@
 }
 
 @function single-unit-rem($value, $font-size-base) {
-  @if (extract-unit($value) != 1px) {
+  @if extract-unit($value) != 1px {
     @return $value;
   }
 
-  $converted: $value / $font-size-base;
+  $converted: math.div($value, $font-size-base);
 
   @return strip-unit($converted) * 1rem;
 }
@@ -30,7 +35,10 @@
   $rem-values: ();
 
   @each $value in $values {
-    $rem-values: append($rem-values, single-unit-rem($value, $font-size-base));
+    $rem-values: list.append(
+      $rem-values,
+      single-unit-rem($value, $font-size-base)
+    );
   }
 
   @return $rem-values;
@@ -47,17 +55,16 @@
 }
 
 @function unit($number) {
-  @return $number / ($number * 0 + 1);
+  @return math.div($number, $number * 0 + 1);
 }
 
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
   @if $index {
-    // stylelint-disable-next-line scss/operator-no-newline-after
-    @return str-slice($string, 1, $index - 1) + $replace +
+    @return string.slice($string, 1, $index - 1) + $replace +
       str-replace(
-        str-slice($string, $index + str-length($search)),
+        string.slice($string, $index + string.length($search)),
         $search,
         $replace
       );
@@ -68,11 +75,11 @@
 
 // See https://codepen.io/kevinweber/pen/dXWoRw
 @function escape-svg($string) {
-  @if str-index($string, 'data:image/svg+xml') {
+  @if string.index($string, 'data:image/svg+xml') {
     @each $char, $encoded in $escaped-characters {
       // Do not escape the url brackets
-      @if str-index($string, 'url(') == 1 {
-        $string: url('#{str-replace(str-slice($string, 6, -3), $char, $encoded)}');
+      @if string.index($string, 'url(') == 1 {
+        $string: url('#{str-replace(string.slice($string, 6, -3), $char, $encoded)}');
       } @else {
         $string: str-replace($string, $char, $encoded);
       }
@@ -83,8 +90,7 @@
 }
 
 @function fade($name, $amount) {
-  $coefficient: unit($amount) / 100;
-
+  $coefficient: math.div(unit($amount), 100);
   $name1: str-replace($name, 'var\(', '');
   $name2: str-replace($name1, '\)', '');
   $h: var(#{$name2}-h);
@@ -95,8 +101,7 @@
 }
 
 @function lighten($name, $amount) {
-  $coefficient: $amount / 2;
-
+  $coefficient: math.div($amount, 2);
   $name1: str-replace($name, 'var\(', '');
   $name2: str-replace($name1, '\)', '');
   $h: var(#{$name2}-h);
@@ -107,8 +112,7 @@
 }
 
 @function darken($name, $amount) {
-  $coefficient: $amount / 2;
-
+  $coefficient: math.div($amount, 2);
   $name1: str-replace($name, 'var\(', '');
   $name2: str-replace($name1, '\)', '');
   $h: var(#{$name2}-h);
@@ -119,9 +123,8 @@
 }
 
 @function custom($name, $ss, $ll) {
-  $sss: $ss / 2;
-  $lll: $ll / 2;
-
+  $sss: math.div($ss, 2);
+  $lll: math.div($ll, 2);
   $name1: str-replace($name, 'var\(', '');
   $name2: str-replace($name1, '\)', '');
   $h: var(#{$name2}-h);

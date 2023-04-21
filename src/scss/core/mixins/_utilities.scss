@@ -26,7 +26,6 @@
 
     // State params to generate pseudo-classes
     $state: if(map-has-key($utility, state), map-get($utility, state), ());
-
     $infix: if(
       $property-class == '' and str-slice($infix, 1, 1) == '-',
       str-slice($infix, 2),
@@ -81,6 +80,7 @@
                 --#{$variable-prefix}#{$local-var}: #{$value};
               }
             }
+
             #{$property}: $value
               if($enable-important-utilities, !important, null);
           }

@@ -1,20 +1,16 @@
 $cdn: 'https://pay.fondy.eu/icons/dist/';
-
 $enable-important-utilities: false;
-
 $grid-breakpoints-mobile: (
   xs: 0,
   ss: 375px,
   sm: 576px,
 );
-
 $grid-breakpoints-adaptive: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
   xxl: 1340px,
 );
-
 $grid-breakpoints: map-merge(
   $grid-breakpoints-mobile,
   $grid-breakpoints-adaptive
@@ -22,7 +18,6 @@ $grid-breakpoints: map-merge(
 
 // Spacing
 $spacer: 1rem;
-
 $spacers: (
   0: 0,
   4: px-to-rem(4px),
@@ -49,7 +44,7 @@ $font-family-card-number: 'Card Number', sans-serif;
 $font-family-cvv: 'Cvv', sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.4;
-$headings-margin-bottom: $spacer / 2;
+$headings-margin-bottom: calc($spacer / 2);
 
 //== Z-index master list
 $zindex-sidebar: 990;
@@ -62,30 +57,22 @@ $zindex-modal: 1050;
 $zindex-popover: 1060;
 $zindex-tooltip: 1070;
 $zindex-loading: 1080;
-
 $grid-columns: 12;
 $grid-gutter-width: px-to-rem(16px);
 $grid-row-columns: 6;
-
 $header-height: px-to-rem(50px) + px-to-rem(24px) /*+ 2px*/;
-
 $modal-dialog-margin: 2rem;
 $modal-backdrop-opacity: 0.7;
-
 $modal-sm: 300px;
 $modal-md: 427px;
 $modal-lg: 620px;
 $modal-xl: 800px;
-
 $loading-width: px-to-rem(60px);
 $loading-top: px-to-rem(3px);
-$loading-item: ($loading-width - $loading-top) / 2;
-
+$loading-item: calc(($loading-width - $loading-top) / 2);
 $header-height: px-to-rem(74px);
-
 $input-select-arrow-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#989a9c'><path d='M2.47,5.47a.75.75,0,0,1,1.06,0L8,9.94l4.47-4.47a.75.75,0,0,1,1.06,1.06L8.88,11.18a1.26,1.26,0,0,1-1.76,0L2.47,6.53A.75.75,0,0,1,2.47,5.47Z'/></svg>");
 $input-select-arrow-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#818c99'><path d='M2.47,5.47a.75.75,0,0,1,1.06,0L8,9.94l4.47-4.47a.75.75,0,0,1,1.06,1.06L8.88,11.18a1.26,1.26,0,0,1-1.76,0L2.47,6.53A.75.75,0,0,1,2.47,5.47Z'/></svg>");
-
 $utilities: (
   'margin': (
     responsive: true,

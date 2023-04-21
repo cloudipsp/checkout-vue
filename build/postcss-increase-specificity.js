@@ -1,12 +1,10 @@
-let postcss = require('postcss')
 let objectAssign = require('object-assign')
 let escapeStringRegexp = require('escape-string-regexp')
-// require('string.prototype.repeat');
 
 let CSS_ESCAPED_TAB = '\\9'
 
 function increaseSpecifityOfRule(rule, opts) {
-  rule.selectors = rule.selectors.map(function(selector) {
+  rule.selectors = rule.selectors.map(function (selector) {
     // Apply it to the selector itself if the selector is a `root` level component
     // `html:not(#\\9):not(#\\9):not(#\\9)`
     if (selector === opts.stackableRoot) {
@@ -30,7 +28,7 @@ function increaseSpecifityOfRule(rule, opts) {
       // Or it is an attribute selector with an id
       /\[id/.test(rule.selector)
     ) {
-      rule.walkDecls(function(decl) {
+      rule.walkDecls(function (decl) {
         decl.important = true
       })
     }
@@ -38,9 +36,7 @@ function increaseSpecifityOfRule(rule, opts) {
 }
 
 // Plugin that adds `:not(#\\9)` selectors to the front of the rule thus increasing specificity
-module.exports = postcss.plugin('postcss-increase-specificity', function(
-  options
-) {
+const plugin = options => {
   let defaults = {
     // The number of times `:not(#\\9)` is appended in front of the selector
     repeat: 3,
@@ -52,17 +48,24 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(
 
   let opts = objectAssign({}, defaults, options)
 
-  return function(css) {
-    css.walkRules(function(rule) {
-      // Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
-      // i.e. `from`, `to`, or `{number}%`
+  return {
+    postcssPlugin: 'postcss-increase-specificity',
+    Once(css) {
+      css.walkRules(function (rule) {
+        // Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
+        // i.e. `from`, `to`, or `{number}%`
 
-      let isInsideKeyframes =
-        rule.parent.type === 'atrule' && rule.parent.name === 'keyframes'
+        let isInsideKeyframes =
+          rule.parent.type === 'atrule' && rule.parent.name === 'keyframes'
 
-      if (!isInsideKeyframes) {
-        increaseSpecifityOfRule(rule, opts)
-      }
-    })
+        if (!isInsideKeyframes) {
+          increaseSpecifityOfRule(rule, opts)
+        }
+      })
+    },
   }
-})
+}
+
+plugin.postcss = true
+
+module.exports = plugin

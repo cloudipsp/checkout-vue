@@ -18,7 +18,7 @@
   box-shadow: 0 px-to-rem(10px) px-to-rem(25px) fade($card_shadow, 60%);
 
   .f-theme-dark & {
-    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgba(0, 0, 0, 0.6);
+    box-shadow: 0 px-to-rem(10px) px-to-rem(25px) rgb(0 0 0 / 60%);
   }
 }
 
@@ -90,7 +90,7 @@
     color: $card_input_color;
     text-shadow: px-to-rem(1px) px-to-rem(1px) px-to-rem(2px)
       fade($card_input_shadow, 15%);
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0 0 0 / 0%);
     border: none;
     border-radius: 0;
 

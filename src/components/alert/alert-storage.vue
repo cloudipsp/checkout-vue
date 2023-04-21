@@ -5,11 +5,9 @@
         <slot />
       </div>
       <div class="f-alert-storage-buttons f-col-12 f-col-md-auto">
-        <f-button-link
-          variant="secondary"
-          @click="close"
-          v-text="$t('not_now')"
-        />
+        <f-button-link variant="secondary" @click="close">{{
+          $t('not_now')
+        }}</f-button-link>
         <f-button variant="secondary" text="accept" @click="ok" />
       </div>
     </div>

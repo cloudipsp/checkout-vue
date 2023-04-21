@@ -13,6 +13,7 @@
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
+
 .f-collapse-enter,
 .f-collapse-leave-to {
   max-height: 0;
@@ -23,9 +24,11 @@
 .f-fade-enter-enter-active {
   transition: opacity ease-in-out 0.3s;
 }
+
 .f-fade-enter-enter {
   opacity: 0;
 }
+
 .f-fade-enter-leave-active {
   display: none;
 }
@@ -35,6 +38,7 @@
 .f-fade-leave-active {
   transition: opacity ease-in-out 0.3s;
 }
+
 .f-fade-enter,
 .f-fade-leave-to {
   opacity: 0;
@@ -44,9 +48,11 @@
 .f-slide-fade-enter-active {
   transition: all 0.3s ease;
 }
+
 .f-slide-fade-leave-active {
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
+
 .f-slide-fade-enter,
 .f-slide-fade-leave-to {
   opacity: 0;
