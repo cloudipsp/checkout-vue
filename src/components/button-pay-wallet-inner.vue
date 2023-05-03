@@ -19,7 +19,7 @@
 import Vue from 'vue'
 import FButton from '@/components/button/button'
 import { loadCheckout } from '@/import'
-import { api } from '@/utils/api'
+import { api } from '@/api'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { idMixin, props as idProps } from '@/mixins/id'
 import { timeoutMixin } from '@/mixins/timeout'

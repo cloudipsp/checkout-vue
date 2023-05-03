@@ -38,7 +38,7 @@ gulp.task('po', function (done) {
           './src/components',
           './src/views',
           './src/config',
-          './src/checkout.vue',
+          './src/app.vue',
         ],
         target: './src/i18n/process/templates.js',
         // title="tran1"

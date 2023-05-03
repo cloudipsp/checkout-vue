@@ -4,11 +4,11 @@ import { messages, validate as validateEn } from '@/i18n/lang/en'
 import { localize } from 'vee-validate'
 import configLocales from '@/config/locales.json'
 import { loadLang } from '@/import'
-import { api } from '@/utils/api'
+import { api } from '@/api'
 
 Vue.use(VueI18n)
 
-const i18n = new VueI18n({
+export const i18n = new VueI18n({
   locale: 'en',
   fallbackLocale: 'en',
   silentTranslationWarn: true,
@@ -45,8 +45,6 @@ export const loadLanguageAsync = (lang, store) => {
     return setI18nLanguage(lang)
   })
 }
-
-export default i18n
 
 function setI18nLanguage(lang) {
   i18n.locale = lang

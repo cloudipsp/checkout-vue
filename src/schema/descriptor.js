@@ -5,7 +5,7 @@ import configCountries from '@umpirsky/country-list/data/en/country.json'
 import cssVariable from '@/config/css-variable'
 import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
-import configOptionsDefault from '@/config/options-default'
+import { configDefault } from '@/config/config-default'
 import configSubscription from '@/config/subscription'
 import configExcludeMessages from '@/config/exclude-messages'
 import { isPlainObject, isString } from '@/utils/inspect'
@@ -30,11 +30,11 @@ const verificationType = ['amount', 'code']
 const themeType = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
-const options = Object.keys(configOptionsDefault.options)
-const endpoint = Object.keys(configOptionsDefault.options.endpoint)
-const subscription = Object.keys(configOptionsDefault.options.subscription)
-const theme = Object.keys(configOptionsDefault.options.theme)
-const recurring_data = Object.keys(configOptionsDefault.params.recurring_data)
+const options = Object.keys(configDefault.options)
+const endpoint = Object.keys(configDefault.options.endpoint)
+const subscription = Object.keys(configDefault.options.subscription)
+const theme = Object.keys(configDefault.options.theme)
+const recurring_data = Object.keys(configDefault.params.recurring_data)
 const subscriptionType = Object.keys(configSubscription)
 const config = [
   'options',

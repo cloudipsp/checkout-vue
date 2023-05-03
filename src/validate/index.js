@@ -11,7 +11,7 @@ import {
 } from 'vee-validate/dist/rules'
 import * as customRules from '@/validate/rules'
 
-const install = Vue => {
+export const install = Vue => {
   let rules = Object.assign(
     {
       required,
@@ -33,5 +33,3 @@ const install = Vue => {
   Vue.component('ValidationProvider', ValidationProvider)
   Vue.component('ValidationObserver', ValidationObserver)
 }
-
-export default { install }

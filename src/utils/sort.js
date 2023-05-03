@@ -1,4 +1,4 @@
-import i18n from '@/i18n'
+import { i18n } from '@/i18n'
 import { isString } from '@/utils/inspect'
 
 export const sort = (field, reverse) => {

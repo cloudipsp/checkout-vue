@@ -1,33 +1,27 @@
-import { loadSentry } from '@/import'
+import { init, setTag, captureMessage as msg } from '@sentry/vue'
 
 const enable = DSN && DOMAIN === location.hostname
 
-const install = Vue => {
+export const install = Vue => {
   if (!enable) return
 
-  loadSentry().then(({ init, setTag }) => {
-    init({
-      Vue,
-      dsn: DSN,
-      release: BRANCH,
-      autoSessionTracking: false,
-      logErrors: ENVIRONMENT === 'development',
-      environment: ENVIRONMENT,
-    })
-
-    setTag('commithash', COMMITHASH)
+  init({
+    Vue,
+    dsn: DSN,
+    release: BRANCH,
+    autoSessionTracking: false,
+    logErrors: ENVIRONMENT === 'development',
+    environment: ENVIRONMENT,
   })
-}
 
-export default { install }
+  setTag('commithash', COMMITHASH)
+}
 
 export const captureMessage = (message, level, extra) => {
   if (!enable) return
 
-  loadSentry().then(({ captureMessage }) => {
-    captureMessage(message, {
-      level,
-      extra,
-    })
+  msg(message, {
+    level,
+    extra,
   })
 }

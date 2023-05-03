@@ -1,6 +1,5 @@
 import Vue from 'vue'
-
-import optionsDefault from '@/config/options-default'
+import { configDefault } from '@/config/config-default'
 import notSet from '@/config/not-set'
 import cssVariable from '@/config/css-variable'
 import cssClass from '@/config/css-class'
@@ -11,9 +10,9 @@ import {
   removeWallets,
   getRouteName,
 } from '@/utils/helpers'
-import { sendRequest } from '@/utils/api'
+import { sendRequest } from '@/api'
 import { isExist } from '@/utils/inspect'
-import i18n, { loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
+import { i18n, loadLanguageAsync, getBrowserLanguage } from '@/i18n/index'
 import store from '@/store/setup'
 import { loadButton } from '@/store/button'
 import initCssVariable from '@/store/css-variable'
@@ -204,7 +203,7 @@ class Store extends Model {
     this.state.mode_test = model.attr('istest')
   }
   setStateDefault() {
-    this.state = JSON.parse(JSON.stringify(optionsDefault))
+    this.state = JSON.parse(JSON.stringify(configDefault))
   }
   setOptions(userConfig) {
     return validate(userConfig)
@@ -508,8 +507,12 @@ class Store extends Model {
   }
 }
 
-export default (name, fromCache) => {
-  if (instance[name] && fromCache) return instance[name]
-
+export const createStore = name => {
   return (instance[name] = new Store())
+}
+
+export const getStore = name => {
+  if (instance[name]) return instance[name]
+
+  return createStore(name)
 }

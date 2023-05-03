@@ -1,6 +1,6 @@
 import { loadAxios } from '@/import'
 import { deepMerge } from '@/utils/helpers'
-import optionsDefault from '@/config/options-default'
+import { configDefault } from '@/config/config-default'
 import { getType } from '@/store/subscription'
 import { parse, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
@@ -73,7 +73,7 @@ function parseOptions({
       merchant_id,
       lang,
       recurring_data: {
-        ...deepMerge({}, optionsDefault.params.recurring_data, recurring),
+        ...deepMerge({}, configDefault.params.recurring_data, recurring),
         amount: Math.round(recurring.amount * 100) || amount,
       },
       response_url,

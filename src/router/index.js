@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
 import Blank from '@/views/checkout/blank'
-import store from '@/store/index'
+import { getStore } from '@/store/index'
 import {
   Card,
   CardIndex,
@@ -52,8 +52,8 @@ Vue.use(Router)
 
 let instance = {}
 
-export default name => {
-  let instanceStore = store(name, true)
+export const createRouter = name => {
+  let instanceStore = getStore(name)
   instance[name] = new Router({
     mode: 'abstract',
     routes: [

@@ -81,35 +81,31 @@ module.exports = defineConfig({
       .when(isProduction, config => {
         config
           .optimization
-            .splitChunks(false)
-            .minimizer('terser')
-              .tap(([options]) => {
-                let terserOptions = options.terserOptions
-                terserOptions.compress = {
-                  ...terserOptions.compress,
-                  collapse_vars: true,
-                  comparisons: true,
-                  hoist_funs: true,
-                  hoist_props: true,
-                  inline: true,
-                  loops: true,
-                  negate_iife: true,
-                  properties: true,
-                  reduce_vars: true,
-                  switches: true,
-                  typeofs: true,
-                  passes: 2,
-                }
-                terserOptions.output = terserOptions.output || {}
-                terserOptions.output.comments = /^! (npm|build)/
-                return [options]
-              })
-              .end()
+            .splitChunks({
+              cacheGroups: {
+                defaultVendors: {
+                  test: /[\\/]node_modules[\\/]/,
+                  priority: -10,
+                },
+                default: {
+                  minChunks: 2,
+                },
+                styles: {
+                  name: 'styles',
+                  test: /[\\/]components[\\/]/,
+                  type: 'css/mini-extract',
+                  enforce: true,
+                },
+              },
+            })
+            .end()
+          .output.filename('[name].js')
             .end()
           .plugin('extract-css')
             .tap(([options]) => {
               return [{
                 ...options,
+                ignoreOrder: true,
                 filename: '[name].css'
               }]
             })
@@ -163,9 +159,6 @@ module.exports = defineConfig({
         .end()
       .entryPoints
         .delete('app')
-        .end()
-      .output
-        .filename('[name].js')
         .end()
       .module
         .rule('scss')

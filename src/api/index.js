@@ -3,7 +3,7 @@ import { loadCheckout } from '@/import'
 export let api
 let cache = {}
 
-export const initApi = (option, cb) => {
+export const install = (option, cb) => {
   loadCheckout().then($checkout => {
     api = $checkout('Api', option)
 

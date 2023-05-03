@@ -6,7 +6,7 @@ const locales = Object.keys(configLocales)
 
 const theme = 'light'
 
-const config = {
+export const configDefault = {
   options: {
     methods: ['card'],
     methods_disabled: [],
@@ -131,8 +131,6 @@ const config = {
 }
 
 locales.forEach(function (locale) {
-  config.messages[locale] = {}
-  config.validate[locale] = {}
+  configDefault.messages[locale] = {}
+  configDefault.validate[locale] = {}
 })
-
-export default config

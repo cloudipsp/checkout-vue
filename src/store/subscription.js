@@ -1,7 +1,7 @@
 import { isBoolean, isString } from '@/utils/inspect'
 import configSubscription from '@/config/subscription'
 import { deepMerge } from '@/utils/helpers'
-import optionsDefault from '@/config/options-default'
+import { configDefault } from '@/config/config-default'
 
 export const subscription = ({ subscription, recurring_data = {} } = {}) => {
   return new Promise((resolve, reject) => {
@@ -18,11 +18,11 @@ export const subscription = ({ subscription, recurring_data = {} } = {}) => {
       readonly,
       conditions = {},
       state,
-    } = deepMerge({}, optionsDefault.params.recurring_data, recurring_data)
+    } = deepMerge({}, configDefault.params.recurring_data, recurring_data)
 
     const { quantity, trial_period, trial_quantity } = deepMerge(
       {},
-      optionsDefault.params.recurring_data,
+      configDefault.params.recurring_data,
       conditions
     )
 

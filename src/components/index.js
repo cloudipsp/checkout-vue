@@ -10,10 +10,8 @@ const components = {
   FFormItemSelect,
 }
 
-const install = Vue => {
+export const install = Vue => {
   Object.keys(components).forEach(name => {
     Vue.component(name, components[name])
   })
 }
-
-export default { install }

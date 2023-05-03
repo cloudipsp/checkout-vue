@@ -11,6 +11,8 @@ import { errorHandler, getRouteName, windowHeight } from '@/utils/helpers'
 import { PROP_TYPE_OBJECT } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
+import '@/scss/style.scss'
+
 export default {
   mixins: [resizeMixin],
   props: {
@@ -58,6 +60,7 @@ export default {
     },
   },
   created() {
+    this.initEvents()
     this.store
       .setOptions(this.optionsUser)
       .then(this.init)
@@ -102,6 +105,26 @@ export default {
     },
     goError(errors) {
       this.$router.push({ name: 'error', query: { errors } }).catch(() => {})
+    },
+    initEvents() {
+      this.location()
+      this.setParams()
+    },
+    location() {
+      this.$root.$on('location', (method, system) => {
+        if (system) {
+          this.$router
+            .push({ name: 'system', params: { method, system } })
+            .catch(() => {})
+        } else {
+          this.$router.push({ name: method }).catch(() => {})
+        }
+      })
+    },
+    setParams() {
+      this.$root.$on('setParams', params => {
+        this.store.setParams(params)
+      })
     },
   },
 }

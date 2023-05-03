@@ -21,7 +21,7 @@ export const loadLang = chunk => {
         '@/i18n/lang/de'
       )
     case 'en':
-      return import('@/i18n/lang/en')
+      return import(/* webpackChunkName: "en" */ '@/i18n/lang/en')
     case 'es':
       return import(
         /* webpackChunkName: "es" */
@@ -95,6 +95,37 @@ export const loadLang = chunk => {
   }
 }
 
+export const Vue = () =>
+  import(/* webpackChunkName: "00" */ 'vue').then(module => module.default)
+
+export const App = () =>
+  import(/* webpackChunkName: "01" */ '@/app').then(module => module.default)
+
+export const installValidate = () =>
+  import(/* webpackChunkName: "02" */ '@/validate').then(
+    ({ install }) => install
+  )
+
+export const installComponents = () =>
+  import(/* webpackChunkName: "03" */ '@/components').then(
+    ({ install }) => install
+  )
+
+export const installApi = () =>
+  import(/* webpackChunkName: "04" */ '@/api').then(({ install }) => install)
+
+export const i18n = () => import(/* webpackChunkName: "05" */ '@/i18n')
+
+export const router = () => import(/* webpackChunkName: "06" */ '@/router')
+
+export const store = () => import(/* webpackChunkName: "07" */ '@/store')
+
+export const configDefault = () =>
+  import(/* webpackChunkName: "08" */ '@/config/config-default')
+
+export const inspect = () =>
+  import(/* webpackChunkName: "09" */ '@/utils/inspect')
+
 export const loadCheckout = () =>
   import(/* webpackChunkName: "1" */ 'ipsp-js-sdk/dist/checkout').then(
     module => module.default
@@ -105,8 +136,8 @@ export const loadCssVars = () =>
     module => module.default
   )
 
-export const loadSentry = () =>
-  import(/* webpackChunkName: "3" */ '@sentry/vue')
+export const installSentry = () =>
+  import(/* webpackChunkName: "3" */ '@/sentry').then(({ install }) => install)
 
 export const loadAsyncValidator = () =>
   import(/* webpackChunkName: "4" */ 'async-validator').then(
