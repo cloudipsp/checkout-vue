@@ -69,6 +69,23 @@
     $container_bg,
     fade($container_bg, 0)
   );
+
+  @media (prefers-color-scheme: dark) {
+    background-image: linear-gradient(
+      to bottom,
+      $container_bg_dark,
+      fade($container_bg_dark, 0)
+    );
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-image: linear-gradient(
+      to bottom,
+      $container_bg_light,
+      fade($container_bg_light, 0)
+    );
+  }
+
   @include sticky-top();
 }
 

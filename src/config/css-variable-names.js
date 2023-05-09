@@ -82,6 +82,8 @@ export const namesDefault = [
   [white],
   [warning],
   [error],
+  [container, bg, light],
+  [container, bg, dark],
   [card, bg],
   [card, label, color],
   [card, input, color],

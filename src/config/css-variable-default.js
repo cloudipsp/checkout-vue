@@ -26,6 +26,8 @@ export default createConfig(namesDefault, [
   white,
   warning,
   error,
+  white, // container_bg_light
+  grey_9, // container_bg_dark
   main, // card_bg
   white, // card_label_color
   white, // card_input_color
