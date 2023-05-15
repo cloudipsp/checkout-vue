@@ -105,11 +105,11 @@ export default {
   }
 
   :global(.f-theme-light) & {
-    color: #3d3d3d;
+    color: #a9b2bd;
   }
 
   :global(.f-theme-dark) & {
-    color: #fff;
+    color: #838688;
   }
 }
 

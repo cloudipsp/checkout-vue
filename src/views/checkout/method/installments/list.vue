@@ -71,6 +71,8 @@ export default {
 
 .list_soon {
   position: relative;
+  margin-top: px-to-rem(40px);
+  padding-top: px-to-rem(12px);
 
   :global(.f-theme-light) & {
     border-top: px-to-rem(1px) solid #d5dae0;
@@ -79,16 +81,9 @@ export default {
   :global(.f-theme-dark) & {
     border-top: px-to-rem(1px) solid #5a5d61;
   }
-
-  :global(.f-no-embed) & {
-    @include media-breakpoint-up(md) {
-      margin-top: px-to-rem(32px);
-    }
-  }
 }
 
 .soon {
-  display: none;
   position: absolute;
   top: px-to-rem(-12px);
   left: 50%;
@@ -106,12 +101,6 @@ export default {
   :global(.f-theme-dark) & {
     color: #adaeb0;
   }
-
-  :global(.f-no-embed) & {
-    @include media-breakpoint-up(md) {
-      display: block;
-    }
-  }
 }
 
 .item {
@@ -124,13 +113,6 @@ export default {
 
   :global(.f-theme-dark) & {
     border-bottom: px-to-rem(1px) solid #5a5d61;
-  }
-
-  :global(.f-no-embed) & {
-    @include media-breakpoint-up(md) {
-      padding-top: px-to-rem(32px);
-      padding-bottom: px-to-rem(32px);
-    }
   }
 
   &:last-child {
