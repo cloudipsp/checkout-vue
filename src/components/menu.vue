@@ -41,6 +41,7 @@ import SvgTimer from '@/svg/timer'
 import { mapState } from '@/utils/store'
 import { resizeMixin } from '@/mixins/resize'
 import { removeWallets } from '@/utils/helpers'
+import { isFunction } from '@/utils/inspect'
 
 export default {
   components: {
@@ -70,10 +71,16 @@ export default {
         return [
           'f-menu-item',
           {
-            active:
-              this.$route.meta.method === item && !this.isBreakpointDownLg,
+            active: this.meta.method === item && !this.isBreakpointDownLg,
           },
         ]
+      }
+    },
+    meta() {
+      if (isFunction(this.$route.meta)) {
+        return this.$route.meta(this.$route)
+      } else {
+        return this.$route.meta
       }
     },
     list() {
