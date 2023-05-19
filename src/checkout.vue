@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState } from '@/utils/store'
+import { mapState, mapStateGetSet } from '@/utils/store'
 import { resizeMixin } from '@/mixins/resize'
 import { errorHandler, getRouteName, windowHeight } from '@/utils/helpers'
 import { PROP_TYPE_OBJECT } from '@/constants/props'
@@ -19,14 +19,13 @@ export default {
   data() {
     return {
       height: null,
-      last: '',
     }
   },
   computed: {
+    ...mapStateGetSet('options', ['active_tab']),
     ...mapState('options', [
       'show_menu_first',
       'full_screen',
-      'active_tab',
       'methods',
       'theme',
     ]),
@@ -53,11 +52,10 @@ export default {
     isBreakpointDownLg(value) {
       if (value || !this.isMenu) return
 
-      let name = getRouteName(this.methods, this.last, this.has_fields)
+      let name = getRouteName(this.methods, '', this.has_fields)
 
       this.$router.push({ name }).catch(() => {})
     },
-    $route: 'watchRoute',
   },
   created() {
     this.store
@@ -83,6 +81,7 @@ export default {
     },
     go() {
       if (this.isBreakpointDownLg && this.show_menu_first) {
+        this.active_tab = 'menu'
         this.goMenu()
       } else {
         this.goMethod()
@@ -103,11 +102,6 @@ export default {
     },
     goError(errors) {
       this.$router.push({ name: 'error', query: { errors } }).catch(() => {})
-    },
-    watchRoute() {
-      if (this.isMenu) return
-
-      this.last = this.$route.name
     },
   },
 }

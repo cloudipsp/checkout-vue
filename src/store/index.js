@@ -66,9 +66,9 @@ class Store extends Model {
   infoSuccess(model) {
     this.info(model)
 
-    this.state.active_tab =
+    this.state.options.active_tab =
       this.parseActiveTab(model) || this.state.options.active_tab
-    this.state.active_method =
+    this.state.options.active_method =
       model.attr('active_method') || this.state.options.active_method
 
     let lang = model.attr('lang')
@@ -85,7 +85,7 @@ class Store extends Model {
       this.activeMethod() || {
         name: getRouteName(
           this.state.options.methods,
-          this.state.active_tab,
+          this.state.options.active_tab,
           this.state.has_fields,
           isBreakpointDownLg
         ),
@@ -123,7 +123,7 @@ class Store extends Model {
     }
   }
   activeMethod() {
-    let active_method = this.state.active_method
+    let active_method = this.state.options.active_method
 
     if (!active_method) return
 

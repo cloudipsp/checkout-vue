@@ -110,8 +110,9 @@ class Validate extends Model {
   }
 
   showMenuFirst() {
-    if (this.attr('data.options.active_tab'))
-      return this.attr('data.options.show_menu_first', false)
+    if (!this.attr('data.options.active_tab')) return
+
+    this.attr('data.options.show_menu_first', false)
   }
 
   preset() {
