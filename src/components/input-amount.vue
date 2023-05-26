@@ -58,12 +58,12 @@ export default {
           decimal: 2,
           no_zero: !(this.verification_type || this.recurring === 'y'),
         },
-        type: 'tel',
-        inputmode: 'numeric',
+        type: 'number',
         autocomplete: 'off',
         format: this.format,
         parse: this.parse,
         disabled: this.disabled,
+        inputClass: this.$style.input,
       }
     },
     form() {
@@ -96,3 +96,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.input {
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+</style>
