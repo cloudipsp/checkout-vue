@@ -6,12 +6,12 @@
 
 <script>
 import { mapStateGetSet } from '@/utils/store'
-import { timeoutMixin } from '@/mixins/timeout'
 import { isMountedMixin } from '@/mixins/is-mounted'
 import { errorHandler } from '@/utils/helpers'
+import { attemptFocus } from '@/utils/dom'
 
 export default {
-  mixins: [timeoutMixin, isMountedMixin],
+  mixins: [isMountedMixin],
   inject: ['formRequest'],
   provide() {
     return {
@@ -74,9 +74,7 @@ export default {
         $firstErrorField.scrollIntoView()
       }
 
-      this.timeout(() => {
-        $firstErrorField.focus()
-      })
+      attemptFocus($firstErrorField)
 
       return Promise.reject()
     },
