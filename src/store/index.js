@@ -319,12 +319,15 @@ class Store extends Model {
     return Promise.all([this.loadButton(), this.loadCardImg()])
   }
   loadButton() {
+    if (!this.state.button.token && !this.state.params.button) {
+      return Promise.resolve()
+    }
+
     return loadButton(
       this.state.options.api_domain,
       this.state.params.button,
       this.state.button
     ).then(config => {
-      if (!config) return
       if (this.state.options.full_screen) {
         document.title = config.options.title
       }

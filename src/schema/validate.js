@@ -6,7 +6,8 @@ import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
 import { loadAsyncValidator } from '@/import'
 import { sort } from '@/utils/sort'
-import { parseFieldsCustom } from '@/store/button'
+import { parseFieldsCustom } from '@/schema/parse-fields-custom'
+import { createDate, format } from '@/utils/date'
 
 class Validate extends Model {
   constructor(data) {
@@ -68,7 +69,14 @@ class Validate extends Model {
 
   afterValidate() {
     this.token()
+    this.parse()
+  }
+
+  parse() {
     this.fieldsCustom()
+    this.startTime()
+
+    return this
   }
 
   subscription() {
@@ -152,6 +160,22 @@ class Validate extends Model {
     this.attr(
       'data.fields_custom',
       Object.values(fields_custom).sort(sort('p')).map(parseFieldsCustom)
+    )
+  }
+
+  startTime() {
+    let start_time = this.data.params?.recurring_data?.start_time
+
+    if (!start_time) return
+
+    let value = createDate(start_time)
+    let now = createDate()
+
+    if (now > value) value = now
+
+    this.attr(
+      'data.params.recurring_data.start_time',
+      format(value, 'YYYY-MM-DD')
     )
   }
 }

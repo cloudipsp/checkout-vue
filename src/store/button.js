@@ -4,21 +4,23 @@ import optionsDefault from '@/config/options-default'
 import { getType } from '@/store/subscription'
 import { parse, createDate } from '@/utils/date'
 import configSubscription from '@/config/subscription'
-import { sort } from '@/utils/sort'
+import validate from '@/schema/validate'
 
 export const loadButton = (api_domain, button, button_body) => {
-  if (button_body.token)
-    return Promise.resolve(button_body).then(parseOptions, () => {})
+  return (function () {
+    if (button_body.token) return Promise.resolve(button_body)
 
-  if (!button) return Promise.resolve()
+    let domain = ENVIRONMENT === 'development' ? '' : `https://${api_domain}`
 
-  let domain = `https://${api_domain}`
-  if (ENVIRONMENT === 'development') domain = ''
-
-  return loadAxios()
-    .then(axios => axios.get(`${domain}/buttons/${button}.json`))
-    .then(({ data }) => data)
-    .then(parseOptions, () => {})
+    return loadAxios()
+      .then(axios => axios.get(`${domain}/buttons/${button}.json`))
+      .then(({ data }) => data)
+  })()
+    .then(parseOptions)
+    .then(
+      config => validate(config).parse().data,
+      () => {}
+    )
 }
 
 function parseOptions({
@@ -80,47 +82,9 @@ function parseOptions({
       response_url,
       button: token,
     },
-    fields_custom: Object.values(fields).sort(sort('p')).map(parseFieldsCustom),
+    fields_custom: fields,
     subscription:
       configSubscription[getType(button_type === 'recurring', recurring_state)],
     currencies,
-  }
-}
-
-export const parseFieldsCustom = ({
-  value = '',
-  name,
-  label,
-  placeholder,
-  type = 'input',
-  hidden,
-  required,
-  valid = {},
-  readonly,
-}) => {
-  let { pattern, min_length, max_length } = valid
-  let rules = {}
-  if (required) rules.required = required
-  if (pattern) rules.regex = pattern
-  if (min_length) rules.min = min_length
-  if (max_length) rules.max = max_length
-
-  let noLabelFloating = Boolean(
-    (label && placeholder) || (!label && !placeholder)
-  )
-
-  return {
-    value,
-    name,
-    noLabelFloating,
-    label: label || placeholder,
-    placeholder: noLabelFloating ? placeholder : '',
-    componentName: hidden ? 'input-hidden' : 'f-form-group',
-    component: type,
-    custom: true,
-    rules,
-    autocomplete: 'on',
-    readonly,
-    disabled: readonly,
   }
 }
