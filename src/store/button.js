@@ -17,10 +17,7 @@ export const loadButton = (api_domain, button, button_body) => {
       .then(({ data }) => data)
   })()
     .then(parseOptions)
-    .then(
-      config => validate(config).parse().data,
-      () => {}
-    )
+    .then(config => validate(config).parse().data)
 }
 
 function parseOptions({
