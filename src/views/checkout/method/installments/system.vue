@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     ...mapState(['tabs', 'params']),
-    ...mapState('params', ['currency', 'token', 'button', 'amount']),
+    ...mapState('params', ['currency', 'token', 'amount']),
     method() {
       return this.$route.params.method
     },
@@ -109,6 +109,17 @@ export default {
     },
     list() {
       return this.available_payments_number.map(parseSelect)
+    },
+    data() {
+      if (this.token) {
+        return {
+          token: this.token,
+        }
+      } else {
+        return {
+          amount: this.amount,
+        }
+      }
     },
   },
   watch: {
@@ -175,9 +186,7 @@ export default {
           {
             payment_id: this.system,
             payment_parts: value,
-            token: this.token,
-            button: this.button,
-            amount: this.token || this.button ? undefined : this.amount,
+            ...this.data,
           },
           { cached: true }
         )

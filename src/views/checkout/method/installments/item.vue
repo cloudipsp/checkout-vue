@@ -87,7 +87,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('params', ['currency', 'token', 'button', 'amount']),
+    ...mapState('params', ['currency', 'token', 'amount']),
     min() {
       return this.item.available_payments_number[0]
     },
@@ -118,6 +118,17 @@ export default {
     dropdownClass() {
       return `f-tooltip-select ${this.$style.w_72}`
     },
+    data() {
+      if (this.token) {
+        return {
+          token: this.token,
+        }
+      } else {
+        return {
+          amount: this.amount,
+        }
+      }
+    },
   },
   created() {
     this.parts = this.max
@@ -146,9 +157,7 @@ export default {
           {
             payment_id: this.item.id,
             payment_parts: value,
-            token: this.token,
-            button: this.button,
-            amount: this.token || this.button ? undefined : this.amount,
+            ...this.data,
           },
           { cached: true }
         )
