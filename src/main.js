@@ -61,7 +61,6 @@ const install = function (Vue) {
       router: router(el),
       i18n,
       store: instanceStore,
-      components: { Checkout },
       data: {
         optionsUser: optionsUser,
       },
@@ -85,7 +84,13 @@ const install = function (Vue) {
           return this
         },
       },
-      template: '<checkout :optionsUser="optionsUser"/>',
+      render(h) {
+        return h(Checkout, {
+          props: {
+            optionsUser,
+          },
+        })
+      },
     }).$mount()
 
     while (node.firstChild) {
