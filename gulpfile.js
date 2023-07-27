@@ -58,6 +58,7 @@ gulp.task('po', function (done) {
       },
       params: {
         name: 'messages',
+        noLocation: true,
         keywords: ['_'],
         source: ['./src/i18n/process'],
         target: './src/i18n/po',

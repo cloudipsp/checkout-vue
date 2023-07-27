@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/i18n/process/templates.js:65
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-05 14:58+0300\n"
+"POT-Creation-Date: 2023-07-27 16:28+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,109 +17,86 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: smartCAT.ai\n"
 
-#: src/i18n/process/methods.js:1
 msgid "card"
 msgstr "Kártya"
 
-#: src/i18n/process/methods.js:2
 msgid "trustly"
 msgstr "-"
 
-#: src/i18n/process/methods.js:3
 msgid "sepa"
 msgstr "SEPA Direct Debit"
 
-#: src/i18n/process/methods.js:4
 msgid "banklinks_eu"
 msgstr "Internet bank"
 
-#: src/i18n/process/methods.js:5
 msgid "receipt"
 msgstr "Banki átutalás"
 
-#: src/i18n/process/methods.js:6
 msgid "local_methods"
 msgstr "Helyi fizetési módok"
 
-#: src/i18n/process/methods.js:7
 msgid "wallets"
 msgstr ""
 
-#: src/i18n/process/methods.js:8
 msgid "loans"
 msgstr ""
 
-#: src/i18n/process/methods.js:9 src/i18n/process/translate.js:38
 msgid "emoney"
 msgstr "Digitális pénztárca"
 
-#: src/i18n/process/methods.js:10
 msgid "crypto"
 msgstr ""
 
-#: src/i18n/process/methods.js:11 src/i18n/process/translate.js:82
 msgid "most_popular"
 msgstr ""
 
-#: src/i18n/process/methods.js:12
 msgid "installments"
 msgstr ""
 
-#: src/i18n/process/subscription-period.js:1
 msgid "day"
 msgstr "Nap"
 
-#: src/i18n/process/subscription-period.js:2
 msgid "week"
 msgstr "Hét"
 
-#: src/i18n/process/subscription-period.js:3
 msgid "month"
 msgstr "Hónap"
 
-#: src/i18n/process/templates.js:1
 msgid "menu"
 msgstr ""
 
-#: src/i18n/process/templates.js:2
 msgid "error_modal"
 msgstr ""
 
-#: src/i18n/process/templates.js:3
 msgid "error"
 msgstr ""
 
-#: src/i18n/process/templates.js:4
+msgid "system"
+msgstr ""
+
 msgid "gdpr_yapily"
 msgstr ""
 
-#: src/i18n/process/templates.js:5
 msgid "gdpr_alert_text"
 msgstr ""
 "A weboldalon cookie-kat használunk, hogy javítsuk a fizetéssel kapcsolatos "
 "tapasztalatait."
 
-#: src/i18n/process/templates.js:6
 msgid "learn_more"
 msgstr "További részletek."
 
-#: src/i18n/process/templates.js:7 src/i18n/process/translate.js:98
 msgid "gdpr_modal_text"
 msgstr ""
 
-#: src/i18n/process/templates.js:8
 msgid "save_card"
 msgstr "Elmenteni a kártyámat a jövőbeni fizetésekhez."
 
-#: src/i18n/process/templates.js:9
 msgid "its_safe"
 msgstr "Ez biztonságos."
 
-#: src/i18n/process/templates.js:10
 msgid "gdpr_modal_safe_title"
 msgstr "A kártya mentése biztonságos és kényelmes"
 
-#: src/i18n/process/templates.js:11
 msgid "gdpr_modal_safe"
 msgstr ""
 "<p>Nem rögzítjük a kártya adatait, amikor beírja őket. Valójában azonnal "
@@ -131,360 +107,271 @@ msgstr ""
 "token adatait, mert a tokeneknek nincs értéke a Fondy fizetési "
 "szolgáltatáson kívül."
 
-#: src/i18n/process/templates.js:12
 msgid "close"
 msgstr ""
 
-#: src/i18n/process/templates.js:13
 msgid "not_now"
 msgstr "Kérdezze meg később"
 
-#: src/i18n/process/templates.js:14
 msgid "accept"
 msgstr "Egyetértek"
 
-#: src/i18n/process/templates.js:15
 msgid "pay"
 msgstr "Fizetni"
 
-#: src/i18n/process/templates.js:16
 msgid "demo-desc"
 msgstr ""
 
-#: src/i18n/process/templates.js:17
 msgid "expires_on"
 msgstr "Érvényesség"
 
-#: src/i18n/process/templates.js:18 src/i18n/process/translate.js:117
 msgid "approved"
 msgstr ""
 
-#: src/i18n/process/templates.js:19
+msgid "declined"
+msgstr ""
+
 msgid "use_other_card"
 msgstr "Adja meg egy másik kártya adatait"
 
-#: src/i18n/process/templates.js:20
 msgid "datepicker"
 msgstr "-"
 
-#: src/i18n/process/templates.js:21
 msgid "model"
 msgstr ""
 
-#: src/i18n/process/templates.js:22 src/i18n/process/translate.js:85
 msgid "all_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:23 src/i18n/process/translate.js:4
 msgid "verification_t"
 msgstr "Kártya igazolása"
 
-#: src/i18n/process/templates.js:24
 msgid "verification_"
 msgstr ""
 
-#: src/i18n/process/templates.js:25
 msgid "see_more"
 msgstr "Többet látni"
 
-#: src/i18n/process/templates.js:26
 msgid "order_details"
 msgstr "Rendelés részletei"
 
-#: src/i18n/process/templates.js:29
 msgid "submit3ds_title"
 msgstr "A fizetés nem fejeződött be"
 
-#: src/i18n/process/templates.js:30
 msgid "submit3ds_text"
 msgstr "Kérjük, adjon meg egy másik megerősítő kódot"
 
-#: src/i18n/process/templates.js:31
 msgid "submit3ds_submit"
 msgstr "Próbálja újra"
 
-#: src/i18n/process/templates.js:32
 msgid "submit3ds_wait"
 msgstr ""
 "A fizetés befejezéséhez ismét átirányítjuk a bank webhelyére {0} másodperc "
 "múlva"
 
-#: src/i18n/process/templates.js:33
 msgid "show"
 msgstr "-"
 
-#: src/i18n/process/templates.js:34 src/i18n/process/translate.js:118
-msgid "declined"
-msgstr ""
-
-#: src/i18n/process/templates.js:35
 msgid "server_trouble_title"
 msgstr "Hoppá.."
 
-#: src/i18n/process/templates.js:36
 msgid "server_trouble_desc"
 msgstr ""
 "Valami nincs rendben, de már dolgozunk rajta. Kérjük, térjen vissza néhány "
 "lépésre, és fizessen újra."
 
-#: src/i18n/process/templates.js:37
 msgid "offer_t"
 msgstr ""
 "Elfogadom <a href=\"{0}\" target=\"_blank\">az ajánlat feltételeit </a>"
 
-#: src/i18n/process/templates.js:38
 msgid "offerta_url"
 msgstr ""
 
-#: src/i18n/process/templates.js:39
 msgid "trial_period"
 msgstr "Próbaidő"
 
-#: src/i18n/process/templates.js:40
 msgid "first_payment"
 msgstr ""
 
-#: src/i18n/process/templates.js:41
 msgid "total_amount"
 msgstr "Teljes összeg"
 
-#: src/i18n/process/templates.js:42
 msgid "fee"
 msgstr "Jutalék összege"
 
-#: src/i18n/process/templates.js:43
 msgid "amount"
 msgstr "Teljes összeg"
 
-#: src/i18n/process/templates.js:44
 msgid "discount"
 msgstr ""
 
-#: src/i18n/process/templates.js:45
 msgid "security_title"
 msgstr "Szigorú ügyfél-hitelesítés"
 
-#: src/i18n/process/templates.js:46
 msgid "security_text"
 msgstr ""
 "<p>A PCI DSS nemzetközi fizetési biztonsági szabvány szerint<p>Nemzetközi "
 "Visa és Mastercard fizetési rendszerek szabályozzák"
 
-#: src/i18n/process/templates.js:47
 msgid "other_payment_method"
 msgstr "Vagy fizetni máskép"
 
-#: src/i18n/process/templates.js:48
 msgid "subscription"
 msgstr "Ismételni ezt a fizetést automatikusan"
 
-#: src/i18n/process/templates.js:49
 msgid "subscription_amount"
 msgstr "Ismétlődő fizetési összeg"
 
-#: src/i18n/process/templates.js:50
 msgid "unlimited"
 msgstr "Korlátlan"
 
-#: src/i18n/process/templates.js:51
 msgid "verification_desc"
 msgstr ""
 "Kártyája igazolásához egy kis ellenőrzési díjat számolunk fel a "
 "bankszámláján 15 percre."
 
-#: src/i18n/process/templates.js:52
 msgid "customer_name"
 msgstr "Kártyatulajdonos neve"
 
-#: src/i18n/process/templates.js:53
 msgid "customer_name_utf8"
 msgstr "Teljes neve"
 
-#: src/i18n/process/templates.js:54
 msgid "customer_address"
 msgstr "Cím (utca, házszám, lakás)"
 
-#: src/i18n/process/templates.js:55
 msgid "customer_zip"
 msgstr "Irányítószám/kód"
 
-#: src/i18n/process/templates.js:56
 msgid "customer_city"
 msgstr "Város /Település"
 
-#: src/i18n/process/templates.js:57
 msgid "customer_country"
 msgstr "Ország"
 
-#: src/i18n/process/templates.js:58
 msgid "customer_state"
 msgstr "Állam/tartomány/régió"
 
-#: src/i18n/process/templates.js:59
 msgid "customer_phonemobile"
 msgstr "Telefon"
 
-#: src/i18n/process/templates.js:60
 msgid "customer_email"
 msgstr "Email"
 
-#: src/i18n/process/templates.js:61
 msgid "verify"
 msgstr ""
 
-#: src/i18n/process/templates.js:62
 msgid "success"
 msgstr ""
 
-#: src/i18n/process/templates.js:63
 msgid "use_monobank_application"
 msgstr ""
 
-#: src/i18n/process/templates.js:64
 msgid "load_more"
 msgstr "Több betöltése..."
 
-#: src/i18n/process/templates.js:66
-msgid "system"
-msgstr ""
-
-#: src/i18n/process/templates.js:67
 msgid "pay_with_card"
 msgstr "Fizetni kártyával"
 
-#: src/i18n/process/templates.js:68
 msgid "card_number_p"
 msgstr "____ ____ ____ ____"
 
-#: src/i18n/process/templates.js:69
 msgid "expiry_date_p"
 msgstr "__/__"
 
-#: src/i18n/process/templates.js:70
 msgid "cvv2_p"
 msgstr "___"
 
-#: src/i18n/process/templates.js:71
 msgid "cvv2_help"
 msgstr "{0}-a kártya hátoldalán található numerikus kód"
 
-#: src/i18n/process/templates.js:72
 msgid "Payments"
 msgstr ""
 
-#: src/i18n/process/templates.js:73
 msgid "from_amount_month"
 msgstr ""
 
-#: src/i18n/process/templates.js:74
 msgid "payments"
 msgstr ""
 
-#: src/i18n/process/templates.js:75
 msgid "currency_month"
 msgstr ""
 
-#: src/i18n/process/templates.js:76
 msgid "installments-system"
 msgstr ""
 
-#: src/i18n/process/templates.js:77
 msgid "expect_soon"
 msgstr ""
 
-#: src/i18n/process/templates.js:78
 msgid "installments_oschadbank"
 msgstr ""
 
-#: src/i18n/process/templates.js:79
 msgid "conditions"
 msgstr ""
 
-#: src/i18n/process/templates.js:80
 msgid "loading-monobank"
 msgstr ""
 
-#: src/i18n/process/templates.js:81
 msgid "most_popular_methods_in"
 msgstr ""
 
-#: src/i18n/process/templates.js:82 src/i18n/process/translate.js:84
 msgid "see_all_other_methods"
 msgstr ""
 
-#: src/i18n/process/templates.js:83
 msgid "mfo_title"
 msgstr "A megrendelés fizetési részletei # {0}"
 
-#: src/i18n/process/templates.js:84
 msgid "ibox_title"
 msgstr "A megrendelés ID (iBoxon keresztül történő fizetéshez)"
 
-#: src/i18n/process/templates.js:85
 msgid "full_requesites"
 msgstr "A címzett banki adatai"
 
-#: src/i18n/process/templates.js:86
 msgid "full_requesites_explain"
 msgstr ""
 "A fizetés során nem kell feltüntetnie őket, de ellenőrzés céljából "
 "elmentheti őket."
 
-#: src/i18n/process/templates.js:87
 msgid "UAH"
 msgstr "UAH"
 
-#: src/i18n/process/templates.js:88
 msgid "receiver"
 msgstr "Címzett"
 
-#: src/i18n/process/templates.js:89
 msgid "current_bill"
 msgstr "Bankszámlaszám (IBAN)"
 
-#: src/i18n/process/templates.js:90
 msgid "usreou"
 msgstr "Adóazonosító szám (TIN)"
 
-#: src/i18n/process/templates.js:91
 msgid "bank"
 msgstr "Bank neve"
 
-#: src/i18n/process/templates.js:92
 msgid "mfo"
 msgstr "Bank kódja (MFO)"
 
-#: src/i18n/process/templates.js:93
 msgid "purpose"
 msgstr "Fizetés célja"
 
-#: src/i18n/process/templates.js:94
 msgid "receipt_id"
 msgstr "Megrendelés ID"
 
-#: src/i18n/process/templates.js:95
 msgid "end_date"
 msgstr "Fizetési határidő"
 
-#: src/i18n/process/templates.js:96
 msgid "ibox_desc"
 msgstr ""
 "A fizetéseket elfogadó összes iBox terminál fel van tüntetve <a href="
 "\"https://ibox.ua/map\" target=\"_blank\">a térképen</a>"
 
-#: src/i18n/process/templates.js:97
 msgid "save_receipt"
 msgstr "A nyugta mentése"
 
-#: src/i18n/process/templates.js:98
 msgid "save_qr_code"
 msgstr "Mentés okostelefonra"
 
-#: src/i18n/process/templates.js:99
 msgid "qr_code_text"
 msgstr "Olvassa be ezt a QR-kódot a nyugta okostelefonra történő mentéséhez"
 
-#: src/i18n/process/templates.js:100
 msgid "ibox_info"
 msgstr ""
 "<p>A megrendelés kifizetéséhez keresse meg a Fondy fizetési szolgáltatást az "
@@ -492,400 +379,302 @@ msgstr ""
 "lejárta után töröljük.<p>Az egyéb fizetési szolgáltatások termináljain "
 "történő fizetést nem fogadjuk el."
 
-#: src/i18n/process/templates.js:101
 msgid "sepa_t"
 msgstr "Adja meg bankszámlája adatait"
 
-#: src/i18n/process/templates.js:102 src/i18n/process/translate.js:48
 msgid "sender_name"
 msgstr "Név"
 
-#: src/i18n/process/templates.js:103
 msgid "bank_desc"
 msgstr "A fizetés befejezéséhez átirányítjuk a bank weboldalára"
 
-#: src/i18n/process/templates.js:104
 msgid "payment_id"
 msgstr "Fizetési ID"
 
-#: src/i18n/process/templates.js:105
 msgid "demo-title"
 msgstr ""
 
-#: src/i18n/process/templates.js:106
 msgid "mode-test"
 msgstr ""
 
-#: src/i18n/process/templates.js:27
 msgid "\""
 msgstr ""
 
-#: src/i18n/process/translate.js:1
 msgid "title-declined"
 msgstr "Sajnos, a fizetés sikertelen volt"
 
-#: src/i18n/process/translate.js:2
 msgid "title-approved"
 msgstr "Köszönjük! Fizetését elfogadtuk"
 
-#: src/i18n/process/translate.js:5
 msgid "verification_code_d"
 msgstr ""
 "Kártyája igazolásához egy kis ellenőrzési díjat számolunk fel a "
 "bankszámláján 15 percre."
 
-#: src/i18n/process/translate.js:6
 msgid "verification_amount_d"
 msgstr ""
 "A kártya tulajdonjogának igazolására 15 percig kis díjat számolunk fel "
 "bankszámláján. Adja meg a banki értesítésben feltüntetett összeget."
 
-#: src/i18n/process/translate.js:8
 msgid "rule_default"
 msgstr "A {_field_} érték érvénytelen"
 
-#: src/i18n/process/translate.js:9
 msgid "rule_after"
 msgstr "Az érvényes dátum nem lehet későbbi {target}"
 
-#: src/i18n/process/translate.js:10
 msgid "rule_alpha"
 msgstr "Kérjük, csak betűket használjon"
 
-#: src/i18n/process/translate.js:11
 msgid "rule_date_format"
 msgstr "Kérjük, adja meg a hónapot/évet"
 
-#: src/i18n/process/translate.js:12
 msgid "rule_decimal"
 msgstr "Kérjük, számokat (0–9), pontokat (.) vagy vesszőket (,) használjon."
 
-#: src/i18n/process/translate.js:13
 msgid "rule_digits"
 msgstr "Kérjük, írjon be {length} számjegyet"
 
-#: src/i18n/process/translate.js:14
 msgid "rule_email"
 msgstr "Kérjük, adjon meg egy érvényes e-mailt"
 
-#: src/i18n/process/translate.js:15
 msgid "rule_max"
 msgstr "Kérjük, írjon be max {length} karaktert."
 
-#: src/i18n/process/translate.js:16
 msgid "rule_min"
 msgstr "Kérjük, írjon be min {length} karaktert."
 
-#: src/i18n/process/translate.js:17
 msgid "rule_numeric"
 msgstr "Kérjük, csak számokat (0–9) használjon"
 
-#: src/i18n/process/translate.js:18
 msgid "rule_required"
 msgstr "Kérjük, töltse ki ezt a mezőt"
 
-#: src/i18n/process/translate.js:19
 msgid "rule_regex"
 msgstr "Érvénytelen formátum"
 
-#: src/i18n/process/translate.js:20
 msgid "rule_no_zero"
 msgstr "Amount more zero"
 
-#: src/i18n/process/translate.js:22
 msgid "rule_customer_name"
 msgstr ""
 "Kérjük, írja be a nevet és a vezetéknevet, használja a betűket (A-Za-z)"
 
-#: src/i18n/process/translate.js:23
 msgid "rule_customer_field"
 msgstr "Kérjük, használja a betűket  (A-Za-z) és számokat (0-9)"
 
-#: src/i18n/process/translate.js:24
 msgid "rule_customer_field_utf8"
 msgstr "Kérjük, itt ne használjon speciális karaktereket"
 
-#: src/i18n/process/translate.js:25
 msgid "rule_phone"
 msgstr ""
 
-#: src/i18n/process/translate.js:26
 msgid "rule_phonemobile"
 msgstr "Kérjük, adjon meg legalább 7 számjegyet (0-9)"
 
-#: src/i18n/process/translate.js:27
 msgid "rule_numrange"
 msgstr "Túl sok számjegyet adott meg"
 
-#: src/i18n/process/translate.js:28
 msgid "rule_ccard"
 msgstr "Érvénytelen kártyaszám"
 
-#: src/i18n/process/translate.js:29
 msgid "rule_expiry_date"
 msgstr "Érvénytelen lejárati dátum"
 
-#: src/i18n/process/translate.js:30
 msgid "rule_cvv"
 msgstr "Érvénytelen CVV2 / CVC2"
 
-#: src/i18n/process/translate.js:31
 msgid "rule_one"
 msgstr "Ez az érték nem lehet kisebb 1-nél"
 
-#: src/i18n/process/translate.js:33
 msgid "price"
 msgstr "Ár"
 
-#: src/i18n/process/translate.js:34
 msgid "shipping"
 msgstr "Szállítás"
 
-#: src/i18n/process/translate.js:35
 msgid "vat"
 msgstr "ÁFA"
 
-#: src/i18n/process/translate.js:36
 msgid "arbitrary_amount"
 msgstr "Összeg"
 
-#: src/i18n/process/translate.js:39
 msgid "ibox_ua"
 msgstr "Készpénz terminálon keresztül"
 
-#: src/i18n/process/translate.js:41
 msgid "loans_tooltip"
 msgstr ""
 
-#: src/i18n/process/translate.js:43
 msgid "button_expired_title"
 msgstr ""
 
-#: src/i18n/process/translate.js:44
 msgid "button_expired_text"
 msgstr ""
 
-#: src/i18n/process/translate.js:45
 msgid "button_status_not_active_title"
 msgstr ""
 
-#: src/i18n/process/translate.js:46
 msgid "button_status_not_active_text"
 msgstr ""
 
-#: src/i18n/process/translate.js:49
 msgid "sender_familyName"
 msgstr "Vezetéknév"
 
-#: src/i18n/process/translate.js:50
 msgid "bic"
 msgstr "BIC"
 
-#: src/i18n/process/translate.js:51
 msgid "iban"
 msgstr "IBAN"
 
-#: src/i18n/process/translate.js:53
 msgid "wallets_google"
 msgstr ""
 
-#: src/i18n/process/translate.js:54
 msgid "wallets_card"
 msgstr ""
 
-#: src/i18n/process/translate.js:55
 msgid "wallets_apple"
 msgstr ""
 
-#: src/i18n/process/translate.js:57
 msgid "3ds_title"
 msgstr ""
 
-#: src/i18n/process/translate.js:58
 msgid "3ds_link"
 msgstr ""
 
-#: src/i18n/process/translate.js:60
 msgid "qr_desc_mobile_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:61
 msgid "qr_desc_desktop_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:62
 msgid "qr_button_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:63
 msgid "qr_app_apple_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:64
 msgid "qr_app_google_sk_viamo"
 msgstr ""
 
-#: src/i18n/process/translate.js:66
 msgid "ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:67
 msgid "CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:68
 msgid "Email address"
 msgstr ""
 
-#: src/i18n/process/translate.js:69
 msgid "IBAN"
 msgstr ""
 
-#: src/i18n/process/translate.js:70
 msgid "name"
 msgstr ""
 
-#: src/i18n/process/translate.js:71
 msgid "SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:72
 msgid "specin.address"
 msgstr ""
 
-#: src/i18n/process/translate.js:73
 msgid "specin.bic"
 msgstr ""
 
-#: src/i18n/process/translate.js:74
 msgid "specin.city"
 msgstr ""
 
-#: src/i18n/process/translate.js:75
 msgid "specin.consumerref"
 msgstr ""
 
-#: src/i18n/process/translate.js:76
 msgid "specin.dob"
 msgstr ""
 
-#: src/i18n/process/translate.js:77
 msgid "specin.email"
 msgstr ""
 
-#: src/i18n/process/translate.js:78
 msgid "specin.iban"
 msgstr ""
 
-#: src/i18n/process/translate.js:79
 msgid "specin.nationalid"
 msgstr ""
 
-#: src/i18n/process/translate.js:80
 msgid "specin.zipcode"
 msgstr ""
 
-#: src/i18n/process/translate.js:83
 msgid "search_country"
 msgstr ""
 
-#: src/i18n/process/translate.js:86
 msgid "credit_debit_cards"
 msgstr ""
 
-#: src/i18n/process/translate.js:88
 msgid "label_ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:89
 msgid "placeholder_ACCOUNT_NUMBER"
 msgstr ""
 
-#: src/i18n/process/translate.js:90
 msgid "label_SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:91
 msgid "placeholder_SORT_CODE"
 msgstr ""
 
-#: src/i18n/process/translate.js:92
 msgid "message_address_number"
 msgstr ""
 
-#: src/i18n/process/translate.js:93
 msgid "message_address_street"
 msgstr ""
 
-#: src/i18n/process/translate.js:94
 msgid "message_customer_name_utf8"
 msgstr ""
 
-#: src/i18n/process/translate.js:95
 msgid "placeholder_customer_name_utf8"
 msgstr ""
 
-#: src/i18n/process/translate.js:96
 msgid "placeholder_address_street"
 msgstr ""
 
-#: src/i18n/process/translate.js:100
 msgid "email"
 msgstr "Email"
 
-#: src/i18n/process/translate.js:101
 msgid "currencies"
 msgstr ""
 
-#: src/i18n/process/translate.js:102
 msgid "number_of_payments"
 msgstr "Kifizetések száma"
 
-#: src/i18n/process/translate.js:103
 msgid "subscription_every"
 msgstr "Gyakoriság"
 
-#: src/i18n/process/translate.js:104
 msgid "subscription_period"
 msgstr "Időtartam"
 
-#: src/i18n/process/translate.js:105
 msgid "subscription_start_time"
 msgstr "Első fizetés"
 
-#: src/i18n/process/translate.js:106
 msgid "subscription_end_time"
 msgstr "Befejezés dátuma"
 
-#: src/i18n/process/translate.js:107
 msgid "default_country"
 msgstr "Ország szerinti keresés"
 
-#: src/i18n/process/translate.js:108
 msgid "system_search"
 msgstr "Keresés banknév, IBAN vagy BLZ szerint "
 
-#: src/i18n/process/translate.js:109
 msgid "card_number"
 msgstr "Kártya száma"
 
-#: src/i18n/process/translate.js:110
 msgid "expiry_date"
 msgstr "HH/ÉÉ"
 
-#: src/i18n/process/translate.js:111
 msgid "cvv2"
 msgstr "CVV2/CVC2"
 
-#: src/i18n/process/translate.js:112
 msgid "verification_code"
 msgstr "Megerősítő kód"
 
-#: src/i18n/process/translate.js:113
 msgid "verification_amount"
 msgstr "Ellenőrző összeg"
 
-#: src/i18n/process/translate.js:115
 msgid "installments_desc_monobank_ua"
 msgstr ""
 
