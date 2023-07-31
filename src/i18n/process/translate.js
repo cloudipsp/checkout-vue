@@ -113,6 +113,7 @@ _('verification_code')
 _('verification_amount')
 
 _('installments_desc_monobank_ua')
+_('installments_desc_privatbank_ua')
 
 _('approved')
 _('declined')

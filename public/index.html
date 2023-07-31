@@ -684,6 +684,24 @@
             },
           },
         },
+        installments_privat: {
+          options: {
+            methods: ['installments'],
+            api_domain: 'dev2.pay.fondy.eu',
+            active_tab: 'installments',
+            theme: {
+              type: 'dark',
+              preset: 'euphoric_pink',
+            },
+          },
+          params: {
+            order_desc: 'installments_privat',
+            amount: 500000,
+            currency: 'UAH',
+            // merchant_id: 5298,
+            merchant_id: 900332,
+          },
+        },
       }
 
       window.app = render('#app', 'wallet')

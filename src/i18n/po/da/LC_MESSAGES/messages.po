@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 16:28+0300\n"
+"POT-Creation-Date: 2023-07-27 16:50+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -683,6 +683,9 @@ msgid "verification_amount"
 msgstr "Beløbet for tjek"
 
 msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 #~ msgid "angle-down"
