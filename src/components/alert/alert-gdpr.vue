@@ -4,7 +4,7 @@
       <span v-text="$t('gdpr_alert_text')" />&nbsp;
       <a href="#" @click="showGdprText = true" v-text="$t('learn_more')" />
       <f-modal-base v-model="showGdprText" header-class="f-p-0">
-        <span v-text="$t('gdpr_modal_text')" />
+        <span v-html="$t('gdpr_modal_text')" />
       </f-modal-base>
     </div>
 

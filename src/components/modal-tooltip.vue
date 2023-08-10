@@ -13,6 +13,7 @@
       <slot name="text" />
       <f-modal-base
         v-model="modal"
+        content-class="f-p-0"
         header-class="f-p-0"
         body-class="f-p-0"
         :scrollable="scrollable"
@@ -72,7 +73,7 @@ export default {
   },
   computed: {
     className() {
-      return 'f-btn-unstyle'
+      return 'f-btn-unstyled'
     },
     isPhone() {
       return isPhone || this.isWidthSm
