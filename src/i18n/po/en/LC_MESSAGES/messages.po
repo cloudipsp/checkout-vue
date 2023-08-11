@@ -801,6 +801,9 @@ msgstr "Google Pay"
 msgid "wallets_apple"
 msgstr "Apple Pay"
 
+msgid "wallets_apple_google"
+msgstr "Apple Pay or Google Pay"
+
 msgid "3ds_title"
 msgstr ""
 "You will be redirected to 3ds page. If you don't see it, please click the"
