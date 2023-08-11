@@ -52,8 +52,8 @@ _('bic')
 _('iban')
 
 _('wallets_google')
-_('wallets_card')
 _('wallets_apple')
+_('wallets_apple_google')
 
 _('3ds_title')
 _('3ds_link')
