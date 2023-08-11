@@ -166,6 +166,9 @@ class Store extends Model {
         ? testCardNumbers
         : data
   }
+  paySuccess(data) {
+    this.state.pay = data
+  }
   location(isBreakpointDownLg) {
     return (
       this.autoSubmit() ||
@@ -509,10 +512,7 @@ class Store extends Model {
   infoParams(data) {
     return this.state.params.token
       ? { ...data, token: this.state.params.token }
-      : this.formParams({
-          ...data,
-          amount: this.state.params.amount,
-        })
+      : this.formParams(data)
   }
   formParams(data) {
     // copy params

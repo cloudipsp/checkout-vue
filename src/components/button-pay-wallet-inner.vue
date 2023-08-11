@@ -1,33 +1,24 @@
 <template>
-  <transition name="f-fade-enter">
-    <f-button
-      v-show="show"
-      :class="classButton"
-      :variant="variant"
-      block
-      @click="click"
-    >
-      <span v-if="isGooglePay">
-        <iframe :src="src" @load="onLoad" />
-      </span>
-      <div class="f-wallet-pay-button-click" />
-    </f-button>
-  </transition>
+  <f-button :class="classButton" :variant="variant" block @click="click">
+    <span v-if="isGooglePay">
+      <iframe :class="$style.iframe" :src="src" @load="onLoad" />
+    </span>
+    <div :class="$style.click" />
+  </f-button>
 </template>
 
 <script>
 import Vue from 'vue'
 import FButton from '@/components/button/button'
-import { loadCheckout } from '@/import'
-import { api } from '@/api'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { idMixin, idProps } from '@/mixins/id'
-import { timeoutMixin } from '@/mixins/timeout'
 import { errorHandler, key } from '@/utils/helpers'
 import { btn, pay, wallet, variant, color } from '@/config/const'
-import { setAttr, setStyle } from '@/utils/dom'
-import { arrayIncludes } from '@/utils/array'
-import { captureMessage } from '@/sentry'
+import { makeProp } from '@/utils/props'
+import {
+  PROP_TYPE_BOOLEAN,
+  PROP_TYPE_NUMBER,
+  PROP_TYPE_STRING,
+} from '@/constants/props'
 
 const supportLongSvg = [
   'ar',
@@ -67,45 +58,33 @@ export default Vue.extend({
   components: {
     FButton,
   },
-  mixins: [idMixin, timeoutMixin],
-  inject: ['formRequest', 'validate'],
+  inject: ['validate'],
   props: {
-    ...idProps,
-  },
-  data() {
-    return {
-      init: false,
-      load: false,
-    }
+    method: makeProp(PROP_TYPE_STRING, '', true),
+    index: makeProp(PROP_TYPE_NUMBER),
+    load: makeProp(PROP_TYPE_BOOLEAN),
   },
   computed: {
-    ...mapState('params', ['token']),
     ...mapState('css_class', {
       variant: key(btn, pay, wallet, variant),
       color: key(btn, pay, wallet, color),
     }),
-    ...mapState('params', ['amount', 'currency', 'merchant_id', 'promocode']),
-    ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
-    ...mapStateGetSet(['can_make_payment', 'need_validate_card']),
-    ...mapState(['has_fields', 'params', 'ready']),
-    ...mapStateGetSet('options', ['wallets_icons']),
+    ...mapStateGetSet(['need_validate_card']),
+    ...mapState(['has_fields']),
+    ...mapState('options', ['wallets_icons']),
     ...mapStateGetSet('tabs', ['most_popular']),
     classButton() {
       return [
-        'f-wallet-pay-button',
-        `f-wallet-pay-button-${this.can_make_payment}-${this.variant}`,
+        this.$style.btn,
+        this.$style[`${this.method}-${this.variant}`],
         {
-          [`f-wallet-pay-button-${this.can_make_payment}-load`]: this.load,
+          [this.$style[`${this.method}-load`]]: this.load,
         },
       ]
     },
-    show() {
-      return this.init
-    },
     isGooglePay() {
       return (
-        this.can_make_payment === 'google' &&
-        arrayIncludes(supportLongSvg, this.$i18n.locale)
+        this.method === 'google' && supportLongSvg.includes(this.$i18n.locale)
       )
     },
     src() {
@@ -113,142 +92,107 @@ export default Vue.extend({
     },
   },
   watch: {
-    amount: 'updateWithoutToken',
-    currency: 'updateWithoutToken',
-    promocode: 'update',
-    params: {
-      handler: 'changeParams',
-      deep: true,
-    },
     '$i18n.locale': 'watchLocale',
-    merchant_id: 'watchMerchantId',
-    ready: 'watchReady',
   },
-  mounted() {
-    this.$nextTick().then(this.loadCheckout)
+  created() {
+    this.wallets_icons.push(this.method)
+    this.addMostPopular()
   },
   methods: {
-    loadCheckout() {
-      if (this.disable_request) return
-
-      const div = document.createElement('div')
-      setAttr(div, 'id', this.safeId())
-      setStyle(div, 'display', 'none')
-      this.$root.$el.appendChild(div)
-
-      loadCheckout().then(this.initButton)
-    },
-    initButton($checkout) {
-      if (this.disable_request) return
-
-      this.button = $checkout
-        .get('PaymentButton', {
-          api,
-          element: '#' + this.safeId(),
-          origin: 'https://' + this.api_domain,
-          endpoint: this.endpoint,
-          data: this.store.formParams(),
-        })
-        .process(this.process)
-        .on('show', () => {
-          const system = this.button.method
-          this.$root.$emit('show-pay')
-          this.can_make_payment = system
-          this.wallets_icons = [system]
-          this.init = true
-          this.addMostPopular()
-        })
-        .on('hide', () => {
-          this.init = false
-        })
-        .on('error', error => {
-          let name = ['Payment Button']
-          if ([20].includes(error.code)) return
-
-          if (error.code) {
-            name.push(error.code)
-          }
-
-          if (error.message) {
-            name.push(error.message)
-          }
-
-          captureMessage(name.join(' '), 'error', error)
-        })
-    },
-    update(newValue, oldValue) {
-      if (!this.button?.connector) return
-      if (!newValue && !oldValue) return
-
-      this.timeout(() => {
-        this.button.update({ data: this.store.formParams() })
-      }, 100)
-    },
-    process(model) {
-      this.formRequest(model.data).catch(errorHandler)
-    },
-    changeParams() {
-      if (!this.show) return
-
-      this.button.utils.extend(this.button.params, {
-        data: this.store.formParams(),
-      })
-    },
     click() {
       if (this.has_fields) {
         this.need_validate_card = false
         this.$nextTick()
           .then(() => this.validate())
-          .then(() => this.button.click())
+          .then(() => this.$emit('click', this.method))
           .finally(() => {
             this.need_validate_card = true
           })
           .catch(errorHandler)
       } else {
-        this.button.click()
+        this.$emit('click', this.method)
       }
     },
     onLoad() {
-      this.load = true
+      this.$emit('update:load', true)
     },
     watchLocale(newValue, old) {
-      if (
-        arrayIncludes(supportLongSvg, newValue) &&
-        arrayIncludes(supportLongSvg, old)
-      )
+      if (supportLongSvg.includes(newValue) && supportLongSvg.includes(old))
         return
 
-      this.load = false
-    },
-    watchMerchantId(value) {
-      if (!this.show) return
-
-      this.button.payment.setMerchant(value)
-    },
-    watchReady() {
-      if (!this.init) return
-
-      this.addMostPopular()
+      this.$emit('update:load', false)
     },
     addMostPopular() {
-      const system = this.button.method
-
       if (!this.most_popular) return
 
-      this.$set(this.most_popular, system, {
-        id: system,
+      this.$set(this.most_popular, this.method, {
+        id: this.method,
         method: 'wallets',
-        logo: system,
-        name: `wallets_${system}`,
-        user_priority: 98,
+        logo: this.method,
+        name: `wallets_${this.method}`,
+        user_priority: 98 - this.index,
         country: 'XX',
       })
-    },
-    updateWithoutToken(newValue, oldValue) {
-      if (this.token) return
-
-      this.update(newValue, oldValue)
     },
   },
 })
 </script>
+
+<style lang="scss" module>
+.btn {
+  &::after {
+    padding: px-to-rem(10px);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    background-size: contain;
+  }
+}
+
+:global(#f .f-sidebar) .btn {
+  margin-bottom: px-to-rem(32px);
+}
+
+:global(#f .f-center) .btn {
+  margin-bottom: px-to-rem(24px);
+}
+
+.iframe {
+  height: 100%;
+  border: 0;
+}
+
+.click {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+:global(#f) .google-light,
+:global(#f) .google-dark {
+  padding: 0;
+}
+
+.google-light::after {
+  background-image: url('https://www.gstatic.com/instantbuy/svg/light_gpay.svg');
+}
+
+.google-dark::after {
+  background-image: url('https://www.gstatic.com/instantbuy/svg/dark_gpay.svg');
+}
+
+.google-load::after {
+  background-image: none;
+}
+
+.apple-light::after {
+  background-image: url('#{$cdn}svg/wallets/apple-pay-light.svg');
+}
+
+.apple-dark::after {
+  background-image: url('#{$cdn}svg/wallets/apple-pay-dark.svg');
+}
+</style>
