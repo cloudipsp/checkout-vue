@@ -151,6 +151,7 @@ export default {
     appFinally(model) {
       if (!model) return
 
+      this.store.paySuccess(model.attr('pay'))
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.instance(model.attr('cards')))

@@ -105,6 +105,7 @@ export const configDefault = {
   loading: false,
   order: {},
   cards: [],
+  pay: {},
   isSubmit: false,
   submited: false,
   read_only: false,
