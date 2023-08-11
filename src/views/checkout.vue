@@ -158,6 +158,7 @@ export default {
           .catch(errorHandler)
       }
 
+      this.store.paySuccess(model.attr('pay'))
       this.store.infoSuccess(model.instance(this.info))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.attr('cards'))
