@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ButtonPayWalletInner from '@/components/button-pay-wallet-inner'
+import ButtonPayWalletList from '@/components/button-pay-wallet-list'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
@@ -33,24 +33,19 @@ export default {
 
       this.init_wallets = true
 
-      this.vm_wallets = new ButtonPayWalletInner({
+      this.vm_wallets = new ButtonPayWalletList({
         store: this.store,
         provide() {
           return { formRequest: this.formRequest }
         },
         parent: this.$_veeObserver,
       }).$mount()
-
-      this.$root.$on('click-wallet', this.click)
     },
     append() {
       if (this.onlyInit) return
       if (!this.show) return
       this.vm_wallets.load = false
       this.$el.appendChild(this.vm_wallets.$el)
-    },
-    click() {
-      this.vm_wallets.click()
     },
   },
 }

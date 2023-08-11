@@ -166,6 +166,9 @@ class Store extends Model {
         ? testCardNumbers
         : data
   }
+  paySuccess(data) {
+    this.state.pay = data
+  }
   location(isBreakpointDownLg) {
     return (
       this.autoSubmit() ||

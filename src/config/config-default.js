@@ -110,6 +110,7 @@ export const configDefault = {
   order: {},
   info: {},
   cards: [],
+  pay: {},
   isSubmit: false,
   submited: false,
   read_only: false,
