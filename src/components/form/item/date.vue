@@ -68,7 +68,7 @@ export default {
         lang: this.$t('datepicker'),
         clearable: false,
         format: this.format,
-        'input-class': this.classInput.join(' '),
+        'input-class': this.classInput,
         'input-attr': {
           id: this.attrs.id,
         },
