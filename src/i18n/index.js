@@ -33,21 +33,22 @@ export const loadLanguageAsync = (lang, store) => {
       Object.assign({}, messages, store.state.messages[lang])
     )
 
-    if (api?.extendParams) {
-      api.extendParams({
-        messages: {
-          modalHeader: i18n.t('3ds_title'),
-          modalLinkLabel: i18n.t('3ds_link'),
-        },
-      })
-    }
-
     return setI18nLanguage(lang)
   })
 }
 
 function setI18nLanguage(lang) {
   i18n.locale = lang
+
+  if (api?.extendParams) {
+    api.extendParams({
+      messages: {
+        modalHeader: i18n.t('3ds_title'),
+        modalLinkLabel: i18n.t('3ds_link'),
+      },
+    })
+  }
+
   return lang
 }
 
