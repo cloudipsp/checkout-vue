@@ -51,14 +51,7 @@ export default {
       return Object.values(this.installments || {})
     },
     listSoon() {
-      return [
-        {
-          id: 1,
-          logo: 'oschadbank',
-          name: this.$t('installments_oschadbank'),
-          method: 'installments',
-        },
-      ]
+      return []
     },
   },
 }
