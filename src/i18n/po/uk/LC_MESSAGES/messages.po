@@ -535,10 +535,10 @@ msgid "wallets_apple"
 msgstr ""
 
 msgid "3ds_title"
-msgstr ""
+msgstr "Ви будете перенаправлені на сторінку 3ds. Якщо ви не бачите її, перейдіть за"
 
 msgid "3ds_link"
-msgstr ""
+msgstr "посиланням"
 
 msgid "qr_desc_mobile_sk_viamo"
 msgstr ""
