@@ -39,7 +39,6 @@ function parseOptions({
   response_url,
   expire,
   status,
-  host,
   token,
 }) {
   amount = Math.round(amount * 100) || 0
@@ -63,7 +62,6 @@ function parseOptions({
         trial: recurring_trial,
         readonly: recurring_readonly,
       },
-      api_domain: host,
       amount_readonly: Boolean(amount_readonly),
     },
     params: {
