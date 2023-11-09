@@ -776,8 +776,9 @@
       // render('#app2', 'min')
       // render('#app3', 'max2')
 
-      document
-        .querySelector('.submit')
+      const $submit = document.querySelector('.submit')
+
+      $submit
         .addEventListener('click', function () {
           app.submit()
         })
@@ -849,7 +850,16 @@
           })
           .$on('ready', function (model) {
             console.log('ready', model)
-          }))
+          })
+          .$on('disabled', function (disabled) {
+            console.log('disabled', disabled)
+            if(disabled) {
+              $submit.setAttribute('disabled', '')
+            } else {
+              $submit.removeAttribute('disabled')
+            }
+          })
+      )
         // .$on('callback', function(model) {
         //   console.log('callback', model);
         // })

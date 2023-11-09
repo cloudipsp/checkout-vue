@@ -167,6 +167,7 @@ app.$on('error', function(model) {})
 app.$on('ready', function(model) {})
 app.$on('callback', function(model) {})
 app.$on('show-pay', function(model) {})
+app.$on('disabled', function(isValid) {})
 ```
 
 ### $emit
