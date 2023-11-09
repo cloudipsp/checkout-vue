@@ -14,9 +14,17 @@ export default {
   mixins: [isMountedMixin],
   inject: ['formRequest'],
   provide() {
+    const form = {}
+
+    Object.defineProperty(form, 'disabled', {
+      enumerable: true,
+      get: () => this.disabled,
+    })
+
     return {
       submit: this.submit,
       validate: this.validate,
+      form,
     }
   },
   computed: {
@@ -31,9 +39,17 @@ export default {
         ([, value]) => value.length
       )
     },
+    isError() {
+      if (!this.isMounted) return false
+      return !!this.errors.length
+    },
+    disabled() {
+      return this.isError && this.isSubmit
+    },
   },
   watch: {
     $route: 'watchRoute',
+    disabled: 'watchDisabled',
   },
   created() {
     this.$root.$on('submit', () => {
@@ -44,6 +60,9 @@ export default {
     watchRoute() {
       this.observer.reset()
       this.isSubmit = false
+    },
+    watchDisabled(disabled) {
+      this.$root.$emit('disabled', disabled)
     },
     submit(data) {
       this.submited = true

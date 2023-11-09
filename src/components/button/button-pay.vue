@@ -4,7 +4,7 @@
       v-if="show"
       class="f-button-pay"
       variant="success"
-      :disabled="disabled"
+      :disabled="form.disabled"
       size="lg"
       block
       @click="click"
@@ -26,7 +26,6 @@ import FAmount from '@/components/base/amount'
 import { FButtonCancel } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
-import { validatorMixin } from '@/mixins/validator'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
@@ -37,15 +36,9 @@ export default {
     FAmount,
     FButtonCancel,
   },
-  mixins: [validatorMixin],
-  inject: ['submit'],
+  inject: ['submit', 'form'],
   props: {
     noAmount: makeProp(PROP_TYPE_BOOLEAN, false),
-  },
-  data() {
-    return {
-      isSubmit: false,
-    }
   },
   computed: {
     ...mapState(['cancel_url']),
@@ -53,9 +46,6 @@ export default {
     ...mapState('options', ['show_button_amount', 'disable_request']),
     ...mapState('params', ['currency', 'verification_type']),
     ...mapState(['total_amount']),
-    disabled() {
-      return this.isError && this.isSubmit
-    },
     showAmount() {
       return (
         this.verification_type !== 'amount' &&
@@ -72,7 +62,6 @@ export default {
   },
   methods: {
     click() {
-      this.isSubmit = true
       this.submit()
         .then(model => {
           this.$emit('success', model)
