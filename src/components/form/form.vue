@@ -70,9 +70,10 @@ export default {
 
       if (!$firstErrorField) return Promise.reject()
 
-      if (this.full_screen) {
-        $firstErrorField.scrollIntoView()
-      }
+      $firstErrorField.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth',
+      })
 
       attemptFocus($firstErrorField)
 
