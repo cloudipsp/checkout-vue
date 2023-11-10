@@ -30,7 +30,7 @@
     "@sentry/vue": "^6.19.7",
     "@umpirsky/country-list": "git+https://github.com/umpirsky/country-list.git",
     "async-validator": "^3.5.2",
-    "axios": "^0.21.4",
+    "axios": "^1.6.0",
     "core-js": "^3.30.1",
     "countries-languages": "github:arash16/countries-languages",
     "css-vars-ponyfill": "^2.4.8",
