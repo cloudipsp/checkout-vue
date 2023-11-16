@@ -35,6 +35,7 @@ import {
 import { makeProp } from '@/utils/props'
 import { isNumber } from '@/utils/inspect'
 import { parseSelect } from '@/utils/sort'
+import { amountToCoins } from '@/utils/helpers'
 
 export default {
   inheritAttrs: false,
@@ -91,7 +92,7 @@ export default {
       value = value.replace(',', '.')
       this.last = value
 
-      return Math.round(parseFloat(value).toFixed(2) * 100) || 0
+      return amountToCoins(value)
     },
   },
 }

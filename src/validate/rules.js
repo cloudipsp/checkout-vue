@@ -1,4 +1,5 @@
 import { parse, isAfter, isEqual, isValid } from '@/utils/date'
+import { amountToCoins } from '@/utils/helpers'
 
 export const decimal = {
   validate: (value, { decimals = '*', separator = '.' } = {}) => {
@@ -95,6 +96,6 @@ export const one = {
 
 export const no_zero = {
   validate: value => {
-    return Math.round(parseFloat(value).toFixed(2) * 100) > 0
+    return amountToCoins(value) > 0
   },
 }

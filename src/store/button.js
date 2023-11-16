@@ -1,5 +1,5 @@
 import { loadAxios } from '@/import'
-import { deepMerge } from '@/utils/helpers'
+import { deepMerge, amountToCoins } from '@/utils/helpers'
 import { configDefault } from '@/config/config-default'
 import { getType } from '@/store/subscription'
 import { parse, createDate } from '@/utils/date'
@@ -42,7 +42,7 @@ function parseOptions({
   host,
   token,
 }) {
-  amount = Math.round(amount * 100) || 0
+  amount = amountToCoins(amount)
 
   if (!currencies.includes(currency)) {
     currencies.unshift(currency)
@@ -74,7 +74,7 @@ function parseOptions({
       lang,
       recurring_data: {
         ...deepMerge({}, configDefault.params.recurring_data, recurring),
-        amount: Math.round(recurring.amount * 100) || amount,
+        amount: amountToCoins(recurring.amount) || amount,
       },
       response_url,
       button: token,

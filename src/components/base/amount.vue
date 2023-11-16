@@ -1,8 +1,8 @@
 <template>
   <span>
-    <b :class="amountClass"
+    <component :is="tagAmount" :class="amountClass"
       >{{ integer }}<component :is="tagFractional">{{ fractional }}</component>
-    </b>
+    </component>
     <template v-if="currency">
       <span :class="currencyClasses" v-text="$t(currency)" />
     </template>
@@ -24,6 +24,7 @@ export default {
     sup: makeProp(PROP_TYPE_BOOLEAN, false),
     amountClass: makeProp(PROP_TYPE_STRING),
     currencyClass: makeProp(PROP_TYPE_STRING),
+    noBold: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   data() {
     return {
@@ -51,6 +52,9 @@ export default {
     },
     fractional() {
       return String(this.amount).slice(-2)
+    },
+    tagAmount() {
+      return this.noBold ? 'span' : 'b'
     },
     tagFractional() {
       return this.sup ? 'sup' : 'span'
