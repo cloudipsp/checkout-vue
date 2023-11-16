@@ -201,6 +201,7 @@ class Store extends Model {
     this.state.show_gdpr_frame = model.attr('show_gdpr_frame')
 
     this.state.mode_test = model.attr('istest')
+    this.state.cancel_url = model.attr('order.cancel_url')
   }
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(configDefault))

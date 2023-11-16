@@ -15,6 +15,7 @@
       </f-preloader>
     </f-button>
     <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo-desc')" />
+    <f-button-cancel v-if="cancel_url" />
   </div>
 </template>
 
@@ -22,6 +23,7 @@
 import FButton from '@/components/button/button'
 import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
+import { FButtonCancel } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { validatorMixin } from '@/mixins/validator'
@@ -33,6 +35,7 @@ export default {
     FButton,
     FPreloader,
     FAmount,
+    FButtonCancel,
   },
   mixins: [validatorMixin],
   inject: ['submit'],
@@ -45,6 +48,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['cancel_url']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
     ...mapState('params', ['amount', 'currency', 'verification_type']),

@@ -52,6 +52,7 @@
         <span v-text="$t('pay')" />&nbsp;
         <f-amount :value="amountTotal" :currency="currency" />
       </f-button>
+      <f-button-cancel v-if="cancel_url" />
     </div>
   </div>
 </template>
@@ -66,6 +67,7 @@ import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButton from '@/components/button/button'
 import FAmount from '@/components/base/amount'
+import { FButtonCancel } from '@/import'
 import { mapState } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
 import { errorHandler } from '@/utils/helpers'
@@ -82,6 +84,7 @@ export default {
     FOffer,
     FButton,
     FAmount,
+    FButtonCancel,
   },
   inject: ['formRequest', 'validate'],
   data() {
@@ -96,6 +99,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['cancel_url']),
     ...mapState(['tabs', 'params']),
     ...mapState('params', ['currency', 'token', 'amount']),
     method() {
