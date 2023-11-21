@@ -67,7 +67,7 @@ export default {
     ...mapState('options.theme', ['type']),
     ...mapState(['loading', 'mode_test']),
     ...mapState('options', ['methods', 'disable_request']),
-    ...mapState('params', ['token', 'lang']),
+    ...mapState('params', ['token', 'fee']),
 
     ...mapStateGetSet(['ready', 'order']),
     ...mapStateGetSet('params', [
@@ -94,16 +94,7 @@ export default {
     }
 
     this.store
-      .sendRequest(
-        'api.checkout',
-        'app',
-        this.store.infoParams(
-          this.store.user.params?.lang ? this.lang : undefined
-        ),
-        {
-          cached: this.token,
-        }
-      )
+      .sendRequestApp()
       .then(this.appSuccess)
       .finally(() => {
         this.ready = true
@@ -150,6 +141,10 @@ export default {
     appSuccess(model) {
       this.$root.$emit('ready', model)
       this.appFinally(model)
+
+      if (!this.token && this.fee) {
+        return this.store.feeCalc()
+      }
     },
     appError(model) {
       if (!isError(model)) {

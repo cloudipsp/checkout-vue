@@ -59,7 +59,7 @@ export const configDefault = {
   },
   params: {
     merchant_id: 1396424, // 900024 dev, 1396424 prod
-    amount: null,
+    amount: 0,
     fee: 0, // %
     currency: '',
     recurring: 'n',
@@ -120,9 +120,10 @@ export const configDefault = {
   can_make_payment: '',
   has_fields: false,
   need_validate_card: true,
-  amount_with_fee: 0,
-  actual_amount: 0,
-  card_type_fee: 0,
+  discount_percent: 0,
+  discount_amount: 0,
+  fee_amount: 0,
+  total_amount: 0,
   notification: '',
   currencies: [],
   init_wallets: false,

@@ -9,6 +9,7 @@ import {
   errorHandler,
   removeWallets,
   getRouteName,
+  amountToCoins,
 } from '@/utils/helpers'
 import { sendRequest } from '@/api'
 import { isExist } from '@/utils/inspect'
@@ -54,6 +55,18 @@ class Store extends Model {
       return Promise.reject(model)
     })
   }
+  sendRequestApp() {
+    return this.sendRequest(
+      'api.checkout',
+      'app',
+      this.infoParams(
+        this.user.params?.lang ? this.state.params.lang : undefined
+      ),
+      {
+        cached: this.token,
+      }
+    )
+  }
   sendRequestInfo() {
     this.sendRequest(
       'api.checkout.info',
@@ -62,6 +75,38 @@ class Store extends Model {
     )
       .then(model => this.info(model))
       .catch(errorHandler)
+  }
+  feeCalc(data) {
+    const { amount, token, button, merchant_id } = this.state.params
+
+    return this.sendRequest(
+      'api.checkout.fee',
+      'v2',
+      {
+        ...data,
+        amount,
+        token,
+        button,
+        merchant_id,
+      },
+      {
+        cached: true,
+      }
+    ).then(model => {
+      const {
+        discount_percent,
+        discount_amount,
+        fee_amount,
+        total_amount,
+        message,
+      } = model.data
+
+      this.state.notification = message
+      this.state.discount_percent = discount_percent
+      this.state.discount_amount = discount_amount
+      this.state.fee_amount = fee_amount
+      this.state.total_amount = total_amount
+    })
   }
   infoSuccess(model) {
     this.info(model)
@@ -163,8 +208,13 @@ class Store extends Model {
     }
   }
   info(model) {
+    const total_amount = model.attr('order.actual_amount')
+
     if (isExist(model.attr('validate_expdate'))) {
       this.state.validate_expdate = model.attr('validate_expdate')
+    }
+    if (isExist(total_amount)) {
+      this.state.total_amount = amountToCoins(total_amount)
     }
     this.state.options.link =
       model.attr('merchant.merchant_url') || this.state.options.link
@@ -243,6 +293,7 @@ class Store extends Model {
     this.initIsOnlyCard()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
+    this.state.total_amount = this.state.params.amount
   }
   initFavicon() {
     if (!this.state.options.full_screen) return
@@ -383,26 +434,6 @@ class Store extends Model {
       options.params.email = email
     }
     this.setState(options)
-  }
-  getAmountWithFee() {
-    if (!this.state.params.amount) return Promise.reject()
-    if (!this.state.params.fee) return Promise.reject()
-    return this.sendRequest(
-      'api.checkout.fee',
-      'get',
-      {
-        amount: this.state.params.amount,
-        fee: this.state.params.fee,
-        token: this.state.params.token,
-      },
-      {
-        cached: true,
-      }
-    )
-      .then(model => {
-        this.state.amount_with_fee = parseInt(model.attr('amount_with_fee'), 10)
-      })
-      .catch(errorHandler)
   }
   showError(code, message) {
     this.state.error.code = code

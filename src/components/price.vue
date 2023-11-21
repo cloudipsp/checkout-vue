@@ -1,58 +1,69 @@
 <template>
   <div v-if="show" class="f-price">
     <f-preloader :condition="showAmount" :size="sizePreloader">
-      <template v-if="showAmountReadOnly">
-        <template v-if="isTrialPeriod">
-          <span v-text="$t('trial_period')" />: {{ trial_quantity }}
-          {{ trial_period }}
+      <template v-if="isTrialPeriod">
+        <span v-text="$t('trial_period')" />: {{ trial_quantity }}
+        {{ trial_period }}
+      </template>
+      <template v-else-if="isFirstPayment">
+        <template v-if="start_time">
+          <span v-text="$t('first_payment')" />:
+          <f-date :value="start_time" />
         </template>
-        <template v-else-if="isFirstPayment">
-          <template v-if="start_time">
-            <span v-text="$t('first_payment')" />:
-            <f-date :value="start_time" />
-          </template>
-        </template>
-        <template v-else>
+      </template>
+      <template v-else>
+        <template v-if="showAmountReadOnly">
           <f-amount
-            :value="valueAmount"
+            :value="total_amount"
             :currency="currency"
             amount-class="f-amount"
             currency-class="f-currency"
             sup
           />
-          <table v-if="card_type_fee" class="f-table">
-            <tr>
-              <td class="f-pr-16" v-text="$t('total_amount')" />
-              <td><f-amount :value="amount" /></td>
-            </tr>
-            <tr>
-              <td class="f-pr-16" v-text="labelCardTypeFee" />
-              <td><f-amount :value="card_type_fee" /></td>
-            </tr>
-          </table>
-          <table v-else-if="showFeeAmount" class="f-table">
-            <tr>
-              <td class="f-pr-16" v-text="$t('total_amount')" />
-              <td><f-amount :value="amount" /></td>
-            </tr>
-            <tr>
-              <td class="f-pr-16" v-text="$t('fee')" />
-              <td><f-amount :value="feeAmount" /></td>
-            </tr>
-          </table>
         </template>
-      </template>
-      <template v-else>
-        <input-amount name="amount" label="amount">
-          <template #default="{ id }">
-            <div ref="amount" class="f-form-control f-hidden">
-              {{ totalAmount }}
-            </div>
-            <label v-if="showFeeAmount" :for="id" class="f-fee" :style="style">
-              + <f-amount :value="feeAmount" />
-            </label>
-          </template>
-        </input-amount>
+        <template v-else>
+          <input-amount name="amount" label="amount">
+            <template #default="{ id }">
+              <div ref="amount" class="f-form-control f-hidden">
+                {{ totalAmount }}
+              </div>
+              <label
+                v-if="showFeeAmount"
+                :for="id"
+                class="f-fee"
+                :style="style"
+              >
+                + <f-amount :value="fee_amount" />
+              </label>
+            </template>
+          </input-amount>
+        </template>
+        <table v-if="showFee" class="f-table">
+          <tr>
+            <td class="f-pr-16" v-text="$t('amount')" />
+            <td><f-amount :value="actualAmount" no-bold /></td>
+          </tr>
+          <tr v-if="showDiscount">
+            <td class="f-pr-16" v-text="$t('discount')" />
+            <td>
+              <span v-if="discount_percent">{{ discountPercent }}</span>
+              <span v-if="discount_percent && discount_amount"> + </span>
+              <f-amount
+                v-if="discount_amount"
+                :value="discount_amount"
+                no-bold
+              />
+            </td>
+          </tr>
+          <tr v-if="fee_amount">
+            <td class="f-pr-16" v-text="$t('fee')" />
+            <td><f-amount :value="fee_amount" no-bold /></td>
+          </tr>
+          <tr>
+            <td class="f-pr-16" v-text="$t('total_amount')" />
+            <td><f-amount :value="total_amount" no-bold /></td>
+          </tr>
+        </table>
       </template>
     </f-preloader>
   </div>
@@ -67,7 +78,6 @@ import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
-import { isNumber } from '@/utils/inspect'
 import { timeoutMixin } from '@/mixins/timeout'
 
 export default {
@@ -83,19 +93,23 @@ export default {
   },
   data() {
     return {
-      cacheAmount: 0,
+      actualAmount: 0,
       left: 0,
       loading: false,
     }
   },
   computed: {
-    ...mapState(['order', 'amount_with_fee', 'card_type_fee', 'actual_amount']),
-    ...mapState('options', ['amount_readonly']),
-    ...mapState('options', { showFee: 'fee' }),
+    ...mapState([
+      'ready',
+      'discount_percent',
+      'discount_amount',
+      'fee_amount',
+      'total_amount',
+    ]),
+    ...mapState('options', ['amount_readonly', 'fee']),
     ...mapState('params', [
       'currency',
       'amount',
-      'fee',
       'verification_type',
       'recurring',
     ]),
@@ -105,30 +119,23 @@ export default {
       'trial_quantity',
       'start_time',
     ]),
+    showFee() {
+      return this.fee && (this.showDiscount || this.fee_amount)
+    },
     showFeeAmount() {
-      return (
-        this.showFee &&
-        this.cacheAmount === this.amount &&
-        !this.loading &&
-        this.amount &&
-        this.amount_with_fee &&
-        this.feeAmount
-      )
+      return this.showFee && this.actualAmount === this.amount
     },
     showAmountReadOnly() {
       return this.amount_readonly || this.readonly
     },
     showAmount() {
-      return isNumber(this.amount) || !this.amount_readonly
+      return this.ready || !this.amount_readonly
+    },
+    showDiscount() {
+      return this.discount_percent || this.discount_amount
     },
     totalAmount() {
       return this.amount / 100
-    },
-    feeAmount() {
-      return this.amount_with_fee - this.cacheAmount
-    },
-    valueAmount() {
-      return this.actual_amount || this.amount_with_fee || this.amount
     },
     sizePreloader() {
       return this.amount_readonly ? '38' : null
@@ -137,9 +144,6 @@ export default {
       return {
         left: `${this.left}px`,
       }
-    },
-    labelCardTypeFee() {
-      return this.card_type_fee < 0 ? this.$t('discount') : this.$t('fee')
     },
     show() {
       return !this.verification_type
@@ -151,35 +155,53 @@ export default {
       return this.trial && !this.unlimited
     },
     isTrialPeriod() {
-      return !this.valueAmount && this.isSubscription && this.isTrial
+      return (
+        this.amount_readonly &&
+        !this.total_amount &&
+        this.isSubscription &&
+        this.isTrial
+      )
     },
     isFirstPayment() {
-      return !this.valueAmount && this.isSubscription && !this.isTrial
+      return (
+        this.amount_readonly &&
+        !this.total_amount &&
+        this.isSubscription &&
+        !this.isTrial
+      )
+    },
+    discountPercent() {
+      return parseFloat(this.discount_percent * 100).toFixed(2) * 1 + '%'
     },
   },
   watch: {
-    fee: 'getAmountWithFee',
-    amount: 'getAmountWithFee',
+    amount: 'feeCalc',
+    ready: 'setLeft',
   },
-  created() {
-    this.getAmountWithFee()
+  mounted() {
+    this.setLeft()
   },
   methods: {
-    getAmountWithFee() {
+    feeCalc() {
+      if (!this.ready) return
+
       this.timeout('request', 300)
     },
     request() {
       if (this.loading) return
       this.loading = true
-      this.cacheAmount = this.amount
 
       this.store
-        .getAmountWithFee()
+        .feeCalc()
+        .then(this.setLeft)
         .finally(() => {
           this.loading = false
-          this.left = this.$refs.amount?.offsetWidth + 5
         })
         .catch(errorHandler)
+    },
+    setLeft() {
+      this.actualAmount = this.amount
+      this.left = this.$refs.amount?.offsetWidth + 5
     },
   },
 }

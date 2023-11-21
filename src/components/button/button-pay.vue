@@ -10,8 +10,8 @@
       @click="click"
     >
       <span v-text="$t('pay')" />&nbsp;
-      <f-preloader v-if="showAmount" :condition="fullAmount" tag="span">
-        <f-amount :value="fullAmount" :currency="currency" />
+      <f-preloader v-if="showAmount" :condition="total_amount" tag="span">
+        <f-amount :value="total_amount" :currency="currency" />
       </f-preloader>
     </f-button>
     <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo-desc')" />
@@ -51,13 +51,10 @@ export default {
     ...mapState(['cancel_url']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount', 'disable_request']),
-    ...mapState('params', ['amount', 'currency', 'verification_type']),
-    ...mapState(['amount_with_fee', 'actual_amount']),
+    ...mapState('params', ['currency', 'verification_type']),
+    ...mapState(['total_amount']),
     disabled() {
       return this.isError && this.isSubmit
-    },
-    fullAmount() {
-      return this.actual_amount || this.amount_with_fee || this.amount
     },
     showAmount() {
       return (

@@ -131,9 +131,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(['read_only', 'cards', 'submited', 'need_validate_card']),
-    ...mapStateGetSet(['card_type_fee', 'actual_amount', 'notification']),
-    ...mapState('params', ['token', 'button', 'merchant_id']),
+    ...mapState([
+      'ready',
+      'read_only',
+      'cards',
+      'submited',
+      'need_validate_card',
+    ]),
     ...mapStateGetSet('params', [
       'cvv2',
       'expiry_date',
@@ -141,7 +145,6 @@ export default {
       'code',
       'hash',
     ]),
-    ...mapState('options', ['amount_readonly']),
     validExpiryDate() {
       if (this.disabledExpiryDate) return
       if (!this.need_validate_card) return {}
@@ -177,25 +180,12 @@ export default {
   },
   watch: {
     card_number(value) {
-      if (!value || value.length < Math.min(...this.config)) {
-        this.clear()
-
-        return
-      }
+      if (!this.ready) return
 
       this.store
-        .sendRequest(
-          'api.checkout.card_type_fee',
-          'get',
-          {
-            token: this.token,
-            button: this.button,
-            merchant_id: this.merchant_id,
-            card_bin: this.getCardBin(value),
-          },
-          { cached: true }
-        )
-        .then(this.success)
+        .feeCalc({
+          card_bin: this.getCardBin(value),
+        })
         .catch(errorHandler)
     },
     read_only(value) {
@@ -206,21 +196,6 @@ export default {
     },
   },
   methods: {
-    success(model) {
-      if (!this.amount_readonly) return
-
-      this.notification = model.attr('message')
-
-      if (model.attr('actual_amount')) {
-        this.actual_amount = Math.round(model.attr('actual_amount') * 100)
-        this.card_type_fee = Math.round(model.attr('fee') * 100)
-      }
-    },
-    clear() {
-      this.notification = ''
-      this.actual_amount = 0
-      this.card_type_fee = 0
-    },
     inputCardNumber(value) {
       if (value.length === 16 || value.length === 19) {
         this.focus(['card_number', 'expiry_date', 'cvv2'])
