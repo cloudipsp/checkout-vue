@@ -47,6 +47,11 @@ export const loadLang = chunk => {
         /* webpackChunkName: "it" */
         '@/i18n/lang/it'
       )
+    case 'ka':
+      return import(
+        /* webpackChunkName: "ka" */
+        '@/i18n/lang/ka'
+      )
     case 'ko':
       return import(
         /* webpackChunkName: "ko" */

@@ -1,0 +1,662 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fondy Payment Page\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-12 16:02+0200\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+
+msgid "card"
+msgstr "ბარათი"
+
+msgid "trustly"
+msgstr ""
+
+msgid "sepa"
+msgstr "სეფა"
+
+msgid "banklinks_eu"
+msgstr "ბანკით გადახდა"
+
+msgid "receipt"
+msgstr "საბანკო გადარიცხვა"
+
+msgid "local_methods"
+msgstr "ადგილობრივი გადახდის მეთოდები"
+
+msgid "wallets"
+msgstr "ელ. საფულე"
+
+msgid "loans"
+msgstr "განვადება"
+
+msgid "emoney"
+msgstr "ელექტრონული ფული"
+
+msgid "crypto"
+msgstr "კრიპტო"
+
+msgid "most_popular"
+msgstr ""
+
+msgid "installments"
+msgstr ""
+
+msgid "day"
+msgstr "დღე"
+
+msgid "week"
+msgstr "კვირა"
+
+msgid "month"
+msgstr "თვე"
+
+msgid "menu"
+msgstr ""
+
+msgid "error_modal"
+msgstr ""
+
+msgid "error"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "gdpr_yapily"
+msgstr ""
+
+msgid "gdpr_alert_text"
+msgstr ""
+"ვებგვერდით სარგებლობის გაგრძელებით, თქვენ ეთანხმებით Cookie ჩანაწერების "
+"გამოყენებას."
+
+msgid "learn_more"
+msgstr "ვრცლად"
+
+msgid "gdpr_modal_text"
+msgstr ""
+
+msgid "save_card"
+msgstr "ბარათის დამახსოვრება"
+
+msgid "its_safe"
+msgstr "უსაფრთხოება დაცულია"
+
+msgid "gdpr_modal_safe_title"
+msgstr "ბარათის დამახსოვრება უსაფრთხოა"
+
+msgid "gdpr_modal_safe"
+msgstr ""
+"ბარათის დამახსოვრება ხდება ყველა შესაბამისი უსაფრთხოების სტანდარტის დაცვით"
+
+msgid "close"
+msgstr "დახურვა"
+
+msgid "not_now"
+msgstr "მოგვიანებით"
+
+msgid "accept"
+msgstr "თანხმობა"
+
+msgid "cancel"
+msgstr ""
+
+msgid "pay"
+msgstr "გადახდა"
+
+msgid "demo-desc"
+msgstr ""
+
+msgid "expires_on"
+msgstr "მოქმედების ვადა"
+
+msgid "approved"
+msgstr "წარმატებულია"
+
+msgid "declined"
+msgstr "უარყოფილია"
+
+msgid "use_other_card"
+msgstr "გამოიყენეთ სხვა ბარათი"
+
+msgid "datepicker"
+msgstr ""
+
+msgid "model"
+msgstr ""
+
+msgid "all_methods"
+msgstr ""
+
+msgid "verification_t"
+msgstr "ბარათის მოწმდება"
+
+msgid "verification_"
+msgstr ""
+
+msgid "see_more"
+msgstr "სრულად ნახვა"
+
+msgid "order_details"
+msgstr "შეკვეთის დეტალები"
+
+msgid "submit3ds_title"
+msgstr "გადახდა ვერ შესრულდა"
+
+msgid "submit3ds_text"
+msgstr "შეიყვანეთ ახალი კოდი"
+
+msgid "submit3ds_submit"
+msgstr "სცადე ერთხელაც"
+
+msgid "submit3ds_wait"
+msgstr "ჩვენ გამისამართებთ ბანკის საიტზე ხელახლა"
+
+msgid "show"
+msgstr ""
+
+msgid "server_trouble_title"
+msgstr "შეცდომა..."
+
+msgid "server_trouble_desc"
+msgstr "გთხოვთ დაბრუნდეთ რამოდენიმე ნაბიჯით უკან და ხელახლა სცადოთ"
+
+msgid "offer_t"
+msgstr "ვეთანხმები <a href=\\\"{0}\\\" target=\\\"_blank\\\">პირობებს</a>"
+
+msgid "offerta_url"
+msgstr ""
+
+msgid "trial_period"
+msgstr "გამოსაცდელი პერიოდი"
+
+msgid "first_payment"
+msgstr ""
+
+msgid "total_amount"
+msgstr "სრული თანხა"
+
+msgid "fee"
+msgstr "საკომისიო"
+
+msgid "amount"
+msgstr "თანხა"
+
+msgid "discount"
+msgstr "ფასდაკლება"
+
+msgid "security_title"
+msgstr "გადამხდელის ინფორმაცია დაცულია"
+
+msgid "security_text"
+msgstr ""
+"საერთაშორისო სტანდარტების (PCI/DSS) და საბარათე სისტემების მოთხოვნების "
+"შესაბამისად"
+
+msgid "other_payment_method"
+msgstr "სხვა გადახდის მეთოდები"
+
+msgid "subscription"
+msgstr "განმეორებითი გადახდა"
+
+msgid "subscription_amount"
+msgstr "განმეორებითი გადახდის თანხა"
+
+msgid "unlimited"
+msgstr "ულიმიტო"
+
+msgid "verification_desc"
+msgstr ""
+"ბარათის ვერიფიკაციისთვის მცირე თანხას დავარეზერვებთ ბარათზე 15 წუთის "
+"განმავლობაში"
+
+msgid "customer_name"
+msgstr "სახელი ბარათზე"
+
+msgid "customer_name_utf8"
+msgstr "სრული სახელი"
+
+msgid "customer_address"
+msgstr "მისამართი"
+
+msgid "customer_zip"
+msgstr "საფოსტო ინექსი (ZIP)"
+
+msgid "customer_city"
+msgstr "ქალაქი"
+
+msgid "customer_country"
+msgstr "ქვეყანა"
+
+msgid "customer_state"
+msgstr "რეგიონი"
+
+msgid "customer_phonemobile"
+msgstr "მობილურის ნომერი"
+
+msgid "customer_email"
+msgstr "ელ. ფოსტა"
+
+msgid "verify"
+msgstr ""
+
+msgid "success"
+msgstr ""
+
+msgid "use_monobank_application"
+msgstr "გამოიყენეთ მონობანკის აპლიკაცია გადახდის დასადასტურებლად"
+
+msgid "load_more"
+msgstr "მეტის ნახვა"
+
+msgid "pay_with_card"
+msgstr "ბარათით გადახდა"
+
+msgid "card_number_p"
+msgstr "____ ____ ____ ____"
+
+msgid "expiry_date_p"
+msgstr "__/__"
+
+msgid "cvv2_p"
+msgstr "___"
+
+msgid "cvv2_help"
+msgstr "{0}-ციფრიანი კოდი ბარათის უკანა მხარეს"
+
+msgid "Payments"
+msgstr "გადახდები"
+
+msgid "from_amount_month"
+msgstr "{0} / თვიდან"
+
+msgid "payments"
+msgstr "გადახდები"
+
+msgid "currency_month"
+msgstr "{0} / თვე"
+
+msgid "installments-system"
+msgstr ""
+
+msgid "expect_soon"
+msgstr "ველოდებით უმოკლეს დროში"
+
+msgid "conditions"
+msgstr "პირობები"
+
+msgid "loading-monobank"
+msgstr ""
+
+msgid "most_popular_methods_in"
+msgstr ""
+
+msgid "see_all_other_methods"
+msgstr ""
+
+msgid "mfo_title"
+msgstr "რეკვიზიტები ქვითარი № {0} გადასახდელად"
+
+msgid "ibox_title"
+msgstr "iBox-ის ტერმინალით გადახდა"
+
+msgid "full_requesites"
+msgstr "მიმღების სრული რეკვიზიტები"
+
+msgid "full_requesites_explain"
+msgstr ""
+"თქვენ არ დაგჭირდებათ ამ ინფორმაციის სრულად შეყვანა გადახდისას, თუმცა "
+"შეგიძლიათ შენახვა"
+
+msgid "UAH"
+msgstr "გრივნა"
+
+msgid "receiver"
+msgstr "მიმღები"
+
+msgid "current_bill"
+msgstr "მიმდინარე ანგარიში"
+
+msgid "usreou"
+msgstr "EDRPOU კოდი"
+
+msgid "bank"
+msgstr "ბანკის დასახელება"
+
+msgid "mfo"
+msgstr "MFO"
+
+msgid "purpose"
+msgstr "დანიშნულება"
+
+msgid "receipt_id"
+msgstr "შეკვეთის ნომერი"
+
+msgid "end_date"
+msgstr "გადახდის ბოლო თარიღი"
+
+msgid "ibox_desc"
+msgstr ""
+
+msgid "save_receipt"
+msgstr "ქვითრის გადმოწერა"
+
+msgid "save_qr_code"
+msgstr "მობილურში დამახსოვრება"
+
+msgid "qr_code_text"
+msgstr "დაასკანერეთ QR კოდი ქვითრის მობილურში შესანახად"
+
+msgid "ibox_info"
+msgstr ""
+
+msgid "sepa_t"
+msgstr "მიუთითეთ ბანკის რეკვიზიტები"
+
+msgid "sender_name"
+msgstr "სახელი"
+
+msgid "bank_desc"
+msgstr "გამისამართებთ ბანკის საიტზე გადახდის დასრულებისთვის"
+
+msgid "payment_id"
+msgstr "გადახდის ID"
+
+msgid "demo-title"
+msgstr ""
+
+msgid "mode-test"
+msgstr "სატესტო რეჟიმი"
+
+msgid "\""
+msgstr ""
+
+msgid "title-declined"
+msgstr "სამწუხაროდ გადახდა წარუმატებელია"
+
+msgid "title-approved"
+msgstr "მადლობა, გადახდა მიღებულია"
+
+msgid "verification_code_d"
+msgstr ""
+"ბარათის ვერიფიკაციისთვის მცირე თანხას დავარეზერვებთ ბარათზე 15 წუთის "
+"განმავლობაში"
+
+msgid "verification_amount_d"
+msgstr ""
+"ჩვენ დავარეზერვებთ მცირე თანხას თქვენ ბარათზე 15 წუთით ბარათის "
+"ვერიფიკაციისთვის.\n"
+"გთხოვთ შეიყვანოთ დარეზერვებული თანხა."
+
+msgid "rule_default"
+msgstr "არასწორი მნიშნელობა ველში {_field_}"
+
+msgid "rule_after"
+msgstr "მოქმედების ვადა ვერ გასცდება {target}"
+
+msgid "rule_alpha"
+msgstr "შეიყვანეთ მხოლოდ ასოები"
+
+msgid "rule_date_format"
+msgstr "თარიღი შეიყვანეთ ფორმატით: თვე/წელი"
+
+msgid "rule_decimal"
+msgstr "გამოიყენეთ მხოლოდ ციფრები (0-9), წერტილი (.) ან მძიმე (,)"
+
+msgid "rule_digits"
+msgstr "დაშვებულია მაქსიმუმ {length} ციფრი"
+
+msgid "rule_email"
+msgstr "შეიყვანეთ აქტიური ელექტრონული ფოსტა"
+
+msgid "rule_max"
+msgstr "მაქსიმუმ {length} სიმბოლო"
+
+msgid "rule_min"
+msgstr "მინიმუმ {length} სიმბოლო"
+
+msgid "rule_numeric"
+msgstr "მხოლოდ ციფრები (0-9)"
+
+msgid "rule_required"
+msgstr "შევსება სავალდებულოა"
+
+msgid "rule_regex"
+msgstr "არასწორი ფორმატი"
+
+msgid "rule_no_zero"
+msgstr "მნიშნელობა ნულზე მეტი უნდა იყოს"
+
+msgid "rule_customer_name"
+msgstr "შეიყვანეთ სახელი ლათინური ასოებით"
+
+msgid "rule_customer_field"
+msgstr "გამოიყენეთ ლათინური ასოები (A-Z) ან ციფრები (0-9)"
+
+msgid "rule_customer_field_utf8"
+msgstr "არ გამოიყენოთ სპეციალური სიმბოლოები"
+
+msgid "rule_phone"
+msgstr "შეიყვანეთ მობილურის ნომერი"
+
+msgid "rule_phonemobile"
+msgstr "შეიყვანეთ მინიმუმ 9 ციფრი (0-9)"
+
+msgid "rule_numrange"
+msgstr "გადაჭარბება ციფრების რაოდენობაში"
+
+msgid "rule_ccard"
+msgstr "არასწორი ბარათის ინფორმაცია"
+
+msgid "rule_expiry_date"
+msgstr "არასწორი მოქმედების ვადა"
+
+msgid "rule_cvv"
+msgstr "არასწორი CVV2/CVC2"
+
+msgid "rule_one"
+msgstr "მნიშვნელობა ვერ იქნება 1-ზე ნაკლები"
+
+msgid "price"
+msgstr "ფასი"
+
+msgid "shipping"
+msgstr "მიწოდება"
+
+msgid "vat"
+msgstr "დღგ"
+
+msgid "arbitrary_amount"
+msgstr "თანხა"
+
+msgid "ibox_ua"
+msgstr "ნაღდი ანგარიშსწორება აპარატით"
+
+msgid "loans_tooltip"
+msgstr "იყიდე ახლა, გადაიხადე მოგვიანებით"
+
+msgid "button_expired_title"
+msgstr "გადახდის ღილაკის მოქმედების ვადა ამოიწურა"
+
+msgid "button_expired_text"
+msgstr "მიმართეთ სავაჭრო ობიექტს"
+
+msgid "button_status_not_active_title"
+msgstr "გადახდის ბმულის ვადა ამოიწურა"
+
+msgid "button_status_not_active_text"
+msgstr "გადახდის ბმულის ვადა ამოიწურა"
+
+msgid "sender_familyName"
+msgstr ""
+
+msgid "bic"
+msgstr "SWIFT"
+
+msgid "iban"
+msgstr "IBAN"
+
+msgid "wallets_google"
+msgstr ""
+
+msgid "wallets_card"
+msgstr ""
+
+msgid "wallets_apple"
+msgstr ""
+
+msgid "3ds_title"
+msgstr ""
+"თქვენ გადამისამართდებით 3D-ს გვერდზე, თუ ავტომატურად არ გადამისამართდით "
+"გადადით"
+
+msgid "3ds_link"
+msgstr "ბმულზე"
+
+msgid "qr_desc_mobile_sk_viamo"
+msgstr ""
+
+msgid "qr_desc_desktop_sk_viamo"
+msgstr ""
+
+msgid "qr_button_sk_viamo"
+msgstr ""
+
+msgid "qr_app_apple_sk_viamo"
+msgstr ""
+
+msgid "qr_app_google_sk_viamo"
+msgstr ""
+
+msgid "ACCOUNT_NUMBER"
+msgstr ""
+
+msgid "CODE"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+msgid "IBAN"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "SORT_CODE"
+msgstr ""
+
+msgid "specin.address"
+msgstr ""
+
+msgid "specin.bic"
+msgstr ""
+
+msgid "specin.city"
+msgstr ""
+
+msgid "specin.consumerref"
+msgstr ""
+
+msgid "specin.dob"
+msgstr ""
+
+msgid "specin.email"
+msgstr ""
+
+msgid "specin.iban"
+msgstr ""
+
+msgid "specin.nationalid"
+msgstr ""
+
+msgid "specin.zipcode"
+msgstr ""
+
+msgid "search_country"
+msgstr ""
+
+msgid "credit_debit_cards"
+msgstr ""
+
+msgid "label_ACCOUNT_NUMBER"
+msgstr ""
+
+msgid "placeholder_ACCOUNT_NUMBER"
+msgstr ""
+
+msgid "label_SORT_CODE"
+msgstr ""
+
+msgid "placeholder_SORT_CODE"
+msgstr ""
+
+msgid "message_address_number"
+msgstr ""
+
+msgid "message_address_street"
+msgstr ""
+
+msgid "message_customer_name_utf8"
+msgstr ""
+
+msgid "placeholder_customer_name_utf8"
+msgstr ""
+
+msgid "placeholder_address_street"
+msgstr ""
+
+msgid "email"
+msgstr "ელ. ფოსტა"
+
+msgid "currencies"
+msgstr ""
+
+msgid "number_of_payments"
+msgstr "გადახდების რაოდენობა"
+
+msgid "subscription_every"
+msgstr "სიხშირე"
+
+msgid "subscription_period"
+msgstr "პერიოდი"
+
+msgid "subscription_start_time"
+msgstr "პირველი გადახდა"
+
+msgid "subscription_end_time"
+msgstr "დასრულების თარიღი"
+
+msgid "default_country"
+msgstr "ძებნა ქვეყნით"
+
+msgid "system_search"
+msgstr "ბანკის სახელით ან IBAN-ით ძებნა"
+
+msgid "card_number"
+msgstr "ბარათის ინფორმაცია"
+
+msgid "expiry_date"
+msgstr "MM/YY"
+
+msgid "cvv2"
+msgstr "CVV2/CVC2"
+
+msgid "verification_code"
+msgstr "ბანკის დასტურის კოდი"
+
+msgid "verification_amount"
+msgstr "დარეზერვებული თანხა"
+
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
+msgstr ""
+
+#~ msgid "installments_oschadbank"
+#~ msgstr "Oschadbank-ის განვადება"
