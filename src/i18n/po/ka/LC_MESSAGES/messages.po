@@ -190,12 +190,12 @@ msgid "discount"
 msgstr "ფასდაკლება"
 
 msgid "security_title"
-msgstr "გადამხდელის ინფორმაცია დაცულია"
+msgstr "მომხმარებლის ინფორმაცია დაცულია"
 
 msgid "security_text"
 msgstr ""
-"საერთაშორისო სტანდარტების (PCI/DSS) და საბარათე სისტემების მოთხოვნების "
-"შესაბამისად"
+"მომხმარებლის ინფორმაცია დაცულია საერთაშორისო სტანდარტების (PCI/DSS) "
+"და საბარათე სისტემების მოთხოვნების შესაბამისად"
 
 msgid "other_payment_method"
 msgstr "სხვა გადახდის მეთოდები"
@@ -450,7 +450,7 @@ msgid "rule_numrange"
 msgstr "გადაჭარბება ციფრების რაოდენობაში"
 
 msgid "rule_ccard"
-msgstr "არასწორი ბარათის ინფორმაცია"
+msgstr "არასწორი ბარათის ნომერი"
 
 msgid "rule_expiry_date"
 msgstr "არასწორი მოქმედების ვადა"
@@ -641,7 +641,7 @@ msgid "card_number"
 msgstr "ბარათის ინფორმაცია"
 
 msgid "expiry_date"
-msgstr "MM/YY"
+msgstr "თვე/წელი"
 
 msgid "cvv2"
 msgstr "CVV2/CVC2"
