@@ -130,6 +130,7 @@ export const configDefault = {
   vm_wallets: null,
   mode_test: false,
   cancel_url: '',
+  promo: false,
 }
 
 locales.forEach(function (locale) {

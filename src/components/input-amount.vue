@@ -77,6 +77,9 @@ export default {
       return this.currencies.map(parseSelect)
     },
   },
+  watch: {
+    currency: 'feeCalc',
+  },
   created() {
     this.form[this.name] = this.form[this.name] || this.value
   },
@@ -93,6 +96,11 @@ export default {
       this.last = value
 
       return amountToCoins(value)
+    },
+    feeCalc() {
+      this.store.feeCalc({
+        currency: this.currency,
+      })
     },
   },
 }

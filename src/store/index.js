@@ -77,17 +77,30 @@ class Store extends Model {
       .catch(errorHandler)
   }
   feeCalc(data) {
-    const { amount, token, button, merchant_id } = this.state.params
+    const {
+      amount,
+      currency,
+      token,
+      landing_token,
+      button,
+      merchant_id,
+      promocode,
+    } = this.state.params
+
+    this.state.notification = ''
 
     return this.sendRequest(
       'api.checkout.fee',
       'v2',
       {
-        ...data,
         amount,
+        currency,
         token,
+        landing_token,
         button,
         merchant_id,
+        promocode,
+        ...data,
       },
       {
         cached: true,
@@ -106,6 +119,8 @@ class Store extends Model {
       this.state.discount_amount = discount_amount
       this.state.fee_amount = fee_amount
       this.state.total_amount = total_amount
+
+      return model
     })
   }
   infoSuccess(model) {
@@ -252,6 +267,7 @@ class Store extends Model {
 
     this.state.mode_test = model.attr('istest')
     this.state.cancel_url = model.attr('order.cancel_url')
+    this.state.promo = model.attr('merchant.promo')
   }
   setStateDefault() {
     this.state = JSON.parse(JSON.stringify(configDefault))

@@ -3,7 +3,7 @@
     <div class="f-notification-icon">
       <f-svg name="warning" size="lg" />
     </div>
-    <div class="f-notification-text">{{ notification }}</div>
+    <div class="f-notification-text">{{ $t(notification) }}</div>
     <div class="f-notification-btn">
       <f-button-link @click="close">{{ $t('close') }}</f-button-link>
     </div>

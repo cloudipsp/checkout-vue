@@ -719,9 +719,39 @@
             token: '4a5942d3029ef86ca2118d6d742b0f602f7e4023', // з запиту /api/button
           },
         },
+        promo: {
+          options: {
+            api_domain,
+            // WAL-369
+            // amount_readonly: false,
+          },
+          params: {
+            landing_token: '7751ae93c117f964e8c3e7e6af70f224ea1719e0',
+
+            amount: 2000000,
+            currency: 'UAH',
+            merchant_id: 1608509,
+            // token: 'f500d47dad0973fdbc5da6846150e4397a3ac1ca',
+
+            // client_fee
+            // amount: 20000,
+            // currency: 'EUR',
+            // merchant_id: 1601211,
+            // token: '803525b2602b5d2b6d9abae030ae55546623f737',
+
+            // viza
+            // amount: 20000,
+            // currency: 'UAH',
+            // merchant_id: 1608570,
+            // token: '6f468849270b80a10b13da05b1981c7a48b58d9d',
+
+            // WAL-369
+            // button: '7783fcaf1cd015a698fbbf94ff6f3c88929838b5'
+          },
+        },
       }
 
-      window.app = render('#app', 'cancel_payment')
+      window.app = render('#app', 'promo')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 

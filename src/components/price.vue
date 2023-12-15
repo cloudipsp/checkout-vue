@@ -12,6 +12,7 @@
         </template>
       </template>
       <template v-else>
+        <f-promo v-if="showPromoTop" class="f-mb-12" />
         <template v-if="showAmountReadOnly">
           <f-amount
             :value="total_amount"
@@ -64,6 +65,7 @@
             <td><f-amount :value="total_amount" no-bold /></td>
           </tr>
         </table>
+        <f-promo v-if="showPromoBottom" class="f-mt-20" />
       </template>
     </f-preloader>
   </div>
@@ -73,7 +75,7 @@
 import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
 import FDate from '@/components/base/date'
-import { InputAmount } from '@/import'
+import { InputAmount, FPromo } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { PROP_TYPE_BOOLEAN } from '@/constants/props'
@@ -86,6 +88,7 @@ export default {
     FAmount,
     InputAmount,
     FDate,
+    FPromo,
   },
   mixins: [timeoutMixin],
   props: {
@@ -105,6 +108,7 @@ export default {
       'discount_amount',
       'fee_amount',
       'total_amount',
+      'promo',
     ]),
     ...mapState('options', ['amount_readonly', 'fee']),
     ...mapState('params', [
@@ -133,6 +137,12 @@ export default {
     },
     showDiscount() {
       return this.discount_percent || this.discount_amount
+    },
+    showPromoTop() {
+      return !this.readonly && this.promo && this.amount_readonly
+    },
+    showPromoBottom() {
+      return !this.readonly && this.promo && !this.amount_readonly
     },
     totalAmount() {
       return this.amount / 100

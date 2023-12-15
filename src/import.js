@@ -298,3 +298,6 @@ export const FMode = () => import(/* webpackChunkName: "48" */ '@/views/mode')
 
 export const FButtonCancel = () =>
   import(/* webpackChunkName: "49" */ '@/components/button/button-cancel')
+
+export const FPromo = () =>
+  import(/* webpackChunkName: "50" */ '@/components/promo')

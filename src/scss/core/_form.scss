@@ -90,6 +90,11 @@
   &[type='date'] {
     appearance: none;
   }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: px-to-rem(16px);
+  }
 }
 
 .f-form-control-no-floating {
@@ -106,6 +111,10 @@
     $input_focus_border,
     $input_disabled_color
   );
+
+  &::placeholder {
+    color: $label_color;
+  }
 }
 
 .f-form-control-secondary {
@@ -130,6 +139,10 @@
 .f-control-sm {
   height: px-to-rem(44px);
   padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
+
+  &.f-form-control-no-floating {
+    padding-top: px-to-rem(5px);
+  }
 }
 
 .f-control-48 {
