@@ -637,7 +637,7 @@ msgid "system_search"
 msgstr "ბანკის სახელით ან IBAN-ით ძებნა"
 
 msgid "card_number"
-msgstr "ბარათის ინფორმაცია"
+msgstr "ბარათის ნომერი"
 
 msgid "expiry_date"
 msgstr "თვე/წელი"
