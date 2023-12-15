@@ -117,3 +117,9 @@ _('installments_desc_privatbank_ua')
 
 _('approved')
 _('declined')
+
+_('promo_status_approve')
+_('promo_status_expired')
+_('promo_status_invalid')
+_('other_promotional_propositions_will_not_work')
+_('card_does_not_participate_in_discount_program')

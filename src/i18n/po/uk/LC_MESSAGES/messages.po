@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-16 12:49+0200\n"
+"POT-Creation-Date: 2023-12-15 19:24+0200\n"
 "PO-Revision-Date: 2020-09-30 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -194,17 +194,23 @@ msgstr "Пробний період"
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "Сума до сплати"
-
-msgid "fee"
-msgstr "З урахуванням комісії"
-
 msgid "amount"
 msgstr "До сплати"
 
 msgid "discount"
 msgstr "Знижка"
+
+msgid "fee"
+msgstr "З урахуванням комісії"
+
+msgid "total_amount"
+msgstr "Сума до сплати"
+
+msgid "enter_promo_code"
+msgstr "Введіть промокод"
+
+msgid "add"
+msgstr "Додати"
 
 msgid "security_title"
 msgstr "Дані покупця захищено"
@@ -303,9 +309,6 @@ msgstr ""
 msgid "expect_soon"
 msgstr "Очікуємо найближчим часом"
 
-msgid "installments_oschadbank"
-msgstr "Кредит розстрочка від Ощадбанку"
-
 msgid "conditions"
 msgstr "Умови"
 
@@ -361,8 +364,8 @@ msgstr "Сплатити не пізніше"
 
 msgid "ibox_desc"
 msgstr ""
-"Усі термінали iBox, у яких можна здійснити платіж, позначені на <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">мапі</a>"
+"Усі термінали iBox, у яких можна здійснити платіж, позначені на <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">мапі</a>"
 
 msgid "save_receipt"
 msgstr "Зберегти квитанцію"
@@ -538,7 +541,8 @@ msgid "wallets_apple"
 msgstr ""
 
 msgid "3ds_title"
-msgstr "Ви будете перенаправлені на сторінку 3ds. Якщо ви не бачите її, перейдіть за"
+msgstr ""
+"Ви будете перенаправлені на сторінку 3ds. Якщо ви не бачите її, перейдіть за"
 
 msgid "3ds_link"
 msgstr "посиланням"
@@ -685,7 +689,28 @@ msgstr ""
 "місяць</li>"
 
 msgid "installments_desc_privatbank_ua"
-msgstr "<li>Наявність картки «Універсальна».</li><li>Доступний кредитний ліміт за сервісом «Оплата частинами».</li><li>Перший платіж пройде в момент купівлі, наступний — через місяць.</li>"
+msgstr ""
+"<li>Наявність картки «Універсальна».</li><li>Доступний кредитний ліміт за "
+"сервісом «Оплата частинами».</li><li>Перший платіж пройде в момент купівлі, "
+"наступний — через місяць.</li>"
+
+msgid "promo_status_approve"
+msgstr "Промокод застосовано"
+
+msgid "promo_status_expired"
+msgstr "Термін дії промокоду минув"
+
+msgid "promo_status_invalid"
+msgstr "Невірний промокод"
+
+msgid "other_promotional_propositions_will_not_work"
+msgstr "Інші акційні пропозиції не будуть працювати"
+
+msgid "card_does_not_participate_in_discount_program"
+msgstr "Карта не бере участь у програмі знижок"
+
+#~ msgid "installments_oschadbank"
+#~ msgstr "Кредит розстрочка від Ощадбанку"
 
 #~ msgid "angle-down"
 #~ msgstr "-"
