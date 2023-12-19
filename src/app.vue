@@ -83,19 +83,20 @@ export default {
       this.initHeight()
     },
     go() {
-      if (this.isBreakpointDownLg && this.show_menu_first) {
-        this.active_tab = 'menu'
-        this.goMenu()
+      const isMenu = this.isBreakpointDownLg && this.show_menu_first
+      const name = getRouteName(this.methods, this.active_tab, this.has_fields)
+
+      if (!isMenu && name) {
+        this.goMethod(name)
       } else {
-        this.goMethod()
+        this.goMenu()
       }
     },
     goMenu() {
+      this.active_tab = 'menu'
       this.$router.push({ name: 'menu' }).catch(() => {})
     },
-    goMethod() {
-      let name = getRouteName(this.methods, this.active_tab, this.has_fields)
-
+    goMethod(name) {
       this.$router.push({ name }).catch(() => {})
     },
     goErrorModal(error) {
