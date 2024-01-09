@@ -440,7 +440,7 @@ msgid "rule_digits"
 msgstr "Введите {length} цифры"
 
 msgid "rule_email"
-msgstr "Введите рабочую электронную почту"
+msgstr "Введите действительный адрес электронной почты"
 
 msgid "rule_max"
 msgstr "Введите максимум {length} символов"
