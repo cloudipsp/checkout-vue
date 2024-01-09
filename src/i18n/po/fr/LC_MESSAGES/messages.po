@@ -463,7 +463,7 @@ msgid "rule_regex"
 msgstr "Format invalide"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr ""

@@ -452,7 +452,7 @@ msgid "rule_regex"
 msgstr "Formato inválido"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "Introduzca el nombre y apellido, usando letras (A-Za-z)"

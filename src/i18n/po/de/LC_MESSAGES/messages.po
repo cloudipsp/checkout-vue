@@ -458,7 +458,7 @@ msgid "rule_regex"
 msgstr "Ungültiges Format"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "Geben Sie den Vor- und Nachnamen mit Buchstaben ein (A-Za-z)."

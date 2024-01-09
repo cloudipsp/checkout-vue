@@ -479,7 +479,7 @@ msgid "rule_regex"
 msgstr "Invalid format"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "Please enter both first name and last name, use letters (A-Za-z)"

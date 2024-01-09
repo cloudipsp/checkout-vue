@@ -452,7 +452,7 @@ msgid "rule_regex"
 msgstr "Neplatný formát"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "Zadajte meno aj priezvisko, použite písmená (A-Za-z)"

@@ -447,7 +447,7 @@ msgid "rule_regex"
 msgstr "형식이 잘못되었습니다"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "(A-Za-z) 문자만 사용하여 이름과 성을 입력해 주십시오"

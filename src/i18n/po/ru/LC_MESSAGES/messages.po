@@ -458,7 +458,7 @@ msgid "rule_regex"
 msgstr "Неверный формат"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Сумма должна быть больше нуля"
 
 msgid "rule_customer_name"
 msgstr "Введите имя и фамилию латинскими буквами (A-Za-z)"

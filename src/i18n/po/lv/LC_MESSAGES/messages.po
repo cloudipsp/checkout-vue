@@ -452,7 +452,7 @@ msgid "rule_regex"
 msgstr "Nepieļaujams formāts"
 
 msgid "rule_no_zero"
-msgstr "Amount more zero"
+msgstr "Amount should be more than zero"
 
 msgid "rule_customer_name"
 msgstr "Norādiet vārdu un uzvārdu, izmantojot burtus (A-Za-z)"
