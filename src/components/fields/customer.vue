@@ -27,7 +27,6 @@ export default {
     FFormSave,
   },
   computed: {
-    ...mapState('options', ['email']),
     ...mapState(['params', 'fields_customer']),
     ...mapState('info', ['required_one_of_checkout_customer_fields']),
     show() {
@@ -40,7 +39,6 @@ export default {
     },
     list() {
       return this.fields_customer
-        .filter(name => name !== 'email' || !this.email)
         .filter(name => this.config[name])
         .map(name => {
           let options = this.config[name].dictionary && this.country
