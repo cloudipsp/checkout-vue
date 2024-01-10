@@ -10,7 +10,7 @@
     <div class="f-bank-desc" v-text="$t('bank_desc')" />
     <div class="f-container-sm">
       <f-fields-bank :fields="form.fields" />
-      <f-fields-customer />
+      <f-field-email />
       <f-fields-custom />
       <f-fields-user />
       <f-offer />
@@ -31,7 +31,7 @@
 import FIcon from '@/components/icon'
 import { FButtonClose } from '@/components/button/button-close'
 import FFieldsBank from '@/components/fields/bank'
-import FFieldsCustomer from '@/components/fields/customer'
+import FFieldEmail from '@/components/fields/email'
 import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
@@ -46,7 +46,7 @@ export default {
     FIcon,
     FButtonClose,
     FFieldsBank,
-    FFieldsCustomer,
+    FFieldEmail,
     FFieldsCustom,
     FFieldsUser,
     FOffer,

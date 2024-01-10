@@ -3,7 +3,7 @@
     <template v-if="isBreakpointDownLg">
       <f-price />
     </template>
-    <f-fields-customer />
+    <f-field-email />
     <f-fields-custom />
     <f-fields-user />
     <f-offer />
@@ -14,7 +14,7 @@
 
 <script>
 import FPrice from '@/components/price'
-import FFieldsCustomer from '@/components/fields/customer'
+import FFieldEmail from '@/components/fields/email'
 import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
@@ -25,7 +25,7 @@ import { resizeMixin } from '@/mixins/resize'
 export default {
   components: {
     FPrice,
-    FFieldsCustomer,
+    FFieldEmail,
     FFieldsCustom,
     FFieldsUser,
     FButtonCancelWrapper,
