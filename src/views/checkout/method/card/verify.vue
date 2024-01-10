@@ -44,7 +44,6 @@
         dynamic-placeholder
       />
     </div>
-    <f-field-email />
     <f-form-group
       v-if="isCode"
       v-model="code"
@@ -70,7 +69,6 @@
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
 import FSvg from '@/components/svg'
-import FFieldEmail from '@/components/fields/email'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
@@ -81,7 +79,6 @@ export default {
     FCardBg,
     FCardBrand,
     FSvg,
-    FFieldEmail,
     FSubscriptionWrapper,
     FOffer,
     FButtonPay,

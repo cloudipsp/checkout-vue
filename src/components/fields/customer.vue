@@ -24,14 +24,12 @@ export default {
     FFormSave,
   },
   computed: {
-    ...mapState('options', ['email']),
     ...mapState(['params', 'fields_customer']),
     show() {
       return this.list.length
     },
     list() {
       return this.fields_customer
-        .filter(name => name !== 'email' || !this.email)
         .filter(name => config[name])
         .map(name => {
           let options = config[name].dictionary && this.country
