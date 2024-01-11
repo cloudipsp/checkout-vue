@@ -26,6 +26,7 @@
 .f-merchant-name {
   font-weight: 500;
   color: $merchant_name_color;
+  word-wrap: break-word;
 }
 
 .f-merchant-url {
