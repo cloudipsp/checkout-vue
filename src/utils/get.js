@@ -47,8 +47,8 @@ export const getRaw = (obj, path, defaultValue = undefined) => {
   )
     ? obj
     : isNull(obj)
-    ? null
-    : defaultValue
+      ? null
+      : defaultValue
 }
 
 /**
