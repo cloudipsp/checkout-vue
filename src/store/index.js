@@ -309,7 +309,7 @@ class Store extends Model {
     this.initIsOnlyCard()
     this.initShowMenuFirst()
     initCssVariable(this.state.css_variable)
-    this.state.total_amount = this.state.params.amount
+    this.initTotalAmount()
   }
   initFavicon() {
     if (!this.state.options.full_screen) return
@@ -363,6 +363,9 @@ class Store extends Model {
       this.state.options.show_menu_first = false
     }
   }
+  initTotalAmount() {
+    this.state.total_amount = this.state.params.amount
+  }
   parseActiveTab(model) {
     let active_tab = mappingMethod(model.attr('active_tab'))
     active_tab = active_tab === 'card' ? '' : active_tab
@@ -408,6 +411,7 @@ class Store extends Model {
       this.initLang()
       this.initHasFields()
       this.initIsOnlyCard()
+      this.initTotalAmount()
     })
   }
   loadCardImg() {
