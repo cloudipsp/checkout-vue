@@ -662,10 +662,10 @@ export default {
               autoFocus === 'ok' && ok
                 ? ok.$el || ok
                 : autoFocus === 'cancel' && cancel
-                ? cancel.$el || cancel
-                : autoFocus === 'close' && close
-                ? close.$el || close
-                : content
+                  ? cancel.$el || cancel
+                  : autoFocus === 'close' && close
+                    ? close.$el || close
+                    : content
             // Focus the element
             attemptFocus(el)
             if (el === content) {

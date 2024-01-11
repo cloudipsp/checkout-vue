@@ -80,8 +80,8 @@ export const TooltipTemplate = Vue.extend({
       const $title = isFunction(this.title)
         ? this.title({})
         : isUndefinedOrNull(this.title)
-        ? h()
-        : this.title
+          ? h()
+          : this.title
 
       // Directive versions only
       const domProps =

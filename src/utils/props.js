@@ -16,8 +16,8 @@ export const makeProp = (
     ...(required
       ? { required }
       : isUndefined(value)
-      ? {}
-      : { default: isObject(value) ? () => value : value }),
+        ? {}
+        : { default: isObject(value) ? () => value : value }),
     ...(isUndefined(validator) ? {} : { validator }),
   }
 }
