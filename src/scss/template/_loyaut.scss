@@ -25,11 +25,12 @@
 
 .f-header {
   display: flex;
-  height: $header-height;
+  min-height: px-to-rem(24px);
   background: $container_bg;
 }
 
 .f-header-logo {
+  height: $header-height;
   display: flex;
   flex: 0 0 50%;
   flex-wrap: wrap;
@@ -45,6 +46,7 @@
 }
 
 .f-header-menu {
+  height: $header-height;
   display: flex;
   flex: 0 0 50%;
   align-items: center;

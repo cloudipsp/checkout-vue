@@ -4,7 +4,6 @@
     :class="classNameContainer"
     :data-e2e-ready="ready"
   >
-    <f-mode v-if="isMode" />
     <f-alert-notification-wrapper />
     <transition name="f-fade-enter">
       <router-view class="f-loyaut" />
@@ -32,7 +31,7 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
-import { FMode, FLoading } from '@/import'
+import { FLoading } from '@/import'
 import configMethods from '@/config/methods.json'
 import { arrayIncludes } from '@/utils/array'
 import { mappingMethod } from '@/config/mapping-method'
@@ -41,7 +40,6 @@ let model3ds
 
 export default {
   components: {
-    FMode,
     FForm,
     FLoading,
     FModalErrorWrapper,
@@ -65,8 +63,8 @@ export default {
   },
   computed: {
     ...mapState('options.theme', ['type']),
-    ...mapState(['loading', 'mode_test']),
-    ...mapState('options', ['methods', 'disable_request']),
+    ...mapState(['loading']),
+    ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'fee']),
 
     ...mapStateGetSet(['ready', 'order']),
@@ -83,9 +81,6 @@ export default {
     },
     classNameContainer() {
       return [`f-page-${this.$route.name}`, `f-theme-${this.type}`]
-    },
-    isMode() {
-      return this.disable_request || this.mode_test
     },
   },
   created() {

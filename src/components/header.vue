@@ -1,5 +1,6 @@
 <template>
   <div v-if="show" class="f-header">
+    <f-mode v-if="showMode" />
     <div v-if="showLeft" class="f-header-logo">
       <transition name="f-fade-enter">
         <f-button-link
@@ -40,7 +41,7 @@
 <script>
 import FButtonLink from '@/components/button/button-link'
 import FSvg from '@/components/svg'
-import { SvgLogo } from '@/import'
+import { FMode, SvgLogo } from '@/import'
 import FFormBase from '@/components/form/form/form-base'
 import { resizeMixin } from '@/mixins/resize'
 import { mapState } from '@/utils/store'
@@ -51,6 +52,7 @@ import FFormItemSelect2 from '@/components/form/item/select2'
 
 export default {
   components: {
+    FMode,
     FButtonLink,
     FSvg,
     SvgLogo,
@@ -62,17 +64,28 @@ export default {
     back: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   computed: {
-    ...mapState(['isOnlyCard']),
+    ...mapState(['isOnlyCard', 'mode_test']),
     ...mapState('params', ['lang']),
-    ...mapState('options', ['locales', 'logo_url', 'full_screen']),
+    ...mapState('options', [
+      'locales',
+      'logo_url',
+      'full_screen',
+      'disable_request',
+    ]),
     ...mapState('options', {
       optionsLang: 'lang',
     }),
     show() {
-      return this.showLeft || this.showLang
+      return this.showMode || this.showLeft || this.showLang
+    },
+    showMode() {
+      return this.disable_request || this.mode_test
     },
     showLeft() {
       return this.showBack || this.showLogoCustom || this.showLogo
+    },
+    showLang() {
+      return this.full_screen && this.optionsLang && this.locales.length > 1
     },
     locale() {
       return this.locales.map(parseSelect).sort(sort('text'))
@@ -96,9 +109,6 @@ export default {
       return {
         'background-image': `url("${this.logo_url.replace(/"/g, "'")}")`,
       }
-    },
-    showLang() {
-      return this.full_screen && this.optionsLang && this.locales.length > 1
     },
   },
   methods: {
