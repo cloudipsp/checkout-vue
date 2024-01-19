@@ -235,7 +235,8 @@ export const Menu = () =>
 export const FModalError = () =>
   import(/* webpackChunkName: "29" */ '@/components/modal/modal-error')
 
-export const SvgLogo = () => import(/* webpackChunkName: "30" */ '@/svg/logo')
+export const SvgLogo = () =>
+  import(/* webpackChunkName: "30" */ '@/svg/logo.svg')
 
 export const BlankWallets = () =>
   import(/* webpackChunkName: "31" */ '@/views/checkout/blank/wallets')

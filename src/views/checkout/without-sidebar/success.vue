@@ -23,8 +23,8 @@
 <script>
 import FInfo from '@/components/info'
 import FPrice from '@/components/price'
-import SvgApproved from '@/svg/approved'
-import SvgDecline from '@/svg/decline'
+import SvgApproved from '@/svg/approved.svg'
+import SvgDecline from '@/svg/decline.svg'
 import { mapState } from '@/utils/store'
 import { FButtonReturnToSite, FLinkDownloadReceipt } from '@/import'
 
