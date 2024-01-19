@@ -36,7 +36,7 @@
 <script>
 import FAlertStorage from '@/components/alert/alert-storage'
 import FFormBase from '@/components/form/form/form-base'
-import SvgSafe from '@/svg/safe'
+import SvgSafe from '@/svg/safe.svg'
 
 import { mapStateGetSet, localStorage } from '@/utils/store'
 
