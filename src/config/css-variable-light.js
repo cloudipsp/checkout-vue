@@ -131,7 +131,7 @@ export default createConfig(namesTheme, [
   ash_100, // receipt_props_bg
   grey, // receipt_value_color
   black, // logo_color
-  ash_200, // subscription_bg
+  ash_200, // box_bg
   grey_1, // outline_border
   ash_300, // outline_bg
   ash_800, // outline_secondary_border
