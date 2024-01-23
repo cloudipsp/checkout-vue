@@ -77,14 +77,14 @@ a {
 .f-subscription {
   .f-form-control:focus {
     box-shadow:
-      0 0 0 px-to-rem(2px) $subscription_bg,
+      0 0 0 px-to-rem(2px) $box_bg,
       0 0 0 px-to-rem(4px) $outline_border;
   }
 
   .f-switch:focus + .f-switch-label,
   .f-checkbox:focus + .f-checkbox-label {
     box-shadow:
-      0 0 0 px-to-rem(2px) $subscription_bg,
+      0 0 0 px-to-rem(2px) $box_bg,
       0 0 0 px-to-rem(3.5px) $outline_border;
   }
 }

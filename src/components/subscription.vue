@@ -1,10 +1,10 @@
 <template>
-  <div v-if="show" class="f-subscription">
+  <f-box v-if="show" class="f-subscription">
     <f-form-group
       v-if="show_switch"
       v-model="enabled_switch"
       name="switch"
-      class="f-mb-4"
+      class="f-mt-4 f-mb-4"
       component="checkbox"
       switch
     >
@@ -120,10 +120,11 @@
         />
       </div>
     </transition>
-  </div>
+  </f-box>
 </template>
 
 <script>
+import FBox from '@/components/box'
 import { InputAmount } from '@/import'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
@@ -132,6 +133,7 @@ import { formatServer } from '@/config/date'
 
 export default {
   components: {
+    FBox,
     InputAmount,
   },
   data() {
