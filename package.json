@@ -32,7 +32,6 @@
     "async-validator": "^3.5.2",
     "axios": "^1.6.0",
     "core-js": "^3.30.1",
-    "countries-languages": "github:arash16/countries-languages",
     "css-vars-ponyfill": "^2.4.8",
     "date-format-parse": "^0.2.7",
     "ipsp-js-sdk": "^2.0.10",
@@ -44,7 +43,8 @@
     "vue-functional-data-merge": "^3.1.0",
     "vue-i18n": "^8.28.2",
     "vue-router": "^3.6.5",
-    "vue2-datepicker": "~3.8.2"
+    "vue2-datepicker": "~3.8.2",
+    "world-countries": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
