@@ -145,4 +145,41 @@ gulp.task('countries', function (done) {
     })
 })
 
-gulp.task('default', gulp.series(['locale', 'countries']))
+gulp.task('exclude-message', () => {
+  const dirname = './src/'
+  return fsp
+    .readdir(dirname, {
+      recursive: true,
+    })
+    .then(filenames =>
+      filenames.map(filename => {
+        const path = dirname + filename
+
+        return fsp
+          .stat(path)
+          .then(stats =>
+            stats.isDirectory() ? Promise.reject() : Promise.resolve(path)
+          )
+      })
+    )
+    .then(promises => Promise.allSettled(promises))
+    .then(results => results.map(({ value }) => value).filter(item => item))
+    .then(paths =>
+      paths.map(path =>
+        fsp
+          .readFile(path, 'utf-8')
+          .then(content => [...content.matchAll(/v-html="\$t\('(\w+?)'/g)])
+          .then(content => content.map(([, item]) => item))
+      )
+    )
+    .then(promises => Promise.all(promises))
+    .then(content => content.flat())
+    .then(content =>
+      content.filter((item, key, self) => self.indexOf(item) === key)
+    )
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const excludeMessages = ${content}`)
+    .then(content => fsp.writeFile('./src/config/exclude-messages.js', content))
+})
+
+gulp.task('default', gulp.series(['locale', 'countries', 'exclude-message']))

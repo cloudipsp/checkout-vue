@@ -14,7 +14,6 @@
           <f-svg name="security" size="lg" />
           <span v-text="$t('security_title')" />
         </div>
-        <!--eslint-disable-next-line vue/no-v-html-->
         <div class="f-modal-security-content" v-html="$t('security_text')" />
         <f-security-icons v-if="showModal" class="f-modal-security-icons" />
       </f-modal-base>
@@ -34,7 +33,6 @@
             v-if="showTooltip"
             class="f-tooltip-security-icons"
           />
-          <!--eslint-disable vue/no-v-html-->
           <div
             class="f-tooltip-security-content"
             v-html="$t('security_text')"

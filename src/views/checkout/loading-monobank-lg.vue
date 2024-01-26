@@ -2,7 +2,6 @@
   <div :class="$style.wrapper">
     <div :class="$style.col">
       <f-monobank :class="$style.logo" />
-      <!--eslint-disable vue/no-v-html-->
       <h2 :class="$style.h2">
         {{ useAfterT }}
         <span :class="$style.monobank">monobank</span>

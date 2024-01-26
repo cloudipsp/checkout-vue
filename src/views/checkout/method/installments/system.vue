@@ -9,7 +9,6 @@
     <div class="f-container-sm">
       <div :class="$style.desc">
         <h3 :class="$style.h3" v-text="$t('conditions')" />
-        <!-- eslint-disable-next-line vue/no-v-html -->
         <ul :class="$style.ul" v-html="descT" />
       </div>
       <div class="f-mb-32">
@@ -110,6 +109,8 @@ export default {
       return this.$route.params.system
     },
     descT() {
+      // v-html="$t('installments_desc_monobank_ua')"
+      // v-html="$t('installments_desc_privatbank_ua')"
       return this.$t(`${this.method}_desc_${this.alias}`)
     },
     list() {

@@ -6,8 +6,7 @@
       component="checkbox"
       :rules="rules"
     >
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <span v-html="html" />
+      <span v-html="$t('offer_t', [url])" />
     </f-form-group>
   </div>
 </template>
@@ -24,9 +23,6 @@ export default {
     },
     rules() {
       return { required: true }
-    },
-    html() {
-      return this.$t('offer_t', [this.url])
     },
     url() {
       return this.$te('offerta_url')

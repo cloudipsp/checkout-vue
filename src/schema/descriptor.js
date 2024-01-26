@@ -7,7 +7,7 @@ import configPresets from '@/config/presets'
 import configTheme from '@/config/theme'
 import { configDefault } from '@/config/config-default'
 import configSubscription from '@/config/subscription'
-import configExcludeMessages from '@/config/exclude-messages'
+import { excludeMessages } from '@/config/exclude-messages'
 import { isPlainObject, isString } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
 
@@ -195,7 +195,7 @@ let messages = enumObject(locales)
 
 locales.forEach(function (locale) {
   messages.fields[locale] = {
-    ...excludeObject(configExcludeMessages),
+    ...excludeObject(excludeMessages),
     fields: {
       offerta_url: typeUrl,
     },
