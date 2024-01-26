@@ -68,7 +68,6 @@
           </div>
         </div>
 
-        <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-if="isIbox" v-html="$t('ibox_desc')" />
 
         <div class="f-row f-receipt-buttons">
@@ -103,7 +102,6 @@
 
         <div v-if="isIbox" class="f-receipt-ibox-info">
           <f-svg name="warning" />
-          <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="$t('ibox_info')" />
         </div>
       </div>

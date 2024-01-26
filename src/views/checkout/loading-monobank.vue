@@ -3,7 +3,6 @@
     <div :class="$style.spinner">
       <f-loading :class="$style.spin" />
     </div>
-    <!--eslint-disable vue/no-v-html-->
     <h2 :class="$style.h2">
       {{ useAfterT }}
       <span :class="$style.monobank">monobank</span>
