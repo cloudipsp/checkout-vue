@@ -72,45 +72,34 @@ gulp.task('po', function (done) {
 
 gulp.task('locale', gulp.series('methods', 'subscription-period', 'po'))
 
-gulp.task('countries', function (done) {
+gulp.task('countries-search', () =>
   fsp
-    .readFile('./node_modules/countries-languages/lib/countries.json', 'utf-8')
-    .then(content => {
-      let obj = JSON.parse(content)
-      let result = Object.entries(obj).reduce(
-        (
-          accum,
-          [
-            key,
-            {
-              name,
-              translations,
-              alt_spellings,
-              iso_3166_1_alpha2,
-              iso_3166_1_alpha3,
-            },
-          ]
-        ) => {
-          let common = Object.values({
-            ...name.native,
+    .readFile('./node_modules/world-countries/dist/countries.json', 'utf-8')
+    .then(content => JSON.parse(content))
+    .then(content =>
+      content.map(
+        ({
+          name: { native, common },
+          translations,
+          altSpellings,
+          cca2,
+          cca3,
+        }) => {
+          let result = Object.values({
+            ...native,
             ...translations,
           }).map(({ common }) => common)
 
           const regexp =
-            / (of|de|in|e|i|et|и|y|ja|and|a|en|du|do|la|the|des|wa|da|di|del|ko|o|und|im|в|na|dé|ya|oa|ta'|na|ng|er|—|y'u|og|aṣ|al|as|at|for|von|die|les|ye|dos|los) /g
+            / (of|de|in|e|i|et|и|y|ja|and|a|en|du|do|la|the|des|wa|da|di|del|ko|o|und|im|в|na|dé|ya|oa|ta'|ng|er|—|y'u|og|aṣ|al|as|at|for|von|die|les|ye|dos|los) /g
           const start = /^(the|a|aṣ|al) /
           const end = / (of|a|us|the)$/
 
-          if (uk[key]) {
-            common.push(uk[key])
+          if (uk[cca2]) {
+            result.push(uk[cca2])
           }
-          common = [
-            iso_3166_1_alpha2,
-            iso_3166_1_alpha3,
-            ...common,
-            name.common,
-            ...(alt_spellings || []),
-          ]
+
+          result = [cca2, cca3, ...result, common, ...altSpellings]
             .map(item => item.toLowerCase())
             .map(item => item.replace(/[,().]/g, ''))
             .map(item =>
@@ -129,21 +118,15 @@ gulp.task('countries', function (done) {
             .reduce((accum, value) => [...accum, ...value.split(' ')], [])
             .filter((item, key, self) => self.indexOf(item) === key)
 
-          accum[key] = common
-          return accum
-        },
-        {}
+          return [cca2, result]
+        }
       )
-
-      return fsp.writeFile(
-        './src/config/countries-search.js',
-        `export const countriesSearch = ${JSON.stringify(result, null, 2)}`
-      )
-    })
-    .then(function () {
-      done()
-    })
-})
+    )
+    .then(content => Object.fromEntries(content))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const countriesSearch = ${content}`)
+    .then(content => fsp.writeFile('./src/config/countries-search.js', content))
+)
 
 gulp.task('exclude-message', () => {
   const dirname = './src/'
@@ -182,4 +165,7 @@ gulp.task('exclude-message', () => {
     .then(content => fsp.writeFile('./src/config/exclude-messages.js', content))
 })
 
-gulp.task('default', gulp.series(['locale', 'countries', 'exclude-message']))
+gulp.task(
+  'default',
+  gulp.series(['locale', 'countries-search', 'exclude-message'])
+)
