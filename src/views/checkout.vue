@@ -142,7 +142,7 @@ export default {
       this.$root.$emit('ready', model)
       this.appFinally(model)
 
-      if (!this.token && this.fee) {
+      if (this.fee) {
         return this.store.feeCalc()
       }
     },

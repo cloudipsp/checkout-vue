@@ -9,7 +9,6 @@ import {
   errorHandler,
   removeWallets,
   getRouteName,
-  amountToCoins,
 } from '@/utils/helpers'
 import { sendRequest } from '@/api'
 import { isExist } from '@/utils/inspect'
@@ -223,13 +222,8 @@ class Store extends Model {
     }
   }
   info(model) {
-    const total_amount = model.attr('order.actual_amount')
-
     if (isExist(model.attr('validate_expdate'))) {
       this.state.validate_expdate = model.attr('validate_expdate')
-    }
-    if (isExist(total_amount)) {
-      this.state.total_amount = amountToCoins(total_amount)
     }
     this.state.options.link =
       model.attr('merchant.merchant_url') || this.state.options.link
