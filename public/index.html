@@ -71,20 +71,14 @@
   <body>
     <div id="app"></div>
     <div class="btns">
-      <select class="options">
-        <option value="max">max</option>
-        <option value="min">min</option>
-        <option value="verification">verification</option>
-        <option value="banklinks_eu">banklinks_eu</option>
-        <option value="token">token</option>
-        <option value="wallet">wallet</option>
-        <option value="dark">dark</option>
-      </select>
-      <button class="render">render</button>
-      <button class="go-sepa">go sepa</button>
+      <button class="submit">submit</button>
+      <button class="wallet">submit wallet</button>
+      <button class="go-ibank">go ibank</button>
+      <button class="go-local">go local methods</button>
       <button class="go-card">go card</button>
       <button class="set-params">set params</button>
-      <button class="submit">submit 1</button>
+      <select class="configs"></select>
+      <button class="render">render</button>
     </div>
     <div>
       <!--<div class="coll"><div id="app2"></div></div>-->
@@ -126,7 +120,7 @@
     <script>
       // const api_domain = 'dev2.pay.fondy.eu'
       const api_domain = 'api.dev.fondy.eu'
-      var options = {
+      var configs = {
         max: {
           options: {
             methods: ['card', 'banklinks_eu'],
@@ -587,7 +581,7 @@
           },
           params: {
             currency: 'EUR',
-            merchant_id: 900158,
+            merchant_id: 900238,
             amount: 100,
           },
         },
@@ -776,6 +770,8 @@
         },
       }
 
+      setConfigsOption()
+
       window.app = render('#app', 'link_download_receipt')
       // render('#app2', 'min')
       // render('#app3', 'max2')
@@ -784,7 +780,11 @@
         .querySelector('.submit')
         .addEventListener('click', function () {
           app.submit()
-          //  this.disabled = app.errors.items.length
+        })
+      document
+        .querySelector('.wallet')
+        .addEventListener('click', function () {
+          app.$emit('click-wallet')
         })
       document
         .querySelector('.go-card')
@@ -792,10 +792,16 @@
           app.location('card')
         })
       document
-        .querySelector('.go-sepa')
+        .querySelector('.go-ibank')
         .addEventListener('click', function () {
-          app.location('sepa')
+          app.location('banklinks_eu')
         })
+      document
+        .querySelector('.go-local')
+        .addEventListener('click', function () {
+          app.location('local_methods')
+        })
+
       document
         .querySelector('.set-params')
         .addEventListener('click', function () {
@@ -817,10 +823,23 @@
           render()
         })
 
+      function setConfigsOption() {
+        let select = document.querySelector('.configs')
+
+        Object.keys(configs).forEach(item => {
+          const option = document.createElement('option')
+          const text = document.createTextNode(item);
+
+          option.setAttribute('value', item)
+          option.appendChild(text)
+          select.appendChild(option)
+        })
+      }
+
       function render(el, type) {
         return (app = fondy(
           el || '#app',
-          options[type || document.querySelector('.options').value]
+          configs[type || document.querySelector('.configs').value]
         )
           .$on('success', function (model) {
             console.log('success', model)

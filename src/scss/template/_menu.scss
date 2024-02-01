@@ -2,6 +2,11 @@
   margin-bottom: px-to-rem(32px);
 }
 
+.f-menu-title {
+  margin-bottom: px-to-rem(16px);
+  font-weight: 300;
+}
+
 .f-menu-item {
   display: flex;
   align-items: center;
@@ -16,7 +21,9 @@
   background-color: $container_bg;
   border: 1px solid $menu_item_border;
   border-radius: px-to-rem(8px);
-  transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s,
+  transition:
+    background-color ease-in-out 0.15s,
+    color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
 
   &:hover {

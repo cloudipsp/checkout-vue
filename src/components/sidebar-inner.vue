@@ -7,7 +7,7 @@
     <f-button-wallet-el v-if="!has_fields" />
     <div
       v-if="showTitle"
-      class="f-wallet-pay-title"
+      class="f-menu-title"
       v-text="$t('other_payment_method')"
     />
     <f-menu />

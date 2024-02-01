@@ -48,7 +48,7 @@
     <f-tooltip-error
       v-if="showErrorTooltip"
       :show.sync="showErrorTooltipFlag"
-      :target="() => $refs.item && $refs.item.$el"
+      :target="() => $refs.item?.$el"
     >
       <f-svg class="f-mr-8" name="warning" size="md" />
       {{ error }}

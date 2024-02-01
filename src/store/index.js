@@ -58,9 +58,9 @@ class Store extends Model {
     return this.sendRequest(
       'api.checkout',
       'app',
-      this.infoParams(
-        this.user.params?.lang ? this.state.params.lang : undefined
-      ),
+      this.infoParams({
+        lang: this.user.params?.lang && this.state.params.lang,
+      }),
       {
         cached: this.token,
       }
@@ -70,7 +70,9 @@ class Store extends Model {
     this.sendRequest(
       'api.checkout.info',
       'get',
-      this.infoParams(this.state.params.lang)
+      this.infoParams({
+        lang: this.state.params.lang,
+      })
     )
       .then(model => this.info(model))
       .catch(errorHandler)
@@ -138,7 +140,7 @@ class Store extends Model {
     this.initHasFields()
     this.initIsOnlyCard()
   }
-  cardSuccess({ data }) {
+  cardSuccess(data) {
     this.state.cards =
       !this.state.options.disable_request && this.state.mode_test
         ? testCardNumbers
@@ -485,11 +487,11 @@ class Store extends Model {
       location: location.href,
     }
   }
-  infoParams(lang) {
+  infoParams(data) {
     return this.state.params.token
-      ? { token: this.state.params.token, lang }
+      ? { ...data, token: this.state.params.token }
       : this.formParams({
-          lang,
+          ...data,
           amount: this.state.params.amount,
         })
   }

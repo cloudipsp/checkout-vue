@@ -12,7 +12,7 @@ export const getCookie = name => {
         '=([^;]*)'
     )
   )
-  return matches ? decodeURIComponent(matches[1]) : undefined
+  return matches && decodeURIComponent(matches[1])
 }
 
 // TODO https://github.com/TehShrike/deepmerge

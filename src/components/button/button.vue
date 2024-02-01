@@ -34,7 +34,7 @@ export default {
     tag: makeProp(PROP_TYPE_STRING, 'button'),
     text: makeProp(PROP_TYPE_STRING),
     type: makeProp(PROP_TYPE_STRING, function () {
-      return this.tag === 'button' ? 'button' : undefined
+      return this.tag === 'button' && 'button'
     }),
   },
   computed: {

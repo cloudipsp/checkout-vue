@@ -158,6 +158,7 @@ Name                  | Type        | Default                 | Description
 ```
 
 ## Use
+### $on
 ``` js
 var app = fondy({css selector}, {config})
 
@@ -166,12 +167,22 @@ app.$on('error', function(model) {})
 app.$on('ready', function(model) {})
 app.$on('callback', function(model) {})
 app.$on('show-pay', function(model) {})
+```
 
+### $emit
+``` js
 app.submit()
+app.$emit('submit')
 
 app.location({method}, {system})
+app.$emit('location', {method}, {system})
 
 app.setParams({params})
+app.$emit('setParams', {params})
+
+app.$emit('click-wallet')
+app.$emit('click-wallet', 'google')
+app.$emit('click-wallet', 'apple')
 ```
 
 ### Destroy app
