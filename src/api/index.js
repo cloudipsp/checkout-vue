@@ -33,7 +33,7 @@ export const sendRequest = (
             function (model) {
               console.log('fail', { name, method, params, model })
               reject(model)
-              if (!cached) delete cache[id]
+              delete cache[id]
             }
           )
           .progress(progress)

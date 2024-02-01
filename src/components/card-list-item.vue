@@ -37,7 +37,7 @@
         :boundary="$root"
         variant="secondary2"
         placement="top"
-        :target="() => $refs.approved && $refs.approved.$el"
+        :target="() => $refs.approved?.$el"
       >
         {{ $t('approved') }}
       </f-tooltip-default>
@@ -45,7 +45,7 @@
         :boundary="$root"
         variant="secondary2"
         placement="top"
-        :target="() => $refs.declined && $refs.declined.$el"
+        :target="() => $refs.declined?.$el"
       >
         {{ $t('declined') }}
       </f-tooltip-default>

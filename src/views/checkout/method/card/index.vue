@@ -103,7 +103,6 @@ import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
-import { isMountedMixin } from '@/mixins/is-mounted'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { createDate, formatMMYY } from '@/utils/date'
@@ -123,7 +122,6 @@ export default {
     FOffer,
     FButtonPay,
   },
-  mixins: [isMountedMixin],
   data() {
     return {
       config: [6, 1],

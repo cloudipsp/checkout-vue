@@ -36,7 +36,7 @@
     />
     <f-tooltip-select
       :show.sync="showTooltipCard"
-      :target="() => $refs.label && $refs.label.$el"
+      :target="() => $refs.label?.$el"
       custom-class="f-tooltip-select-card"
       triggers="click focus blur"
     >

@@ -75,7 +75,6 @@ export default {
       'order_id',
       'verification_type',
     ]),
-    ...mapState(['has_fields']),
     showLoading() {
       return !this.$route.meta.noLoading && this.loading
     },
@@ -153,7 +152,7 @@ export default {
 
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
-      this.store.cardSuccess(model.instance(model.attr('cards')))
+      this.store.cardSuccess(model.attr('cards'))
     },
     orderSuccess(model) {
       this.location(model)
