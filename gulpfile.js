@@ -116,6 +116,27 @@ gulp.task('countries-search', () =>
     .then(content => fsp.writeFile('./src/config/countries-search.js', content))
 )
 
+gulp.task('countries-calling-codes', () =>
+  fsp
+    .readFile('./node_modules/world-countries/dist/countries.json', 'utf-8')
+    .then(content => JSON.parse(content))
+    .then(content => content.filter(({ callingCodes }) => callingCodes.length))
+    .then(content =>
+      content.map(({ cca2, callingCodes }) => [
+        cca2,
+        Number(
+          callingCodes[0].slice(1, callingCodes.length > 1 ? 2 : undefined)
+        ),
+      ])
+    )
+    .then(content => Object.fromEntries(content))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const countriesCallingCodes = ${content}`)
+    .then(content =>
+      fsp.writeFile('./src/config/countries-calling-codes.js', content)
+    )
+)
+
 gulp.task('exclude-message', () => {
   const dirname = './src/'
   return fsp
@@ -176,5 +197,11 @@ gulp.task('svg', () => {
 
 gulp.task(
   'default',
-  gulp.series(['locale', 'countries-search', 'exclude-message', 'svg'])
+  gulp.series([
+    'locale',
+    'countries-search',
+    'countries-calling-codes',
+    'exclude-message',
+    'svg',
+  ])
 )

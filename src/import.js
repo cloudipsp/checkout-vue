@@ -303,6 +303,9 @@ export const FButtonCancel = () =>
 export const FPromo = () =>
   import(/* webpackChunkName: "50" */ '@/components/promo')
 
+export const countriesCallingCodes = () =>
+  import(/* webpackChunkName: "51" */ '@/config/countries-calling-codes')
+
 export const FButtonReturnToSite = () =>
   import(
     /* webpackChunkName: "52" */ '@/views/checkout/without-sidebar/button-return-to-site'
