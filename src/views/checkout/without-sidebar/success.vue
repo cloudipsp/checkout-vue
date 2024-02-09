@@ -1,17 +1,17 @@
 <template>
-  <div class="f-success" :data-e2e-status="status">
-    <div class="f-success-title">
-      <svg-approved v-if="isApproved" />
-      <svg-decline v-if="isDeclined" />
-      <div class="f-title" v-text="title" />
+  <div :class="$style.wrapper" :data-e2e-status="status">
+    <div :class="$style.center">
+      <svg-approved v-if="isApproved" :class="$style.svg" />
+      <svg-decline v-if="isDeclined" :class="$style.svg" />
+      <div :class="$style.title" v-text="title" />
     </div>
     <f-info />
     <f-price readonly />
-    <div class="f-success-form-group">
+    <div :class="$style.box">
       <div class="f-row">
         <div class="f-col" v-text="$t('payment_id')" />
-        <div class="f-col f-text-right">
-          {{ order.order_data.payment_id }}
+        <div class="f-col" :class="$style.right" data-e2e-payment-id>
+          {{ order_data.payment_id }}
         </div>
       </div>
     </div>
@@ -33,9 +33,9 @@ export default {
     SvgApproved,
   },
   computed: {
-    ...mapState(['order']),
+    ...mapState('order', ['order_data']),
     status() {
-      return this.order.order_data.order_status
+      return this.order_data.order_status
     },
     isApproved() {
       return this.status === 'approved'
@@ -49,3 +49,39 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.wrapper {
+  width: 100%;
+  max-width: px-to-rem(384px);
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.svg {
+  margin: px-to-rem(-16px) 0;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: px-to-rem(20px);
+  font-size: px-to-rem(20px);
+  font-weight: 500;
+  text-align: center;
+  color: $title_color;
+}
+
+.box {
+  padding: px-to-rem(16px);
+  word-wrap: break-word;
+  border: 1px solid $input_border;
+  border-radius: px-to-rem(8px);
+}
+
+.right {
+  text-align: right;
+}
+</style>
