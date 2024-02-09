@@ -303,5 +303,8 @@ export const FButtonCancel = () =>
 export const FPromo = () =>
   import(/* webpackChunkName: "50" */ '@/components/promo')
 
+export const countriesCallingCodes = () =>
+  import(/* webpackChunkName: "51" */ '@/config/countries-calling-codes')
+
 export const FButtonReturn = () =>
   import(/* webpackChunkName: "52" */ '@/components/button/button-return')
