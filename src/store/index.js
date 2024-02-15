@@ -44,12 +44,17 @@ class Store extends Model {
     super()
     this.setStateDefault()
   }
-  sendRequest(...args) {
+  sendRequestBase(...args) {
     if (this.state.options.disable_request) return Promise.reject()
 
     Object.assign(args[2], this.defaultParams())
 
-    return sendRequest(...args).catch(model => {
+    return sendRequest(...args)
+  }
+  sendRequest(...args) {
+    if (this.state.options.disable_request) return Promise.reject()
+
+    return this.sendRequestBase(...args).catch(model => {
       this.showError(model.attr('error.code'), model.attr('error.message'))
       return Promise.reject(model)
     })
@@ -127,6 +132,17 @@ class Store extends Model {
 
       return model
     })
+  }
+  click2payCardEncrypt(data) {
+    return this.sendRequestBase('api.checkout.click2pay.encrypt', 'get', {
+      ...data,
+      order_id: this.state.order.order_data.order_id,
+      merchant_id: this.state.params.merchant_id,
+    }).then(model => ({
+      encryptedCard: model.attr('encrypted_card'),
+      firstName: model.attr('first_name'),
+      lastName: model.attr('last_name'),
+    }))
   }
   infoSuccess(model) {
     this.info(model)
@@ -557,7 +573,23 @@ class Store extends Model {
     this.state.params.token = token
   }
   readyToSubmit() {
-    return !this.state.order.show_success_page
+    return !(
+      this.state.order.show_success_page ||
+      this.enabledClick2paySuccessPageRegistration()
+    )
+  }
+  enabledClick2pay() {
+    return (
+      !!C2P_SDK &&
+      !this.state.options.disable_request &&
+      this.state.info.click2pay_init_enabled
+    )
+  }
+  enabledClick2paySuccessPageRegistration() {
+    return (
+      this.enabledClick2pay() &&
+      this.state.order.click2pay_success_page_registration_enabled
+    )
   }
 }
 

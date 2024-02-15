@@ -318,3 +318,11 @@ export const FLinkDownloadReceipt = () =>
   import(
     /* webpackChunkName: "52_" */ '@/views/checkout/without-sidebar/link-download-receipt'
   )
+
+export const loadUuid = () => import(/* webpackChunkName: "53" */ 'uuid')
+
+export const loadClick2pay = () =>
+  import(/* webpackChunkName: "54" */ '@/click2pay')
+
+export const Click2payNewUserSuccessPage = () =>
+  import(/* webpackChunkName: "55" */ '@/views/click2pay/new-user-success-page')

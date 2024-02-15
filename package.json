@@ -4,7 +4,7 @@
   "description": "Fondy checkout",
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
-    "dev": "vue-cli-service serve --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu",
+    "dev": "vue-cli-service serve --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu  --c2p_sdk=https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js?v2 --c2p_src_initiator_id=F1YE52EO4MYO4QP2PBZ221FginRx2_y-ItVkzEaCdkXQQf51E --c2p_srci_dpa_id=FondyDPA-FondySRC",
     "serve": "serve -s dist",
     "build": "npm run gulp && vue-cli-service build --no-module",
     "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/ --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu",
@@ -91,7 +91,10 @@
       "DOMAIN": "readonly",
       "SAAS_CDN_URL": "readonly",
       "SAAS_TEMPLATE_NAME": "readonly",
-      "API_DOMAIN": "readonly"
+      "API_DOMAIN": "readonly",
+      "C2P_SDK": "readonly",
+      "C2P_SRC_INITIATOR_ID": "readonly",
+      "C2P_SRCI_DPA_ID": "readonly"
     },
     "root": true,
     "env": {

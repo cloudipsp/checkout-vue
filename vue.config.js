@@ -13,6 +13,9 @@ const COMMITHASH = gitRevisionPlugin.commithash()
 const BRANCH = gitRevisionPlugin.branch()
 const ENVIRONMENT = process.env.NODE_ENV
 const DSN = argv['sentry-dsn']
+const C2P_SDK = argv.c2p_sdk
+const C2P_SRC_INITIATOR_ID = argv.c2p_src_initiator_id
+const C2P_SRCI_DPA_ID = argv.c2p_srci_dpa_id
 const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
 const SAAS_CDN_URL = argv.saas_cdn_url
 const SAAS_TEMPLATE_NAME = argv.saas_template_name
@@ -197,6 +200,9 @@ module.exports = defineConfig({
           SAAS_CDN_URL,
           SAAS_TEMPLATE_NAME,
           API_DOMAIN,
+          C2P_SDK,
+          C2P_SRC_INITIATOR_ID,
+          C2P_SRCI_DPA_ID,
         })])
         .end()
   }

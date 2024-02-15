@@ -689,7 +689,7 @@
           params: {
             landing_token: '7751ae93c117f964e8c3e7e6af70f224ea1719e0',
 
-            amount: 2000000,
+            amount: 200,
             currency: 'UAH',
             merchant_id: 1608509,
             // token: 'f500d47dad0973fdbc5da6846150e4397a3ac1ca',
@@ -732,11 +732,34 @@
             response_url: 'https://<%= API_DOMAIN %>/test/responsepage/',
           },
         },
+        click2pay: {
+          options: {
+            api_domain,
+            email: true,
+          },
+          params: {
+            // click2pay_init_enabled: true
+
+            // click2pay_success_page_registration_enabled: true
+            // token: '5e30570b77c71f579f556d0fb37382d7c29258b0',
+            amount: 200,
+            currency: 'UAH',
+            merchant_id: 5365,
+
+            // click2pay_checkout_registration_enabled: true
+            // token: '2960e898f0c14aa23b092cf1bf202777852ac074',
+            // amount: 200,
+            // currency: 'UAH',
+            // merchant_id: 5364,
+
+            lang: 'uk',
+          },
+        },
       }
 
       setConfigsOption()
 
-      window.app = render('#app', 'link_download_receipt')
+      window.app = render('#app', 'click2pay')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 
