@@ -4,7 +4,7 @@
   "description": "Fondy checkout",
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --c2p-sdk=https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js?v2",
     "serve": "serve -s dist",
     "build": "npm run gulp && vue-cli-service build --no-module",
     "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/",
@@ -89,7 +89,8 @@
       "ENVIRONMENT": "readonly",
       "DSN": "readonly",
       "DOMAIN": "readonly",
-      "CDN": "readonly"
+      "CDN": "readonly",
+      "C2P_SDK": "readonly"
     },
     "root": true,
     "env": {

@@ -308,3 +308,11 @@ export const countriesCallingCodes = () =>
 
 export const FButtonReturn = () =>
   import(/* webpackChunkName: "52" */ '@/components/button/button-return')
+
+export const loadUuid = () => import(/* webpackChunkName: "53" */ 'uuid')
+
+export const loadClick2pay = () =>
+  import(/* webpackChunkName: "54" */ '@/click2pay')
+
+export const Click2paySuccessPage = () =>
+  import(/* webpackChunkName: "55" */ '@/views/click2pay/success-page')

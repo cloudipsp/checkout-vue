@@ -31,7 +31,7 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
-import { FLoading } from '@/import'
+import { FLoading, loadClick2pay } from '@/import'
 import configMethods from '@/config/methods.json'
 import { arrayIncludes } from '@/utils/array'
 import { mappingMethod } from '@/config/mapping-method'
@@ -67,7 +67,7 @@ export default {
     ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'fee']),
 
-    ...mapStateGetSet(['ready', 'order']),
+    ...mapStateGetSet(['ready', 'orderModel', 'order']),
     ...mapStateGetSet('params', [
       'amount',
       'currency',
@@ -150,6 +150,12 @@ export default {
     appFinally(model) {
       if (!model) return
 
+      if (model.attr('info.click2pay_init_enabled')) {
+        loadClick2pay()
+          .then(({ initClick2pay }) => initClick2pay())
+          .catch(errorHandler)
+      }
+
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.attr('cards'))
@@ -178,12 +184,8 @@ export default {
       model3ds = model
     },
     location(model) {
+      this.orderModel = model
       this.order = model.data
-      //        console.warn('model.inProgress()', 'order.in_progress', model.inProgress())
-      //        console.warn('model.readyToSubmit()', 'order.ready_to_submit', model.readyToSubmit())
-      //        console.warn('model.waitForResponse()', 'order.pending', model.waitForResponse())
-      //        console.warn('model.needVerifyCode()', 'order.need_verify_code', model.needVerifyCode())
-      //        console.warn('model.submitToMerchant()', model.submitToMerchant())
 
       if (model.attr('action') === 'qr_page') {
         this.store.formLoading(false)
@@ -191,7 +193,6 @@ export default {
         return
       }
 
-      // action === 'submit' formDataSubmit() || action === 'redirect' redirectUrl()
       if (model.sendResponse()) return
 
       if (
@@ -204,10 +205,9 @@ export default {
         return
       }
 
-      // ready_to_submit && response_url && order_data formDataSubmit()
       if (this.store.readyToSubmit() && model.submitToMerchant()) return
 
-      if (model.inProgress() && model.waitForResponse()) {
+      if (model.waitForResponse()) {
         let method = mappingMethod(model.attr('order_data.payment_system'))
         if (
           arrayIncludes(configMethods, method) &&

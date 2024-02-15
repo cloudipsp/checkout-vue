@@ -5,6 +5,7 @@
       <svg-decline v-if="isDeclined" :class="$style.svg" />
       <div :class="$style.title" v-text="title" />
     </div>
+    <click2pay-success-page-wrapper />
     <f-info />
     <f-price readonly />
     <div :class="$style.box">
@@ -25,6 +26,7 @@ import FPrice from '@/components/price'
 import SvgApproved from '@/svg/approved.svg'
 import SvgDecline from '@/svg/decline.svg'
 import { mapState } from '@/utils/store'
+import Click2paySuccessPageWrapper from '@/views/click2pay/success-page-wrapper'
 import { FButtonReturn } from '@/import'
 
 export default {
@@ -33,6 +35,7 @@ export default {
     FPrice,
     SvgDecline,
     SvgApproved,
+    Click2paySuccessPageWrapper,
     FButtonReturn,
   },
   computed: {

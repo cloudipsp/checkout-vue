@@ -13,6 +13,7 @@ const COMMITHASH = gitRevisionPlugin.commithash()
 const BRANCH = gitRevisionPlugin.branch()
 const ENVIRONMENT = process.env.NODE_ENV
 const DSN = argv['sentry-dsn']
+const C2P_SDK = argv['c2p-sdk']
 const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
 const CDN = 'https://pay.fondy.eu/icons/dist/'
 const isProduction = ENVIRONMENT === 'production'
@@ -191,6 +192,7 @@ module.exports = defineConfig({
           DSN,
           DOMAIN,
           CDN,
+          C2P_SDK,
         })])
         .end()
   }
