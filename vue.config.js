@@ -51,6 +51,11 @@ module.exports = defineConfig({
       },
     },
   },
+  devServer: {
+    client: {
+      webSocketURL: 'wss://checkout.dev.cipsp.net/ws'
+    },
+  },
   runtimeCompiler: true,
   productionSourceMap: false,
   publicPath: isProduction
