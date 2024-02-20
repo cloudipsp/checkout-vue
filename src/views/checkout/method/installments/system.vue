@@ -19,13 +19,12 @@
         <f-fields-user />
         <div class="f-row f-mb-16">
           <div class="f-col-5">
-            <f-form-group
+            <f-parts
               v-model="params.payment_parts"
               class="f-mb-0"
-              component="select2"
+              :payment-id="system"
               :options="list"
-              :name="$t('Payments')"
-              @input="input"
+              @amount="setAmount"
             />
           </div>
           <div class="f-col-7">
@@ -66,6 +65,7 @@ import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButton from '@/components/button/button'
+import FParts from '@/views/checkout/method/installments/parts'
 import FAmount from '@/components/base/amount'
 import { FButtonCancel } from '@/import'
 import { mapState } from '@/utils/store'
@@ -83,6 +83,7 @@ export default {
     FFieldsUser,
     FOffer,
     FButton,
+    FParts,
     FAmount,
     FButtonCancel,
   },
@@ -101,7 +102,7 @@ export default {
   computed: {
     ...mapState(['cancel_url']),
     ...mapState(['tabs', 'params']),
-    ...mapState('params', ['currency', 'token', 'amount']),
+    ...mapState('params', ['currency']),
     method() {
       return this.$route.params.method
     },
@@ -113,17 +114,6 @@ export default {
     },
     list() {
       return this.available_payments_number.map(parseSelect)
-    },
-    data() {
-      if (this.token) {
-        return {
-          token: this.token,
-        }
-      } else {
-        return {
-          amount: this.amount,
-        }
-      }
     },
   },
   watch: {
@@ -182,21 +172,8 @@ export default {
         })
         .catch(errorHandler)
     },
-    input(value) {
-      this.store
-        .sendRequest(
-          'api.checkout.partial',
-          'calc',
-          {
-            payment_id: this.system,
-            payment_parts: value,
-            ...this.data,
-          },
-          { cached: true }
-        )
-        .then(model => {
-          this.amountTotal = model.attr('amount_partial')
-        })
+    setAmount(amount) {
+      this.amountTotal = amount
     },
   },
 }

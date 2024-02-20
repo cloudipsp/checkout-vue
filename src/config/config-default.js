@@ -89,6 +89,7 @@ export const configDefault = {
     save_card: true,
     verification_type: null,
     token: '',
+    promocode: '',
   },
   button: {},
   messages: {},

@@ -98,9 +98,7 @@ export default {
       return amountToCoins(value)
     },
     feeCalc() {
-      this.store.feeCalc({
-        currency: this.currency,
-      })
+      this.store.feeCalc()
     },
   },
 }

@@ -21,18 +21,17 @@
     </div>
     <div :class="$style.break" />
     <div :class="$style['col-parts']">
-      <f-form-group
+      <f-parts
         v-model="parts"
         :class="$style.parts"
+        :payment-id="item.id"
         :label-class="$style.label"
-        component="select2"
         :options="list"
-        :name="$t('Payments')"
         :input-class="$style.w_72"
         :dropdown-class="dropdownClass"
         no-label-floating
         size="48"
-        @input="input"
+        @amount="setAmount"
       />
     </div>
     <div :class="$style['col-amount']">
@@ -60,6 +59,7 @@
 
 <script>
 import FIcon from '@/components/icon'
+import FParts from '@/views/checkout/method/installments/parts'
 import FSvg from '@/components/svg'
 import FAmount from '@/components/base/amount'
 import FButton from '@/components/button/button'
@@ -72,6 +72,7 @@ import { resizeMixin } from '@/mixins/resize'
 export default {
   components: {
     FIcon,
+    FParts,
     FSvg,
     FAmount,
     FButton,
@@ -87,7 +88,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('params', ['currency', 'token', 'amount']),
+    ...mapState('params', ['currency']),
     min() {
       return this.item.available_payments_number[0]
     },
@@ -118,17 +119,6 @@ export default {
     dropdownClass() {
       return `f-tooltip-select ${this.$style.w_72}`
     },
-    data() {
-      if (this.token) {
-        return {
-          token: this.token,
-        }
-      } else {
-        return {
-          amount: this.amount,
-        }
-      }
-    },
   },
   created() {
     this.parts = this.max
@@ -149,21 +139,8 @@ export default {
 
       this.goSystem()
     },
-    input(value) {
-      this.store
-        .sendRequest(
-          'api.checkout.partial',
-          'calc',
-          {
-            payment_id: this.item.id,
-            payment_parts: value,
-            ...this.data,
-          },
-          { cached: true }
-        )
-        .then(model => {
-          this.amountTotal = model.attr('amount_partial')
-        })
+    setAmount(amount) {
+      this.amountTotal = amount
     },
   },
 }
