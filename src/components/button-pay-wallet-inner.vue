@@ -83,7 +83,7 @@ export default Vue.extend({
       variant: key(btn, pay, wallet, variant),
       color: key(btn, pay, wallet, color),
     }),
-    ...mapState('params', ['amount', 'merchant_id']),
+    ...mapState('params', ['amount', 'currency', 'merchant_id', 'promocode']),
     ...mapState('options', ['api_domain', 'endpoint', 'disable_request']),
     ...mapStateGetSet(['can_make_payment', 'need_validate_card']),
     ...mapState(['has_fields', 'params', 'ready']),
@@ -113,7 +113,8 @@ export default Vue.extend({
   },
   watch: {
     amount: 'update',
-    'params.currency': 'update',
+    currency: 'update',
+    promocode: 'update',
     params: {
       handler: 'changeParams',
       deep: true,
