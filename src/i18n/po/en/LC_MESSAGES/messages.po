@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-15 19:24+0200\n"
+"POT-Creation-Date: 2024-03-28 15:33+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Card"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "SEPA Direct Debit"
 
@@ -34,9 +31,6 @@ msgstr "Bank transfer"
 
 msgid "local_methods"
 msgstr "Local payment methods"
-
-msgid "wallets"
-msgstr "-"
 
 msgid "loans"
 msgstr "Online installments"
@@ -62,17 +56,44 @@ msgstr "Week"
 msgid "month"
 msgstr "Month"
 
-msgid "menu"
-msgstr "-"
+msgid "c2p_card_missing"
+msgstr ""
 
-msgid "error_modal"
-msgstr "-"
+msgid "c2p_invalid_parameter"
+msgstr ""
 
-msgid "error"
-msgstr "-"
+msgid "c2p_card_add_failed"
+msgstr ""
 
-msgid "system"
-msgstr "-"
+msgid "c2p_card_security_code_missing"
+msgstr ""
+
+msgid "c2p_card_invalid"
+msgstr ""
+
+msgid "c2p_card_exp_invalid"
+msgstr ""
+
+msgid "c2p_cardid_missing"
+msgstr ""
+
+msgid "c2p_card_not_recognized"
+msgstr ""
+
+msgid "c2p_acct_inaccessible"
+msgstr ""
+
+msgid "c2p_merchant_data_invalid"
+msgstr ""
+
+msgid "c2p_unable_to_connect"
+msgstr ""
+
+msgid "c2p_auth_invalid"
+msgstr ""
+
+msgid "c2p_terms_and_conditions_not_accepted"
+msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -159,20 +180,11 @@ msgstr "Declined"
 msgid "use_other_card"
 msgstr "Enter another card"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr "-"
-
 msgid "all_methods"
 msgstr "All Methods"
 
 msgid "verification_t"
 msgstr "Card verification"
-
-msgid "verification_"
-msgstr "-"
 
 msgid "see_more"
 msgstr "Show in full"
@@ -194,9 +206,6 @@ msgstr ""
 "You will be redirected to the bank's website to complete your payment in {0} "
 "seconds"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Oops.."
 
@@ -208,9 +217,6 @@ msgstr ""
 msgid "offer_t"
 msgstr ""
 "I accept the <a href=\"{0}\" target=\"_blank\">bid terms and conditions. </a>"
-
-msgid "offerta_url"
-msgstr ""
 
 msgid "trial_period"
 msgstr "Trial period"
@@ -288,12 +294,6 @@ msgstr "Phone"
 msgid "customer_email"
 msgstr "Email"
 
-msgid "verify"
-msgstr "-"
-
-msgid "success"
-msgstr "-"
-
 msgid "use_monobank_application"
 msgstr "Use the monobank app to confirm your purchase in installments"
 
@@ -302,15 +302,6 @@ msgstr "Show more..."
 
 msgid "pay_with_card"
 msgstr "Pay with card"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-digit code on the back of your card"
@@ -327,17 +318,23 @@ msgstr "payments"
 msgid "currency_month"
 msgstr "{0} / month"
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
 msgstr "Expecting soon"
 
 msgid "conditions"
 msgstr "Сonditions"
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
 msgstr ""
+"<li>You have a credit card from monobank</li><li>Available limit for "
+"Purchases in installments</li><li>The first payment will be made at the time "
+"of purchase, and the next one in a month</li>"
+
+msgid "installments_desc_privatbank_ua"
+msgstr ""
+"<li>Availability of the «Universal» card.</li><li>Available credit limit for "
+"the «Payment by installments» service.</li><li>The first payment will be "
+"made at the time of purchase, and the next one in a month.</li>"
 
 msgid "most_popular_methods_in"
 msgstr "Most popular methods in:"
@@ -410,23 +407,71 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Provide your bank account details"
 
-msgid "sender_name"
-msgstr "Name"
-
 msgid "bank_desc"
 msgstr "You will be redirected to the bank's website to complete your payment"
 
 msgid "payment_id"
 msgstr "Payment ID"
 
+msgid "c2p_how_does_work"
+msgstr ""
+
+msgid "c2p_about_desc"
+msgstr ""
+
+msgid "c2p_registration_desc"
+msgstr ""
+
+msgid "phone_number"
+msgstr ""
+
+msgid "last_name"
+msgstr ""
+
+msgid "first_name"
+msgstr ""
+
+msgid "remember_me_on_this_device"
+msgstr ""
+
+msgid "registration"
+msgstr ""
+
+msgid "c2p_agreement_with_processing_of_data"
+msgstr ""
+
+msgid "c2p_card_add"
+msgstr ""
+
+msgid "c2p_card_add_expired"
+msgstr ""
+
+msgid "terms"
+msgstr ""
+
+msgid "c2p_terms_url"
+msgstr ""
+
+msgid "privacy_notice"
+msgstr ""
+
+msgid "c2p_privacy_notice_url"
+msgstr ""
+
+msgid "c2p_save_card_desc"
+msgstr ""
+
+msgid "save_card"
+msgstr ""
+
+msgid "click2pay"
+msgstr ""
+
 msgid "demo-title"
 msgstr "Demo mode"
 
 msgid "mode-test"
 msgstr "Test mode"
-
-msgid "\""
-msgstr ""
 
 msgid "title-declined"
 msgstr "Unfortunately, your payment was unsuccessful"
@@ -543,6 +588,9 @@ msgstr "Payment link is deactivated"
 
 msgid "button_status_not_active_text"
 msgstr "Please contact the merchant to receive the payment link."
+
+msgid "sender_name"
+msgstr "Name"
 
 msgid "sender_familyName"
 msgstr "Surname"
@@ -704,18 +752,6 @@ msgstr "Confirmation code"
 msgid "verification_amount"
 msgstr "Verification amount"
 
-msgid "installments_desc_monobank_ua"
-msgstr ""
-"<li>You have a credit card from monobank</li><li>Available limit for "
-"Purchases in installments</li><li>The first payment will be made at the time "
-"of purchase, and the next one in a month</li>"
-
-msgid "installments_desc_privatbank_ua"
-msgstr ""
-"<li>Availability of the «Universal» card.</li><li>Available credit limit for "
-"the «Payment by installments» service.</li><li>The first payment will be "
-"made at the time of purchase, and the next one in a month.</li>"
-
 msgid "promo_status_approve"
 msgstr "Promo code applied"
 
@@ -730,39 +766,3 @@ msgstr "Other promotional propositions will not work"
 
 msgid "card_does_not_participate_in_discount_program"
 msgstr "Card does no participate in discount program"
-
-#~ msgid "installments_oschadbank"
-#~ msgstr "Installment loan from Oschadbank"
-
-#~ msgid "installments_name_monobank"
-#~ msgstr "Покупка частинами monobank"
-
-#~ msgid "angle-down"
-#~ msgstr "-"
-
-#~ msgid "label"
-#~ msgstr "-"
-
-#~ msgid "offer"
-#~ msgstr "-"
-
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "switch"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Local payment methods"
-
-#~ msgid "declined_desc"
-#~ msgstr "You may return to the website and place another order."

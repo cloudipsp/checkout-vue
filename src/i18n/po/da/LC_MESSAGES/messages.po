@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 16:50+0300\n"
+"POT-Creation-Date: 2024-03-28 15:33+0200\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Kort"
 
-msgid "trustly"
-msgstr "pålideligt"
-
 msgid "sepa"
 msgstr "SEPA Direkte Debitering"
 
@@ -34,9 +31,6 @@ msgstr "Bankoverførsel"
 
 msgid "local_methods"
 msgstr "Lokale betalingsmåder"
-
-msgid "wallets"
-msgstr "tegnebøger"
 
 msgid "loans"
 msgstr "Delbetaling på nettet"
@@ -62,17 +56,44 @@ msgstr "En uge"
 msgid "month"
 msgstr "Måned"
 
-msgid "menu"
-msgstr "menu"
+msgid "c2p_card_missing"
+msgstr ""
 
-msgid "error_modal"
-msgstr "modal_fejl"
+msgid "c2p_invalid_parameter"
+msgstr ""
 
-msgid "error"
-msgstr "fejl"
+msgid "c2p_card_add_failed"
+msgstr ""
 
-msgid "system"
-msgstr "system"
+msgid "c2p_card_security_code_missing"
+msgstr ""
+
+msgid "c2p_card_invalid"
+msgstr ""
+
+msgid "c2p_card_exp_invalid"
+msgstr ""
+
+msgid "c2p_cardid_missing"
+msgstr ""
+
+msgid "c2p_card_not_recognized"
+msgstr ""
+
+msgid "c2p_acct_inaccessible"
+msgstr ""
+
+msgid "c2p_merchant_data_invalid"
+msgstr ""
+
+msgid "c2p_unable_to_connect"
+msgstr ""
+
+msgid "c2p_auth_invalid"
+msgstr ""
+
+msgid "c2p_terms_and_conditions_not_accepted"
+msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -118,6 +139,9 @@ msgstr "Ikke nu"
 msgid "accept"
 msgstr "Jeg er enig"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Betale"
 
@@ -125,6 +149,9 @@ msgid "demo-desc"
 msgstr ""
 "Dette er et demosystem. Mens du indtaster dine kortoplysninger, vil "
 "betalingen ikke blive behandlet."
+
+msgid "return_to_site"
+msgstr ""
 
 msgid "expires_on"
 msgstr "Udløbsdato"
@@ -138,20 +165,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Indtast detaljerne for et andet kort"
 
-msgid "datepicker"
-msgstr "vindue til valg af dato eller datointerval"
-
-msgid "model"
-msgstr "model"
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Bekræftelse af kort"
-
-msgid "verification_"
-msgstr "verifikation_"
 
 msgid "see_more"
 msgstr "Vis det fuldt ud"
@@ -173,9 +191,6 @@ msgstr ""
 "Du vil derefter blive omdirigeret til bankens websted for at gennemføre "
 "betalingen inden for {0} sekunder"
 
-msgid "show"
-msgstr "vise"
-
 msgid "server_trouble_title"
 msgstr "Ups.."
 
@@ -189,26 +204,29 @@ msgstr ""
 "tilbud_tJeg accepterer <a href=\"{0}\" target=\"_blank\">bid vilkår og "
 "betingelser. </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Prøvetid"
 
 msgid "first_payment"
 msgstr "Første betaling"
 
-msgid "total_amount"
-msgstr "Det samlede beløb, der skal betales"
-
-msgid "fee"
-msgstr "provisionsbetaling"
-
 msgid "amount"
 msgstr "skyldigt beløb"
 
 msgid "discount"
 msgstr "rabat"
+
+msgid "fee"
+msgstr "provisionsbetaling"
+
+msgid "total_amount"
+msgstr "Det samlede beløb, der skal betales"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
+msgstr ""
 
 msgid "security_title"
 msgstr "Stærk autentificering af kunder"
@@ -262,12 +280,6 @@ msgstr "Telefon"
 msgid "customer_email"
 msgstr "E-mail"
 
-msgid "verify"
-msgstr "verificere"
-
-msgid "success"
-msgstr "succesfuldt"
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -276,15 +288,6 @@ msgstr "Vis mere..."
 
 msgid "pay_with_card"
 msgstr "Betal med kort"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-numerisk kode på bagsiden af ​​kortet"
@@ -301,19 +304,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -365,8 +365,8 @@ msgstr "Betalingsfristen"
 
 msgid "ibox_desc"
 msgstr ""
-"Alle iBox-terminaler, der accepterer betalinger, er angivet på <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">kortet</a>"
+"Alle iBox-terminaler, der accepterer betalinger, er angivet på <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">kortet</a>"
 
 msgid "save_receipt"
 msgstr "Gem kvittering"
@@ -387,22 +387,70 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Angiv dine bankkontooplysninger"
 
-msgid "sender_name"
-msgstr "Navn"
-
 msgid "bank_desc"
 msgstr "Vi omdirigerer dig til bankens hjemmeside for at gennemføre betalingen"
 
 msgid "payment_id"
 msgstr "Betalings-id"
 
+msgid "c2p_how_does_work"
+msgstr ""
+
+msgid "c2p_about_desc"
+msgstr ""
+
+msgid "c2p_registration_desc"
+msgstr ""
+
+msgid "phone_number"
+msgstr ""
+
+msgid "last_name"
+msgstr ""
+
+msgid "first_name"
+msgstr ""
+
+msgid "remember_me_on_this_device"
+msgstr ""
+
+msgid "registration"
+msgstr ""
+
+msgid "c2p_agreement_with_processing_of_data"
+msgstr ""
+
+msgid "c2p_card_add"
+msgstr ""
+
+msgid "c2p_card_add_expired"
+msgstr ""
+
+msgid "terms"
+msgstr ""
+
+msgid "c2p_terms_url"
+msgstr ""
+
+msgid "privacy_notice"
+msgstr ""
+
+msgid "c2p_privacy_notice_url"
+msgstr ""
+
+msgid "c2p_save_card_desc"
+msgstr ""
+
+msgid "save_card"
+msgstr ""
+
+msgid "click2pay"
+msgstr ""
+
 msgid "demo-title"
 msgstr "Demo-tilstand"
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -520,6 +568,9 @@ msgstr "Betalingslinket er deaktiveret"
 
 msgid "button_status_not_active_text"
 msgstr "Kontakt venligst sælgeren for at få betalingslinket."
+
+msgid "sender_name"
+msgstr "Navn"
 
 msgid "sender_familyName"
 msgstr "Efternavn"
@@ -682,38 +733,17 @@ msgstr "Bekræftelseskode"
 msgid "verification_amount"
 msgstr "Beløbet for tjek"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "vippe"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "label"
-#~ msgstr "mærke"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "tilbud"
-
-#~ msgid "security"
-#~ msgstr "sikkerhed"
-
-#~ msgid "switch"
-#~ msgstr "skifte"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Lokale betalingsmetoder"
-
-#~ msgid "declined_desc"
-#~ msgstr "Du kan vende tilbage til siden og foretage en ny ordre."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""
