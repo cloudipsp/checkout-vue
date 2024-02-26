@@ -326,3 +326,6 @@ export const loadClick2pay = () =>
 
 export const Click2payNewUserSuccessPage = () =>
   import(/* webpackChunkName: "55" */ '@/views/click2pay/new-user-success-page')
+
+export const Click2payNewUserCardPage = () =>
+  import(/* webpackChunkName: "56" */ '@/views/click2pay/new-user-card-page')

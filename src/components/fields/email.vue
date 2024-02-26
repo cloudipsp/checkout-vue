@@ -3,6 +3,7 @@
     <f-form-save name="params" :includes="['email']">
       <template #default="{ input }">
         <f-form-group
+          v-bind="$attrs"
           v-model.trim="email"
           input-class="f-checkout-email"
           name="email"

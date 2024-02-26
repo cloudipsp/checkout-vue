@@ -89,7 +89,8 @@
         </template>
       </f-form-group>
     </div>
-    <f-field-email />
+    <f-field-email :disabled="disableEmail" />
+    <click2pay-new-user-card-page-wrapper @enable="setDisableEmail" />
   </div>
 </template>
 
@@ -99,6 +100,7 @@ import { FIconBin, FCardListWrapper } from '@/import'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
+import Click2payNewUserCardPageWrapper from '@/views/click2pay/new-user-card-page-wrapper'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { createDate, format } from '@/utils/date'
@@ -111,11 +113,13 @@ export default {
     FSvg,
     FTooltipDefault,
     FFieldEmail,
+    Click2payNewUserCardPageWrapper,
   },
   data() {
     return {
       config: [9, 8, 7, 6, 1],
       disabledExpiryDate: false,
+      disableEmail: false,
     }
   },
   computed: {
@@ -241,6 +245,9 @@ export default {
         count => value.slice(0, count).length === count
       )
       return value.slice(0, count)
+    },
+    setDisableEmail(value) {
+      this.disableEmail = value
     },
   },
 }

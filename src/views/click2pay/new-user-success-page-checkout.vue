@@ -67,6 +67,7 @@
         "
       />
     </f-box>
+    <click2pay-loader v-else-if="isLoading" />
     <div
       v-else-if="isRegistered"
       :class="$style.registered"
@@ -86,6 +87,7 @@ import FForm from '@/components/form/form/form'
 import FCallingCodes from '@/components/calling-codes'
 import FButton from '@/components/button/button'
 import FSvg from '@/components/svg'
+import Click2payLoader from '@/views/click2pay/loader'
 import { checkout, setRememberMe, getRememberMe } from '@/click2pay'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_STRING } from '@/constants/props'
@@ -99,11 +101,12 @@ export default {
     FCallingCodes,
     FButton,
     FSvg,
+    Click2payLoader,
   },
   props: {
     email: makeProp(PROP_TYPE_STRING),
     startStatus: makeProp(PROP_TYPE_STRING, '', value =>
-      ['registration'].includes(value)
+      ['registration', 'loading'].includes(value)
     ),
   },
   data() {
@@ -126,6 +129,9 @@ export default {
     ...mapState('info', ['country_user_by_ip']),
     isRegistration() {
       return this.status === 'registration'
+    },
+    isLoading() {
+      return this.status === 'loading'
     },
     isRegistered() {
       return this.status === 'registered'
@@ -200,6 +206,30 @@ export default {
         )
         .catch(() => {
           this.status = 'expired'
+        })
+    },
+    checkout(input) {
+      checkout(input)
+        .then(() => {
+          this.status = 'registered'
+        })
+        .catch(error => {
+          const {
+            consumer: {
+              countryCode,
+              firstName,
+              lastName,
+              mobileNumber: { phoneNumber },
+            },
+          } = input
+
+          this.countryCode = countryCode
+          this.phoneNumber = phoneNumber
+          this.lastName = lastName
+          this.firstName = firstName
+          this.error = error
+
+          this.status = 'registration'
         })
     },
     onCallingCode(value) {

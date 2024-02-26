@@ -588,7 +588,8 @@ class Store extends Model {
   enabledClick2paySuccessPageRegistration() {
     return (
       this.enabledClick2pay() &&
-      this.state.order.click2pay_success_page_registration_enabled
+      (this.state.order.click2pay_success_page_registration_enabled ||
+        this.state.order.order_data?.click2pay_checkout_data)
     )
   }
 }

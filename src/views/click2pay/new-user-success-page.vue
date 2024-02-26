@@ -66,15 +66,33 @@ export default {
     },
   },
   created() {
-    this.store
-      .click2payCardEncrypt({
-        first_name: ' ',
-        last_name: ' ',
-      })
-      .then(() => {
-        this.show = true
-      })
-      .catch(errorHandler)
+    if (this.order_data.click2pay_checkout_data) {
+      this.store
+        .click2payCardEncrypt()
+        .then(({ encryptedCard }) => {
+          this.show = true
+          this.showRegistration = true
+          this.status = 'loading'
+
+          this.$nextTick(() => {
+            this.$refs.registration.checkout({
+              ...this.order_data.click2pay_checkout_data,
+              encryptedCard,
+            })
+          })
+        })
+        .catch(errorHandler)
+    } else {
+      this.store
+        .click2payCardEncrypt({
+          first_name: ' ',
+          last_name: ' ',
+        })
+        .then(() => {
+          this.show = true
+        })
+        .catch(errorHandler)
+    }
   },
   methods: {
     click() {
