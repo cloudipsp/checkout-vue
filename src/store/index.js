@@ -571,7 +571,10 @@ class Store extends Model {
     )
   }
   needClick2payRegistration() {
-    return this.state.order.click2pay_success_page_registration_enabled
+    return (
+      this.state.order.click2pay_success_page_registration_enabled ||
+      this.state.order.order_data?.click2pay_checkout_data
+    )
   }
 }
 

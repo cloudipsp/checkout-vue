@@ -80,7 +80,8 @@
         </template>
       </f-form-group>
     </div>
-    <f-field-email />
+    <f-field-email :disabled="disableEmail" />
+    <click2pay-checkout-registration-wrapper @enable="setDisableEmail" />
     <f-fields-customer />
     <f-fields-custom />
     <f-fields-user />
@@ -97,6 +98,7 @@ import { FCardListWrapper } from '@/import'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
+import Click2payCheckoutRegistrationWrapper from '@/views/click2pay/checkout-registration-wrapper'
 import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
@@ -115,6 +117,7 @@ export default {
     FSvg,
     FTooltipDefault,
     FFieldEmail,
+    Click2payCheckoutRegistrationWrapper,
     FFieldsCustomer,
     FFieldsCustom,
     FFieldsUser,
@@ -126,6 +129,7 @@ export default {
     return {
       config: [6, 1],
       disabledExpiryDate: false,
+      disableEmail: false,
     }
   },
   computed: {
@@ -235,6 +239,9 @@ export default {
         count => value.slice(0, count).length === count
       )
       return value.slice(0, count)
+    },
+    setDisableEmail(value) {
+      this.disableEmail = value
     },
   },
 }

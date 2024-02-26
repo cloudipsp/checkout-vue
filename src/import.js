@@ -315,4 +315,7 @@ export const loadClick2pay = () =>
   import(/* webpackChunkName: "54" */ '@/click2pay')
 
 export const Click2paySuccessPage = () =>
-  import(/* webpackChunkName: "55" */ '@/views/click2pay/success-page')
+  import(/* webpackChunkName: "54" */ '@/views/click2pay/success-page')
+
+export const Click2payCheckoutRegistration = () =>
+  import(/* webpackChunkName: "56" */ '@/views/click2pay/checkout-registration')

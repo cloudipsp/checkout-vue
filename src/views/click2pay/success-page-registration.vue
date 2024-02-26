@@ -67,6 +67,11 @@
         "
       />
     </f-box>
+    <div v-else-if="isLoading" :class="$style.loading">
+      <div :class="$style.mb_48" v-text="$t('c2p_card_add_loading_top')" />
+      <svg-click2pay-loader :class="$style.mb_48" />
+      <div v-text="$t('c2p_card_add_loading_bottom')" />
+    </div>
     <div
       v-else-if="isRegistered"
       :class="$style.registered"
@@ -86,6 +91,7 @@ import FForm from '@/components/form/form/form'
 import FCallingCodes from '@/components/calling-codes'
 import FButton from '@/components/button/button'
 import FSvg from '@/components/svg'
+import SvgClick2payLoader from '@/svg/click2pay-loader.svg'
 import { checkout } from '@/click2pay'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_STRING } from '@/constants/props'
@@ -99,11 +105,12 @@ export default {
     FCallingCodes,
     FButton,
     FSvg,
+    SvgClick2payLoader,
   },
   props: {
     email: makeProp(PROP_TYPE_STRING),
     startStatus: makeProp(PROP_TYPE_STRING, '', value =>
-      ['registration'].includes(value)
+      ['registration', 'loading'].includes(value)
     ),
   },
   data() {
@@ -126,6 +133,9 @@ export default {
     ...mapState('info', ['country_user_by_ip']),
     isRegistration() {
       return this.status === 'registration'
+    },
+    isLoading() {
+      return this.status === 'loading'
     },
     isRegistered() {
       return this.status === 'registered'
@@ -222,6 +232,30 @@ export default {
           this.status = 'expired'
         })
     },
+    checkout(input) {
+      checkout(input)
+        .then(() => {
+          this.status = 'registered'
+        })
+        .catch(error => {
+          const {
+            consumer: {
+              countryCode,
+              firstName,
+              lastName,
+              mobileNumber: { phoneNumber },
+            },
+          } = input
+
+          this.countryCode = countryCode
+          this.phoneNumber = phoneNumber
+          this.lastName = lastName
+          this.firstName = firstName
+          this.error = error
+
+          this.status = 'registration'
+        })
+    },
     onCallingCode(value) {
       this.callingCode = value
     },
@@ -265,6 +299,17 @@ export default {
   margin-left: px-to-rem(4px);
 }
 
+.loading {
+  font-size: px-to-rem(14px);
+  font-weight: 400;
+  line-height: px-to-rem(20px);
+  text-align: center;
+
+  :global(.f-theme-light) & {
+    color: #5a6470;
+  }
+}
+
 .registered {
   font-size: px-to-rem(16px);
   line-height: px-to-rem(20px);
@@ -277,5 +322,9 @@ export default {
   line-height: px-to-rem(20px);
   font-weight: 500;
   color: #de4761;
+}
+
+.mb_48 {
+  margin-bottom: px-to-rem(48px);
 }
 </style>
