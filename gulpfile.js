@@ -153,7 +153,28 @@ gulp.task('exclude-message', () => {
     .then(content => fsp.writeFile('./src/config/exclude-messages.js', content))
 })
 
+gulp.task('svg', () => {
+  let dirname = './src/assets/svg/'
+  return fsp
+    .readdir(dirname)
+    .then(filenames =>
+      filenames.map(filename =>
+        fsp
+          .readFile(dirname + filename, 'utf-8')
+          .then(content => [
+            filename.replace('.svg', ''),
+            content.match(/ d="([\w\d -.]+)"/)[1],
+          ])
+      )
+    )
+    .then(promises => Promise.all(promises))
+    .then(content => Object.fromEntries(content))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const svg = ${content}`)
+    .then(content => fsp.writeFile('./src/config/svg.js', content))
+})
+
 gulp.task(
   'default',
-  gulp.series(['locale', 'countries-search', 'exclude-message'])
+  gulp.series(['locale', 'countries-search', 'exclude-message', 'svg'])
 )

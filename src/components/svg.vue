@@ -4,15 +4,15 @@
     focusable="false"
     role="img"
     xmlns="http://www.w3.org/2000/svg"
-    :viewBox="viewBox"
+    viewBox="0 0 24 24"
     :class="className"
   >
-    <path fill="currentColor" :d="paths" />
+    <path fill="currentColor" :d="d" />
   </svg>
 </template>
 
 <script>
-import icons from '@/config/icons'
+import { svg } from '@/config/svg'
 import {
   PROP_TYPE_STRING,
   PROP_TYPE_BOOLEAN,
@@ -25,37 +25,26 @@ export default {
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
     size: makeProp(PROP_TYPE_NUMBER_STRING, undefined, value =>
-      arrayIncludes(['lg', 'md', 'xs', 'sm', 24, 32], value)
+      arrayIncludes(['lg', 'md', 'xs', 'sm', '16', '20', 24, 32], value)
     ),
     spin: makeProp(PROP_TYPE_BOOLEAN, false),
     fw: makeProp(PROP_TYPE_BOOLEAN, false),
   },
-  data() {
-    return {
-      icons,
-    }
-  },
   computed: {
-    icon() {
-      return this.icons[this.name] || [512, 512, 16, '']
-    },
-    paths() {
-      return this.icon[3]
+    d() {
+      return svg[this.name]
     },
     className() {
       return [
         this.$style.wrapper,
         `f-svg-${this.name}`,
-        this.$style[`w_${this.icon[2]}`],
+        this.$style.w_16,
         this.$style[`s_${this.size}`],
         {
           [this.$style.spin]: this.spin,
           [this.$style.fw]: this.fw,
         },
       ]
-    },
-    viewBox() {
-      return `0 0 ${this.icon[0]} ${this.icon[1]}`
     },
   },
 }
@@ -91,6 +80,14 @@ export default {
 
 .s_sm {
   font-size: 0.875em;
+}
+
+.s_16 {
+  font-size: px-to-rem(16px);
+}
+
+.s_20 {
+  font-size: px-to-rem(20px);
 }
 
 .s_24 {

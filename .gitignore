@@ -33,4 +33,5 @@ yarn-error.log*
 !/src/i18n/process/translate.js
 /src/config/countries-search.js
 /src/config/exclude-messages.js
+/src/config/svg.js
 
