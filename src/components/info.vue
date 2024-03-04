@@ -3,7 +3,7 @@
     <div class="f-merchant-name" v-text="$t('verification_t')" />
     <div
       class="f-order-desc"
-      v-text="$t('verification_' + verification_type + '_d')"
+      v-text="$t(`verification_${verification_type}_d`)"
     />
   </div>
   <div v-else>

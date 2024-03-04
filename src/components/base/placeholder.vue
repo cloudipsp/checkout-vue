@@ -30,7 +30,7 @@ export default {
       return mask(this.value, this.mask, true)
     },
     placeholderText() {
-      return this.$t(this.placeholder)
+      return this.placeholder
         .slice(this.maskedValue.length)
         .replace(/ /g, '\xa0')
     },

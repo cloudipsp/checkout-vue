@@ -7,7 +7,7 @@
     v-on="$listeners"
   >
     <slot>
-      <span v-text="$t(text)" />
+      <span v-text="text" />
     </slot>
   </component>
 </template>

@@ -7,7 +7,7 @@
       <f-icons
         v-if="isOnlyCard"
         class="f-mb-16"
-        title="pay_with_card"
+        :title="$t('pay_with_card')"
         :count="5"
       />
     </template>

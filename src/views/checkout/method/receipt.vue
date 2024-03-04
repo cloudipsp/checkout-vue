@@ -79,12 +79,17 @@
               target="_blank"
               size="lg"
               block
-              text="save_receipt"
+              :text="$t('save_receipt')"
             />
           </div>
           <template v-if="isDesktop">
             <div class="f-col">
-              <f-button size="lg" block text="save_qr_code" @click="click" />
+              <f-button
+                size="lg"
+                block
+                :text="$t('save_qr_code')"
+                @click="click"
+              />
               <f-modal-base v-model="showQrCode" size="sm">
                 <f-loading v-if="loadingQrCode" />
                 <div class="f-qr-code-img">

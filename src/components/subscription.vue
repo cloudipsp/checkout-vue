@@ -15,7 +15,7 @@
       <div v-if="enabled_switch" class="f-subscription-wrapper">
         <input-amount
           name="amount"
-          label="subscription_amount"
+          :label="$t('subscription_amount')"
           subscription
           :disabled="readonly"
         />
