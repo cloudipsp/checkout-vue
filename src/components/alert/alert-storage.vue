@@ -8,7 +8,7 @@
         <f-button-link variant="secondary" @click="close">{{
           $t('not_now')
         }}</f-button-link>
-        <f-button variant="secondary" text="accept" @click="ok" />
+        <f-button variant="secondary" :text="$t('accept')" @click="ok" />
       </div>
     </div>
   </f-alert-base>

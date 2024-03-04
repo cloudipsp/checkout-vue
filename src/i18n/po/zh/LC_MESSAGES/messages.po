@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "银行卡"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "SEPA 直接借记"
 
@@ -34,9 +31,6 @@ msgstr "银行转帐"
 
 msgid "local_methods"
 msgstr "本地支付方式"
-
-msgid "wallets"
-msgstr "钱包"
 
 msgid "loans"
 msgstr "网上分期付款"
@@ -61,18 +55,6 @@ msgstr "周"
 
 msgid "month"
 msgstr "月"
-
-msgid "menu"
-msgstr "菜单"
-
-msgid "error_modal"
-msgstr "错误模态"
-
-msgid "error"
-msgstr "错误"
-
-msgid "system"
-msgstr "系统"
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -111,6 +93,9 @@ msgstr "现在不行"
 msgid "accept"
 msgstr "我同意"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "支付"
 
@@ -129,20 +114,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "输入其他卡"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr "模型"
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "卡验证"
-
-msgid "verification_"
-msgstr "验证_"
 
 msgid "see_more"
 msgstr "完整显示"
@@ -162,9 +138,6 @@ msgstr "请再试一次"
 msgid "submit3ds_wait"
 msgstr "你将被重定向到银行网站以在{0} 秒内完成支付"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "哎呀.."
 
@@ -174,26 +147,29 @@ msgstr "出现问题，我们已经在处理. 请返回到 你的订单，然后
 msgid "offer_t"
 msgstr "我同意接受 <a href=\"{0}\" target=\"_blank\">bid 条件和条款. </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "试用期"
 
 msgid "first_payment"
 msgstr "第一次付款"
 
-msgid "total_amount"
-msgstr "应付总额"
-
-msgid "fee"
-msgstr "佣金"
-
 msgid "amount"
 msgstr "应付金额"
 
 msgid "discount"
 msgstr "折扣"
+
+msgid "fee"
+msgstr "佣金"
+
+msgid "total_amount"
+msgstr "应付总额"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
+msgstr ""
 
 msgid "security_title"
 msgstr "强大的客户身份验证"
@@ -243,12 +219,6 @@ msgstr "电话"
 msgid "customer_email"
 msgstr "电子邮件"
 
-msgid "verify"
-msgstr "验证"
-
-msgid "success"
-msgstr "成功"
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -257,15 +227,6 @@ msgstr "展示更多..."
 
 msgid "pay_with_card"
 msgstr "使用卡进行支付"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-卡背面的数字代码"
@@ -282,19 +243,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -344,8 +302,8 @@ msgstr "付款期限"
 
 msgid "ibox_desc"
 msgstr ""
-"所有接受付款的 iBox 终端都标记在 <a href=\"https://ibox.ua/map\" target="
-"\"_blank\">地图</a>"
+"所有接受付款的 iBox 终端都标记在 <a href=\"https://ibox.ua/map\" "
+"target=\"_blank\">地图</a>"
 
 msgid "save_receipt"
 msgstr "保存收据"
@@ -364,11 +322,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "提供你的银行帐户详细信息"
 
-msgid "sender_name"
-msgstr "名字"
-
 msgid "bank_desc"
 msgstr "你将被重定向到银行的网站以完成付款"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "付款编号"
@@ -377,9 +338,6 @@ msgid "demo-title"
 msgstr "演示模式"
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -494,6 +452,9 @@ msgstr "付款链接已停用"
 
 msgid "button_status_not_active_text"
 msgstr "请与商家联系以领取付款链接."
+
+msgid "sender_name"
+msgstr "名字"
 
 msgid "sender_familyName"
 msgstr "姓"
@@ -654,38 +615,17 @@ msgstr "确认码"
 msgid "verification_amount"
 msgstr "验证金额"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "-"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "label"
-#~ msgstr "标签"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "-"
-
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "switch"
-#~ msgstr "切换"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "本地支付方式"
-
-#~ msgid "declined_desc"
-#~ msgstr "你可以返回网站并下另一个订单."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

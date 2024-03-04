@@ -17,14 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
 
-msgid "download_receipt"
-msgstr "Загрузить квитанцию"
-
 msgid "card"
 msgstr "Банковская карта"
-
-msgid "trustly"
-msgstr "-"
 
 msgid "sepa"
 msgstr "SEPA Direct Debit"
@@ -37,9 +31,6 @@ msgstr "Банковский перевод"
 
 msgid "local_methods"
 msgstr "Локальные способы оплаты"
-
-msgid "wallets"
-msgstr ""
 
 msgid "loans"
 msgstr "Рассрочка online"
@@ -64,18 +55,6 @@ msgstr "Неделя"
 
 msgid "month"
 msgstr "Месяц"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -127,9 +106,6 @@ msgstr "Оплатить"
 msgid "demo-desc"
 msgstr ""
 
-msgid "return_to_site"
-msgstr "Вернуться на сайт"
-
 msgid "expires_on"
 msgstr "Действует до"
 
@@ -142,20 +118,11 @@ msgstr "Отклонено"
 msgid "use_other_card"
 msgstr "Ввести другую карту"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Проверка карты"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "Показать полностью"
@@ -177,9 +144,6 @@ msgstr ""
 "Мы перенаправим вас на сайт банка снова для завершения платежа через {0} "
 "секунд"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Увы…"
 
@@ -190,9 +154,6 @@ msgstr ""
 
 msgid "offer_t"
 msgstr "Я принимаю <a href=\"{0}\" target=\"_blank\">условия оферты</a>"
-
-msgid "offerta_url"
-msgstr ""
 
 msgid "trial_period"
 msgstr "Пробный период"
@@ -270,12 +231,6 @@ msgstr "Телефон"
 msgid "customer_email"
 msgstr "Электронная почта"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr "Воспользуйтесь приложением monobank для подтверждения покупки частями"
 
@@ -284,15 +239,6 @@ msgstr "Показать еще…"
 
 msgid "pay_with_card"
 msgstr "Оплатить картой"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-значный код на обороте карты"
@@ -309,17 +255,23 @@ msgstr "платежи"
 msgid "currency_month"
 msgstr "{0} / месяц"
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
 msgstr "Ожидаем в ближайшее время"
 
 msgid "conditions"
 msgstr "Условия"
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
 msgstr ""
+"<li>У вас есть кредитная карта от monobank</li><li>Доступный лимит на "
+"Покупку частям</li><li>Первый платеж пройдет в момент покупки, а следующий – "
+"через месяц</li>"
+
+msgid "installments_desc_privatbank_ua"
+msgstr ""
+"<li>Наличие карты «Универсальная».</li><li>Доступный кредитный лимит по "
+"сервису «Оплата частями».</li><li>Первый платеж пройдет в момент покупки, "
+"следующий - через месяц.</li>"
 
 msgid "most_popular_methods_in"
 msgstr ""
@@ -392,11 +344,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Укажите реквизиты банковского счета"
 
-msgid "sender_name"
-msgstr "Имя"
-
 msgid "bank_desc"
 msgstr "Мы перенаправим вас на сайт банка для завершения платежа"
+
+msgid "return_to_site"
+msgstr "Вернуться на сайт"
+
+msgid "download_receipt"
+msgstr "Загрузить квитанцию"
 
 msgid "payment_id"
 msgstr "ID платежа"
@@ -406,9 +361,6 @@ msgstr ""
 
 msgid "mode-test"
 msgstr "Тестовый режим"
-
-msgid "\""
-msgstr ""
 
 msgid "title-declined"
 msgstr "Увы…Мы не смогли принять ваш платеж."
@@ -527,6 +479,9 @@ msgid "button_status_not_active_text"
 msgstr ""
 "Обратитесь, пожалуйста, к торговцу для получения актуальной ссылки для "
 "оплаты."
+
+msgid "sender_name"
+msgstr "Имя"
 
 msgid "sender_familyName"
 msgstr "Фамилия"
@@ -688,18 +643,6 @@ msgstr "Код подтверждения от банка"
 msgid "verification_amount"
 msgstr "Замороженная сумма"
 
-msgid "installments_desc_monobank_ua"
-msgstr ""
-"<li>У вас есть кредитная карта от monobank</li><li>Доступный лимит на "
-"Покупку частям</li><li>Первый платеж пройдет в момент покупки, а следующий – "
-"через месяц</li>"
-
-msgid "installments_desc_privatbank_ua"
-msgstr ""
-"<li>Наличие карты «Универсальная».</li><li>Доступный кредитный лимит по "
-"сервису «Оплата частями».</li><li>Первый платеж пройдет в момент покупки, "
-"следующий - через месяц.</li>"
-
 msgid "promo_status_approve"
 msgstr "Применен промокод"
 
@@ -714,30 +657,3 @@ msgstr "Другие акционные предложения не будут �
 
 msgid "card_does_not_participate_in_discount_program"
 msgstr "Карта не участвует в программе скидок"
-
-#~ msgid "installments_oschadbank"
-#~ msgstr "Кредит рассрочка от Ощадбанка"
-
-#~ msgid "angle-down"
-#~ msgstr "-"
-
-#~ msgid "offer"
-#~ msgstr "-"
-
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Локальные способы оплаты"
-
-#~ msgid "declined_desc"
-#~ msgstr "Вы можете вернуться на сайт и оформить заказ заново."

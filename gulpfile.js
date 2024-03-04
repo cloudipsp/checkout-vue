@@ -1,60 +1,48 @@
-const fs = require('fs')
 const fsp = require('fs').promises
 const gulp = require('gulp')
 const nodeGettextGenerator = require('node-gettext-generator')
 const configLocale = require('./src/config/locales.json')
 const uk = require('@umpirsky/country-list/data/uk/country.json')
 
+const excludes = list => item => !list.includes(item)
 const locales = Object.keys(configLocale)
 
-function process(src) {
-  return done => {
-    let arr = JSON.parse(fs.readFileSync(src, 'utf8'))
-    let resultFileName = src.match(/\/([\w-]+)\./)[1]
-    let contents = []
-
-    arr.map(item => contents.push(`_('${item}')`))
-    fs.writeFileSync(
-      `./src/i18n/process/${resultFileName}.js`,
-      contents.join('\n')
+const process = (src, parse) => () =>
+  fsp
+    .readFile(src, 'utf-8')
+    .then(content => JSON.parse(content))
+    .then(content => (typeof parse === 'function' ? parse(content) : content))
+    .then(content =>
+      content.reduce((accum, item) => [...accum, `_('${item}')`], [])
+    )
+    .then(content => content.join('\n'))
+    .then(content =>
+      fsp.writeFile(
+        `./src/i18n/process/${src.match(/\/([\w-]+)\./)[1]}.js`,
+        content
+      )
     )
 
-    done()
-  }
-}
-
-gulp.task('methods', process('./src/config/methods.json'))
+gulp.task(
+  'methods',
+  process('./src/config/methods.json', content =>
+    content.filter(excludes(['trustly', 'wallets']))
+  )
+)
 
 gulp.task(
   'subscription-period',
   process('./src/config/subscription-period.json')
 )
 
-gulp.task('po', function (done) {
-  return nodeGettextGenerator
+gulp.task('po', done =>
+  nodeGettextGenerator
     .process({
       extract: {
-        path: [
-          './src/components',
-          './src/views',
-          './src/config',
-          './src/app.vue',
-        ],
+        path: ['./src'],
         target: './src/i18n/process/templates.js',
-        // title="tran1"
-        // text="tran1"
-        // name="tran1"
-        // label="tran1"
-        // placeholder="tran1"
-        // v-t="'tran2'"
-        // $t('tran3')
-        // label: 'tran4'
-        // placeholder: 'tran4'
-        // name: 'tran4'
-        // { path: 'tran4'
-        match:
-          /(?:(?<!(?:(?:svg|transition|slot)[ ])|[^ ])(?:title|text|label|placeholder)=(["'])([^{}]+?)\1)|(?:v-t="'(.+?)'")|(?:\$t\((["'])(.+?)\4)|(?:(?:label|placeholder|name|{ path):[ ]?(["'])(.+?)\6)/g,
-        replace: "_('$2$3$5$7')",
+        match: /\$t\('(.+?)'/g,
+        replace: "_('$1')",
       },
       params: {
         name: 'messages',
@@ -68,7 +56,7 @@ gulp.task('po', function (done) {
     .then(function () {
       done()
     })
-})
+)
 
 gulp.task('locale', gulp.series('methods', 'subscription-period', 'po'))
 

@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Kortti"
 
-msgid "trustly"
-msgstr "luottavaisesti"
-
 msgid "sepa"
 msgstr "SEPA-suoraveloitus"
 
@@ -34,9 +31,6 @@ msgstr "Pankkisiirto"
 
 msgid "local_methods"
 msgstr "Paikalliset maksutavat"
-
-msgid "wallets"
-msgstr "lompakot"
 
 msgid "loans"
 msgstr "Verkkomaksuerät"
@@ -61,18 +55,6 @@ msgstr "Viikko"
 
 msgid "month"
 msgstr "Kuukausi"
-
-msgid "menu"
-msgstr "valikko"
-
-msgid "error_modal"
-msgstr "virhe_modaalinen"
-
-msgid "error"
-msgstr "virhe"
-
-msgid "system"
-msgstr "järjestelmä"
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -117,6 +99,9 @@ msgstr "Ei nyt"
 msgid "accept"
 msgstr "Hyväksyn"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Maksaa"
 
@@ -136,20 +121,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Syötä toinen kortti"
 
-msgid "datepicker"
-msgstr "päivämäärävalitsin"
-
-msgid "model"
-msgstr "malli"
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Kortin vahvistus"
-
-msgid "verification_"
-msgstr "vahvistus"
 
 msgid "see_more"
 msgstr "Näytä kaikki"
@@ -171,9 +147,6 @@ msgstr ""
 "Sinut siirretään pankin verkkosivustolle suorittamaan maksu {0} sekunnin "
 "kuluttua"
 
-msgid "show"
-msgstr "näytä"
-
 msgid "server_trouble_title"
 msgstr "Oho..."
 
@@ -185,26 +158,29 @@ msgstr ""
 msgid "offer_t"
 msgstr "Hyväksyn <a href=\"{0}\" target=\"_blank\">tilauksen käyttöehdot. </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Koeaika"
 
 msgid "first_payment"
 msgstr "Ensimmäinen maksu"
 
-msgid "total_amount"
-msgstr "Kokonaissumman maksun eräpäivä"
-
-msgid "fee"
-msgstr "Käsittelykulut"
-
 msgid "amount"
 msgstr "Maksun eräpäivä"
 
 msgid "discount"
 msgstr "alennus"
+
+msgid "fee"
+msgstr "Käsittelykulut"
+
+msgid "total_amount"
+msgstr "Kokonaissumman maksun eräpäivä"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
+msgstr ""
 
 msgid "security_title"
 msgstr "Vahva asiakastunnistus"
@@ -258,12 +234,6 @@ msgstr "Puhelin"
 msgid "customer_email"
 msgstr "Sähköposti"
 
-msgid "verify"
-msgstr "vahvistaa"
-
-msgid "success"
-msgstr "menestys"
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -272,15 +242,6 @@ msgstr "Näytä lisä..."
 
 msgid "pay_with_card"
 msgstr "Maksaa kortilla"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-numeroinen koodi korttisi takapuolella"
@@ -297,19 +258,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -383,11 +341,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Syötä pankkitilisi tiedot"
 
-msgid "sender_name"
-msgstr "Nimi"
-
 msgid "bank_desc"
 msgstr "Sinut siirretään pankin verkkosivustolle suorittamaan maksu"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "Maksutunnus"
@@ -396,9 +357,6 @@ msgid "demo-title"
 msgstr "Esittelymuoto"
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -515,6 +473,9 @@ msgstr "Maksulinkki on poistettu käytöstä"
 
 msgid "button_status_not_active_text"
 msgstr "Ota yhteyttä kauppiaaseen saadaksesi maksulinkin."
+
+msgid "sender_name"
+msgstr "Nimi"
 
 msgid "sender_familyName"
 msgstr "Sukunimi"
@@ -675,38 +636,17 @@ msgstr "Vahvistuskoodi"
 msgid "verification_amount"
 msgstr "Vahvistusmäärä"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "kulma-alaspäin"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "label"
-#~ msgstr "leima"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "tarjous"
-
-#~ msgid "security"
-#~ msgstr "turvallisuus"
-
-#~ msgid "switch"
-#~ msgstr "vaihtaa"
-
-#~ msgid "code"
-#~ msgstr "koodi"
-
-#~ msgid "checkout-email"
-#~ msgstr "kassa-sähköposti"
-
-#~ msgid "search"
-#~ msgstr "haku"
-
-#~ msgid "local_banks"
-#~ msgstr "Paikalliset maksutavat"
-
-#~ msgid "declined_desc"
-#~ msgstr "Voit palata verkkosivustolle ja tehdä uuden tilauksen."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

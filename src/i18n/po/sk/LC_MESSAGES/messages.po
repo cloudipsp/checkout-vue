@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Karta"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "SEPA Direct Debit"
 
@@ -34,9 +31,6 @@ msgstr "Bankový prevod"
 
 msgid "local_methods"
 msgstr "Miestne platobné metódy"
-
-msgid "wallets"
-msgstr ""
 
 msgid "loans"
 msgstr ""
@@ -61,18 +55,6 @@ msgstr "Týždeň"
 
 msgid "month"
 msgstr "Mesiac"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -115,6 +97,9 @@ msgstr "Opýtať sa neskôr"
 msgid "accept"
 msgstr "Súhlasím"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Zaplatiť"
 
@@ -133,20 +118,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Zadať inú kartu"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Overenie karty"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "Zobraziť viac"
@@ -168,9 +144,6 @@ msgstr ""
 "Budete znovu presmerovaný na webovú stránku banky, aby ste dokončili platbu "
 "za {0} s"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Ups.."
 
@@ -182,25 +155,28 @@ msgstr ""
 msgid "offer_t"
 msgstr "Prijímam <a href=\"{0}\" target=\"_blank\">podmienky ponuky </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Skúšobná doba"
 
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "Celkom"
-
-msgid "fee"
-msgstr "Poplatok"
-
 msgid "amount"
 msgstr "Celkom"
 
 msgid "discount"
+msgstr ""
+
+msgid "fee"
+msgstr "Poplatok"
+
+msgid "total_amount"
+msgstr "Celkom"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
 msgstr ""
 
 msgid "security_title"
@@ -255,12 +231,6 @@ msgstr "Telefón"
 msgid "customer_email"
 msgstr "Email"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -269,15 +239,6 @@ msgstr "Nahrať viac..."
 
 msgid "pay_with_card"
 msgstr "Zaplatiť kartou"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-číselný kód na zadnej strane karty"
@@ -294,19 +255,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -358,8 +316,8 @@ msgstr "Termín platby"
 
 msgid "ibox_desc"
 msgstr ""
-"Všetky terminály iBox, ktoré prijímajú platby, sú označené na <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">mape</a>"
+"Všetky terminály iBox, ktoré prijímajú platby, sú označené na <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">mape</a>"
 
 msgid "save_receipt"
 msgstr "Uložiť potvrdenie"
@@ -380,11 +338,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Zadajte údaje o svojom bankovom účte"
 
-msgid "sender_name"
-msgstr "Meno"
-
 msgid "bank_desc"
 msgstr "Budete presmerovaní na webovú stránku banky, aby ste dokončili platbu"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "ID platby"
@@ -393,9 +354,6 @@ msgid "demo-title"
 msgstr ""
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -513,6 +471,9 @@ msgstr ""
 
 msgid "button_status_not_active_text"
 msgstr ""
+
+msgid "sender_name"
+msgstr "Meno"
 
 msgid "sender_familyName"
 msgstr "Priezvisko"
@@ -673,32 +634,17 @@ msgstr "Overovací kód"
 msgid "verification_amount"
 msgstr "Suma overenia"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "-"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "-"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Miestne platobné metódy"
-
-#~ msgid "declined_desc"
-#~ msgstr "Môžete sa vrátiť na webovú stránku a urobiť ďalšiu objednávku."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

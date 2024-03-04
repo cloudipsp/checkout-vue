@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Kártya"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "SEPA Direct Debit"
 
@@ -34,9 +31,6 @@ msgstr "Banki átutalás"
 
 msgid "local_methods"
 msgstr "Helyi fizetési módok"
-
-msgid "wallets"
-msgstr ""
 
 msgid "loans"
 msgstr ""
@@ -61,18 +55,6 @@ msgstr "Hét"
 
 msgid "month"
 msgstr "Hónap"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -116,6 +98,9 @@ msgstr "Kérdezze meg később"
 msgid "accept"
 msgstr "Egyetértek"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Fizetni"
 
@@ -134,20 +119,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Adja meg egy másik kártya adatait"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Kártya igazolása"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "Többet látni"
@@ -169,9 +145,6 @@ msgstr ""
 "A fizetés befejezéséhez ismét átirányítjuk a bank webhelyére {0} másodperc "
 "múlva"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Hoppá.."
 
@@ -184,25 +157,28 @@ msgid "offer_t"
 msgstr ""
 "Elfogadom <a href=\"{0}\" target=\"_blank\">az ajánlat feltételeit </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Próbaidő"
 
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "Teljes összeg"
-
-msgid "fee"
-msgstr "Jutalék összege"
-
 msgid "amount"
 msgstr "Teljes összeg"
 
 msgid "discount"
+msgstr ""
+
+msgid "fee"
+msgstr "Jutalék összege"
+
+msgid "total_amount"
+msgstr "Teljes összeg"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
 msgstr ""
 
 msgid "security_title"
@@ -257,12 +233,6 @@ msgstr "Telefon"
 msgid "customer_email"
 msgstr "Email"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -271,15 +241,6 @@ msgstr "Több betöltése..."
 
 msgid "pay_with_card"
 msgstr "Fizetni kártyával"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-a kártya hátoldalán található numerikus kód"
@@ -296,19 +257,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -360,8 +318,8 @@ msgstr "Fizetési határidő"
 
 msgid "ibox_desc"
 msgstr ""
-"A fizetéseket elfogadó összes iBox terminál fel van tüntetve <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">a térképen</a>"
+"A fizetéseket elfogadó összes iBox terminál fel van tüntetve <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">a térképen</a>"
 
 msgid "save_receipt"
 msgstr "A nyugta mentése"
@@ -382,11 +340,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Adja meg bankszámlája adatait"
 
-msgid "sender_name"
-msgstr "Név"
-
 msgid "bank_desc"
 msgstr "A fizetés befejezéséhez átirányítjuk a bank weboldalára"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "Fizetési ID"
@@ -395,9 +356,6 @@ msgid "demo-title"
 msgstr ""
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -515,6 +473,9 @@ msgstr ""
 
 msgid "button_status_not_active_text"
 msgstr ""
+
+msgid "sender_name"
+msgstr "Név"
 
 msgid "sender_familyName"
 msgstr "Vezetéknév"
@@ -675,32 +636,17 @@ msgstr "Megerősítő kód"
 msgid "verification_amount"
 msgstr "Ellenőrző összeg"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "-"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "-"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Helyi fizetési módok"
-
-#~ msgid "declined_desc"
-#~ msgstr "Visszatérhet a weboldalra, és újabb megrendelést tehet."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

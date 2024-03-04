@@ -8,7 +8,7 @@
       <f-button
         ref="submit"
         variant="secondary"
-        text="submit3ds_submit"
+        :text="$t('submit3ds_submit')"
         @click="submit(ok)"
       />
       <div class="f-w-100" />

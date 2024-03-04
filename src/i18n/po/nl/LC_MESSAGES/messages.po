@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "kaart"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "sepa-incasso systeem"
 
@@ -34,9 +31,6 @@ msgstr "bankoverschrijving"
 
 msgid "local_methods"
 msgstr "lokale betaalmethoden"
-
-msgid "wallets"
-msgstr "portemonnees"
 
 msgid "loans"
 msgstr "online installaties"
@@ -61,18 +55,6 @@ msgstr "week"
 
 msgid "month"
 msgstr "maand"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -115,6 +97,9 @@ msgstr "later opnieuw proberen"
 msgid "accept"
 msgstr "ik ga akkoord"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "betalen"
 
@@ -135,20 +120,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "voer andere kaart in"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "kaart verificatie"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "meer zien"
@@ -170,9 +146,6 @@ msgstr ""
 "u wordt opnieuw doorverwezen naar de website van de bank om uw betaling in "
 "{0} seconden te voltooien"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Oeps..."
 
@@ -185,25 +158,28 @@ msgid "offer_t"
 msgstr ""
 "ik accepteer <a href=\"{0}\" target=\"_blank\">aanbiedingsvoorwaarden </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "proefperiode"
 
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "totaal bedrag"
-
-msgid "fee"
-msgstr "commissie"
-
 msgid "amount"
 msgstr "totaal"
 
 msgid "discount"
+msgstr ""
+
+msgid "fee"
+msgstr "commissie"
+
+msgid "total_amount"
+msgstr "totaal bedrag"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
 msgstr ""
 
 msgid "security_title"
@@ -258,12 +234,6 @@ msgstr "telefoonnummer"
 msgid "customer_email"
 msgstr "e-mailadres"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -272,15 +242,6 @@ msgstr "Meer laden..."
 
 msgid "pay_with_card"
 msgstr "betalen met kaart"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-cijfers code op de achterkant van uw kaart"
@@ -297,19 +258,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -361,8 +319,8 @@ msgstr "betalingstermijn"
 
 msgid "ibox_desc"
 msgstr ""
-"alle iBox-terminals die betalingen accepteren zijn vermeld op de <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">map</a>"
+"alle iBox-terminals die betalingen accepteren zijn vermeld op de <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">map</a>"
 
 msgid "save_receipt"
 msgstr "ontvangstbewijs opslaan"
@@ -383,12 +341,15 @@ msgstr ""
 msgid "sepa_t"
 msgstr "vul uw bankgegevens in"
 
-msgid "sender_name"
-msgstr "naam"
-
 msgid "bank_desc"
 msgstr ""
 "u wordt doorverwezen naar de website van de bank om uw betaling te voltooien"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "betaal-ID"
@@ -397,9 +358,6 @@ msgid "demo-title"
 msgstr "demo-modus"
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -517,6 +475,9 @@ msgstr "betalingslink is gedeactiveerd"
 
 msgid "button_status_not_active_text"
 msgstr "neem contact op met de verkoper om de betalingslink te ontvangen"
+
+msgid "sender_name"
+msgstr "naam"
 
 msgid "sender_familyName"
 msgstr "achternaam"
@@ -677,32 +638,17 @@ msgstr "bevestigingscode"
 msgid "verification_amount"
 msgstr "verificatiebedrag"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "-"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "-"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Local payment methods"
-
-#~ msgid "declined_desc"
-#~ msgstr "You may return to the website and make another order."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

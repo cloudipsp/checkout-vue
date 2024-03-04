@@ -13,7 +13,7 @@
       no-more
       no-search
       breakpoint="lg"
-      label="most_popular_methods_in"
+      :label="$t('most_popular_methods_in')"
       @select="select"
     />
     <div v-if="isBreakpointDownLg" :class="$style.btn">

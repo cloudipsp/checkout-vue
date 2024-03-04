@@ -14,7 +14,7 @@
       />
       <f-button
         variant="default"
-        text="add"
+        :text="$t('add')"
         :disabled="disabledButton"
         data-e2e-btn-promo-code
         @click="add"

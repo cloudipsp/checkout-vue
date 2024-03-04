@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Carta"
 
-msgid "trustly"
-msgstr "-"
-
 msgid "sepa"
 msgstr "Addebito SEPA"
 
@@ -34,9 +31,6 @@ msgstr "Trasferimento bancario"
 
 msgid "local_methods"
 msgstr "Metodi di pagamento locali"
-
-msgid "wallets"
-msgstr ""
 
 msgid "loans"
 msgstr ""
@@ -61,18 +55,6 @@ msgstr "Settimana"
 
 msgid "month"
 msgstr "Mese"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -116,6 +98,9 @@ msgstr "Chiedere più tardi"
 msgid "accept"
 msgstr "Sono d'accordo"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Pagare"
 
@@ -134,20 +119,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Inserire un'altra carta"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Verifica della carta"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "Vedere altro"
@@ -169,9 +145,6 @@ msgstr ""
 "Verrà reindirizzato nuovamente al sito web della banca per completare il "
 "pagamento in {0} pochi secondi"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "Oops.."
 
@@ -183,25 +156,28 @@ msgstr ""
 msgid "offer_t"
 msgstr "Io accetto <a href=\"{0}\" target=\"_blank\">altre condizioni </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Periodo di prova"
 
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "Importo totale"
-
-msgid "fee"
-msgstr "Commissione"
-
 msgid "amount"
 msgstr "Importo totale"
 
 msgid "discount"
+msgstr ""
+
+msgid "fee"
+msgstr "Commissione"
+
+msgid "total_amount"
+msgstr "Importo totale"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
 msgstr ""
 
 msgid "security_title"
@@ -256,12 +232,6 @@ msgstr "Telefono"
 msgid "customer_email"
 msgstr "E-mail"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -270,15 +240,6 @@ msgstr "Caricare di più..."
 
 msgid "pay_with_card"
 msgstr "Pagare con carta"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-codice numerico sul retro della carta"
@@ -295,19 +256,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -381,12 +339,15 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Dovrebbe fornire i requisiti del suo conto bancario"
 
-msgid "sender_name"
-msgstr "Nome"
-
 msgid "bank_desc"
 msgstr ""
 "Verrà reindirizzato al sito web della banca per completare il pagamento"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "ID pagamento"
@@ -395,9 +356,6 @@ msgid "demo-title"
 msgstr ""
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -516,6 +474,9 @@ msgstr ""
 
 msgid "button_status_not_active_text"
 msgstr ""
+
+msgid "sender_name"
+msgstr "Nome"
 
 msgid "sender_familyName"
 msgstr "Cognome"
@@ -676,32 +637,17 @@ msgstr "Codice di conferma"
 msgid "verification_amount"
 msgstr "Importo della verifica"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "-"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "-"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Metodi di pagamento locali"
-
-#~ msgid "declined_desc"
-#~ msgstr "Può tornare al sito web ed effettuare un altro ordine."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

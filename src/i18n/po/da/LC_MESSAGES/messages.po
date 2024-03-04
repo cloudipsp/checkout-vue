@@ -20,9 +20,6 @@ msgstr ""
 msgid "card"
 msgstr "Kort"
 
-msgid "trustly"
-msgstr "pålideligt"
-
 msgid "sepa"
 msgstr "SEPA Direkte Debitering"
 
@@ -34,9 +31,6 @@ msgstr "Bankoverførsel"
 
 msgid "local_methods"
 msgstr "Lokale betalingsmåder"
-
-msgid "wallets"
-msgstr "tegnebøger"
 
 msgid "loans"
 msgstr "Delbetaling på nettet"
@@ -61,18 +55,6 @@ msgstr "En uge"
 
 msgid "month"
 msgstr "Måned"
-
-msgid "menu"
-msgstr "menu"
-
-msgid "error_modal"
-msgstr "modal_fejl"
-
-msgid "error"
-msgstr "fejl"
-
-msgid "system"
-msgstr "system"
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -118,6 +100,9 @@ msgstr "Ikke nu"
 msgid "accept"
 msgstr "Jeg er enig"
 
+msgid "cancel"
+msgstr ""
+
 msgid "pay"
 msgstr "Betale"
 
@@ -138,20 +123,11 @@ msgstr ""
 msgid "use_other_card"
 msgstr "Indtast detaljerne for et andet kort"
 
-msgid "datepicker"
-msgstr "vindue til valg af dato eller datointerval"
-
-msgid "model"
-msgstr "model"
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Bekræftelse af kort"
-
-msgid "verification_"
-msgstr "verifikation_"
 
 msgid "see_more"
 msgstr "Vis det fuldt ud"
@@ -173,9 +149,6 @@ msgstr ""
 "Du vil derefter blive omdirigeret til bankens websted for at gennemføre "
 "betalingen inden for {0} sekunder"
 
-msgid "show"
-msgstr "vise"
-
 msgid "server_trouble_title"
 msgstr "Ups.."
 
@@ -189,26 +162,29 @@ msgstr ""
 "tilbud_tJeg accepterer <a href=\"{0}\" target=\"_blank\">bid vilkår og "
 "betingelser. </a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "Prøvetid"
 
 msgid "first_payment"
 msgstr "Første betaling"
 
-msgid "total_amount"
-msgstr "Det samlede beløb, der skal betales"
-
-msgid "fee"
-msgstr "provisionsbetaling"
-
 msgid "amount"
 msgstr "skyldigt beløb"
 
 msgid "discount"
 msgstr "rabat"
+
+msgid "fee"
+msgstr "provisionsbetaling"
+
+msgid "total_amount"
+msgstr "Det samlede beløb, der skal betales"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
+msgstr ""
 
 msgid "security_title"
 msgstr "Stærk autentificering af kunder"
@@ -262,12 +238,6 @@ msgstr "Telefon"
 msgid "customer_email"
 msgstr "E-mail"
 
-msgid "verify"
-msgstr "verificere"
-
-msgid "success"
-msgstr "succesfuldt"
-
 msgid "use_monobank_application"
 msgstr ""
 
@@ -276,15 +246,6 @@ msgstr "Vis mere..."
 
 msgid "pay_with_card"
 msgstr "Betal med kort"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-numerisk kode på bagsiden af ​​kortet"
@@ -301,19 +262,16 @@ msgstr ""
 msgid "currency_month"
 msgstr ""
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
-msgstr ""
-
-msgid "installments_oschadbank"
 msgstr ""
 
 msgid "conditions"
 msgstr ""
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -365,8 +323,8 @@ msgstr "Betalingsfristen"
 
 msgid "ibox_desc"
 msgstr ""
-"Alle iBox-terminaler, der accepterer betalinger, er angivet på <a href="
-"\"https://ibox.ua/map\" target=\"_blank\">kortet</a>"
+"Alle iBox-terminaler, der accepterer betalinger, er angivet på <a "
+"href=\"https://ibox.ua/map\" target=\"_blank\">kortet</a>"
 
 msgid "save_receipt"
 msgstr "Gem kvittering"
@@ -387,11 +345,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Angiv dine bankkontooplysninger"
 
-msgid "sender_name"
-msgstr "Navn"
-
 msgid "bank_desc"
 msgstr "Vi omdirigerer dig til bankens hjemmeside for at gennemføre betalingen"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "Betalings-id"
@@ -400,9 +361,6 @@ msgid "demo-title"
 msgstr "Demo-tilstand"
 
 msgid "mode-test"
-msgstr ""
-
-msgid "\""
 msgstr ""
 
 msgid "title-declined"
@@ -520,6 +478,9 @@ msgstr "Betalingslinket er deaktiveret"
 
 msgid "button_status_not_active_text"
 msgstr "Kontakt venligst sælgeren for at få betalingslinket."
+
+msgid "sender_name"
+msgstr "Navn"
 
 msgid "sender_familyName"
 msgstr "Efternavn"
@@ -682,38 +643,17 @@ msgstr "Bekræftelseskode"
 msgid "verification_amount"
 msgstr "Beløbet for tjek"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "angle-down"
-#~ msgstr "vippe"
+msgid "promo_status_invalid"
+msgstr ""
 
-#~ msgid "label"
-#~ msgstr "mærke"
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
 
-#~ msgid "offer"
-#~ msgstr "tilbud"
-
-#~ msgid "security"
-#~ msgstr "sikkerhed"
-
-#~ msgid "switch"
-#~ msgstr "skifte"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Lokale betalingsmetoder"
-
-#~ msgid "declined_desc"
-#~ msgstr "Du kan vende tilbage til siden og foretage en ny ordre."
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""

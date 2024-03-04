@@ -17,14 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
 
-msgid "download_receipt"
-msgstr "Завантажити квитанцію"
-
 msgid "card"
 msgstr "Банківська картка"
-
-msgid "trustly"
-msgstr "-"
 
 msgid "sepa"
 msgstr "SEPA Direct Debit"
@@ -37,9 +31,6 @@ msgstr "Банківський переказ"
 
 msgid "local_methods"
 msgstr "Локальні способи оплати"
-
-msgid "wallets"
-msgstr ""
 
 msgid "loans"
 msgstr "Розстрочка online"
@@ -64,18 +55,6 @@ msgstr "Тиждень"
 
 msgid "month"
 msgstr "Місяць"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -127,9 +106,6 @@ msgstr "Сплатити"
 msgid "demo-desc"
 msgstr ""
 
-msgid "return_to_site"
-msgstr "Повернутись до сайту"
-
 msgid "expires_on"
 msgstr "Дійсна до"
 
@@ -142,20 +118,11 @@ msgstr "Відхилено"
 msgid "use_other_card"
 msgstr "Вказати іншу картку"
 
-msgid "datepicker"
-msgstr "-"
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "Перевірка картки"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "Показати повністю"
@@ -177,9 +144,6 @@ msgstr ""
 "Ми перенаправимо вас на сайт банку ще раз для завершення оплати через {0} "
 "секунд"
 
-msgid "show"
-msgstr "-"
-
 msgid "server_trouble_title"
 msgstr "На жаль.."
 
@@ -190,9 +154,6 @@ msgstr ""
 
 msgid "offer_t"
 msgstr "Я приймаю <a href=\"{0}\" target=\"_blank\">умови оферти</a>"
-
-msgid "offerta_url"
-msgstr ""
 
 msgid "trial_period"
 msgstr "Пробний період"
@@ -270,12 +231,6 @@ msgstr "Телефон"
 msgid "customer_email"
 msgstr "Електронна пошта"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr "Скористайтесь додатком monobank для підтвердження покупки частинами"
 
@@ -284,15 +239,6 @@ msgstr "Показати ще..."
 
 msgid "pay_with_card"
 msgstr "Оплатити карткою"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-значний код на звороті картки"
@@ -309,17 +255,23 @@ msgstr "платежі"
 msgid "currency_month"
 msgstr "{0} / місяць"
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
 msgstr "Очікуємо найближчим часом"
 
 msgid "conditions"
 msgstr "Умови"
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
 msgstr ""
+"<li>У вас є кредитна картка від monobank</li><li>Доступний ліміт на Покупки "
+"частинами</li><li>Перший платіж пройде в момент купівлі, а наступний – через "
+"місяць</li>"
+
+msgid "installments_desc_privatbank_ua"
+msgstr ""
+"<li>Наявність картки «Універсальна».</li><li>Доступний кредитний ліміт за "
+"сервісом «Оплата частинами».</li><li>Перший платіж пройде в момент купівлі, "
+"наступний — через місяць.</li>"
 
 msgid "most_popular_methods_in"
 msgstr ""
@@ -392,11 +344,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "Вкажіть реквізити банківського рахунку"
 
-msgid "sender_name"
-msgstr "Ім'я"
-
 msgid "bank_desc"
 msgstr "Ми перенаправимо вас на сайт банку для завершення оплати"
+
+msgid "return_to_site"
+msgstr "Повернутись до сайту"
+
+msgid "download_receipt"
+msgstr "Завантажити квитанцію"
 
 msgid "payment_id"
 msgstr "ID платежу"
@@ -406,9 +361,6 @@ msgstr ""
 
 msgid "mode-test"
 msgstr "Тестовий режим"
-
-msgid "\""
-msgstr ""
 
 msgid "title-declined"
 msgstr "На жаль...Ми не змогли прийняти ваш платіж."
@@ -527,6 +479,9 @@ msgid "button_status_not_active_text"
 msgstr ""
 "Зверніться, будь ласка, до торговця щодо отримання актуального посилання для "
 "оплати."
+
+msgid "sender_name"
+msgstr "Ім'я"
 
 msgid "sender_familyName"
 msgstr "Прізвище"
@@ -688,18 +643,6 @@ msgstr "Код підтвердження від банку"
 msgid "verification_amount"
 msgstr "Заблокована сума"
 
-msgid "installments_desc_monobank_ua"
-msgstr ""
-"<li>У вас є кредитна картка від monobank</li><li>Доступний ліміт на Покупки "
-"частинами</li><li>Перший платіж пройде в момент купівлі, а наступний – через "
-"місяць</li>"
-
-msgid "installments_desc_privatbank_ua"
-msgstr ""
-"<li>Наявність картки «Універсальна».</li><li>Доступний кредитний ліміт за "
-"сервісом «Оплата частинами».</li><li>Перший платіж пройде в момент купівлі, "
-"наступний — через місяць.</li>"
-
 msgid "promo_status_approve"
 msgstr "Промокод застосовано"
 
@@ -714,30 +657,3 @@ msgstr "Інші акційні пропозиції не будуть прац�
 
 msgid "card_does_not_participate_in_discount_program"
 msgstr "Карта не бере участь у програмі знижок"
-
-#~ msgid "installments_oschadbank"
-#~ msgstr "Кредит розстрочка від Ощадбанку"
-
-#~ msgid "angle-down"
-#~ msgstr "-"
-
-#~ msgid "offer"
-#~ msgstr "-"
-
-#~ msgid "security"
-#~ msgstr "-"
-
-#~ msgid "code"
-#~ msgstr "-"
-
-#~ msgid "checkout-email"
-#~ msgstr "-"
-
-#~ msgid "search"
-#~ msgstr "-"
-
-#~ msgid "local_banks"
-#~ msgstr "Локальні способи оплати"
-
-#~ msgid "declined_desc"
-#~ msgstr "Ви можете повернутися на сайт на оформити замовлення заново."

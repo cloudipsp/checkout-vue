@@ -12,9 +12,6 @@ msgstr ""
 msgid "card"
 msgstr "ბარათი"
 
-msgid "trustly"
-msgstr ""
-
 msgid "sepa"
 msgstr "სეფა"
 
@@ -26,9 +23,6 @@ msgstr "საბანკო გადარიცხვა"
 
 msgid "local_methods"
 msgstr "ადგილობრივი გადახდის მეთოდები"
-
-msgid "wallets"
-msgstr "ელ. საფულე"
 
 msgid "loans"
 msgstr "განვადება"
@@ -53,18 +47,6 @@ msgstr "კვირა"
 
 msgid "month"
 msgstr "თვე"
-
-msgid "menu"
-msgstr ""
-
-msgid "error_modal"
-msgstr ""
-
-msgid "error"
-msgstr ""
-
-msgid "system"
-msgstr ""
 
 msgid "gdpr_yapily"
 msgstr ""
@@ -123,20 +105,11 @@ msgstr "უარყოფილია"
 msgid "use_other_card"
 msgstr "გამოიყენეთ სხვა ბარათი"
 
-msgid "datepicker"
-msgstr ""
-
-msgid "model"
-msgstr ""
-
 msgid "all_methods"
 msgstr ""
 
 msgid "verification_t"
 msgstr "ბარათის მოწმდება"
-
-msgid "verification_"
-msgstr ""
 
 msgid "see_more"
 msgstr "სრულად ნახვა"
@@ -156,9 +129,6 @@ msgstr "სცადე ერთხელაც"
 msgid "submit3ds_wait"
 msgstr "ჩვენ გამისამართებთ ბანკის საიტზე ხელახლა"
 
-msgid "show"
-msgstr ""
-
 msgid "server_trouble_title"
 msgstr "შეცდომა..."
 
@@ -168,26 +138,29 @@ msgstr "გთხოვთ დაბრუნდეთ რამოდენი�
 msgid "offer_t"
 msgstr "ვეთანხმები <a href=\\\"{0}\\\" target=\\\"_blank\\\">პირობებს</a>"
 
-msgid "offerta_url"
-msgstr ""
-
 msgid "trial_period"
 msgstr "გამოსაცდელი პერიოდი"
 
 msgid "first_payment"
 msgstr ""
 
-msgid "total_amount"
-msgstr "სრული თანხა"
-
-msgid "fee"
-msgstr "საკომისიო"
-
 msgid "amount"
 msgstr "თანხა"
 
 msgid "discount"
 msgstr "ფასდაკლება"
+
+msgid "fee"
+msgstr "საკომისიო"
+
+msgid "total_amount"
+msgstr "სრული თანხა"
+
+msgid "enter_promo_code"
+msgstr ""
+
+msgid "add"
+msgstr ""
 
 msgid "security_title"
 msgstr "მომხმარებლის ინფორმაცია დაცულია"
@@ -241,12 +214,6 @@ msgstr "მობილურის ნომერი"
 msgid "customer_email"
 msgstr "ელ. ფოსტა"
 
-msgid "verify"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
 msgid "use_monobank_application"
 msgstr "გამოიყენეთ მონობანკის აპლიკაცია გადახდის დასადასტურებლად"
 
@@ -255,15 +222,6 @@ msgstr "მეტის ნახვა"
 
 msgid "pay_with_card"
 msgstr "ბარათით გადახდა"
-
-msgid "card_number_p"
-msgstr "____ ____ ____ ____"
-
-msgid "expiry_date_p"
-msgstr "__/__"
-
-msgid "cvv2_p"
-msgstr "___"
 
 msgid "cvv2_help"
 msgstr "{0}-ციფრიანი კოდი ბარათის უკანა მხარეს"
@@ -280,16 +238,16 @@ msgstr "გადახდები"
 msgid "currency_month"
 msgstr "{0} / თვე"
 
-msgid "installments-system"
-msgstr ""
-
 msgid "expect_soon"
 msgstr "ველოდებით უმოკლეს დროში"
 
 msgid "conditions"
 msgstr "პირობები"
 
-msgid "loading-monobank"
+msgid "installments_desc_monobank_ua"
+msgstr ""
+
+msgid "installments_desc_privatbank_ua"
 msgstr ""
 
 msgid "most_popular_methods_in"
@@ -357,11 +315,14 @@ msgstr ""
 msgid "sepa_t"
 msgstr "მიუთითეთ ბანკის რეკვიზიტები"
 
-msgid "sender_name"
-msgstr "სახელი"
-
 msgid "bank_desc"
 msgstr "გამისამართებთ ბანკის საიტზე გადახდის დასრულებისთვის"
+
+msgid "return_to_site"
+msgstr ""
+
+msgid "download_receipt"
+msgstr ""
 
 msgid "payment_id"
 msgstr "გადახდის ID"
@@ -371,9 +332,6 @@ msgstr ""
 
 msgid "mode-test"
 msgstr "სატესტო რეჟიმი"
-
-msgid "\""
-msgstr ""
 
 msgid "title-declined"
 msgstr "სამწუხაროდ გადახდა წარუმატებელია"
@@ -489,6 +447,9 @@ msgstr "გადახდის ბმულის ვადა ამოიწ
 
 msgid "button_status_not_active_text"
 msgstr "გადახდის ბმულის ვადა ამოიწურა"
+
+msgid "sender_name"
+msgstr "სახელი"
 
 msgid "sender_familyName"
 msgstr ""
@@ -651,11 +612,17 @@ msgstr "ბანკის დასტურის კოდი"
 msgid "verification_amount"
 msgstr "დარეზერვებული თანხა"
 
-msgid "installments_desc_monobank_ua"
+msgid "promo_status_approve"
 msgstr ""
 
-msgid "installments_desc_privatbank_ua"
+msgid "promo_status_expired"
 msgstr ""
 
-#~ msgid "installments_oschadbank"
-#~ msgstr "Oschadbank-ის განვადება"
+msgid "promo_status_invalid"
+msgstr ""
+
+msgid "other_promotional_propositions_will_not_work"
+msgstr ""
+
+msgid "card_does_not_participate_in_discount_program"
+msgstr ""
