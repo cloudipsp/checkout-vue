@@ -38,10 +38,13 @@ export default {
   computed: {
     attrs() {
       return {
-        noFooter: false,
+        footer: true,
         ...this.$attrs,
       }
     },
+  },
+  watch: {
+    duration: 'run',
   },
   methods: {
     hide() {
@@ -58,7 +61,6 @@ export default {
     },
     tick() {
       this.$emit('update:duration', this.duration - 1)
-      this.run()
     },
   },
 }
