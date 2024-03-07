@@ -53,13 +53,18 @@ a {
   @include focus-visible(
     px-to-rem(2px),
     $outline_border,
-    px-to-rem(2),
+    px-to-rem(2px),
     $container_bg
   );
 }
 
 .f-form-control-secondary {
-  @include focus-visible(px-to-rem(2px), $outline_border, px-to-rem(2), $white);
+  @include focus-visible(
+    px-to-rem(2px),
+    $outline_border,
+    px-to-rem(2px),
+    $white
+  );
 }
 
 .f-btn-link:focus-visible,
