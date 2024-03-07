@@ -768,11 +768,21 @@
             response_url: 'https://api.dev.fondy.eu/test/responsepage/',
           },
         },
+        paycom_acs_page: {
+          options: {
+            api_domain,
+          },
+          params: {
+            amount: 100,
+            currency: 'UZS',
+            merchant_id: 5301,
+          },
+        },
       }
 
       setConfigsOption()
 
-      window.app = render('#app', 'link_download_receipt')
+      window.app = render('#app', 'paycom_acs_page')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 
