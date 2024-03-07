@@ -749,9 +749,19 @@
             // button: '7783fcaf1cd015a698fbbf94ff6f3c88929838b5'
           },
         },
+        paycom_acs_page: {
+          options: {
+            api_domain,
+          },
+          params: {
+            amount: 100,
+            currency: 'UZS',
+            merchant_id: 5301,
+          },
+        },
       }
 
-      window.app = render('#app', 'promo')
+      window.app = render('#app', 'paycom_acs_page')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 

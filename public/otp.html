@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <title>Enter otp code</title>
+    <link
+      href="https://fondy.ua/uploads/2022/06/favicon_32x32.svg"
+      rel="icon"
+    />
+    <style>
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src:
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-regular.woff2')
+            format('woff2'),
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-regular.woff')
+            format('woff');
+      }
+
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src:
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-medium.woff2')
+            format('woff2'),
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-medium.woff')
+            format('woff');
+      }
+
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src:
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-semibold.woff2')
+            format('woff2'),
+          url('https://pay.fondy.eu/icons/dist/fonts/inter-semibold.woff')
+            format('woff');
+      }
+    </style>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, sans-serif;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #818c99;
+        background-color: #fff;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .form-control {
+        --border: 0.0625rem;
+        display: block;
+        width: 100%;
+        height: 3.5rem;
+        padding: 1.625rem calc(0.75rem - var(--border)) 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        border-style: solid;
+        border-width: var(--border);
+        border-radius: 0.5rem;
+        transition:
+          color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out,
+          border-color 0.15s ease-in-out;
+      }
+
+      .form-control:-webkit-autofill,
+      .form-control:-webkit-autofill:active,
+      .form-control:-webkit-autofill:focus,
+      .form-control:-webkit-autofill:hover {
+        -webkit-transition: background-color 99999s;
+        transition: background-color 99999s;
+      }
+
+      .form-control:-webkit-autofill:first-line {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .form-control:focus {
+        --border: 0.0625rem;
+      }
+
+      .disabled > .f-form-control,
+      .form-control[disabled] {
+        opacity: 1;
+      }
+
+      .form-control:-webkit-autofill + .f-control-label-floating {
+        -webkit-transform: translateY(-8px) scale(0.75);
+        transform: translateY(-8px) scale(0.75);
+      }
+
+      .form-control[type='date'],
+      .form-control[type='tel'],
+      .form-control[type='text'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      .form-control::-webkit-input-placeholder {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .form-control::-moz-placeholder {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .form-control:-ms-input-placeholder {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .form-control::-ms-input-placeholder {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .form-control::placeholder {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      .form-control-no-floating {
+        padding-top: 0.5rem;
+      }
+
+      .form-control-default {
+        color: #3d3d3d;
+        background-color: #fff;
+        border-color: #D5DAE0;
+      }
+
+      .form-control-default:-webkit-autofill {
+        -webkit-text-fill-color: #3d3d3d;
+      }
+
+      .form-control-default:-webkit-autofill:first-line {
+        color: #3d3d3d;
+      }
+
+      .form-control-default:hover {
+        background-color: #fff;
+        border-color: #BAC1CA;
+      }
+
+      .form-control-default:focus {
+        border-color: #818c99;
+        outline: 0;
+        box-shadow:
+          0 0 0 0.125rem #fff,
+          0 0 0 0.25rem #9CA7B3;
+      }
+
+      .form-control-default::-webkit-input-placeholder {
+        color: #9CA7B3;
+      }
+
+      .form-control-default::-moz-placeholder {
+        color: #9CA7B3;
+      }
+
+      .form-control-default:-ms-input-placeholder {
+        color: #9CA7B3;
+      }
+
+      .form-control-default::-ms-input-placeholder {
+        color: #9CA7B3;
+      }
+
+      .form-control-default::placeholder {
+        color: #9CA7B3;
+      }
+
+      .btn {
+        position: relative;
+        display: inline-block;
+        height: 2.75rem;
+        min-height: 2.75rem;
+        padding: 0.625rem 2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        text-align: center;
+        background: none;
+        border: none;
+        border-radius: 0.5rem;
+        transition: all 0.15s ease-in-out;
+      }
+
+      .btn span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn:before {
+        bottom: 0.125rem;
+        left: 5%;
+        width: 90%;
+        height: 2rem;
+        border-radius: 1rem;
+      }
+
+      .btn:after,
+      .btn:before {
+        position: absolute;
+        z-index: 0;
+        content: '';
+        transition: all 0.15s ease-in-out;
+      }
+
+      .btn:after {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+      }
+
+      .btn:focus,
+      .btn:hover {
+        text-decoration: none;
+        -webkit-transform: translateY(-0.125rem);
+        transform: translateY(-0.125rem);
+      }
+
+      .btn:focus {
+        outline: 0;
+      }
+
+      .btn-success:focus-visible {
+        box-shadow:
+          0 0 0 0.125rem #fff,
+          0 0 0 0.25rem #444749;
+      }
+
+      .btn:active {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      .btn :not(:disabled, .disabled) {
+        cursor: pointer;
+      }
+
+      .btn-success {
+        color: #fff;
+      }
+
+      .btn-success:before {
+        box-shadow: 0 0.625rem 1.5625rem hsla(140, 67.6%, 51.6%, 0.6);
+      }
+
+      .btn-success:active:after,
+      .btn-success:after,
+      .btn-success:focus:after,
+      .btn-success:hover:after {
+        background: linear-gradient(90deg, #2fd769 30%, #1cb751 74%) #1cb751;
+        background-repeat: no-repeat;
+      }
+
+      .btn-success:focus:after,
+      .btn-success:hover:after {
+        background-position-x: -25px;
+      }
+
+      .btn-success:active:after {
+        background-position-x: -50px;
+      }
+
+      .btn-success.disabled,
+      .btn-success:disabled {
+        color: #BAC1CA;
+      }
+
+      .btn-success.disabled:before,
+      .btn-success:disabled:before {
+        box-shadow: none;
+      }
+
+      .btn-success.disabled:after,
+      .btn-success:disabled:after {
+        background: #EEF0F2;
+      }
+
+      .btn-block {
+        display: block;
+        width: 100%;
+      }
+
+      .btn-lg {
+        height: 3.5rem;
+        min-height: 3.5rem;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+      }
+
+      .wrapper {
+        text-align: center;
+        padding: 40px 48px 48px;
+      }
+
+      @media (min-width: 768px) {
+        .wrapper {
+          max-width: 427px;
+          margin: 0 auto;
+        }
+      }
+
+      .title {
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 600;
+        color: #313539;
+        margin: 0;
+        margin-bottom: 12px;
+      }
+
+      .desc {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #818c99;
+        margin-bottom: 4px;
+      }
+
+      .phone {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #484f57;
+        margin-bottom: 32px;
+      }
+
+      .control-48 {
+        height: 3rem;
+      }
+
+      .mb-32 {
+        margin-bottom: 2rem;
+      }
+
+      .timer {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #818c99;
+        margin-bottom: 56px;
+      }
+
+      .error {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #DE4760;
+        margin-bottom: 8px;
+      }
+    </style>
+    <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app" class="wrapper">
+      <h5 class="title">{{ title }}</h5>
+      <div class="desc">{{ desc }}</div>
+      <div class="phone">{{ phone }}</div>
+      <form :action="action" method="post" @submit="submit">
+        <input
+          v-model="code"
+          name="otp_code"
+          class="form-control form-control-default form-control-no-floating control-48 mb-32"
+          :placeholder="placeholder"
+          type="text"
+        />
+        <input name="second" type="hidden" :value="second" />
+        <div class="timer">{{ timer }} {{ time }}</div>
+        <div v-if="error" class="error">{{ error }}</div>
+        <button
+          class="btn btn-success btn-success btn-lg btn-block"
+          type="submit"
+          :disabled="disabled"
+        >
+          <span>{{ btn }}</span>
+        </button>
+      </form>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue
+
+      createApp({
+        data() {
+          return {
+            code: '',
+            loading: false,
+
+            //backend
+            title: 'Підтвердження номера',
+            desc: 'Ми відправили код на цей номер:',
+            phone: '+380 50 38* ** 23',
+            action: '#',
+            placeholder: 'Введіть код',
+            timer: 'Код буде дійсний',
+            second: 60,
+            length: 6,
+            error: 'невірний код',
+            btn: 'Перевірити та продовжити',
+          }
+        },
+        computed: {
+          disabled() {
+            return this.code.length !== this.length || this.loading
+          },
+          time() {
+            const minutes = Math.floor(this.second / 60)
+            const seconds = this.second - minutes * 60
+            const minutesFormat = ('0' + minutes).slice(-2)
+            const secondsFormat = ('0' + seconds).slice(-2)
+
+            return `${minutesFormat}:${secondsFormat}`
+          },
+        },
+        created() {
+          this.tick()
+        },
+        methods: {
+          tick() {
+            this.second -= 1
+            if (this.second) {
+              setTimeout(this.tick, 1000)
+            }
+          },
+          submit() {
+            this.loading = true
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>
