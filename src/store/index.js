@@ -551,6 +551,9 @@ class Store extends Model {
 
     this.state.params.token = token
   }
+  readyToSubmit() {
+    return !this.state.order.show_success_page
+  }
 }
 
 export const createStore = name => {

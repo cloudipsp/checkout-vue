@@ -206,7 +206,7 @@ export default {
       }
 
       // ready_to_submit && response_url && order_data formDataSubmit()
-      if (model.submitToMerchant()) return
+      if (this.store.readyToSubmit() && model.submitToMerchant()) return
 
       if (model.inProgress() && model.waitForResponse()) {
         let method = mappingMethod(model.attr('order_data.payment_system'))

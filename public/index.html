@@ -752,9 +752,20 @@
             // button: '7783fcaf1cd015a698fbbf94ff6f3c88929838b5'
           },
         },
+        button_return_to_site: {
+          options: {
+            api_domain,
+          },
+          params: {
+            amount: 200,
+            currency: 'UAH',
+            merchant_id: 5364,
+            response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+          },
+        },
       }
 
-      window.app = render('#app', 'promo')
+      window.app = render('#app', 'button_return_to_site')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 

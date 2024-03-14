@@ -144,6 +144,9 @@ msgstr ""
 "This is a demo system. While you may enter data, the payment will not be "
 "processed."
 
+msgid "return_to_site"
+msgstr "Return to the site"
+
 msgid "expires_on"
 msgstr "Expiry date"
 

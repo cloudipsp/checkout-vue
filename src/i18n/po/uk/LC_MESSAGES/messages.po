@@ -124,6 +124,9 @@ msgstr "Сплатити"
 msgid "demo-desc"
 msgstr ""
 
+msgid "return_to_site"
+msgstr "Повернутись до сайту"
+
 msgid "expires_on"
 msgstr "Дійсна до"
 

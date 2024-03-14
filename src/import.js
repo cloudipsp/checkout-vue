@@ -301,3 +301,8 @@ export const FButtonCancel = () =>
 
 export const FPromo = () =>
   import(/* webpackChunkName: "50" */ '@/components/promo')
+
+export const FButtonReturnToSite = () =>
+  import(
+    /* webpackChunkName: "52" */ '@/views/checkout/without-sidebar/button-return-to-site'
+  )
