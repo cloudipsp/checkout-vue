@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+    <f-button-return v-if="response_url" />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import FPrice from '@/components/price'
 import SvgApproved from '@/svg/approved.svg'
 import SvgDecline from '@/svg/decline.svg'
 import { mapState } from '@/utils/store'
+import { FButtonReturn } from '@/import'
 
 export default {
   components: {
@@ -31,9 +33,10 @@ export default {
     FPrice,
     SvgDecline,
     SvgApproved,
+    FButtonReturn,
   },
   computed: {
-    ...mapState('order', ['order_data']),
+    ...mapState('order', ['order_data', 'response_url']),
     status() {
       return this.order_data.order_status
     },

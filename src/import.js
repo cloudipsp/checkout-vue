@@ -302,3 +302,6 @@ export const FButtonCancel = () =>
 
 export const FPromo = () =>
   import(/* webpackChunkName: "50" */ '@/components/promo')
+
+export const FButtonReturn = () =>
+  import(/* webpackChunkName: "52" */ '@/components/button/button-return')
