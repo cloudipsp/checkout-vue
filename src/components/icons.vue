@@ -8,18 +8,13 @@
       :name="logo"
       :type="method"
     />
-    <button
-      v-if="showCount"
-      ref="last"
-      class="f-btn-unstyled f-icons-count"
-      type="button"
-    >
+    <f-button-unstyled v-if="showCount" ref="last" class="f-icons-count">
       +{{ countLast }}
-    </button>
+    </f-button-unstyled>
     <f-tooltip-default
       custom-class="f-tooltip-icons"
       placement="topleft"
-      :target="() => $refs.last"
+      :target="() => $refs.last?.$el"
     >
       <f-icon
         v-for="{ logo, method } in listLast"
@@ -33,6 +28,7 @@
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FIcon from '@/components/icon'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { mapState } from '@/utils/store'
@@ -44,6 +40,7 @@ import { isString } from '@/utils/inspect'
 
 export default {
   components: {
+    FButtonUnstyled,
     FIcon,
     FTooltipDefault,
   },

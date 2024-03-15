@@ -1,4 +1,11 @@
-.f-btn-unstyled {
+<template>
+  <button :class="$style.style" type="button" v-on="$listeners">
+    <slot />
+  </button>
+</template>
+
+<style lang="scss" module>
+.style {
   padding: 0;
   margin: 0;
   overflow: initial;
@@ -11,5 +18,5 @@
   background: none;
   border: 0;
   border-radius: px-to-rem(4px);
-  transition: box-shadow ease-in-out 0.15s;
 }
+</style>

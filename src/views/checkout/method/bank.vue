@@ -37,7 +37,7 @@
           :key="item.id"
           :class="classBankItemWrapper"
         >
-          <button :class="classBankItem" type="button" @click="goSystem(item)">
+          <f-button-unstyled :class="classBankItem" @click="goSystem(item)">
             <f-icon
               :name="item.logo"
               :type="item.method"
@@ -50,7 +50,7 @@
                 {{ item.iban }}
               </div>
             </div>
-          </button>
+          </f-button-unstyled>
         </div>
       </div>
       <div class="f-bank-footer">
@@ -81,6 +81,7 @@
 
 <script>
 import FFormBase from '@/components/form/form/form-base'
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
 import FButton from '@/components/button/button'
@@ -109,6 +110,7 @@ const supportSystemRoute = [
 export default {
   components: {
     FFormBase,
+    FButtonUnstyled,
     FSvg,
     FIcon,
     FButton,
@@ -205,7 +207,7 @@ export default {
       return [className, 'f-mb-12', `f-mb-${this.breakpoint}-16`]
     },
     classBankItem() {
-      return [`f-bank-item_${this.view}`, 'f-bank-item', 'f-btn-unstyled']
+      return [`f-bank-item_${this.view}`, 'f-bank-item']
     },
     classBankViewBar() {
       return [{ 'f-active': this.isBar }, 'f-bank-view-icon']

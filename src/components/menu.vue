@@ -1,10 +1,9 @@
 <template>
   <div class="f-menu">
     <template v-for="method in list">
-      <button
+      <f-button-unstyled
         :key="method"
         :ref="method"
-        type="button"
         :class="className(method)"
         :data-e2e-menu-item="method"
         @click="click(method)"
@@ -21,19 +20,20 @@
           v-if="showTooltip(method)"
           :ref="`${method}_tooltip`"
           custom-class="f-tooltip-menu"
-          :target="() => $refs[method][0]"
+          :target="() => $refs[method][0].$el"
           placement="topright"
           boundary-padding="30"
         >
           <component :is="tooltipIcon(method)" />
           <span v-text="$t(`${method}_tooltip`)" />
         </f-tooltip-default>
-      </button>
+      </f-button-unstyled>
     </template>
   </div>
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FIcons from '@/components/icons'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
@@ -45,6 +45,7 @@ import { isFunction } from '@/utils/inspect'
 
 export default {
   components: {
+    FButtonUnstyled,
     FSvg,
     FIcons,
     FTooltipDefault,
@@ -105,7 +106,7 @@ export default {
   mounted() {
     this.methods.forEach(method => {
       if (!this.$refs[method]) return
-      this.$refs[method][0].reference = this.$refs[`${method}_icons`][0].$el
+      this.$refs[method][0].$el.reference = this.$refs[`${method}_icons`][0].$el
     })
   },
   methods: {

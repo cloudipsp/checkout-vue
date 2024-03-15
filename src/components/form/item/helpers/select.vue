@@ -24,11 +24,10 @@
           @keydown="navigate"
         />
       </f-form-base>
-      <button
+      <f-button-unstyled
         v-for="(item, key) in list"
         :key="key"
         ref="items"
-        type="button"
         :class="classItem(item, key)"
         :data-e2e-select-item="item.value"
         @click="click(item.value)"
@@ -39,7 +38,7 @@
           {{ item.text }}
           <span class="f-ml-auto f-pl-8" :style="style(item)">•</span>
         </slot>
-      </button>
+      </f-button-unstyled>
     </template>
   </f-modal-tooltip>
 </template>
@@ -47,6 +46,7 @@
 <script>
 import FModalTooltip from '@/components/modal-tooltip'
 import FFormBase from '@/components/form/form/form-base'
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import { makeProp } from '@/utils/props'
 import {
@@ -65,6 +65,7 @@ export default {
   components: {
     FModalTooltip,
     FFormBase,
+    FButtonUnstyled,
     FSvg,
   },
   mixins: [attrsMixin],
@@ -107,7 +108,6 @@ export default {
     classItem() {
       return (item, index) => [
         `f-select-${this.variant}-item`,
-        'f-btn-unstyled',
         {
           [`f-select-${this.variant}-item_active`]: this.isActive(item),
           [`f-select-${this.variant}-item_focus`]: index === this.index,
@@ -168,7 +168,7 @@ export default {
       this.setIndex(index)
     },
     scroll() {
-      const el = this.$refs.items[this.index]
+      const el = this.$refs.items[this.index].$el
       if (!el) return
       el.scrollIntoView({
         block: 'center',

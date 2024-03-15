@@ -1,14 +1,13 @@
 <template>
   <div>
-    <button
+    <f-button-unstyled
       v-if="showAdd"
-      :class="['f-card-list-item f-card-list-item_add', 'f-btn-unstyled']"
-      type="button"
+      :class="['f-card-list-item f-card-list-item_add']"
       @click="setCardNumber({})"
     >
       <f-svg name="plus-circle" class="f-card-list-icon" size="lg" fw />
       <span v-text="$t('use_other_card')" />
-    </button>
+    </f-button-unstyled>
     <f-card-list-item
       v-for="item in list"
       :key="item.card_number"
@@ -19,6 +18,7 @@
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FCardListItem from '@/components/card-list-item'
 import { mapState } from '@/utils/store'
@@ -27,6 +27,7 @@ import { makeProp } from '@/utils/props'
 
 export default {
   components: {
+    FButtonUnstyled,
     FSvg,
     FCardListItem,
   },
