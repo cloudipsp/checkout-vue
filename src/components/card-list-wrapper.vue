@@ -1,11 +1,6 @@
 <template>
   <span v-if="read_only">{{ label }}</span>
-  <button
-    v-else-if="enableModal"
-    class="f-btn-unstyled"
-    type="button"
-    @click="showModalCard = true"
-  >
+  <f-button-unstyled v-else-if="enableModal" @click="showModalCard = true">
     {{ label }} <f-svg :class="$style.arrow" name="angle-down" size="lg" />
     <f-modal-base
       v-model="showModalCard"
@@ -17,12 +12,9 @@
         <f-card-list :list="list" @input="hide" />
       </component>
     </f-modal-base>
-  </button>
-  <button
+  </f-button-unstyled>
+  <f-button-unstyled
     v-else
-    ref="tooltip"
-    class="f-btn-unstyled"
-    type="button"
     @click="showTooltipCard = true"
     @blur="blurTooltipCard"
   >
@@ -44,10 +36,11 @@
         <f-card-list :list="list" @input="hide" />
       </f-scrollbar-vertical>
     </f-tooltip-select>
-  </button>
+  </f-button-unstyled>
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FModalBase from '@/components/modal/modal-base'
 import FSvg from '@/components/svg'
 import FTooltipSelect from '@/components/tooltip/tooltip-select'
@@ -62,6 +55,7 @@ import FScrollbarVertical from '@/components/scrollbar-vertical'
 
 export default {
   components: {
+    FButtonUnstyled,
     FModalBase,
     FSvg,
     FTooltipSelect,

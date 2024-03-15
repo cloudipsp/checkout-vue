@@ -1,7 +1,6 @@
 <template>
-  <button
-    :class="['f-card-list-item', 'f-btn-unstyled', { active: active }]"
-    type="button"
+  <f-button-unstyled
+    :class="['f-card-list-item', { active: active }]"
     v-on="$listeners"
   >
     <f-icon-bin class="f-card-list-icon" :bin="item.card_number" />
@@ -45,10 +44,11 @@
         {{ $t('declined') }}
       </f-tooltip-default>
     </div>
-  </button>
+  </f-button-unstyled>
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FIconBin from '@/components/icon-bin'
 import { mapState } from '@/utils/store'
@@ -59,6 +59,7 @@ import FTooltipDefault from '@/components/tooltip/tooltip-default'
 
 export default {
   components: {
+    FButtonUnstyled,
     FSvg,
     FIconBin,
     FTooltipDefault,

@@ -15,14 +15,13 @@
       <div ref="wrapper" :class="classOrderDesc">
         <div ref="desc">{{ order_desc_translation }}</div>
       </div>
-      <button
+      <f-button-unstyled
         v-if="showMore"
-        class="f-order-desc-more f-btn-unstyled"
-        type="button"
+        class="f-order-desc-more"
         @click="clickMore"
       >
         <span v-text="$t('see_more')" /> <f-svg name="angle-right" />
-      </button>
+      </f-button-unstyled>
     </f-preloader>
     <f-modal-base v-model="modalMore" :title="$t('order_details')" size="xl">
       <span v-text="$t(order_desc)" />
@@ -32,6 +31,7 @@
 
 <script>
 import FPreloader from '@/components/preloader'
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FModalBase from '@/components/modal/modal-base'
 import { mapState } from '@/utils/store'
@@ -39,6 +39,7 @@ import { mapState } from '@/utils/store'
 export default {
   components: {
     FPreloader,
+    FButtonUnstyled,
     FSvg,
     FModalBase,
   },

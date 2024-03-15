@@ -1,14 +1,10 @@
 <template>
   <div class="f-security">
     <template v-if="enableModal">
-      <button
-        class="f-title-security f-btn-unstyled"
-        type="button"
-        @click="open"
-      >
+      <f-button-unstyled class="f-title-security" @click="open">
         <f-svg ref="security" name="security" :size="24" />
         <span v-text="$t('security_title')" />
-      </button>
+      </f-button-unstyled>
       <f-modal-base v-model="showModal">
         <div class="f-modal-security-title">
           <f-svg name="security" size="lg" />
@@ -19,15 +15,11 @@
       </f-modal-base>
     </template>
     <template v-else>
-      <button
-        ref="security"
-        class="f-title-security f-btn-unstyled"
-        type="button"
-      >
+      <f-button-unstyled ref="security" class="f-title-security">
         <f-svg ref="reference" name="security" :size="svgSize" />
         <span v-text="$t('security_title')" />
-      </button>
-      <f-tooltip-default :target="() => $refs.security" @shown="shown">
+      </f-button-unstyled>
+      <f-tooltip-default :target="() => $refs.security?.$el" @shown="shown">
         <div>
           <f-security-icons
             v-if="showTooltip"
@@ -44,6 +36,7 @@
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FModalBase from '@/components/modal/modal-base'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
@@ -53,6 +46,7 @@ import { isPhone } from '@/utils/mobile'
 
 export default {
   components: {
+    FButtonUnstyled,
     FSvg,
     FModalBase,
     FTooltipDefault,

@@ -1,15 +1,9 @@
 <template>
   <keep-alive>
-    <button v-if="disabled" :class="className" :disabled="disabled">
+    <f-button-unstyled v-if="disabled" :disabled="disabled">
       <slot name="text" />
-    </button>
-    <button
-      v-else-if="isPhone"
-      key="modal"
-      :class="className"
-      type="button"
-      @click="modal = true"
-    >
+    </f-button-unstyled>
+    <f-button-unstyled v-else-if="isPhone" key="modal" @click="modal = true">
       <slot name="text" />
       <f-modal-base
         v-model="modal"
@@ -24,12 +18,12 @@
           <slot />
         </component>
       </f-modal-base>
-    </button>
-    <button v-else key="tooltip" ref="target" :class="className" type="button">
+    </f-button-unstyled>
+    <f-button-unstyled v-else key="tooltip" ref="target">
       <slot name="text" />
       <f-tooltip-select
         :show.sync="tooltip"
-        :target="() => $refs.target"
+        :target="() => $refs.target?.$el"
         :custom-class="dropdownClass"
         :placement="dropdownPlacement"
         @shown="shown"
@@ -39,11 +33,12 @@
           <slot />
         </f-scrollbar-vertical>
       </f-tooltip-select>
-    </button>
+    </f-button-unstyled>
   </keep-alive>
 </template>
 
 <script>
+import FButtonUnstyled from '@/components/button/button-unstyled'
 import FTooltipSelect from '@/components/tooltip/tooltip-select'
 import FModalBase from '@/components/modal/modal-base'
 import { timeoutMixin } from '@/mixins/timeout'
@@ -55,6 +50,7 @@ import FScrollbarVertical from '@/components/scrollbar-vertical'
 
 export default {
   components: {
+    FButtonUnstyled,
     FTooltipSelect,
     FModalBase,
     FScrollbarVertical,
@@ -76,9 +72,6 @@ export default {
     }
   },
   computed: {
-    className() {
-      return 'f-btn-unstyled'
-    },
     isPhone() {
       return isPhone || this.isWidthSm
     },
