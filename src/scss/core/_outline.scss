@@ -1,18 +1,20 @@
 @mixin focus-visible($width, $border, $offset: null, $bg: null) {
   transition: box-shadow ease-in-out 0.15s;
 
-  &:focus {
+  &:focus-visible {
     outline: 0;
 
     @if $offset {
-      box-shadow: 0 0 0 $offset $bg, 0 0 0 $width + $offset $border;
+      box-shadow:
+        0 0 0 $offset $bg,
+        0 0 0 $width + $offset $border;
     } @else {
       box-shadow: 0 0 0 $width $border;
     }
   }
 }
 
-.f-btn-unstyled:focus {
+.f-btn-unstyled:focus-visible {
   position: relative;
   z-index: 0;
   outline: 0;
@@ -23,7 +25,8 @@
 .f-checkbox:focus + .f-checkbox-label {
   background: $outline_bg;
   border-radius: px-to-rem(1px);
-  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+  box-shadow:
+    0 0 0 px-to-rem(2px) $container_bg,
     0 0 0 px-to-rem(3.5px) $outline_border;
 }
 
@@ -33,8 +36,9 @@ a {
   border-radius: px-to-rem(1px);
 }
 
-.f-btn-success:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) $container_bg,
+.f-btn-success:focus-visible {
+  box-shadow:
+    0 0 0 px-to-rem(2px) $container_bg,
     0 0 0 px-to-rem(4px) $btn_success_bg;
 }
 
@@ -58,8 +62,8 @@ a {
   @include focus-visible(px-to-rem(2px), $outline_border, px-to-rem(2), $white);
 }
 
-.f-btn-link:focus,
-.f-close:focus,
+.f-btn-link:focus-visible,
+.f-close:focus-visible,
 .f-header .f-form-control-select:focus {
   box-shadow: 0 0 0 px-to-rem(2px) $outline_border;
 }
@@ -67,13 +71,15 @@ a {
 // subscription
 .f-subscription {
   .f-form-control:focus {
-    box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
+    box-shadow:
+      0 0 0 px-to-rem(2px) $subscription_bg,
       0 0 0 px-to-rem(4px) $outline_border;
   }
 
   .f-switch:focus + .f-switch-label,
   .f-checkbox:focus + .f-checkbox-label {
-    box-shadow: 0 0 0 px-to-rem(2px) $subscription_bg,
+    box-shadow:
+      0 0 0 px-to-rem(2px) $subscription_bg,
       0 0 0 px-to-rem(3.5px) $outline_border;
   }
 }
@@ -82,28 +88,32 @@ a {
 .f-switch-secondary:focus + .f-switch-label,
 .f-checkbox-secondary:focus + .f-checkbox-label {
   background: $outline_secondary_bg;
-  box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+  box-shadow:
+    0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
     0 0 0 px-to-rem(3.5px) $outline_secondary_border;
 }
 
 .f-alert-info {
-  a:focus {
-    box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+  a:focus-visible {
+    box-shadow:
+      0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
       0 0 0 px-to-rem(3.5px) $outline_secondary_border;
   }
 
-  .f-btn-secondary:focus {
-    box-shadow: 0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
+  .f-btn-secondary:focus-visible {
+    box-shadow:
+      0 0 0 px-to-rem(2px) fade($alert_info_bg, 90%),
       0 0 0 px-to-rem(4px) $outline_secondary_border;
   }
 
-  .f-btn-link-secondary:focus {
+  .f-btn-link-secondary:focus-visible {
     box-shadow: 0 0 0 px-to-rem(2px) $outline_secondary_border;
   }
 }
 
-.f-modal .f-btn-secondary:focus {
-  box-shadow: 0 0 0 px-to-rem(2px) #fff,
+.f-modal .f-btn-secondary:focus-visible {
+  box-shadow:
+    0 0 0 px-to-rem(2px) #fff,
     0 0 0 px-to-rem(4px) $outline_secondary_border;
 }
 
