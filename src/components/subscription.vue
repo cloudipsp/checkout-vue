@@ -128,6 +128,7 @@ import { InputAmount } from '@/import'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
 import { createDate, format } from '@/utils/date'
+import { formatServer } from '@/config/date'
 
 export default {
   components: {
@@ -214,7 +215,7 @@ export default {
   methods: {
     setStartTime() {
       if (!this.start_time && this.unlimited && !this.optionTrial) {
-        this.start_time = format(createDate(), 'YYYY-MM-DD')
+        this.start_time = format(createDate(), formatServer)
       }
     },
     onShowError(show, error) {
