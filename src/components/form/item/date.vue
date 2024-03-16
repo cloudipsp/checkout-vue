@@ -31,9 +31,9 @@ import { FFormInput } from '@/components/form/item/helpers/form-input'
 import FSvg from '@/components/svg'
 import { itemMixin } from '@/mixins/item'
 import { isMobile } from '@/utils/mobile'
-import { createDate, formatYYYYMMDD } from '@/utils/date'
+import { createDate, format } from '@/utils/date'
 import { mapState } from '@/utils/store'
-import format from '@/config/date'
+import { formatRegion, formatServer } from '@/config/date'
 import { PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
@@ -60,7 +60,7 @@ export default {
   computed: {
     ...mapState(['region']),
     format() {
-      return format[this.region] || format.default
+      return formatRegion[this.region] || formatRegion.default
     },
     attrsDatepicker() {
       return {
@@ -72,7 +72,7 @@ export default {
         'input-attr': {
           id: this.attrs.id,
         },
-        'value-type': 'YYYY-MM-DD',
+        'value-type': formatServer,
         'prefix-class': 'f-datepicker',
         'append-to-body': false,
         disabled: this.attrs.disabled,
@@ -87,7 +87,7 @@ export default {
     minFormat() {
       if (!this.min) return
 
-      return formatYYYYMMDD(this.minDate)
+      return format(this.minDate, formatServer)
     },
     isMobile() {
       return isMobile

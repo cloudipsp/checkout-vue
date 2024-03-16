@@ -6,6 +6,7 @@
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_STRING } from '@/constants/props'
 import { parse } from '@/utils/date'
+import { formatServer } from '@/config/date'
 
 export default {
   props: {
@@ -16,7 +17,7 @@ export default {
       let result = this.value
       try {
         result = new Intl.DateTimeFormat().format(
-          parse(this.value, 'YYYY-MM-DD')
+          parse(this.value, formatServer)
         )
         // eslint-disable-next-line no-empty
       } catch (e) {}

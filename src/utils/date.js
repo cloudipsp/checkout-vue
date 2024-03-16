@@ -1,5 +1,6 @@
 import { sort } from '@/utils/sort'
 import { arrayIncludes } from '@/utils/array'
+import { formatServer } from '@/config/date'
 
 export const createDate = (...args) => new Date(...args)
 
@@ -66,19 +67,6 @@ export const format = (date, format = 'DD.MM.YYYY') => {
   ].reduce((accum, [name, value]) => accum.replace(name, value), format)
 }
 
-export const formatMMYY = date => {
-  let year = String(date.getFullYear()).slice(-2)
-  let month = `0${date.getMonth() + 1}`.slice(-2)
-  return `${month}/${year}`
-}
-
-export const formatYYYYMMDD = date =>
-  date.getFullYear() +
-  '-' +
-  ('0' + (date.getMonth() + 1)).slice(-2) +
-  '-' +
-  ('0' + date.getDate()).slice(-2)
-
 export const isAfter = (date, after) => {
   return date.getTime() > after.getTime()
 }
@@ -95,11 +83,11 @@ const offsetKiev = getOffsetKiev()
 const offsetLocal = getOffsetLocal()
 const offsetDiff = (offsetLocal - offsetKiev) * 60 * 1000
 
-export const formatKiev = (string, format = 'YYYY-MM-DD') => {
+export const formatKiev = string => {
   let now = createDate()
-  let date = parse(string, format)
+  let date = parse(string, formatServer)
 
-  return formatYYYYMMDD(
+  return format(
     createDate(
       createDate(
         date.getFullYear(),
@@ -108,7 +96,8 @@ export const formatKiev = (string, format = 'YYYY-MM-DD') => {
         now.getHours(),
         now.getMinutes()
       ).getTime() - offsetDiff
-    )
+    ),
+    formatServer
   )
 }
 

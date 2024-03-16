@@ -105,7 +105,7 @@ import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
-import { createDate, formatMMYY } from '@/utils/date'
+import { createDate, format } from '@/utils/date'
 
 export default {
   components: {
@@ -148,7 +148,7 @@ export default {
       if (!this.need_validate_card) return {}
 
       let minDate = this.store.state.validate_expdate
-        ? formatMMYY(createDate())
+        ? format(createDate(), 'MM/YY')
         : '01/19'
 
       return `required|date_format:MM/yy|after:${minDate},true,MM/yy`

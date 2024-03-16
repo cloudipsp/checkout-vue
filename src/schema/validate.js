@@ -8,6 +8,7 @@ import { loadAsyncValidator } from '@/import'
 import { sort } from '@/utils/sort'
 import { parseFieldsCustom } from '@/schema/parse-fields-custom'
 import { createDate, format } from '@/utils/date'
+import { formatServer } from '@/config/date'
 
 class Validate extends Model {
   constructor(data) {
@@ -175,7 +176,7 @@ class Validate extends Model {
 
     this.attr(
       'data.params.recurring_data.start_time',
-      format(value, 'YYYY-MM-DD')
+      format(value, formatServer)
     )
   }
 }
