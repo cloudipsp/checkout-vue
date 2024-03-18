@@ -15,12 +15,14 @@
 </template>
 
 <script>
+import FModalBase from '@/components/modal/modal-base'
 import SvgClick2payCircle from '@/svg/click2pay-circle.svg'
 import SvgClick2payAbout from '@/svg/click2pay-about.svg'
 import SvgClick2payVisaMastercard from '@/svg/click2pay-visa-mastercard.svg'
 
 export default {
   components: {
+    FModalBase,
     SvgClick2payCircle,
     SvgClick2payAbout,
     SvgClick2payVisaMastercard,

@@ -33,6 +33,7 @@
 import FPreloader from '@/components/preloader'
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
+import FModalBase from '@/components/modal/modal-base'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -40,6 +41,7 @@ export default {
     FPreloader,
     FButtonUnstyled,
     FSvg,
+    FModalBase,
   },
   data() {
     return {

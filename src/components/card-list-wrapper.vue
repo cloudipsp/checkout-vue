@@ -41,6 +41,7 @@
 
 <script>
 import FButtonUnstyled from '@/components/button/button-unstyled'
+import FModalBase from '@/components/modal/modal-base'
 import FSvg from '@/components/svg'
 import FTooltipSelect from '@/components/tooltip/tooltip-select'
 import FCardList from '@/components/card-list'
@@ -57,6 +58,7 @@ import FScrollbarVertical from '@/components/scrollbar-vertical'
 export default {
   components: {
     FButtonUnstyled,
+    FModalBase,
     FSvg,
     FTooltipSelect,
     FCardList,

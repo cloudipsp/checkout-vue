@@ -116,6 +116,7 @@
 
 <script>
 import FButton from '@/components/button/button'
+import FModalBase from '@/components/modal/modal-base'
 import { FLoading } from '@/import'
 import FSvg from '@/components/svg'
 import { isDesktop } from '@/utils/mobile'
@@ -124,6 +125,7 @@ import { errorHandler } from '@/utils/helpers'
 export default {
   components: {
     FButton,
+    FModalBase,
     FLoading,
     FSvg,
   },

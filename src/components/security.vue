@@ -38,6 +38,7 @@
 <script>
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
+import FModalBase from '@/components/modal/modal-base'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { FSecurityIcons } from '@/import'
 import { resizeMixin } from '@/mixins/resize'
@@ -47,6 +48,7 @@ export default {
   components: {
     FButtonUnstyled,
     FSvg,
+    FModalBase,
     FTooltipDefault,
     FSecurityIcons,
   },

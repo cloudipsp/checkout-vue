@@ -40,6 +40,7 @@
 <script>
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FTooltipSelect from '@/components/tooltip/tooltip-select'
+import FModalBase from '@/components/modal/modal-base'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
@@ -51,6 +52,7 @@ export default {
   components: {
     FButtonUnstyled,
     FTooltipSelect,
+    FModalBase,
     FScrollbarVertical,
   },
   mixins: [timeoutMixin, resizeMixin],
