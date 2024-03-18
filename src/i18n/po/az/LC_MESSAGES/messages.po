@@ -86,7 +86,7 @@ msgstr "daha ətraflı"
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "kartımı gələcək ödənişlər üçün saxla"
 
 msgid "its_safe"

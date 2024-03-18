@@ -16,7 +16,7 @@
         component="checkbox"
         variant="secondary"
       >
-        <span v-text="$t('save_card')" />&nbsp;
+        <span v-text="$t('remember_card_for_quick_re_payment')" />&nbsp;
         <a href="#" @click="showGdprSafe = true" v-text="$t('its_safe')" />
       </f-form-group>
     </f-form-base>

@@ -88,7 +88,7 @@ msgstr "Uzzināt vairāk."
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "Saglabāt manu karti turpmākiem maksājumiem."
 
 msgid "its_safe"

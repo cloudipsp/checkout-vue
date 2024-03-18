@@ -104,7 +104,7 @@ msgstr ""
 "href='https://fondy.io/privacy-notice/' target='_blank'>https://fondy.io/"
 "privacy-notice/</a>"
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "Save my card for future payments"
 
 msgid "its_safe"

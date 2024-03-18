@@ -86,7 +86,7 @@ msgstr "了解更多"
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "保存我的卡以备将来支付"
 
 msgid "its_safe"

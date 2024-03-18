@@ -87,7 +87,7 @@ msgstr "meer informatie"
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "mijn kaart opslaan voor latere betalingen"
 
 msgid "its_safe"
