@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import mask from '@/utils/masker'
+import { mask } from '@/utils/mask'
 import { PROP_TYPE_NUMBER_STRING, PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 

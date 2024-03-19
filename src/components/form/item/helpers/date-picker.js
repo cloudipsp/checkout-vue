@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import DatePicker from 'vue2-datepicker'
-import mask from '@/utils/masker'
+import { mask } from '@/utils/mask'
 
 export default Vue.extend({
   extends: DatePicker,
