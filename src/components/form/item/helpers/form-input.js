@@ -16,7 +16,7 @@ import {
   PROP_TYPE_BOOLEAN_STRING,
 } from '@/constants/props'
 import { makeProp } from '@/utils/props'
-import mask from '@/utils/masker'
+import { mask } from '@/utils/mask'
 
 // @vue/component
 export const FFormInput = {

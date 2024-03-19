@@ -59,7 +59,7 @@ import FIcon from '@/components/icon'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_OBJECT } from '@/constants/props'
 import { makeProp } from '@/utils/props'
-import maskit from '@/utils/masker'
+import { mask } from '@/utils/mask'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 
 export default {
@@ -78,7 +78,7 @@ export default {
       return this.item.card_number === this.card_number
     },
     cardNumber() {
-      return maskit(this.item.card_number, 'XXXX XXXX XXXX XXXX XXX')
+      return mask(this.item.card_number, 'XXXX XXXX XXXX XXXX XXX')
     },
     approved() {
       return this.item.type === 'approved'

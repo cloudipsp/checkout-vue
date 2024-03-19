@@ -1,13 +1,22 @@
+const latin = 'a-zA-Z'
+const cyrillic = 'а-яА-ЯёЁїЇіІєЄґҐ'
+const cyrillicCapital = 'а-щэюяА-ЩЭЮЯёЁїЇіІєЄґҐ'
+const symbols = '\'"ʼ\\-,./'
+
 const tokens = {
   '#': { pattern: /\d/ },
   X: { pattern: /[0-9X]/ },
-  S: { pattern: /[a-zA-Z]/ },
-  A: { pattern: /[a-zA-Z]/, transform: v => v.toLocaleUpperCase() },
-  a: { pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase() },
+  C: {
+    pattern: new RegExp(`[${latin}${cyrillicCapital}]`),
+    transform: v => v.toUpperCase(),
+  },
+  c: {
+    pattern: new RegExp(`[${latin}${cyrillic}${symbols}]`),
+  },
   '!': { escape: true },
 }
 
-export default function maskit(value = '', mask, masked = true, last) {
+export const mask = (value = '', mask, masked = true, last) => {
   if (!mask) return value
 
   value = String(value)
@@ -20,7 +29,7 @@ export default function maskit(value = '', mask, masked = true, last) {
     let masker = tokens[cMask]
     let cValue = value[iValue]
     if (masker && !masker.escape) {
-      if (masker.pattern.test(cValue)) {
+      if (cValue && masker.pattern.test(cValue)) {
         output += masker.transform ? masker.transform(cValue) : cValue
         iMask++
       }
