@@ -53,7 +53,52 @@ gulp.task('po', done =>
     })
 )
 
-gulp.task('locale', gulp.series('methods', 'subscription-period', 'po'))
+gulp.task('i18n', gulp.series('methods', 'subscription-period', 'po'))
+
+const needTranslation = from => () => {
+  const dirname = `./src/i18n/empty/translate-from-${from}-to/`
+  let translation
+
+  return fsp
+    .readFile(`./src/i18n/po/${from}/translation.json`, 'utf-8')
+    .then(content => JSON.parse(content))
+    .then(content => (translation = content))
+    .then(() => fsp.access(dirname))
+    .then(() =>
+      fsp
+        .readdir(dirname)
+        .then(filenames =>
+          filenames.map(filename => fsp.rm(dirname + filename))
+        )
+        .then(promises => Promise.all(promises))
+    )
+    .catch(() => fsp.mkdir(dirname))
+    .then(() =>
+      locales
+        .filter(locale => locale !== from)
+        .map(locale =>
+          fsp
+            .readFile(`./src/i18n/po/${locale}/translation.json`, 'utf-8')
+            .then(content => JSON.parse(content))
+            .then(content => Object.entries(content))
+            .then(content => content.filter(([, value]) => !value))
+            .then(content => content.map(([name]) => name))
+            .then(content =>
+              content.map(
+                name => `msgid "${name}"\nmsgstr "${translation[name]}"\n`
+              )
+            )
+            .then(content => content.join('\n'))
+            .then(content => fsp.writeFile(`${dirname}${locale}.po`, content))
+        )
+    )
+    .then(promises => Promise.all(promises))
+}
+
+gulp.task(
+  'i18n-need-translation',
+  gulp.series('i18n', needTranslation('uk'), needTranslation('en'))
+)
 
 gulp.task('countries-search', () =>
   fsp
@@ -193,7 +238,7 @@ gulp.task('svg', () => {
 gulp.task(
   'default',
   gulp.series([
-    'locale',
+    'i18n',
     'countries-search',
     'countries-calling-codes',
     'exclude-message',
