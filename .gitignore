@@ -35,4 +35,5 @@ yarn-error.log*
 /src/config/exclude-messages.js
 /src/config/svg.js
 /src/config/countries-calling-codes.js
+/src/i18n/need-translation/*
 
