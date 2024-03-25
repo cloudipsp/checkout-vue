@@ -36,13 +36,22 @@ export default {
   },
   methods: {
     parseField({ label, placeholder, name, type, validate, mask = '' }) {
+      const format = (value = '') => value.toLowerCase().replace(/[. ]/g, '_')
+      label = format(label)
+      placeholder = format(placeholder)
+
       let noLabelFloating = Boolean(
         (label && placeholder) || (!label && !placeholder)
       )
       let prependText
-      let lastNumberIndex = mask.search(/(\d+)(?!.*\d)/) + 1
 
-      if (lastNumberIndex) {
+      if (!label && placeholder) {
+        label = placeholder
+        placeholder = ''
+      }
+
+      if (mask) {
+        let lastNumberIndex = mask.search(/(\d+)(?!.*\d)/) + 1
         prependText = mask.slice(0, lastNumberIndex)
         mask = mask.slice(lastNumberIndex)
         noLabelFloating = true
@@ -53,8 +62,8 @@ export default {
       return {
         name,
         noLabelFloating,
-        label: label || placeholder,
-        placeholder: noLabelFloating ? placeholder : '',
+        label,
+        placeholder,
         component: type === 'date' ? 'date' : 'input',
         rules: this.parseValidate(validate),
         autocomplete: 'on',
