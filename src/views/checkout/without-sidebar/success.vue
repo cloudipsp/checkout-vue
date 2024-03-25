@@ -49,7 +49,7 @@ export default {
       return this.status === 'declined'
     },
     title() {
-      return this.$t(`title-${this.status}`)
+      return this.$t(`title_${this.status}`)
     },
   },
 }

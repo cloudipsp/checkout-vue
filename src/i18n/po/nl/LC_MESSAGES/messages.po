@@ -69,7 +69,7 @@ msgstr "meer informatie"
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "mijn kaart opslaan voor latere betalingen"
 
 msgid "its_safe"
@@ -103,7 +103,7 @@ msgstr ""
 msgid "pay"
 msgstr "betalen"
 
-msgid "demo-desc"
+msgid "demo_desc"
 msgstr ""
 "dit is een demo-modus. U kunt alle gegevens invoeren, de huidige betaling "
 "zal niet beschikbaar zijn"
@@ -354,16 +354,16 @@ msgstr ""
 msgid "payment_id"
 msgstr "betaal-ID"
 
-msgid "demo-title"
+msgid "demo_title"
 msgstr "demo-modus"
 
-msgid "mode-test"
+msgid "mode_test"
 msgstr ""
 
-msgid "title-declined"
+msgid "title_declined"
 msgstr "helaas, je betaling is niet gelukt"
 
-msgid "title-approved"
+msgid "title_approved"
 msgstr "dank u! Uw betaling is geaccepteerd"
 
 msgid "verification_code_d"
@@ -482,7 +482,7 @@ msgstr "neem contact op met de verkoper om de betalingslink te ontvangen"
 msgid "sender_name"
 msgstr "naam"
 
-msgid "sender_familyName"
+msgid "sender_familyname"
 msgstr "achternaam"
 
 msgid "bic"
@@ -521,49 +521,46 @@ msgstr ""
 msgid "qr_app_google_sk_viamo"
 msgstr ""
 
-msgid "ACCOUNT_NUMBER"
+msgid "account_number"
 msgstr ""
 
-msgid "CODE"
+msgid "code"
 msgstr ""
 
-msgid "Email address"
-msgstr ""
-
-msgid "IBAN"
+msgid "email_address"
 msgstr ""
 
 msgid "name"
 msgstr ""
 
-msgid "SORT_CODE"
+msgid "sort_code"
 msgstr ""
 
-msgid "specin.address"
+msgid "specin_address"
 msgstr ""
 
-msgid "specin.bic"
+msgid "specin_bic"
 msgstr ""
 
-msgid "specin.city"
+msgid "specin_city"
 msgstr ""
 
-msgid "specin.consumerref"
+msgid "specin_consumerref"
 msgstr ""
 
-msgid "specin.dob"
+msgid "specin_dob"
 msgstr ""
 
-msgid "specin.email"
+msgid "specin_email"
 msgstr ""
 
-msgid "specin.iban"
+msgid "specin_iban"
 msgstr ""
 
-msgid "specin.nationalid"
+msgid "specin_nationalid"
 msgstr ""
 
-msgid "specin.zipcode"
+msgid "specin_zipcode"
 msgstr ""
 
 msgid "search_country"
@@ -572,16 +569,16 @@ msgstr ""
 msgid "credit_debit_cards"
 msgstr ""
 
-msgid "label_ACCOUNT_NUMBER"
+msgid "label_account_number"
 msgstr ""
 
-msgid "placeholder_ACCOUNT_NUMBER"
+msgid "placeholder_account_number"
 msgstr ""
 
-msgid "label_SORT_CODE"
+msgid "label_sort_code"
 msgstr ""
 
-msgid "placeholder_SORT_CODE"
+msgid "placeholder_sort_code"
 msgstr ""
 
 msgid "message_address_number"

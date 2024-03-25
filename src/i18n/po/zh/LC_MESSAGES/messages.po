@@ -68,7 +68,7 @@ msgstr "了解更多"
 msgid "gdpr_modal_text"
 msgstr ""
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "保存我的卡以备将来支付"
 
 msgid "its_safe"
@@ -99,7 +99,7 @@ msgstr ""
 msgid "pay"
 msgstr "支付"
 
-msgid "demo-desc"
+msgid "demo_desc"
 msgstr "这是一个演示系统. 当你输入数据时, 付款不会 受到处理."
 
 msgid "expires_on"
@@ -334,16 +334,16 @@ msgstr ""
 msgid "payment_id"
 msgstr "付款编号"
 
-msgid "demo-title"
+msgid "demo_title"
 msgstr "演示模式"
 
-msgid "mode-test"
+msgid "mode_test"
 msgstr ""
 
-msgid "title-declined"
+msgid "title_declined"
 msgstr "很抱歉，你的付款未成功"
 
-msgid "title-approved"
+msgid "title_approved"
 msgstr "谢谢！你的付款已被接受"
 
 msgid "verification_code_d"
@@ -459,7 +459,7 @@ msgstr "请与商家联系以领取付款链接."
 msgid "sender_name"
 msgstr "名字"
 
-msgid "sender_familyName"
+msgid "sender_familyname"
 msgstr "姓"
 
 msgid "bic"
@@ -498,49 +498,46 @@ msgstr "https://apps.apple.com/app/viamo-plus/id1576498062"
 msgid "qr_app_google_sk_viamo"
 msgstr "https://play.google.com/store/apps/details?id=sk.viamo.plus"
 
-msgid "ACCOUNT_NUMBER"
+msgid "account_number"
 msgstr ""
 
-msgid "CODE"
+msgid "code"
 msgstr ""
 
-msgid "Email address"
-msgstr ""
-
-msgid "IBAN"
+msgid "email_address"
 msgstr ""
 
 msgid "name"
 msgstr ""
 
-msgid "SORT_CODE"
+msgid "sort_code"
 msgstr ""
 
-msgid "specin.address"
+msgid "specin_address"
 msgstr ""
 
-msgid "specin.bic"
+msgid "specin_bic"
 msgstr ""
 
-msgid "specin.city"
+msgid "specin_city"
 msgstr ""
 
-msgid "specin.consumerref"
+msgid "specin_consumerref"
 msgstr ""
 
-msgid "specin.dob"
+msgid "specin_dob"
 msgstr ""
 
-msgid "specin.email"
+msgid "specin_email"
 msgstr ""
 
-msgid "specin.iban"
+msgid "specin_iban"
 msgstr ""
 
-msgid "specin.nationalid"
+msgid "specin_nationalid"
 msgstr ""
 
-msgid "specin.zipcode"
+msgid "specin_zipcode"
 msgstr ""
 
 msgid "search_country"
@@ -549,16 +546,16 @@ msgstr ""
 msgid "credit_debit_cards"
 msgstr ""
 
-msgid "label_ACCOUNT_NUMBER"
+msgid "label_account_number"
 msgstr ""
 
-msgid "placeholder_ACCOUNT_NUMBER"
+msgid "placeholder_account_number"
 msgstr ""
 
-msgid "label_SORT_CODE"
+msgid "label_sort_code"
 msgstr ""
 
-msgid "placeholder_SORT_CODE"
+msgid "placeholder_sort_code"
 msgstr ""
 
 msgid "message_address_number"

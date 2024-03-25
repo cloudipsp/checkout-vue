@@ -3,9 +3,9 @@
     <div
       v-if="disable_request"
       :class="$style.title"
-      v-text="$t('demo-title')"
+      v-text="$t('demo_title')"
     />
-    <div v-if="mode_test" :class="$style.title" v-text="$t('mode-test')" />
+    <div v-if="mode_test" :class="$style.title" v-text="$t('mode_test')" />
   </div>
 </template>
 

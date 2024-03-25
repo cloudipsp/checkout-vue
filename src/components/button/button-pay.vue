@@ -14,7 +14,7 @@
         <f-amount :value="total_amount" :currency="currency" />
       </f-preloader>
     </f-button>
-    <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo-desc')" />
+    <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo_desc')" />
     <f-button-cancel v-if="cancel_url" />
   </div>
 </template>

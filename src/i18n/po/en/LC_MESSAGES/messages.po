@@ -86,7 +86,7 @@ msgstr ""
 "href='https://fondy.io/privacy-notice/' target='_blank'>https://fondy.io/"
 "privacy-notice/</a>"
 
-msgid "save_card"
+msgid "remember_card_for_quick_re_payment"
 msgstr "Save my card for future payments"
 
 msgid "its_safe"
@@ -121,7 +121,7 @@ msgstr "Cancel"
 msgid "pay"
 msgstr "Pay"
 
-msgid "demo-desc"
+msgid "demo_desc"
 msgstr ""
 "This is a demo system. While you may enter data, the payment will not be "
 "processed."
@@ -377,16 +377,16 @@ msgstr "Download receipt"
 msgid "payment_id"
 msgstr "Payment ID"
 
-msgid "demo-title"
+msgid "demo_title"
 msgstr "Demo mode"
 
-msgid "mode-test"
+msgid "mode_test"
 msgstr "Test mode"
 
-msgid "title-declined"
+msgid "title_declined"
 msgstr "Unfortunately, your payment was unsuccessful"
 
-msgid "title-approved"
+msgid "title_approved"
 msgstr "Thank you! Your payment is accepted"
 
 msgid "verification_code_d"
@@ -505,7 +505,7 @@ msgstr "Please contact the merchant to receive the payment link."
 msgid "sender_name"
 msgstr "Name"
 
-msgid "sender_familyName"
+msgid "sender_familyname"
 msgstr "Surname"
 
 msgid "bic"
@@ -545,49 +545,46 @@ msgstr "https://apps.apple.com/app/viamo-plus/id1576498062"
 msgid "qr_app_google_sk_viamo"
 msgstr "https://play.google.com/store/apps/details?id=sk.viamo.plus"
 
-msgid "ACCOUNT_NUMBER"
+msgid "account_number"
 msgstr "Account number"
 
-msgid "CODE"
+msgid "code"
 msgstr "Blik code"
 
-msgid "Email address"
+msgid "email_address"
 msgstr "Email address"
-
-msgid "IBAN"
-msgstr "IBAN"
 
 msgid "name"
 msgstr "Name, Last name "
 
-msgid "SORT_CODE"
+msgid "sort_code"
 msgstr "Sort code"
 
-msgid "specin.address"
+msgid "specin_address"
 msgstr "Billing address"
 
-msgid "specin.bic"
+msgid "specin_bic"
 msgstr "BIC"
 
-msgid "specin.city"
+msgid "specin_city"
 msgstr "City"
 
-msgid "specin.consumerref"
+msgid "specin_consumerref"
 msgstr "Consumer reference"
 
-msgid "specin.dob"
+msgid "specin_dob"
 msgstr "Day of birth"
 
-msgid "specin.email"
+msgid "specin_email"
 msgstr "Email"
 
-msgid "specin.iban"
+msgid "specin_iban"
 msgstr "IBAN"
 
-msgid "specin.nationalid"
+msgid "specin_nationalid"
 msgstr "Passport ID"
 
-msgid "specin.zipcode"
+msgid "specin_zipcode"
 msgstr "Zip code"
 
 msgid "search_country"
@@ -596,16 +593,16 @@ msgstr "Search for country"
 msgid "credit_debit_cards"
 msgstr "Credit/Debit Cards"
 
-msgid "label_ACCOUNT_NUMBER"
+msgid "label_account_number"
 msgstr "Account number"
 
-msgid "placeholder_ACCOUNT_NUMBER"
+msgid "placeholder_account_number"
 msgstr "Enter your bank account number"
 
-msgid "label_SORT_CODE"
+msgid "label_sort_code"
 msgstr "Sort code"
 
-msgid "placeholder_SORT_CODE"
+msgid "placeholder_sort_code"
 msgstr "Enter your bank sort code"
 
 msgid "message_address_number"
