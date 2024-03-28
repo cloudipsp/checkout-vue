@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
 
+msgid "download_receipt"
+msgstr "Завантажити квитанцію"
+
 msgid "card"
 msgstr "Банківська картка"
 

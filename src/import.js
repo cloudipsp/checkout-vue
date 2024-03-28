@@ -306,3 +306,8 @@ export const FButtonReturnToSite = () =>
   import(
     /* webpackChunkName: "52" */ '@/views/checkout/without-sidebar/button-return-to-site'
   )
+
+export const FLinkDownloadReceipt = () =>
+  import(
+    /* webpackChunkName: "52_" */ '@/views/checkout/without-sidebar/link-download-receipt'
+  )

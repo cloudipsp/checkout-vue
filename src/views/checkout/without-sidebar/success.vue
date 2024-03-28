@@ -7,6 +7,7 @@
     </div>
     <f-info />
     <f-price readonly />
+    <f-link-download-receipt v-if="receipt_url" />
     <div class="f-success-form-group">
       <div class="f-row">
         <div class="f-col" v-text="$t('payment_id')" />
@@ -25,7 +26,7 @@ import FPrice from '@/components/price'
 import SvgApproved from '@/svg/approved'
 import SvgDecline from '@/svg/decline'
 import { mapState } from '@/utils/store'
-import { FButtonReturnToSite } from '@/import'
+import { FButtonReturnToSite, FLinkDownloadReceipt } from '@/import'
 
 export default {
   components: {
@@ -33,11 +34,12 @@ export default {
     FPrice,
     SvgDecline,
     SvgApproved,
+    FLinkDownloadReceipt,
     FButtonReturnToSite,
   },
   computed: {
     ...mapState(['order']),
-    ...mapState('order', ['response_url']),
+    ...mapState('order', ['response_url', 'receipt_url']),
     status() {
       return this.order.order_data.order_status
     },

@@ -763,9 +763,20 @@
             response_url: 'https://api.dev.fondy.eu/test/responsepage/',
           },
         },
+        link_download_receipt: {
+          options: {
+            api_domain,
+          },
+          params: {
+            amount: 200,
+            currency: 'UAH',
+            merchant_id: 5364,
+            response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+          },
+        },
       }
 
-      window.app = render('#app', 'button_return_to_site')
+      window.app = render('#app', 'link_download_receipt')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 
