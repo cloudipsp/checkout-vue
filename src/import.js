@@ -319,3 +319,9 @@ export const Click2paySuccessPage = () =>
 
 export const Click2payCheckoutRegistration = () =>
   import(/* webpackChunkName: "56" */ '@/views/click2pay/checkout-registration')
+
+export const Click2payUserExists = () =>
+  import(/* webpackChunkName: "57" */ '@/views/click2pay/user-exists')
+
+export const Click2payOtp = () =>
+  import(/* webpackChunkName: "58" */ '@/views/click2pay/otp')

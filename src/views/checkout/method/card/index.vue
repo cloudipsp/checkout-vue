@@ -1,5 +1,6 @@
 <template>
   <div>
+    <click2pay-user-exists-wrapper />
     <div class="f-card">
       <div class="f-card-shadow" />
       <f-card-bg />
@@ -82,6 +83,7 @@
     </div>
     <f-field-email :disabled="disableEmail" />
     <click2pay-checkout-registration-wrapper @enable="setDisableEmail" />
+    <click2pay-otp-wrapper />
     <f-fields-customer />
     <f-fields-custom />
     <f-fields-user />
@@ -92,6 +94,7 @@
 </template>
 
 <script>
+import Click2payUserExistsWrapper from '@/views/click2pay/user-exists-wrapper'
 import FCardBg from '@/components/card-bg'
 import FCardBrand from '@/components/card-brand'
 import { FCardListWrapper } from '@/import'
@@ -99,6 +102,7 @@ import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
 import Click2payCheckoutRegistrationWrapper from '@/views/click2pay/checkout-registration-wrapper'
+import Click2payOtpWrapper from '@/views/click2pay/otp-wrapper'
 import FFieldsCustomer from '@/components/fields/customer'
 import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
@@ -111,6 +115,7 @@ import { createDate, format } from '@/utils/date'
 
 export default {
   components: {
+    Click2payUserExistsWrapper,
     FCardBg,
     FCardBrand,
     FCardListWrapper,
@@ -118,6 +123,7 @@ export default {
     FTooltipDefault,
     FFieldEmail,
     Click2payCheckoutRegistrationWrapper,
+    Click2payOtpWrapper,
     FFieldsCustomer,
     FFieldsCustom,
     FFieldsUser,

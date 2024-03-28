@@ -9,6 +9,7 @@ import {
   Card,
   CardIndex,
   CardVerify,
+  Click2payOtp,
   Banklinks_eu,
   Local_methods,
   Crypto,
@@ -32,6 +33,7 @@ import {
 
 const card = 'card'
 const verify = 'verify'
+const click2pay_otp = 'click2pay_otp'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
 const crypto = 'crypto'
@@ -79,7 +81,11 @@ export const createRouter = name => {
                         next({
                           name: verify,
                         })
-                      else next()
+                      else if (instanceStore.state.click2pay_otp) {
+                        next({
+                          name: click2pay_otp,
+                        })
+                      } else next()
                     },
                     meta: {
                       method: card,
@@ -94,6 +100,14 @@ export const createRouter = name => {
                     },
                   },
                 ],
+              },
+              {
+                path: click2pay_otp,
+                name: click2pay_otp,
+                component: Click2payOtp,
+                meta: {
+                  method: card,
+                },
               },
               {
                 path: banklinks_eu,

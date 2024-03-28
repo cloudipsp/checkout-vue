@@ -134,6 +134,7 @@ export const configDefault = {
   mode_test: false,
   cancel_url: '',
   promo: false,
+  click2pay_otp: false,
 }
 
 locales.forEach(function (locale) {
