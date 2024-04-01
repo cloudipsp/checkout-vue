@@ -4,7 +4,8 @@
     <f-icon
       v-for="{ logo, method } in listFirst"
       :key="logo"
-      size="sm"
+      class="f-icon"
+      size="24"
       :name="logo"
       :type="method"
     />
@@ -24,7 +25,8 @@
       <f-icon
         v-for="{ logo, method } in listLast"
         :key="logo"
-        size="sm"
+        class="f-icon"
+        size="24"
         :name="logo"
         :type="method"
       />

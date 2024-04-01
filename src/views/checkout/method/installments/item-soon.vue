@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     iconSize() {
-      return this.isBreakpointDownMd ? 36 : 48
+      return this.isBreakpointDownMd ? '36' : '48'
     },
   },
 }

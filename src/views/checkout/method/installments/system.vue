@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="f-system">
-      <f-icon :name="logo" :type="method" class="f-system-icon" />
+      <f-icon :name="logo" :type="method" class="f-system-icon" size="48" />
       <div class="f-system-name">{{ name }}</div>
 
       <f-button-close class="f-system-close" @click="goMethod" />

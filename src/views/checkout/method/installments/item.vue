@@ -114,7 +114,7 @@ export default {
       return this.item.available_payments_number.map(parseSelect)
     },
     iconSize() {
-      return this.isBreakpointDownMd ? 36 : 48
+      return this.isBreakpointDownMd ? '36' : '48'
     },
     dropdownClass() {
       return `f-tooltip-select ${this.$style.w_72}`

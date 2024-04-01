@@ -223,7 +223,7 @@ export default {
       return this.default_country === 'DE'
     },
     sizeBankIcon() {
-      return this.isList ? 'sm' : 'md'
+      return this.isList ? '24' : '48'
     },
     preloader() {
       return this.isBreakpoint ? Array(10) : Array(15)

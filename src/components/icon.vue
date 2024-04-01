@@ -4,15 +4,15 @@
 
 <script>
 import configMethods from '@/config/methods.json'
-import { PROP_TYPE_NUMBER_STRING, PROP_TYPE_STRING } from '@/constants/props'
+import { PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 import { arrayIncludes } from '@/utils/array'
 
 export default {
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),
-    size: makeProp(PROP_TYPE_NUMBER_STRING, 'md', value => {
-      return arrayIncludes(['sm', 'md', 'lg', 36, 48], value)
+    size: makeProp(PROP_TYPE_STRING, undefined, value => {
+      return arrayIncludes(['24', '36', '48'], value)
     }),
     type: makeProp(PROP_TYPE_STRING, 'card', value => {
       return arrayIncludes([...configMethods, 'card/max'], value)
@@ -35,8 +35,50 @@ export default {
       }
     },
     className() {
-      return ['f-icon', `f-icon-${this.size}`, `f-icon-${this.name}`]
+      return [
+        this.$style.style,
+        this.$style[`s_${this.size}`],
+        this.$style[this.name],
+      ]
     },
   },
 }
 </script>
+
+<style lang="scss" module>
+.style {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+
+.s_24 {
+  width: px-to-rem(24px);
+  min-width: px-to-rem(24px);
+  height: px-to-rem(24px);
+}
+
+.s_36 {
+  width: px-to-rem(36px);
+  min-width: px-to-rem(36px);
+  height: px-to-rem(36px);
+}
+
+.s_48 {
+  width: px-to-rem(48px);
+  min-width: px-to-rem(48px);
+  height: px-to-rem(48px);
+}
+
+.trustly {
+  width: px-to-rem(50px);
+}
+
+.google {
+  width: px-to-rem(45px);
+  background-color: inherit;
+}
+</style>
