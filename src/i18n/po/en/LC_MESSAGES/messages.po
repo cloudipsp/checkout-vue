@@ -17,6 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
 
+msgid "diners"
+msgstr "Diners"
+
+msgid "union_pay"
+msgstr "Union Pay"
+
+msgid "discover"
+msgstr "Discover"
+
+msgid "maestro"
+msgstr "Maestro"
+
+msgid "visa"
+msgstr "Visa"
+
+msgid "american_express"
+msgstr "American Express"
+
+msgid "mastercard"
+msgstr "Mastercard"
+
+msgid "prostir"
+msgstr "Prostir"
+
+msgid "jcb"
+msgstr "Jcb"
+
 msgid "card"
 msgstr "Card"
 

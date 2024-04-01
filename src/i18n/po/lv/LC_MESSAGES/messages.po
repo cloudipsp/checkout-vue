@@ -17,6 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: smartCAT.ai\n"
 
+msgid "diners"
+msgstr ""
+
+msgid "union_pay"
+msgstr ""
+
+msgid "discover"
+msgstr ""
+
+msgid "maestro"
+msgstr ""
+
+msgid "visa"
+msgstr ""
+
+msgid "american_express"
+msgstr ""
+
+msgid "mastercard"
+msgstr ""
+
+msgid "prostir"
+msgstr ""
+
+msgid "jcb"
+msgstr ""
+
 msgid "card"
 msgstr "Karte"
 

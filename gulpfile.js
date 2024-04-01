@@ -35,6 +35,13 @@ gulp.task(
   process('./src/config/subscription-period.json')
 )
 
+gulp.task(
+  'bins',
+  process('./src/config/bins.json', content =>
+    Object.entries(content).map(([name]) => name)
+  )
+)
+
 gulp.task('po', done =>
   nodeGettextGenerator
     .process({
@@ -58,7 +65,7 @@ gulp.task('po', done =>
     })
 )
 
-gulp.task('i18n', gulp.series('methods', 'subscription-period', 'po'))
+gulp.task('i18n', gulp.series('methods', 'subscription-period', 'bins', 'po'))
 
 gulp.task(
   'i18n-need-translation',
