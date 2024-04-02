@@ -1,4 +1,4 @@
-import { extend, ValidationProvider, ValidationObserver } from 'vee-validate'
+import { extend } from 'vee-validate'
 import {
   required,
   email,
@@ -11,7 +11,7 @@ import {
 } from 'vee-validate/dist/rules'
 import * as customRules from '@/validate/rules'
 
-export const install = Vue => {
+export const install = () => {
   let rules = Object.assign(
     {
       required,
@@ -29,7 +29,4 @@ export const install = Vue => {
   Object.entries(rules).forEach(([name, value]) => {
     extend(name, value)
   })
-
-  Vue.component('ValidationProvider', ValidationProvider)
-  Vue.component('ValidationObserver', ValidationObserver)
 }

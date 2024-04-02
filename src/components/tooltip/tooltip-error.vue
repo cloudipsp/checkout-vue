@@ -5,7 +5,12 @@
 </template>
 
 <script>
+import FTooltipBase from '@/components/tooltip/tooltip-base'
+
 export default {
+  components: {
+    FTooltipBase,
+  },
   inheritAttrs: false,
   computed: {
     attrs() {

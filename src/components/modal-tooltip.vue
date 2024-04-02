@@ -45,6 +45,7 @@
 
 <script>
 import FTooltipSelect from '@/components/tooltip/tooltip-select'
+import FModalBase from '@/components/modal/modal-base'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
@@ -55,6 +56,7 @@ import FScrollbarVertical from '@/components/scrollbar-vertical'
 export default {
   components: {
     FTooltipSelect,
+    FModalBase,
     FScrollbarVertical,
   },
   mixins: [timeoutMixin, resizeMixin],

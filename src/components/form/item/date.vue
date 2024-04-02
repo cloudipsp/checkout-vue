@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import { DatePicker } from '@/import'
 import { FFormInput } from '@/components/form/item/helpers/form-input'
 import FSvg from '@/components/svg'
@@ -40,6 +41,7 @@ import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
+    ValidationProvider,
     DatePicker,
     FFormInput,
     FSvg,

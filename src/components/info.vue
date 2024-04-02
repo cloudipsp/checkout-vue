@@ -33,12 +33,14 @@
 <script>
 import FPreloader from '@/components/preloader'
 import FSvg from '@/components/svg'
+import FModalBase from '@/components/modal/modal-base'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FPreloader,
     FSvg,
+    FModalBase,
   },
   data() {
     return {

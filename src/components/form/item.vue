@@ -21,6 +21,7 @@
 import FFormItemInput from '@/components/form/item/input'
 import FFormItemDate from '@/components/form/item/date'
 import FFormItemCheckbox from '@/components/form/item/checkbox'
+import FFormItemSelect from '@/components/form/item/select'
 import FFormItemSelect2 from '@/components/form/item/select2'
 import { PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -31,6 +32,7 @@ export default {
     FFormItemInput,
     FFormItemDate,
     FFormItemCheckbox,
+    FFormItemSelect,
     FFormItemSelect2,
   },
   inheritAttrs: false,

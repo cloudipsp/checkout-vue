@@ -5,7 +5,12 @@
 </template>
 
 <script>
+import { ValidationObserver } from 'vee-validate'
+
 export default {
+  components: {
+    ValidationObserver,
+  },
   provide() {
     return {
       submit: this.submit,

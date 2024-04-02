@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import FModalBase from '@/components/modal/modal-base'
 import FButton from '@/components/button/button'
 import FQrCode from '@/components/base/qr-code'
 import { isMobile } from '@/utils/mobile'
@@ -37,6 +38,7 @@ import { PROP_TYPE_STRING } from '@/constants/props'
 
 export default {
   components: {
+    FModalBase,
     FButton,
     FQrCode,
   },

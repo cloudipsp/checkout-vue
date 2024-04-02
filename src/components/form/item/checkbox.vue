@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import { itemMixin } from '@/mixins/item'
 import Checkbox from '@/components/form/item/helpers/checkbox'
 import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
@@ -22,6 +23,7 @@ import { arrayIncludes } from '@/utils/array'
 
 export default {
   components: {
+    ValidationProvider,
     Checkbox,
   },
   mixins: [itemMixin],

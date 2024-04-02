@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import { itemMixin } from '@/mixins/item'
 import { FFormInput } from '@/components/form/item/helpers/form-input'
 import { removeAddEventListenerMixin } from '@/mixins/remove-add-event-listener'
@@ -23,6 +24,7 @@ import { PROP_TYPE_BOOLEAN, PROP_TYPE_FUNCTION } from '@/constants/props'
 
 export default {
   components: {
+    ValidationProvider,
     FFormInput,
   },
   mixins: [itemMixin, removeAddEventListenerMixin],

@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import FModalBase from '@/components/modal/modal-base'
 import SvgDecline from '@/svg/decline.svg'
 
 export default {
   components: {
+    FModalBase,
     SvgDecline,
   },
 }

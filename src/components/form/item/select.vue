@@ -16,11 +16,13 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import { FFormSelect } from '@/components/form/item/helpers/form-select'
 import { itemMixin } from '@/mixins/item'
 
 export default {
   components: {
+    ValidationProvider,
     FFormSelect,
   },
   mixins: [itemMixin],

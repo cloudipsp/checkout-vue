@@ -5,12 +5,16 @@
 </template>
 
 <script>
+import { ValidationObserver } from 'vee-validate'
 import { mapStateGetSet } from '@/utils/store'
 import { isMountedMixin } from '@/mixins/is-mounted'
 import { errorHandler } from '@/utils/helpers'
 import { attemptFocus } from '@/utils/dom'
 
 export default {
+  components: {
+    ValidationObserver,
+  },
   mixins: [isMountedMixin],
   inject: ['formRequest'],
   provide() {

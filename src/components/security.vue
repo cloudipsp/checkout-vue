@@ -45,6 +45,7 @@
 
 <script>
 import FSvg from '@/components/svg'
+import FModalBase from '@/components/modal/modal-base'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import { FSecurityIcons } from '@/import'
 import { resizeMixin } from '@/mixins/resize'
@@ -53,6 +54,7 @@ import { isPhone } from '@/utils/mobile'
 export default {
   components: {
     FSvg,
+    FModalBase,
     FTooltipDefault,
     FSecurityIcons,
   },

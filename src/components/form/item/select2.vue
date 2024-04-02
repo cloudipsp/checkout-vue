@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import FSelect from '@/components/form/item/helpers/select'
 import { itemMixin } from '@/mixins/item'
 import { makeProp } from '@/utils/props'
@@ -28,6 +29,7 @@ import { PROP_TYPE_BOOLEAN } from '@/constants/props'
 
 export default {
   components: {
+    ValidationProvider,
     FSelect,
   },
   mixins: [itemMixin],

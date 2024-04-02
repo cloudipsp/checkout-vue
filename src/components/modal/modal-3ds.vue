@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import FModalBase from '@/components/modal/modal-base'
 import FButton from '@/components/button/button'
 import { timeoutMixin } from '@/mixins/timeout'
 import { PROP_TYPE_NUMBER } from '@/constants/props'
@@ -25,6 +26,7 @@ import { makeProp } from '@/utils/props'
 
 export default {
   components: {
+    FModalBase,
     FButton,
   },
   mixins: [timeoutMixin],
