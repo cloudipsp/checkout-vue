@@ -157,10 +157,8 @@ export const DatePicker = () =>
     /* webpackChunkName: "6" */ '@/components/form/item/helpers/date-picker'
   )
 
-export const loadCardBrands = () =>
-  import(/* webpackChunkName: "7" */ '@/config/card-brands').then(
-    module => module.default
-  )
+export const FIconBin = () =>
+  import(/* webpackChunkName: "7" */ '@/components/icon-bin')
 
 export const FAlertGdpr = () =>
   import(/* webpackChunkName: "8" */ '@/components/alert/alert-gdpr')

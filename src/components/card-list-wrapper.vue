@@ -55,8 +55,6 @@ import FCardList from '@/components/card-list'
 import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isPhone } from '@/utils/mobile'
-import { parseCards } from '@/utils/card-brand'
-import { isArray } from '@/utils/inspect'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_STRING } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -76,7 +74,6 @@ export default {
   },
   data() {
     return {
-      list: [],
       showModalCard: false,
       showTooltipCard: false,
     }
@@ -92,9 +89,18 @@ export default {
     scrollable() {
       return this.cards.length > 5
     },
+    list() {
+      return this.cards.map(item => ({
+        ...item,
+        card_number: item.card_number.replace(/ /g, ''),
+        expiry_date: (item.expiry_date || '').replace(/ /g, ''),
+      }))
+    },
   },
   created() {
-    this.parseCards()
+    if (this.list.length) {
+      this.store.setCardNumber(this.list[0])
+    }
   },
   methods: {
     hide() {
@@ -106,15 +112,6 @@ export default {
       this.timeout(() => {
         this.showTooltipCard = false
       }, 200)
-    },
-    parseCards() {
-      if (!isArray(this.cards)) return
-      if (!this.cards.length) return
-
-      parseCards(this.cards).then(cards => {
-        this.list = cards
-        this.store.setCardNumber(this.list[0])
-      })
     },
   },
 }

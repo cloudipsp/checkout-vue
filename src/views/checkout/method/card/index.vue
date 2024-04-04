@@ -3,7 +3,13 @@
     <div class="f-card">
       <div class="f-card-shadow" />
       <f-card-bg />
-      <f-card-brand :number="card_number" />
+      <transition name="f-fade">
+        <f-icon-bin
+          v-if="card_number"
+          class="f-card-brand"
+          :bin="card_number"
+        />
+      </transition>
       <f-form-group
         ref="card_number"
         v-model="card_number"
@@ -95,8 +101,7 @@
 
 <script>
 import FCardBg from '@/components/card-bg'
-import FCardBrand from '@/components/card-brand'
-import { FCardListWrapper } from '@/import'
+import { FIconBin, FCardListWrapper } from '@/import'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
@@ -113,7 +118,7 @@ import { createDate, format } from '@/utils/date'
 export default {
   components: {
     FCardBg,
-    FCardBrand,
+    FIconBin,
     FCardListWrapper,
     FSvg,
     FTooltipDefault,

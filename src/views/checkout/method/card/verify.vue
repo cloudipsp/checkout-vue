@@ -3,7 +3,13 @@
     <div class="f-card">
       <div class="f-card-shadow" />
       <f-card-bg />
-      <f-card-brand :number="card_number" />
+      <transition name="f-fade">
+        <f-icon-bin
+          v-if="card_number"
+          class="f-card-brand"
+          :bin="card_number"
+        />
+      </transition>
       <f-form-group
         :value="card_number"
         class="f-form-group-card f-form-group-card-number"
@@ -70,7 +76,7 @@
 
 <script>
 import FCardBg from '@/components/card-bg'
-import FCardBrand from '@/components/card-brand'
+import FIconBin from '@/components/icon-bin'
 import FSvg from '@/components/svg'
 import FFieldEmail from '@/components/fields/email'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
@@ -81,7 +87,7 @@ import { mapState, mapStateGetSet } from '@/utils/store'
 export default {
   components: {
     FCardBg,
-    FCardBrand,
+    FIconBin,
     FSvg,
     FFieldEmail,
     FSubscriptionWrapper,

@@ -4,12 +4,7 @@
     type="button"
     v-on="$listeners"
   >
-    <f-icon
-      v-if="item.card_brand"
-      type="card/max"
-      :name="item.card_brand"
-      class="f-card-list-icon"
-    />
+    <f-icon-bin class="f-card-list-icon" :bin="item.card_number" />
     <div>
       <div :class="$style.number">{{ cardNumber }}</div>
       <div :class="$style['expiry-date']">
@@ -55,7 +50,7 @@
 
 <script>
 import FSvg from '@/components/svg'
-import FIcon from '@/components/icon'
+import FIconBin from '@/components/icon-bin'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_OBJECT } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -65,7 +60,7 @@ import FTooltipDefault from '@/components/tooltip/tooltip-default'
 export default {
   components: {
     FSvg,
-    FIcon,
+    FIconBin,
     FTooltipDefault,
   },
   props: {
