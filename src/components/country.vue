@@ -2,7 +2,7 @@
   <f-form-group
     name=""
     component="select2"
-    variant="secondary"
+    variant-item="secondary"
     size="sm"
     v-bind="attrs"
     data-e2e-country

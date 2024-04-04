@@ -45,10 +45,12 @@
   font-size: px-to-rem(16px);
   font-weight: 400;
   line-height: px-to-rem(20px);
-  color: $card_list_number_color;
+  color: #5a6470;
   cursor: pointer;
   border-top: px-to-rem(1px) solid #eef0f2;
-  transition: background-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition:
+    background-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
 
   &:first-of-type {
     border-top: none;

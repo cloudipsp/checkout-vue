@@ -81,7 +81,7 @@ export default {
         ({ text }) =>
           text.toLowerCase().indexOf(search) === 0
     ),
-    variant: makeProp(PROP_TYPE_STRING, 'default', value =>
+    variantItem: makeProp(PROP_TYPE_STRING, 'default', value =>
       arrayIncludes(['default', 'secondary'], value)
     ),
     search: makeProp(PROP_TYPE_BOOLEAN, false),
@@ -106,11 +106,11 @@ export default {
     },
     classItem() {
       return (item, index) => [
-        `f-select-${this.variant}-item`,
+        `f-select-${this.variantItem}-item`,
         'f-btn-unstyled',
         {
-          [`f-select-${this.variant}-item_active`]: this.isActive(item),
-          [`f-select-${this.variant}-item_focus`]: index === this.index,
+          [`f-select-${this.variantItem}-item_active`]: this.isActive(item),
+          [`f-select-${this.variantItem}-item_focus`]: index === this.index,
         },
       ]
     },
