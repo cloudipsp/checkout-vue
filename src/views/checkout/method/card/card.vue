@@ -90,12 +90,6 @@
       </f-form-group>
     </div>
     <f-field-email />
-    <f-fields-customer />
-    <f-fields-custom />
-    <f-fields-user />
-    <f-subscription-wrapper />
-    <f-offer />
-    <f-button-pay />
   </div>
 </template>
 
@@ -105,12 +99,6 @@ import { FIconBin, FCardListWrapper } from '@/import'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
-import FFieldsCustomer from '@/components/fields/customer'
-import FFieldsCustom from '@/components/fields/custom'
-import FFieldsUser from '@/components/fields/user'
-import FSubscriptionWrapper from '@/components/subscription-wrapper'
-import FOffer from '@/components/offer'
-import FButtonPay from '@/components/button/button-pay'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { createDate, format } from '@/utils/date'
@@ -123,12 +111,6 @@ export default {
     FSvg,
     FTooltipDefault,
     FFieldEmail,
-    FFieldsCustomer,
-    FFieldsCustom,
-    FFieldsUser,
-    FSubscriptionWrapper,
-    FOffer,
-    FButtonPay,
   },
   data() {
     return {

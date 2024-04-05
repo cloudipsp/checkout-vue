@@ -14,7 +14,6 @@
         <f-amount :value="total_amount" :currency="currency" />
       </f-preloader>
     </f-button>
-    <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo_desc')" />
     <f-button-cancel v-if="cancel_url" />
   </div>
 </template>
@@ -50,7 +49,7 @@ export default {
   computed: {
     ...mapState(['cancel_url']),
     ...mapState('options', { show: 'button' }),
-    ...mapState('options', ['show_button_amount', 'disable_request']),
+    ...mapState('options', ['show_button_amount']),
     ...mapState('params', ['currency', 'verification_type']),
     ...mapState(['total_amount']),
     disabled() {
@@ -62,9 +61,6 @@ export default {
         !this.noAmount &&
         this.show_button_amount
       )
-    },
-    isDemo() {
-      return this.disable_request
     },
   },
   mounted() {

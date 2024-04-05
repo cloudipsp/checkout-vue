@@ -4,10 +4,12 @@ import Router from 'vue-router'
 import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
 import Blank from '@/views/checkout/blank'
+import ButtonPay from '@/components/button/button-pay'
 import { getStore } from '@/store/index'
 import {
   Card,
-  CardIndex,
+  CardFields,
+  CardCard,
   CardVerify,
   Banklinks_eu,
   Local_methods,
@@ -72,18 +74,27 @@ export const createRouter = name => {
                 children: [
                   {
                     path: '',
-                    name: card,
-                    component: CardIndex,
-                    beforeEnter: (to, from, next) => {
-                      if (instanceStore.state.order.need_verify_code)
-                        next({
-                          name: verify,
-                        })
-                      else next()
-                    },
-                    meta: {
-                      method: card,
-                    },
+                    component: CardFields,
+                    children: [
+                      {
+                        path: '',
+                        name: card,
+                        components: {
+                          default: CardCard,
+                          'button-pay': ButtonPay,
+                        },
+                        beforeEnter: (to, from, next) => {
+                          if (instanceStore.state.order.need_verify_code)
+                            next({
+                              name: verify,
+                            })
+                          else next()
+                        },
+                        meta: {
+                          method: card,
+                        },
+                      },
+                    ],
                   },
                   {
                     path: verify,
