@@ -15,6 +15,7 @@
       <f-fields-user />
       <f-offer />
       <f-button-pay @success="success" />
+      <f-button-cancel-wrapper />
       <f-modal-qr
         :id="id"
         v-model="showQrModal"
@@ -35,6 +36,7 @@ import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
+import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
 import FModalQr from '@/components/modal/modal-qr'
 import FAlertGdprYapilyWrapper from '@/components/alert/alert-gdpr-yapily-wrapper'
 import { mapState } from '@/utils/store'
@@ -49,6 +51,7 @@ export default {
     FFieldsUser,
     FOffer,
     FButtonPay,
+    FButtonCancelWrapper,
     FModalQr,
     FAlertGdprYapilyWrapper,
   },

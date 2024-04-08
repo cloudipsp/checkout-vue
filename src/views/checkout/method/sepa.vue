@@ -19,18 +19,21 @@
 
     <f-offer />
     <f-button-pay />
+    <f-button-cancel-wrapper />
   </div>
 </template>
 
 <script>
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
+import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
     FOffer,
     FButtonPay,
+    FButtonCancelWrapper,
   },
   data() {
     return {

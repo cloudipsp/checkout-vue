@@ -71,6 +71,7 @@
     <f-subscription-wrapper />
     <f-offer />
     <f-button-pay :no-amount="isAmount" />
+    <f-button-cancel-wrapper />
   </div>
 </template>
 
@@ -82,6 +83,7 @@ import FFieldEmail from '@/components/fields/email'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
+import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
 import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
@@ -93,6 +95,7 @@ export default {
     FSubscriptionWrapper,
     FOffer,
     FButtonPay,
+    FButtonCancelWrapper,
   },
   computed: {
     ...mapState(['order']),

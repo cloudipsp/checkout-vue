@@ -21,7 +21,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cancel_url']),
+    ...mapState('info', ['order']),
     ...mapState('params', ['token']),
   },
   methods: {
@@ -37,9 +37,9 @@ export default {
           const method = model.attr('method')
           const data = model.attr('order_data')
 
-          if (!this.cancel_url || !method || !data) return
+          if (!this.order.cancel_url || !method || !data) return
 
-          model.formDataSubmit(this.cancel_url, data, '_self', method)
+          model.formDataSubmit(this.order.cancel_url, data, '_self', method)
         })
         .catch(errorHandler)
     },

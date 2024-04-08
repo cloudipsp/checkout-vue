@@ -10,6 +10,7 @@
     <f-offer />
     <router-view name="button-pay" />
     <div v-if="isDemo" class="f-demo-desc" v-text="$t('demo_desc')" />
+    <f-button-cancel-wrapper />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import FFieldsCustom from '@/components/fields/custom'
 import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
+import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -28,6 +30,7 @@ export default {
     FFieldsUser,
     FSubscriptionWrapper,
     FOffer,
+    FButtonCancelWrapper,
   },
   computed: {
     ...mapState('options', ['disable_request']),

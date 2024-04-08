@@ -1,28 +1,24 @@
 <template>
-  <div>
-    <f-button
-      v-if="show"
-      class="f-button-pay"
-      variant="success"
-      :disabled="disabled"
-      size="lg"
-      block
-      @click="click"
-    >
-      <span v-text="$t('pay')" />&nbsp;
-      <f-preloader v-if="showAmount" :condition="total_amount" tag="span">
-        <f-amount :value="total_amount" :currency="currency" />
-      </f-preloader>
-    </f-button>
-    <f-button-cancel v-if="cancel_url" />
-  </div>
+  <f-button
+    v-if="show"
+    class="f-button-pay"
+    variant="success"
+    :disabled="disabled"
+    size="lg"
+    block
+    @click="click"
+  >
+    <span v-text="$t('pay')" />&nbsp;
+    <f-preloader v-if="showAmount" :condition="total_amount" tag="span">
+      <f-amount :value="total_amount" :currency="currency" />
+    </f-preloader>
+  </f-button>
 </template>
 
 <script>
 import FButton from '@/components/button/button'
 import FPreloader from '@/components/preloader'
 import FAmount from '@/components/base/amount'
-import { FButtonCancel } from '@/import'
 import { mapState } from '@/utils/store'
 import { errorHandler } from '@/utils/helpers'
 import { validatorMixin } from '@/mixins/validator'
@@ -34,7 +30,6 @@ export default {
     FButton,
     FPreloader,
     FAmount,
-    FButtonCancel,
   },
   mixins: [validatorMixin],
   inject: ['submit'],
@@ -47,7 +42,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cancel_url']),
     ...mapState('options', { show: 'button' }),
     ...mapState('options', ['show_button_amount']),
     ...mapState('params', ['currency', 'verification_type']),
