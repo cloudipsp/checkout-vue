@@ -82,6 +82,33 @@
   background-color: $card_list_item_active_bg;
 }
 
+.f-select-card-item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: px-to-rem(60px);
+  padding: px-to-rem(10px);
+  margin-bottom: px-to-rem(4px);
+  color: $main_color;
+  cursor: pointer;
+  border-radius: 0;
+  transition:
+    background-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    background-color: $card_list_item_hover_bg;
+  }
+}
+
+.f-select-card-item_active {
+  background-color: $card_list_item_active_bg;
+}
+
 .f-select-arrow-wrapper {
   display: flex;
   padding-left: px-to-rem(6px);

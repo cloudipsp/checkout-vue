@@ -1,9 +1,12 @@
 <template>
-  <f-modal-tooltip ref="mt" v-bind="fAttrs" @shown="shown" @hide="hide">
+  <f-modal-tooltip ref="mt" v-bind="attrs" @shown="shown" @hide="hide">
     <template #text>
-      <slot name="text" :item="active">
-        {{ active.text }}
-      </slot>
+      <template v-if="active.value">
+        <slot name="text" :item="active">
+          {{ active.text }}
+        </slot>
+      </template>
+      <template v-else>{{ placeholder }}</template>
       <span class="f-select-arrow-wrapper">
         <f-svg :class="classArrow" name="angle-down" />
       </span>
@@ -31,7 +34,7 @@
         type="button"
         :class="classItem(item, key)"
         :data-e2e-select-item="item.value"
-        @click="click(item.value)"
+        @click="click(item)"
         @keydown="navigate"
         @focus="focus(key)"
       >
@@ -82,9 +85,11 @@ export default {
           text.toLowerCase().indexOf(search) === 0
     ),
     variantItem: makeProp(PROP_TYPE_STRING, 'default', value =>
-      arrayIncludes(['default', 'secondary'], value)
+      arrayIncludes(['default', 'secondary', 'card'], value)
     ),
     search: makeProp(PROP_TYPE_BOOLEAN, false),
+    disabled: makeProp(PROP_TYPE_BOOLEAN, false),
+    placeholder: makeProp(PROP_TYPE_STRING, 'select'),
   },
   data() {
     return {
@@ -95,6 +100,12 @@ export default {
     }
   },
   computed: {
+    attrs() {
+      return {
+        ...this.fAttrs,
+        disabled: !this.options.length || this.disabled,
+      }
+    },
     showSearch() {
       return this.search && this.options.length > 10
     },
@@ -124,7 +135,9 @@ export default {
     },
   },
   methods: {
-    click(value) {
+    click({ value, disabled }) {
+      if (disabled) return
+
       this.$emit('change', value)
       this.$refs.mt.$emit('hide')
     },
@@ -153,7 +166,7 @@ export default {
           this.scroll()
           break
         case CODE_ENTER:
-          this.click(this.list[this.index].value)
+          this.click(this.list[this.index])
           break
         default:
           return

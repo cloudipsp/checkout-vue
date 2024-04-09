@@ -52,7 +52,6 @@ export const itemMixin = {
         ...this.$attrs,
         id: this.safeId(),
         state: this.state,
-        placeholder: this.placeholder,
       }
     },
     attrsValidation() {
@@ -79,9 +78,6 @@ export const itemMixin = {
           'f-control-error': this.hasError,
         },
       ]
-    },
-    placeholder() {
-      return this.$t(this.$attrs.placeholder)
     },
   },
   watch: {
