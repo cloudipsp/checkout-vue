@@ -12,6 +12,7 @@
       />
     </template>
     <router-view />
+    <click2pay-otp-wrapper />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import FPrice from '@/components/price'
 import FIcons from '@/components/icons'
 import FButtonWalletEl from '@/components/button-pay-wallet-el'
 import { resizeMixin } from '@/mixins/resize'
+import Click2payOtpWrapper from '@/views/click2pay/otp-wrapper'
 
 export default {
   components: {
@@ -29,6 +31,7 @@ export default {
     FPrice,
     FIcons,
     FButtonWalletEl,
+    Click2payOtpWrapper,
   },
   mixins: [resizeMixin],
   computed: {

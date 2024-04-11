@@ -91,6 +91,7 @@
     </div>
     <f-field-email :disabled="disableEmail" />
     <click2pay-new-user-card-page-wrapper @enable="setDisableEmail" />
+    <click2pay-user-exists-card-page-wrapper />
   </div>
 </template>
 
@@ -101,6 +102,7 @@ import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
 import Click2payNewUserCardPageWrapper from '@/views/click2pay/new-user-card-page-wrapper'
+import Click2payUserExistsCardPageWrapper from '@/views/click2pay/user-exists-card-page-wrapper'
 import { errorHandler } from '@/utils/helpers'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { createDate, format } from '@/utils/date'
@@ -114,6 +116,7 @@ export default {
     FTooltipDefault,
     FFieldEmail,
     Click2payNewUserCardPageWrapper,
+    Click2payUserExistsCardPageWrapper,
   },
   data() {
     return {

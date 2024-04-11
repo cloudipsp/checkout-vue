@@ -5,12 +5,15 @@ import Method from '@/views/checkout/method'
 import Checkout from '@/views/checkout'
 import Blank from '@/views/checkout/blank'
 import ButtonPay from '@/components/button/button-pay'
-import { getStore } from '@/store/index'
+import { getStore } from '@/store'
+import Click2payButtonPay from '@/views/click2pay/button-pay'
 import {
   Card,
   CardFields,
   CardCard,
+  Click2payUserExists,
   CardVerify,
+  Click2payOtp,
   Banklinks_eu,
   Local_methods,
   Crypto,
@@ -33,7 +36,9 @@ import {
 } from '@/import'
 
 const card = 'card'
+const click2pay = 'click2pay'
 const verify = 'verify'
+const click2pay_otp = 'click2pay_otp'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
 const crypto = 'crypto'
@@ -88,7 +93,22 @@ export const createRouter = name => {
                             next({
                               name: verify,
                             })
-                          else next()
+                          else if (instanceStore.state.click2pay_otp) {
+                            next({
+                              name: click2pay_otp,
+                            })
+                          } else next()
+                        },
+                        meta: {
+                          method: card,
+                        },
+                      },
+                      {
+                        path: click2pay,
+                        name: click2pay,
+                        components: {
+                          default: Click2payUserExists,
+                          'button-pay': Click2payButtonPay,
                         },
                         meta: {
                           method: card,
@@ -100,6 +120,14 @@ export const createRouter = name => {
                     path: verify,
                     name: verify,
                     component: CardVerify,
+                    meta: {
+                      method: card,
+                    },
+                  },
+                  {
+                    path: click2pay_otp,
+                    name: click2pay_otp,
+                    component: Click2payOtp,
                     meta: {
                       method: card,
                     },

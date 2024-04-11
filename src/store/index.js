@@ -592,6 +592,9 @@ class Store extends Model {
         this.state.order.order_data?.click2pay_checkout_data)
     )
   }
+  setClick2payOtp(value) {
+    this.state.click2pay_otp = value
+  }
 }
 
 export const createStore = name => {

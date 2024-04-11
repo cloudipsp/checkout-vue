@@ -136,6 +136,7 @@ export const configDefault = {
   vm_wallets: null,
   mode_test: false,
   promo: false,
+  click2pay_otp: false,
 }
 
 locales.forEach(function (locale) {

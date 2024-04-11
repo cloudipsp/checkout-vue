@@ -329,3 +329,20 @@ export const Click2payNewUserSuccessPage = () =>
 
 export const Click2payNewUserCardPage = () =>
   import(/* webpackChunkName: "56" */ '@/views/click2pay/new-user-card-page')
+
+export const Click2payOtp = () =>
+  import(/* webpackChunkName: "57" */ '@/views/click2pay/otp')
+
+export const Click2payUserExists = () =>
+  import(/* webpackChunkName: "58" */ '@/views/click2pay/user-exists')
+
+export const Click2payUserExistsHeader = () =>
+  import(/* webpackChunkName: "59" */ '@/views/click2pay/user-exists-header')
+
+export const Click2payUserExistsCardPage = () =>
+  import(/* webpackChunkName: "60" */ '@/views/click2pay/user-exists-card-page')
+
+export const Click2payUserExistsSuccessPage = () =>
+  import(
+    /* webpackChunkName: "61" */ '@/views/click2pay/user-exists-success-page'
+  )

@@ -19,6 +19,10 @@ import { sessionStorage } from '@/utils/store'
 let vSrcAdapter
 let vSrc
 let srciTransactionId
+export let srcCorrelationId
+export let idToken
+export let srcDigitalCardId
+let idTokens
 
 const clickToPay = 'Click to Pay'
 const sdkLoad = 'sdk load'
@@ -28,6 +32,9 @@ const initText = 'init'
 const isRecognizedText = 'isRecognized'
 const identityLookupEmailText = 'identityLookupEmail'
 const checkoutText = 'checkout'
+const initiateIdentityValidationText = 'initiateIdentityValidation'
+const completeIdentityValidationText = 'completeIdentityValidation'
+const getSrcProfileText = 'getSrcProfile'
 
 const logMessage = (name, response = 'ok') => {
   console.log(clickToPay, name, JSON.stringify(response, null, 2))
@@ -147,9 +154,53 @@ export const checkout = input => {
   )
 }
 
+export const initiateIdentityValidation = () =>
+  vSrc
+    .initiateIdentityValidation()
+    .then(onMessage(initiateIdentityValidationText))
+    // $t('c2p_otp_send_failed')
+    // $t('c2p_retries_exceeded')
+    // $t('c2p_id_invalid')
+    // $t('c2p_unrecognized_consumer_id')
+    // $t('c2p_acct_inaccessible')
+    .catch(onError(initiateIdentityValidationText))
+
+const completeIdentityValidation = input =>
+  vSrc
+    .completeIdentityValidation(input)
+    .then(onMessage(completeIdentityValidationText))
+    // $t('c2p_unknown_error')
+    // $t('c2p_code_invalid')
+    // $t('c2p_code_expired')
+    // $t('c2p_retries_exceeded')
+    // $t('c2p_validation_data_missing')
+    // $t('c2p_acct_inaccessible')
+    .catch(onError(completeIdentityValidationText))
+
+export const getSrcProfileMemoize = memoizePromise(idTokens =>
+  vSrc
+    .getSrcProfile({ idTokens })
+    .then(onMessage(getSrcProfileText))
+    // $t('c2p_auth_invalid')
+    // $t('c2p_acct_inaccessible')
+    .catch(onError(getSrcProfileText))
+)
+
+const isRecognized = () =>
+  isRecognizedMemoize().then(({ recognized }) =>
+    recognized ? Promise.resolve() : Promise.reject('no recognized')
+  )
+
 const noRecognized = () =>
   isRecognizedMemoize().then(({ recognized }) =>
     recognized ? Promise.reject('is recognized') : Promise.resolve()
+  )
+
+const isIdentityLookupEmail = email => () =>
+  identityLookupEmailMemoize(email).then(({ consumerPresent }) =>
+    consumerPresent
+      ? Promise.resolve()
+      : Promise.reject('no identityLookupEmail')
   )
 
 const noIdentityLookupEmail = email => () =>
@@ -157,6 +208,27 @@ const noIdentityLookupEmail = email => () =>
     consumerPresent
       ? Promise.reject('is identityLookupEmail')
       : Promise.resolve()
+  )
+
+const setIdTokensStorage = value => (idTokens = value)
+
+const getIdTokensStorage = () =>
+  idTokens ? Promise.resolve(idTokens) : Promise.reject('no idTokensStorage')
+
+const hasIdTokensStorage = () =>
+  idTokens ? Promise.resolve() : Promise.reject()
+
+const noIdTokensStorage = () =>
+  idTokens ? Promise.reject('is idTokensStorage') : Promise.resolve()
+
+const UserExists = () =>
+  Promise.any([hasIdTokensStorage(), isRecognized()]).catch(() =>
+    Promise.reject('no UserExists')
+  )
+
+const getIdTokensRecognized = () =>
+  isRecognizedMemoize().then(({ idTokens }) =>
+    idTokens ? Promise.resolve(idTokens) : Promise.reject()
   )
 
 export const initClick2pay = () =>
@@ -170,6 +242,7 @@ export const needRegistration = email =>
     .then(() => createTransactionIdMemoize())
     .then(() => initMemoize())
     .then(noRecognized)
+    .then(noIdTokensStorage)
     .then(noIdentityLookupEmail(email))
 
 export const setRememberMe = value => sessionStorage.set('rememberMe', value)
@@ -208,3 +281,53 @@ export const getCheckoutSettings = input => ({
   complianceSettings: complianceSettings(),
   ...input,
 })
+
+export const needOtp = email =>
+  loadMemoize()
+    .then(() => createTransactionIdMemoize())
+    .then(() => initMemoize())
+    .then(noRecognized)
+    .then(isIdentityLookupEmail(email))
+    .then(noIdTokensStorage)
+
+export const profiles = () =>
+  getIdTokensRecognized()
+    .catch(getIdTokensStorage)
+    .then(getSrcProfileMemoize)
+    .then(response => {
+      srcCorrelationId = response.srcCorrelationId
+      idToken = response.profiles[0].idToken
+      return response
+    })
+
+export const complete = input =>
+  completeIdentityValidation(input)
+    .then(({ idToken }) => [idToken])
+    .then(setIdTokensStorage)
+    .then(profiles)
+
+export const isUserExists = () =>
+  loadMemoize()
+    .then(() => createTransactionIdMemoize())
+    .then(() => initMemoize())
+    .then(UserExists)
+    .then(profiles)
+
+export const hasCards = () =>
+  profiles().then(({ profiles }) =>
+    profiles[0].maskedCards.length
+      ? Promise.resolve()
+      : Promise.reject('no cards')
+  )
+
+export const setSrcDigitalCardId = value => (srcDigitalCardId = value)
+
+export const checkoutSelectedCard = () =>
+  checkout({
+    srcCorrelationId,
+    srcDigitalCardId,
+  }).then(({ checkoutResponse }) =>
+    checkoutResponse
+      ? Promise.resolve({ data: { token: checkoutResponse } })
+      : Promise.reject('c2p_no_checkout_response')
+  )

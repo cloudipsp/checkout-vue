@@ -1,5 +1,6 @@
 <template>
   <div>
+    <click2pay-user-exists-header-wrapper />
     <transition name="f-fade-enter">
       <router-view />
     </transition>
@@ -21,6 +22,7 @@ import FFieldsUser from '@/components/fields/user'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
 import FOffer from '@/components/offer'
 import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
+import Click2payUserExistsHeaderWrapper from '@/views/click2pay/user-exists-header-wrapper'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -31,6 +33,7 @@ export default {
     FSubscriptionWrapper,
     FOffer,
     FButtonCancelWrapper,
+    Click2payUserExistsHeaderWrapper,
   },
   computed: {
     ...mapState('options', ['disable_request']),
