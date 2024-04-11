@@ -124,7 +124,7 @@ export default {
   },
   data() {
     return {
-      config: [6, 1],
+      config: [9, 8, 7, 6, 1],
       disabledExpiryDate: false,
     }
   },
