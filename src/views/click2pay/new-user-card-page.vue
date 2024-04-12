@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import SvgClick2pay from '@/svg/click2pay.svg'
 import FBox from '@/components/box'
 import FCallingCodes from '@/components/calling-codes'
@@ -82,6 +83,7 @@ import { maskLatinCyrillicWord, maskPhone } from '@/config/mask'
 
 export default {
   components: {
+    FFormGroup,
     SvgClick2pay,
     FBox,
     FCallingCodes,

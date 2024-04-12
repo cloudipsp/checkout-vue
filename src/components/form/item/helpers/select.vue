@@ -49,6 +49,7 @@
 <script>
 import FModalTooltip from '@/components/modal-tooltip'
 import FFormBase from '@/components/form/form/form-base'
+import FFormGroup from '@/components/form/group.vue'
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import { makeProp } from '@/utils/props'
@@ -68,6 +69,7 @@ export default {
   components: {
     FModalTooltip,
     FFormBase,
+    FFormGroup,
     FButtonUnstyled,
     FSvg,
   },

@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import {
   PROP_TYPE_STRING,
@@ -38,6 +39,9 @@ import { parseSelect } from '@/utils/sort'
 import { amountToCoins } from '@/utils/helpers'
 
 export default {
+  components: {
+    FFormGroup,
+  },
   inheritAttrs: false,
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),

@@ -101,6 +101,7 @@
 <script>
 import FCardBg from '@/components/card-bg'
 import { FIconBin, FCardListWrapper, FLoading } from '@/import'
+import FFormGroup from '@/components/form/group.vue'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
@@ -116,6 +117,7 @@ export default {
   components: {
     FCardBg,
     FIconBin,
+    FFormGroup,
     FCardListWrapper,
     FSvg,
     FTooltipDefault,

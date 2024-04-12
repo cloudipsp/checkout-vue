@@ -65,6 +65,7 @@
 import Click2payHeader from '@/views/click2pay/header'
 import FForm from '@/components/form/form/form'
 import FLink from '@/components/link'
+import FFormGroup from '@/components/form/group.vue'
 import FButton from '@/components/button/button'
 import FSvg from '@/components/svg'
 import { timeoutMixin } from '@/mixins/timeout'
@@ -81,6 +82,7 @@ export default {
     Click2payHeader,
     FForm,
     FLink,
+    FFormGroup,
     FButton,
     FSvg,
   },

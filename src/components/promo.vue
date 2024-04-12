@@ -25,12 +25,14 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import FButton from '@/components/button/button'
 import { errorHandler } from '@/utils/helpers'
 import { mapState } from '@/utils/store'
 
 export default {
   components: {
+    FFormGroup,
     FButton,
   },
   data() {

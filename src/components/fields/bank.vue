@@ -14,6 +14,7 @@
 
 <script>
 import FFormSave from '@/components/form/form/form-save'
+import FFormGroup from '@/components/form/group.vue'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_ARRAY } from '@/constants/props'
 import { makeProp } from '@/utils/props'
@@ -21,6 +22,7 @@ import { makeProp } from '@/utils/props'
 export default {
   components: {
     FFormSave,
+    FFormGroup,
   },
   props: {
     fields: makeProp(PROP_TYPE_ARRAY, []),
