@@ -111,11 +111,6 @@ export const installValidate = () =>
     ({ install }) => install
   )
 
-export const installComponents = () =>
-  import(/* webpackChunkName: "03" */ '@/components').then(
-    ({ install }) => install
-  )
-
 export const installApi = () =>
   import(/* webpackChunkName: "04" */ '@/api').then(({ install }) => install)
 

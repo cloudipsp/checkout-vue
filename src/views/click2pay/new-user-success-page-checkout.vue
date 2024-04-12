@@ -85,6 +85,7 @@
 import FBox from '@/components/box'
 import FForm from '@/components/form/form/form'
 import FCallingCodes from '@/components/calling-codes'
+import FFormGroup from '@/components/form/group.vue'
 import FButton from '@/components/button/button'
 import FSvg from '@/components/svg'
 import Click2payLoader from '@/views/click2pay/loader'
@@ -99,6 +100,7 @@ export default {
     FBox,
     FForm,
     FCallingCodes,
+    FFormGroup,
     FButton,
     FSvg,
     Click2payLoader,

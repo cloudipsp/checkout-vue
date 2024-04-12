@@ -125,6 +125,7 @@
 
 <script>
 import FBox from '@/components/box'
+import FFormGroup from '@/components/form/group.vue'
 import { InputAmount } from '@/import'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { parseSelect } from '@/utils/sort'
@@ -134,6 +135,7 @@ import { formatServer } from '@/config/date'
 export default {
   components: {
     FBox,
+    FFormGroup,
     InputAmount,
   },
   data() {

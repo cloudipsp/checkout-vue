@@ -3,11 +3,15 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import { mapState } from '@/utils/store'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_STRING } from '@/constants/props'
 
 export default {
+  components: {
+    FFormGroup,
+  },
   props: {
     paymentId: makeProp(PROP_TYPE_STRING),
   },

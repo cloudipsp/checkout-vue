@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import Click2payCardItem from '@/views/click2pay/card-item'
 import { makeProp } from '@/utils/props'
 import { PROP_TYPE_ARRAY } from '@/constants/props'
@@ -18,6 +19,7 @@ import { listenersMixin } from '@/mixins/listeners'
 
 export default {
   components: {
+    FFormGroup,
     Click2payCardItem,
   },
   mixins: [attrsMixin, listenersMixin],

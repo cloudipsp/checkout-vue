@@ -12,9 +12,13 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
+  components: {
+    FFormGroup,
+  },
   computed: {
     ...mapStateGetSet('params', ['offer', 'lang']),
     ...mapState('options', ['offerta_url']),

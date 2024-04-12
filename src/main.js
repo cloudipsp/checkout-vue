@@ -3,7 +3,6 @@ import {
   App,
   installValidate,
   installSentry,
-  installComponents,
   installApi,
   store,
   router,
@@ -24,7 +23,6 @@ const load = Promise.all([
   App(),
   installValidate(),
   installSentry(),
-  installComponents(),
   installApi(),
   store(),
   router(),
@@ -106,7 +104,6 @@ window.checkout = window.fondy = function (el, optionsUser = {}) {
       App,
       installValidate,
       installSentry,
-      installComponents,
       installApi,
       { createStore },
       { createRouter },
@@ -125,7 +122,6 @@ window.checkout = window.fondy = function (el, optionsUser = {}) {
 
       Vue.use(installValidate)
       Vue.use(installSentry(router))
-      Vue.use(installComponents)
 
       let origin =
         'https://' +
