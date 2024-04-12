@@ -38,6 +38,7 @@
     "ismobilejs": "^1.1.1",
     "popper.js": "^1.16.1",
     "qrcode-generator": "^1.4.4",
+    "uuid": "^9.0.1",
     "vee-validate": "^3.4.15",
     "vue": "^2.7.16",
     "vue-functional-data-merge": "^3.1.0",
