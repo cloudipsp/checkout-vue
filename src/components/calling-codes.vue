@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group'
 import { codeToFlag } from '@/utils/helpers'
 import { attrsMixin } from '@/mixins/attrs'
 import { listenersMixin } from '@/mixins/listeners'
@@ -30,6 +31,7 @@ import FSvg from '@/components/svg'
 
 export default {
   components: {
+    FFormGroup,
     FSvg,
   },
   mixins: [attrsMixin, listenersMixin],

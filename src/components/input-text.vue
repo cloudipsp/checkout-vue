@@ -3,11 +3,15 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import { mapState } from '@/utils/store'
 import { PROP_TYPE_STRING, PROP_TYPE_BOOLEAN } from '@/constants/props'
 import { makeProp } from '@/utils/props'
 
 export default {
+  components: {
+    FFormGroup,
+  },
   inheritAttrs: false,
   props: {
     name: makeProp(PROP_TYPE_STRING, undefined, true),

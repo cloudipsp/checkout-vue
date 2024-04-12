@@ -82,6 +82,7 @@
 
 <script>
 import FFormBase from '@/components/form/form/form-base'
+import FFormGroup from '@/components/form/group.vue'
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import FIcon from '@/components/icon'
@@ -111,6 +112,7 @@ const supportSystemRoute = [
 export default {
   components: {
     FFormBase,
+    FFormGroup,
     FButtonUnstyled,
     FSvg,
     FIcon,

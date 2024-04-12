@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
@@ -31,6 +32,7 @@ import { mapState } from '@/utils/store'
 
 export default {
   components: {
+    FFormGroup,
     FOffer,
     FButtonPay,
     FButtonCancelWrapper,

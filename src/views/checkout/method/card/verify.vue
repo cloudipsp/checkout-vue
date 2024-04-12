@@ -78,6 +78,7 @@
 <script>
 import FCardBg from '@/components/card-bg'
 import FIconBin from '@/components/icon-bin'
+import FFormGroup from '@/components/form/group.vue'
 import FSvg from '@/components/svg'
 import FFieldEmail from '@/components/fields/email'
 import FSubscriptionWrapper from '@/components/subscription-wrapper'
@@ -90,6 +91,7 @@ export default {
   components: {
     FCardBg,
     FIconBin,
+    FFormGroup,
     FSvg,
     FFieldEmail,
     FSubscriptionWrapper,

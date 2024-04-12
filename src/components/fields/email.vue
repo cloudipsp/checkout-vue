@@ -18,14 +18,16 @@
 
 <script>
 import FPreloader from '@/components/preloader'
-import { mapState, mapStateGetSet } from '@/utils/store'
 import FFormSave from '@/components/form/form/form-save'
+import FFormGroup from '@/components/form/group.vue'
 import { rulesEmail, rulesEmailRequiredOne } from '@/config/customer-fields'
+import { mapState, mapStateGetSet } from '@/utils/store'
 
 export default {
   components: {
     FPreloader,
     FFormSave,
+    FFormGroup,
   },
   computed: {
     ...mapState(['need_validate_card']),

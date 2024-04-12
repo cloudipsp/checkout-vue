@@ -34,6 +34,7 @@
 
 <script>
 import FIcon from '@/components/icon'
+import FFormGroup from '@/components/form/group.vue'
 import FSvg from '@/components/svg'
 import FButton from '@/components/button/button'
 import { makeProp } from '@/utils/props'
@@ -43,6 +44,7 @@ import { resizeMixin } from '@/mixins/resize'
 export default {
   components: {
     FIcon,
+    FFormGroup,
     FSvg,
     FButton,
   },

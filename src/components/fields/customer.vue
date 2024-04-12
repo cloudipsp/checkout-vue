@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import FFormSave from '@/components/form/form/form-save'
+import FFormGroup from '@/components/form/group.vue'
 import {
   configCustomer,
   configCustomerRequiredOne,
@@ -20,11 +22,11 @@ import {
 import countries from '@umpirsky/country-list/data/en/country.json'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState } from '@/utils/store'
-import FFormSave from '@/components/form/form/form-save'
 
 export default {
   components: {
     FFormSave,
+    FFormGroup,
   },
   computed: {
     ...mapState('options', ['email']),

@@ -14,12 +14,14 @@
 </template>
 
 <script>
+import FFormGroup from '@/components/form/group.vue'
 import { InputHidden } from '@/import'
 import { mapState } from '@/utils/store'
 import FFormSave from '@/components/form/form/form-save'
 
 export default {
   components: {
+    FFormGroup,
     InputHidden,
     FFormSave,
   },
