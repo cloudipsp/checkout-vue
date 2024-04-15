@@ -79,7 +79,9 @@
     "stylelint-webpack-plugin": "^4.1.1",
     "vue-svg-loader": "^0.17.0-beta.2",
     "vue-template-compiler": "^2.7.16",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-assets-manifest": "^5.2.1",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-subresource-integrity": "^5.2.0-rc.1"
   },
   "eslintConfig": {
     "globals": {

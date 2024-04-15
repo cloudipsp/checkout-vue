@@ -6,6 +6,8 @@ const increaseSpecificity = require('./build/postcss-increase-specificity')
 const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity')
+const WebpackAssetsManifest = require("webpack-assets-manifest")
 
 const publicPath = argv['public-path']
 const VERSION = gitRevisionPlugin.version()
@@ -110,7 +112,9 @@ module.exports = defineConfig({
               },
             })
             .end()
-          .output.filename('[name].js')
+          .output
+            .filename('[name].js')
+            .crossOriginLoading('anonymous')
             .end()
           .plugin('extract-css')
             .tap(([options]) => {
@@ -133,6 +137,18 @@ module.exports = defineConfig({
               ].join(' '),
               entryOnly: true,
               exclude: /css$/
+            }])
+            .end()
+          .plugin('sri')
+            .use(SubresourceIntegrityPlugin, [{
+              hashLoading: 'lazy',
+            }])
+            .end()
+          .plugin('assets-manifest')
+            .use(WebpackAssetsManifest, [{
+              publicPath: true,
+              integrity: true,
+              integrityHashes: ['sha384'],
             }])
             .end()
       })
