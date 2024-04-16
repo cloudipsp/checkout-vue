@@ -167,6 +167,7 @@ module.exports = defineConfig({
       })
       .plugins
         .delete('prefetch-checkout')
+        .delete('copy')
         .end()
       .entryPoints
         .delete('app')
