@@ -5,7 +5,7 @@ import {
   props as formControlProps,
 } from '@/mixins/form-control'
 import { formStateMixin, props as formStateProps } from '@/mixins/form-state'
-import { idMixin, props as idProps } from '@/mixins/id'
+import { idMixin, idProps } from '@/mixins/id'
 import { attrsMixin } from '@/mixins/attrs'
 import { listenersMixin } from '@/mixins/listeners'
 import { toString } from '@/utils/string'

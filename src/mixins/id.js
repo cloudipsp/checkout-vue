@@ -1,4 +1,4 @@
-export const props = {
+export const idProps = {
   id: {
     type: String,
     default: null,
@@ -7,7 +7,7 @@ export const props = {
 
 // @vue/component
 export const idMixin = {
-  props,
+  props: idProps,
   data() {
     return {
       localId_: null,

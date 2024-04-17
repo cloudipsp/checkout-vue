@@ -7,7 +7,7 @@ import {
   props as formControlProps,
 } from '@/mixins/form-control'
 import { formStateMixin, props as formStateProps } from '@/mixins/form-state'
-import { idMixin, props as idProps } from '@/mixins/id'
+import { idMixin, idProps } from '@/mixins/id'
 import { normalizeSlotMixin } from '@/mixins/normalize-slot'
 import {
   optionsMixin,

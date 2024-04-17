@@ -1,5 +1,5 @@
 import { isMountedMixin } from '@/mixins/is-mounted'
-import { idMixin, props as idProps } from '@/mixins/id'
+import { idMixin, idProps } from '@/mixins/id'
 import { isExist } from '@/utils/inspect'
 import { errorHandler } from '@/utils/helpers'
 import {
