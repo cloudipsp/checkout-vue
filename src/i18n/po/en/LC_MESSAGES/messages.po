@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-15 19:24+0200\n"
+"POT-Creation-Date: 2024-09-26 17:14+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -83,6 +83,121 @@ msgstr "Week"
 msgid "month"
 msgstr "Month"
 
+msgid "c2p_unknown_error"
+msgstr "Unknown error"
+
+msgid "c2p_request_timeout"
+msgstr "Request timeout"
+
+msgid "c2p_server_error"
+msgstr "General server error"
+
+msgid "c2p_invalid_parameter"
+msgstr "Incorrect data entered"
+
+msgid "c2p_invalid_request"
+msgstr "The server could not interpret the request"
+
+msgid "c2p_auth_error"
+msgstr "The server understands the request, but cannot authenticate"
+
+msgid "c2p_not_found"
+msgstr ""
+"The requested resource/business entity does not exist. The resource might "
+"also be hidden for security reasons."
+
+msgid "c2p_rate_limit_exceeded"
+msgstr "Too many requests have been sent in a given amount of time"
+
+msgid "c2p_service_error"
+msgstr ""
+"An error occurred on the server. Either show a generic message, or retry the "
+"same request again (it might succeed)."
+
+msgid "c2p_srci_id_missing"
+msgstr "The identifier for the SRCi (scrInitiatorId) is missing"
+
+msgid "c2p_dpa_id_missing"
+msgstr ""
+"srcDpaId and dpaData both are missing. SRC system cannot identify the DPA"
+
+msgid "c2p_srci_txn_id_missing"
+msgstr "srciTransactionId is missing"
+
+msgid "c2p_acct_inaccessible"
+msgstr "The account exists but is not currently accessible"
+
+msgid "c2p_fraud"
+msgstr "The user account was locked or disabled"
+
+msgid "c2p_id_format_unsupported"
+msgstr "Unsupported ID format"
+
+msgid "c2p_consumer_id_missing"
+msgstr "Consumer identity is missing in the request"
+
+msgid "c2p_risk_decision"
+msgstr "Risk decision"
+
+msgid "c2p_card_missing"
+msgstr "Card is missing"
+
+msgid "c2p_card_add_failed"
+msgstr "Unable to add card"
+
+msgid "c2p_card_security_code_missing"
+msgstr "Card security must be supplied"
+
+msgid "c2p_card_invalid"
+msgstr "Invalid card number"
+
+msgid "c2p_card_exp_invalid"
+msgstr "Invalid card expiration date"
+
+msgid "c2p_cardid_missing"
+msgstr "The card ID was required but is missing"
+
+msgid "c2p_card_not_recognized"
+msgstr "The specified card was not recognized"
+
+msgid "c2p_merchant_data_invalid"
+msgstr "Merchant data is invalid"
+
+msgid "c2p_unable_to_connect"
+msgstr "Unable to connect to or launch card experience"
+
+msgid "c2p_auth_invalid"
+msgstr "Invalid authentication data"
+
+msgid "c2p_terms_and_conditions_not_accepted"
+msgstr "Please accept terms and conditions"
+
+msgid "c2p_otp_send_failed"
+msgstr "The OTP could not be sent"
+
+msgid "c2p_retries_exceeded"
+msgstr ""
+"The number of retries for generating the OTP exceeded the limit. Please try "
+"again later"
+
+msgid "c2p_id_invalid"
+msgstr "Invalid ID"
+
+msgid "c2p_unrecognized_consumer_id"
+msgstr "Consumer ID could not be recognized"
+
+msgid "c2p_code_invalid"
+msgstr "The supplied OTP value was invalid. Try again"
+
+msgid "c2p_code_expired"
+msgstr "The OTP is expired. Regenerate the OTP and try again"
+
+msgid "c2p_validation_data_missing"
+msgstr "Validation data missing"
+
+msgid "c2p_no identity_lookup_email"
+msgstr "The email is not registered in Click2Pay"
+
 msgid "gdpr_yapily"
 msgstr ""
 "<p>Yapily Connect Ltd is authorised and regulated by the Financial Conduct "
@@ -147,11 +262,6 @@ msgstr "Cancel"
 
 msgid "pay"
 msgstr "Pay"
-
-msgid "demo_desc"
-msgstr ""
-"This is a demo system. While you may enter data, the payment will not be "
-"processed."
 
 msgid "expires_on"
 msgstr "Expiry date"
@@ -291,6 +401,11 @@ msgstr "Pay with card"
 msgid "cvv2_help"
 msgstr "{0}-digit code on the back of your card"
 
+msgid "demo_desc"
+msgstr ""
+"This is a demo system. While you may enter data, the payment will not be "
+"processed."
+
 msgid "Payments"
 msgstr "Payments"
 
@@ -403,6 +518,142 @@ msgstr "Download receipt"
 
 msgid "payment_id"
 msgstr "Payment ID"
+
+msgid "active"
+msgstr "Active"
+
+msgid "suspended"
+msgstr "Suspended"
+
+msgid "expired"
+msgstr "Expired"
+
+msgid "pending"
+msgstr "Pending"
+
+msgid "cancelled"
+msgstr "Cancelled"
+
+msgid "select_card"
+msgstr "Select card"
+
+msgid "c2p_card_add_loading_top"
+msgstr "We are adding your card to the Click to Pay system..."
+
+msgid "c2p_card_add_loading_bottom"
+msgstr "(and we will send you a confirmation email)"
+
+msgid "c2p_how_does_work"
+msgstr "How Click to Pay works"
+
+msgid "c2p_about_desc"
+msgstr ""
+"<li>Look for this sign when shopping online.</li><li>Enter registered mobile "
+"number or email.</li><li>Enter a one-time password.</li><li>Select the card "
+"you want to use.</li><li><b>Paid!</b></li>"
+
+msgid "c2p_save_card_desc"
+msgstr ""
+"Save card {masked_card} in {click2pay} to avoid entering details next time"
+
+msgid "c2p_registration_desc"
+msgstr "Please add your details so we can register you:"
+
+msgid "phone_number"
+msgstr "Phone number"
+
+msgid "last_name"
+msgstr "Last name"
+
+msgid "first_name"
+msgstr "First name"
+
+msgid "remember_me_on_this_device"
+msgstr "Remember me on this device"
+
+msgid "c2p_agreement_with_processing_of_data"
+msgstr ""
+"By continuing you agree to the {terms} for Click to Pay and understand your "
+"data will be processed according to the {privacy_notice}"
+
+msgid "click2pay"
+msgstr "Click to Pay"
+
+msgid "terms"
+msgstr "Terms"
+
+msgid "c2p_terms_url"
+msgstr "https://www.visa.com.ua/uk_UA/legal/checkout/terms-of-service.html"
+
+msgid "privacy_notice"
+msgstr "Privacy Notice"
+
+msgid "c2p_privacy_notice_url"
+msgstr "https://www.visa.com.ua/uk_UA/legal/global-privacy-notice.html"
+
+msgid "registration"
+msgstr "Register"
+
+msgid "c2p_card_add"
+msgstr "The card has been successfully saved in Click to Pay"
+
+msgid "c2p_card_add_expired"
+msgstr "Unable to save card in Click to Pay. Try again later"
+
+msgid "save_card"
+msgstr "Save the card"
+
+msgid "another_user"
+msgstr "Інший користувач "
+
+msgid "c2p_access_to_saved_cards"
+msgstr "Access to saved cards in Click to Pay"
+
+msgid "c2p_otp_desc"
+msgstr ""
+"We've asked Click to Pay to send a one-time code to {email} and {phone} for "
+"confirmation of identity."
+
+msgid "invite_new_code"
+msgstr "Request a new code in {time}"
+
+msgid "send_again"
+msgstr "Send again"
+
+msgid "enter_code"
+msgstr "Enter the code"
+
+msgid "skip_verification_next_time"
+msgstr "Don't verify next time"
+
+msgid "check_and_continue"
+msgstr "Check and continue"
+
+msgid "or"
+msgstr "or"
+
+msgid "enter_card_details"
+msgstr "Enter card data"
+
+msgid "code_sent"
+msgstr "Code sent successfully"
+
+msgid "enter_another_email_to_download_set_of_stored_cards"
+msgstr "Введіть іншу імейл адресу, щоб завантажити набір збережених карток"
+
+msgid "email"
+msgstr "Email"
+
+msgid "change_user"
+msgstr "Change user"
+
+msgid "c2p_no_saved_cards"
+msgstr ""
+"Unfortunately, you don't have saved card in your Click to Pay account. "
+"Please proceed with manual card entry."
+
+msgid "c2p_need_otp_desc"
+msgstr "You are registered with {click2pay}. Click to pay with the saved card."
 
 msgid "demo_title"
 msgstr "Demo mode"
@@ -646,9 +897,6 @@ msgstr "Enter your Name and Surname"
 
 msgid "placeholder_address_street"
 msgstr "Enter your Street address"
-
-msgid "email"
-msgstr "Email"
 
 msgid "currencies"
 msgstr "currencies"

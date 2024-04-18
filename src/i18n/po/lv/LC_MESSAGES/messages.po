@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-27 16:50+0300\n"
+"POT-Creation-Date: 2024-09-26 17:14+0300\n"
 "PO-Revision-Date: 2020-09-30 10:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: smartCAT.ai\n"
 
@@ -83,6 +83,114 @@ msgstr "Nedēļa"
 msgid "month"
 msgstr "Mēnesis"
 
+msgid "c2p_unknown_error"
+msgstr ""
+
+msgid "c2p_request_timeout"
+msgstr ""
+
+msgid "c2p_server_error"
+msgstr ""
+
+msgid "c2p_invalid_parameter"
+msgstr ""
+
+msgid "c2p_invalid_request"
+msgstr ""
+
+msgid "c2p_auth_error"
+msgstr ""
+
+msgid "c2p_not_found"
+msgstr ""
+
+msgid "c2p_rate_limit_exceeded"
+msgstr ""
+
+msgid "c2p_service_error"
+msgstr ""
+
+msgid "c2p_srci_id_missing"
+msgstr ""
+
+msgid "c2p_dpa_id_missing"
+msgstr ""
+
+msgid "c2p_srci_txn_id_missing"
+msgstr ""
+
+msgid "c2p_acct_inaccessible"
+msgstr ""
+
+msgid "c2p_fraud"
+msgstr ""
+
+msgid "c2p_id_format_unsupported"
+msgstr ""
+
+msgid "c2p_consumer_id_missing"
+msgstr ""
+
+msgid "c2p_risk_decision"
+msgstr ""
+
+msgid "c2p_card_missing"
+msgstr ""
+
+msgid "c2p_card_add_failed"
+msgstr ""
+
+msgid "c2p_card_security_code_missing"
+msgstr ""
+
+msgid "c2p_card_invalid"
+msgstr ""
+
+msgid "c2p_card_exp_invalid"
+msgstr ""
+
+msgid "c2p_cardid_missing"
+msgstr ""
+
+msgid "c2p_card_not_recognized"
+msgstr ""
+
+msgid "c2p_merchant_data_invalid"
+msgstr ""
+
+msgid "c2p_unable_to_connect"
+msgstr ""
+
+msgid "c2p_auth_invalid"
+msgstr ""
+
+msgid "c2p_terms_and_conditions_not_accepted"
+msgstr ""
+
+msgid "c2p_otp_send_failed"
+msgstr ""
+
+msgid "c2p_retries_exceeded"
+msgstr ""
+
+msgid "c2p_id_invalid"
+msgstr ""
+
+msgid "c2p_unrecognized_consumer_id"
+msgstr ""
+
+msgid "c2p_code_invalid"
+msgstr ""
+
+msgid "c2p_code_expired"
+msgstr ""
+
+msgid "c2p_validation_data_missing"
+msgstr ""
+
+msgid "c2p_no identity_lookup_email"
+msgstr ""
+
 msgid "gdpr_yapily"
 msgstr ""
 
@@ -129,9 +237,6 @@ msgstr ""
 
 msgid "pay"
 msgstr "Apmaksāt"
-
-msgid "demo_desc"
-msgstr ""
 
 msgid "expires_on"
 msgstr "Derīga līdz"
@@ -270,6 +375,9 @@ msgstr "Apmaksāt ar karti"
 msgid "cvv2_help"
 msgstr "{0}-ciparu kods jūsu kartes aizmugurējā pusē"
 
+msgid "demo_desc"
+msgstr ""
+
 msgid "Payments"
 msgstr ""
 
@@ -376,6 +484,132 @@ msgstr ""
 
 msgid "payment_id"
 msgstr "Maksājuma ID"
+
+msgid "active"
+msgstr ""
+
+msgid "suspended"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "cancelled"
+msgstr ""
+
+msgid "select_card"
+msgstr ""
+
+msgid "c2p_card_add_loading_top"
+msgstr ""
+
+msgid "c2p_card_add_loading_bottom"
+msgstr ""
+
+msgid "c2p_how_does_work"
+msgstr ""
+
+msgid "c2p_about_desc"
+msgstr ""
+
+msgid "c2p_save_card_desc"
+msgstr ""
+
+msgid "c2p_registration_desc"
+msgstr ""
+
+msgid "phone_number"
+msgstr ""
+
+msgid "last_name"
+msgstr ""
+
+msgid "first_name"
+msgstr ""
+
+msgid "remember_me_on_this_device"
+msgstr ""
+
+msgid "c2p_agreement_with_processing_of_data"
+msgstr ""
+
+msgid "click2pay"
+msgstr ""
+
+msgid "terms"
+msgstr ""
+
+msgid "c2p_terms_url"
+msgstr ""
+
+msgid "privacy_notice"
+msgstr ""
+
+msgid "c2p_privacy_notice_url"
+msgstr ""
+
+msgid "registration"
+msgstr ""
+
+msgid "c2p_card_add"
+msgstr ""
+
+msgid "c2p_card_add_expired"
+msgstr ""
+
+msgid "save_card"
+msgstr ""
+
+msgid "another_user"
+msgstr ""
+
+msgid "c2p_access_to_saved_cards"
+msgstr ""
+
+msgid "c2p_otp_desc"
+msgstr ""
+
+msgid "invite_new_code"
+msgstr ""
+
+msgid "send_again"
+msgstr ""
+
+msgid "enter_code"
+msgstr ""
+
+msgid "skip_verification_next_time"
+msgstr ""
+
+msgid "check_and_continue"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "enter_card_details"
+msgstr ""
+
+msgid "code_sent"
+msgstr ""
+
+msgid "enter_another_email_to_download_set_of_stored_cards"
+msgstr ""
+
+msgid "email"
+msgstr "E-pasts"
+
+msgid "change_user"
+msgstr ""
+
+msgid "c2p_no_saved_cards"
+msgstr ""
+
+msgid "c2p_need_otp_desc"
+msgstr ""
 
 msgid "demo_title"
 msgstr ""
@@ -618,9 +852,6 @@ msgstr ""
 
 msgid "placeholder_address_street"
 msgstr ""
-
-msgid "email"
-msgstr "E-pasts"
 
 msgid "currencies"
 msgstr ""

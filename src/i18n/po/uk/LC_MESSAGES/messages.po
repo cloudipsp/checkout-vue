@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-15 19:24+0200\n"
+"POT-Creation-Date: 2024-09-26 17:14+0300\n"
 "PO-Revision-Date: 2020-09-30 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -83,6 +83,120 @@ msgstr "Тиждень"
 msgid "month"
 msgstr "Місяць"
 
+msgid "c2p_unknown_error"
+msgstr "Невідома помилка"
+
+msgid "c2p_request_timeout"
+msgstr "Тайм-аут запиту"
+
+msgid "c2p_server_error"
+msgstr "Загальна помилка сервера"
+
+msgid "c2p_invalid_parameter"
+msgstr "Введено некоректні дані"
+
+msgid "c2p_invalid_request"
+msgstr "Невірний запит"
+
+msgid "c2p_auth_error"
+msgstr "Помилка аутентифікації"
+
+msgid "c2p_not_found"
+msgstr ""
+"Запитуваний ресурс/суб'єкт не існує. Ресурс також може бути прихований з "
+"міркувань безпеки."
+
+msgid "c2p_rate_limit_exceeded"
+msgstr "Надіслано забагато запитів за заданий проміжок часу"
+
+msgid "c2p_service_error"
+msgstr "На сервері сталася помилка. Спробуйте виконати запит повторно "
+
+msgid "c2p_srci_id_missing"
+msgstr "Ідентифікатор SRCi (scrInitiatorId) відсутній"
+
+msgid "c2p_dpa_id_missing"
+msgstr "srcDpaId і dpaData відсутні. Система SRC не може ідентифікувати DPA"
+
+msgid "c2p_srci_txn_id_missing"
+msgstr "srciTransactionId відсутній"
+
+msgid "c2p_acct_inaccessible"
+msgstr "Обліковий запис існує, але наразі недоступний"
+
+msgid "c2p_fraud"
+msgstr "Обліковий запис користувача заблоковано або вимкнено"
+
+msgid "c2p_id_format_unsupported"
+msgstr "Формат ID не підтримується"
+
+msgid "c2p_consumer_id_missing"
+msgstr "Ідентифікація користувача відсутня у запиті"
+
+msgid "c2p_risk_decision"
+msgstr "Рішення щодо ризику"
+
+msgid "c2p_card_missing"
+msgstr "Картка відсутня"
+
+msgid "c2p_card_add_failed"
+msgstr "Не вдалося додати картку"
+
+msgid "c2p_card_security_code_missing"
+msgstr "Необхідно вказати код безпеки картки"
+
+msgid "c2p_card_invalid"
+msgstr "Недійсний номер картки"
+
+msgid "c2p_card_exp_invalid"
+msgstr "Недійсна дата закінчення строку картки"
+
+msgid "c2p_cardid_missing"
+msgstr "ID карти відсутній"
+
+msgid "c2p_card_not_recognized"
+msgstr "Вказану картку не розпізнано"
+
+msgid "c2p_merchant_data_invalid"
+msgstr "Дані торговця недійсні"
+
+msgid "c2p_unable_to_connect"
+msgstr "Не вдалося підключитися або запустити роботу з карткою"
+
+msgid "c2p_auth_invalid"
+msgstr "Недійсні дані аутентифікації"
+
+msgid "c2p_terms_and_conditions_not_accepted"
+msgstr "Будь ласка, прийміть умови використання"
+
+msgid "c2p_otp_send_failed"
+msgstr "Не вдалося надіслати одноразовий пароль (OTP)"
+
+msgid "c2p_retries_exceeded"
+msgstr ""
+"Перевищено кількість спроб генерації одноразового пароля (OTP). Спробуйте "
+"пізніше."
+
+msgid "c2p_id_invalid"
+msgstr "Недійсний ID"
+
+msgid "c2p_unrecognized_consumer_id"
+msgstr "Не вдалося розпізнати ідентифікатор користувача"
+
+msgid "c2p_code_invalid"
+msgstr "Неправильне значення одноразового пароля (OTP). Спробуйте знову."
+
+msgid "c2p_code_expired"
+msgstr ""
+"Термін дії одноразового пароля (OTP) закінчився. Згенеруйте новий пароль і "
+"спробуйте знову."
+
+msgid "c2p_validation_data_missing"
+msgstr "Відсутні дані для перевірки"
+
+msgid "c2p_no identity_lookup_email"
+msgstr "Імейл користувача не зареєстровано в Click2Pay"
+
 msgid "gdpr_yapily"
 msgstr ""
 
@@ -129,9 +243,6 @@ msgstr "Відмінити"
 
 msgid "pay"
 msgstr "Сплатити"
-
-msgid "demo_desc"
-msgstr ""
 
 msgid "expires_on"
 msgstr "Дійсна до"
@@ -270,6 +381,9 @@ msgstr "Оплатити карткою"
 msgid "cvv2_help"
 msgstr "{0}-значний код на звороті картки"
 
+msgid "demo_desc"
+msgstr ""
+
 msgid "Payments"
 msgstr "Платежі"
 
@@ -382,6 +496,145 @@ msgstr "Завантажити квитанцію"
 
 msgid "payment_id"
 msgstr "ID платежу"
+
+msgid "active"
+msgstr ""
+
+msgid "suspended"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "cancelled"
+msgstr ""
+
+msgid "select_card"
+msgstr "Виберіть картку"
+
+msgid "c2p_card_add_loading_top"
+msgstr "Ми додаємо вашу картку в систему Click to Pay..."
+
+msgid "c2p_card_add_loading_bottom"
+msgstr "(і ми надішлемо вам лист із підтвердженням)"
+
+msgid "c2p_how_does_work"
+msgstr "Як працює Click to Pay"
+
+msgid "c2p_about_desc"
+msgstr ""
+"<li>Шукайте цей значок під час покупок в Інтернеті.</li><li>Введіть "
+"зареєстрований номер телефону або електронну пошту.</li><li>Введіть "
+"одноразовий пароль (OTP).</li><li>Виберіть картку, яку хочете "
+"використовувати.</li><li><b>Оплачено!</b></li>"
+
+msgid "c2p_save_card_desc"
+msgstr ""
+"Збережіть картку {masked_card} у {click2pay}, щоб уникнути введення даних "
+"наступного разу"
+
+msgid "c2p_registration_desc"
+msgstr "Будь ласка, додайте свої дані, щоб ми могли вас зареєструвати:"
+
+msgid "phone_number"
+msgstr "Номер телефону"
+
+msgid "last_name"
+msgstr "Прізвище"
+
+msgid "first_name"
+msgstr "Ім'я"
+
+msgid "remember_me_on_this_device"
+msgstr "Запам'ятати мене на цьому пристрої"
+
+msgid "c2p_agreement_with_processing_of_data"
+msgstr ""
+"Продовжуючи, ви погоджуєтесь з {terms} використання Click to Pay і "
+"розумієте, що ваші дані будуть оброблятися відповідно до {privacy_notice}"
+
+msgid "click2pay"
+msgstr "Click to Pay"
+
+msgid "terms"
+msgstr "Умови"
+
+msgid "c2p_terms_url"
+msgstr "https://www.visa.com.ua/uk_UA/legal/checkout/terms-of-service.html"
+
+msgid "privacy_notice"
+msgstr "Політика конфіденційності"
+
+msgid "c2p_privacy_notice_url"
+msgstr "https://www.visa.com.ua/uk_UA/legal/global-privacy-notice.html"
+
+msgid "registration"
+msgstr "Реєстрація"
+
+msgid "c2p_card_add"
+msgstr "Картка успішно збережена в системі Click to Pay"
+
+msgid "c2p_card_add_expired"
+msgstr "Не вдалося зберегти картку в Click to Pay. Спробуйте пізніше."
+
+msgid "save_card"
+msgstr "Зберегти картку"
+
+msgid "another_user"
+msgstr "Інший користувач"
+
+msgid "c2p_access_to_saved_cards"
+msgstr "Доступ до збережених карток у Click to Pay"
+
+msgid "c2p_otp_desc"
+msgstr ""
+"Ми попросили Click to Pay надіслати одноразовий код на {email} і {phone} для "
+"підтвердження вашої особи."
+
+msgid "invite_new_code"
+msgstr "Запросити новий код через {time}"
+
+msgid "send_again"
+msgstr "Надіслати знову"
+
+msgid "enter_code"
+msgstr "Введіть код"
+
+msgid "skip_verification_next_time"
+msgstr "Не перевіряти наступного разу"
+
+msgid "check_and_continue"
+msgstr "Перевірити та продовжити"
+
+msgid "or"
+msgstr "або"
+
+msgid "enter_card_details"
+msgstr "Введіть дані картки"
+
+msgid "code_sent"
+msgstr "Код успішно надіслано"
+
+msgid "enter_another_email_to_download_set_of_stored_cards"
+msgstr "Введіть іншу імейл адресу, щоб завантажити набір збережених карток"
+
+msgid "email"
+msgstr "Електронна пошта"
+
+msgid "change_user"
+msgstr "Змінити користувача"
+
+msgid "c2p_no_saved_cards"
+msgstr ""
+"На жаль, у вашому акаунті Click to Pay немає збережених карток. Будь ласка, "
+"введіть дані картки вручну."
+
+msgid "c2p_need_otp_desc"
+msgstr ""
+"Ви зареєстровані в {click2pay}. Натисніть, щоб оплатити збереженою карткою."
 
 msgid "demo_title"
 msgstr ""
@@ -627,9 +880,6 @@ msgstr ""
 
 msgid "placeholder_address_street"
 msgstr ""
-
-msgid "email"
-msgstr "Електронна пошта"
 
 msgid "currencies"
 msgstr ""
