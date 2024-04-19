@@ -77,7 +77,7 @@ function parseOptions({
         amount: amountToCoins(recurring.amount) || amount,
       },
       response_url,
-      button: token,
+      button: token ? token : undefined,
     },
     fields_custom: fields,
     subscription:
