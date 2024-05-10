@@ -12,15 +12,8 @@
           <f-svg class="f-mr-8" name="bars" size="lg" />
           <span v-text="$t('all_methods')" />
         </f-button-link>
-        <div
-          v-else-if="showLogoCustom"
-          key="logo-custom"
-          class="f-logo"
-          :style="styleLogo"
-        />
-        <div v-else-if="showLogo" key="logo-svg" class="f-logo">
-          <svg-logo />
-        </div>
+        <f-logo-custom v-else-if="showLogoCustom" key="logo-custom" />
+        <f-logo v-else-if="showLogo" key="logo-svg" />
       </transition>
     </div>
     <div v-if="showLang" class="f-header-menu">
@@ -41,7 +34,7 @@
 <script>
 import FButtonLink from '@/components/button/button-link'
 import FSvg from '@/components/svg'
-import { FMode, SvgLogo } from '@/import'
+import { FMode, FLogoCustom, FLogo } from '@/import'
 import FFormBase from '@/components/form/form/form-base'
 import { resizeMixin } from '@/mixins/resize'
 import { mapState } from '@/utils/store'
@@ -55,7 +48,8 @@ export default {
     FMode,
     FButtonLink,
     FSvg,
-    SvgLogo,
+    FLogoCustom,
+    FLogo,
     FFormBase,
     FFormItemSelect2,
   },
@@ -104,11 +98,6 @@ export default {
     },
     showLogo() {
       return this.full_screen
-    },
-    styleLogo() {
-      return {
-        'background-image': `url("${this.logo_url.replace(/"/g, "'")}")`,
-      }
     },
   },
   methods: {

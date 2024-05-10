@@ -7,7 +7,6 @@ import {
   ash_600,
   ash_700,
   ash_800,
-  black,
   grey,
   grey_1,
   grey_2,
@@ -130,7 +129,6 @@ export default createConfig(namesTheme, [
   grey_2, // scrollbar_thumb_bg
   ash_100, // receipt_props_bg
   grey, // receipt_value_color
-  black, // logo_color
   ash_200, // subscription_bg
   grey_1, // outline_border
   ash_300, // outline_bg

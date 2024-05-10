@@ -134,7 +134,6 @@ export default createConfig(namesTheme, [
   white_02, // scrollbar_thumb_bg
   white_005, // receipt_props_bg
   white, // receipt_value_color
-  white, // logo_color
   white_007, // subscription_bg
   white_06, // outline_border
   white_015, // outline_bg

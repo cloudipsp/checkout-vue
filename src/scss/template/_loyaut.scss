@@ -84,22 +84,6 @@
   padding: 0 px-to-rem(20px);
 }
 
-.f-logo {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  color: $logo_color;
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  background-size: contain;
-
-  svg {
-    width: px-to-rem(100px);
-    height: px-to-rem(23px);
-  }
-}
-
 .f-button-pay {
   margin-bottom: px-to-rem(16px);
   font-weight: 400;
