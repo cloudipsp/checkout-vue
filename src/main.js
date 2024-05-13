@@ -97,7 +97,7 @@ class F {
   }
 }
 
-window.fondy = function (el, optionsUser = {}) {
+window.checkout = window.fondy = function (el, optionsUser = {}) {
   let app = new F()
 
   load.then(

@@ -85,7 +85,7 @@ function getStorage(storage) {
 }
 
 function key(name) {
-  return ['fondy', name].join(':')
+  return [SAAS_TEMPLATE_NAME, name].join(':')
 }
 
 class Storage {

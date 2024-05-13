@@ -47,7 +47,7 @@ function hexToHSL(H) {
   return { h, s, l }
 }
 
-const prefix = '--fondy-'
+const prefix = `--${SAAS_TEMPLATE_NAME}-`
 
 export default function (variablesLink) {
   let variables = Object.fromEntries(

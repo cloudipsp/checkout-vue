@@ -1,13 +1,13 @@
 {
-  "name": "fondy-checkout-vue",
+  "name": "checkout-vue",
   "version": "2.26.0",
   "description": "Fondy checkout",
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu",
     "serve": "serve -s dist",
     "build": "npm run gulp && vue-cli-service build --no-module",
-    "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/",
+    "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/ --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu",
     "build:npm": "npm ci && vue-cli-service build --no-module --public-path=https://pay.fondy.eu/latest/checkout-vue/",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e --reporter ./tests/e2e/reporter/html-reporter.js",
@@ -88,7 +88,9 @@
       "ENVIRONMENT": "readonly",
       "DSN": "readonly",
       "DOMAIN": "readonly",
-      "CDN": "readonly"
+      "SAAS_CDN_URL": "readonly",
+      "SAAS_TEMPLATE_NAME": "readonly",
+      "API_DOMAIN": "readonly"
     },
     "root": true,
     "env": {

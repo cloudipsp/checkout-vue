@@ -160,7 +160,7 @@ Name                  | Type        | Default                 | Description
 ## Use
 ### $on
 ``` js
-var app = fondy({css selector}, {config})
+var app = checkout({css selector}, {config})
 
 app.$on('success', function(model) {})
 app.$on('error', function(model) {})

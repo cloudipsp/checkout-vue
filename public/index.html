@@ -32,41 +32,6 @@
         display: none;
       }
     </style>
-    <link
-      rel="preload"
-      href="https://pay.fondy.eu/icons/dist/fonts/inter-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://pay.fondy.eu/icons/dist/fonts/inter-medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://pay.fondy.eu/icons/dist/fonts/inter-semibold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://pay.fondy.eu/icons/dist/fonts/cvv.woff"
-      as="font"
-      type="font/woff"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://pay.fondy.eu/icons/dist/fonts/card-number.woff"
-      as="font"
-      type="font/woff"
-      crossorigin="anonymous"
-    />
   </head>
   <body>
     <div id="app"></div>
@@ -118,8 +83,7 @@
     </script>
 
     <script>
-      // const api_domain = 'dev2.pay.fondy.eu'
-      const api_domain = 'api.dev.fondy.eu'
+      const api_domain = '<%= API_DOMAIN %>'
       var configs = {
         max: {
           options: {
@@ -159,7 +123,7 @@
             ],
             // fields: true,
             title: 'my_title',
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
             full_screen: true,
             button: true,
             // cancel: true,
@@ -192,7 +156,7 @@
             // currency: 'AZN',
             //    amount: 500,
             order_desc: 'my_desc',
-            //    response_url: 'https://www.fondy.eu',
+            //    response_url: 'https://site.com',
             //     token: '6e758ad35a2a03d6fbcc3b9b4da684b397f80e0a',
             // lang: 'ru',
             recurring_data: {
@@ -281,7 +245,7 @@
         min: {
           options: {
             api_domain,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
             full_screen: false,
             //    fee: true,
             offerta_url:
@@ -304,7 +268,7 @@
           options: {
             api_domain,
             full_screen: true,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
           },
           params: {
             amount: 200,
@@ -327,7 +291,7 @@
             merchant_id: 1396424,
             email: 'test@test.test',
             required_rectoken: 'y',
-            response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+            response_url: 'https://<%= API_DOMAIN %>/test/responsepage/',
           },
         },
         rectoken2: {
@@ -349,7 +313,7 @@
             api_domain,
             active_tab: 'banklinks_eu',
             default_country: 'FI',
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
             // countries: ['PL'],
             show_menu_first: false,
           },
@@ -392,7 +356,7 @@
             methods: ['card', 'sepa'],
             api_domain,
             full_screen: true,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
           },
           params: {
             // currency: 'EUR',
@@ -405,7 +369,7 @@
           options: {
             methods: ['card'],
             api_domain,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
           },
           params: {
             currency: 'RUB',
@@ -442,7 +406,7 @@
               'starling',
             ],
             fields: true,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
             email: true,
             api_domain,
             logo_url:
@@ -473,7 +437,7 @@
           options: {
             methods: ['card', 'receipt', 'sepa'],
             api_domain,
-            link: 'https://fondy.eu',
+            link: 'https://site.com',
             offerta_url:
               'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
             active_tab: 'card',
@@ -754,7 +718,7 @@
             amount: 200,
             currency: 'UAH',
             merchant_id: 5364,
-            response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+            response_url: 'https://<%= API_DOMAIN %>/test/responsepage/',
           },
         },
         link_download_receipt: {
@@ -765,7 +729,7 @@
             amount: 200,
             currency: 'UAH',
             merchant_id: 5364,
-            response_url: 'https://api.dev.fondy.eu/test/responsepage/',
+            response_url: 'https://<%= API_DOMAIN %>/test/responsepage/',
           },
         },
       }
@@ -837,7 +801,7 @@
       }
 
       function render(el, type) {
-        return (app = fondy(
+        return (app = checkout(
           el || '#app',
           configs[type || document.querySelector('.configs').value]
         )

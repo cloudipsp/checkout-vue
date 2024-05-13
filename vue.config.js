@@ -14,7 +14,9 @@ const BRANCH = gitRevisionPlugin.branch()
 const ENVIRONMENT = process.env.NODE_ENV
 const DSN = argv['sentry-dsn']
 const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
-const CDN = 'https://pay.fondy.eu/icons/dist/'
+const SAAS_CDN_URL = argv.saas_cdn_url
+const SAAS_TEMPLATE_NAME = argv.saas_template_name
+const API_DOMAIN = argv.api_domain
 const isProduction = ENVIRONMENT === 'production'
 const isDevelopment = ENVIRONMENT === 'development'
 
@@ -65,6 +67,8 @@ module.exports = defineConfig({
     loaderOptions: {
       scss: {
         additionalData: [
+          `$cdn: '${SAAS_CDN_URL}';`,
+          `$prefix: --${SAAS_TEMPLATE_NAME}-;`,
           '@import \'~@/scss/core/functions\';',
           '@import \'~@/scss/core/colors\';',
           '@import \'~@/scss/core/variables\';',
@@ -190,7 +194,9 @@ module.exports = defineConfig({
           ENVIRONMENT,
           DSN,
           DOMAIN,
-          CDN,
+          SAAS_CDN_URL,
+          SAAS_TEMPLATE_NAME,
+          API_DOMAIN,
         })])
         .end()
   }

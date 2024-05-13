@@ -5,7 +5,7 @@ export default function (preset) {
   if (!presetGradient.includes(preset)) return Promise.resolve()
 
   return loadAxios()
-    .then(axios => axios.get(`${CDN}json/preset/${preset}.json`))
+    .then(axios => axios.get(`${SAAS_CDN_URL}json/preset/${preset}.json`))
     .then(response => response.data)
     .then(
       card_img => ({

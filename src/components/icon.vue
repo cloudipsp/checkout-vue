@@ -29,7 +29,7 @@ export default {
   computed: {
     style() {
       return {
-        'background-image': `url(${CDN}svg/${
+        'background-image': `url(${SAAS_CDN_URL}svg/${
           this.map[this.type] || this.type
         }/${this.name}.svg)`,
       }
