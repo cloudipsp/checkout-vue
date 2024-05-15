@@ -8,7 +8,7 @@
         :value="card_number"
         class="f-form-group-card f-form-group-card-number"
         name="card_number"
-        placeholder="card_number_p"
+        placeholder="____ ____ ____ ____"
         mask="XXXX XXXX XXXX XXXX XXX"
         :disabled="true"
         no-label-floating
@@ -26,7 +26,7 @@
         class="f-form-group-card"
         label-class="f-card_label"
         name="expiry_date"
-        placeholder="expiry_date_p"
+        placeholder="__/__"
         mask="##/##"
         :disabled="true"
         no-label-floating
@@ -37,7 +37,7 @@
         class="f-form-group-card"
         label-class="f-card_label"
         name="cvv2"
-        placeholder="cvv2_p"
+        placeholder="___"
         mask="####"
         :disabled="true"
         no-label-floating
