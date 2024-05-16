@@ -35,6 +35,7 @@ const checkoutText = 'checkout'
 const initiateIdentityValidationText = 'initiateIdentityValidation'
 const completeIdentityValidationText = 'completeIdentityValidation'
 const getSrcProfileText = 'getSrcProfile'
+const unbindAppInstanceText = 'unbindAppInstance'
 
 const logMessage = (name, response = 'ok') => {
   console.log(clickToPay, name, JSON.stringify(response, null, 2))
@@ -186,6 +187,14 @@ export const getSrcProfileMemoize = memoizePromise(idTokens =>
     .catch(onError(getSrcProfileText))
 )
 
+export const unbindAppInstance = () =>
+  vSrc
+    .unbindAppInstance(idToken)
+    .then(onMessage(unbindAppInstanceText))
+    // $t('c2p_auth_invalid')
+    // $t('c2p_acct_inaccessible')
+    .catch(onError(unbindAppInstanceText))
+
 const isRecognized = () =>
   isRecognizedMemoize().then(({ recognized }) =>
     recognized ? Promise.resolve() : Promise.reject('no recognized')
@@ -331,3 +340,18 @@ export const checkoutSelectedCard = () =>
       ? Promise.resolve({ data: { token: checkoutResponse } })
       : Promise.reject('c2p_no_checkout_response')
   )
+
+export const switchId = email =>
+  unbindAppInstance()
+    .then(() => {
+      getSrcProfileMemoize.cache.clear()
+      setIdTokensStorage(null)
+      idToken = null
+    })
+    .then(() => identityLookupEmailMemoize(email))
+    // $t('c2p_no identity_lookup_email')
+    .then(({ consumerPresent }) =>
+      consumerPresent
+        ? Promise.resolve()
+        : Promise.reject('c2p_no identity_lookup_email')
+    )

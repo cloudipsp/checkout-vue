@@ -5,7 +5,10 @@
         :class="$style.icon"
         @click.native="goClick2pay"
       />
-      <div :class="$style.email">{{ email }}</div>
+      <div :class="$style.right">
+        <div :class="$style.email">{{ email }}</div>
+        <f-link @click="goSwitchId">{{ $t('another_user') }}</f-link>
+      </div>
     </div>
     <div v-if="showMessage">
       <h3 :class="$style.h3" v-text="$t('c2p_access_to_saved_cards')" />
@@ -17,9 +20,13 @@
 <script>
 import { profiles, hasCards } from '@/click2pay'
 import SvgClick2payVisaMastercard from '@/svg/click2pay-visa-mastercard.svg'
+import FLink from '@/components/link.vue'
 
 export default {
-  components: { SvgClick2payVisaMastercard },
+  components: {
+    SvgClick2payVisaMastercard,
+    FLink,
+  },
   data() {
     return {
       show: false,
@@ -50,6 +57,9 @@ export default {
           this.$router.push({ name: 'click2pay' }).catch(() => {})
         })
         .catch(() => {})
+    },
+    goSwitchId() {
+      this.$router.push({ name: 'click2pay_switch_id' }).catch(() => {})
     },
   },
 }
@@ -110,5 +120,9 @@ export default {
   :global(.f-theme-light) & {
     color: #5a6470;
   }
+}
+
+.right {
+  text-align: right;
 }
 </style>

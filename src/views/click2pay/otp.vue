@@ -1,6 +1,8 @@
 <template>
   <div class="f-container-sm">
-    <click2pay-header :class="$style.mb_16" :email-short="email" />
+    <click2pay-header :class="$style.mb_16" :email-short="email">
+      <f-link @click="goSwitchId">{{ $t('another_user') }}</f-link>
+    </click2pay-header>
     <h3 :class="$style.h3" v-text="$t('c2p_access_to_saved_cards')" />
     <div :class="$style.desc" v-text="$t('c2p_otp_desc', { email, phone })" />
     <div v-if="second" :class="$style.time">
@@ -183,6 +185,9 @@ export default {
       this.store.setClick2payOtp(false)
 
       this.$router.push({ name: 'card' }).catch(() => {})
+    },
+    goSwitchId() {
+      this.$router.push({ name: 'click2pay_switch_id' }).catch(() => {})
     },
   },
 }

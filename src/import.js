@@ -346,3 +346,6 @@ export const Click2payUserExistsSuccessPage = () =>
   import(
     /* webpackChunkName: "61" */ '@/views/click2pay/user-exists-success-page'
   )
+
+export const Click2paySwitchId = () =>
+  import(/* webpackChunkName: "62" */ '@/views/click2pay/switch-id')

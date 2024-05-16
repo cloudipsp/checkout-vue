@@ -33,12 +33,14 @@ import {
   Installments,
   InstallmentsSystem,
   LoadingMono,
+  Click2paySwitchId,
 } from '@/import'
 
 const card = 'card'
 const click2pay = 'click2pay'
 const verify = 'verify'
 const click2pay_otp = 'click2pay_otp'
+const click2pay_switch_id = 'click2pay_switch_id'
 const banklinks_eu = 'banklinks_eu'
 const local_methods = 'local_methods'
 const crypto = 'crypto'
@@ -128,6 +130,14 @@ export const createRouter = name => {
                     path: click2pay_otp,
                     name: click2pay_otp,
                     component: Click2payOtp,
+                    meta: {
+                      method: card,
+                    },
+                  },
+                  {
+                    path: click2pay_switch_id,
+                    name: click2pay_switch_id,
+                    component: Click2paySwitchId,
                     meta: {
                       method: card,
                     },
