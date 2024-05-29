@@ -225,6 +225,8 @@ export default {
       this.recurring = value ? 'y' : 'n'
     },
     watchUnlimited(value) {
+      if (this.readonly) return
+
       if (value) {
         this.saveQuantity()
         this.saveTrial()
