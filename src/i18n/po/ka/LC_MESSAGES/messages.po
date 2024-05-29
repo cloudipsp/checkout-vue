@@ -322,7 +322,7 @@ msgid "return_to_site"
 msgstr ""
 
 msgid "download_receipt"
-msgstr ""
+msgstr "ქვითრის გადმოწერა"
 
 msgid "payment_id"
 msgstr "გადახდის ID"
