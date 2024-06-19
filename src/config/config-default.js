@@ -126,6 +126,7 @@ export const configDefault = {
   fee_amount: 0,
   total_amount: 0,
   notification: '',
+  cvv2_requirement: 'mandatory',
   currencies: [],
   init_wallets: false,
   vm_wallets: null,

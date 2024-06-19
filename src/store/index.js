@@ -113,13 +113,17 @@ class Store extends Model {
         fee_amount,
         total_amount,
         message,
+        cvv2_requirement = 'mandatory',
       } = model.data
 
-      this.state.notification = message
-      this.state.discount_percent = discount_percent
-      this.state.discount_amount = discount_amount
-      this.state.fee_amount = fee_amount
-      this.state.total_amount = total_amount
+      this.setState({
+        discount_percent,
+        discount_amount,
+        fee_amount,
+        total_amount,
+        notification: message,
+        cvv2_requirement,
+      })
 
       return model
     })

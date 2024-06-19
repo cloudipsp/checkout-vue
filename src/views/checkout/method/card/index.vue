@@ -49,6 +49,7 @@
         @input="inputExpiryDate"
       />
       <f-form-group
+        v-if="showCvv"
         ref="cvv2"
         v-model="cvv2"
         class="f-form-group-card"
@@ -135,6 +136,7 @@ export default {
       'cards',
       'submited',
       'need_validate_card',
+      'cvv2_requirement',
     ]),
     ...mapStateGetSet('params', [
       'cvv2',
@@ -167,13 +169,28 @@ export default {
     validCvv() {
       if (!this.need_validate_card) return {}
 
-      return 'required|digits:' + this.digitsCvv
+      return {
+        required: this.isCvvMandatory,
+        digits: this.digitsCvv,
+      }
     },
     digitsCvv() {
       return this.card_number.match('^3(?:2|3|4|7)') ? 4 : 3
     },
     isCards() {
       return this.cards.length
+    },
+    showCvv() {
+      return !this.isCvvAbsent
+    },
+    isCvvAbsent() {
+      return this.cvv2_requirement === 'absent'
+    },
+    isCvvMandatory() {
+      return this.cvv2_requirement === 'mandatory'
+    },
+    isCvvOptional() {
+      return this.cvv2_requirement === 'optional'
     },
   },
   watch: {
