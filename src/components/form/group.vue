@@ -122,6 +122,7 @@ export default {
       return {
         ...this.$attrs,
         id: this.safeId(),
+        vid: this.name,
         name: `f-${this.name}`,
         noLabelFloating: this.noLabelFloating,
         label: this.label,

@@ -105,6 +105,7 @@ export const configDefault = {
   },
   loading: false,
   order: {},
+  info: {},
   cards: [],
   isSubmit: false,
   submited: false,

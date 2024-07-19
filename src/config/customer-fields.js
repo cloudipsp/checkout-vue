@@ -1,4 +1,10 @@
-export default {
+import { deepMerge } from '@/utils/helpers'
+
+export const rulesEmail = 'required|email'
+
+export const rulesEmailRequiredOne = 'required_one:@phonemobile|email'
+
+export const configCustomer = {
   // $t('customer_name')
   customer_name: {
     label: 'customer_name',
@@ -51,7 +57,16 @@ export default {
   // $t('customer_email')
   email: {
     label: 'customer_email',
-    rules: 'required|email',
+    rules: rulesEmail,
     autocomplete: 'email',
   },
 }
+
+export const configCustomerRequiredOne = deepMerge({}, configCustomer, {
+  phonemobile: {
+    rules: 'required_one:@email|phonemobile',
+  },
+  email: {
+    rules: rulesEmailRequiredOne,
+  },
+})

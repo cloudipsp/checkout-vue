@@ -19,6 +19,7 @@
 import FPreloader from '@/components/preloader'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import FFormSave from '@/components/form/form/form-save'
+import { rulesEmail, rulesEmailRequiredOne } from '@/config/customer-fields'
 
 export default {
   components: {
@@ -29,8 +30,13 @@ export default {
     ...mapState(['need_validate_card']),
     ...mapState('options', { show: 'email' }),
     ...mapStateGetSet('params', ['email']),
+    ...mapState('info', ['required_one_of_checkout_customer_fields']),
     rules() {
-      return this.need_validate_card ? 'required|email' : ''
+      return this.need_validate_card
+        ? this.required_one_of_checkout_customer_fields
+          ? rulesEmailRequiredOne
+          : rulesEmail
+        : ''
     },
   },
 }

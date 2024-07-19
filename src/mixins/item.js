@@ -19,6 +19,7 @@ export const itemMixin = {
   inheritAttrs: false,
   props: {
     ...idProps,
+    vid: makeProp(PROP_TYPE_STRING),
     value: makeProp(PROP_TYPE_STRING_NUMBER_BOOLEAN),
     inputClass: makeProp(PROP_TYPE_STRING),
     rules: makeProp(PROP_TYPE_OBJECT_STRING, {}),
@@ -58,9 +59,9 @@ export const itemMixin = {
     attrsValidation() {
       return {
         // Identifier used for target/cross-field based rules.
-        vid: this.$attrs.name,
+        vid: this.vid,
         // A string that will be used to replace {field} in error messages and for custom error messages.
-        name: this.$attrs.name,
+        name: this.vid,
         rules: this.rules,
         immediate: true,
         tag: 'div',

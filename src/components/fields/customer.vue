@@ -13,7 +13,10 @@
 </template>
 
 <script>
-import config from '@/config/customer-fields'
+import {
+  configCustomer,
+  configCustomerRequiredOne,
+} from '@/config/customer-fields'
 import countries from '@umpirsky/country-list/data/en/country.json'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState } from '@/utils/store'
@@ -26,17 +29,23 @@ export default {
   computed: {
     ...mapState('options', ['email']),
     ...mapState(['params', 'fields_customer']),
+    ...mapState('info', ['required_one_of_checkout_customer_fields']),
     show() {
       return this.list.length
+    },
+    config() {
+      return this.required_one_of_checkout_customer_fields
+        ? configCustomerRequiredOne
+        : configCustomer
     },
     list() {
       return this.fields_customer
         .filter(name => name !== 'email' || !this.email)
-        .filter(name => config[name])
+        .filter(name => this.config[name])
         .map(name => {
-          let options = config[name].dictionary && this.country
+          let options = this.config[name].dictionary && this.country
           return {
-            ...config[name],
+            ...this.config[name],
             name,
             options,
             component: options ? 'select' : 'input',

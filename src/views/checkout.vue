@@ -67,7 +67,7 @@ export default {
     ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'fee']),
 
-    ...mapStateGetSet(['ready', 'order']),
+    ...mapStateGetSet(['ready', 'order', 'info']),
     ...mapStateGetSet('params', [
       'amount',
       'currency',
@@ -149,6 +149,8 @@ export default {
     },
     appFinally(model) {
       if (!model) return
+
+      this.info = model.attr('info')
 
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))

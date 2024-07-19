@@ -99,3 +99,16 @@ export const no_zero = {
     return amountToCoins(value) > 0
   },
 }
+
+export const required_one = {
+  validate: (value, params) => {
+    const required = !params.some(item => item)
+    const valid = required ? value : true
+
+    return {
+      required,
+      valid,
+    }
+  },
+  computesRequired: true,
+}
