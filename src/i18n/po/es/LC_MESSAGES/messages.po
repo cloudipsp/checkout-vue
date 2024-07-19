@@ -406,6 +406,9 @@ msgstr "Use solo cifras (0-9)"
 msgid "rule_required"
 msgstr "Complete este campo"
 
+msgid "rule_required_one"
+msgstr "Complete este campo"
+
 msgid "rule_regex"
 msgstr "Formato inválido"
 

@@ -408,6 +408,9 @@ msgstr "Käytä vain numeroita (0-9)"
 msgid "rule_required"
 msgstr "Täytä tämä kenttä"
 
+msgid "rule_required_one"
+msgstr "Täytä tämä kenttä"
+
 msgid "rule_regex"
 msgstr "Väärä muoto"
 

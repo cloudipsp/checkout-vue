@@ -406,6 +406,9 @@ msgstr "Izmantojiet tikai ciparus (0-9)"
 msgid "rule_required"
 msgstr "Aizpildiet šo laukumu"
 
+msgid "rule_required_one"
+msgstr "Aizpildiet šo laukumu"
+
 msgid "rule_regex"
 msgstr "Nepieļaujams formāts"
 

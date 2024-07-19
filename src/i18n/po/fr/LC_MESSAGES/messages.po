@@ -417,6 +417,9 @@ msgstr "Veuillez utiliser uniquement les chiffres (0-9)"
 msgid "rule_required"
 msgstr "Case obligatoire"
 
+msgid "rule_required_one"
+msgstr "Case obligatoire"
+
 msgid "rule_regex"
 msgstr "Format invalide"
 

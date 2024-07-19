@@ -410,6 +410,9 @@ msgstr "alleen cijfers (0-9) gebruiken"
 msgid "rule_required"
 msgstr "vul dit veld in a.u.b"
 
+msgid "rule_required_one"
+msgstr "vul dit veld in a.u.b"
+
 msgid "rule_regex"
 msgstr "ongeldig formaat"
 

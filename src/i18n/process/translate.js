@@ -16,6 +16,7 @@ _('rule_max')
 _('rule_min')
 _('rule_numeric')
 _('rule_required')
+_('rule_required_one')
 _('rule_regex')
 _('rule_no_zero')
 

@@ -412,6 +412,9 @@ msgstr "Verwenden Sie nur Zahlen (0-9)"
 msgid "rule_required"
 msgstr "Füllen Sie dieses Feld aus"
 
+msgid "rule_required_one"
+msgstr "Füllen Sie dieses Feld aus"
+
 msgid "rule_regex"
 msgstr "Ungültiges Format"
 

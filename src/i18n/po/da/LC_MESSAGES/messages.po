@@ -413,6 +413,9 @@ msgstr "Brug kun tal (0-9)"
 msgid "rule_required"
 msgstr "Udfyld venligst dette felt"
 
+msgid "rule_required_one"
+msgstr "Udfyld venligst dette felt"
+
 msgid "rule_regex"
 msgstr "Formatet er ikke korrekt"
 

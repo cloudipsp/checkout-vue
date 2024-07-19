@@ -433,6 +433,9 @@ msgstr "Please use digits (0-9) only"
 msgid "rule_required"
 msgstr "Please complete this field"
 
+msgid "rule_required_one"
+msgstr "Please complete this field"
+
 msgid "rule_regex"
 msgstr "Invalid format"
 

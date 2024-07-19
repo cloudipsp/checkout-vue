@@ -408,6 +408,9 @@ msgstr "Proszę używać tylko cyfr (0-9)"
 msgid "rule_required"
 msgstr "Proszę wypełnić to pole"
 
+msgid "rule_required_one"
+msgstr "Proszę wypełnić to pole"
+
 msgid "rule_regex"
 msgstr "Niepoprawny format"
 

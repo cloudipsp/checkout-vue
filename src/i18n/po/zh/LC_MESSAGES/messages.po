@@ -387,6 +387,9 @@ msgstr "请只使用数字(0-9) "
 msgid "rule_required"
 msgstr "请输入此字段"
 
+msgid "rule_required_one"
+msgstr "请输入此字段"
+
 msgid "rule_regex"
 msgstr "无效的格式"
 

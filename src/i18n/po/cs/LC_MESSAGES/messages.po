@@ -403,6 +403,9 @@ msgstr "Použijte prosím pouze číslice (0-9)"
 msgid "rule_required"
 msgstr "Vyplňte prosím toto pole"
 
+msgid "rule_required_one"
+msgstr "Vyplňte prosím toto pole"
+
 msgid "rule_regex"
 msgstr "Neplatný formát"
 

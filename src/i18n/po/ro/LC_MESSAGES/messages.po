@@ -408,6 +408,9 @@ msgstr "Folosiți numai cifre (0-9)"
 msgid "rule_required"
 msgstr "Vă rugăm să completați acest câmp"
 
+msgid "rule_required_one"
+msgstr "Vă rugăm să completați acest câmp"
+
 msgid "rule_regex"
 msgstr "Format invalid"
 

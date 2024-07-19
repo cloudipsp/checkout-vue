@@ -412,6 +412,9 @@ msgstr "Введите только цифры (0-9)"
 msgid "rule_required"
 msgstr "Заполните это поле"
 
+msgid "rule_required_one"
+msgstr "Заполните это поле"
+
 msgid "rule_regex"
 msgstr "Неверный формат"
 

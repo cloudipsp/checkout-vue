@@ -382,6 +382,9 @@ msgstr "მხოლოდ ციფრები (0-9)"
 msgid "rule_required"
 msgstr "შევსება სავალდებულოა"
 
+msgid "rule_required_one"
+msgstr "შევსება სავალდებულოა"
+
 msgid "rule_regex"
 msgstr "არასწორი ფორმატი"
 

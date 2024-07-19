@@ -407,6 +407,9 @@ msgstr "Kérjük, csak számokat (0–9) használjon"
 msgid "rule_required"
 msgstr "Kérjük, töltse ki ezt a mezőt"
 
+msgid "rule_required_one"
+msgstr "Kérjük, töltse ki ezt a mezőt"
+
 msgid "rule_regex"
 msgstr "Érvénytelen formátum"
 

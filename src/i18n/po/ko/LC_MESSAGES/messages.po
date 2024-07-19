@@ -401,6 +401,9 @@ msgstr "(0-9)숫자만 사용하십시오"
 msgid "rule_required"
 msgstr "이 필드에 정보를 입력하십시오"
 
+msgid "rule_required_one"
+msgstr "이 필드에 정보를 입력하십시오"
+
 msgid "rule_regex"
 msgstr "형식이 잘못되었습니다"
 

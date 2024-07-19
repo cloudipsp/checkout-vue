@@ -408,6 +408,9 @@ msgstr "xahiş edirik yalnız (0-9) rəqəmlərdən istifadə edin"
 msgid "rule_required"
 msgstr "xahiş edirik bu sahəni doldurun"
 
+msgid "rule_required_one"
+msgstr "xahiş edirik bu sahəni doldurun"
+
 msgid "rule_regex"
 msgstr "yanlış format"
 
