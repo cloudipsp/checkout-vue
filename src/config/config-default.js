@@ -19,8 +19,10 @@ export const configDefault = {
     emoney_icons: [],
     wallets_icons: [],
     title: '',
+    hide_title: false,
     full_screen: true,
     link: '',
+    hide_link: false,
     locales,
     api_domain: 'pay.fondy.eu',
     endpoint: {

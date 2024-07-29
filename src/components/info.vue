@@ -8,7 +8,7 @@
   </div>
   <div v-else>
     <div v-if="showTitle" class="f-merchant-name" v-text="$t(title)" />
-    <div v-if="link" class="f-merchant-url">
+    <div v-if="showLink" class="f-merchant-url">
       <a :href="link" target="_blank">{{ link }}</a>
     </div>
     <f-preloader :condition="showOrderDesc" size="20" class="f-order-desc">
@@ -48,10 +48,23 @@ export default {
   },
   computed: {
     ...mapState(['order']),
-    ...mapState('options', ['title', 'link', 'hide_button_title']),
+    ...mapState('options', [
+      'title',
+      'hide_title',
+      'link',
+      'hide_link',
+      'hide_button_title',
+    ]),
     ...mapState('params', ['order_desc', 'verification_type', 'button']),
     showTitle() {
-      return this.title && (this.button ? !this.hide_button_title : true)
+      return (
+        !this.hide_title &&
+        this.title &&
+        (this.button ? !this.hide_button_title : true)
+      )
+    },
+    showLink() {
+      return !this.hide_link && this.link
     },
     showOrderDesc() {
       return this.order_desc && this.order_desc !== ' '

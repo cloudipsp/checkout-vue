@@ -41,7 +41,9 @@ Name                  | Type        | Default                 | Description     
 `emoney_icons`        | Array       | []                      |                                                                                     |
 `wallets_icons`       | Array       | []                      |                                                                                     |
 `title`               | String      |                         |                                                                                     | options or server
+`hide_title`          | Boolean     | false                   |                                                                                     |
 `link`                | String      |                         | format url                                                                          | server or options
+`hide_link`           | Boolean     | false                   |                                                                                     |
 `full_screen`         | Boolean     | true                    |                                                                                     |
 `locales`             | Array       | [all]                   | support `cs`, `de`, `en`, `es`, `fr`, `hu`, `it`, `ko`, `lv`, `pl`, `ro`, `ru`, `sk`, `uk`.|
 `api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
