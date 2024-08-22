@@ -154,11 +154,13 @@ export default {
 
       if (this.store.enabledClick2pay()) {
         loadClick2pay()
-          .then(({ initClick2pay }) => initClick2pay())
+          .then(({ initClick2pay }) =>
+            initClick2pay(this.info.click2pay_srci_dpa_id)
+          )
           .catch(errorHandler)
       }
 
-      this.store.infoSuccess(model.instance(model.attr('info')))
+      this.store.infoSuccess(model.instance(this.info))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.attr('cards'))
     },

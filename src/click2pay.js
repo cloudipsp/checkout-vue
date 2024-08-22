@@ -18,6 +18,7 @@ import { sessionStorage } from '@/utils/store'
 
 let vSrcAdapter
 let vSrc
+let srciDpaId
 let srciTransactionId
 export let srcCorrelationId
 export let idToken
@@ -73,7 +74,7 @@ const initMemoize = memoizePromise(() => {
 
   const initData = {
     srcInitiatorId: C2P_SRC_INITIATOR_ID,
-    srciDpaId: C2P_SRCI_DPA_ID,
+    srciDpaId,
     srciTransactionId,
     dpaTransactionOptions: {
       paymentOptions: {
@@ -240,8 +241,9 @@ const getIdTokensRecognized = () =>
     idTokens ? Promise.resolve(idTokens) : Promise.reject()
   )
 
-export const initClick2pay = () =>
+export const initClick2pay = dpaId =>
   loadMemoize()
+    .then(() => (srciDpaId = dpaId))
     .then(() => createTransactionIdMemoize())
     .then(() => initMemoize())
     .then(() => isRecognizedMemoize())
