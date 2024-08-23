@@ -349,3 +349,8 @@ export const Click2payUserExistsSuccessPage = () =>
 
 export const Click2paySwitchId = () =>
   import(/* webpackChunkName: "62" */ '@/views/click2pay/switch-id')
+
+export const Click2payUserExistsNeedOtpCardPage = () =>
+  import(
+    /* webpackChunkName: "63" */ '@/views/click2pay/user-exists-need-otp-card-page.vue'
+  )
