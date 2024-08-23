@@ -41,9 +41,12 @@ export default {
       .then(({ profiles }) => {
         this.show = true
         this.cards = profiles[0].maskedCards
+        this.cardsActive = this.cards.filter(
+          item => item.digitalCardData.status === 'ACTIVE'
+        )
 
-        if (this.cards.length) {
-          this.setDigitalCardId(this.cards[0].srcDigitalCardId)
+        if (this.cardsActive.length) {
+          this.setDigitalCardId(this.cardsActive[0].srcDigitalCardId)
         }
       })
       .catch(() => {})
