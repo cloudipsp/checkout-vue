@@ -131,11 +131,11 @@
   margin: 0 0 px-to-rem(15px) 0;
 }
 
-[name='f-expiry_date'] {
+.f-form-control-expiry-date {
   width: px-to-rem(80px);
 }
 
-.f-form-control[name='f-cvv2'] {
+.f-form-control-cvv2 {
   width: px-to-rem(75px);
   font-family: $font-family-cvv;
 
