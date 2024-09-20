@@ -3,7 +3,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('#{$cdn}fonts/inter-regular.woff2') format('woff2'),
+  src:
+    url('#{$cdn}fonts/inter-regular.woff2') format('woff2'),
     url('#{$cdn}fonts/inter-regular.woff') format('woff');
 }
 
@@ -12,7 +13,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('#{$cdn}fonts/inter-medium.woff2') format('woff2'),
+  src:
+    url('#{$cdn}fonts/inter-medium.woff2') format('woff2'),
     url('#{$cdn}fonts/inter-medium.woff') format('woff');
 }
 
@@ -21,7 +23,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('#{$cdn}fonts/inter-semibold.woff2') format('woff2'),
+  src:
+    url('#{$cdn}fonts/inter-semibold.woff2') format('woff2'),
     url('#{$cdn}fonts/inter-semibold.woff') format('woff');
 }
 

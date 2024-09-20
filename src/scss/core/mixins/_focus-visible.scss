@@ -1,0 +1,15 @@
+@mixin focus-visible($width, $border, $offset: null, $bg: null) {
+  transition: box-shadow ease-in-out 0.15s;
+
+  &:focus-visible {
+    outline: 0;
+
+    @if $offset {
+      box-shadow:
+        0 0 0 $offset $bg,
+        0 0 0 $width + $offset $border;
+    } @else {
+      box-shadow: 0 0 0 $width $border;
+    }
+  }
+}

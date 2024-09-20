@@ -133,15 +133,16 @@
             // logoUrl: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
             offerta_url:
               'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-            theme: {
-              type: 'dark',
-              preset: 'euphoric_pink',
-            },
+            // theme: {
+            //   type: 'dark',
+            //   preset: 'euphoric_pink',
+            // },
             show_menu_first: false,
             // disable_request: true,
             // show_button_amount: false,
             subscription: {
-              type: 'shown_edit_on',
+              type: 'shown_readonly',
+              readonly: true,
             },
             // countries: ['PL'],
           },
@@ -759,7 +760,7 @@
 
       setConfigsOption()
 
-      window.app = render('#app', 'click2pay')
+      window.app = render('#app', 'max')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 
