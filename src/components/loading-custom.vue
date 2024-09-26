@@ -69,6 +69,7 @@ export default {
 }
 
 .custom {
+  position: relative;
   width: px-to-rem(64px);
   height: px-to-rem(64px);
   background-repeat: no-repeat;

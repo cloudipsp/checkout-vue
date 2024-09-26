@@ -5,6 +5,10 @@ import { captureMessage } from '@/sentry'
 import { i18n } from '@/i18n/index'
 import { sessionStorage } from '@/utils/store'
 
+const delay = memoizePromise(
+  time => new Promise(resolve => setTimeout(resolve, time))
+)
+
 // Standard Error Codes
 // $t('c2p_unknown_error')
 // $t('c2p_request_timeout')
@@ -357,3 +361,8 @@ export const switchId = email =>
         ? Promise.resolve()
         : Promise.reject('c2p_no identity_lookup_email')
     )
+
+export const loading = email =>
+  Promise.any([needRegistration(email), needOtp(email), isUserExists()]).then(
+    () => delay(200)
+  )

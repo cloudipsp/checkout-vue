@@ -83,9 +83,7 @@ export default {
     },
   },
   created() {
-    if (this.token) {
-      this.store.formLoading(true)
-    }
+    this.store.formLoading(true)
 
     this.store
       .sendRequestApp()
@@ -137,7 +135,7 @@ export default {
       this.appFinally(model)
 
       if (this.fee) {
-        return this.store.feeCalc()
+        this.store.feeCalc()
       }
     },
     appError(model) {

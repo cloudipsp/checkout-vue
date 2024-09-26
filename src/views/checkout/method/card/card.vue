@@ -88,8 +88,10 @@
           </f-tooltip-default>
         </template>
       </f-form-group>
+      <f-loading v-if="loadingClick2pay" backdrop />
     </div>
     <f-field-email :disabled="disableEmail" />
+    <click2pay-loading v-model="loadingClick2pay" />
     <click2pay-new-user-card-page-wrapper @enable="setDisableEmail" />
     <click2pay-user-exists-card-page-wrapper />
     <click2pay-user-exists-need-otp-card-page-wrapper />
@@ -98,10 +100,11 @@
 
 <script>
 import FCardBg from '@/components/card-bg'
-import { FIconBin, FCardListWrapper } from '@/import'
+import { FIconBin, FCardListWrapper, FLoading } from '@/import'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
+import Click2payLoading from '@/views/click2pay/loading'
 import Click2payNewUserCardPageWrapper from '@/views/click2pay/new-user-card-page-wrapper'
 import Click2payUserExistsCardPageWrapper from '@/views/click2pay/user-exists-card-page-wrapper'
 import Click2payUserExistsNeedOtpCardPageWrapper from '@/views/click2pay/user-exists-need-otp-card-page-wrapper.vue'
@@ -116,7 +119,9 @@ export default {
     FCardListWrapper,
     FSvg,
     FTooltipDefault,
+    FLoading,
     FFieldEmail,
+    Click2payLoading,
     Click2payNewUserCardPageWrapper,
     Click2payUserExistsCardPageWrapper,
     Click2payUserExistsNeedOtpCardPageWrapper,
@@ -126,6 +131,7 @@ export default {
       config: [9, 8, 7, 6, 1],
       disabledExpiryDate: false,
       disableEmail: false,
+      loadingClick2pay: false,
     }
   },
   computed: {
