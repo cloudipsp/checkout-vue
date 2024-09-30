@@ -121,6 +121,15 @@
       }
     }
   }
+
+  .f-form-control-cvv2 {
+    width: px-to-rem(75px);
+    font-family: $font-family-cvv;
+
+    &:-webkit-autofill::first-line {
+      font-family: $font-family-cvv;
+    }
+  }
 }
 
 .f-form-group-card-number {
@@ -130,15 +139,6 @@
 
 .f-form-control-expiry-date {
   width: px-to-rem(80px);
-}
-
-.f-form-control-cvv2 {
-  width: px-to-rem(75px);
-  font-family: $font-family-cvv;
-
-  &:-webkit-autofill::first-line {
-    font-family: $font-family-cvv;
-  }
 }
 
 .f-card_label {
