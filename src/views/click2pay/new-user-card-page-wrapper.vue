@@ -6,7 +6,6 @@
 import { Click2payNewUserCardPage, loadClick2pay } from '@/import'
 import { mapState, mapStateGetSet } from '@/utils/store'
 import { timeoutMixin } from '@/mixins/timeout'
-import { validate } from 'vee-validate'
 import { consoleInfo } from '@/utils/console'
 import { getBinName } from '@/utils/get-bin-name'
 
@@ -59,8 +58,7 @@ export default {
         this.enable(true)
       }
 
-      this.validate()
-        .then(loadClick2pay)
+      loadClick2pay()
         .then(({ needRegistration }) => needRegistration(this.email))
         .then(() => {
           this.show = true
@@ -70,11 +68,6 @@ export default {
           this.show = false
           this.enable(false)
         })
-    },
-    validate() {
-      return validate(this.email, 'required|email').then(({ valid }) => {
-        if (!valid) return Promise.reject('email is not valid')
-      })
     },
     watchEmail() {
       this.timeout('init', 300)

@@ -21,8 +21,8 @@ export default {
       if (this.ready_to_submit) return
       if (!this.store.enabledClick2pay()) return
       console.time(name)
-      this.hasEmail()
-        .then(loadClick2pay)
+
+      loadClick2pay()
         .then(({ needOtp }) => needOtp(this.email))
         .then(() => {
           console.timeEnd(name)
@@ -31,9 +31,6 @@ export default {
         .catch(error => {
           consoleInfo(name, error)
         })
-    },
-    hasEmail() {
-      return this.email ? Promise.resolve() : Promise.reject('not email')
     },
   },
   render() {},

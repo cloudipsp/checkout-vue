@@ -4,6 +4,7 @@ import { memoizePromise } from '@/utils/memoize-promise'
 import { captureMessage } from '@/sentry'
 import { i18n } from '@/i18n/index'
 import { sessionStorage } from '@/utils/store'
+import { validate } from 'vee-validate'
 
 const delay = memoizePromise(
   time => new Promise(resolve => setTimeout(resolve, time))
@@ -135,6 +136,13 @@ const identityLookupEmailMemoize = memoizePromise(identityValue =>
     .catch(onError(`${identityLookupEmailText} ${identityValue}`))
 )
 
+const identityLookupEmail = email =>
+  validate(email, 'required|email')
+    .then(({ valid }) =>
+      valid ? Promise.resolve() : Promise.reject('email is not valid')
+    )
+    .then(() => identityLookupEmailMemoize(email))
+
 export const checkout = input => {
   input = getCheckoutSettings(input)
   logMessage(checkoutText, input)
@@ -211,14 +219,14 @@ const noRecognized = () =>
   )
 
 const isIdentityLookupEmail = email => () =>
-  identityLookupEmailMemoize(email).then(({ consumerPresent }) =>
+  identityLookupEmail(email).then(({ consumerPresent }) =>
     consumerPresent
       ? Promise.resolve()
       : Promise.reject('no identityLookupEmail')
   )
 
 const noIdentityLookupEmail = email => () =>
-  identityLookupEmailMemoize(email).then(({ consumerPresent }) =>
+  identityLookupEmail(email).then(({ consumerPresent }) =>
     consumerPresent
       ? Promise.reject('is identityLookupEmail')
       : Promise.resolve()
@@ -354,7 +362,7 @@ export const switchId = email =>
       setIdTokensStorage(null)
       idToken = null
     })
-    .then(() => identityLookupEmailMemoize(email))
+    .then(() => identityLookupEmail(email))
     // $t('c2p_no identity_lookup_email')
     .then(({ consumerPresent }) =>
       consumerPresent
