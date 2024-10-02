@@ -79,6 +79,7 @@ export default Vue.extend({
     }
   },
   computed: {
+    ...mapState('params', ['token']),
     ...mapState('css_class', {
       variant: key(btn, pay, wallet, variant),
       color: key(btn, pay, wallet, color),
@@ -112,8 +113,8 @@ export default Vue.extend({
     },
   },
   watch: {
-    amount: 'update',
-    currency: 'update',
+    amount: 'updateWithoutToken',
+    currency: 'updateWithoutToken',
     promocode: 'update',
     params: {
       handler: 'changeParams',
@@ -241,6 +242,11 @@ export default Vue.extend({
         user_priority: 98,
         country: 'XX',
       })
+    },
+    updateWithoutToken(newValue, oldValue) {
+      if (this.token) return
+
+      this.update(newValue, oldValue)
     },
   },
 })
