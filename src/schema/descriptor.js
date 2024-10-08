@@ -10,6 +10,7 @@ import configSubscription from '@/config/subscription'
 import { excludeMessages } from '@/config/exclude-messages'
 import { isPlainObject, isString, isExist } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
+import { regexpColor } from '@/config/regexp'
 
 const countries = Object.keys(configCountries)
 const cardIcons = [
@@ -194,7 +195,7 @@ function validatorPreset() {
           type = 'string'
         } else if (value.charAt(0) === '#') {
           type = 'pattern'
-          rule.pattern = /^#[0-9a-fA-F]{6}$/
+          rule.pattern = regexpColor
         } else {
           type = 'enum'
           rule.enum = preset
@@ -243,7 +244,7 @@ cssVariableKeys.forEach(item => {
     validatorNotEmpty(),
     {
       ...typeString,
-      pattern: /^#[0-9a-fA-F]{6}$/,
+      pattern: regexpColor,
     },
   ]
 })
