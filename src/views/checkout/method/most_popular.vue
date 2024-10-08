@@ -85,13 +85,13 @@ export default {
 .btn {
   margin-top: auto;
   padding-top: px-to-rem(24px);
-  @include sticky-bottom(px-to-rem(32px));
-
   background: linear-gradient(
     to bottom,
     fade($container_bg, 0),
     $container_bg #{px-to-rem(16px)},
     $container_bg
   );
+
+  @include sticky-bottom(px-to-rem(32px));
 }
 </style>

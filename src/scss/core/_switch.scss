@@ -58,15 +58,18 @@ $switch-indicator-transform: $switch-width - $switch-indicator-size -
         ($font-size-base * $line-height-base - $switch-indicator-size) / 2
       ) + $padding;
     // stylelint-disable-next-line scss/operator-no-newline-after
-    right: $switch-width - $switch-indicator-size -
-      calc(($switch-height - $switch-indicator-size) / 2) + $padding;
+    right: $switch-width - $switch-indicator-size - calc(
+        ($switch-height - $switch-indicator-size) / 2
+      ) + $padding;
     width: $switch-indicator-size;
     height: $switch-indicator-size;
     content: '';
     background-color: $switch_indicator_bg;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgb(0 0 0 / 25%);
-    transition: transform ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition:
+      transform ease-in-out 0.15s,
+      box-shadow ease-in-out 0.15s;
   }
 
   &:hover {

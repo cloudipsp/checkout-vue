@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const publicPath = argv['public-path']
+const PUBLIC_PATH = argv['public-path'] || '/'
 const VERSION = gitRevisionPlugin.version()
 const COMMITHASH = gitRevisionPlugin.commithash()
 const BRANCH = argv.branch || gitRevisionPlugin.branch()
@@ -15,7 +15,7 @@ const ENVIRONMENT = argv.environment
 const SENTRY_DSN = argv.sentry_dsn
 const C2P_SDK = argv.c2p_sdk
 const C2P_SRC_INITIATOR_ID = argv.c2p_src_initiator_id
-const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
+const DOMAIN = (PUBLIC_PATH.match(/https?:\/\/([\w.]+)/) || [])[1]
 const SAAS_CDN_URL = argv.saas_cdn_url
 const SAAS_TEMPLATE_NAME = argv.saas_template_name
 const API_DOMAIN = argv.api_domain
@@ -57,14 +57,12 @@ module.exports = defineConfig({
   },
   devServer: {
     client: {
-      webSocketURL: 'wss://checkout.dev.cipsp.net/ws'
+      webSocketURL: `wss://${DOMAIN}/ws`
     },
   },
   runtimeCompiler: true,
   productionSourceMap: false,
-  publicPath: isProduction
-    ? publicPath
-    : '/',
+  publicPath: PUBLIC_PATH,
   css: {
     loaderOptions: {
       scss: {
@@ -135,8 +133,16 @@ module.exports = defineConfig({
               exclude: /css$/
             }])
             .end()
+          .plugin('copy')
+            .tap(([options])=> {
+              let ignore = options.patterns[0].globOptions.ignore
+              ignore.push('**/buttons')
+              ignore.push('**/examples')
+              return [options]
+            })
+            .end()
       })
-      .when(isProduction && !publicPath, config => {
+      .when(isProduction && PUBLIC_PATH === 'http://localhost:3000/', config => {
         config
           .plugin('webpack-bundle-analyzer')
             .use(BundleAnalyzerPlugin)
