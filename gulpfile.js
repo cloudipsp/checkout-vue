@@ -7,7 +7,7 @@ const uk = require('@umpirsky/country-list/data/uk/country.json')
 const excludes = list => item => !list.includes(item)
 const locales = Object.keys(configLocale)
 
-const process = (src, parse) => () =>
+const i18nProcess = (src, parse) => () =>
   fsp
     .readFile(src, 'utf-8')
     .then(content => JSON.parse(content))
@@ -25,19 +25,19 @@ const process = (src, parse) => () =>
 
 gulp.task(
   'methods',
-  process('./src/config/methods.json', content =>
+  i18nProcess('./src/config/methods.json', content =>
     content.filter(excludes(['trustly', 'wallets']))
   )
 )
 
 gulp.task(
   'subscription-period',
-  process('./src/config/subscription-period.json')
+  i18nProcess('./src/config/subscription-period.json')
 )
 
 gulp.task(
   'bins',
-  process('./src/config/bins.json', content =>
+  i18nProcess('./src/config/bins.json', content =>
     Object.entries(content).map(([name]) => name)
   )
 )

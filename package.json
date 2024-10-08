@@ -12,7 +12,6 @@
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e --reporter ./tests/e2e/reporter/html-reporter.js",
     "test:unit": "vue-cli-service test:unit",
-    "release": "./scripts/release.sh",
     "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --custom-syntax postcss-scss --color --formatter verbose --fix",
     "eslint:fix": "eslint src/**/*.{js,vue} --fix",
     "prettier:fix": "prettier src/**/*.{js,vue,scss} --write",
