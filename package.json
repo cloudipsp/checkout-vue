@@ -27,7 +27,7 @@
   },
   "unpkg": "dist/checkout.js",
   "dependencies": {
-    "@sentry/vue": "^6.19.7",
+    "@sentry/vue": "^8.33.1",
     "@umpirsky/country-list": "github:umpirsky/country-list",
     "async-validator": "^3.5.2",
     "axios": "^1.7.7",
