@@ -1,7 +1,6 @@
 import { findGetParameter } from '@/utils/helpers'
 import Model from '@/class/model'
-import { isPlainObject, isExist } from '@/utils/inspect'
-import configTheme from '@/config/theme'
+import { isPlainObject } from '@/utils/inspect'
 import descriptor from '@/schema/descriptor'
 import { captureMessage } from '@/sentry'
 import { loadAsyncValidator } from '@/import'
@@ -31,7 +30,6 @@ class Validate extends Model {
 
   configDefault() {
     this.showMenuFirst()
-    this.preset()
   }
 
   format(options) {
@@ -122,15 +120,6 @@ class Validate extends Model {
     if (!this.attr('data.options.active_tab')) return
 
     this.attr('data.options.show_menu_first', false)
-  }
-
-  preset() {
-    const preset = this.data.options?.theme?.preset
-    const theme = this.data.options?.theme?.type
-
-    if (isExist(preset) || !theme) return
-
-    this.attr('data.options.theme.preset', configTheme[theme])
   }
 
   removeOldSubscription() {

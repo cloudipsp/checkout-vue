@@ -46,7 +46,7 @@ Name                  | Type        | Default                 | Description     
 `hide_link`           | Boolean     | false                   |                                                                                     |
 `full_screen`         | Boolean     | true                    |                                                                                     |
 `locales`             | Array       | [all]                   | support `cs`, `de`, `en`, `es`, `fr`, `hu`, `it`, `ko`, `lv`, `pl`, `ro`, `ru`, `sk`, `uk`.|
-`api_domain`          | String      | 'api.fondy.eu'          |                                                                                     |
+`api_domain`          | String      | `saas config`           |                                                                                     |
 `endpoint`            | Object      |                         |                                                                                     |
 `active_tab`          | String      | 'card'                  | support `card`, `sepa`.                                                             | server or options
 `active_method`       | String      | ''                      |                                                                                     | server or options
@@ -64,15 +64,15 @@ Name                  | Type        | Default                 | Description     
 `disable_request`     | Boolean     | false                   | no requests are sent to the server                                                  |
 `show_button_amount`  | Boolean     | true                    | displaying the amount on the button                                                 |
 `subscription`        | Object      |                         |                                                                                     |
-`loading`             | String      |                         | format url                                                                          |
+`loading`             | String      | `saas config`           | format url                                                                          |
 `hide_button_title`   | Boolean     | false                   |                                                                                     |
 `amount_readonly`     | Boolean     | true                    |                                                                                     |
 
 ### options.endpoint
 Name                  | Type        | Default                                 | Description
 ---                   | ---         | ---                                     | ---
-`gateway`             | String      | '/latest/checkout-v2/index.html'        |
-`button`              | String      | '/latest/checkout-v2/button/index.html' |
+`gateway`             | String      | `saas config`                           |
+`button`              | String      | `saas config`                           |
 
 ### options.theme
 Name                  | Type        | Default                 | Description

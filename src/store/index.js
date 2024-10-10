@@ -430,7 +430,9 @@ class Store extends Model {
     })
   }
   loadCardImg() {
-    return loadCardImg(this.state.options.theme.preset).then(config => {
+    return loadCardImg(
+      this.state.options.theme.preset || PRESET[this.state.options.theme.type]
+    ).then(config => {
       if (!config) return
       this.setState(config)
       initCssVariable(config.css_variable)

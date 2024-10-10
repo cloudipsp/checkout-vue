@@ -6,6 +6,7 @@ const increaseSpecificity = require('./build/postcss-increase-specificity')
 const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const env = require('./src/config/env.json')
 
 const PUBLIC_PATH = argv['public-path'] || '/'
 const VERSION = gitRevisionPlugin.version()
@@ -67,7 +68,6 @@ module.exports = defineConfig({
     loaderOptions: {
       scss: {
         additionalData: [
-          `$cdn: '${SAAS_CDN_URL}';`,
           `$prefix: --${SAAS_TEMPLATE_NAME}-;`,
           '@import \'~@/scss/core/functions\';',
           '@import \'~@/scss/core/colors\';',
@@ -185,17 +185,37 @@ module.exports = defineConfig({
         .rules.delete('svg').end()
         .rule('svg')
           .test(/\.(svg)(\?.*)?$/)
-          .use('vue-loader')
-            .loader('vue-loader')
+          .oneOf('svg-component')
+            .test(/src\/svg/)
+            .use('vue-loader')
+              .loader('vue-loader')
+              .end()
+            .use('vue-svg-loader')
+              .loader('vue-svg-loader')
+              .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
+              .end()
             .end()
-          .use('vue-svg-loader')
-            .loader('vue-svg-loader')
-            .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
+          .oneOf('svg')
+            .set('type', 'asset/resource')
+            .set('generator', {
+              filename: 'img/[name].[hash:8][ext]'
+            })
             .end()
+          .end()
+        .rule('fonts')
+          .set('generator', {
+            filename: 'fonts/[name][ext]'
+          })
+          .set('parser', {
+            dataUrlCondition: {
+              maxSize: 1,
+            },
+          })
           .end()
         .end()
       .plugin('define-plugin')
         .use(webpack.DefinePlugin, [stringify({
+          ...env,
           VERSION,
           COMMITHASH,
           BRANCH,
@@ -207,6 +227,7 @@ module.exports = defineConfig({
           API_DOMAIN,
           C2P_SDK,
           C2P_SRC_INITIATOR_ID,
+          PUBLIC_PATH,
         })])
         .end()
   }
