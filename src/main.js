@@ -120,12 +120,13 @@ window.checkout = window.fondy = function (el, optionsUser = {}) {
       let node = document.querySelector(el)
       if (!node) return console.error(['Selector', el, 'not found'].join(' '))
 
-      Vue.use(installValidate)
-      Vue.use(installSentry)
-      Vue.use(installComponents)
-
       let store = createStore(el)
       let router = createRouter(el)
+
+      Vue.use(installValidate)
+      Vue.use(installSentry(router))
+      Vue.use(installComponents)
+
       let origin =
         'https://' +
         (optionsUser.options?.api_domain ||

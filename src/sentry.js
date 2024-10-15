@@ -1,16 +1,24 @@
-import { init, setTag, captureMessage as msg } from '@sentry/vue'
+import {
+  init,
+  browserTracingIntegration,
+  replayIntegration,
+  setTag,
+  captureMessage as msg,
+} from '@sentry/vue'
 
-const enable = DSN && DOMAIN === location.hostname
+const enable = SENTRY_DSN && DOMAIN === location.hostname
 
-export const install = Vue => {
+export const install = router => Vue => {
   if (!enable) return
 
   init({
     Vue,
-    dsn: DSN,
+    dsn: SENTRY_DSN,
+    integrations: [browserTracingIntegration({ router }), replayIntegration()],
+    tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0,
     release: BRANCH,
-    autoSessionTracking: false,
-    logErrors: ENVIRONMENT === 'development',
     environment: ENVIRONMENT,
   })
 

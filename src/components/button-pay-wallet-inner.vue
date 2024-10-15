@@ -163,6 +163,7 @@ export default Vue.extend({
         })
         .on('error', error => {
           let name = ['Payment Button']
+          if ([20].includes(error.code)) return
 
           if (error.code) {
             name.push(error.code)

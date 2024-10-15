@@ -10,17 +10,17 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const publicPath = argv['public-path']
 const VERSION = gitRevisionPlugin.version()
 const COMMITHASH = gitRevisionPlugin.commithash()
-const BRANCH = gitRevisionPlugin.branch()
-const ENVIRONMENT = process.env.NODE_ENV
-const DSN = argv['sentry-dsn']
+const BRANCH = argv.branch || gitRevisionPlugin.branch()
+const ENVIRONMENT = argv.environment
+const SENTRY_DSN = argv.sentry_dsn
 const C2P_SDK = argv.c2p_sdk
 const C2P_SRC_INITIATOR_ID = argv.c2p_src_initiator_id
 const DOMAIN = ((publicPath || '').match(/https?:\/\/([\w.]+)/) || [])[1]
 const SAAS_CDN_URL = argv.saas_cdn_url
 const SAAS_TEMPLATE_NAME = argv.saas_template_name
 const API_DOMAIN = argv.api_domain
-const isProduction = ENVIRONMENT === 'production'
-const isDevelopment = ENVIRONMENT === 'development'
+const isProduction = process.env.NODE_ENV === 'production'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 function addF (options) {
   return {
@@ -194,7 +194,7 @@ module.exports = defineConfig({
           COMMITHASH,
           BRANCH,
           ENVIRONMENT,
-          DSN,
+          SENTRY_DSN,
           DOMAIN,
           SAAS_CDN_URL,
           SAAS_TEMPLATE_NAME,
