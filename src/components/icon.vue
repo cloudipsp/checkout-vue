@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" :style="style" />
+  <div :class="className" :style="style" :data-e2e-icon="name" />
 </template>
 
 <script>
