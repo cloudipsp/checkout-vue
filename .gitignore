@@ -38,5 +38,6 @@ yarn-error.log*
 /src/config/countries-calling-codes.js
 /src/config/saas.js
 /src/config/env.json
+/src/config/presets-with-gradient.js
 /public/favicon/
 /src/fonts/
