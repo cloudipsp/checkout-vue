@@ -299,6 +299,17 @@ task('env', () =>
     .then(content => fsp.writeFile('./src/config/env.json', content))
 )
 
+task('presets-with-gradient', () =>
+  fsp
+    .readdir('./public/presets/')
+    .then(files => files.map(item => item.replace('.jpeg', '')))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const presetsWithGradient = ${content}`)
+    .then(content =>
+      fsp.writeFile('./src/config/presets-with-gradient.js', content)
+    )
+)
+
 task(
   'default',
   parallel([
@@ -311,5 +322,6 @@ task(
     'fonts',
     'saas-config',
     'env',
+    'presets-with-gradient',
   ])
 )
