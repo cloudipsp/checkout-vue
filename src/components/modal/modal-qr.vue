@@ -53,8 +53,8 @@ export default {
   },
   data() {
     return {
-      apple: `${SAAS_CDN_URL}svg/badge/app-store.svg`,
-      google: `${SAAS_CDN_URL}svg/badge/google-play.svg`,
+      apple: `${PUBLIC_PATH}img/app-store.svg`,
+      google: `${PUBLIC_PATH}img/google-play.svg`,
       isMobile: isMobile,
     }
   },
