@@ -28,7 +28,6 @@ const cardIcons = [
 ]
 const YN = ['Y', 'N', 'y', 'n']
 const verificationType = ['amount', 'code']
-const themeType = Object.keys(configTheme)
 const preset = Object.keys(configPresets)
 const locales = Object.keys(configLocales)
 const options = Object.keys(configDefault.options)
@@ -226,7 +225,7 @@ locales.forEach(function (locale) {
 const cssVariableKeys = Object.keys(
   cssVariable({
     type: 'light',
-    preset: configTheme['light'],
+    preset: 'black',
   })
 )
 
@@ -287,7 +286,7 @@ export default {
           theme: {
             ...enumObject(theme),
             fields: {
-              type: typeEnum(themeType),
+              type: typeEnum(configTheme),
               preset: validatorPreset(),
             },
           },

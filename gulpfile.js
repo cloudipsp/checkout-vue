@@ -1,9 +1,11 @@
 const fsp = require('fs').promises
-const { task, series, parallel } = require('gulp')
+const { task, src, dest, series, parallel } = require('gulp')
 const nodeGettextGenerator = require('node-gettext-generator')
 const configLocale = require('./src/config/locales.json')
 const uk = require('@umpirsky/country-list/data/uk/country.json')
+const argv = require('minimist')(process.argv.slice(2))
 
+const saas = argv.saas_template_name
 const excludes = list => item => !list.includes(item)
 const locales = Object.keys(configLocale)
 
@@ -243,6 +245,60 @@ task('svg', () => {
     .then(content => fsp.writeFile('./src/config/svg.js', content))
 })
 
+task('favicon', () =>
+  src(`./saas-config/${saas}/favicon/*`, { encoding: false }).pipe(
+    dest('./public/favicon')
+  )
+)
+
+task('fonts', () =>
+  src(`./saas-config/${saas}/fonts/*`, { encoding: false }).pipe(
+    dest('./src/fonts')
+  )
+)
+
+task('saas-config', () =>
+  Promise.all([
+    fsp
+      .readFile(`./saas-config/${saas}/config.json`, 'utf-8')
+      .then(content => JSON.parse(content)),
+    fsp
+      .access(`./saas-config/${saas}/loading.svg`)
+      .then(() => fsp.readFile(`./saas-config/${saas}/loading.svg`, 'base64'))
+      .then(content => `data:image/svg+xml;base64,${content}`)
+      .catch(() => {}),
+  ])
+    .then(([config, loading]) => {
+      if (loading) {
+        config.options.loading = loading
+      }
+      return config
+    })
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const saas = ${content}`)
+    .then(content => fsp.writeFile('./src/config/saas.js', content))
+)
+
+task('env', () =>
+  Promise.all([
+    fsp
+      .readFile(`./saas-config/${saas}/logo/light.svg`, 'base64')
+      .then(content => `data:image/svg+xml;base64,${content}`),
+    fsp
+      .readFile(`./saas-config/${saas}/logo/dark.svg`, 'base64')
+      .then(content => `data:image/svg+xml;base64,${content}`),
+    fsp
+      .readFile(`./saas-config/${saas}/preset.json`, 'utf-8')
+      .then(content => JSON.parse(content)),
+  ])
+    .then(([light, dark, PRESET]) => ({
+      LOGO_URL: { light, dark },
+      PRESET,
+    }))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => fsp.writeFile('./src/config/env.json', content))
+)
+
 task(
   'default',
   parallel([
@@ -251,5 +307,9 @@ task(
     'countries-calling-codes',
     'exclude-message',
     'svg',
+    'favicon',
+    'fonts',
+    'saas-config',
+    'env',
   ])
 )
