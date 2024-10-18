@@ -40,4 +40,5 @@ yarn-error.log*
 /src/config/env.json
 /src/config/presets-with-gradient.js
 /public/favicon/
+/public/icon/
 /src/fonts/

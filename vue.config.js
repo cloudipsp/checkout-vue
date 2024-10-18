@@ -17,7 +17,6 @@ const SENTRY_DSN = argv.sentry_dsn
 const C2P_SDK = argv.c2p_sdk
 const C2P_SRC_INITIATOR_ID = argv.c2p_src_initiator_id
 const DOMAIN = (PUBLIC_PATH.match(/https?:\/\/([\w.]+)/) || [])[1]
-const SAAS_CDN_URL = argv.saas_cdn_url
 const SAAS_TEMPLATE_NAME = argv.saas_template_name
 const API_DOMAIN = argv.api_domain
 const isProduction = process.env.NODE_ENV === 'production'
@@ -223,7 +222,6 @@ module.exports = defineConfig({
           ENVIRONMENT,
           SENTRY_DSN,
           DOMAIN,
-          SAAS_CDN_URL,
           SAAS_TEMPLATE_NAME,
           API_DOMAIN,
           C2P_SDK,
