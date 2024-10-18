@@ -2,3 +2,7 @@
 	path = saas-config
 	url = git@git.cipsp.net:lamerumiata/saas-config.git
 	branch = master
+[submodule "icons"]
+	path = icons
+	url = git@github.com:cloudipsp/icons.git
+	branch = master

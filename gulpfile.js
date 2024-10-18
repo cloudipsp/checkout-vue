@@ -310,6 +310,12 @@ task('presets-with-gradient', () =>
     )
 )
 
+task('icon', () =>
+  src(
+    'icons/src/(banks|card|crypto|emoney|installments|loans|wallets)/**/*.svg'
+  ).pipe(dest('./public/icon'))
+)
+
 task(
   'default',
   parallel([
@@ -323,5 +329,6 @@ task(
     'saas-config',
     'env',
     'presets-with-gradient',
+    'icon',
   ])
 )
