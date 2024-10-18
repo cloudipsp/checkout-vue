@@ -6,6 +6,7 @@ const increaseSpecificity = require('./build/postcss-increase-specificity')
 const autoprefixer = require('autoprefixer')
 const argv = require('minimist')(process.argv.slice(2))
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const env = require('./src/config/env.json')
 
 const PUBLIC_PATH = argv['public-path'] || '/'
 const VERSION = gitRevisionPlugin.version()
@@ -202,9 +203,20 @@ module.exports = defineConfig({
             })
             .end()
           .end()
+        .rule('fonts')
+          .set('generator', {
+            filename: 'fonts/[name][ext]'
+          })
+          .set('parser', {
+            dataUrlCondition: {
+              maxSize: 1,
+            },
+          })
+          .end()
         .end()
       .plugin('define-plugin')
         .use(webpack.DefinePlugin, [stringify({
+          ...env,
           VERSION,
           COMMITHASH,
           BRANCH,
@@ -216,6 +228,7 @@ module.exports = defineConfig({
           API_DOMAIN,
           C2P_SDK,
           C2P_SRC_INITIATOR_ID,
+          PUBLIC_PATH,
         })])
         .end()
   }

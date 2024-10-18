@@ -31,9 +31,12 @@ yarn-error.log*
 /src/i18n/**/*.json
 /src/i18n/process/*
 !/src/i18n/process/translate.js
+/src/i18n/need-translation/*
 /src/config/countries-search.js
 /src/config/exclude-messages.js
 /src/config/svg.js
 /src/config/countries-calling-codes.js
-/src/i18n/need-translation/*
-
+/src/config/saas.js
+/src/config/env.json
+/public/favicon/
+/src/fonts/

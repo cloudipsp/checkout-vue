@@ -1,0 +1,4 @@
+[submodule "saas-config"]
+	path = saas-config
+	url = git@git.cipsp.net:lamerumiata/saas-config.git
+	branch = master

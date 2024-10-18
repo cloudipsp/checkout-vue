@@ -4,18 +4,18 @@
   "description": "Fondy checkout",
   "author": "Михайло Голубовський <lamerumiata@gmail.com>",
   "scripts": {
-    "dev": "vue-cli-service serve --public-path=https://checkout.dev.cipsp.net/ --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu  --c2p_sdk=https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js?v2 --c2p_src_initiator_id=F1YE52EO4MYO4QP2PBZ221FginRx2_y-ItVkzEaCdkXQQf51E --sentry_dsn=https://d4db9c10d3f74267995a9eee93047f65@sentry.dev.cipsp.net/46 --environment=development",
+    "dev": "vue-cli-service serve --public-path=https://checkout.dev.cipsp.net/ --saas_template_name=flitt --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu --c2p_sdk=https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js?v2 --c2p_src_initiator_id=F1YE52EO4MYO4QP2PBZ221FginRx2_y-ItVkzEaCdkXQQf51E --sentry_dsn=https://d4db9c10d3f74267995a9eee93047f65@sentry.dev.cipsp.net/46 --environment=development",
     "serve": "serve -s dist",
-    "build": "npm run gulp && vue-cli-service build --no-module",
-    "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/ --saas_template_name=fondy --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu --sentry_dsn=https://d4db9c10d3f74267995a9eee93047f65@sentry.dev.cipsp.net/46 --environment=development",
-    "build:npm": "npm ci && vue-cli-service build --no-module --public-path=https://pay.fondy.eu/latest/checkout-vue/",
+    "build": "./scripts/build.sh",
+    "build:localhost": "npm run gulp && vue-cli-service build --no-module --public-path=http://localhost:3000/ --saas_template_name=flitt --saas_cdn_url=https://pay.fondy.eu/icons/dist/ --api_domain=api.dev.fondy.eu --c2p_sdk=https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/src-i-adapter/visaSdk.js?v2 --c2p_src_initiator_id=F1YE52EO4MYO4QP2PBZ221FginRx2_y-ItVkzEaCdkXQQf51E --sentry_dsn=https://d4db9c10d3f74267995a9eee93047f65@sentry.dev.cipsp.net/46 --environment=development",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e --reporter ./tests/e2e/reporter/html-reporter.js",
     "test:unit": "vue-cli-service test:unit",
     "stylelint:fix": "stylelint src/{**/,**/**/}*.scss --custom-syntax postcss-scss --color --formatter verbose --fix",
     "eslint:fix": "eslint src/**/*.{js,vue} --fix",
     "prettier:fix": "prettier src/**/*.{js,vue,scss} --write",
-    "gulp": "./node_modules/gulp/bin/gulp.js"
+    "gulp": "npm run submodule && ./node_modules/gulp/bin/gulp.js --saas_template_name=flitt",
+    "submodule": "git submodule update --init"
   },
   "files": [
     "dist"
@@ -92,7 +92,10 @@
       "SAAS_TEMPLATE_NAME": "readonly",
       "API_DOMAIN": "readonly",
       "C2P_SDK": "readonly",
-      "C2P_SRC_INITIATOR_ID": "readonly"
+      "C2P_SRC_INITIATOR_ID": "readonly",
+      "LOGO_URL": "readonly",
+      "PRESET": "readonly",
+      "PUBLIC_PATH": "readonly"
     },
     "root": true,
     "env": {

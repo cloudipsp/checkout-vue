@@ -1,4 +1,1 @@
-export default {
-  light: 'black',
-  dark: 'silver',
-}
+export default ['light', 'dark']

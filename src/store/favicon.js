@@ -5,7 +5,7 @@ export default function () {
   let fragment = document.createDocumentFragment()
 
   configFavicon.forEach(([rel, href, sizes, type, color]) => {
-    href = `${SAAS_CDN_URL}favicon/${SAAS_TEMPLATE_NAME}/${href}`
+    href = `${PUBLIC_PATH}favicon/${href}`
     const id = href.replace(/\W/g, '_')
 
     if (document.getElementById(id)) return
