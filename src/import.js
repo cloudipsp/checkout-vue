@@ -238,9 +238,6 @@ export const FModalError = () =>
 
 export const FLogo = () => import(/* webpackChunkName: "30" */ '@/views/logo')
 
-export const FLogoCustom = () =>
-  import(/* webpackChunkName: "301" */ '@/views/logo-custom')
-
 export const BlankWallets = () =>
   import(/* webpackChunkName: "31" */ '@/views/checkout/blank/wallets')
 

@@ -1,12 +1,11 @@
+import { deepMerge } from '@/utils/helpers'
+import { saas } from '@/config/saas'
 import configLocales from '@/config/locales.json'
-import configTheme from '@/config/theme'
 import configSubscription from '@/config/subscription'
 
 const locales = Object.keys(configLocales)
 
-const theme = 'light'
-
-export const configDefault = {
+let config = {
   options: {
     methods: ['card'],
     methods_disabled: [],
@@ -24,11 +23,6 @@ export const configDefault = {
     link: '',
     hide_link: false,
     locales,
-    api_domain: 'pay.fondy.eu',
-    endpoint: {
-      gateway: '/latest/checkout-v2/index.html',
-      button: '/latest/checkout-v2/button/index.html',
-    },
     active_tab: '',
     active_method: '',
     logo_url: '',
@@ -41,8 +35,8 @@ export const configDefault = {
     countries: [],
     lang: true,
     theme: {
-      type: theme,
-      preset: configTheme[theme],
+      type: 'light',
+      preset: '',
     },
     show_menu_first: false,
     disable_request: false,
@@ -55,12 +49,10 @@ export const configDefault = {
       unlimited: true,
       readonly: false,
     },
-    loading: '',
     hide_button_title: false,
     amount_readonly: true,
   },
   params: {
-    merchant_id: 1396424, // 900024 dev, 1396424 prod
     amount: 0,
     fee: 0, // %
     currency: '',
@@ -138,6 +130,8 @@ export const configDefault = {
   promo: false,
   click2pay_otp: false,
 }
+
+export const configDefault = deepMerge(config, saas)
 
 locales.forEach(function (locale) {
   configDefault.messages[locale] = {}
