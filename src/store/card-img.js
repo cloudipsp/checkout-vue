@@ -1,18 +1,18 @@
-import { loadAxios } from '@/import'
-import presetGradient from '@/config/preset-gradient'
+import { presetsWithGradient } from '@/config/presets-with-gradient'
 
 export default function (preset) {
-  if (!presetGradient.includes(preset)) return Promise.resolve()
+  if (!presetsWithGradient.includes(preset)) return Promise.resolve()
+  const url = `${PUBLIC_PATH}presets/${preset}.jpeg`
 
-  return loadAxios()
-    .then(axios => axios.get(`${SAAS_CDN_URL}json/preset/${preset}.json`))
-    .then(response => response.data)
-    .then(
-      card_img => ({
+  return new Promise(resolve => {
+    const img = document.createElement('img')
+    img.src = url
+    img.onload = () =>
+      resolve({
         css_variable: {
-          card_img: `url(${card_img})`,
+          card_img: `url(${url})`,
         },
-      }),
-      () => {}
-    )
+      })
+    img.onerror = () => resolve()
+  })
 }
