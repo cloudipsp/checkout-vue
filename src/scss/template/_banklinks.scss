@@ -7,7 +7,9 @@ $bank-inner-border-radius: subtract(px-to-rem(8px), px-to-rem(1px));
   color: $bank_item_color;
   cursor: pointer;
   border-radius: px-to-rem(8px);
-  transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s,
+  transition:
+    background-color ease-in-out 0.15s,
+    color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
 
   &:hover {

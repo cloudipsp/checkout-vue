@@ -28,8 +28,7 @@
     border-color: $border-focus;
   }
 
-  &[disabled],
-  .f-disabled > & {
+  &[disabled] {
     color: $color-disabled;
     border-color: $border;
     -webkit-text-fill-color: $color-disabled;
@@ -47,18 +46,21 @@
 
 .f-form-control {
   --border: #{px-to-rem(1px)};
+  --padding-left: #{px-to-rem(12px)};
 
   display: block;
   width: 100%;
   height: px-to-rem(56px);
-  padding: px-to-rem(26px) calc(#{px-to-rem(12px)} - var(--border))
+  padding: px-to-rem(26px) calc(var(--padding-left) - var(--border))
     px-to-rem(8px);
   font-size: px-to-rem(16px);
   font-weight: 500;
   border-style: solid;
   border-width: var(--border);
   border-radius: px-to-rem(8px);
-  transition: color ease-in-out 0.15s, box-shadow ease-in-out 0.15s,
+  transition:
+    color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s,
     border-color ease-in-out 0.15s;
 
   &:-webkit-autofill {
@@ -76,8 +78,7 @@
     --border: #{px-to-rem(1px)};
   }
 
-  &[disabled],
-  .f-disabled > & {
+  &[disabled] {
     opacity: 1;
   }
 
@@ -226,11 +227,6 @@
   color: $label_focus_color;
 }
 
-.f-form-control[disabled] + .f-control-label-floating,
-.f-disabled > .f-control-label-floating {
-  color: $label_color;
-}
-
 .f-error {
   margin-top: px-to-rem(4px);
   font-weight: 500;
@@ -246,6 +242,7 @@
   align-items: center;
   color: $input_prepend_color;
 
+  // TODO
   ~ div .f-form-control {
     padding-left: calc(#{px-to-rem(40px)} - var(--border));
   }

@@ -91,6 +91,61 @@
       <f-loading v-if="loadingClick2pay" backdrop />
     </div>
     <f-field-email :disabled="disableEmail" />
+    ---
+    <f-form-group
+      v-model="input"
+      name="label"
+      label="f-form-group 56"
+      rules="required"
+      prepend="search"
+    />
+    <f-form-group
+      v-model="input"
+      name="label"
+      label="f-form-group disabled"
+      rules="required"
+      prepend="search"
+      :disabled="true"
+    />
+    <f-form-group
+      v-model="input"
+      name="label"
+      label="f-form-group sm"
+      rules="required"
+      prepend="search"
+      size="sm"
+    />
+    <f-form-group
+      v-model="check"
+      component="checkbox"
+      name="check"
+      label="check"
+      rules="required"
+      :disabled="true"
+    />
+    ---
+    <f-row-floating-input
+      v-model="input"
+      name="asd"
+      label="new label"
+      rules="required"
+      prepend="search"
+    />
+    <f-row-floating-input
+      v-model="input"
+      label="new disabled"
+      rules="required"
+      prepend="search"
+      :disabled="true"
+    />
+    <f-row-floating-input
+      v-model="input"
+      label="new 48"
+      rules="required"
+      prepend="search"
+      size="48"
+    />
+    ---
     <click2pay-loading v-model="loadingClick2pay" />
     <click2pay-new-user-card-page-wrapper @enable="setDisableEmail" />
     <click2pay-user-exists-card-page-wrapper />
@@ -105,6 +160,7 @@ import FFormGroup from '@/components/form/group.vue'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
+import FRowFloatingInput from '@/components/input/row-floating-input.vue'
 import Click2payLoading from '@/views/click2pay/loading'
 import Click2payNewUserCardPageWrapper from '@/views/click2pay/new-user-card-page-wrapper'
 import Click2payUserExistsCardPageWrapper from '@/views/click2pay/user-exists-card-page-wrapper'
@@ -123,6 +179,7 @@ export default {
     FTooltipDefault,
     FLoading,
     FFieldEmail,
+    FRowFloatingInput,
     Click2payLoading,
     Click2payNewUserCardPageWrapper,
     Click2payUserExistsCardPageWrapper,
@@ -134,6 +191,8 @@ export default {
       disabledExpiryDate: false,
       disableEmail: false,
       loadingClick2pay: false,
+      input: '',
+      check: false,
     }
   },
   computed: {

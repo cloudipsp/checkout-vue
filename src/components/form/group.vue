@@ -17,9 +17,11 @@
       >
         {{ prependText }}
       </label>
+      <!--+-->
       <label v-if="prepend" :for="safeId()" class="f-form-control-prepend">
         <f-svg :name="prepend" fw />
       </label>
+      <!--+-->
       <label
         v-if="!noLabelFloating && showLabel"
         :class="classLabelFloating"
@@ -27,6 +29,7 @@
         @click="focused"
         v-text="$t(label)"
       />
+      <!--+-->
       <f-form-item
         ref="item"
         v-bind="attrs"
@@ -53,6 +56,7 @@
       <f-svg class="f-mr-8" name="warning" size="md" />
       {{ error }}
     </f-tooltip-error>
+    <!--+-->
     <transition name="f-slide-fade">
       <div v-if="showError" class="f-error">{{ error }}</div>
     </transition>
@@ -106,14 +110,17 @@ export default {
   },
   computed: {
     ...mapState(['isSubmit']),
+    //+
     validation() {
       if (!this.isMounted) return
       return this.$refs.item.$children[0].$refs.validation
     },
+    //+
     touched() {
       if (!this.isMounted) return
       return this.validation.flags.touched
     },
+    //+
     error() {
       if (!this.isMounted) return
       return this.validation.errors[0]
@@ -127,23 +134,26 @@ export default {
         label: this.label,
       }
     },
+    //-
     classGroup() {
       return ['f-form-group', this.$style.wrapper]
     },
+    //+
     classGroupInner() {
       return [
         'f-form-group-inner',
         {
-          'f-readonly': this.$attrs.readonly,
-          'f-disabled': this.$attrs.disabled,
+          //-  select
           ['f-form-group-inner-' + this.$attrs.component]:
             this.$attrs.component,
         },
       ]
     },
+    //-
     classLabel() {
       return [this.$style['label-no-floating'], this.labelClass]
     },
+    //+
     classLabelFloating() {
       return [
         'f-control-label',
@@ -155,23 +165,30 @@ export default {
             this.focus,
           'f-control-label-hover': this.hover,
           'f-control-label-focused': this.focus,
+          [this.$style.label_disabled]: this.$attrs.disabled,
         },
       ]
     },
+    //+
     hasError() {
       return this.error && (this.touched || this.isSubmit)
     },
     showError() {
+      //-             //+
       let showError = !this.tooltip && this.hasError && this.focus
+      //-
       this.$emit('show-error', showError, this.error)
+      //-
       return showError && !this.hideError
     },
+    //-
     showErrorTooltip() {
       return this.tooltip && this.hasError && this.focus
     },
     showPlaceholder() {
       return this.dynamicPlaceholder && this.noLabelFloating && this.safeId()
     },
+    //+
     showLabel() {
       return !arrayIncludes(['checkbox'], this.$attrs.component) && this.label
     },
@@ -180,15 +197,19 @@ export default {
     showErrorTooltip: 'watchShowErrorTooltip',
   },
   methods: {
+    //+
     onFocus() {
       this.focus = true
     },
+    //+
     blur() {
       this.focus = false
     },
+    //+
     mouseenter() {
       this.hover = true
     },
+    //+
     mouseleave() {
       this.hover = false
     },
@@ -215,5 +236,9 @@ export default {
   margin-bottom: px-to-rem(8px);
   font-size: px-to-rem(14px);
   word-wrap: break-word;
+}
+
+:global(#f) .label_disabled {
+  color: $label_color;
 }
 </style>

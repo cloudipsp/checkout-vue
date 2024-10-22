@@ -1,0 +1,158 @@
+@mixin form-control-variant(
+  $bg,
+  $border,
+  $color,
+  $bg-hover,
+  $border-hover,
+  $border-focus,
+  $color-disabled
+) {
+  color: $color;
+  background-color: $bg;
+  border-color: $border;
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $color;
+
+    &::first-line {
+      color: $color;
+    }
+  }
+
+  &:hover {
+    background-color: $bg-hover;
+    border-color: $border-hover;
+  }
+
+  &:focus {
+    border-color: $border-focus;
+  }
+
+  &[disabled] {
+    color: $color-disabled;
+    border-color: $border;
+    -webkit-text-fill-color: $color-disabled;
+  }
+}
+
+.input {
+  --border: #{px-to-rem(1px)};
+  --padding-left: #{px-to-rem(12px)};
+  --padding-right: #{px-to-rem(12px)};
+  --padding-top: #{px-to-rem(8px)};
+
+  display: block;
+  width: 100%;
+  padding: var(--padding-top) calc(var(--padding-right) - var(--border))
+    px-to-rem(8px) calc(var(--padding-left) - var(--border));
+  font-size: px-to-rem(16px);
+  font-weight: 500;
+  border-style: solid;
+  border-width: var(--border);
+  border-radius: px-to-rem(8px);
+  transition:
+    color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s,
+    border-color ease-in-out 0.15s;
+
+  &:-webkit-autofill {
+    @include plain-hover-focus-active {
+      transition: background-color 99999s;
+    }
+
+    &::first-line {
+      font-size: px-to-rem(16px);
+      font-weight: 500;
+    }
+  }
+
+  &:focus {
+    --border: #{px-to-rem(1px)};
+  }
+
+  &[disabled] {
+    opacity: 1;
+  }
+
+  &[type='text'],
+  &[type='tel'],
+  &[type='date'] {
+    appearance: none;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: px-to-rem(16px);
+  }
+}
+
+.default {
+  @include form-control-variant(
+    $input_bg,
+    $input_border,
+    $input_color,
+    $input_hover_bg,
+    $input_hover_border,
+    $input_focus_border,
+    $input_disabled_color
+  );
+
+  &::placeholder {
+    color: $label_color;
+  }
+
+  @include focus-visible(
+    px-to-rem(2px),
+    $outline_border,
+    px-to-rem(2px),
+    $container_bg
+  );
+}
+
+.secondary {
+  @include form-control-variant(
+    $input_secondary_bg,
+    $input_secondary_border,
+    $input_secondary_color,
+    $input_secondary_hover_bg,
+    $input_secondary_hover_border,
+    $input_secondary_focus_border,
+    $input_secondary_disabled_color
+  );
+
+  @include focus-visible(
+    px-to-rem(2px),
+    $outline_border,
+    px-to-rem(2px),
+    $white
+  );
+}
+
+.error {
+  --border: #{px-to-rem(2px)};
+
+  color: $error;
+  border-color: $error;
+}
+
+.size_56 {
+  height: px-to-rem(56px);
+}
+
+.size_48 {
+  height: px-to-rem(48px);
+}
+
+.size_44 {
+  height: px-to-rem(44px);
+}
+
+// TODO
+.f-control-sm {
+  height: px-to-rem(44px);
+  padding: px-to-rem(15px) px-to-rem(12px) px-to-rem(5px);
+
+  &.f-form-control-no-floating {
+    padding-top: px-to-rem(5px);
+  }
+}
