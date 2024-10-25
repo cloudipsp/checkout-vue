@@ -68,6 +68,7 @@ export default {
       })
     },
     autoFocus(id) {
+      console.log(id)
       // mask point
       id = id.replace(/\./g, '\\.')
       let $firstErrorField = this.$el.querySelector(`[name=${id}]`)

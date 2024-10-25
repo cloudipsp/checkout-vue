@@ -13,19 +13,19 @@
     </template>
     <template #default>
       <f-form-base v-if="showSearch" class="f-select-search">
-        <f-form-group
-          ref="search"
-          :value="text"
-          class="f-mb-0"
-          name="default_country"
-          size="sm"
-          prepend="search"
-          :autofocus="autofocus"
-          autocomplete="off"
-          variant="secondary"
-          @input="input"
-          @keydown="navigate"
-        />
+        <!--        <f-form-group-->
+        <!--          ref="search"-->
+        <!--          :value="text"-->
+        <!--          class="f-mb-0"-->
+        <!--          name="default_country"-->
+        <!--          size="sm"-->
+        <!--          prepend="search"-->
+        <!--          :autofocus="autofocus"-->
+        <!--          autocomplete="off"-->
+        <!--          variant="secondary"-->
+        <!--          @input="input"-->
+        <!--          @keydown="navigate"-->
+        <!--        />-->
       </f-form-base>
       <f-button-unstyled
         v-for="(item, key) in list"
@@ -49,7 +49,7 @@
 <script>
 import FModalTooltip from '@/components/modal-tooltip'
 import FFormBase from '@/components/form/form/form-base'
-import FFormGroup from '@/components/form/group.vue'
+// import FFormGroup from '@/components/form/group.vue'
 import FButtonUnstyled from '@/components/button/button-unstyled'
 import FSvg from '@/components/svg'
 import { makeProp } from '@/utils/props'
@@ -69,7 +69,7 @@ export default {
   components: {
     FModalTooltip,
     FFormBase,
-    FFormGroup,
+    // FFormGroup,
     FButtonUnstyled,
     FSvg,
   },

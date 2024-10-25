@@ -91,6 +91,107 @@
       <f-loading v-if="loadingClick2pay" backdrop />
     </div>
     <f-field-email :disabled="disableEmail" />
+    <h3>size 56</h3>
+    <f-form-group
+      v-model="input"
+      name="input"
+      label="f-form-group 56"
+      rules="required"
+      prepend="search"
+    />
+    <f-row-floating-input
+      v-model="input2"
+      label="f-row-floating-input 56"
+      rules="required"
+      prepend="search"
+    />
+    <f-row-input
+      v-model="input2"
+      rules="required"
+      prepend="search"
+      placeholder="f-row-input 5"
+    />
+    <f-row-label-input
+      v-model="input2"
+      label="f-row-label-input 56"
+      rules="required"
+      prepend="search"
+      placeholder="placeholder"
+    />
+    <h3>disabled</h3>
+    <f-form-group
+      v-model="input"
+      name="label"
+      label="f-form-group disabled"
+      rules="required"
+      prepend="search"
+      :disabled="true"
+    />
+    <f-row-floating-input
+      v-model="input2"
+      label="f-row-floating-input disabled"
+      rules="required"
+      prepend="search"
+      :disabled="true"
+    />
+    <f-row-input
+      v-model="input2"
+      rules="required"
+      prepend="search"
+      placeholder="f-row-input 56"
+      :disabled="true"
+    />
+    <f-row-label-input
+      v-model="input2"
+      label="f-row-label-input 56"
+      rules="required"
+      prepend="search"
+      placeholder="placeholder"
+      :disabled="true"
+    />
+    <h3>size 44</h3>
+    <f-form-group
+      v-model="input"
+      name="label"
+      label="f-form-group sm"
+      rules="required"
+      prepend="search"
+      size="sm"
+    />
+    <f-row-floating-input
+      v-model="input2"
+      label="f-row-floating-input 44"
+      rules="required"
+      prepend="search"
+      size="44"
+    />
+    <f-row-input
+      v-model="input2"
+      rules="required"
+      prepend="search"
+      placeholder="f-row-input 44"
+      size="44"
+    />
+    <f-row-label-input
+      v-model="input2"
+      label="f-row-label-input 44"
+      rules="required"
+      prepend="search"
+      placeholder="placeholder"
+      size="44"
+    />
+    <h3>checkbox</h3>
+    <f-form-group
+      v-model="check"
+      name="check"
+      component="checkbox"
+      label="f-form-group checkbox"
+      :rules="{ required: true }"
+    />
+    <f-row-checkbox v-model="check" :rules="{ required: { allowFalse: false } }"
+      >f-row-checkbox</f-row-checkbox
+    >
+    <f-checkbox v-model="check">f-checkbox</f-checkbox>
     <click2pay-loading v-model="loadingClick2pay" />
     <click2pay-new-user-card-page-wrapper @enable="setDisableEmail" />
     <click2pay-user-exists-card-page-wrapper />
@@ -105,6 +206,11 @@ import FFormGroup from '@/components/form/group.vue'
 import FSvg from '@/components/svg'
 import FTooltipDefault from '@/components/tooltip/tooltip-default'
 import FFieldEmail from '@/components/fields/email'
+import FRowFloatingInput from '@/components/input/row-floating-input'
+import FRowInput from '@/components/input/row-input'
+import FRowLabelInput from '@/components/input/row-label-input'
+import FRowCheckbox from '@/components/input/row-checkbox'
+import FCheckbox from '@/components/input/checkbox'
 import Click2payLoading from '@/views/click2pay/loading'
 import Click2payNewUserCardPageWrapper from '@/views/click2pay/new-user-card-page-wrapper'
 import Click2payUserExistsCardPageWrapper from '@/views/click2pay/user-exists-card-page-wrapper'
@@ -123,6 +229,11 @@ export default {
     FTooltipDefault,
     FLoading,
     FFieldEmail,
+    FRowFloatingInput,
+    FRowInput,
+    FRowLabelInput,
+    FRowCheckbox,
+    FCheckbox,
     Click2payLoading,
     Click2payNewUserCardPageWrapper,
     Click2payUserExistsCardPageWrapper,
@@ -134,6 +245,10 @@ export default {
       disabledExpiryDate: false,
       disableEmail: false,
       loadingClick2pay: false,
+      input: '',
+      input2: '',
+      check: false,
+      check2: false,
     }
   },
   computed: {
