@@ -479,6 +479,8 @@ class Store extends Model {
     this.state.error.show = false
   }
   formLoading(loading) {
+    if (this.state.options.disable_request) return
+
     if (loading) {
       this.hideError()
     }
