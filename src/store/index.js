@@ -511,10 +511,7 @@ class Store extends Model {
   infoParams(data) {
     return this.state.params.token
       ? { ...data, token: this.state.params.token }
-      : this.formParams({
-          ...data,
-          amount: this.state.params.amount,
-        })
+      : this.formParams(data)
   }
   formParams(data) {
     // copy params
@@ -542,11 +539,6 @@ class Store extends Model {
 
     if (this.state.order.need_verify_code) {
       delete params.custom
-    }
-
-    params.amount = params.amount / 100
-    if (params.recurring_data.amount) {
-      params.recurring_data.amount = params.recurring_data.amount / 100
     }
 
     params.recurring_data = Object.fromEntries(
