@@ -744,21 +744,6 @@ msgstr "你将被重定向到 3ds 页面. 如果没有看到，请点击"
 msgid "3ds_link"
 msgstr "链接"
 
-msgid "qr_desc_mobile_sk_viamo"
-msgstr "你将被重定向到 VIAMO 移动应用程序"
-
-msgid "qr_desc_desktop_sk_viamo"
-msgstr "通过 VIAMO 移动应用程序扫描二维码"
-
-msgid "qr_button_sk_viamo"
-msgstr "通过Viamo Plus进行支付"
-
-msgid "qr_app_apple_sk_viamo"
-msgstr "https://apps.apple.com/app/viamo-plus/id1576498062"
-
-msgid "qr_app_google_sk_viamo"
-msgstr "https://play.google.com/store/apps/details?id=sk.viamo.plus"
-
 msgid "account_number"
 msgstr ""
 

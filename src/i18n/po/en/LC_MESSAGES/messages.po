@@ -811,21 +811,6 @@ msgstr ""
 msgid "3ds_link"
 msgstr "link"
 
-msgid "qr_desc_mobile_sk_viamo"
-msgstr "You will be redirected to the VIAMO mobile application"
-
-msgid "qr_desc_desktop_sk_viamo"
-msgstr "Scan QR through the VIAMO mobile application"
-
-msgid "qr_button_sk_viamo"
-msgstr "Pay with Viamo Plus"
-
-msgid "qr_app_apple_sk_viamo"
-msgstr "https://apps.apple.com/app/viamo-plus/id1576498062"
-
-msgid "qr_app_google_sk_viamo"
-msgstr "https://play.google.com/store/apps/details?id=sk.viamo.plus"
-
 msgid "account_number"
 msgstr "Account number"
 

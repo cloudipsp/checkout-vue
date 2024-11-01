@@ -16,12 +16,6 @@
       <f-offer />
       <f-button-pay @success="success" />
       <f-button-cancel-wrapper />
-      <f-modal-qr
-        :id="id"
-        v-model="showQrModal"
-        :qr="model.qr"
-        :button="model.button"
-      />
     </div>
     <f-alert-gdpr-yapily-wrapper v-if="showGdprYapily" />
   </div>
@@ -37,7 +31,6 @@ import FFieldsUser from '@/components/fields/user'
 import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
-import FModalQr from '@/components/modal/modal-qr'
 import FAlertGdprYapilyWrapper from '@/components/alert/alert-gdpr-yapily-wrapper'
 import { mapState } from '@/utils/store'
 
@@ -52,7 +45,6 @@ export default {
     FOffer,
     FButtonPay,
     FButtonCancelWrapper,
-    FModalQr,
     FAlertGdprYapilyWrapper,
   },
   data() {
@@ -61,7 +53,6 @@ export default {
       iban: '',
       logo: '',
       form: {},
-      showQrModal: false,
       model: {},
     }
   },
@@ -107,10 +98,6 @@ export default {
     },
     success(model) {
       this.model = model.attr('send_data') || {}
-
-      if (model.attr('action') === 'qr_page') {
-        this.showQrModal = true
-      }
     },
   },
 }

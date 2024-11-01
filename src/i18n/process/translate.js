@@ -58,12 +58,6 @@ _('wallets_apple_google')
 _('3ds_title')
 _('3ds_link')
 
-_('qr_desc_mobile_sk_viamo')
-_('qr_desc_desktop_sk_viamo')
-_('qr_button_sk_viamo')
-_('qr_app_apple_sk_viamo')
-_('qr_app_google_sk_viamo')
-
 _('account_number')
 _('code')
 _('email_address')
