@@ -18,6 +18,7 @@
       <f-button-cancel-wrapper />
     </div>
     <f-alert-gdpr-yapily-wrapper v-if="showGdprYapily" />
+    <f-modal-qr v-if="showModalQr" ref="modal" :model="model" />
   </div>
 </template>
 
@@ -32,6 +33,7 @@ import FOffer from '@/components/offer'
 import FButtonPay from '@/components/button/button-pay'
 import FButtonCancelWrapper from '@/components/button/button-cancel-wrapper'
 import FAlertGdprYapilyWrapper from '@/components/alert/alert-gdpr-yapily-wrapper'
+import { FModalQr } from '@/import'
 import { mapState } from '@/utils/store'
 
 export default {
@@ -46,6 +48,7 @@ export default {
     FButtonPay,
     FButtonCancelWrapper,
     FAlertGdprYapilyWrapper,
+    FModalQr,
   },
   data() {
     return {
@@ -54,6 +57,7 @@ export default {
       logo: '',
       form: {},
       model: {},
+      showModalQr: false,
     }
   },
   computed: {
@@ -98,6 +102,15 @@ export default {
     },
     success(model) {
       this.model = model.attr('send_data') || {}
+
+      if (model.attr('action') === 'qr_page') {
+        this.showModalQr = true
+        FModalQr()
+          .then(() => this.$nextTick())
+          .then(() => {
+            this.$refs.modal.show()
+          })
+      }
     },
   },
 }

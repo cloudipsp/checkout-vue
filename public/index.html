@@ -739,11 +739,23 @@
             lang: 'uk',
           },
         },
+        yapily: {
+          options: {
+            methods: ['banklinks_eu'],
+            active_tab: 'banklinks_eu',
+            api_domain,
+          },
+          params: {
+            currency: 'GBP',
+            merchant_id: 900292,
+            amount: 100,
+          },
+        },
       }
 
       setConfigsOption()
 
-      window.app = render('#app', 'click2pay')
+      window.app = render('#app', 'yapily')
       // render('#app2', 'min')
       // render('#app3', 'max2')
 

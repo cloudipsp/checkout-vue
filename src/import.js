@@ -354,3 +354,6 @@ export const Click2payUserExistsNeedOtpCardPage = () =>
   import(
     /* webpackChunkName: "63" */ '@/views/click2pay/user-exists-need-otp-card-page.vue'
   )
+
+export const FModalQr = () =>
+  import(/* webpackChunkName: "64" */ '@/components/modal/modal-qr')
