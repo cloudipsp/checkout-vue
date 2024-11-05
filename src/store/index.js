@@ -34,6 +34,7 @@ import { formatKiev } from '@/utils/date'
 import locales from '@/config/locales.json'
 import { keys } from '@/utils/object'
 import { testCardNumbers } from '@/config/test-card-numbers'
+import { parseFieldsCustom } from '@/schema/parse-fields-custom'
 
 Vue.use(store)
 
@@ -78,9 +79,7 @@ class Store extends Model {
       this.infoParams({
         lang: this.state.params.lang,
       })
-    )
-      .then(model => this.info(model))
-      .catch(errorHandler)
+    ).catch(errorHandler)
   }
   feeCalc(data) {
     const {
@@ -275,6 +274,12 @@ class Store extends Model {
     this.state.params.fee = model.attr('client_fee') || 0
     this.state.fields_customer = model.attr('customer_required_data') || []
 
+    if (model.attr('order.fields_custom')) {
+      this.state.fields_custom = model
+        .attr('order.fields_custom')
+        .map(parseFieldsCustom)
+    }
+
     this.state.params.order_desc =
       this.state.params.order_desc || model.attr('order.order_desc') || ' '
 
@@ -420,10 +425,7 @@ class Store extends Model {
         document.title = config.options.title
       }
 
-      config.fields_custom = [
-        ...config.fields_custom,
-        ...this.state.fields_custom,
-      ]
+      config.fields_custom = config.fields_custom || this.state.fields_custom
 
       this.setState(config)
       this.initLang()

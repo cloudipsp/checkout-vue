@@ -21,7 +21,7 @@ npm run build
   options: {},
   params: {},
   button: {}, // button config 
-  fields_custom: {},
+  fields_custom: [],
   messages: {},
   validate: {},
   css_variable: {},

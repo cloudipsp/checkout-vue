@@ -22,7 +22,7 @@ export const loadButton = (api_domain, button, button_body) => {
 
 function parseOptions({
   name,
-  fields = {},
+  fields,
   amount,
   params = {},
   currency,

@@ -8,7 +8,7 @@ import configTheme from '@/config/theme'
 import { configDefault } from '@/config/config-default'
 import configSubscription from '@/config/subscription'
 import { excludeMessages } from '@/config/exclude-messages'
-import { isPlainObject, isString } from '@/utils/inspect'
+import { isPlainObject, isString, isExist } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
 
 const countries = Object.keys(configCountries)
@@ -164,6 +164,20 @@ function validatorNotEmpty() {
       let errors = []
       if (value === '' || value === null) {
         errors.push(['Parameter', rule.fullField, "can't be empty."].join(' '))
+      }
+      callback(errors)
+    },
+  }
+}
+
+function typeObjectOrArray() {
+  return {
+    validator(rule, value, callback) {
+      let errors = []
+      if (isExist(value) && !Array.isArray(value) && !isPlainObject(value)) {
+        errors.push(
+          ['Parameter', rule.fullField, 'must be array or object.'].join(' ')
+        )
       }
       callback(errors)
     },
@@ -336,7 +350,7 @@ export default {
         ...typeObject,
       },
       fields_custom: {
-        ...typeObject,
+        ...typeObjectOrArray(),
       },
     },
   },
