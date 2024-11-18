@@ -27,7 +27,7 @@ import { subscription } from '@/store/subscription'
 import validate from '@/schema/validate'
 import Model from '@/class/model'
 import initFavicon from '@/store/favicon'
-import { loadStyleAdaptive } from '@/import'
+import { loadClick2pay, loadStyleAdaptive } from '@/import'
 import { arrayIncludes } from '@/utils/array'
 import { formatKiev } from '@/utils/date'
 import locales from '@/config/locales.json'
@@ -143,6 +143,8 @@ class Store extends Model {
     }))
   }
   infoSuccess(model) {
+    this.state.info = model.data
+
     this.info(model)
 
     this.state.options.active_tab =
@@ -157,6 +159,7 @@ class Store extends Model {
     }
     this.initHasFields()
     this.initIsOnlyCard()
+    this.initClick2pay()
   }
   cardSuccess(data) {
     this.state.cards =
@@ -356,6 +359,15 @@ class Store extends Model {
   }
   initTotalAmount() {
     this.state.total_amount = this.state.params.amount
+  }
+  initClick2pay() {
+    if (!this.enabledClick2pay()) return
+
+    loadClick2pay()
+      .then(({ initClick2pay }) =>
+        initClick2pay(this.state.info.click2pay_srci_dpa_id)
+      )
+      .catch(errorHandler)
   }
   parseActiveTab(model) {
     let active_tab = mappingMethod(model.attr('active_tab'))
