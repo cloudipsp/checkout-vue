@@ -31,7 +31,7 @@ import { timeoutMixin } from '@/mixins/timeout'
 import { resizeMixin } from '@/mixins/resize'
 import { isError } from '@/utils/inspect'
 import { fib } from '@/utils/helpers'
-import { FLoading, loadClick2pay } from '@/import'
+import { FLoading } from '@/import'
 import configMethods from '@/config/methods.json'
 import { arrayIncludes } from '@/utils/array'
 import { mappingMethod } from '@/config/mapping-method'
@@ -67,7 +67,7 @@ export default {
     ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'fee']),
 
-    ...mapStateGetSet(['ready', 'orderModel', 'order', 'info']),
+    ...mapStateGetSet(['ready', 'order']),
     ...mapStateGetSet('params', [
       'amount',
       'currency',
@@ -148,18 +148,8 @@ export default {
     appFinally(model) {
       if (!model) return
 
-      this.info = model.attr('info')
-
-      if (this.store.enabledClick2pay()) {
-        loadClick2pay()
-          .then(({ initClick2pay }) =>
-            initClick2pay(this.info.click2pay_srci_dpa_id)
-          )
-          .catch(errorHandler)
-      }
-
       this.store.paySuccess(model.attr('pay'))
-      this.store.infoSuccess(model.instance(this.info))
+      this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.attr('cards'))
     },
@@ -187,7 +177,6 @@ export default {
       model3ds = model
     },
     location(model) {
-      this.orderModel = model
       this.order = model.data
 
       if (model.attr('action') === 'qr_page') {
