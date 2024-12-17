@@ -51,7 +51,7 @@ msgid "sepa"
 msgstr "SEPA Direct Debit"
 
 msgid "banklinks_eu"
-msgstr "Internet bank"
+msgstr "Pay by bank"
 
 msgid "receipt"
 msgstr "Bank transfer"
