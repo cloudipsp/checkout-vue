@@ -1,7 +1,7 @@
 <template>
   <f-modal-base visible no-close-on-esc no-close-on-backdrop hide-header-close>
     <template #title>
-      <svg-decline :slass="$style.svg" />
+      <svg-decline :class="$style.svg" />
       <h5 class="f-modal-title" v-text="$t(`${$route.query.error}_title`)" />
     </template>
 

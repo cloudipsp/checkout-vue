@@ -23,7 +23,7 @@
 
     <f-modal-base v-model="showGdprSafe" size="lg">
       <template #title>
-        <svg-safe :slass="$style.svg" />
+        <svg-safe :class="$style.svg" />
         <h5 class="f-modal-title" v-text="$t('gdpr_modal_safe_title')" />
       </template>
 

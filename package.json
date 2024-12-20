@@ -70,7 +70,7 @@
     "node-gettext-generator": "^0.2.13",
     "prettier": "^3.3.3",
     "sass": "^1.79.4",
-    "sass-loader": "^13.3.3",
+    "sass-loader": "^16.0.4",
     "serve": "^14.2.3",
     "stylelint": "^15.11.0",
     "stylelint-config-prettier-scss": "^1.0.0",
@@ -153,7 +153,8 @@
       "media-feature-name-no-unknown": null,
       "scss/dollar-variable-default": null,
       "scss/dollar-variable-pattern": "^[a-z][a-z-\\d_]*$",
-      "selector-class-pattern": "^[a-z][a-z0-9\\-_]*[a-z0-9]$"
+      "selector-class-pattern": "^[a-z][a-z0-9\\-_]*[a-z0-9]$",
+      "declaration-block-no-redundant-longhand-properties": null
     }
   },
   "prettier": {
