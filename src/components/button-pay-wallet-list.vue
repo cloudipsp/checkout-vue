@@ -93,14 +93,17 @@ export default Vue.extend({
     },
     onSupported({ provider }) {
       this.supported = provider
+      this.setCanMakePayment()
     },
     onPayload({ allowed = [] }) {
       this.allowed = allowed
+      this.setCanMakePayment()
+    },
+    setCanMakePayment() {
+      if (!this.list.length) return
 
-      if (this.list.length) {
-        this.$root.$emit('show-pay')
-        this.can_make_payment = this.list.join('_')
-      }
+      this.$root.$emit('show-pay')
+      this.can_make_payment = this.list.join('_')
     },
     onDetails(data) {
       this.formRequest(data)
