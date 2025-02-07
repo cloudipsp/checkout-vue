@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     ...mapState('options.theme', ['type']),
-    ...mapState(['loading']),
+    ...mapState(['loading', 'info']),
     ...mapState('options', ['methods']),
     ...mapState('params', ['token', 'fee']),
 
@@ -108,6 +108,7 @@ export default {
           this.submitProgress
         )
         .then(this.submitSuccess, this.submitError)
+        .catch(errorHandler)
     },
     submitProgress(model) {
       if (!model) return
@@ -152,6 +153,8 @@ export default {
       this.store.infoSuccess(model.instance(model.attr('info')))
       this.orderSuccess(model.instance(model.attr('order')))
       this.store.cardSuccess(model.attr('cards'))
+
+      this.autoSubmit()
     },
     orderSuccess(model) {
       this.location(model)
@@ -247,6 +250,22 @@ export default {
     },
     submit3ds() {
       model3ds.submit3dsForm()
+    },
+    autoSubmit() {
+      if (!this.info.autosubmit_params) return
+
+      this.store.formLoading(true)
+
+      return this.store
+        .sendRequest(
+          'api.checkout.form',
+          'request',
+          this.info.autosubmit_params,
+          {},
+          this.submitProgress
+        )
+        .then(this.submitSuccess, this.submitError)
+        .catch(errorHandler)
     },
   },
 }
