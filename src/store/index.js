@@ -20,7 +20,6 @@ import loadCardImg from '@/store/card-img'
 import { methods, most_popular_icons, tabs, tabs_order } from '@/store/parse'
 import { localStorage } from '@/utils/store'
 import configSubscription from '@/config/subscription'
-import configAutoSubmit from '@/config/auto-submit'
 import { activeMethod } from '@/config/active-method'
 import { methodRoute } from '@/config/method-route'
 import { mappingMethod } from '@/config/mapping-method'
@@ -170,7 +169,6 @@ class Store extends Model {
   }
   location(isBreakpointDownLg) {
     return (
-      this.autoSubmit() ||
       this.activeMethod() || {
         name: getRouteName(
           this.state.options.methods,
@@ -180,36 +178,6 @@ class Store extends Model {
         ),
       }
     )
-  }
-  autoSubmit() {
-    let methods = this.state.options.methods
-
-    if (
-      !this.user.options?.methods?.includes('wallets') ||
-      this.user.options?.methods_disabled?.includes('wallets')
-    ) {
-      methods = methods.filter(removeWallets)
-    }
-
-    if (methods.length !== 1) return
-
-    let method = methods[0]
-
-    if (!configAutoSubmit.includes(method)) return
-
-    if (!this.state.tabs[method]) return
-
-    let systems = Object.keys(this.state.tabs[method])
-
-    if (systems.length !== 1) return
-
-    let system = systems[0]
-
-    return {
-      name: 'system',
-      params: { method, system },
-      query: { autoSubmit: true },
-    }
   }
   activeMethod() {
     let active_method = this.state.options.active_method

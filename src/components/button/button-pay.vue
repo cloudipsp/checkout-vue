@@ -57,9 +57,6 @@ export default {
       )
     },
   },
-  mounted() {
-    this.$nextTick().then(this.autoSubmit)
-  },
   methods: {
     click() {
       this.isSubmit = true
@@ -68,10 +65,6 @@ export default {
           this.$emit('success', model)
         })
         .catch(errorHandler)
-    },
-    autoSubmit() {
-      if (!this.$route.query.autoSubmit) return
-      this.click()
     },
   },
 }
