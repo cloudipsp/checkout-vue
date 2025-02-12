@@ -25,10 +25,10 @@ const card_black = {
 const btn_green = {
   btn_success_gradient_custom: linearGradient(
     90,
-    ['2FD769 30', '1CB751 74'],
-    '#1CB751'
+    ['48D554 30', '3ACB47 74'],
+    '#3ACB47'
   ),
-  btn_success_shadow: '#30D769',
+  btn_success_shadow: '#48D554',
 }
 
 const card_gradient_white = linearGradient(180, ['FFF 0', 'F5F5F5 100'])

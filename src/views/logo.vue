@@ -24,16 +24,14 @@ export default {
   background-position: 0 50%;
   background-size: contain;
 
-  :global(.f-theme-light) & {
-    color: #000;
-  }
-
   :global(.f-theme-dark) & {
-    color: #fff;
+    path {
+      fill: #fff;
+    }
   }
 }
 
 .svg {
-  height: px-to-rem(24px);
+  height: px-to-rem(30px);
 }
 </style>
