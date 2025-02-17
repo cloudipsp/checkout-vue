@@ -279,13 +279,13 @@ export default {
   font-size: px-to-rem(16px);
   line-height: px-to-rem(20px);
   font-weight: 500;
-  color: #08a835;
+  color: #0cb71a;
 }
 
 .expired {
   font-size: px-to-rem(16px);
   line-height: px-to-rem(20px);
   font-weight: 500;
-  color: #de4761;
+  color: #de475b;
 }
 </style>

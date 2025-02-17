@@ -116,8 +116,9 @@ export default {
     margin-left: px-to-rem(8px);
   }
 }
+
 .approved {
-  color: #08a835;
+  color: #0cb71a;
 }
 
 .declined {

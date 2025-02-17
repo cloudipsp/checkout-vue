@@ -101,13 +101,14 @@ export default {
 }
 
 .invalid {
-  color: #de4761;
+  color: #de475b;
 }
+
 .expired {
-  color: #de4761;
+  color: #de475b;
 }
 
 .approve {
-  color: #08a835;
+  color: #0cb71a;
 }
 </style>

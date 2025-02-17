@@ -30,7 +30,7 @@ export default {
   font-weight: 400;
   font-size: px-to-rem(14px);
   line-height: px-to-rem(20px);
-  color: #08a835;
+  color: #0cb71a;
   text-decoration: underline;
 
   &:hover {

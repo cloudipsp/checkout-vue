@@ -17,7 +17,7 @@ export const grey_9 = '#313539' // 212 8  21
 export const black = '#000'
 export const grey = '#3D3D3D' // 0 0 24
 export const white = '#FFF' // 0 0 100
-export const error = '#DE4761'
+export const error = '#DE475B'
 export const warning = '#F5970A'
 
 export const inherit = 'inherit'

@@ -255,7 +255,7 @@ export default {
   font-size: px-to-rem(16px);
   line-height: px-to-rem(20px);
   font-weight: 500;
-  color: #08a835;
+  color: #0cb71a;
   margin-bottom: px-to-rem(8px);
 }
 

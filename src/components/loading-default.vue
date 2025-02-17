@@ -74,7 +74,7 @@ export default {
 
 .item {
   position: absolute;
-  color: #08a835;
+  color: #0cb71a;
   font-size: $loading-item;
 
   animation-duration: 6s;
