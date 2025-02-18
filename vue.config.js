@@ -70,6 +70,7 @@ module.exports = defineConfig({
     loaderOptions: {
       scss: {
         additionalData: [
+          `$PUBLIC_PATH: '${PUBLIC_PATH}';`,
           `$cdn: '${SAAS_CDN_URL}';`,
           `$prefix: --${SAAS_TEMPLATE_NAME}-;`,
           '@import \'~@/scss/core/functions\';',
@@ -188,12 +189,21 @@ module.exports = defineConfig({
         .rules.delete('svg').end()
         .rule('svg')
           .test(/\.(svg)(\?.*)?$/)
-          .use('vue-loader')
-            .loader('vue-loader')
-            .end()
-          .use('vue-svg-loader')
-            .loader('vue-svg-loader')
-            .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
+          .oneOf('svg-component')
+              .test(/src\/svg/)
+              .use('vue-loader')
+                  .loader('vue-loader')
+                  .end()
+              .use('vue-svg-loader')
+                  .loader('vue-svg-loader')
+                  .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
+                  .end()
+              .end()
+            .oneOf('svg')
+                .set('type', 'asset/resource')
+                .set('generator', {
+                    filename: 'img/[name].[hash:8][ext]'
+                })
             .end()
           .end()
         .end()

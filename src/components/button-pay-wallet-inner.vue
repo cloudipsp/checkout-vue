@@ -189,10 +189,10 @@ export default Vue.extend({
 }
 
 .apple-light::after {
-  background-image: url('#{$cdn}svg/wallets/apple-pay-light.svg');
+  background-image: url('#{$PUBLIC_PATH}img/apple-pay-light.svg');
 }
 
 .apple-dark::after {
-  background-image: url('#{$cdn}svg/wallets/apple-pay-dark.svg');
+  background-image: url('#{$PUBLIC_PATH}img/apple-pay-dark.svg');
 }
 </style>
