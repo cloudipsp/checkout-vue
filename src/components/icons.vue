@@ -2,8 +2,8 @@
   <div v-if="show" class="f-icons">
     <span v-if="showTitle" class="f-icons-title" v-text="title" />
     <f-icon
-      v-for="{ logo, method } in listFirst"
-      :key="logo"
+      v-for="({ logo, method }, index) in listFirst"
+      :key="index"
       class="f-icon"
       size="24"
       :name="logo"
@@ -18,8 +18,8 @@
       :target="() => $refs.last?.$el"
     >
       <f-icon
-        v-for="{ logo, method } in listLast"
-        :key="logo"
+        v-for="({ logo, method }, index) in listLast"
+        :key="index"
         class="f-icon"
         size="24"
         :name="logo"
