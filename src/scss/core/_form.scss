@@ -58,7 +58,9 @@
   border-style: solid;
   border-width: var(--border);
   border-radius: px-to-rem(8px);
-  transition: color ease-in-out 0.15s, box-shadow ease-in-out 0.15s,
+  transition:
+    color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s,
     border-color ease-in-out 0.15s;
 
   &:-webkit-autofill {
