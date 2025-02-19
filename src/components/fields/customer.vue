@@ -17,7 +17,7 @@ import {
   configCustomer,
   configCustomerRequiredOne,
 } from '@/config/customer-fields'
-import countries from '@umpirsky/country-list/data/en/country.json'
+import countries from '@/i18n/countries/en.json'
 import { sort, parseSelect } from '@/utils/sort'
 import { mapState } from '@/utils/store'
 import FFormSave from '@/components/form/form/form-save'

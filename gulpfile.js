@@ -2,7 +2,7 @@ const fsp = require('fs').promises
 const { task, series, parallel } = require('gulp')
 const nodeGettextGenerator = require('node-gettext-generator')
 const configLocale = require('./src/config/locales.json')
-const uk = require('@umpirsky/country-list/data/uk/country.json')
+const uk = require('./src/i18n/countries/uk.json')
 
 const excludes = list => item => !list.includes(item)
 const locales = Object.keys(configLocale)

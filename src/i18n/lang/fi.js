@@ -1,5 +1,5 @@
-import translation from '@/i18n/po/fi/translation.json'
-import countries from '@umpirsky/country-list/data/fi/country.json'
+import translation from '@/i18n/po/fi/messages.json'
+import countries from '@/i18n/countries/fi.json'
 import formatLocale from 'date-format-parse/lib/locale/fi'
 import locales from '@/config/locales.json'
 import { clearEmptyValue, generateValidateMessage } from '@/utils/helpers'

@@ -23,12 +23,13 @@ yarn-error.log*
 *.sln
 *.sw?
 
-.firebase
 /public/buttons/*.json
 
 *.mo
 *.po~
-/src/i18n/**/*.json
+*.pot
+/src/i18n/po/**/*.json
+/src/i18n/po/**/*.js
 /src/i18n/process/*
 !/src/i18n/process/translate.js
 /src/config/countries-search.js
