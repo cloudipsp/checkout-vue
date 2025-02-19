@@ -57,11 +57,11 @@ module.exports = defineConfig({
   },
   devServer: {
     client: {
-      // webSocketURL: `ws://${process.env.SERVER_NAME}/ws`
-      webSocketURL: `wss://${DOMAIN}/ws`
+      webSocketURL: `ws://${process.env.SERVER_NAME}/ws`
+      // webSocketURL: `wss://${DOMAIN}/ws`
     },
-    // port: process.env.PORT_NGINX,
-    // host: process.env.SERVER_NAME,
+    port: process.env.PORT_NGINX,
+    host: process.env.SERVER_NAME,
   },
   runtimeCompiler: true,
   productionSourceMap: false,
@@ -190,20 +190,20 @@ module.exports = defineConfig({
         .rule('svg')
           .test(/\.(svg)(\?.*)?$/)
           .oneOf('svg-component')
-              .test(/src\/svg/)
-              .use('vue-loader')
-                  .loader('vue-loader')
-                  .end()
-              .use('vue-svg-loader')
-                  .loader('vue-svg-loader')
-                  .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
-                  .end()
+            .test(/src\/svg/)
+            .use('vue-loader')
+              .loader('vue-loader')
               .end()
-            .oneOf('svg')
-                .set('type', 'asset/resource')
-                .set('generator', {
-                    filename: 'img/[name].[hash:8][ext]'
-                })
+            .use('vue-svg-loader')
+              .loader('vue-svg-loader')
+              .options({ svgo: { plugins: [{ cleanupIDs: false }] } })
+              .end()
+            .end()
+          .oneOf('svg')
+            .set('type', 'asset/resource')
+            .set('generator', {
+              filename: 'img/[name].[hash:8][ext]'
+            })
             .end()
           .end()
         .end()
@@ -220,6 +220,7 @@ module.exports = defineConfig({
           API_DOMAIN,
           C2P_SDK,
           C2P_SRC_INITIATOR_ID,
+          PUBLIC_PATH,
         })])
         .end()
   }

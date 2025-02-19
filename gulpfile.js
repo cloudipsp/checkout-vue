@@ -243,13 +243,25 @@ task('svg', () => {
         .then(content => fsp.writeFile('./src/config/svg.js', content))
 })
 
+task('presets-with-gradient', () =>
+  fsp
+    .readdir('./public/presets/')
+    .then(files => files.map(item => item.replace('.jpeg', '')))
+    .then(content => JSON.stringify(content, null, 2))
+    .then(content => `export const presetsWithGradient = ${content}`)
+    .then(content =>
+      fsp.writeFile('./src/config/presets-with-gradient.js', content)
+    )
+)
+
 task(
-    'default',
-    parallel([
-        'i18n',
-        'countries-search',
-        'countries-calling-codes',
-        'exclude-message',
-        'svg',
-    ])
+  'default',
+  parallel([
+    'i18n',
+    'countries-search',
+    'countries-calling-codes',
+    'exclude-message',
+    'svg',
+    'presets-with-gradient',
+  ])
 )

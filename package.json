@@ -88,7 +88,8 @@
       "SAAS_TEMPLATE_NAME": "readonly",
       "API_DOMAIN": "readonly",
       "C2P_SDK": "readonly",
-      "C2P_SRC_INITIATOR_ID": "readonly"
+      "C2P_SRC_INITIATOR_ID": "readonly",
+      "PUBLIC_PATH": "readonly"
     },
     "root": true,
     "env": {
