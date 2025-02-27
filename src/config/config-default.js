@@ -24,7 +24,7 @@ export const configDefault = {
     link: '',
     hide_link: false,
     locales,
-    api_domain: 'pay.fondy.eu',
+    api_domain: 'pay.flitt.com',
     endpoint: {
       gateway: '/latest/checkout-v2/index.html',
       button: '/latest/checkout-v2/button/index.html',
