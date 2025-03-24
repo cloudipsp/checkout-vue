@@ -1,9 +1,9 @@
 <template>
   <f-button :class="classButton" :variant="variant" block @click="click">
-    <span v-if="isGooglePay">
-      <iframe :class="$style.iframe" :src="src" @load="onLoad" />
-    </span>
-    <div :class="$style.click" />
+    <transition v-if="isGooglePay" name="f-fade">
+      <iframe v-show="load" :class="$style.iframe" :src="src" @load="onLoad" />
+    </transition>
+    <div v-if="isGooglePay" :class="$style.click" />
   </f-button>
 </template>
 
@@ -76,6 +76,7 @@ export default Vue.extend({
     classButton() {
       return [
         this.$style.btn,
+        this.$style[`${this.method}`],
         this.$style[`${this.method}-${this.variant}`],
         {
           [this.$style[`${this.method}-load`]]: this.load,
@@ -140,6 +141,12 @@ export default Vue.extend({
 
 <style lang="scss" module>
 .btn {
+  margin-bottom: px-to-rem(24px);
+
+  &:last-child {
+    margin: 0;
+  }
+
   &::after {
     padding: px-to-rem(10px);
     background-repeat: no-repeat;
@@ -149,16 +156,12 @@ export default Vue.extend({
   }
 }
 
-:global(#f .f-sidebar) .btn {
-  margin-bottom: px-to-rem(32px);
-}
-
-:global(#f .f-center) .btn {
-  margin-bottom: px-to-rem(24px);
-}
-
 .iframe {
+  position: relative;
+  z-index: 1;
+  display: block;
   height: 100%;
+  width: 100%;
   border: 0;
 }
 
@@ -174,6 +177,14 @@ export default Vue.extend({
 :global(#f) .google-light,
 :global(#f) .google-dark {
   padding: 0;
+}
+
+.apple {
+  min-width: px-to-rem(100px);
+}
+
+.google {
+  min-width: px-to-rem(240px);
 }
 
 .google-light::after {

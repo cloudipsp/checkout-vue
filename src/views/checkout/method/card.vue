@@ -3,7 +3,7 @@
     <template v-if="isBreakpointDownLg">
       <f-info v-if="isOnlyCard" />
       <f-price />
-      <f-button-wallet-el />
+      <f-button-wallet-el class="f-mb-24" />
       <f-icons
         v-if="isOnlyCard"
         class="f-mb-16"

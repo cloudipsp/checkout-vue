@@ -4,8 +4,7 @@
       <div v-if="full_screen" class="f-top"><div class="f-top-inner" /></div>
       <f-info />
       <f-price />
-      <f-button-wallet-el only-init />
-      <f-button-wallet-el v-if="!has_fields" />
+      <f-button-wallet-el v-show="!has_fields" class="f-mb-24" />
     </template>
     <f-bank
       :config="config"
