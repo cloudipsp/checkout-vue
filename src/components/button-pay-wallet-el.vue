@@ -10,9 +10,17 @@ export default {
   inject: ['formRequest', '$_veeObserver'],
   computed: {
     ...mapStateGetSet(['init_wallets', 'vm_wallets']),
-    ...mapState('options', ['disable_request', 'methods_disabled']),
+    ...mapState('options', [
+      'disable_request',
+      'wallet_methods_enabled',
+      'methods_disabled',
+    ]),
     show() {
-      return !this.disable_request && !this.methods_disabled.includes('wallets')
+      return (
+        !this.disable_request &&
+        this.wallet_methods_enabled.length &&
+        !this.methods_disabled.includes('wallets')
+      )
     },
   },
   created() {

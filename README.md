@@ -33,6 +33,7 @@ Name                  | Type        | Default                 | Description     
 ---                   | ---         | ---                     | ---                                                                                 | ---
 `methods`             | Array       | ['card']                | support `card`, `sepa`, `banklinks_eu`, `receipt`.                                  |
 `methods_disabled`    | Array       | []                      | support `card`, `sepa`, `banklinks_eu`, `receipt`.                                  |
+`wallet_methods_enabled`| Array     | ['apple', 'google']     | support `apple`, `google`.                                                          |
 `card_icons`          | Array       | ['mastercard', 'visa']  | support `mastercard`, `visa`, `mir`, `prostir`, `diners`, `american_express` , `jcb`, `maestro`, `union_pay`.|
 `banklinks_eu_icons`  | Array       | []                      |                                                                                     |
 `local_methods_icons` | Array       | []                      |                                                                                     |

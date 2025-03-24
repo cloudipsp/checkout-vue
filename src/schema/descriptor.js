@@ -11,6 +11,7 @@ import { excludeMessages } from '@/config/exclude-messages'
 import { isPlainObject, isString, isExist } from '@/utils/inspect'
 import { loadAsyncValidator } from '@/import'
 
+const walletMethods = ['apple', 'google']
 const countries = Object.keys(configCountries)
 const cardIcons = [
   'american_express',
@@ -257,6 +258,7 @@ export default {
         fields: {
           methods: enumArray(methods),
           methods_disabled: enumArray(methods),
+          wallet_methods_enabled: enumArray(walletMethods),
           card_icons: enumArray(cardIcons),
           fields: typeBoolean,
           title: typeString,

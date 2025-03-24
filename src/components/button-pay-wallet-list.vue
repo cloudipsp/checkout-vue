@@ -39,6 +39,7 @@ export default Vue.extend({
   computed: {
     ...mapStateGetSet(['can_make_payment']),
     ...mapState(['pay', 'ready']),
+    ...mapState('options', ['wallet_methods_enabled']),
     ...mapState('params', [
       'amount',
       'currency',
@@ -51,7 +52,10 @@ export default Vue.extend({
     },
     list() {
       return ['apple', 'google'].filter(
-        item => this.supported.includes(item) && this.allowed.includes(item)
+        item =>
+          this.wallet_methods_enabled.includes(item) &&
+          this.supported.includes(item) &&
+          this.allowed.includes(item)
       )
     },
   },

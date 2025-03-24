@@ -10,6 +10,7 @@ export const configDefault = {
   options: {
     methods: ['card'],
     methods_disabled: [],
+    wallet_methods_enabled: ['apple', 'google'],
     most_popular_icons: [],
     card_icons: ['mastercard', 'visa'],
     banklinks_eu_icons: [],
