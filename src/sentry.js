@@ -6,9 +6,9 @@ import {
   captureMessage as msg,
 } from '@sentry/vue'
 
-const enable = SENTRY_DSN && DOMAIN === location.hostname
+const enable = SENTRY_DSN
 
-export const install = router => Vue => {
+export const install = (router, calledName) => Vue => {
   if (!enable) return
 
   init({
@@ -23,6 +23,7 @@ export const install = router => Vue => {
   })
 
   setTag('commithash', COMMITHASH)
+  captureMessage(`called ${calledName}`, 'info')
 }
 
 export const captureMessage = (message, level, extra) => {

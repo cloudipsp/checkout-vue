@@ -97,7 +97,7 @@ class F {
   }
 }
 
-window.checkout = window.fondy = function (el, optionsUser = {}) {
+window.checkout = function (el, optionsUser = {}) {
   let app = new F()
 
   load.then(
@@ -124,7 +124,98 @@ window.checkout = window.fondy = function (el, optionsUser = {}) {
       let router = createRouter(el)
 
       Vue.use(installValidate)
-      Vue.use(installSentry(router))
+      Vue.use(installSentry(router, 'checkout'))
+      Vue.use(installComponents)
+
+      let origin =
+        'https://' +
+        (optionsUser.options?.api_domain ||
+          optionsUser.options?.apiDomain ||
+          optionsUser.button?.host ||
+          configDefault.options.api_domain)
+      let endpoint =
+        optionsUser.options?.endpoint || configDefault.options.endpoint
+      installApi(
+        {
+          origin,
+          endpoint,
+        },
+        () => {
+          store.formLoading(false)
+        }
+      )
+
+      if (instance[el]) instance[el].$destroy()
+
+      instance[el] = new Vue({
+        store,
+        router,
+        i18n,
+        data: {
+          optionsUser,
+        },
+        methods: {
+          submit() {
+            this.$emit('submit')
+          },
+          location(args) {
+            this.$emit('location', ...args)
+          },
+          setParams(args) {
+            this.$emit('setParams', ...args)
+          },
+        },
+        render(h) {
+          return h(App, {
+            props: {
+              optionsUser,
+            },
+          })
+        },
+      }).$mount()
+
+      while (node.firstChild) {
+        node.removeChild(node.firstChild)
+      }
+      node.appendChild(instance[el].$el)
+
+      app.run(instance[el])
+
+      return instance[el]
+    }
+  )
+
+  return app
+}
+
+window.fondy = function (el, optionsUser = {}) {
+  let app = new F()
+
+  load.then(
+    ([
+      Vue,
+      App,
+      installValidate,
+      installSentry,
+      installComponents,
+      installApi,
+      { createStore },
+      { createRouter },
+      { i18n },
+      { configDefault },
+      { isString, isPlainObject },
+    ]) => {
+      if (!isString(el)) return console.error('Selector not a string')
+      if (!isPlainObject(optionsUser))
+        return console.error('Options not an object')
+      let node = document.querySelector(el)
+      if (!node) return console.error(['Selector', el, 'not found'].join(' '))
+
+      let store = createStore(el)
+      let router = createRouter(el)
+
+      Vue.use(installValidate)
+      Vue.use(installSentry(router, 'fondy'))
       Vue.use(installComponents)
 
       let origin =
